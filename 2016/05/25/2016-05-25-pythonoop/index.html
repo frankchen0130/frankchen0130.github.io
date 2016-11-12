@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Python OOP（Object Oriented Programming） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。
+面向过程的程序设计把计算机程序视为一系列的命令集合，即一组函数的顺序执行。为了简化程序设计，面向过程把函数继续切分为子函数，即把大块函数通过切割成小块函数来降低系统的复杂度。
+而面向对象的程序设计把计算机程序视为一组对象的集合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python OOP（Object Oriented Programming）">
+<meta property="og:url" content="http://yoursite.com/2016/05/25/2016-05-25-pythonoop/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。
+面向过程的程序设计把计算机程序视为一系列的命令集合，即一组函数的顺序执行。为了简化程序设计，面向过程把函数继续切分为子函数，即把大块函数通过切割成小块函数来降低系统的复杂度。
+而面向对象的程序设计把计算机程序视为一组对象的集合">
+<meta property="og:image" content="http://img.blog.csdn.net/20160407150809352">
+<meta property="og:updated_time" content="2016-11-11T16:37:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python OOP（Object Oriented Programming）">
+<meta name="twitter:description" content="面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。
+面向过程的程序设计把计算机程序视为一系列的命令集合，即一组函数的顺序执行。为了简化程序设计，面向过程把函数继续切分为子函数，即把大块函数通过切割成小块函数来降低系统的复杂度。
+而面向对象的程序设计把计算机程序视为一组对象的集合">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160407150809352">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-05-25-pythonoop" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/25/2016-05-25-pythonoop/" class="article-date">
+  <time datetime="2016-05-25T13:35:32.000Z" itemprop="datePublished">2016-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python OOP（Object Oriented Programming）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。</p>
+<p>面向过程的程序设计把计算机程序视为一系列的命令集合，即一组函数的顺序执行。为了简化程序设计，面向过程把函数继续切分为子函数，即把大块函数通过切割成小块函数来降低系统的复杂度。</p>
+<p>而面向对象的程序设计把计算机程序视为一组对象的集合，而每个对象都可以接收其他对象发过来的消息，并处理这些消息，计算机程序的执行就是一系列消息在各个对象之间传递。</p>
+<p>在Python中，所有数据类型都可以视为对象，当然也可以自定义对象。自定义的对象数据类型就是面向对象中的类（Class）的概念。<br><a id="more"></a><br>我们以一个例子来说明面向过程和面向对象在程序流程上的不同之处。</p>
+<p>假设我们需要处理学生的成绩表，为了表示一个学生的成绩，面向过程的程序可以用一个dict表示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">std1 = &#123; <span class="string">'name'</span>: <span class="string">'Michael'</span>, <span class="string">'score'</span>: <span class="number">98</span> &#125;</div><div class="line">std2 = &#123; <span class="string">'name'</span>: <span class="string">'Bob'</span>, <span class="string">'score'</span>: <span class="number">81</span> &#125;</div></pre></td></tr></table></figure>
+<p>而处理学生成绩可以通过函数实现，比如打印学生的成绩：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_score</span><span class="params">(std)</span>:</span></div><div class="line">    print(<span class="string">'%s: %s'</span> % (std[<span class="string">'name'</span>], std[<span class="string">'score'</span>]))</div></pre></td></tr></table></figure></p>
+<p>如果采用面向对象的程序设计思想，我们首选思考的不是程序的执行流程，而是<code>Student</code>这种数据类型应该被视为一个对象，这个对象拥有<code>name</code>和<code>score</code>这两个属性（Property）。如果要打印一个学生的成绩，首先必须创建出这个学生对应的对象，然后，给对象发一个<code>print_score</code>消息，让对象自己把自己的数据打印出来。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, score)</span>:</span></div><div class="line">        self.name = name</div><div class="line">        self.score = score</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_score</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'%s: %s'</span> % (self.name, self.score))</div></pre></td></tr></table></figure></p>
+<p>给对象发消息实际上就是调用对象对应的关联函数，我们称之为对象的方法（Method）。面向对象的程序写出来就像这样：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">bart = Student(<span class="string">'Bart Simpson'</span>, <span class="number">59</span>)</div><div class="line">lisa = Student(<span class="string">'Lisa Simpson'</span>, <span class="number">87</span>)</div><div class="line">bart.print_score()</div><div class="line">lisa.print_score()</div></pre></td></tr></table></figure></p>
+<p>面向对象的设计思想是从自然界中来的，因为在自然界中，类（Class）和实例（Instance）的概念是很自然的。Class是一种抽象概念，比如我们定义的Class——Student，是指学生这个概念，而实例（Instance）则是一个个具体的Student，比如，Bart Simpson和Lisa Simpson是两个具体的Student。</p>
+<p>所以，面向对象的设计思想是抽象出Class，根据Class创建Instance。</p>
+<p>面向对象的抽象程度又比函数要高，因为一个Class既包含数据，又包含操作数据的方法。</p>
+<p>##类和实例<br>面向对象最重要的概念就是类（Class）和实例（Instance），必须牢记类是抽象的模板，比如Student类，而实例是根据类创建出来的一个个具体的“对象”，每个对象都拥有相同的方法，但各自的数据可能不同。</p>
+<p>仍以Student类为例，在Python中，定义类是通过<code>class</code>关键字：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure></p>
+<p><code>class</code>后面紧接着是类名，即<code>Student</code>，类名通常是大写开头的单词，紧接着是<code>(object)</code>，表示该类是从哪个类继承下来的，继承的概念我们后面再讲，通常，如果没有合适的继承类，就使用<code>object</code>类，这是所有类最终都会继承的类。</p>
+<p>定义好了<code>Student</code>类，就可以根据<code>Student</code>类创建出<code>Student</code>的实例，创建实例是通过类名+()实现的：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart = Student()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart</div><div class="line">&lt;__main__.Student object at <span class="number">0x10a67a590</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>Student</div><div class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">__main__</span>.<span class="title">Student</span>'&gt;</span></div></pre></td></tr></table></figure></p>
+<p>可以看到，变量<code>bart</code>指向的就是一个<code>Student</code>的实例，后面的<code>0x10a67a590</code>是内存地址，每个object的地址都不一样，而<code>Student</code>本身则是一个类。</p>
+<p>可以自由地给一个实例变量绑定属性，比如，给实例<code>bart</code>绑定一个<code>name</code>属性：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.name = <span class="string">'Bart Simpson'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.name</div><div class="line"><span class="string">'Bart Simpson'</span></div></pre></td></tr></table></figure></p>
+<p>由于类可以起到模板的作用，因此，可以在创建实例的时候，把一些我们认为必须绑定的属性强制填写进去。通过定义一个特殊的<code>__init__</code>方法，在创建实例的时候，就把<code>name</code>，<code>score</code>等属性绑上去：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, score)</span>:</span></div><div class="line">        self.name = name</div><div class="line">        self.score = score</div></pre></td></tr></table></figure></p>
+<p>注意到<code>__init__</code>方法的第一个参数永远是<code>self</code>，表示创建的实例本身，因此，在<code>__init__</code>方法内部，就可以把各种属性绑定到<code>self</code>，因为<code>self</code>就指向创建的实例本身。</p>
+<p>有了<code>__init__</code>方法，在创建实例的时候，就不能传入空的参数了，必须传入与<code>__init__</code>方法匹配的参数，但<code>self</code>不需要传，Python解释器自己会把实例变量传进去：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart = Student(<span class="string">'Bart Simpson'</span>, <span class="number">59</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.name</div><div class="line"><span class="string">'Bart Simpson'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.score</div><div class="line"><span class="number">59</span></div></pre></td></tr></table></figure></p>
+<p>和普通的函数相比，在类中定义的函数只有一点不同，就是第一个参数永远是实例变量self，并且，调用时，不用传递该参数。除此之外，类的方法和普通函数没有什么区别，所以，你仍然可以用默认参数、可变参数、关键字参数和命名关键字参数。</p>
+<p>###数据封装<br>面向对象编程的一个重要特点就是数据封装。在上面的<code>Student</code>类中，每个实例就拥有各自的<code>name</code>和<code>score</code>这些数据。我们可以通过函数来访问这些数据，比如打印一个学生的成绩：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">print_score</span><span class="params">(std)</span>:</span></div><div class="line"><span class="meta">... </span>    print(<span class="string">'%s: %s'</span> % (std.name, std.score))</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print_score(bart)</div><div class="line">Bart Simpson: <span class="number">59</span></div></pre></td></tr></table></figure></p>
+<p>但是，既然<code>Student</code>实例本身就拥有这些数据，要访问这些数据，就没有必要从外面的函数去访问，可以直接在<code>Student</code>类的内部定义访问数据的函数，这样，就把“数据”给封装起来了。这些封装数据的函数是和<code>Student</code>类本身是关联起来的，我们称之为类的方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, score)</span>:</span></div><div class="line">        self.name = name</div><div class="line">        self.score = score</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_score</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'%s: %s'</span> % (self.name, self.score))</div></pre></td></tr></table></figure></p>
+<p>要定义一个方法，除了第一个参数是<code>self</code>外，其他和普通函数一样。要调用一个方法，只需要在实例变量上直接调用，除了<code>self</code>不用传递，其他参数正常传入：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.print_score()</div><div class="line">Bart Simpson: <span class="number">59</span></div></pre></td></tr></table></figure></p>
+<p>这样一来，我们从外部看<code>Student</code>类，就只需要知道，创建实例需要给出<code>name</code>和<code>score</code>，而如何打印，都是在<code>Student</code>类的内部定义的，这些数据和逻辑被“封装”起来了，调用很容易，但却不用知道内部实现的细节。</p>
+<p>封装的另一个好处是可以给<code>Student</code>类增加新的方法，比如<code>get_grade</code>：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line">    ...</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_grade</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.score &gt;= <span class="number">90</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">'A'</span></div><div class="line">        <span class="keyword">elif</span> self.score &gt;= <span class="number">60</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">'B'</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">'C'</span></div></pre></td></tr></table></figure></p>
+<p>同样的，<code>get_grade</code>方法可以直接在实例变量上调用，不需要知道内部实现细节：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.get_grade()</div><div class="line"><span class="string">'C'</span></div></pre></td></tr></table></figure></p>
+<p>###小结<br>类是创建实例的模板，而实例则是一个一个具体的对象，各个实例拥有的数据都互相独立，互不影响；</p>
+<p>方法就是与实例绑定的函数，和普通函数不同，方法可以直接访问实例的数据；</p>
+<p>通过在实例上调用方法，我们就直接操作了对象内部的数据，但无需知道方法内部的实现细节。</p>
+<p>和静态语言不同，Python允许对实例变量绑定任何数据，也就是说，对于两个实例变量，虽然它们都是同一个类的不同实例，但拥有的变量名称都可能不同：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart = Student(<span class="string">'Bart Simpson'</span>, <span class="number">59</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>lisa = Student(<span class="string">'Lisa Simpson'</span>, <span class="number">87</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.age = <span class="number">8</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.age</div><div class="line"><span class="number">8</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>lisa.age</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">AttributeError: <span class="string">'Student'</span> object has no attribute <span class="string">'age'</span></div></pre></td></tr></table></figure>
+<p>##访问限制<br>在Class内部，可以有属性和方法，而外部代码可以通过直接调用实例变量的方法来操作数据，这样，就隐藏了内部的复杂逻辑。</p>
+<p>但是，从前面Student类的定义来看，外部代码还是可以自由地修改一个实例的<code>name</code>、<code>score</code>属性：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart = Student(<span class="string">'Bart Simpson'</span>, <span class="number">98</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.score</div><div class="line"><span class="number">98</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.score = <span class="number">59</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.score</div><div class="line"><span class="number">59</span></div></pre></td></tr></table></figure></p>
+<p>如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线<code>__</code>，在Python中，实例的变量名如果以__开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问，所以，我们把Student类改一改：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, score)</span>:</span></div><div class="line">        self.__name = name</div><div class="line">        self.__score = score</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_score</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'%s: %s'</span> % (self.__name, self.__score))</div></pre></td></tr></table></figure></p>
+<p>改完后，对于外部代码来说，没什么变动，但是已经无法从外部访问<code>实例变量.__name</code>和<code>实例变量.__score</code>了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart = Student(<span class="string">'Bart Simpson'</span>, <span class="number">98</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart.__name</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">AttributeError: <span class="string">'Student'</span> object has no attribute <span class="string">'__name'</span></div></pre></td></tr></table></figure></p>
+<p>这样就确保了外部代码不能随意修改对象内部的状态，这样通过访问限制的保护，代码更加健壮。</p>
+<p>但是如果外部代码要获取name和score怎么办？可以给Student类增加<code>get_name</code>和<code>get_score</code>这样的方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line">    ...</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_name</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.__name</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_score</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.__score</div></pre></td></tr></table></figure></p>
+<p>如果又要允许外部代码修改score怎么办？可以再给Student类增加<code>set_score</code>方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line">    ...</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_score</span><span class="params">(self, score)</span>:</span></div><div class="line">        self.__score = score</div></pre></td></tr></table></figure></p>
+<p>你也许会问，原先那种直接通过<code>bart.score = 59</code>也可以修改啊，为什么要定义一个方法大费周折？因为在方法中，可以对参数做检查，避免传入无效的参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line">    ...</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_score</span><span class="params">(self, score)</span>:</span></div><div class="line">        <span class="keyword">if</span> <span class="number">0</span> &lt;= score &lt;= <span class="number">100</span>:</div><div class="line">            self.__score = score</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'bad score'</span>)</div></pre></td></tr></table></figure></p>
+<p>需要注意的是，在Python中，变量名类似<code>__xxx__</code>的，也就是以双下划线开头，并且以双下划线结尾的，是特殊变量，特殊变量是可以直接访问的，不是private变量，所以，不能用<code>__name__</code>、<code>__score__</code>这样的变量名。</p>
+<p>有些时候，你会看到以一个下划线开头的实例变量名，比如<code>_name</code>，这样的实例变量外部是可以访问的，但是，按照约定俗成的规定，当你看到这样的变量时，意思就是，“虽然我可以被访问，但是，请把我视为私有变量，不要随意访问”。</p>
+<p>双下划线开头的实例变量是不是一定不能从外部访问呢？其实也不是。不能直接访问<code>__name</code>是因为Python解释器对外把<code>__name</code>变量改成了<code>_Student__name</code>，所以，仍然可以通过<code>_Student__name</code>来访问<code>__name</code>变量：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>bart._Student__name</div><div class="line"><span class="string">'Bart Simpson'</span></div></pre></td></tr></table></figure></p>
+<p>但是强烈建议你不要这么干，因为不同版本的Python解释器可能会把<code>__name</code>改成不同的变量名。</p>
+<p>总的来说就是，Python本身没有任何机制阻止你干坏事，一切全靠自觉。</p>
+<p>##继承和多态<br>在OOP程序设计中，当我们定义一个class的时候，可以从某个现有的class继承，新的class称为子类（Subclass），而被继承的class称为基类、父类或超类（Base class、Super class）。</p>
+<p>比如，我们已经编写了一个名为<code>Animal</code>的class，有一个<code>run()</code>方法可以直接打印：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'Animal is running...'</span>)</div></pre></td></tr></table></figure></p>
+<p>当我们需要编写<code>Dog</code>和<code>Cat</code>类时，就可以直接从<code>Animal</code>类继承：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span><span class="params">(Animal)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span><span class="params">(Animal)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure></p>
+<p>对于<code>Dog</code>来说，<code>Animal</code>就是它的父类，对于<code>Animal</code>来说，<code>Dog</code>就是它的子类。<code>Cat</code>和<code>Dog</code>类似。<br>继承有什么好处？最大的好处是子类获得了父类的全部功能。由于<code>Animial</code>实现了<code>run()</code>方法，因此，<code>Dog</code>和<code>Cat</code>作为它的子类，什么事也没干，就自动拥有了<code>run()</code>方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dog = Dog()</div><div class="line">dog.run()</div><div class="line"></div><div class="line">cat = Cat()</div><div class="line">cat.run()</div></pre></td></tr></table></figure></p>
+<p>运行结果如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Animal <span class="keyword">is</span> running...</div><div class="line">Animal <span class="keyword">is</span> running...</div></pre></td></tr></table></figure></p>
+<p>当然，也可以对子类增加一些方法，比如Dog类：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span><span class="params">(Animal)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'Dog is running...'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'Eating meat...'</span>)</div></pre></td></tr></table></figure></p>
+<p>继承的第二个好处需要我们对代码做一点改进。你看到了，无论是<code>Dog</code>还是<code>Cat</code>，它们<code>run()</code>的时候，显示的都是<code>Animal is running...</code>，符合逻辑的做法是分别显示<code>Dog is running...</code>和<code>Cat is running...</code>，因此，对<code>Dog</code>和<code>Cat</code>类改进如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span><span class="params">(Animal)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'Dog is running...'</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span><span class="params">(Animal)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'Cat is running...'</span>)</div></pre></td></tr></table></figure></p>
+<p>再次运行，结果如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Dog <span class="keyword">is</span> running...</div><div class="line">Cat <span class="keyword">is</span> running...</div></pre></td></tr></table></figure></p>
+<p>当子类和父类都存在相同的<code>run()</code>方法时，我们说，子类的<code>run()</code>覆盖了父类的<code>run()</code>，在代码运行的时候，总是会调用子类的<code>run()</code>。这样，我们就获得了继承的另一个好处：多态。</p>
+<p>要理解什么是多态，我们首先要对数据类型再作一点说明。当我们定义一个class的时候，我们实际上就定义了一种数据类型。我们定义的数据类型和Python自带的数据类型，比如str、list、dict没什么两样：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a = list() <span class="comment"># a是list类型</span></div><div class="line">b = Animal() <span class="comment"># b是Animal类型</span></div><div class="line">c = Dog() <span class="comment"># c是Dog类型</span></div></pre></td></tr></table></figure></p>
+<p>判断一个变量是否是某个类型可以用isinstance()判断：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(a, list)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(b, Animal)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(c, Dog)</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<p>看来<code>a</code>、<code>b</code>、<code>c</code>确实对应着<code>list</code>、<code>Animal</code>、<code>Dog</code>这3种类型。</p>
+<p>但是等等，试试：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(c, Animal)</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<p>看来<code>c</code>不仅仅是<code>Dog</code>，<code>c</code>还是<code>Animal</code>！<br>不过仔细想想，这是有道理的，因为<code>Dog</code>是从<code>Animal</code>继承下来的，当我们创建了一个<code>Dog</code>的实例<code>c</code>时，我们认为<code>c</code>的数据类型是<code>Dog</code>没错，但<code>c</code>同时也是<code>Animal</code>也没错，<code>Dog</code>本来就是<code>Animal</code>的一种！</p>
+<p>所以，在继承关系中，如果一个实例的数据类型是某个子类，那它的数据类型也可以被看做是父类。但是，反过来就不行：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = Animal()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(b, Dog)</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure></p>
+<p><code>Dog</code>可以看成<code>Animal</code>，但<code>Animal</code>不可以看成<code>Dog</code>。</p>
+<p>要理解多态的好处，我们还需要再编写一个函数，这个函数接受一个<code>Animal</code>类型的变量：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_twice</span><span class="params">(animal)</span>:</span></div><div class="line">    animal.run()</div><div class="line">    animal.run()</div></pre></td></tr></table></figure></p>
+<p>当我们传入<code>Animal</code>的实例时，<code>run_twice()</code>就打印出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>run_twice(Animal())</div><div class="line">Animal <span class="keyword">is</span> running...</div><div class="line">Animal <span class="keyword">is</span> running...</div></pre></td></tr></table></figure></p>
+<p>当我们传入<code>Dog</code>的实例时，<code>run_twice()</code>就打印出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>run_twice(Dog())</div><div class="line">Dog <span class="keyword">is</span> running...</div><div class="line">Dog <span class="keyword">is</span> running...</div></pre></td></tr></table></figure></p>
+<p>当我们传入<code>Cat</code>的实例时，<code>run_twice()</code>就打印出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>run_twice(Cat())</div><div class="line">Cat <span class="keyword">is</span> running...</div><div class="line">Cat <span class="keyword">is</span> running...</div></pre></td></tr></table></figure></p>
+<p>看上去没啥意思，但是仔细想想，现在，如果我们再定义一个<code>Tortoise</code>类型，也从<code>Animal</code>派生：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tortoise</span><span class="params">(Animal)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'Tortoise is running slowly...'</span>)</div></pre></td></tr></table></figure></p>
+<p>当我们调用<code>run_twice()</code>时，传入<code>Tortoise</code>的实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>run_twice(Tortoise())</div><div class="line">Tortoise <span class="keyword">is</span> running slowly...</div><div class="line">Tortoise <span class="keyword">is</span> running slowly...</div></pre></td></tr></table></figure></p>
+<p>你会发现，新增一个<code>Animal</code>的子类，不必对<code>run_twice()</code>做任何修改，实际上，任何依赖<code>Animal</code>作为参数的函数或者方法都可以不加修改地正常运行，原因就在于多态。</p>
+<p>多态的好处就是，当我们需要传入<code>Dog</code>、<code>Cat</code>、<code>Tortoise……</code>时，我们只需要接收<code>Animal</code>类型就可以了，因为<code>Dog</code>、<code>Cat</code>、<code>Tortoise</code>……都是<code>Animal</code>类型，然后，按照<code>Animal</code>类型进行操作即可。由于<code>Animal</code>类型有<code>run()</code>方法，因此，传入的任意类型，只要是Animal类或者子类，就会自动调用实际类型的<code>run()</code>方法，这就是多态的意思：</p>
+<p>对于一个变量，我们只需要知道它是<code>Animal</code>类型，无需确切地知道它的子类型，就可以放心地调用<code>run()</code>方法，而具体调用的<code>run()</code>方法是作用在<code>Animal</code>、<code>Dog</code>、<code>Cat</code>还是<code>Tortoise</code>对象上，由运行时该对象的确切类型决定，这就是多态真正的威力：调用方只管调用，不管细节，而当我们新增一种<code>Animal</code>的子类时，只要确保<code>run()</code>方法编写正确，不用管原来的代码是如何调用的。这就是著名的“开闭”原则：</p>
+<p>对扩展开放：允许新增<code>Animal</code>子类；</p>
+<p>对修改封闭：不需要修改依赖<code>Animal</code>类型的<code>run_twice()</code>等函数。</p>
+<p>继承还可以一级一级地继承下来，就好比从爷爷到爸爸、再到儿子这样的关系。而任何类，最终都可以追溯到根类object，这些继承关系看上去就像一颗倒着的树。比如如下的继承树：<br><img src="http://img.blog.csdn.net/20160407150809352" alt="此处输入图片的描述"></p>
+<p>###静态语言 vs 动态语言<br>对于静态语言（例如Java）来说，如果需要传入<code>Animal</code>类型，则传入的对象必须是<code>Animal</code>类型或者它的子类，否则，将无法调用<code>run()</code>方法。</p>
+<p>对于Python这样的动态语言来说，则不一定需要传入<code>Animal</code>类型。我们只需要保证传入的对象有一个<code>run()</code>方法就可以了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Timer</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'Start...'</span>)</div></pre></td></tr></table></figure></p>
+<p>这就是动态语言的“鸭子类型”，它并不要求严格的继承体系，一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子。</p>
+<p>Python的“file-like object“就是一种鸭子类型。对真正的文件对象，它有一个<code>read()</code>方法，返回其内容。但是，许多对象，只要有<code>read()</code>方法，都被视为“file-like object“。许多函数接收的参数就是“file-like object“，你不一定要传入真正的文件对象，完全可以传入任何实现了<code>read()</code>方法的对象。</p>
+<p>###小结<br>继承可以把父类的所有功能都直接拿过来，这样就不必重零做起，子类只需要新增自己特有的方法，也可以把父类不适合的方法覆盖重写。</p>
+<p>动态语言的鸭子类型特点决定了继承不像静态语言那样是必须的。</p>
+<p>##获取对象信息<br>当我们拿到一个对象的引用时，如何知道这个对象是什么类型、有哪些方法呢？</p>
+<p>###使用type()</p>
+<p>首先，我们来判断对象类型，使用<code>type()</code>函数：</p>
+<p>基本类型都可以用<code>type()</code>判断：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; type(123)</div><div class="line">&lt;class 'int'&gt;</div><div class="line">&gt;&gt;&gt; type('str')</div><div class="line">&lt;class 'str'&gt;</div><div class="line">&gt;&gt;&gt; type(None)</div><div class="line">&lt;type(None) 'NoneType'&gt;</div></pre></td></tr></table></figure></p>
+<p>如果一个变量指向函数或者类，也可以用<code>type()</code>判断：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; type(abs)</div><div class="line">&lt;class 'builtin_function_or_method'&gt;</div><div class="line">&gt;&gt;&gt; type(a)</div><div class="line">&lt;class '__main__.Animal'&gt;</div></pre></td></tr></table></figure></p>
+<p>但是<code>type()</code>函数返回的是什么类型呢？它返回对应的Class类型。如果我们要在<code>if</code>语句中判断，就需要比较两个变量的type类型是否相同：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">123</span>)==type(<span class="number">456</span>)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">123</span>)==int</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="string">'abc'</span>)==type(<span class="string">'123'</span>)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="string">'abc'</span>)==str</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="string">'abc'</span>)==type(<span class="number">123</span>)</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure></p>
+<p>判断基本数据类型可以直接写<code>int</code>，<code>str</code>等，但如果要判断一个对象是否是函数怎么办？可以使用<code>types</code>模块中定义的常量：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> types</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">fn</span><span class="params">()</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="keyword">pass</span></div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(fn)==types.FunctionType</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(abs)==types.BuiltinFunctionType</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="keyword">lambda</span> x: x)==types.LambdaType</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)))==types.GeneratorType</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<p>###使用isinstance()<br>对于class的继承关系来说，使用<code>type()</code>就很不方便。我们要判断class的类型，可以使用<code>isinstance()</code>函数。</p>
+<p>我们回顾上次的例子，如果继承关系是：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">object -&gt; Animal -&gt; Dog -&gt; Husky</div></pre></td></tr></table></figure></p>
+<p>那么，<code>isinstance()</code>就可以告诉我们，一个对象是否是某种类型。先创建3种类型的对象：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = Animal()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d = Dog()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>h = Husky()</div></pre></td></tr></table></figure></p>
+<p>然后，判断：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(h, Husky)</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<p>没有问题，因为<code>h</code>变量指向的就是Husky对象。</p>
+<p>再判断：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(h, Dog)</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<p><code>h</code>虽然自身是Husky类型，但由于Husky是从Dog继承下来的，所以，<code>h</code>也还是Dog类型。换句话说，<code>isinstance()</code>判断的是一个对象是否是该类型本身，或者位于该类型的父继承链上。</p>
+<p>因此，我们可以确信，<code>h</code>还是Animal类型：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(h, Animal)</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<p>同理，实际类型是Dog的<code>d</code>也是Animal类型：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(d, Dog) <span class="keyword">and</span> isinstance(d, Animal)</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<p>但是，<code>d</code>不是Husky类型：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(d, Husky)</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure></p>
+<p>能用<code>type()</code>判断的基本类型也可以用<code>isinstance()</code>判断：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'a'</span>, str)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="number">123</span>, int)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">b'a'</span>, bytes)</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<p>并且还可以判断一个变量是否是某些类型中的一种，比如下面的代码就可以判断是否是list或者tuple：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], (list, tuple))</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance((<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), (list, tuple))</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<p>###使用dir()</p>
+<p>如果要获得一个对象的所有属性和方法，可以使用<code>dir()</code>函数，它返回一个包含字符串的list，比如，获得一个str对象的所有属性和方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>dir(<span class="string">'ABC'</span>)</div><div class="line">[<span class="string">'__add__'</span>, <span class="string">'__class__'</span>, <span class="string">'__contains__'</span>, <span class="string">'__delattr__'</span>, <span class="string">'__dir__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__eq__'</span>, <span class="string">'__format__'</span>, <span class="string">'__ge__'</span>, <span class="string">'__getattribute__'</span>, <span class="string">'__getitem__'</span>, <span class="string">'__getnewargs__'</span>, <span class="string">'__gt__'</span>, <span class="string">'__hash__'</span>, <span class="string">'__init__'</span>, <span class="string">'__iter__'</span>, <span class="string">'__le__'</span>, <span class="string">'__len__'</span>, <span class="string">'__lt__'</span>, <span class="string">'__mod__'</span>, <span class="string">'__mul__'</span>, <span class="string">'__ne__'</span>, <span class="string">'__new__'</span>, <span class="string">'__reduce__'</span>, <span class="string">'__reduce_ex__'</span>, <span class="string">'__repr__'</span>, <span class="string">'__rmod__'</span>, <span class="string">'__rmul__'</span>, <span class="string">'__setattr__'</span>, <span class="string">'__sizeof__'</span>, <span class="string">'__str__'</span>, <span class="string">'__subclasshook__'</span>, <span class="string">'capitalize'</span>, <span class="string">'casefold'</span>, <span class="string">'center'</span>, <span class="string">'count'</span>, <span class="string">'encode'</span>, <span class="string">'endswith'</span>, <span class="string">'expandtabs'</span>, <span class="string">'find'</span>, <span class="string">'format'</span>, <span class="string">'format_map'</span>, <span class="string">'index'</span>, <span class="string">'isalnum'</span>, <span class="string">'isalpha'</span>, <span class="string">'isdecimal'</span>, <span class="string">'isdigit'</span>, <span class="string">'isidentifier'</span>, <span class="string">'islower'</span>, <span class="string">'isnumeric'</span>, <span class="string">'isprintable'</span>, <span class="string">'isspace'</span>, <span class="string">'istitle'</span>, <span class="string">'isupper'</span>, <span class="string">'join'</span>, <span class="string">'ljust'</span>, <span class="string">'lower'</span>, <span class="string">'lstrip'</span>, <span class="string">'maketrans'</span>, <span class="string">'partition'</span>, <span class="string">'replace'</span>, <span class="string">'rfind'</span>, <span class="string">'rindex'</span>, <span class="string">'rjust'</span>, <span class="string">'rpartition'</span>, <span class="string">'rsplit'</span>, <span class="string">'rstrip'</span>, <span class="string">'split'</span>, <span class="string">'splitlines'</span>, <span class="string">'startswith'</span>, <span class="string">'strip'</span>, <span class="string">'swapcase'</span>, <span class="string">'title'</span>, <span class="string">'translate'</span>, <span class="string">'upper'</span>, <span class="string">'zfill'</span>]</div></pre></td></tr></table></figure></p>
+<p>类似<code>__xxx__</code>的属性和方法在Python中都是有特殊用途的，比如<code>__len__</code>方法返回长度。在Python中，如果你调用<code>len()</code>函数试图获取一个对象的长度，实际上，在<code>len()</code>函数内部，它自动去调用该对象的<code>__len__()</code>方法，所以，下面的代码是等价的：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>len(<span class="string">'ABC'</span>)</div><div class="line"><span class="number">3</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'ABC'</span>.__len__()</div><div class="line"><span class="number">3</span></div></pre></td></tr></table></figure></p>
+<p>我们自己写的类，如果也想用len(myObj)的话，就自己写一个<strong>len</strong>()方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">MyDog</span><span class="params">(object)</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="number">100</span></div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dog = MyDog()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>len(dog)</div><div class="line"><span class="number">100</span></div></pre></td></tr></table></figure></p>
+<p>剩下的都是普通属性或方法，比如<code>lower()</code>返回小写的字符串：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'ABC'</span>.lower()</div><div class="line"><span class="string">'abc'</span></div></pre></td></tr></table></figure></p>
+<p>仅仅把属性和方法列出来是不够的，配合<code>getattr()</code>、<code>setattr()</code>以及<code>hasattr()</code>，我们可以直接操作一个对象的状态：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">MyObject</span><span class="params">(object)</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line"><span class="meta">... </span>        self.x = <span class="number">9</span></div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">power</span><span class="params">(self)</span>:</span></div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> self.x * self.x</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>obj = MyObject()</div></pre></td></tr></table></figure></p>
+<p>紧接着，可以测试该对象的属性：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>hasattr(obj, <span class="string">'x'</span>) <span class="comment"># 有属性'x'吗？</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>obj.x</div><div class="line"><span class="number">9</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>hasattr(obj, <span class="string">'y'</span>) <span class="comment"># 有属性'y'吗？</span></div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>setattr(obj, <span class="string">'y'</span>, <span class="number">19</span>) <span class="comment"># 设置一个属性'y'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>hasattr(obj, <span class="string">'y'</span>) <span class="comment"># 有属性'y'吗？</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>getattr(obj, <span class="string">'y'</span>) <span class="comment"># 获取属性'y'</span></div><div class="line"><span class="number">19</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>obj.y <span class="comment"># 获取属性'y'</span></div><div class="line"><span class="number">19</span></div></pre></td></tr></table></figure></p>
+<p>如果试图获取不存在的属性，会抛出AttributeError的错误：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>getattr(obj, <span class="string">'z'</span>) <span class="comment"># 获取属性'z'</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">AttributeError: <span class="string">'MyObject'</span> object has no attribute <span class="string">'z'</span></div></pre></td></tr></table></figure></p>
+<p>可以传入一个default参数，如果属性不存在，就返回默认值：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>getattr(obj, <span class="string">'z'</span>, <span class="number">404</span>) <span class="comment"># 获取属性'z'，如果不存在，返回默认值404</span></div><div class="line"><span class="number">404</span></div></pre></td></tr></table></figure></p>
+<p>也可以获得对象的方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>hasattr(obj, <span class="string">'power'</span>) <span class="comment"># 有属性'power'吗？</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>getattr(obj, <span class="string">'power'</span>) <span class="comment"># 获取属性'power'</span></div><div class="line">&lt;bound method MyObject.power of &lt;__main__.MyObject object at <span class="number">0x10077a6a0</span>&gt;&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>fn = getattr(obj, <span class="string">'power'</span>) <span class="comment"># 获取属性'power'并赋值到变量fn</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>fn <span class="comment"># fn指向obj.power</span></div><div class="line">&lt;bound method MyObject.power of &lt;__main__.MyObject object at <span class="number">0x10077a6a0</span>&gt;&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>fn() <span class="comment"># 调用fn()与调用obj.power()是一样的</span></div><div class="line"><span class="number">81</span></div></pre></td></tr></table></figure></p>
+<p>###小结<br>通过内置的一系列函数，我们可以对任意一个Python对象进行剖析，拿到其内部的数据。要注意的是，只有在不知道对象信息的时候，我们才会去获取对象信息。如果可以直接写：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sum = obj.x + obj.y</div></pre></td></tr></table></figure></p>
+<p>就不要写：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sum = getattr(obj, <span class="string">'x'</span>) + getattr(obj, <span class="string">'y'</span>)</div></pre></td></tr></table></figure></p>
+<p>一个正确的用法的例子如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">readImage</span><span class="params">(fp)</span>:</span></div><div class="line">    <span class="keyword">if</span> hasattr(fp, <span class="string">'read'</span>):</div><div class="line">        <span class="keyword">return</span> readData(fp)</div><div class="line">    <span class="keyword">return</span> <span class="keyword">None</span></div></pre></td></tr></table></figure></p>
+<p>假设我们希望从文件流fp中读取图像，我们首先要判断该fp对象是否存在read方法，如果存在，则该对象是一个流，如果不存在，则无法读取。<code>hasattr()</code>就派上了用场。</p>
+<p>请注意，在Python这类动态语言中，根据鸭子类型，有<code>read()</code>方法，不代表该fp对象就是一个文件流，它也可能是网络流，也可能是内存中的一个字节流，但只要<code>read()</code>方法返回的是有效的图像数据，就不影响读取图像的功能。</p>
+<p>##实例属性和类属性<br>由于Python是动态语言，根据类创建的实例可以任意绑定属性。</p>
+<p>给实例绑定属性的方法是通过实例变量，或者通过<code>self</code>变量：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></div><div class="line">        self.name = name</div><div class="line"></div><div class="line">s = Student(<span class="string">'Bob'</span>)</div><div class="line">s.score = <span class="number">90</span></div></pre></td></tr></table></figure></p>
+<p>但是，如果<code>Student</code>类本身需要绑定一个属性呢？可以直接在class中定义属性，这种属性是类属性，归<code>Student</code>类所有：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line">    name = <span class="string">'Student'</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></div><div class="line"><span class="meta">... </span>    name = <span class="string">'Student'</span></div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = Student() <span class="comment"># 创建实例s</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(s.name) <span class="comment"># 打印name属性，因为实例并没有name属性，所以会继续查找class的name属性</span></div><div class="line">Student</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(Student.name) <span class="comment"># 打印类的name属性</span></div><div class="line">Student</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.name = <span class="string">'Michael'</span> <span class="comment"># 给实例绑定name属性</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(s.name) <span class="comment"># 由于实例属性优先级比类属性高，因此，它会屏蔽掉类的name属性</span></div><div class="line">Michael</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(Student.name) <span class="comment"># 但是类属性并未消失，用Student.name仍然可以访问</span></div><div class="line">Student</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> s.name <span class="comment"># 如果删除实例的name属性</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(s.name) <span class="comment"># 再次调用s.name，由于实例的name属性没有找到，类的name属性就显示出来了</span></div><div class="line">Student</div></pre></td></tr></table></figure>
+<p>从上面的例子可以看出，在编写程序的时候，千万不要把实例属性和类属性使用相同的名字，因为相同名称的实例属性将屏蔽掉类属性，但是当你删除实例属性后，再使用相同的名称，访问到的将是类属性。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/25/2016-05-25-pythonoop/" data-id="civff93r70004jefyge6y5oje" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/26/2016-05-26-char-rnn-chinese/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          char-rnn-chinese
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/24/2016-05-24-di-pian-bo-ke/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用文本处理命令获取链接批量下载</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Note/">Note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/essay/">essay</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Genetic-Algorithm/">Genetic Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP-deep-learning/">NLP deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-LSTM/">RNN LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-deep-learning/">RNN deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DNN/" style="font-size: 10px;">DNN</a> <a href="/tags/Genetic-Algorithm/" style="font-size: 10px;">Genetic Algorithm</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine-Learning</a> <a href="/tags/NLP-deep-learning/" style="font-size: 10px;">NLP deep-learning</a> <a href="/tags/RNN-LSTM/" style="font-size: 10px;">RNN LSTM</a> <a href="/tags/RNN-deep-learning/" style="font-size: 20px;">RNN deep-learning</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tutorial/" style="font-size: 16.67px;">tutorial</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/11/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

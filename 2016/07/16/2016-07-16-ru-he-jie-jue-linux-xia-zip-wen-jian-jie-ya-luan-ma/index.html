@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | Hexo</title>
+  <title>如何解决Linux 下 zip 文件解压乱码 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="由于zip格式中并没有指定编码格式，Windows下生成的zip文件中的编码是GBK/GB2312等，因此，导致这些zip文件在Linux下解压时出现乱码问题，因为Linux下的默认编码是UTF8。目前网上流传一种unzip -O cp936的方法，但一些unzip是没有-O这个选项的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何解决Linux 下 zip 文件解压乱码">
+<meta property="og:url" content="http://yoursite.com/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="由于zip格式中并没有指定编码格式，Windows下生成的zip文件中的编码是GBK/GB2312等，因此，导致这些zip文件在Linux下解压时出现乱码问题，因为Linux下的默认编码是UTF8。目前网上流传一种unzip -O cp936的方法，但一些unzip是没有-O这个选项的。">
+<meta property="og:updated_time" content="2016-11-11T13:50:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="如何解决Linux 下 zip 文件解压乱码">
+<meta name="twitter:description" content="由于zip格式中并没有指定编码格式，Windows下生成的zip文件中的编码是GBK/GB2312等，因此，导致这些zip文件在Linux下解压时出现乱码问题，因为Linux下的默认编码是UTF8。目前网上流传一种unzip -O cp936的方法，但一些unzip是没有-O这个选项的。">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,215 +63,76 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/11/13/hello-world/" class="archive-article-date">
-  <time datetime="2016-11-12T16:14:23.000Z" itemprop="datePublished">Nov 13</time>
+        <section id="main"><article id="post-2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/" class="article-date">
+  <time datetime="2016-07-16T04:11:14.000Z" itemprop="datePublished">2016-07-16</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/13/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      如何解决Linux 下 zip 文件解压乱码
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/" class="archive-article-date">
-  <time datetime="2016-11-11T14:43:17.000Z" itemprop="datePublished">Nov 11</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a>
-    </h1>
-  
+        <p>由于zip格式中并没有指定编码格式，Windows下生成的zip文件中的编码是GBK/GB2312等，因此，导致这些zip文件在Linux下解压时出现乱码问题，因为Linux下的默认编码是UTF8。<br>目前网上流传一种unzip -O cp936的方法，但一些unzip是没有-O这个选项的。</p>
+<a id="more"></a>
+<p>在ubuntu下的安装命令是</p>
+<p><code>sudo apt-get install p7zip convmv</code></p>
+<p>安装完之后，就可以用7za和convmv两个命令完成解压缩任务。</p>
+<p><code>LANG=C 7za x your-zip-file.zip
+convmv -f GBK -t utf8 --notest -r .</code></p>
+<p>第一条命令用于解压缩，而LANG=C表示以US-ASCII这样的编码输出文件名，如果没有这个语言设置，它同样会输出乱码，只不过是UTF8格式的乱码(convmv会忽略这样的乱码)。<br>第二条命令是将GBK编码的文件名转化为UTF8编码，-r表示递归访问目录，即对当前目录中所有文件进行转换。</p>
+<p>作者：Latm Ake<br>链接：<a href="https://www.zhihu.com/question/20523036/answer/35225920" target="_blank" rel="external">https://www.zhihu.com/question/20523036/answer/35225920</a><br>来源：知乎<br>著作权归作者所有，转载请联系作者获得授权。</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/" class="archive-article-date">
-  <time datetime="2016-09-21T14:15:48.000Z" itemprop="datePublished">Sep 21</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/09/07/2016-09-07-pdf-click-return/" class="archive-article-date">
-  <time datetime="2016-09-07T02:57:05.000Z" itemprop="datePublished">Sep 7</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/" data-id="civff93s7000zjefyfovnqgaq" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/" class="archive-article-date">
-  <time datetime="2016-07-16T04:11:14.000Z" itemprop="datePublished">Jul 16</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/07/2016-09-07-pdf-click-return/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PDF click return
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/" class="archive-article-date">
-  <time datetime="2016-06-22T13:42:51.000Z" itemprop="datePublished">Jun 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/" class="archive-article-date">
-  <time datetime="2016-06-22T07:42:14.000Z" itemprop="datePublished">Jun 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/" class="archive-article-date">
-  <time datetime="2016-06-22T02:50:35.000Z" itemprop="datePublished">Jun 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/">Vim 练级攻略二</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/" class="archive-article-date">
-  <time datetime="2016-06-22T02:50:35.000Z" itemprop="datePublished">Jun 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/">Vim 练级攻略一</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/" class="archive-article-date">
-  <time datetime="2016-06-19T13:46:32.000Z" itemprop="datePublished">Jun 19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/">遗传算法简述</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">__('next') &raquo;</a>
-  </nav>
 </section>
         
           <aside id="sidebar">

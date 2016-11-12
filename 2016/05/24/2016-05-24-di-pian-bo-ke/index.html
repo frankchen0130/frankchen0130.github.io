@@ -3,14 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | Hexo</title>
+  <title>使用文本处理命令获取链接批量下载 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="前几天看到一个不错的方法，现在分享给大家，希望有帮助
+比如我看到Nmap的资源很想把他全部下载到本地怎么办呐？右键一个个点？用工具镜像整个站点？
+以前我用的方法是左边打开浏览器，右边打开Notepad++ 一个个链接拖到Notepad++里，最后就有了一个完整的下载列表
+现在有更好的方法，利用Linux的文本处理工具提取完整的下载链接，文本处理工具我很早就学过了，但是平常不用，学了就忘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用文本处理命令获取链接批量下载">
+<meta property="og:url" content="http://yoursite.com/2016/05/24/2016-05-24-di-pian-bo-ke/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前几天看到一个不错的方法，现在分享给大家，希望有帮助
+比如我看到Nmap的资源很想把他全部下载到本地怎么办呐？右键一个个点？用工具镜像整个站点？
+以前我用的方法是左边打开浏览器，右边打开Notepad++ 一个个链接拖到Notepad++里，最后就有了一个完整的下载列表
+现在有更好的方法，利用Linux的文本处理工具提取完整的下载链接，文本处理工具我很早就学过了，但是平常不用，学了就忘">
+<meta property="og:updated_time" content="2016-11-11T13:50:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="使用文本处理命令获取链接批量下载">
+<meta name="twitter:description" content="前几天看到一个不错的方法，现在分享给大家，希望有帮助
+比如我看到Nmap的资源很想把他全部下载到本地怎么办呐？右键一个个点？用工具镜像整个站点？
+以前我用的方法是左边打开浏览器，右边打开Notepad++ 一个个链接拖到Notepad++里，最后就有了一个完整的下载列表
+现在有更好的方法，利用Linux的文本处理工具提取完整的下载链接，文本处理工具我很早就学过了，但是平常不用，学了就忘">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,215 +72,78 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/11/13/hello-world/" class="archive-article-date">
-  <time datetime="2016-11-12T16:14:23.000Z" itemprop="datePublished">Nov 13</time>
+        <section id="main"><article id="post-2016-05-24-di-pian-bo-ke" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/24/2016-05-24-di-pian-bo-ke/" class="article-date">
+  <time datetime="2016-05-24T11:48:48.000Z" itemprop="datePublished">2016-05-24</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/13/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      使用文本处理命令获取链接批量下载
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/" class="archive-article-date">
-  <time datetime="2016-11-11T14:43:17.000Z" itemprop="datePublished">Nov 11</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a>
-    </h1>
-  
+        <hr>
+<p>前几天看到一个不错的方法，现在分享给大家，希望有帮助</p>
+<p>比如我看到Nmap的资源很想把他全部下载到本地怎么办呐？右键一个个点？用工具镜像整个站点？</p>
+<p>以前我用的方法是左边打开浏览器，右边打开Notepad++ 一个个链接拖到Notepad++里，最后就有了一个完整的下载列表</p>
+<p>现在有更好的方法，利用Linux的文本处理工具提取完整的下载链接，文本处理工具我很早就学过了，但是平常不用，学了就忘<br><a id="more"></a></p>
+<ol>
+<li>打开你要处理网站的页面<a href="https://nmap.org/dist/" target="_blank" rel="external">https://nmap.org/dist/</a> 右键保存网页</li>
+<li>用编辑器打开删除HTML文件顶部的代码和底部代码留下链接部分</li>
+<li>使用文本处理命令剔除多余文本，留下完整链接</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;&#123;print $7&#125;&apos; index-of.html | cut -d &apos;&quot;&apos; -f2 &gt; output.txt</div></pre></td></tr></table></figure>
+<p>  解释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">awk &apos;&#123;print $7&#125;&apos;           // 打印出第7列文本，按空格或者制表符(Tab)</div><div class="line">    index-of.html              // 要处理的文件</div><div class="line">    | cut -d &apos;&quot;&apos; -f2           // 通过管道传递给 cut -d 指定分隔符为&quot; -f2 指定输出地2列文本</div><div class="line">    &gt; output.txt           // 重定向标准输出到output.txt</div></pre></td></tr></table></figure>
+<p>然后就可以使用获取到的链接列表自动批量下载了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -i output.txt</div></pre></td></tr></table></figure>
+<p>原链接地址：<a href="http://t66y.com/htm_data/7/1605/1940146.html" target="_blank" rel="external">使用文本处理命令获取链接批量下载</a></p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/" class="archive-article-date">
-  <time datetime="2016-09-21T14:15:48.000Z" itemprop="datePublished">Sep 21</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/09/07/2016-09-07-pdf-click-return/" class="archive-article-date">
-  <time datetime="2016-09-07T02:57:05.000Z" itemprop="datePublished">Sep 7</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/24/2016-05-24-di-pian-bo-ke/" data-id="civff93qt0000jefyznb98mw1" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/" class="archive-article-date">
-  <time datetime="2016-07-16T04:11:14.000Z" itemprop="datePublished">Jul 16</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/25/2016-05-25-pythonoop/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python OOP（Object Oriented Programming）
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/" class="archive-article-date">
-  <time datetime="2016-06-22T13:42:51.000Z" itemprop="datePublished">Jun 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/" class="archive-article-date">
-  <time datetime="2016-06-22T07:42:14.000Z" itemprop="datePublished">Jun 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/" class="archive-article-date">
-  <time datetime="2016-06-22T02:50:35.000Z" itemprop="datePublished">Jun 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/">Vim 练级攻略二</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/" class="archive-article-date">
-  <time datetime="2016-06-22T02:50:35.000Z" itemprop="datePublished">Jun 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/">Vim 练级攻略一</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/" class="archive-article-date">
-  <time datetime="2016-06-19T13:46:32.000Z" itemprop="datePublished">Jun 19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/">遗传算法简述</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">__('next') &raquo;</a>
-  </nav>
 </section>
         
           <aside id="sidebar">

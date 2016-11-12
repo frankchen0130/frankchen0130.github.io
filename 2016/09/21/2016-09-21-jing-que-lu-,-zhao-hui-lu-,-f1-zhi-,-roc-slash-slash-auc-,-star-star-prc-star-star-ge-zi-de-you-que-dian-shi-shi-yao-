@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="精确率、召回率、F1 值、ROC、AUC、PRC都是机器学习模型的常用评价标准，那么它们的区别和联系以及各自应用场景是什么呢？
+这些指标的含义1234Precision：P=TP/(TP+FP)Recall：R=TP/(TP+FN)F1-score：2/(1/P+1/R)ROC/AUC：TPR=TP/(TP+FN), FPR=FP/(FP+TN)
+TP —— True Positive （真正,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？">
+<meta property="og:url" content="http://yoursite.com/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="精确率、召回率、F1 值、ROC、AUC、PRC都是机器学习模型的常用评价标准，那么它们的区别和联系以及各自应用场景是什么呢？
+这些指标的含义1234Precision：P=TP/(TP+FP)Recall：R=TP/(TP+FN)F1-score：2/(1/P+1/R)ROC/AUC：TPR=TP/(TP+FN), FPR=FP/(FP+TN)
+TP —— True Positive （真正,">
+<meta property="og:image" content="http://yoursite.com/images/2016/09/efd0feae0d18367a7d666328ae674ab1_b.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2016/09/3378a75e33245f6e0aac33717b19512c_b.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2016/09/fd2c6445290cdf3c863664af155b9dd0_b.png">
+<meta property="og:image" content="http://yoursite.com/images/2016/09/74db397e36eabfb505abedd68f15bd57_b.png">
+<meta property="og:image" content="http://yoursite.com/images/2016/09/0_1308034676G5GQ.gif">
+<meta property="og:image" content="http://yoursite.com/images/2016/09/0_1308034738ZLr8.png">
+<meta property="og:updated_time" content="2016-11-11T13:50:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？">
+<meta name="twitter:description" content="精确率、召回率、F1 值、ROC、AUC、PRC都是机器学习模型的常用评价标准，那么它们的区别和联系以及各自应用场景是什么呢？
+这些指标的含义1234Precision：P=TP/(TP+FP)Recall：R=TP/(TP+FN)F1-score：2/(1/P+1/R)ROC/AUC：TPR=TP/(TP+FN), FPR=FP/(FP+TN)
+TP —— True Positive （真正,">
+<meta name="twitter:image" content="http://yoursite.com/images/2016/09/efd0feae0d18367a7d666328ae674ab1_b.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/" class="article-date">
+  <time datetime="2016-09-21T14:15:48.000Z" itemprop="datePublished">2016-09-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>精确率、召回率、F1 值、ROC、AUC、PRC都是机器学习模型的常用评价标准，那么它们的区别和联系以及各自应用场景是什么呢？</p>
+<h2 id="这些指标的含义"><a href="#这些指标的含义" class="headerlink" title="这些指标的含义"></a>这些指标的含义</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Precision：P=TP/(TP+FP)</div><div class="line">Recall：R=TP/(TP+FN)</div><div class="line">F1-score：2/(1/P+1/R)</div><div class="line">ROC/AUC：TPR=TP/(TP+FN), FPR=FP/(FP+TN)</div></pre></td></tr></table></figure>
+<p>TP —— True Positive （真正, TP）被模型预测为正的正样本；可以称作判断为真的正确率</p>
+<p>TN —— True Negative（真负 , TN）被模型预测为负的负样本 ；可以称作判断为假的正确率</p>
+<p>FP ——False Positive （假正, FP）被模型预测为正的负样本；可以称作误报率</p>
+<p>FN—— False Negative（假负 , FN）被模型预测为负的正样本；可以称作漏报率<br><a id="more"></a><br>True Positive Rate（真正率 , TPR）或灵敏度（sensitivity） 也就是<strong>召回率 Recall</strong></p>
+<p>TPR = TP \/（TP + FN）</p>
+<p>正样本预测结果数 \/ 正样本实际数</p>
+<p>True Negative Rate（真负率 , TNR）或特指度（specificity）</p>
+<p>TNR = TN \/（TN + FP）</p>
+<p>负样本预测结果数 \/ 负样本实际数</p>
+<p>False Positive Rate （假正率, FPR）</p>
+<p>FPR = FP \/（FP + TN）</p>
+<p>被预测为正的负样本结果数 \/负样本实际数</p>
+<p>False Negative Rate（假负率 , FNR）</p>
+<p>FNR = FN \/（TP + FN）</p>
+<p>被预测为负的正样本结果数 \/ 正样本实际数</p>
+<p>假定一个具体场景作为例子：</p>
+<blockquote>
+<p>假如某个班级有男生<strong>80</strong>人,女生<strong>20</strong>人,共计<strong>100</strong>人.目标是找出所有女生.</p>
+<p>现在某人挑选出<strong>50</strong>个人,其中<strong>20</strong>人是女生,另外还错误的把30个男生也当作女生挑选出来了.</p>
+<p>作为评估者的你需要来评估(<strong>evaluation</strong>)下他的工作。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>相关(Relevant),正类</strong></th>
+<th><strong>无关(NonRelevant),负类</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>被检索到(Retrieved)</strong></td>
+<td>true positives(TP 正类判定为正类,例子中就是正确的判定”这位是女生”)</td>
+<td>false positives(FP 负类判定为正类,”存伪”,例子中就是分明是男生却判断为女生,当下伪娘横行,这个错常有人犯)</td>
+</tr>
+<tr>
+<td><strong>未被检索到(Not Retrieved)</strong></td>
+<td>false negatives(FN 正类判定为负类,”去真”,例子中就是,分明是女生,这哥们却判断为男生–梁山伯同学犯的错就是这个)</td>
+<td>true negatives(TN 负类判定为负类,也就是一个男生被判断为男生,像我这样的纯爷们一准儿就会在此处)</td>
+</tr>
+</tbody>
+</table>
+<p>通过这张表,我们可以很容易得到这几个值:</p>
+<p>TP=20</p>
+<p>FP=30</p>
+<p>FN=0</p>
+<p>TN=50</p>
+<p><strong>精确率： </strong>策略命中的所有相关样本\/策略命中的所有样本</p>
+<p>Precision = TP \/ (TP + FP)</p>
+<p><em>注：正确率\/准确率（accuracy）和 精度（precision）不是一个概念</em></p>
+<p><em>正确率是我们最常见的评价指标，accuracy = （TP+TN）\/(P+N)，这个很容易理解，就是被分对的样本数除以所有的样本数</em></p>
+<p><strong>召回率</strong>：策略命中的所有相关样本\/所有的相关样本（包括策略未被命中的）</p>
+<p>Recall =  TP \/ (TP + FN)</p>
+<p>F1-score(F1-分数)：2×准确率×召回率\/（准确率+召回率），是模型准确率和召回率的一种加权平均，它的最大值是1，最小值是0。（详细介绍见下）</p>
+<p>ROC(<em>receiver operating characteristic curve</em>):  ROC曲线的横坐标为<em>false positive rate</em>（FPR,假正率），纵坐标为<em>true positive rate</em>（TPR，真正率，召回率）</p>
+<p>PRC(<em>precision recall curve</em>): PRC曲线的横坐标为召回率<em>Recall</em>，纵坐标为准确率<em>Precision</em>。</p>
+<p>AUC:被定义为ROC曲线下的面积，显然这个面积的数值不会大于1。故AUC与PRC是同一概念。又由于ROC曲线一般都处于y=x这条直线的上方，所以AUC的取值范围一般在0.5和1之间。</p>
+<h2 id="指标的评价标准"><a href="#指标的评价标准" class="headerlink" title="指标的评价标准"></a>指标的评价标准</h2><h3 id="ROC与AUC"><a href="#ROC与AUC" class="headerlink" title="ROC与AUC"></a>ROC与AUC</h3><p>ROC（receiver operating characteristic curve）也就是下图中的曲线，其关注两个指标</p>
+<p> True Positive Rate ( TPR ) = TP \/ [ TP + FN] ，TPR代表能将正例分对的概率</p>
+<p> False Positive Rate( FPR ) = FP \/ [ FP + TN] ，FPR代表将负例错分为正例的概率</p>
+<p>在ROC 空间中，每个点的横坐标是FPR，纵坐标是TPR，这也就描绘了分类器在TP（真正的正例）和FP（错误的正例）间的trade-off。ROC的主要分析工具是一个画在ROC空间的曲线——ROC curve。我们知道，对于二值分类问题，实例的值往往是连续值，我们通过设定一个阈值，将实例分类到正类或者负类（比如大于阈值划分为正类）。因此我们可以变化阈值，根据不同的阈值进行分类，根据分类结果计算得到ROC空间中相应的点，连接这些点就形成ROC curve。ROC curve经过（0,0）（1,1），实际上(0, 0)和(1, 1)连线形成的ROC curve实际上代表的是一个随机分类器。一般情况下，这个曲线都应该处于(0, 0)和(1, 1)连线的上方。如图所示。</p>
+<p>用ROC curve来表示分类器的performance很直观好用。可是，人们总是希望能有一个数值来标志分类器的好坏。</p>
+<p>于是<strong>Area Under roc Curve(AUC)</strong>就出现了。顾名思义，AUC的值就是处于ROC curve下方的那部分面积的大小。通常，AUC的值介于0.5到1.0之间，较大的AUC代表了较好的Performance。</p>
+<p>同时我们也看里面也上了AUC也就是是面积。一般来说，如果ROC是光滑的，那么基本可以判断没有太大的overfitting（比如图中0.2到0.4可能就有问题，但是样本太少了），这个时候调模型可以只看AUC，面积越大一般认为模型越好。</p>
+<p><img src="/images/2016/09/efd0feae0d18367a7d666328ae674ab1_b.jpg" alt=""></p>
+<h3 id="PRC"><a href="#PRC" class="headerlink" title="PRC"></a>PRC</h3><p>再说PRC， precision recall curve。和ROC一样，先看平滑不平滑（蓝线明显好些），在看谁上谁下（同一测试集上），一般来说，上面的比下面的好（绿线比红线好）。F1（下面介绍）当P和R接近就也越大，一般会画连接(0,0)和(1,1)的线，线和PRC重合的地方的F1是这条线最大的F1（光滑的情况下），此时的F1对于PRC就好象AUC对于ROC一样。<strong>一个数字比一条线更方便调模型。</strong></p>
+<p><img src="/images/2016/09/3378a75e33245f6e0aac33717b19512c_b.jpg" alt=""></p>
+<p>以上两个指标用来<strong>判断模型好坏</strong>，但是有时候模型没有单纯的谁比谁好（比如图二的蓝线和青线），那么选择模型还是要结合具体的使用场景。</p>
+<p>下面是两个场景：</p>
+<ol>
+<li>地震的预测</li>
+</ol>
+<p>对于地震的预测，我们希望的是RECALL非常高，也就是说每次地震我们都希望预测出来。这个时候我们可以牺牲PRECISION。情愿发出1000次警报，把10次地震都预测正确了；也不要预测100次对了8次漏了两次。</p>
+<ol>
+<li>嫌疑人定罪</li>
+</ol>
+<p>基于不错怪一个好人的原则，对于嫌疑人的定罪我们希望是非常准确的。及时有时候放过了一些罪犯（recall低），但也是值得的。</p>
+<p>对于分类器来说，本质上是给一个概率，此时，我们再选择一个CUTOFF点（阀值），高于这个点的判正，低于的判负。那么这个点的选择就需要结合你的具体场景去选择。反过来，场景会决定训练模型时的标准，比如第一个场景中，我们就只看RECALL=99.9999%（地震全中）时的PRECISION，其他指标就变得没有了意义。</p>
+<h3 id="PRC比ROC更有效的特殊情况"><a href="#PRC比ROC更有效的特殊情况" class="headerlink" title="PRC比ROC更有效的特殊情况"></a>PRC比ROC更有效的特殊情况</h3><p>在正负样本分布得极不均匀(highly skewed datasets)的情况下，PRC比ROC能更有效地反应分类器的好坏。<img src="/images/2016/09/fd2c6445290cdf3c863664af155b9dd0_b.png" alt=""></p>
+<p>例如上图中图(a)ROC曲线中的两个模型看似非常接近左上角，但是对应着同一点的图(b)中的PRC曲线中我们可以发现，在召回率为0.8时准确率只有0.05之少，这是由于正负样本比例失衡造成的。</p>
+<p>再如下图：</p>
+<p><img src="/images/2016/09/74db397e36eabfb505abedd68f15bd57_b.png" alt=""></p>
+<p>在testing set出现imbalance时ROC曲线能保持不变，而PR则会出现大变化。引用图(Fawcett, 2006)，(a)(c)为ROC，(b)(d)为PR，(a)(b)样本比例1:1，(c)(d)为1:10。</p>
+<h3 id="F1"><a href="#F1" class="headerlink" title="F1"></a>F1</h3><p>信息检索、分类、识别、翻译等领域两个最基本指标是<strong>召回率(Recall Rate)</strong>和<strong>准确率(Precision Rate)</strong>，召回率也叫查全率，准确率也叫查准率。</p>
+<p>图表表示如下：</p>
+<p><img src="/images/2016/09/0_1308034676G5GQ.gif" alt=""></p>
+<p><strong>准确率和召回率是互相影响的，理想情况下肯定是做到两者都高，但是一般情况下准确率高、召回率就低，召回率低、准确率高，当然如果两者都低，那是什么地方出问题了</strong>。一般情况，用不同的阀值，统计出一组不同阀值下的精确率和召回率，这就是PRC曲线。如下图：</p>
+<p><img src="/images/2016/09/0_1308034738ZLr8.png" alt=""></p>
+<p><strong>如果是做搜索，那就是保证召回的情况下提升准确率；如果做疾病监测、反垃圾，则是保准确率的条件下，提升召回。</strong></p>
+<p>所以，在两者都要求高的情况下，可以用F1来衡量。</p>
+<p><code>F1 = 2 * P * R / (P + R)</code></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>AUC是ROC的积分（曲线下面积），是一个数值，一般认为越大越好，数值相对于曲线而言更容易当做调参的参照。</li>
+<li>ROC相比PRC在正负样本比例悬殊时具有保持单调性的特性，学术论文在假定正负样本均衡的时候多用ROC\/AUC。</li>
+<li>实际工程更多存在数据标签倾斜问题一般使用F1。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/" data-id="civff93sg001ejefy118j1wh3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine-Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/07/2016-09-07-pdf-click-return/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PDF click return</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Note/">Note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/essay/">essay</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Genetic-Algorithm/">Genetic Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP-deep-learning/">NLP deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-LSTM/">RNN LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-deep-learning/">RNN deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DNN/" style="font-size: 10px;">DNN</a> <a href="/tags/Genetic-Algorithm/" style="font-size: 10px;">Genetic Algorithm</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine-Learning</a> <a href="/tags/NLP-deep-learning/" style="font-size: 10px;">NLP deep-learning</a> <a href="/tags/RNN-LSTM/" style="font-size: 10px;">RNN LSTM</a> <a href="/tags/RNN-deep-learning/" style="font-size: 20px;">RNN deep-learning</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tutorial/" style="font-size: 16.67px;">tutorial</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/11/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

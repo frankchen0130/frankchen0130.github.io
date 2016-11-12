@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文将用Python实现完整的RNN，并且用Theano来优化。
+语言模型我们的目标是使用RNN建立一个语言模型。以下我们举例说明什么是语言模型。例如，你说了一句包括$$m$$个词语的句子，语言模型可以为这句话出现的概率打分：
+$$P(w_1,\cdots,wm) = \prod{i=1}^m P(w_i \mid w1,\cdots,w{i-1})$$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO">
+<meta property="og:url" content="http://yoursite.com/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本文将用Python实现完整的RNN，并且用Theano来优化。
+语言模型我们的目标是使用RNN建立一个语言模型。以下我们举例说明什么是语言模型。例如，你说了一句包括$$m$$个词语的句子，语言模型可以为这句话出现的概率打分：
+$$P(w_1,\cdots,wm) = \prod{i=1}^m P(w_i \mid w1,\cdots,w{i-1})$$">
+<meta property="og:image" content="http://yoursite.com/images/2016/06/rnn.jpg">
+<meta property="og:updated_time" content="2016-11-11T13:50:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO">
+<meta name="twitter:description" content="本文将用Python实现完整的RNN，并且用Theano来优化。
+语言模型我们的目标是使用RNN建立一个语言模型。以下我们举例说明什么是语言模型。例如，你说了一句包括$$m$$个词语的句子，语言模型可以为这句话出现的概率打分：
+$$P(w_1,\cdots,wm) = \prod{i=1}^m P(w_i \mid w1,\cdots,w{i-1})$$">
+<meta name="twitter:image" content="http://yoursite.com/images/2016/06/rnn.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/" class="article-date">
+  <time datetime="2016-06-15T09:54:18.000Z" itemprop="datePublished">2016-06-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文将用Python实现完整的RNN，并且用Theano来优化。</p>
+<h2 id="语言模型"><a href="#语言模型" class="headerlink" title="语言模型"></a>语言模型</h2><p>我们的目标是使用RNN建立一个语言模型。以下我们举例说明什么是语言模型。例如，你说了一句包括$$m$$个词语的句子，语言模型可以为这句话出现的概率打分：</p>
+<p>$$P(w_1,\cdots,w<em>m) = \prod</em>{i=1}^m P(w_i \mid w<em>1,\cdots,w</em>{i-1})$$</p>
+<a id="more"></a>
+<p> 每一个词语的概率都取决于它之前的所有的词的概率。</p>
+<p>这样的模型有什么用处呢？</p>
+<ul>
+<li>可以用于机器翻译或者语音识别中的正确句子打分</li>
+<li>以概率生成新的句子</li>
+</ul>
+<p>注意到在上面的公式内，我们使用了所有的之前的词的概率，实际上这在计算和存储时的耗费都是巨大的，通常而言只会取2~4个词左右。</p>
+<h2 id="预处理并训练数据"><a href="#预处理并训练数据" class="headerlink" title="预处理并训练数据"></a>预处理并训练数据</h2><h3 id="1-标记化"><a href="#1-标记化" class="headerlink" title="1.标记化"></a>1.标记化</h3><p>原始的文本需要被标记化，例如需要把文本标记为句子，句子标记为词语，并且还需要处理标点符号。我们将使用NLTK的<code>word_tokenize\sent_tokenize</code>方法。</p>
+<h3 id="2-移除低频词"><a href="#2-移除低频词" class="headerlink" title="2.移除低频词"></a>2.移除低频词</h3><p>移除低频词不管是对于训练和预测都是有帮助的。这里我们设置一个上限<code>vocabulary_size</code>为8000，出现次数少于它的词都会被替换为<code>UNKNOWN_TOKEN</code>输入，而当输出是<code>UNKNOWN_TOKEN</code>时，它将被随机替换为一个不在词表内的词，亦或者持续预测直到不出现<code>UNKNOWN_TOKEN</code>为止。</p>
+<h3 id="3-放置句子开始和结束标记"><a href="#3-放置句子开始和结束标记" class="headerlink" title="3.放置句子开始和结束标记"></a>3.放置句子开始和结束标记</h3><p>为了解句子的开始和结束，我们把<code>SENTENCE_START</code>放置在句子开头，并且把<code>SENTENCE_END</code>放置在句子结尾。</p>
+<h3 id="4-建立训练数据的矩阵"><a href="#4-建立训练数据的矩阵" class="headerlink" title="4.建立训练数据的矩阵"></a>4.建立训练数据的矩阵</h3><p>RNN的输入和输出都是向量而不是字符串，我们需要把词与向量一一对应，通过<code>index_to_word</code>和<code>word_to_index</code>。比如一个训练的例子$$x$$为[0, 179, 341, 416]（注意到其中每个元素都是长度为<code>vocabulary_size</code>的one-hot向量，所以$$x$$实际上是一个矩阵），那么其label-$$y$$为[179, 341, 416, 1]，注意到我们的目标是预测下一个词，所以$$y$$就是$$x$$移动一位，并添加上最后的一个元素（预测词）的结果，其中<code>SENTENCE_START</code>和<code>SENTENCE_END</code>分别为0和1.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">vocabulary_size = <span class="number">8000</span></div><div class="line">unknown_token = <span class="string">"UNKNOWN_TOKEN"</span></div><div class="line">sentence_start_token = <span class="string">"SENTENCE_START"</span></div><div class="line">sentence_end_token = <span class="string">"SENTENCE_END"</span></div><div class="line"></div><div class="line"><span class="comment"># Read the data and append SENTENCE_START and SENTENCE_END tokens</span></div><div class="line"><span class="keyword">print</span> <span class="string">"Reading CSV file..."</span></div><div class="line"><span class="keyword">with</span> open(<span class="string">'data/reddit-comments-2015-08.csv'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</div><div class="line">    reader = csv.reader(f, skipinitialspace=<span class="keyword">True</span>)</div><div class="line">    reader.next()</div><div class="line">    <span class="comment"># Split full comments into sentences</span></div><div class="line">    sentences = itertools.chain(*[nltk.sent_tokenize(x[<span class="number">0</span>].decode(<span class="string">'utf-8'</span>).lower()) <span class="keyword">for</span> x <span class="keyword">in</span> reader])</div><div class="line">    <span class="comment"># Append SENTENCE_START and SENTENCE_END</span></div><div class="line">    sentences = [<span class="string">"%s %s %s"</span> % (sentence_start_token, x, sentence_end_token) <span class="keyword">for</span> x <span class="keyword">in</span> sentences]</div><div class="line"><span class="keyword">print</span> <span class="string">"Parsed %d sentences."</span> % (len(sentences))</div><div class="line"></div><div class="line"><span class="comment"># Tokenize the sentences into words</span></div><div class="line">tokenized_sentences = [nltk.word_tokenize(sent) <span class="keyword">for</span> sent <span class="keyword">in</span> sentences]</div><div class="line"></div><div class="line"><span class="comment"># Count the word frequencies</span></div><div class="line">word_freq = nltk.FreqDist(itertools.chain(*tokenized_sentences))</div><div class="line"><span class="keyword">print</span> <span class="string">"Found %d unique words tokens."</span> % len(word`_freq.items())</div><div class="line"></div><div class="line"><span class="comment"># Get the most common words and build index_to_word and word_to_index vectors</span></div><div class="line">vocab = word_freq.most_common(vocabulary_size<span class="number">-1</span>)</div><div class="line">index_to_word = [x[<span class="number">0</span>] <span class="keyword">for</span> x <span class="keyword">in</span> vocab]</div><div class="line">index_to_word.append(unknown_token)</div><div class="line">word_to_index = dict([(w,i) <span class="keyword">for</span> i,w <span class="keyword">in</span> enumerate(index_to_word)])</div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">"Using vocabulary size %d."</span> % vocabulary_size</div><div class="line"><span class="keyword">print</span> <span class="string">"The least frequent word in our vocabulary is '%s' and appeared %d times."</span> % (vocab[<span class="number">-1</span>][<span class="number">0</span>], vocab[<span class="number">-1</span>][<span class="number">1</span>])</div><div class="line"></div><div class="line"><span class="comment"># Replace all words not in our vocabulary with the unknown token</span></div><div class="line"><span class="keyword">for</span> i, sent <span class="keyword">in</span> enumerate(tokenized_sentences):</div><div class="line">    tokenized_sentences[i] = [w <span class="keyword">if</span> w <span class="keyword">in</span> word_to_index <span class="keyword">else</span> unknown_token <span class="keyword">for</span> w <span class="keyword">in</span> sent]</div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">"\nExample sentence: '%s'"</span> % sentences[<span class="number">0</span>]</div><div class="line"><span class="keyword">print</span> <span class="string">"\nExample sentence after Pre-processing: '%s'"</span> % tokenized_sentences[<span class="number">0</span>]</div><div class="line"></div><div class="line"><span class="comment"># Create the training data</span></div><div class="line">X_train = np.asarray([[word_to_index[w] <span class="keyword">for</span> w <span class="keyword">in</span> sent[:<span class="number">-1</span>]] <span class="keyword">for</span> sent <span class="keyword">in</span> tokenized_sentences])</div><div class="line">y_train = np.asarray([[word_to_index[w] <span class="keyword">for</span> w <span class="keyword">in</span> sent[<span class="number">1</span>:]] <span class="keyword">for</span> sent <span class="keyword">in</span> tokenized_sentences])</div></pre></td></tr></table></figure>
+<p>以下是一个训练样本：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x:</div><div class="line">SENTENCE_START what are n't you understanding about this ? !</div><div class="line">[0, 51, 27, 16, 10, 856, 53, 25, 34, 69]</div><div class="line"></div><div class="line">y:</div><div class="line">what are n't you understanding about this ? ! SENTENCE_END</div><div class="line">[51, 27, 16, 10, 856, 53, 25, 34, 69, 1]</div></pre></td></tr></table></figure></p>
+<p>接下来我们开始建立RNN。</p>
+<p>##建立RNN</p>
+<p><img src="/images/2016/06/rnn.jpg" alt=""></p>
+<p>总结一下我们的RNN模型的形式。初始输入$$x$$是一个代表一条句子的矩阵，每一时刻的输入$$x_t$$是一个代表一个词语的向量，每一时刻的输出$$o_t$$也是一个向量，其中每个元素代表词表内每一个词被预测的概率。</p>
+<p>RNN中的等式：<br>$$<br>s_t = tanh(Ux<em>t + Ws</em>{t-1})<br>o_t = softmax(Vs_t)<br>$$</p>
+<p>介绍一下各个变量的维度：假设我们的词表大小$$C$$为8000，隐藏层大小$$H$$为100，可以把隐藏层大小理解为网络内存的大小，内存越大，网络能记忆的信息也越多，但是也要耗费更多的代价来计算。综上，我们的模型参数维度为：</p>
+<p>$$<br>x_t \in \Bbb{R}^{8000} \ o_t \in \Bbb{R}^{8000} \ s_t \in \Bbb{R}^{100} \ U_t \in \Bbb{R}^{100 \times 8000} \ V_t \in \Bbb{R}^{8000 \times 100} \ W_t \in \Bbb{R}^{100 \times 100} \<br>$$</p>
+<p>其中$$U，V，W$$是网络的参数，根据上面的等式，我们需要学习$$2HC+H^2$$个参数，由于$$x_t$$是稀疏的one-hot向量，所以其与$$U$$的乘积一步即可算出，$$W$$和$$S_t$$的维度都比较小，所以最繁琐的计算就是$$VS_t$$了。</p>
+<p>###初始化</p>
+<p>通过Numpy实现第一个版本，对$$U，V，W$$的初始化比较tricky，通常是把它们的初始值置于$$[-\frac{1}{\sqrt n},\frac{1}{\sqrt n}]$$较好。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RNNNumpy</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, word_dim, hidden_dim=<span class="number">100</span>, bptt_truncate=<span class="number">4</span>)</span>:</span></div><div class="line">        <span class="comment"># Assign instance variables</span></div><div class="line">        self.word_dim = word_dim</div><div class="line">        self.hidden_dim = hidden_dim</div><div class="line">        self.bptt_truncate = bptt_truncate</div><div class="line">        <span class="comment"># Randomly initialize the network parameters</span></div><div class="line">        self.U = np.random.uniform(-np.sqrt(<span class="number">1.</span>/word_dim), np.sqrt(<span class="number">1.</span>/word_dim), (hidden_dim, word_dim))</div><div class="line">        self.V = np.random.uniform(-np.sqrt(<span class="number">1.</span>/hidden_dim), np.sqrt(<span class="number">1.</span>/hidden_dim), (word_dim, hidden_dim))</div><div class="line">        self.W = np.random.uniform(-np.sqrt(<span class="number">1.</span>/hidden_dim), np.sqrt(<span class="number">1.</span>/hidden_dim), (hidden_dim, hidden_dim))</div></pre></td></tr></table></figure>
+<p>其中<code>word_dim</code>是词表大小，<code>hidden_dim</code>是隐藏层大小。</p>
+<p>###前向计算</p>
+<p>以下是前向计算（预测词语的概率）的过程：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">forward_propagation</span><span class="params">(self, x)</span>:</span></div><div class="line">    <span class="comment"># The total number of time steps</span></div><div class="line">    T = len(x)</div><div class="line">    <span class="comment"># During forward propagation we save all hidden states in s because need them later.</span></div><div class="line">    <span class="comment"># We add one additional element for the initial hidden, which we set to 0</span></div><div class="line">    s = np.zeros((T + <span class="number">1</span>, self.hidden_dim))</div><div class="line">    s[<span class="number">-1</span>] = np.zeros(self.hidden_dim)</div><div class="line">    <span class="comment"># The outputs at each time step. Again, we save them for later.</span></div><div class="line">    o = np.zeros((T, self.word_dim))</div><div class="line">    <span class="comment"># For each time step...</span></div><div class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> np.arange(T):</div><div class="line">        <span class="comment"># Note that we are indxing U by x[t]. This is the same as multiplying U with a one-hot vector.</span></div><div class="line">        s[t] = np.tanh(self.U[:,x[t]] + self.W.dot(s[t<span class="number">-1</span>]))</div><div class="line">        o[t] = softmax(self.V.dot(s[t]))</div><div class="line">    <span class="keyword">return</span> [o, s]</div><div class="line"></div><div class="line">RNNNumpy.forward_propagation = forward_propagation</div></pre></td></tr></table></figure>
+<p>我们同时返回输出及隐藏层状态，隐藏层状态之后会用于梯度计算。$$o_t$$是词表内每个词的概率，但是有时我们需要直接预测出概率最高的词：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, x)</span>:</span></div><div class="line">    <span class="comment"># Perform forward propagation and return index of the highest score</span></div><div class="line">    o, s = self.forward_propagation(x)</div><div class="line">    <span class="keyword">return</span> np.argmax(o, axis=<span class="number">1</span>)</div><div class="line"></div><div class="line">RNNNumpy.predict = predict</div></pre></td></tr></table></figure>
+<p>尝试输出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">np.random.seed(<span class="number">10</span>)</div><div class="line">model = RNNNumpy(vocabulary_size)</div><div class="line">o, s = model.forward_propagation(X_train[<span class="number">10</span>])</div><div class="line"><span class="keyword">print</span> o.shape</div><div class="line"><span class="keyword">print</span> o</div><div class="line">(<span class="number">45</span>, <span class="number">8000</span>)</div><div class="line">[[ <span class="number">0.00012408</span>  <span class="number">0.0001244</span>   <span class="number">0.00012603</span> ...,  <span class="number">0.00012515</span>  <span class="number">0.00012488</span></div><div class="line">   <span class="number">0.00012508</span>]</div><div class="line"> [ <span class="number">0.00012536</span>  <span class="number">0.00012582</span>  <span class="number">0.00012436</span> ...,  <span class="number">0.00012482</span>  <span class="number">0.00012456</span></div><div class="line">   <span class="number">0.00012451</span>]</div><div class="line"> [ <span class="number">0.00012387</span>  <span class="number">0.0001252</span>   <span class="number">0.00012474</span> ...,  <span class="number">0.00012559</span>  <span class="number">0.00012588</span></div><div class="line">   <span class="number">0.00012551</span>]</div><div class="line"> ...,</div><div class="line"> [ <span class="number">0.00012414</span>  <span class="number">0.00012455</span>  <span class="number">0.0001252</span>  ...,  <span class="number">0.00012487</span>  <span class="number">0.00012494</span></div><div class="line">   <span class="number">0.0001263</span> ]</div><div class="line"> [ <span class="number">0.0001252</span>   <span class="number">0.00012393</span>  <span class="number">0.00012509</span> ...,  <span class="number">0.00012407</span>  <span class="number">0.00012578</span></div><div class="line">   <span class="number">0.00012502</span>]</div><div class="line"> [ <span class="number">0.00012472</span>  <span class="number">0.0001253</span>   <span class="number">0.00012487</span> ...,  <span class="number">0.00012463</span>  <span class="number">0.00012536</span></div><div class="line">   <span class="number">0.00012665</span>]]</div></pre></td></tr></table></figure></p>
+<p>对上面句子（包括45个单词）中的每个词，模型都预测了8000个概率值。因为模型参数这时候是随机初始值，所以预测也是随机的。接下来我们给出预测的词的位置：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">predictions = model.predict(X_train[<span class="number">10</span>])</div><div class="line"><span class="keyword">print</span> predictions.shape</div><div class="line"><span class="keyword">print</span> predictions</div><div class="line">(<span class="number">45</span>,)</div><div class="line">[<span class="number">1284</span> <span class="number">5221</span> <span class="number">7653</span> <span class="number">7430</span> <span class="number">1013</span> <span class="number">3562</span> <span class="number">7366</span> <span class="number">4860</span> <span class="number">2212</span> <span class="number">6601</span> <span class="number">7299</span> <span class="number">4556</span> <span class="number">2481</span> <span class="number">238</span> <span class="number">2539</span></div><div class="line"> <span class="number">21</span> <span class="number">6548</span> <span class="number">261</span> <span class="number">1780</span> <span class="number">2005</span> <span class="number">1810</span> <span class="number">5376</span> <span class="number">4146</span> <span class="number">477</span> <span class="number">7051</span> <span class="number">4832</span> <span class="number">4991</span> <span class="number">897</span> <span class="number">3485</span> <span class="number">21</span></div><div class="line"> <span class="number">7291</span> <span class="number">2007</span> <span class="number">6006</span> <span class="number">760</span> <span class="number">4864</span> <span class="number">2182</span> <span class="number">6569</span> <span class="number">2800</span> <span class="number">2752</span> <span class="number">6821</span> <span class="number">4437</span> <span class="number">7021</span> <span class="number">7875</span> <span class="number">6912</span> <span class="number">3575</span>]</div></pre></td></tr></table></figure></p>
+<p>接下来我们计算损失。</p>
+<p>###计算损失</p>
+<p>我们使用交叉熵函数作为损失函数。若我们有$$N$$个训练样本（text中的词语数），$$C$$个类别（词表大小），预测是$$o$$，label是$$y$$，那么损失计算为：</p>
+<p>$$<br>L(y,o) = - \frac{1}{N} \sum_{n \in N} y_n \log o_n<br>$$</p>
+<p>损失函数计算的是我们的预测oo与正确的词yy的差距的大小。通过以下计算损失：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calculate_total_loss</span><span class="params">(self, x, y)</span>:</span></div><div class="line">    L = <span class="number">0</span></div><div class="line">    <span class="comment"># For each sentence...</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> np.arange(len(y)):</div><div class="line">        o, s = self.forward_propagation(x[i])</div><div class="line">        <span class="comment"># We only care about our prediction of the "correct" words</span></div><div class="line">        correct_word_predictions = o[np.arange(len(y[i])), y[i]]</div><div class="line">        <span class="comment"># Add to the loss based on how off we were</span></div><div class="line">        L += <span class="number">-1</span> * np.sum(np.log(correct_word_predictions))</div><div class="line">    <span class="keyword">return</span> L</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calculate_loss</span><span class="params">(self, x, y)</span>:</span></div><div class="line">    <span class="comment"># Divide the total loss by the number of training examples</span></div><div class="line">    N = np.sum((len(y_i) <span class="keyword">for</span> y_i <span class="keyword">in</span> y))</div><div class="line">    <span class="keyword">return</span> self.calculate_total_loss(x,y)/N</div><div class="line"></div><div class="line">RNNNumpy.calculate_total_loss = calculate_total_loss</div><div class="line">RNNNumpy.calculate_loss = calculate_loss</div></pre></td></tr></table></figure>
+<p>让我们稍微检验一下，如果我们词表大小为$$C$$，那么开始时每个词被随机预测的概率为$$\frac{1}{C}$$，那么损失为$$L = - \frac{1}{C} N \log \ \frac{1}{C} = \log C$$：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> Limit to <span class="number">1000</span> examples to save time</div><div class="line"><span class="keyword">print</span> <span class="string">"Expected Loss for random predictions: %f"</span> % np.log(vocabulary_size)</div><div class="line"><span class="keyword">print</span> <span class="string">"Actual loss: %f"</span> % model.calculate_loss(X_train[:<span class="number">1000</span>], y_train[:<span class="number">1000</span>])</div></pre></td></tr></table></figure></p>
+<p>很接近。这里我们应当记住，如果data很大，那么计算损失会变得非常耗费时间。</p>
+<p>###通过SGD和BPTT（BACKPROPAGATION THROUGH TIME ）训练RNN</p>
+<p>给定训练样本$$(x,y)$$我们需要计算梯度$$\frac{\partial L}{\partial {U}},\frac{\partial L}{\partial {V}},\frac{\partial L}{\partial {W}}$$。通过以下代码实现BPTT：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">bptt</span><span class="params">(self, x, y)</span>:</span></div><div class="line">    T = len(y)</div><div class="line">    <span class="comment"># Perform forward propagation</span></div><div class="line">    o, s = self.forward_propagation(x)</div><div class="line">    <span class="comment"># We accumulate the gradients in these variables</span></div><div class="line">    dLdU = np.zeros(self.U.shape)</div><div class="line">    dLdV = np.zeros(self.V.shape)</div><div class="line">    dLdW = np.zeros(self.W.shape)</div><div class="line">    delta_o = o</div><div class="line">    delta_o[np.arange(len(y)), y] -= <span class="number">1.</span></div><div class="line">    <span class="comment"># For each output backwards...</span></div><div class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> np.arange(T)[::<span class="number">-1</span>]:</div><div class="line">        dLdV += np.outer(delta_o[t], s[t].T)</div><div class="line">        <span class="comment"># Initial delta calculation</span></div><div class="line">        delta_t = self.V.T.dot(delta_o[t]) * (<span class="number">1</span> - (s[t] ** <span class="number">2</span>))</div><div class="line">        <span class="comment"># Backpropagation through time (for at most self.bptt_truncate steps)</span></div><div class="line">        <span class="keyword">for</span> bptt_step <span class="keyword">in</span> np.arange(max(<span class="number">0</span>, t-self.bptt_truncate), t+<span class="number">1</span>)[::<span class="number">-1</span>]:</div><div class="line">            <span class="comment"># print "Backpropagation step t=%d bptt step=%d " % (t, bptt_step)</span></div><div class="line">            dLdW += np.outer(delta_t, s[bptt_step<span class="number">-1</span>])</div><div class="line">            dLdU[:,x[bptt_step]] += delta_t</div><div class="line">            <span class="comment"># Update delta for next step</span></div><div class="line">            delta_t = self.W.T.dot(delta_t) * (<span class="number">1</span> - s[bptt_step<span class="number">-1</span>] ** <span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> [dLdU, dLdV, dLdW]</div><div class="line"></div><div class="line">RNNNumpy.bptt = bptt</div></pre></td></tr></table></figure></p>
+<p>接下来我们测试梯度。</p>
+<p>###测试梯度</p>
+<p>实现BP算法过程中，测试梯度是一个良好的习惯。通过以下公式：</p>
+<p>$$<br>\frac{\partial L}{\partial{\theta}} \approx \lim_{h \rightarrow0} \frac{J(\theta + h)-J(\theta - h)}{2h}<br>$$</p>
+<p>使用以上的公式来测试梯度，同样，由于需要计算所以的参数，梯度测试也是很耗时间的，在部分数据上测试是比较好的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradient_check</span><span class="params">(self, x, y, h=<span class="number">0.001</span>, error_threshold=<span class="number">0.01</span>)</span>:</span></div><div class="line">    <span class="comment"># Calculate the gradients using backpropagation. We want to checker if these are correct.</span></div><div class="line">    bptt_gradients = self.bptt(x, y)</div><div class="line">    <span class="comment"># List of all parameters we want to check.</span></div><div class="line">    model_parameters = [<span class="string">'U'</span>, <span class="string">'V'</span>, <span class="string">'W'</span>]</div><div class="line">    <span class="comment"># Gradient check for each parameter</span></div><div class="line">    <span class="keyword">for</span> pidx, pname <span class="keyword">in</span> enumerate(model_parameters):</div><div class="line">        <span class="comment"># Get the actual parameter value from the mode, e.g. model.W</span></div><div class="line">        parameter = operator.attrgetter(pname)(self)</div><div class="line">        <span class="keyword">print</span> <span class="string">"Performing gradient check for parameter %s with size %d."</span> % (pname, np.prod(parameter.shape))</div><div class="line">        <span class="comment"># Iterate over each element of the parameter matrix, e.g. (0,0), (0,1), ...</span></div><div class="line">        it = np.nditer(parameter, flags=[<span class="string">'multi_index'</span>], op_flags=[<span class="string">'readwrite'</span>])</div><div class="line">        <span class="keyword">while</span> <span class="keyword">not</span> it.finished:</div><div class="line">            ix = it.multi_index</div><div class="line">            <span class="comment"># Save the original value so we can reset it later</span></div><div class="line">            original_value = parameter[ix]</div><div class="line">            <span class="comment"># Estimate the gradient using (f(x+h) - f(x-h))/(2*h)</span></div><div class="line">            parameter[ix] = original_value + h</div><div class="line">            gradplus = self.calculate_total_loss([x],[y])</div><div class="line">            parameter[ix] = original_value - h</div><div class="line">            gradminus = self.calculate_total_loss([x],[y])</div><div class="line">            estimated_gradient = (gradplus - gradminus)/(<span class="number">2</span>*h)</div><div class="line">            <span class="comment"># Reset parameter to original value</span></div><div class="line">            parameter[ix] = original_value</div><div class="line">            <span class="comment"># The gradient for this parameter calculated using backpropagation</span></div><div class="line">            backprop_gradient = bptt_gradients[pidx][ix]</div><div class="line">            <span class="comment"># calculate The relative error: (|x - y|/(|x| + |y|))</span></div><div class="line">            relative_error = np.abs(backprop_gradient - estimated_gradient)/(np.abs(backprop_gradient) + np.abs(estimated_gradient))</div><div class="line">            <span class="comment"># If the error is to large fail the gradient check</span></div><div class="line">            <span class="keyword">if</span> relative_error &gt; error_threshold:</div><div class="line">                <span class="keyword">print</span> <span class="string">"Gradient Check ERROR: parameter=%s ix=%s"</span> % (pname, ix)</div><div class="line">                <span class="keyword">print</span> <span class="string">"+h Loss: %f"</span> % gradplus</div><div class="line">                <span class="keyword">print</span> <span class="string">"-h Loss: %f"</span> % gradminus</div><div class="line">                <span class="keyword">print</span> <span class="string">"Estimated_gradient: %f"</span> % estimated_gradient</div><div class="line">                <span class="keyword">print</span> <span class="string">"Backpropagation gradient: %f"</span> % backprop_gradient</div><div class="line">                <span class="keyword">print</span> <span class="string">"Relative Error: %f"</span> % relative_error</div><div class="line">                <span class="keyword">return</span></div><div class="line">            it.iternext()</div><div class="line">        <span class="keyword">print</span> <span class="string">"Gradient check for parameter %s passed."</span> % (pname)</div><div class="line"></div><div class="line">RNNNumpy.gradient_check = gradient_check</div><div class="line"></div><div class="line"><span class="comment"># To avoid performing millions of expensive calculations we use a smaller vocabulary size for checking.</span></div><div class="line">grad_check_vocab_size = <span class="number">100</span></div><div class="line">np.random.seed(<span class="number">10</span>)</div><div class="line">model = RNNNumpy(grad_check_vocab_size, <span class="number">10</span>, bptt_truncate=<span class="number">1000</span>)</div><div class="line">model.gradient_check([<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</div></pre></td></tr></table></figure>
+<p>接下来我们实现SGD。</p>
+<p>###实现SGD</p>
+<p>通过两步实现：</p>
+<ul>
+<li><code>sdg_step</code>计算计算梯度对每个batch更新</li>
+<li>外部循环迭代整个训练数据并且调整学习率</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">numpy_sdg_step</span><span class="params">(self, x, y, learning_rate)</span>:</span></div><div class="line">    <span class="comment"># Calculate the gradients</span></div><div class="line">    dLdU, dLdV, dLdW = self.bptt(x, y)</div><div class="line">    <span class="comment"># Change parameters according to gradients and learning rate</span></div><div class="line">    self.U -= learning_rate * dLdU</div><div class="line">    self.V -= learning_rate * dLdV</div><div class="line">    self.W -= learning_rate * dLdW</div><div class="line"></div><div class="line">RNNNumpy.sgd_step = numpy_sdg_step</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">Outer SGD Loop</div><div class="line"><span class="comment"># - model: The RNN model instance</span></div><div class="line"><span class="comment"># - X_train: The training data set</span></div><div class="line"><span class="comment"># - y_train: The training data labels</span></div><div class="line"><span class="comment"># - learning_rate: Initial learning rate for SGD</span></div><div class="line"><span class="comment"># - nepoch: Number of times to iterate through the complete dataset</span></div><div class="line"><span class="comment"># - evaluate_loss_after: Evaluate the loss after this many epochs</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_with_sgd</span><span class="params">(model, X_train, y_train, learning_rate=<span class="number">0.005</span>, nepoch=<span class="number">100</span>, evaluate_loss_after=<span class="number">5</span>)</span>:</span></div><div class="line">    <span class="comment"># We keep track of the losses so we can plot them later</span></div><div class="line">    losses = []</div><div class="line">    num_examples_seen = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(nepoch):</div><div class="line">        <span class="comment"># Optionally evaluate the loss</span></div><div class="line">        <span class="keyword">if</span> (epoch % evaluate_loss_after == <span class="number">0</span>):</div><div class="line">            loss = model.calculate_loss(X_train, y_train)</div><div class="line">            losses.append((num_examples_seen, loss))</div><div class="line">            time = datetime.now().strftime(<span class="string">'%Y-%m-%d %H:%M:%S'</span>)</div><div class="line">            <span class="keyword">print</span> <span class="string">"%s: Loss after num_examples_seen=%d epoch=%d: %f"</span> % (time, num_examples_seen, epoch, loss)</div><div class="line">            <span class="comment"># Adjust the learning rate if loss increases</span></div><div class="line">            <span class="keyword">if</span> (len(losses) &gt; <span class="number">1</span> <span class="keyword">and</span> losses[<span class="number">-1</span>][<span class="number">1</span>] &gt; losses[<span class="number">-2</span>][<span class="number">1</span>]):</div><div class="line">                learning_rate = learning_rate * <span class="number">0.5</span></div><div class="line">                <span class="keyword">print</span> <span class="string">"Setting learning rate to %f"</span> % learning_rate</div><div class="line">            sys.stdout.flush()</div><div class="line">        <span class="comment"># For each training example...</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(y_train)):</div><div class="line">            <span class="comment"># One SGD step</span></div><div class="line">            model.sgd_step(X_train[i], y_train[i], learning_rate)</div><div class="line">            num_examples_seen += <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>完成。我们来测试一下训练耗费多长的时间：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">np.random.seed(<span class="number">10</span>)</div><div class="line">model = RNNNumpy(vocabulary_size)</div><div class="line">%timeit model.sgd_step(X_train[<span class="number">10</span>], y_train[<span class="number">10</span>], <span class="number">0.005</span>)</div></pre></td></tr></table></figure>
+<p>可以看到在我的机器上需要SGD的每一步需要180ms，这代表整个训练将耗费数天甚至更多。我们可以通过许多的方法来加速这一过程，如改善代码和调整模型。这里我们希望使用GPU来加速。在这之前，我们先测试一下SGD的效果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">np.random.seed(<span class="number">10</span>)</div><div class="line"><span class="comment"># Train on a small subset of the data to see what happens</span></div><div class="line">model = RNNNumpy(vocabulary_size)</div><div class="line">losses = train_with_sgd(model, X_train[:<span class="number">100</span>], y_train[:<span class="number">100</span>], nepoch=<span class="number">10</span>, evaluate_loss_after=<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="number">2016</span><span class="number">-06</span><span class="number">-13</span> <span class="number">16</span>:<span class="number">59</span>:<span class="number">46</span>: Loss after num_examples_seen=<span class="number">0</span> epoch=<span class="number">0</span>: <span class="number">8.987425</span></div><div class="line"><span class="number">2016</span><span class="number">-06</span><span class="number">-13</span> <span class="number">16</span>:<span class="number">59</span>:<span class="number">56</span>: Loss after num_examples_seen=<span class="number">100</span> epoch=<span class="number">1</span>: <span class="number">8.976270</span></div><div class="line"><span class="number">2016</span><span class="number">-06</span><span class="number">-13</span> <span class="number">17</span>:<span class="number">00</span>:<span class="number">06</span>: Loss after num_examples_seen=<span class="number">200</span> epoch=<span class="number">2</span>: <span class="number">8.960212</span></div><div class="line"><span class="number">2016</span><span class="number">-06</span><span class="number">-13</span> <span class="number">17</span>:<span class="number">00</span>:<span class="number">16</span>: Loss after num_examples_seen=<span class="number">300</span> epoch=<span class="number">3</span>: <span class="number">8.930430</span></div><div class="line"><span class="number">2016</span><span class="number">-06</span><span class="number">-13</span> <span class="number">17</span>:<span class="number">00</span>:<span class="number">26</span>: Loss after num_examples_seen=<span class="number">400</span> epoch=<span class="number">4</span>: <span class="number">8.862264</span></div><div class="line"><span class="number">2016</span><span class="number">-06</span><span class="number">-13</span> <span class="number">17</span>:<span class="number">00</span>:<span class="number">37</span>: Loss after num_examples_seen=<span class="number">500</span> epoch=<span class="number">5</span>: <span class="number">6.913570</span></div><div class="line"><span class="number">2016</span><span class="number">-06</span><span class="number">-13</span> <span class="number">17</span>:<span class="number">00</span>:<span class="number">46</span>: Loss after num_examples_seen=<span class="number">600</span> epoch=<span class="number">6</span>: <span class="number">6.302493</span></div><div class="line"><span class="number">2016</span><span class="number">-06</span><span class="number">-13</span> <span class="number">17</span>:<span class="number">00</span>:<span class="number">56</span>: Loss after num_examples_seen=<span class="number">700</span> epoch=<span class="number">7</span>: <span class="number">6.014995</span></div><div class="line"><span class="number">2016</span><span class="number">-06</span><span class="number">-13</span> <span class="number">17</span>:<span class="number">01</span>:<span class="number">06</span>: Loss after num_examples_seen=<span class="number">800</span> epoch=<span class="number">8</span>: <span class="number">5.833877</span></div><div class="line"><span class="number">2016</span><span class="number">-06</span><span class="number">-13</span> <span class="number">17</span>:<span class="number">01</span>:<span class="number">16</span>: Loss after num_examples_seen=<span class="number">900</span> epoch=<span class="number">9</span>: <span class="number">5.710718</span></div></pre></td></tr></table></figure>
+<p>看起来，SGD起到了效果。</p>
+<p>##通过Theano和GPU训练</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">enp.random.seed(<span class="number">10</span>)</div><div class="line">model = RNNTheano(vocabulary_size)</div><div class="line">%timeit model.sgd_step(X_train[<span class="number">10</span>], y_train[<span class="number">10</span>], <span class="number">0.005</span>)</div></pre></td></tr></table></figure>
+<p>这次一次SGD步骤耗费为73.7ms。</p>
+<p>这里我们直接使用训练好的的参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> utils <span class="keyword">import</span> load_model_parameters_theano, save_model_parameters_theano</div><div class="line"></div><div class="line">model = RNNTheano(vocabulary_size, hidden_dim=<span class="number">50</span>)</div><div class="line"><span class="comment"># losses = train_with_sgd(model, X_train, y_train, nepoch=50)</span></div><div class="line"><span class="comment"># save_model_parameters_theano('./data/trained-model-theano.npz', model)</span></div><div class="line">load_model_parameters_theano(<span class="string">'./data/trained-model-theano.npz'</span>, model)</div></pre></td></tr></table></figure></p>
+<p>###生成语句</p>
+<p>使用如下生成语句：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_sentence</span><span class="params">(model)</span>:</span></div><div class="line">    <span class="comment"># We start the sentence with the start token</span></div><div class="line">    new_sentence = [word_to_index[sentence_start_token]]</div><div class="line">    <span class="comment"># Repeat until we get an end token</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">not</span> new_sentence[<span class="number">-1</span>] == word_to_index[sentence_end_token]:</div><div class="line">        next_word_probs = model.forward_propagation(new_sentence)</div><div class="line">        sampled_word = word_to_index[unknown_token]</div><div class="line">        <span class="comment"># We don't want to sample unknown words</span></div><div class="line">        <span class="keyword">while</span> sampled_word == word_to_index[unknown_token]:</div><div class="line">            samples = np.random.multinomial(<span class="number">1</span>, next_word_probs[<span class="number">-1</span>])</div><div class="line">            sampled_word = np.argmax(samples)</div><div class="line">        new_sentence.append(sampled_word)</div><div class="line">    sentence_str = [index_to_word[x] <span class="keyword">for</span> x <span class="keyword">in</span> new_sentence[<span class="number">1</span>:<span class="number">-1</span>]]</div><div class="line">    <span class="keyword">return</span> sentence_str</div><div class="line"></div><div class="line">num_sentences = <span class="number">10</span></div><div class="line">senten_min_length = <span class="number">7</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(num_sentences):</div><div class="line">    sent = []</div><div class="line">    <span class="comment"># We want long sentences, not sentences with one or two words</span></div><div class="line">    <span class="keyword">while</span> len(sent) &lt; senten_min_length:</div><div class="line">        sent = generate_sentence(model)</div><div class="line">    <span class="keyword">print</span> <span class="string">" "</span>.join(sent)</div></pre></td></tr></table></figure></p>
+<p>得到结果为：</p>
+<ul>
+<li>no to blame their stuff go at all .</li>
+<li>consider via under gear but equal every game .</li>
+<li>no similar work on the ui birth a ce nightmare .</li>
+<li>the challenging what is absolutely hard .</li>
+<li>me do you research getting +2 .</li>
+<li>ugh is much good , no .</li>
+<li>me so many different lines hair .</li>
+<li>probably not very a bot or gain .</li>
+<li>correct this is affected so why ?</li>
+<li>register but a grown gun environment .</li>
+</ul>
+<p>看起来还不错！不过还是有一些缺陷，这些都是由于vanilla RNN不能解决长期依赖问题导致的。下一篇我们将讨论BPTT并且关注梯度消失/爆炸问题。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/" data-id="civff93rw000pjefy2tz7ickg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RNN-deep-learning/">RNN deep-learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/19/2016-06-19-ci-wei-yu-hu-li/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          《刺猬和狐狸》－－托尔斯泰的历史观
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/07/2016-06-07-edit-dns-of-ubuntu/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ubuntu下修改DNS并且避免重启失效的方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Note/">Note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/essay/">essay</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Genetic-Algorithm/">Genetic Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP-deep-learning/">NLP deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-LSTM/">RNN LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-deep-learning/">RNN deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DNN/" style="font-size: 10px;">DNN</a> <a href="/tags/Genetic-Algorithm/" style="font-size: 10px;">Genetic Algorithm</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine-Learning</a> <a href="/tags/NLP-deep-learning/" style="font-size: 10px;">NLP deep-learning</a> <a href="/tags/RNN-LSTM/" style="font-size: 10px;">RNN LSTM</a> <a href="/tags/RNN-deep-learning/" style="font-size: 20px;">RNN deep-learning</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tutorial/" style="font-size: 16.67px;">tutorial</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/11/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
