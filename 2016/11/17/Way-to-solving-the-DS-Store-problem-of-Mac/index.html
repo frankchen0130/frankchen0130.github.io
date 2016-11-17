@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="Machine Learning and Data Mining">
+<meta name="description" content="本文主要讲述如何解决Mac OS下面的.DS_Store文件的问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="遗传算法简述">
-<meta property="og:url" content="http://yoursite.com/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/index.html">
+<meta property="og:title" content="Way to solving the .DS_Store problem of Mac">
+<meta property="og:url" content="http://yoursite.com/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="Machine Learning and Data Mining">
-<meta property="og:updated_time" content="2016-11-11T13:50:33.000Z">
+<meta property="og:description" content="本文主要讲述如何解决Mac OS下面的.DS_Store文件的问题。">
+<meta property="og:updated_time" content="2016-11-17T08:00:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="遗传算法简述">
-<meta name="twitter:description" content="Machine Learning and Data Mining">
+<meta name="twitter:title" content="Way to solving the .DS_Store problem of Mac">
+<meta name="twitter:description" content="本文主要讲述如何解决Mac OS下面的.DS_Store文件的问题。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>遗传算法简述 | loop in data</title>
+<title>Way to solving the .DS_Store problem of Mac | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -264,11 +264,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-2016-06-19-yi-chuan-suan-fa-jian-shu" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Way-to-solving-the-DS-Store-problem-of-Mac" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/" class="article-date">
-      <time datetime="2016-06-19T13:46:32.000Z" itemprop="datePublished">2016-06-19</time>
+      <a href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/" class="article-date">
+      <time datetime="2016-11-17T07:25:30.000Z" itemprop="datePublished">2016-11-17</time>
 </a>
 
 
@@ -283,7 +283,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      遗传算法简述
+      Way to solving the .DS_Store problem of Mac
     </h1>
   
 
@@ -292,13 +292,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Note/">Note</a>
+    <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Genetic-Algorithm/">Genetic Algorithm</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac-DS-Store/">Mac, .DS_Store</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -308,7 +308,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <p>本文主要讲述如何解决Mac OS下面的.DS_Store文件的问题。<br><a id="more"></a></p>
+<p>在Mac OS上，<code>.DS_Store</code>文件 是 <code>Desktop Services Store</code> 的简称，是用来存储文件夹的显示属性的自定义属性的隐藏文件，：比如文件图标的摆放位置，如文件的图标位置或背景色，相当于Windows的desktop.ini，删除以后的副作用就是这些信息的失去，不过总体而言影响不大。</p>
+<p>最近上手的Mac，<code>.DS_Store</code> 第一次烦到我，是在Github上folk了人家的项目自己提交了想Pull Request 的时候出现的问题，我明明只修改了一个文件，为什么在每个文件夹下面都出现了这么些个奇怪的 <code>.DS_Store</code> ？？删除了这些文件以后再第二次提交的时候又会出现（期间我用了Finder），谷歌以后才发现这原来是系统自动生成的，要想它不出现，除非只用Shell不用Finder。。。</p>
+<p>接着找资料发现如下办法，</p>
+<ul>
+<li>安装<a href="http://asepsis.binaryage.com/" target="_blank" rel="external">ASEPSIS</a><ul>
+<li>OS X 10.11以前的版本直接安装即可</li>
+<li>OS X 10.11需要关闭SIP（System Integrity Protection）再使用命令<code>touch ~/.no-asepsis-os-restriction</code> 新建文件再安装</li>
+</ul>
+</li>
+<li>重启系统</li>
+<li>然后可以用以下指令删除mac上所有的.DS_Store：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">find ~ -name &quot;.DS_Store&quot; -delete</div><div class="line">或者</div><div class="line">find &lt;your path&gt; -name &quot;.DS_Store&quot; -delete</div></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -316,13 +330,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/">遗传算法简述</a></p>
+        <p><span>本文标题:</span><a href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/">Way to solving the .DS_Store problem of Mac</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2016-06-19, 21:46:32</p>
-        <p><span>最后更新:</span>2016-11-11, 21:50:33</p>
+        <p><span>发布时间:</span>2016-11-17, 15:25:30</p>
+        <p><span>最后更新:</span>2016-11-17, 16:00:57</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/" title="遗传算法简述">http://yoursite.com/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/" title="Way to solving the .DS_Store problem of Mac">http://yoursite.com/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -334,16 +348,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/">
-                    Vim 练级攻略二
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/">
-                    RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO
+                <a href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">
+                    A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比
                 </a>
             </div>
         
@@ -391,7 +399,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"遗传算法简述　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Way to solving the .DS_Store problem of Mac　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -407,7 +415,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/" data-title="遗传算法简述" data-url="http://yoursite.com/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/" data-title="Way to solving the .DS_Store problem of Mac" data-url="http://yoursite.com/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -430,15 +438,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/" title="上一篇: Vim 练级攻略二">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/" title="下一篇: RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO">
+            <a href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/" title="下一篇: A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比">
                 <i class="fa fa-angle-right"></i>
             </a>
         
