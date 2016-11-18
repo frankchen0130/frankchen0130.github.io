@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="江南消夏" />
+
+
+
+<meta name="description" content="本文主要内容为用一个简短的例子解释EM算法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Understanding EM algorithm">
+<meta property="og:url" content="http://yoursite.com/2016/11/18/Understanding-EM-algorithm/index.html">
+<meta property="og:site_name" content="loop in data">
+<meta property="og:description" content="本文主要内容为用一个简短的例子解释EM算法。">
+<meta property="og:image" content="http://yoursite.com/images/2016/11/1.png">
+<meta property="og:image" content="http://yoursite.com/images/2016/11/2.png">
+<meta property="og:image" content="http://yoursite.com/images/2016/11/3.png">
+<meta property="og:image" content="http://yoursite.com/images/2016/11/4.png">
+<meta property="og:image" content="http://yoursite.com/images/2016/11/5.png">
+<meta property="og:image" content="http://yoursite.com/images/2016/11/6.png">
+<meta property="og:image" content="http://yoursite.com/images/2016/11/7.png">
+<meta property="og:image" content="http://yoursite.com/images/2016/11/8.png">
+<meta property="og:updated_time" content="2016-11-18T17:33:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Understanding EM algorithm">
+<meta name="twitter:description" content="本文主要内容为用一个简短的例子解释EM算法。">
+<meta name="twitter:image" content="http://yoursite.com/images/2016/11/1.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="loop in data" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Understanding EM algorithm | loop in data</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">江南消夏</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">enjoy living and coding</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:947118251@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="http://weibo.com/znwindy" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/frankchen0130" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/people/frankchen0130" title="知乎"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Genetic-Algorithm/">Genetic Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-DS-Store/">Mac, .DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP-deep-learning/">NLP deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-LSTM/">RNN LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-deep-learning/">RNN deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hujiaweibujidao.github.io/">胡家威</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">机器学习、数据挖掘</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">江南消夏</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">江南消夏</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">enjoy living and coding</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:947118251@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/znwindy" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/frankchen0130" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/frankchen0130" title="知乎"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Understanding-EM-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/18/Understanding-EM-algorithm/" class="article-date">
+      <time datetime="2016-11-18T13:54:19.000Z" itemprop="datePublished">2016-11-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Understanding EM algorithm
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>本文主要内容为用一个简短的例子解释EM算法。</p>
+<a id="more"></a>
+<p>EM算法是聚类中常用的机器学习算法，但是相比喜闻乐见的k-means算法，大家可能对于EM算法的了解可能没有那么直观深入，所以本文主要利用一个简单的例子，在对比k-means算法的过程中，帮助大家建立一个清晰明确的对EM算法的理解。</p>
+<p>当我们在聚类的领域谈论k-means算法时，分组的概念是非常清晰直观的–每个样本点只属于它离得最近的那个中心点所属的分组。如果给出一些样本点和中心，那么我们很容易给这些点打标签。</p>
+<p>但是对于EM算法而言，分组的概念就么那么直观了（因为EM算法考虑每个样本点都有一定的概率属于所有的分组）。在我们介=引入EM算法之前，我们先复习一下k-means里面的分组概念。</p>
+<h2 id="k-means里面的分组概念"><a href="#k-means里面的分组概念" class="headerlink" title="k-means里面的分组概念"></a>k-means里面的分组概念</h2><p>假设我们有如下的三个样本点（2D平面情况下的点）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据集</th>
+<th style="text-align:center">X</th>
+<th style="text-align:center">Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">点0</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">点1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">点2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">7</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/2016/11/1.png" alt="image"></p>
+<p>如果在上面的数据集上跑k-means算法，假定中心点如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">中心</th>
+<th style="text-align:center">X</th>
+<th style="text-align:center">Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">6</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/2016/11/2.png" alt="image"></p>
+<p>使用欧几里得距离，可以分配聚类如下</p>
+<table>
+<thead>
+<tr>
+<th>距离</th>
+<th>群组A中心</th>
+<th>群组B中心</th>
+<th>群组C中心</th>
+<th>群组分配</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>点0</td>
+<td>7.071</td>
+<td><strong>4.472</strong></td>
+<td>6.083</td>
+<td>群组B</td>
+</tr>
+<tr>
+<td>点1</td>
+<td><strong>3.162</strong></td>
+<td>4.472</td>
+<td>5.385</td>
+<td>群组A</td>
+</tr>
+<tr>
+<td>点2</td>
+<td>3.000</td>
+<td>5.000</td>
+<td><strong>1.414</strong></td>
+<td>群组C</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/2016/11/3.png" alt="image"></p>
+<p>到此，我们可以给出一个回答：到底把一个点归类到一个群组意味着什么？举例来说，点1只被分配到分组A，也就是点1的100%属于群组A并且0%属于群组B和群组C。那么根据这个定义，我们可以得到如下表格，</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:right">群组A</th>
+<th style="text-align:center">群组B</th>
+<th>群组C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>点0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:center"><strong>1</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td>点1</td>
+<td style="text-align:right"><strong>1</strong></td>
+<td style="text-align:center">0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>点2</td>
+<td style="text-align:right">0</td>
+<td style="text-align:center">0</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>成员个数</td>
+<td style="text-align:right">1</td>
+<td style="text-align:center">1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>注意到，对于一个群组来说，其得到的每一行的和都是1（因为一个点的百分比就是之和就是1）；另外，每一列的和就是这个群组的成员点的个数。推而广之：</p>
+<ul>
+<li>每一行的和总是1，因为一个点的百分比之和是1</li>
+<li>每一列的和就是分配到这个群组的点的个数</li>
+</ul>
+<h2 id="EM算法中的群组分配"><a href="#EM算法中的群组分配" class="headerlink" title="EM算法中的群组分配"></a>EM算法中的群组分配</h2><p>到此为止，我们做的似乎不错，但是存在一个问题，我们这里每个点都只能属于一个群组，不过这一点有时候不是那么合理，比如点0分配到群组B似乎没什么问题，但是比如点1距离群组A和群组B的距离差别不那么大，那么只因为距离群组A近那么一点点就只把它分配到群组A，难道没什么问题吗？我们可能更加想表达这样一种概念：点1更可能属于群组A，但是我们也想保留点1也有一些可能属于群组B的不确定性。</p>
+<table>
+<thead>
+<tr>
+<th>距离</th>
+<th>群组A中心</th>
+<th>群组B中心</th>
+<th>群组C中心</th>
+<th>群组分配</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>点0</td>
+<td>7.071</td>
+<td>4.472</td>
+<td>6.083</td>
+<td>群组B</td>
+</tr>
+<tr>
+<td>点1</td>
+<td>3.162</td>
+<td>4.472</td>
+<td>5.385</td>
+<td>群组A</td>
+</tr>
+<tr>
+<td>点2</td>
+<td>3.000</td>
+<td>5.000</td>
+<td>1.414</td>
+<td>群组C</td>
+</tr>
+</tbody>
+</table>
+<p>我们如何表述这种不确定性呢？这就是<strong>分组权重</strong>的由来。分组权重表达了一个点有多可能属于某个群组。比如之前的形式是这样的，</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:right">群组A</th>
+<th style="text-align:center">群组B</th>
+<th>群组C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>点0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:center">1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>点1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:center">0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>点2</td>
+<td style="text-align:right">0</td>
+<td style="text-align:center">0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>成员个数</td>
+<td style="text-align:right">1</td>
+<td style="text-align:center">1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>把上表的0和1换成分数（不要质疑这些分数怎么来的，等下会给出合理解释，：））</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:right">群组A</th>
+<th style="text-align:center">群组B</th>
+<th>群组C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>点0</td>
+<td style="text-align:right">0.007</td>
+<td style="text-align:center">0.938</td>
+<td>0.055</td>
+</tr>
+<tr>
+<td>点1</td>
+<td style="text-align:right">0.812</td>
+<td style="text-align:center">0.154</td>
+<td>0.034</td>
+</tr>
+<tr>
+<td>点2</td>
+<td style="text-align:right">0.234</td>
+<td style="text-align:center">0.016</td>
+<td>0.750</td>
+</tr>
+<tr>
+<td>软计数</td>
+<td style="text-align:right">1.053</td>
+<td style="text-align:center">1.108</td>
+<td>0.839</td>
+</tr>
+</tbody>
+</table>
+<p>上表中，点0以93.8%的概率属于群组B，同时下一行中，点1以81.2%的概率属于群组A。这些分数也就是<strong>分组权重</strong>。比如，点0属于分组A的权重就是0.7%。</p>
+<p><strong>和k-means算法中每个点只能属于一个群组不同，这里每个点都以某种程度地属于每一个群组。</strong>例如，93.8%的点0属于群组，其余的属于其他的群组。</p>
+<p><img src="/images/2016/11/4.png" alt="image"></p>
+<p>那么，在上面的分配矩阵里面，每一行和每一列的含义如下，</p>
+<ul>
+<li>每一行的和都是1，因为每个点都100%属于所有的群组，将这一些部分加起来和必定是1</li>
+<li>每一列的和是这个群组的“软计数”，它代表着所有的点属于这个群组的百分比之和</li>
+<li>所有的群组的软计数之和就是样本点的总数</li>
+</ul>
+<h2 id="步骤E：给定分组参数计算分组权重"><a href="#步骤E：给定分组参数计算分组权重" class="headerlink" title="步骤E：给定分组参数计算分组权重"></a>步骤E：给定分组参数计算分组权重</h2><p>分组权重是怎么来的？来自给定分组的分布的时候，我们观察样本点可能是什么。而EM算法中的每一个群组都由一个<strong>分组权重</strong>，一个<strong>均值向量</strong>，一个<strong>协方差矩阵</strong>构成。其中，均值表示群组的中心，协方差体现群组的范围，而分组权重体现了样本点与此分组的关联程度。所有，每个群组都由一个多变量高斯分布所定义。</p>
+<p>回顾上面的例子，加上一个不确定度的椭圆，如下，</p>
+<p><img src="/images/2016/11/5.png" alt="image"></p>
+<p>图中每个椭圆表示着协方差矩阵，在这个例子中，每个群组都是用的是对角协方差矩阵[[3,0],[0,3]]。因为对角线外元素都是0，所有图中的椭圆实际上看起来是圆。并且，由于并没有什么理由认为哪个群组比其他群组更加重要，那么我们定义每个群组的分组权重都是1/3。</p>
+<p>那么，点0属于群组A的概率是多少？这里用来衡量潜在的高斯分布的标准是概率密度函数（probability density function，PDF），使用<code>scipy.stats.multivariate_normal.pdf</code>可计算出来：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> multivariate_normal.pdf([<span class="number">10</span>,<span class="number">5</span>], mean=[<span class="number">3</span>,<span class="number">4</span>], cov=[[<span class="number">3</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">3</span>]])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1.275199678019219e-05</span></div></pre></td></tr></table></figure>
+<p>我们还要将这个概率乘以分组权重才行，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="number">1</span>/<span class="number">3.</span>*multivariate_normal.pdf([<span class="number">10</span>,<span class="number">5</span>], mean=[<span class="number">3</span>,<span class="number">4</span>], cov=[[<span class="number">3</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">3</span>]])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">4.2506655934e-06</span></div></pre></td></tr></table></figure>
+<p>点0属于群组A的似然值是4.251e-6。单看看不出什么，我们还要依次计算群组B和群组C的值。分别计算B和C的PDF并且乘以分组权重：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="number">1</span>/<span class="number">3.</span>*multivariate_normal.pdf([<span class="number">10</span>,<span class="number">5</span>], mean=[<span class="number">6</span>,<span class="number">3</span>], cov=[[<span class="number">3</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">3</span>]])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.000630854709005</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="number">1</span>/<span class="number">3.</span>*multivariate_normal.pdf([<span class="number">10</span>,<span class="number">5</span>], mean=[<span class="number">4</span>,<span class="number">6</span>], cov=[[<span class="number">3</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">3</span>]])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3.71046481027e-05</span></div></pre></td></tr></table></figure>
+<p>那么，总结一下，</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>群组A</th>
+<th>群组B</th>
+<th>群组C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>点(10,5)的PDF乘以分组权重</td>
+<td>4.251e-6</td>
+<td>6.309e-4</td>
+<td>3.710e-5</td>
+</tr>
+</tbody>
+</table>
+<p>很明显，群组B的似然值是最高的，这容易理解因为点0距离群组B中心的距离最近。</p>
+<p><img src="/images/2016/11/6.png" alt="image"></p>
+<p>似然值看起来太小了，我么可以对其做一个归一化：都除以所有群组的似然值的和得到百分比值。</p>
+<table>
+<thead>
+<tr>
+<th>点0</th>
+<th>群组A</th>
+<th>群组B</th>
+<th>群组C</th>
+<th>总和</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>似然值</td>
+<td>4.251e-6</td>
+<td>6.309e-4</td>
+<td>3.710e-5</td>
+<td>6.722e-4</td>
+</tr>
+<tr>
+<td>似然值，处以总和</td>
+<td>4.251e-6 / 6.722e-4 = 0.007</td>
+<td>6.309e-4 / 6.722e-4 = 0.938</td>
+<td>3.710e-5 / 6.722e-4 = 0.055</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>最下一行就是点0分组责任！注意到因为归一化，这一行的总和是1。小结一下：</p>
+<ul>
+<li>对于每一个点我们计算了其高斯分布的PDF值，通过使用高斯分布的均值和协方差计算得到</li>
+<li>将PDF乘以分组权重，得到似然度</li>
+<li>将似然程度归一化</li>
+</ul>
+<p>依次，我们可以得到点1和点2的矩阵，这里略去不表，最后将三个点的矩阵汇总得到以下，</p>
+<table>
+<thead>
+<tr>
+<th>Responsibility matrix</th>
+<th>Cluster A</th>
+<th>Cluster B</th>
+<th>Cluster C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data point 0</td>
+<td>0.007</td>
+<td>0.938</td>
+<td>0.055</td>
+</tr>
+<tr>
+<td>Data point 1</td>
+<td>0.812</td>
+<td>0.154</td>
+<td>0.034</td>
+</tr>
+<tr>
+<td>Data point 2</td>
+<td>0.234</td>
+<td>0.016</td>
+<td>0.750</td>
+</tr>
+<tr>
+<td>Soft counts</td>
+<td>1.053</td>
+<td>1.108</td>
+<td>0.839</td>
+</tr>
+</tbody>
+</table>
+<h2 id="步骤M：给定分组责任计算分组参数"><a href="#步骤M：给定分组责任计算分组参数" class="headerlink" title="步骤M：给定分组责任计算分组参数"></a>步骤M：给定分组责任计算分组参数</h2><p>现在我们手里已经有了分组的责任了，我们可以依据这些重新更新参数：分组权重、均值和协方差。虽然我们开始是乱猜的这些参数，但是通过更新我们可以得到一些更好的估计。</p>
+<p><strong>分组权重。</strong>群组的相对重要程度由它的软计数来决定。由于分组权重必须和为1，所有这里也需要做归一化，</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Cluster A</th>
+<th>Cluster B</th>
+<th>Cluster C</th>
+<th>Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Soft counts</td>
+<td>1.053</td>
+<td>1.108</td>
+<td>0.839</td>
+<td>3.000</td>
+</tr>
+<tr>
+<td>Soft counts, divided by the sum</td>
+<td>1.053 / 3.000 = 0.351</td>
+<td>1.108 / 3.000 = 0.369</td>
+<td>0.839 / 3.000 = 0.280</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>归一化后的软计数，就是分组权重的新的估计。</p>
+<p><strong>均值。</strong>使用分组责任计算所有点坐标的百分比，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[Weighted sum of data points <span class="keyword">for</span> cluster A]</div><div class="line">= [Fraction of data point <span class="number">0</span> represented <span class="keyword">in</span> cluster A] * [data point <span class="number">0</span>]</div><div class="line">  + [Fraction of data point <span class="number">1</span> represented <span class="keyword">in</span> cluster A] * [data point <span class="number">1</span>]</div><div class="line">  + [Fraction of data point <span class="number">2</span> represented <span class="keyword">in</span> cluster A] * [data point <span class="number">2</span>]</div><div class="line">= <span class="number">0.007</span>*[data point <span class="number">0</span>] + <span class="number">0.812</span>*[data point <span class="number">1</span>] + <span class="number">0.234</span>*[data point <span class="number">2</span>]</div><div class="line">= <span class="number">0.007</span>*(<span class="number">10</span>,<span class="number">5</span>) + <span class="number">0.812</span>*(<span class="number">2</span>,<span class="number">1</span>)  + <span class="number">0.234</span>*(<span class="number">3</span>,<span class="number">7</span>)</div><div class="line">= (<span class="number">0.063</span>,<span class="number">0.035</span>) + (<span class="number">1.624</span>,<span class="number">0.812</span>) + (<span class="number">0.702</span>,<span class="number">1.638</span>)</div><div class="line">= (<span class="number">2.396</span>,<span class="number">2.485</span>)</div></pre></td></tr></table></figure>
+<p>再除以软计数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[mean of cluster A]</div><div class="line">= (<span class="number">2.396</span>,<span class="number">2.485</span>)/<span class="number">1.053</span> </div><div class="line">= (<span class="number">2.275</span>,<span class="number">2.360</span>)</div></pre></td></tr></table></figure>
+<p>类似地计算B和C的均值，得到如下，</p>
+<table>
+<thead>
+<tr>
+<th>New means</th>
+<th>X</th>
+<th>Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cluster A</td>
+<td>2.275</td>
+<td>2.360</td>
+</tr>
+<tr>
+<td>Cluster B</td>
+<td>8.787</td>
+<td>4.473</td>
+</tr>
+<tr>
+<td>Cluster C</td>
+<td>3.418</td>
+<td>6.626</td>
+</tr>
+</tbody>
+</table>
+<p>让我们画出均值的之前和之后的估计。注意到群组A的均值移动地更加靠近点1，因为群组A是主要的，类似的也发生在B和C上，</p>
+<p><img src="/images/2016/11/7.png" alt="image"></p>
+<p><strong>协方差。</strong> 协方差也是由分数来计算的，但是这里需要矩阵形式，所以实际上是由向量叉乘得到的，</p>
+<p>$$x_i - \hat{\mu}_k$$</p>
+<p>假设上面是d维向量，计算其与自身的内积，</p>
+<p>$$(x_i - \hat{\mu}_k)(x_i - \hat{\mu}_k)^T$$</p>
+<p>对012每个点都根据其坐标和A的均值计算协方差矩阵，与分组责任相乘：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[Weighted sum of outer products]</div><div class="line">= [Fraction of data point <span class="number">0</span> represented <span class="keyword">in</span> cluster A] * [outer product <span class="keyword">for</span> data point <span class="number">0</span>]</div><div class="line">  + [Fraction of data point <span class="number">1</span> represented <span class="keyword">in</span> cluster A] * [outer product <span class="keyword">for</span> data point <span class="number">1</span>]</div><div class="line">  + [Fraction of data point <span class="number">2</span> represented <span class="keyword">in</span> cluster A] * [outer product <span class="keyword">for</span> data point <span class="number">2</span>]</div><div class="line">=  <span class="number">0.007</span>*[[<span class="number">59.676</span>,<span class="number">20.394</span>], [<span class="number">20.394</span>,<span class="number">6.970</span>]]</div><div class="line">  + <span class="number">0.812</span>*[[<span class="number">0.076</span>,<span class="number">0.374</span>], [<span class="number">0.374</span>,<span class="number">1.850</span>]]</div><div class="line">  + <span class="number">0.234</span>*[[<span class="number">0.526</span>,<span class="number">3.364</span>], [<span class="number">3.364</span>,<span class="number">21.530</span>]]</div><div class="line">= [[<span class="number">0.602</span>, <span class="number">1.234</span>], [<span class="number">1.234</span>, <span class="number">6.589</span>]]</div><div class="line"></div><div class="line">[New covariance <span class="keyword">for</span> cluster A]</div><div class="line">= [[<span class="number">0.602</span>,<span class="number">1.234</span>], [<span class="number">1.234</span>,<span class="number">6.589</span>]]/<span class="number">1.053</span></div><div class="line">= [[<span class="number">0.572</span>,<span class="number">1.172</span>], [<span class="number">1.172</span>,<span class="number">6.257</span>]]</div></pre></td></tr></table></figure>
+<p>对于BC重复以上，得到，</p>
+<table>
+<thead>
+<tr>
+<th>New covariances</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cluster A</td>
+<td>[[0.572,1.172], [1.172,6.257]]</td>
+</tr>
+<tr>
+<td>Cluster B</td>
+<td>[[8.132,3.606], [3.606,2.004]]</td>
+</tr>
+<tr>
+<td>Cluster C</td>
+<td>[[3.078,-0.518], [-0.518,1.581]]</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/2016/11/8.png" alt="image"></p>
+<p>长于一口气！这么多的计算，我们到底更新的效果是什么？首先，所有的群组都有了更小的不确定度，从图上来看，椭圆变得更小了；其次，群组改变了形状来适应数据，比如群组B向着点1的方向延长了。总之，每次均值和协方差更新以后，群组都改变形状以更好地表示数据里的模式。</p>
+<h2 id="EM算法：交替步骤E和步骤M"><a href="#EM算法：交替步骤E和步骤M" class="headerlink" title="EM算法：交替步骤E和步骤M"></a>EM算法：交替步骤E和步骤M</h2><p>现在我们对于分组的参数有了更好地估计，那么我们可以回过头去计算分组的责任，于是我们可以得到一个更好的参数的估计。实际上，我们可以交替着使用步骤E和步骤M来逐步提高分组的性能。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/11/18/Understanding-EM-algorithm/">Understanding EM algorithm</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
+        <p><span>发布时间:</span>2016-11-18, 21:54:19</p>
+        <p><span>最后更新:</span>2016-11-19, 01:33:39</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/11/18/Understanding-EM-algorithm/" title="Understanding EM algorithm">http://yoursite.com/2016/11/18/Understanding-EM-algorithm/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/11/18/Understanding-EM-algorithm/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/">
+                    Way to solving the .DS_Store problem of Mac
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#k-means里面的分组概念"><span class="toc-number">1.</span> <span class="toc-text">k-means里面的分组概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EM算法中的群组分配"><span class="toc-number">2.</span> <span class="toc-text">EM算法中的群组分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤E：给定分组参数计算分组权重"><span class="toc-number">3.</span> <span class="toc-text">步骤E：给定分组参数计算分组权重</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤M：给定分组责任计算分组参数"><span class="toc-number">4.</span> <span class="toc-text">步骤M：给定分组责任计算分组参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EM算法：交替步骤E和步骤M"><span class="toc-number">5.</span> <span class="toc-text">EM算法：交替步骤E和步骤M</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Understanding EM algorithm　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/18/Understanding-EM-algorithm/" data-title="Understanding EM algorithm" data-url="http://yoursite.com/2016/11/18/Understanding-EM-algorithm/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"frankchen0130"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/" title="下一篇: Way to solving the .DS_Store problem of Mac">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/18/Understanding-EM-algorithm/">Understanding EM algorithm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/">Way to solving the .DS_Store problem of Mac</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/">Vim 练级攻略一</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/">Vim 练级攻略二</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/">遗传算法简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/07/2016-06-07-edit-dns-of-ubuntu/">ubuntu下修改DNS并且避免重启失效的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-understanding-lstm-networks/">理解LSTM网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-rephil-and-mapreduce/">Rephil和MapReduce： 描述长尾数据的数学模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-note-for-cs224d-1/">note for CS224d:1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/2016-05-26-char-rnn-chinese/">char-rnn-chinese</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/2016-05-25-pythonoop/">Python OOP（Object Oriented Programming）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/24/2016-05-24-di-pian-bo-ke/">使用文本处理命令获取链接批量下载</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 江南消夏
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 4;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+             menu: ".header-menu a", 
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
