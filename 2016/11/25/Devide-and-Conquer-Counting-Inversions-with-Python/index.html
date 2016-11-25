@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="由于zip格式中并没有指定编码格式，Windows下生成的zip文件中的编码是GBK/GB2312等，因此，导致这些zip文件在Linux下解压时出现乱码问题，因为Linux下的默认编码是UTF8。目前网上流传一种unzip -O cp936的方法，但一些unzip是没有-O这个选项的。">
+<meta name="description" content="本文主要内容关于python归并排序求逆序数的算法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何解决Linux 下 zip 文件解压乱码">
-<meta property="og:url" content="https://frankchen0130.github.io/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/index.html">
+<meta property="og:title" content="Devide_and_Conquer_Counting_Inversions_with_Python">
+<meta property="og:url" content="https://frankchen0130.github.io/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="由于zip格式中并没有指定编码格式，Windows下生成的zip文件中的编码是GBK/GB2312等，因此，导致这些zip文件在Linux下解压时出现乱码问题，因为Linux下的默认编码是UTF8。目前网上流传一种unzip -O cp936的方法，但一些unzip是没有-O这个选项的。">
-<meta property="og:updated_time" content="2016-11-11T13:50:33.000Z">
+<meta property="og:description" content="本文主要内容关于python归并排序求逆序数的算法。">
+<meta property="og:updated_time" content="2016-11-25T09:01:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何解决Linux 下 zip 文件解压乱码">
-<meta name="twitter:description" content="由于zip格式中并没有指定编码格式，Windows下生成的zip文件中的编码是GBK/GB2312等，因此，导致这些zip文件在Linux下解压时出现乱码问题，因为Linux下的默认编码是UTF8。目前网上流传一种unzip -O cp936的方法，但一些unzip是没有-O这个选项的。">
+<meta name="twitter:title" content="Devide_and_Conquer_Counting_Inversions_with_Python">
+<meta name="twitter:description" content="本文主要内容关于python归并排序求逆序数的算法。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>如何解决Linux 下 zip 文件解压乱码 | loop in data</title>
+<title>Devide_and_Conquer_Counting_Inversions_with_Python | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -270,11 +270,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Devide-and-Conquer-Counting-Inversions-with-Python" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/" class="article-date">
-      <time datetime="2016-07-16T04:11:14.000Z" itemprop="datePublished">2016-07-16</time>
+      <a href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/" class="article-date">
+      <time datetime="2016-11-25T08:55:15.000Z" itemprop="datePublished">2016-11-25</time>
 </a>
 
 
@@ -289,7 +289,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      如何解决Linux 下 zip 文件解压乱码
+      Devide_and_Conquer_Counting_Inversions_with_Python
     </h1>
   
 
@@ -297,14 +297,10 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
-    </div>
-
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm-Python/">Algorithm, Python</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -314,16 +310,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>由于zip格式中并没有指定编码格式，Windows下生成的zip文件中的编码是GBK/GB2312等，因此，导致这些zip文件在Linux下解压时出现乱码问题，因为Linux下的默认编码是UTF8。<br>目前网上流传一种unzip -O cp936的方法，但一些unzip是没有-O这个选项的。</p>
+        <p>本文主要内容关于python归并排序求逆序数的算法。</p>
 <a id="more"></a>
-<p>在ubuntu下的安装命令是</p>
-<p><code>sudo apt-get install p7zip convmv</code></p>
-<p>安装完之后，就可以用7za和convmv两个命令完成解压缩任务。</p>
-<p><code>LANG=C 7za x your-zip-file.zip
-convmv -f GBK -t utf8 --notest -r .</code></p>
-<p>第一条命令用于解压缩，而LANG=C表示以US-ASCII这样的编码输出文件名，如果没有这个语言设置，它同样会输出乱码，只不过是UTF8格式的乱码(convmv会忽略这样的乱码)。<br>第二条命令是将GBK编码的文件名转化为UTF8编码，-r表示递归访问目录，即对当前目录中所有文件进行转换。</p>
-<p>作者：Latm Ake<br>链接：<a href="https://www.zhihu.com/question/20523036/answer/35225920" target="_blank" rel="external">https://www.zhihu.com/question/20523036/answer/35225920</a><br>来源：知乎<br>著作权归作者所有，转载请联系作者获得授权。</p>
-
+<p>解决问题：给定有限长度的无重复乱序数组，求其逆序数个数。简单来说我们可以用两个循环来解决，但是复杂度为$$O(N^2)$$，若利用归并排序，复杂度就降为了$$O(N \log(N))$$。以下给出一个实现，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ivrs_num</span><span class="params">(object)</span>:</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, filename)</span>:</span></div><div class="line">        self.count = <span class="number">0</span></div><div class="line">        self.filename = filename</div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">load_txt</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''载入txt文件保存为list'''</span></div><div class="line">        int_list = []</div><div class="line">        <span class="keyword">with</span> open(self.filename) <span class="keyword">as</span> f:</div><div class="line">            <span class="keyword">for</span> line <span class="keyword">in</span> f:</div><div class="line">                int_list.append(int(line))</div><div class="line">        <span class="keyword">return</span> int_list</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, ListA, ListB)</span>:</span></div><div class="line">        <span class="string">'''将两个已经排序好的数组合并成新的排序好的数组</span></div><div class="line">        顺便计算逆序数'''</div><div class="line">        newList = []</div><div class="line">        <span class="keyword">while</span> ListA <span class="keyword">and</span> ListB:</div><div class="line">            <span class="keyword">if</span> int(ListA[<span class="number">0</span>]) &gt; int(ListB[<span class="number">0</span>]):</div><div class="line">                self.count += len(ListA)</div><div class="line">                newList.append(ListB.pop(<span class="number">0</span>))</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                newList.append(ListA.pop(<span class="number">0</span>))</div><div class="line">        <span class="keyword">return</span> newList + ListA + ListB</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(self, A)</span>:</span></div><div class="line">        <span class="string">'''归并排序'''</span></div><div class="line">        <span class="keyword">if</span> len(A) == <span class="number">1</span>: <span class="keyword">return</span> A</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            middle = len(A) // <span class="number">2</span></div><div class="line">            <span class="keyword">return</span> self.merge(self.merge_sort(A[:middle]), self.merge_sort(A[middle:]))</div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">count_ivrs</span><span class="params">(self)</span>:</span></div><div class="line">        data = self.load_txt()</div><div class="line">        self.merge_sort(data)</div><div class="line">        <span class="keyword">return</span> self.count</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    ivrs = Ivrs_num(<span class="string">"IntegerArray.txt"</span>)</div><div class="line">    <span class="keyword">print</span> ivrs.count_ivrs()</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -331,13 +321,13 @@ convmv -f GBK -t utf8 --notest -r .</code></p>
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a></p>
+        <p><span>本文标题:</span><a href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/">Devide_and_Conquer_Counting_Inversions_with_Python</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2016-07-16, 12:11:14</p>
-        <p><span>最后更新:</span>2016-11-11, 21:50:33</p>
+        <p><span>发布时间:</span>2016-11-25, 16:55:15</p>
+        <p><span>最后更新:</span>2016-11-25, 17:01:53</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/" title="如何解决Linux 下 zip 文件解压乱码">https://frankchen0130.github.io/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://frankchen0130.github.io/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/" title="Devide_and_Conquer_Counting_Inversions_with_Python">https://frankchen0130.github.io/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://frankchen0130.github.io/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -349,16 +339,10 @@ convmv -f GBK -t utf8 --notest -r .</code></p>
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/09/07/2016-09-07-pdf-click-return/">
-                    PDF click return
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">
-                    RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO
+                <a href="/2016/11/18/Understanding-EM-algorithm/">
+                    Understanding EM algorithm
                 </a>
             </div>
         
@@ -406,7 +390,7 @@ convmv -f GBK -t utf8 --notest -r .</code></p>
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"如何解决Linux 下 zip 文件解压乱码　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Devide_and_Conquer_Counting_Inversions_with_Python　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -422,7 +406,7 @@ convmv -f GBK -t utf8 --notest -r .</code></p>
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/" data-title="如何解决Linux 下 zip 文件解压乱码" data-url="https://frankchen0130.github.io/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/" data-title="Devide_and_Conquer_Counting_Inversions_with_Python" data-url="https://frankchen0130.github.io/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -445,15 +429,13 @@ convmv -f GBK -t utf8 --notest -r .</code></p>
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/09/07/2016-09-07-pdf-click-return/" title="上一篇: PDF click return">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/" title="下一篇: RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO">
+            <a href="/2016/11/18/Understanding-EM-algorithm/" title="下一篇: Understanding EM algorithm">
                 <i class="fa fa-angle-right"></i>
             </a>
         
