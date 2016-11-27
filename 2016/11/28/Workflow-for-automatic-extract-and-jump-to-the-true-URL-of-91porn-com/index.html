@@ -15,22 +15,19 @@
 
 
 
-<meta name="description" content="本文中，我们将学习关于LSTM (Long Short Term Memory)网络和 GRUs (Gated Recurrent Units)的知识。LSTM最初由Sepp Hochreiter and Jürgen Schmidhuber于1997年提出，如今是深度学习自然语言处理领域最流行的模型。GRU，出现于2014年，是LSTM的简化版，与LSTM有许多相似的特性。">
+<meta name="description" content="主要讲述自己开发的Alfred Workflow 91url：自动获取某网站的真实视频地址并跳转的应用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO">
-<meta property="og:url" content="https://frankchen0130.github.io/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/index.html">
+<meta property="og:title" content="Workflow for automatic extract and jump to the true URL of 91porn.com">
+<meta property="og:url" content="https://frankchen0130.github.io/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="本文中，我们将学习关于LSTM (Long Short Term Memory)网络和 GRUs (Gated Recurrent Units)的知识。LSTM最初由Sepp Hochreiter and Jürgen Schmidhuber于1997年提出，如今是深度学习自然语言处理领域最流行的模型。GRU，出现于2014年，是LSTM的简化版，与LSTM有许多相似的特性。">
-<meta property="og:image" content="https://frankchen0130.github.io/images/2016/06/latex7.png">
-<meta property="og:image" content="https://frankchen0130.github.io/images/2016/06/gru-lstm.png">
-<meta property="og:image" content="https://frankchen0130.github.io/images/2016/06/Screen-Shot-2015-10-23-at-10.00.55-AM.png">
-<meta property="og:image" content="https://frankchen0130.github.io/images/2016/06/latex8.png">
-<meta property="og:image" content="https://frankchen0130.github.io/images/2016/06/Screen-Shot-2015-10-23-at-10.36.51-AM.png">
-<meta property="og:updated_time" content="2016-11-11T13:50:33.000Z">
+<meta property="og:description" content="主要讲述自己开发的Alfred Workflow 91url：自动获取某网站的真实视频地址并跳转的应用。">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2016/11/Screen Shot 2016-11-28 at 00.55.46">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2016/11/Screen Shot 2016-11-28 at 01.02.14">
+<meta property="og:updated_time" content="2016-11-27T17:03:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO">
-<meta name="twitter:description" content="本文中，我们将学习关于LSTM (Long Short Term Memory)网络和 GRUs (Gated Recurrent Units)的知识。LSTM最初由Sepp Hochreiter and Jürgen Schmidhuber于1997年提出，如今是深度学习自然语言处理领域最流行的模型。GRU，出现于2014年，是LSTM的简化版，与LSTM有许多相似的特性。">
-<meta name="twitter:image" content="https://frankchen0130.github.io/images/2016/06/latex7.png">
+<meta name="twitter:title" content="Workflow for automatic extract and jump to the true URL of 91porn.com">
+<meta name="twitter:description" content="主要讲述自己开发的Alfred Workflow 91url：自动获取某网站的真实视频地址并跳转的应用。">
+<meta name="twitter:image" content="https://frankchen0130.github.io/images/2016/11/Screen Shot 2016-11-28 at 00.55.46">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -62,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO | loop in data</title>
+<title>Workflow for automatic extract and jump to the true URL of 91porn.com | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -276,11 +273,11 @@
     </div>
     <link class="menu-list" tags="標籤" friends="友情鏈接" about="關於我"/>
 </nav>
-      <div class="body-wrap"><article id="post-2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/" class="article-date">
-      <time datetime="2016-06-22T13:42:51.000Z" itemprop="datePublished">2016-06-22</time>
+      <a href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/" class="article-date">
+      <time datetime="2016-11-27T16:41:22.000Z" itemprop="datePublished">2016-11-28</time>
 </a>
 
 
@@ -295,7 +292,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO
+      Workflow for automatic extract and jump to the true URL of 91porn.com
     </h1>
   
 
@@ -303,14 +300,10 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
-    </div>
-
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RNN-deep-learning/">RNN deep-learning</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Old-Driver/">Old_Driver</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -320,36 +313,14 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文中，我们将学习关于LSTM (Long Short Term Memory)网络和 GRUs (Gated Recurrent Units)的知识。LSTM最初由<a href="http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf" target="_blank" rel="external">Sepp Hochreiter and Jürgen Schmidhuber于1997年提出</a>，如今是深度学习自然语言处理领域最流行的模型。GRU，<a href="http://arxiv.org/pdf/1406.1078v3.pdf" target="_blank" rel="external">出现于2014年</a>，是LSTM的简化版，与LSTM有许多相似的特性。</p>
-<a id="more"></a>
-<p>##LSTM 网络</p>
-<p>在<a href="http://frankchen0130.github.io/2016/06/22/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">第三部分</a>我们提到了梯度消失问题妨碍了标准的RNN学习长期依赖问题。LSTM被设计于用gate结构解决梯度消失问题。为了理解这个机制，我们来看看LSTM如何计算隐藏状态$$s_t$$（其中小圆圈代表Hadamard product，即同型矩阵各元素对应相乘，不同于矩阵点乘）。</p>
-<p><img src="/images/2016/06/latex7.png" alt=""></p>
-<p>式子看起来复杂，一步一步来理解实则简单。首先，LSTM的一层代表的只是另一种计算隐藏层的方法。之前我们计算了隐藏状态$$s_t = tanh(Ux<em>t + WS</em>{s-1})$$。对于当前的单元，输入是$$t$$时刻的$$x<em>t$$，而$$s</em>{t-1}$$是之前的隐藏状态，输出是新的隐藏状态$$s_t$$。其实，LSTM做的事情是完全一样的，只不过换了种方式，这也是理解LSTM的核心。我们可以把LSTM单元看作是黑盒子，给予其当前输入和之前的隐藏状态，它可以输出下一个隐藏状态。</p>
-<p><img src="/images/2016/06/gru-lstm.png" alt=""></p>
-<p>把这个牢记于心，我们开始来阐述LSTM如何计算隐藏状态。关于这一点，详细可看<a href="http://frankchen0130.github.io/2016/06/04/understanding-lstm-networks/">这篇文章</a>，这里我们只作简短描述：</p>
-<ul>
-<li>$$i,f,o$$分别被称为输入门、遗忘门和输出门。注意到，它们具有相同的等式，只是参数矩阵不同。它们之所以被称为“门”，是因为sigmoid函数将向量值压缩到0和1之间，再与另一个向量相乘，我们因此决定向量的多少“通过”。输入门决定当前输入计算出来的状态的多少成分被通过，遗忘门决定之前的状态有多少可以被保留到之后，输出门决定当前的状态有多少被传送到外层的网络（高层网络和下一时刻）。这些门的维度都是$$d_s$$，即隐藏层的大小。</li>
-<li>$$g$$是一个候选的隐藏状态，基于当前的输入和之前的隐藏状态计算而出。其与vanilla RNN的计算等式相同，只是把参数$$U,W$$改名为$$U^g,W^g$$。和RNN的直接将$$g$$作为心的隐藏状态不同，我们将其通过一个输入门来决定保留它的多少成分。</li>
-<li>$$c<em>t$$是单元的内部的记忆，它由之前的记忆$$c</em>{t-1}$$通过遗忘门再加上新计算出来的隐藏状态$$g$$通过输入门计算得出。因此，它代表了旧的记忆与新的输入的结合。我们可以选择全部忽略旧的记忆（遗忘门全部置零），或者忽略全部的计算出的新状态（输入门全部置零），但是通常来说，我们可能更希望介于两者之间。</li>
-<li>给定记忆$$c_t$$，我们最终通过让记忆和输出门相乘计算出输出隐藏层状态$$s_t$$。在网络内，不是所有的内部记忆都与其他单元使用的隐藏状态有关。</li>
-</ul>
-<p><img src="/images/2016/06/Screen-Shot-2015-10-23-at-10.00.55-AM.png" alt=""></p>
-<p>换一种说法，我们可以将标准的RNN看作是特殊的LSTM，如果我们将遗忘门全部置零，输入门全部置一，输出门全部置一，我们就几乎得到一个标准的RNN。通过门机制，LSTM可以操作记忆从而解决长期依赖问题。</p>
-<p>注意到，还有许多的LSTM变种，一种添加上“猫眼”结构，它的门同时取决于之前的隐藏状态$$s<em>{t-1}$$和之前的内部状态$$c</em>{t-1}$$。<a href="http://arxiv.org/pdf/1503.04069.pdf" target="_blank" rel="external"> LSTM: A Search Space Odyssey </a>实验观察了许多不同的LSTM机制。</p>
-<p>##GRU网络</p>
-<p>GRU的理念类似于LSTM，其等式如下：</p>
-<p><img src="/images/2016/06/latex8.png" alt=""></p>
-<p>GRU拥有两个门，称为重置门$$r$$和更新门$$z$$。直观来说，重置门决定如何联合新的输入和之前的记忆，而更新门决定留下多少之前的记忆。如果将重置门全部置一并且更新门全部置零，那么我们又得到了我们原始的RNN了。GRU的解决长期依赖的理念和LSTM基本类似，以下是一些不同之处：</p>
-<ul>
-<li>两个门VS三个门</li>
-<li>GRU不处理内层记忆$$c_t$$</li>
-<li>输入门和遗忘门被组合成更新门$$z$$,重置门$$r$$直接连接之前的隐藏状态。因此，</li>
-<li>计算输出是不加上第二个非线性变换</li>
-</ul>
-<p><img src="/images/2016/06/Screen-Shot-2015-10-23-at-10.36.51-AM.png" alt=""></p>
-<p>##GRU VS LSTM</p>
-<p>如今你认识了两个对抗梯度消失的模型</p>
+        <p>主要讲述自己开发的Alfred Workflow 91url：自动获取某网站的真实视频地址并跳转的应用。<br><a id="more"></a></p>
+<p>相信许多朋友都爱看91的视频，但是免费用户的每日有限的观看次数总是让人意犹未尽。。。于是<a href="http://freeget.vip/" target="_blank" rel="external">FreeGet 免费福利资讯</a>应运而生。。。但是重复的从浏览器窗口点击复制url，切换窗口、粘贴再点击。。。有什么办法可以让众狼友的双手解放出来呢？作为程序员的我当然不能忍，所以耗费一下午的时间开发了这个Workflow：91url，能够自动获取当前的浏览器窗口的网址并提交到FreeGet网站，并用火狐浏览器打开真实视频网址（抱歉是0.1版本，功能受限，不足之处待之后版本解决）。使用方法非常简单，只要在我的Github<a href="https://github.com/frankchen0130/91url" target="_blank" rel="external">frankchen0130/91url: A Alfred Workflow for automatic extract and jump to the true URL of 91porn.com</a>下载并拖到Alfred 的Workflow即可，另外还需要安装Python的自动化网页测试工具包selenium：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install selenium</div></pre></td></tr></table></figure>
+<p>然后浏览器处于91视频的页面的时候，用command + 空格 输入91url并enter即可(当然也可以修改HotKey来触发)：</p>
+<p><img src="/images/2016/11/Screen Shot 2016-11-28 at 00.55.46" alt="image"></p>
+<p>之后91url将自动打开火狐浏览器并跳转至FreeGet获取真实网址，</p>
+<p><img src="/images/2016/11/Screen Shot 2016-11-28 at 01.02.14" alt="image"></p>
+<p>如上图，so，enjoy！</p>
 
       
     </div>
@@ -358,13 +329,13 @@
   
     
     <div class="copyright">
-        <p><span>本文標題:</span><a href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a></p>
+        <p><span>本文標題:</span><a href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/">Workflow for automatic extract and jump to the true URL of 91porn.com</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主頁">江南消夏</a></p>
-        <p><span>發布時間:</span>2016-06-22, 21:42:51</p>
-        <p><span>最後更新:</span>2016-11-11, 21:50:33</p>
+        <p><span>發布時間:</span>2016-11-28, 00:41:22</p>
+        <p><span>最後更新:</span>2016-11-28, 01:03:38</p>
         <p>
-            <span>原始鏈接:</span><a class="post-url" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/" title="RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO">https://frankchen0130.github.io/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://frankchen0130.github.io/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/　　作者: 江南消夏" title="點擊複製文章鏈接"><i class="fa fa-clipboard"></i></span>
+            <span>原始鏈接:</span><a class="post-url" href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/" title="Workflow for automatic extract and jump to the true URL of 91porn.com">https://frankchen0130.github.io/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://frankchen0130.github.io/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/　　作者: 江南消夏" title="點擊複製文章鏈接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -376,16 +347,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">
-                    如何解决Linux 下 zip 文件解压乱码
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">
-                    RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS
+                <a href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/">
+                    Devide and Conquer Counting Inversions with Python
                 </a>
             </div>
         
@@ -433,7 +398,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Workflow for automatic extract and jump to the true URL of 91porn.com　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -449,7 +414,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/" data-title="RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO" data-url="https://frankchen0130.github.io/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/" data-title="Workflow for automatic extract and jump to the true URL of 91porn.com" data-url="https://frankchen0130.github.io/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -472,15 +437,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/" title="上一篇: 如何解决Linux 下 zip 文件解压乱码">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主頁"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/" title="下一篇: RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS">
+            <a href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/" title="下一篇: Devide and Conquer Counting Inversions with Python">
                 <i class="fa fa-angle-right"></i>
             </a>
         
