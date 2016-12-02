@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://frankchen0130.github.io/images/2016/12/QuickSort/QuickSort.008.jpeg">
 <meta property="og:image" content="https://frankchen0130.github.io/images/2016/12/QuickSort/QuickSort.009.jpeg">
 <meta property="og:image" content="https://frankchen0130.github.io/images/2016/12/QuickSort/QuickSort.010.jpeg">
-<meta property="og:updated_time" content="2016-12-02T12:15:02.000Z">
+<meta property="og:updated_time" content="2016-12-02T12:24:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QuickSort in C">
 <meta name="twitter:description" content="本文主要关于演示C语言中的快排算法。">
@@ -149,13 +149,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -279,7 +279,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap"><article id="post-QuickSort-in-C" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -325,7 +325,7 @@
 <p>大名鼎鼎的QuickSort–快速排序算法，如此的高效、快速而优雅，今天让我们用图片和文字形象地展示一下它吧！</p>
 <p>快排是一种分治算法，其主要思想在于通过选取一个基准Pivot将序列分为左右两个子序列，其中左序列的数都小于等于Pivot，右边的都大于等于Pivot，再在这两个子序列上递归调用快排算法即可。</p>
 <p>而理解快排算法的核心就在于分解这个步骤，这里我们先给出代码，再用图片展示步骤。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  main.c</span></div><div class="line"><span class="comment">//  QuickSort</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by frankchen on 12/2/16.</span></div><div class="line"><span class="comment">//  Copyright © 2016 frankchen. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> s[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> s[],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[N], i;</div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"Enter %d numbers to be sorted: "</span>, N);</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;N; i++)</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</div><div class="line">    </div><div class="line">    QuickSort(a, <span class="number">0</span>, N<span class="number">-1</span>);</div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"In sorted order: \n"</span>);</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;N; i++)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//交换数组中的两个元素</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> s[],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> temp;</div><div class="line">    temp=s[i];</div><div class="line">    s[i]=s[j];</div><div class="line">    s[j]=temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> s[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, pivot;<span class="comment">//记录界限的位置</span></div><div class="line">    <span class="keyword">if</span>(low &lt; high)<span class="comment">//只有数组中元素大于1时才操作</span></div><div class="line">    &#123;</div><div class="line">        pivot = low;<span class="comment">//选取第一个元素作为基准</span></div><div class="line">        <span class="keyword">for</span>(i=low+<span class="number">1</span>; i&lt;=high; i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (s[i] &lt; s[low])</div><div class="line">                swap(s, ++pivot, i);</div><div class="line">        &#125;</div><div class="line">        swap(s, low, pivot);<span class="comment">//基准元与界限交换</span></div><div class="line">        QuickSort(s, low, pivot<span class="number">-1</span>);</div><div class="line">        QuickSort(s, pivot+<span class="number">1</span>, high);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  main.c</span></div><div class="line"><span class="comment">//  QuickSort</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by frankchen on 12/2/16.</span></div><div class="line"><span class="comment">//  Copyright © 2016 frankchen. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> s[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> s[],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[N], i;</div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"Enter %d numbers to be sorted: "</span>, N);</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;N; i++)</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</div><div class="line">    </div><div class="line">    QuickSort(a, <span class="number">0</span>, N<span class="number">-1</span>);</div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"In sorted order: \n"</span>);</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;N; i++)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//交换数组中的两个元素</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> s[],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> temp;</div><div class="line">    temp=s[i];</div><div class="line">    s[i]=s[j];</div><div class="line">    s[j]=temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> s[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, pivot;<span class="comment">//记录界限的位置</span></div><div class="line">    <span class="keyword">if</span>(low &lt; high)<span class="comment">//只有数组中元素大于1时才操作</span></div><div class="line">    &#123;</div><div class="line">        pivot = low;<span class="comment">//选取第一个元素作为基准</span></div><div class="line">        <span class="keyword">for</span>(i=low+<span class="number">1</span>; i&lt;=high; i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (s[i] &lt; s[low])</div><div class="line">                swap(s, ++pivot, i);</div><div class="line">        &#125;</div><div class="line">        swap(s, low, pivot);<span class="comment">//基准元与界限交换</span></div><div class="line">        QuickSort(s, low, pivot<span class="number">-1</span>);</div><div class="line">        QuickSort(s, pivot+<span class="number">1</span>, high);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- 为了排序整个序列，只需要调用QuickSort(R，<span class="number">0</span>，n<span class="number">-1</span>)即可完成对R[<span class="number">0.</span>.n<span class="number">-1</span>]的排序。</div><div class="line">- 这里选取了第一个元素作为基准，如果输入是随机序列，那么没什么大碍，但是如果输入是预排序或者逆序的，那么会产生坏的排序，使得时间复杂度提高，随机选取基准是一种可行的方法，另外一种是选取开头、中间点和末位点的中位数。</div></pre></td></tr></table></figure>
 <p><img src="/images/2016/12/QuickSort/QuickSort.001.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.002.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.003.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.004.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.005.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.006.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.007.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.008.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.009.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.010.jpeg" alt="image"></p>
 
       
@@ -335,17 +335,17 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2016/12/02/QuickSort-in-C/">QuickSort in C</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">江南消夏</a></p>
-        <p><span>Created:</span>2016-12-02, 19:55:35</p>
-        <p><span>Updated:</span>2016-12-02, 20:15:02</p>
+        <p><span>本文标题:</span><a href="/2016/12/02/QuickSort-in-C/">QuickSort in C</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
+        <p><span>发布时间:</span>2016-12-02, 19:55:35</p>
+        <p><span>最后更新:</span>2016-12-02, 20:24:01</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2016/12/02/QuickSort-in-C/" title="QuickSort in C">https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/</a>
-            <span class="copy-path" data-clipboard-text="From https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/02/QuickSort-in-C/" title="QuickSort in C">https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -366,7 +366,7 @@
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
+        <strong class="toc-title">文章目录</strong>
         
             
         
@@ -382,10 +382,10 @@
         }
     </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
@@ -443,13 +443,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/" title="Next: Workflow for automatic extract and jump to the true URL of 91porn.com">
+            <a href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/" title="下一篇: Workflow for automatic extract and jump to the true URL of 91porn.com">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -472,14 +472,14 @@
                 2016 江南消夏
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -488,7 +488,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -542,9 +542,9 @@ MathJax.Hub.Queue(function() {
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
