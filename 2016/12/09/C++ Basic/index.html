@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://frankchen0130.github.io/2016/12/09/C++ Basic/index.html">
 <meta property="og:site_name" content="loop in data">
 <meta property="og:description" content="本文主要内容关于C++的一些基本的概念和元素。">
-<meta property="og:updated_time" content="2016-12-09T13:44:21.000Z">
+<meta property="og:updated_time" content="2016-12-09T13:54:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ Cheat Sheet">
 <meta name="twitter:description" content="本文主要内容关于C++的一些基本的概念和元素。">
@@ -138,13 +138,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -187,7 +187,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-C/">Algorithm C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-Python/">Algorithm, Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Genetic-Algorithm/">Genetic Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-DS-Store/">Mac, .DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP-deep-learning/">NLP deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/">Old_Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-LSTM/">RNN LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-deep-learning/">RNN deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-Python/">Algorithm, Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Genetic-Algorithm/">Genetic Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-DS-Store/">Mac, .DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP-deep-learning/">NLP deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/">Old_Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-LSTM/">RNN LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-deep-learning/">RNN deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
                     </div>
                 </section>
                 
@@ -268,7 +268,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap"><article id="post-C++ Basic" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -382,9 +382,7 @@
 <td>AND</td>
 </tr>
 <tr>
-<td>\</td>
-<td>\</td>
-<td></td>
+<td>&verbar;&verbar;</td>
 <td>OR</td>
 </tr>
 <tr>
@@ -410,38 +408,44 @@
 <li>double：8B</li>
 <li>long double：8B或者16B</li>
 </ul>
-<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">int a[6];</div><div class="line">int b[3] = &#123;1, 2, 3&#125;;</div><div class="line">int x[3][4];//多维</div><div class="line">int x[2][3] = &#123;</div><div class="line">    &#123;2,3,4&#125;,</div><div class="line">    &#123;1,2,3&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p><code>&amp;</code>可得到某变量的内存地址，指针pointer是一种变量，它的值是某个变量的内存地址。<br>申明指针，需要指定类型，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int *ip </div><div class="line">float *fp</div><div class="line">double *dp</div><div class="line">char *ch</div></pre></td></tr></table></figure></p>
+<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a[<span class="number">6</span>];</div><div class="line"><span class="keyword">int</span> b[<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</div><div class="line"><span class="keyword">int</span> x[<span class="number">3</span>][<span class="number">4</span>];<span class="comment">//多维</span></div><div class="line"><span class="keyword">int</span> x[<span class="number">2</span>][<span class="number">3</span>] = &#123;</div><div class="line">    &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,</div><div class="line">    &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p><code>&amp;</code>可得到某变量的内存地址，指针pointer是一种变量，它的值是某个变量的内存地址。<br>申明指针，需要指定类型，<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> *ip </div><div class="line"><span class="keyword">float</span> *fp</div><div class="line"><span class="keyword">double</span> *dp</div><div class="line"><span class="keyword">char</span> *ch</div></pre></td></tr></table></figure></p>
 <h2 id="指针操作"><a href="#指针操作" class="headerlink" title="指针操作"></a>指针操作</h2><p>有两种操作：</p>
 <ul>
 <li>Address-of: &amp; 返回内存地址</li>
 <li>Contents-of: * 返回此地址上的值</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">int var = 50;</div><div class="line">int *p;</div><div class="line">p = &amp;var;</div><div class="line"></div><div class="line">cout &lt;&lt; var &lt;&lt; endl; // 50</div><div class="line">cout &lt;&lt; p &lt;&lt; endl; // 0x29fee8 var的内存地址</div><div class="line">cout &lt;&lt; *p &lt;&lt; endl; // 50 储存在p中的地址上的值</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> var = <span class="number">50</span>;</div><div class="line"><span class="keyword">int</span> *p;</div><div class="line">p = &amp;var;</div><div class="line"></div><div class="line"><span class="built_in">cout</span> &lt;&lt; var &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 50</span></div><div class="line"><span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 0x29fee8 var的内存地址</span></div><div class="line"><span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 50 储存在p中的地址上的值</span></div></pre></td></tr></table></figure>
 <h2 id="静态动态内存"><a href="#静态动态内存" class="headerlink" title="静态动态内存"></a>静态动态内存</h2><ul>
 <li>stack：栈，存放local variables</li>
 <li>heap：堆，动态申明内存时使用</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int *p = new int;</div><div class="line">*p = 5;</div><div class="line">//此时p在stack中而5存放在heap</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>;</div><div class="line">*p = <span class="number">5</span>;</div><div class="line"><span class="comment">//此时p在stack中而5存放在heap</span></div></pre></td></tr></table></figure>
 <ul>
 <li><code>delete</code>释放内存</li>
 <li>游荡的指针</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">int *p = new int; //请求内存</div><div class="line">*p = 5; //储存值</div><div class="line">cout &lt;&lt; *p &lt;&lt; endl; //使用值</div><div class="line">delete p; //清空内存</div><div class="line"></div><div class="line">p = new int; // reuse</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>; <span class="comment">//请求内存</span></div><div class="line">*p = <span class="number">5</span>; <span class="comment">//储存值</span></div><div class="line"><span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//使用值</span></div><div class="line"><span class="keyword">delete</span> p; <span class="comment">//清空内存</span></div><div class="line"></div><div class="line">p = <span class="keyword">new</span> <span class="keyword">int</span>; <span class="comment">// reuse</span></div></pre></td></tr></table></figure>
 <ul>
-<li>对于数组：</li>
+<li>对于数组：<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> *p = <span class="literal">NULL</span>; <span class="comment">//使用NULL初始化指针</span></div><div class="line">p = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">20</span>];</div><div class="line"><span class="keyword">delete</span> [] p;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">int *p = NULL; //使用NULL初始化指针</div><div class="line">p = new int[20];</div><div class="line">delete [] p;</div><div class="line">``` </div><div class="line"> </div><div class="line"># 函数</div><div class="line"></div><div class="line"></div><div class="line">## 基本型</div></pre></td></tr></table></figure>
-<p>return_type func_name(parameter list)<br>{<br>    body of the fuction<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 申明</div><div class="line"></div><div class="line"> - 函数需要在被调用前申明：要么放在被调用之前，要么在被调用之前要添加一行函数调用</div></pre></td></tr></table></figure></p>
-<p>#include <iostream><br>using namespace std;</iostream></p>
-<p>void PrintSomething(); //申明</p>
-<p>int main()<br>{<br>    PrintSomething();<br>    return 0;<br>}</p>
-<p>void PrintSomething(){<br>    cout &lt;&lt; “Hello” &lt;&lt; endl;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 函数接受的参数需要申明类型</div><div class="line"></div><div class="line">- srand()函数指定种子</div></pre></td></tr></table></figure></p>
-<p>#include <iostream></iostream></p>
-<p>#include <cstdlib><br>using namespace std;</cstdlib></p>
-<p>void PrintSomething(); //申明</p>
-<p>int main()<br>{<br>    strand(98);<br>    cout &lt;&lt; rand();</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 默认参数</div><div class="line"></div><div class="line">``` </div><div class="line">int sum(int a, int b = 42)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="基本型"><a href="#基本型" class="headerlink" title="基本型"></a>基本型</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">return_type <span class="title">func_name</span><span class="params">(parameter <span class="built_in">list</span>)</span></span></div><div class="line">&#123;</div><div class="line">    body of the fuction</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="申明"><a href="#申明" class="headerlink" title="申明"></a>申明</h2><ul>
+<li>函数需要在被调用前申明：要么放在被调用之前，要么在被调用之前要添加一行函数调用</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintSomething</span><span class="params">()</span></span>; <span class="comment">//申明</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    PrintSomething();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintSomething</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>函数接受的参数需要申明类型</p>
+</li>
+<li><p>srand()函数指定种子</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintSomething</span><span class="params">()</span></span>; <span class="comment">//申明</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    strand(<span class="number">98</span>);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; rand();</div></pre></td></tr></table></figure>
+<ul>
+<li>默认参数</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b = <span class="number">42</span>)</span></span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>Overloading：允许创建相同名字但是不同参数的函数</li>
 </ul>
@@ -461,12 +465,12 @@
 <ul>
 <li>public </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class BankAccount&#123;</div><div class="line">    public:</div><div class="line">        void sayHi()&#123;</div><div class="line">            cout &lt;&lt; &quot;Hi&quot; &lt;&lt; endl;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void main()&#123;</div><div class="line">    BanKAccount test;</div><div class="line">    test.sayHi();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> BankAccount&#123;</div><div class="line">    <span class="keyword">public</span>:</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">sayHi</span><span class="params">()</span></span>&#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"Hi"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    BanKAccount test;</div><div class="line">    test.sayHi();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>Abstraction（抽象化）</li>
 <li>数据隐藏</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">class myClass&#123;</div><div class="line">    public:</div><div class="line">        void setName(string x)&#123;</div><div class="line">            name = x;</div><div class="line">        &#125;</div><div class="line">        string getName()&#123;</div><div class="line">            return name;</div><div class="line">        &#125;</div><div class="line">    private:</div><div class="line">        string name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    myClass myObj;</div><div class="line">    myObj.setName(&quot;Frank&quot;);</div><div class="line">    cout &lt;&lt; myObj.getName();</div><div class="line">    </div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">class</span> myClass&#123;</div><div class="line">    <span class="keyword">public</span>:</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">setName</span><span class="params">(<span class="built_in">string</span> x)</span></span>&#123;</div><div class="line">            name = x;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="built_in">string</span> <span class="title">getName</span><span class="params">()</span></span>&#123;</div><div class="line">            <span class="keyword">return</span> name;</div><div class="line">        &#125;</div><div class="line">    <span class="keyword">private</span>:</div><div class="line">        <span class="built_in">string</span> name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    myClass myObj;</div><div class="line">    myObj.setName(<span class="string">"Frank"</span>);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; myObj.getName();</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>构造器</li>
 </ul>
@@ -479,17 +483,17 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2016/12/09/C++ Basic/">C++ Cheat Sheet</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">江南消夏</a></p>
-        <p><span>Created:</span>2016-12-09, 16:55:15</p>
-        <p><span>Updated:</span>2016-12-09, 21:44:21</p>
+        <p><span>本文标题:</span><a href="/2016/12/09/C++ Basic/">C++ Cheat Sheet</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
+        <p><span>发布时间:</span>2016-12-09, 16:55:15</p>
+        <p><span>最后更新:</span>2016-12-09, 21:54:59</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2016/12/09/C++ Basic/" title="C++ Cheat Sheet">https://frankchen0130.github.io/2016/12/09/C++ Basic/</a>
-            <span class="copy-path" data-clipboard-text="From https://frankchen0130.github.io/2016/12/09/C++ Basic/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/09/C++ Basic/" title="C++ Cheat Sheet">https://frankchen0130.github.io/2016/12/09/C++ Basic/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://frankchen0130.github.io/2016/12/09/C++ Basic/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -500,7 +504,7 @@
         
             <div id="article-nav-older" class="article-nav-title">
                 <a href="/2016/12/02/QuickSort-in-C/">
-                    QuickSort in C
+                    QuickSort in C &amp; Python
                 </a>
             </div>
         
@@ -510,9 +514,9 @@
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
+        <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-number">2.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注释"><span class="toc-number">3.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数值运算"><span class="toc-number">4.</span> <span class="toc-text">数值运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#赋值运算"><span class="toc-number">5.</span> <span class="toc-text">赋值运算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#条件和循环"><span class="toc-number"></span> <span class="toc-text">条件和循环</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#if-语句"><span class="toc-number">1.</span> <span class="toc-text">if 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关系运算符"><span class="toc-number">2.</span> <span class="toc-text">关系运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#else-语句"><span class="toc-number">3.</span> <span class="toc-text">else 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#while循环"><span class="toc-number">4.</span> <span class="toc-text">while循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for循环"><span class="toc-number">5.</span> <span class="toc-text">for循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#do…while-循环"><span class="toc-number">6.</span> <span class="toc-text">do…while 循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#switch-语句"><span class="toc-number">7.</span> <span class="toc-text">switch 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑运算"><span class="toc-number">8.</span> <span class="toc-text">逻辑运算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据类型"><span class="toc-number"></span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符"><span class="toc-number">1.</span> <span class="toc-text">字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布尔"><span class="toc-number">2.</span> <span class="toc-text">布尔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#int-float-double"><span class="toc-number">3.</span> <span class="toc-text">int, float, double</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arrays"><span class="toc-number">4.</span> <span class="toc-text">Arrays</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指针"><span class="toc-number">5.</span> <span class="toc-text">指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指针操作"><span class="toc-number">6.</span> <span class="toc-text">指针操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态动态内存"><span class="toc-number">7.</span> <span class="toc-text">静态动态内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传递参数"><span class="toc-number">8.</span> <span class="toc-text">传递参数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类和对象"><span class="toc-number"></span> <span class="toc-text">类和对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象"><span class="toc-number">1.</span> <span class="toc-text">对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类"><span class="toc-number">2.</span> <span class="toc-text">类</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出"><span class="toc-number">2.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注释"><span class="toc-number">3.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数值运算"><span class="toc-number">4.</span> <span class="toc-text">数值运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#赋值运算"><span class="toc-number">5.</span> <span class="toc-text">赋值运算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#条件和循环"><span class="toc-number"></span> <span class="toc-text">条件和循环</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#if-语句"><span class="toc-number">1.</span> <span class="toc-text">if 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关系运算符"><span class="toc-number">2.</span> <span class="toc-text">关系运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#else-语句"><span class="toc-number">3.</span> <span class="toc-text">else 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#while循环"><span class="toc-number">4.</span> <span class="toc-text">while循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for循环"><span class="toc-number">5.</span> <span class="toc-text">for循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#do…while-循环"><span class="toc-number">6.</span> <span class="toc-text">do…while 循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#switch-语句"><span class="toc-number">7.</span> <span class="toc-text">switch 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑运算"><span class="toc-number">8.</span> <span class="toc-text">逻辑运算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据类型"><span class="toc-number"></span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符"><span class="toc-number">1.</span> <span class="toc-text">字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布尔"><span class="toc-number">2.</span> <span class="toc-text">布尔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#int-float-double"><span class="toc-number">3.</span> <span class="toc-text">int, float, double</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arrays"><span class="toc-number">4.</span> <span class="toc-text">Arrays</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指针"><span class="toc-number">5.</span> <span class="toc-text">指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指针操作"><span class="toc-number">6.</span> <span class="toc-text">指针操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态动态内存"><span class="toc-number">7.</span> <span class="toc-text">静态动态内存</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数"><span class="toc-number"></span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本型"><span class="toc-number">1.</span> <span class="toc-text">基本型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#申明"><span class="toc-number">2.</span> <span class="toc-text">申明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传递参数"><span class="toc-number">3.</span> <span class="toc-text">传递参数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类和对象"><span class="toc-number"></span> <span class="toc-text">类和对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象"><span class="toc-number">1.</span> <span class="toc-text">对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类"><span class="toc-number">2.</span> <span class="toc-text">类</span></a></li></ol>
         
     </div>
     <style>
@@ -526,10 +530,10 @@
         }
     </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
@@ -587,19 +591,19 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/02/QuickSort-in-C/" title="Next: QuickSort in C">
+            <a href="/2016/12/02/QuickSort-in-C/" title="下一篇: QuickSort in C &amp; Python">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/09/C++ Basic/">C++ Cheat Sheet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/QuickSort-in-C/">QuickSort in C</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/">Workflow for automatic extract and jump to the true URL of 91porn.com</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/">Devide and Conquer Counting Inversions with Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/18/Understanding-EM-algorithm/">Understanding EM algorithm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/">Way to solving the .DS_Store problem of Mac</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/">Vim 练级攻略一</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/">Vim 练级攻略二</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/">遗传算法简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/07/2016-06-07-edit-dns-of-ubuntu/">ubuntu下修改DNS并且避免重启失效的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-understanding-lstm-networks/">理解LSTM网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-rephil-and-mapreduce/">Rephil和MapReduce： 描述长尾数据的数学模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-note-for-cs224d-1/">note for CS224d:1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/2016-05-26-char-rnn-chinese/">char-rnn-chinese</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/2016-05-25-pythonoop/">Python OOP（Object Oriented Programming）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/24/2016-05-24-di-pian-bo-ke/">使用文本处理命令获取链接批量下载</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/09/C++ Basic/">C++ Cheat Sheet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/QuickSort-in-C/">QuickSort in C & Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/">Workflow for automatic extract and jump to the true URL of 91porn.com</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/">Devide and Conquer Counting Inversions with Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/18/Understanding-EM-algorithm/">Understanding EM algorithm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/">Way to solving the .DS_Store problem of Mac</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/">Vim 练级攻略二</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/">Vim 练级攻略一</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/">遗传算法简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/07/2016-06-07-edit-dns-of-ubuntu/">ubuntu下修改DNS并且避免重启失效的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-understanding-lstm-networks/">理解LSTM网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-rephil-and-mapreduce/">Rephil和MapReduce： 描述长尾数据的数学模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-note-for-cs224d-1/">note for CS224d:1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/2016-05-26-char-rnn-chinese/">char-rnn-chinese</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/2016-05-25-pythonoop/">Python OOP（Object Oriented Programming）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/24/2016-05-24-di-pian-bo-ke/">使用文本处理命令获取链接批量下载</a></li></ul>
 
 
 
@@ -616,14 +620,14 @@
                 2016 江南消夏
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -632,7 +636,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -686,9 +690,9 @@ MathJax.Hub.Queue(function() {
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window

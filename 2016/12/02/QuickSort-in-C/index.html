@@ -17,7 +17,7 @@
 
 <meta name="description" content="本文主要关于演示C语言中的快排算法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="QuickSort in C">
+<meta property="og:title" content="QuickSort in C & Python">
 <meta property="og:url" content="https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/index.html">
 <meta property="og:site_name" content="loop in data">
 <meta property="og:description" content="本文主要关于演示C语言中的快排算法。">
@@ -31,9 +31,9 @@
 <meta property="og:image" content="https://frankchen0130.github.io/images/2016/12/QuickSort/QuickSort.008.jpeg">
 <meta property="og:image" content="https://frankchen0130.github.io/images/2016/12/QuickSort/QuickSort.009.jpeg">
 <meta property="og:image" content="https://frankchen0130.github.io/images/2016/12/QuickSort/QuickSort.010.jpeg">
-<meta property="og:updated_time" content="2016-12-02T12:24:01.000Z">
+<meta property="og:updated_time" content="2016-12-10T07:29:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QuickSort in C">
+<meta name="twitter:title" content="QuickSort in C & Python">
 <meta name="twitter:description" content="本文主要关于演示C语言中的快排算法。">
 <meta name="twitter:image" content="https://frankchen0130.github.io/images/2016/12/QuickSort/QuickSort.001.jpeg">
 
@@ -67,7 +67,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>QuickSort in C | loop in data</title>
+<title>QuickSort in C &amp; Python | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -149,13 +149,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -198,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-C/">Algorithm C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-Python/">Algorithm, Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Genetic-Algorithm/">Genetic Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-DS-Store/">Mac, .DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP-deep-learning/">NLP deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/">Old_Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-LSTM/">RNN LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-deep-learning/">RNN deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm-Python/">Algorithm, Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Genetic-Algorithm/">Genetic Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-DS-Store/">Mac, .DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP-deep-learning/">NLP deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/">Old_Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-LSTM/">RNN LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN-deep-learning/">RNN deep-learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
                     </div>
                 </section>
                 
@@ -279,7 +279,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap"><article id="post-QuickSort-in-C" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -300,7 +300,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      QuickSort in C
+      QuickSort in C &amp; Python
     </h1>
   
 
@@ -311,7 +311,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm-C/">Algorithm C</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -325,7 +325,12 @@
 <p>大名鼎鼎的QuickSort–快速排序算法，如此的高效、快速而优雅，今天让我们用图片和文字形象地展示一下它吧！</p>
 <p>快排是一种分治算法，其主要思想在于通过选取一个基准Pivot将序列分为左右两个子序列，其中左序列的数都小于等于Pivot，右边的都大于等于Pivot，再在这两个子序列上递归调用快排算法即可。</p>
 <p>而理解快排算法的核心就在于分解这个步骤，这里我们先给出代码，再用图片展示步骤。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  main.c</span></div><div class="line"><span class="comment">//  QuickSort</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by frankchen on 12/2/16.</span></div><div class="line"><span class="comment">//  Copyright © 2016 frankchen. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> s[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> s[],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[N], i;</div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"Enter %d numbers to be sorted: "</span>, N);</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;N; i++)</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</div><div class="line">    </div><div class="line">    QuickSort(a, <span class="number">0</span>, N<span class="number">-1</span>);</div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"In sorted order: \n"</span>);</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;N; i++)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//交换数组中的两个元素</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> s[],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> temp;</div><div class="line">    temp=s[i];</div><div class="line">    s[i]=s[j];</div><div class="line">    s[j]=temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> s[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, pivot;<span class="comment">//记录界限的位置</span></div><div class="line">    <span class="keyword">if</span>(low &lt; high)<span class="comment">//只有数组中元素大于1时才操作</span></div><div class="line">    &#123;</div><div class="line">        pivot = low;<span class="comment">//选取第一个元素作为基准</span></div><div class="line">        <span class="keyword">for</span>(i=low+<span class="number">1</span>; i&lt;=high; i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (s[i] &lt; s[low])</div><div class="line">                swap(s, ++pivot, i);</div><div class="line">        &#125;</div><div class="line">        swap(s, low, pivot);<span class="comment">//基准元与界限交换</span></div><div class="line">        QuickSort(s, low, pivot<span class="number">-1</span>);</div><div class="line">        QuickSort(s, pivot+<span class="number">1</span>, high);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- 为了排序整个序列，只需要调用QuickSort(R，<span class="number">0</span>，n<span class="number">-1</span>)即可完成对R[<span class="number">0.</span>.n<span class="number">-1</span>]的排序。</div><div class="line">- 这里选取了第一个元素作为基准，如果输入是随机序列，那么没什么大碍，但是如果输入是预排序或者逆序的，那么会产生坏的排序，使得时间复杂度提高，随机选取基准是一种可行的方法，另外一种是选取开头、中间点和末位点的中位数。</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">//  main.c</div><div class="line">//  QuickSort</div><div class="line">//</div><div class="line">//  Created by frankchen on 12/2/16.</div><div class="line">//  Copyright © 2016 frankchen. All rights reserved.</div><div class="line">//</div><div class="line"></div><div class="line"></div><div class="line">#include &lt;stdio.h&gt;</div><div class="line"></div><div class="line">#define N 5</div><div class="line"></div><div class="line"></div><div class="line">void QuickSort(int s[],int low,int high);</div><div class="line">void swap(int s[],int i,int j);</div><div class="line"></div><div class="line">int main(void)&#123;</div><div class="line">    int a[N], i;</div><div class="line">    </div><div class="line">    printf("Enter %d numbers to be sorted: ", N);</div><div class="line">    for (i=0; i&lt;N; i++)</div><div class="line">        scanf("%d", &amp;a[i]);</div><div class="line">    </div><div class="line">    QuickSort(a, 0, N-1);</div><div class="line">    </div><div class="line">    printf("In sorted order: \n");</div><div class="line">    for (i=0; i&lt;N; i++)</div><div class="line">        printf("%d ", a[i]);</div><div class="line">    printf("\n");</div><div class="line">    </div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//交换数组中的两个元素</div><div class="line">void swap(int s[],int i,int j)</div><div class="line">&#123;</div><div class="line">    int temp;</div><div class="line">    temp=s[i];</div><div class="line">    s[i]=s[j];</div><div class="line">    s[j]=temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void QuickSort(int s[], int low, int high)</div><div class="line">&#123;</div><div class="line">    int i, pivot;//记录界限的位置</div><div class="line">    if(low &lt; high)//只有数组中元素大于1时才操作</div><div class="line">    &#123;</div><div class="line">        pivot = low;//选取第一个元素作为基准</div><div class="line">        for(i=low+1; i&lt;=high; i++)</div><div class="line">        &#123;</div><div class="line">            if (s[i] &lt; s[low])</div><div class="line">                swap(s, ++pivot, i);</div><div class="line">        &#125;</div><div class="line">        swap(s, low, pivot);//基准元与界限交换</div><div class="line">        QuickSort(s, low, pivot-1);</div><div class="line">        QuickSort(s, pivot+1, high);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">以下是Python版本：</div><div class="line"></div><div class="line">``` python</div><div class="line"></div><div class="line">class QuickSort(object):</div><div class="line">    def __init__(self, l):</div><div class="line">        '''</div><div class="line">        初始化</div><div class="line">        '''</div><div class="line">        self.l = l</div><div class="line">    </div><div class="line">    def __str__(self):</div><div class="line">        '''</div><div class="line">        打印排序后的list</div><div class="line">        '''</div><div class="line">        return 'list\t:%s' % (self.l)</div><div class="line">        </div><div class="line">    def swap(self, s, i, j):</div><div class="line">        '''</div><div class="line">        交换位置</div><div class="line">        '''</div><div class="line">        tmp = 0</div><div class="line">        tmp = s[i]</div><div class="line">        s[i] = s[j]</div><div class="line">        s[j] = tmp</div><div class="line"></div><div class="line">    def QuickSort(self, s, low, high):</div><div class="line">        i = 0; pivot = 0</div><div class="line">        if low &lt; high:</div><div class="line">            pivot = low</div><div class="line">            i = low + 1</div><div class="line">            for i in range(i, high+1):</div><div class="line">                if s[i] &lt; s[low]:</div><div class="line">                    pivot += 1</div><div class="line">                    self.swap(s, pivot, i)</div><div class="line">            self.swap(s, low, pivot)</div><div class="line">            self.QuickSort(s, low, pivot-1)</div><div class="line">            self.QuickSort(s, pivot+1, high)</div><div class="line">        return s</div><div class="line">    </div><div class="line"></div><div class="line"></div><div class="line">def getList():</div><div class="line">    '''</div><div class="line">    读取文件内的数存入数组</div><div class="line">    '''</div><div class="line">    MyFile = "QuickSort.txt"</div><div class="line">    l = []</div><div class="line">    with open(MyFile) as f:</div><div class="line">        for line in f.readlines():</div><div class="line">            l.append(int(line))</div><div class="line">    return l</div><div class="line"></div><div class="line">def Sort():</div><div class="line">    '''</div><div class="line">    排序</div><div class="line">    '''</div><div class="line">    # 创建QuickSort对象</div><div class="line">    l = getList()</div><div class="line">    p = QuickSort(l)</div><div class="line">    p.QuickSort(l, 0, N-1)</div><div class="line">    return p</div><div class="line"></div><div class="line">if __name__ == "__main__":</div><div class="line">    p = Sort()</div><div class="line">    print p</div></pre></td></tr></table></figure>
+<ul>
+<li>为了排序整个序列，只需要调用QuickSort(R，0，n-1)即可完成对R[0..n-1]的排序。</li>
+<li>这里选取了第一个元素作为基准，如果输入是随机序列，那么没什么大碍，但是如果输入是预排序或者逆序的，那么会产生坏的排序，使得时间复杂度提高，随机选取基准是一种可行的方法，另外一种是选取开头、中间点和末位点的中位数。</li>
+</ul>
+<p>```</p>
 <p><img src="/images/2016/12/QuickSort/QuickSort.001.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.002.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.003.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.004.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.005.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.006.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.007.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.008.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.009.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.010.jpeg" alt="image"></p>
 
       
@@ -335,17 +340,17 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2016/12/02/QuickSort-in-C/">QuickSort in C</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">江南消夏</a></p>
-        <p><span>Created:</span>2016-12-02, 19:55:35</p>
-        <p><span>Updated:</span>2016-12-02, 20:24:01</p>
+        <p><span>本文标题:</span><a href="/2016/12/02/QuickSort-in-C/">QuickSort in C &amp; Python</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
+        <p><span>发布时间:</span>2016-12-02, 19:55:35</p>
+        <p><span>最后更新:</span>2016-12-10, 15:29:59</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2016/12/02/QuickSort-in-C/" title="QuickSort in C">https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/</a>
-            <span class="copy-path" data-clipboard-text="From https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/02/QuickSort-in-C/" title="QuickSort in C &amp; Python">https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -372,7 +377,7 @@
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
+        <strong class="toc-title">文章目录</strong>
         
             
         
@@ -388,10 +393,10 @@
         }
     </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
@@ -410,7 +415,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"QuickSort in C　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"QuickSort in C & Python　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -426,7 +431,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/02/QuickSort-in-C/" data-title="QuickSort in C" data-url="https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/02/QuickSort-in-C/" data-title="QuickSort in C &amp; Python" data-url="https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -449,21 +454,21 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/09/C++ Basic/" title="Pre: C++ Cheat Sheet">
+            <a href="/2016/12/09/C++ Basic/" title="上一篇: C++ Cheat Sheet">
                 <i class="fa fa-angle-left"></i>
             </a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/" title="Next: Workflow for automatic extract and jump to the true URL of 91porn.com">
+            <a href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/" title="下一篇: Workflow for automatic extract and jump to the true URL of 91porn.com">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/09/C++ Basic/">C++ Cheat Sheet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/QuickSort-in-C/">QuickSort in C</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/">Workflow for automatic extract and jump to the true URL of 91porn.com</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/">Devide and Conquer Counting Inversions with Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/18/Understanding-EM-algorithm/">Understanding EM algorithm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/">Way to solving the .DS_Store problem of Mac</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/">Vim 练级攻略一</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/">Vim 练级攻略二</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/">遗传算法简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/07/2016-06-07-edit-dns-of-ubuntu/">ubuntu下修改DNS并且避免重启失效的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-understanding-lstm-networks/">理解LSTM网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-rephil-and-mapreduce/">Rephil和MapReduce： 描述长尾数据的数学模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-note-for-cs224d-1/">note for CS224d:1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/2016-05-26-char-rnn-chinese/">char-rnn-chinese</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/2016-05-25-pythonoop/">Python OOP（Object Oriented Programming）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/24/2016-05-24-di-pian-bo-ke/">使用文本处理命令获取链接批量下载</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/09/C++ Basic/">C++ Cheat Sheet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/QuickSort-in-C/">QuickSort in C & Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/">Workflow for automatic extract and jump to the true URL of 91porn.com</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/">Devide and Conquer Counting Inversions with Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/18/Understanding-EM-algorithm/">Understanding EM algorithm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/">Way to solving the .DS_Store problem of Mac</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/">Vim 练级攻略二</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/">Vim 练级攻略一</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/">遗传算法简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/07/2016-06-07-edit-dns-of-ubuntu/">ubuntu下修改DNS并且避免重启失效的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-understanding-lstm-networks/">理解LSTM网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-rephil-and-mapreduce/">Rephil和MapReduce： 描述长尾数据的数学模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-note-for-cs224d-1/">note for CS224d:1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/2016-05-26-char-rnn-chinese/">char-rnn-chinese</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/2016-05-25-pythonoop/">Python OOP（Object Oriented Programming）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/24/2016-05-24-di-pian-bo-ke/">使用文本处理命令获取链接批量下载</a></li></ul>
 
 
 
@@ -480,14 +485,14 @@
                 2016 江南消夏
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -496,7 +501,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -550,9 +555,9 @@ MathJax.Hub.Queue(function() {
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
