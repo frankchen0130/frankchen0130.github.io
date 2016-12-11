@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://frankchen0130.github.io/2016/12/11/pointer-and/index.html">
 <meta property="og:site_name" content="loop in data">
 <meta property="og:description" content="本文主要关于演示指针与自增自减运算符结合的时候的运算顺序。">
-<meta property="og:updated_time" content="2016-12-11T08:53:04.000Z">
+<meta property="og:updated_time" content="2016-12-11T08:57:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pointer and ++--">
 <meta name="twitter:description" content="本文主要关于演示指针与自增自减运算符结合的时候的运算顺序。">
@@ -310,11 +310,36 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文主要关于演示指针与自增自减运算符结合的时候的运算顺序。<br><a id="more"></a><br>|表达式|含义|<br>|:-:|:-:|<br>|<code>*p++</code>或<code>*(p++)</code>|自增前表达式的值是<em>p，然后自增p|<br>|`(</em>p)++<code>|自增前表达式的值是*p，然后自增*p|
-|</code><em>++p<code>或</code></em>(++p)<code>|先自增p，自增后表达式的值是*p|
-|</code>++<em>p<code>或</code>++(</em>p)`|先自增<em>p，自增后表达式的值是</em>p|</p>
-<p>原理是自增和<em>在一起时结合顺序由右到左，比如`</em>p++<code>，先运算</code>p++<code>，也就是</code>p<code>当前的值，再运算</code>*p`对寻址，再对p自增。</p>
-<p>注意以上所有的表达式返回的值都是<em>p，只不过对分别是对p和</em>p的自增操作。</p>
+        <p>本文主要关于演示指针与自增自减运算符结合的时候的运算顺序。</p>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">表达式</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>*p++</code>或<code>*(p++)</code></td>
+<td style="text-align:center">自增前表达式的值是<code>*p</code>，然后自增<code>p</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>(*p)++</code></td>
+<td style="text-align:center">自增前表达式的值是<code>*p</code>，然后自增<code>*p</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>*++p</code>或<code>*(++p)</code></td>
+<td style="text-align:center">先自增<code>p</code>，自增后表达式的值是<code>*p</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>++*p</code>或<code>++(*p)</code></td>
+<td style="text-align:center">先自增<code>*p</code>，自增后表达式的值是<code>*p</code></td>
+</tr>
+</tbody>
+</table>
+<p>原理是自增和<code>*</code>在一起时结合顺序由右到左，比如<code>*p++</code>，先运算<code>p++</code>，也就是<code>p</code>当前的值，再运算<code>*p</code>对寻址，再对<code>p</code>自增。</p>
+<p>注意以上所有的表达式返回的值都是<code>*p</code>，只不过对分别是对<code>p</code>和<code>*p</code>的自增操作。</p>
 
       
     </div>
@@ -326,7 +351,7 @@
         <p><span>本文标题:</span><a href="/2016/12/11/pointer-and/">pointer and ++--</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
         <p><span>发布时间:</span>2016-12-11, 16:50:45</p>
-        <p><span>最后更新:</span>2016-12-11, 16:53:04</p>
+        <p><span>最后更新:</span>2016-12-11, 16:57:08</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/11/pointer-and/" title="pointer and ++--">https://frankchen0130.github.io/2016/12/11/pointer-and/</a>
             <span class="copy-path" data-clipboard-text="原文: https://frankchen0130.github.io/2016/12/11/pointer-and/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
