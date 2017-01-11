@@ -15,19 +15,16 @@
 
 
 
-<meta name="description" content="本文有关logistic regression的公式相关的手推，包括假说函数、极大似然估计以及梯度下降算法。">
+<meta name="description" content="近来偶然读到林彪元帅关于如何进行军事工作写的工作总结，不光是军事，应用到日常工作、做事也是很好的指导，这是林彪不到30岁时候写下的文字，顿时明白为何人家23岁就可以当军长的原因。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="logistic regression的公式手推相关">
-<meta property="og:url" content="http://frankchen.xyz/2017/01/09/logistic-regression/index.html">
+<meta property="og:title" content="fuck">
+<meta property="og:url" content="http://frankchen.xyz/2017/01/11/fuck/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="本文有关logistic regression的公式相关的手推，包括假说函数、极大似然估计以及梯度下降算法。">
-<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\octave-workspace.png">
-<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\Ut7vvXnxEead-BJkoDOYOw_f719f2858d78dd66d80c5ec0d8e6b3fa_Logistic_regression_cost_function_negative_class.png">
-<meta property="og:updated_time" content="2017-01-09T13:25:11.000Z">
+<meta property="og:description" content="近来偶然读到林彪元帅关于如何进行军事工作写的工作总结，不光是军事，应用到日常工作、做事也是很好的指导，这是林彪不到30岁时候写下的文字，顿时明白为何人家23岁就可以当军长的原因。">
+<meta property="og:updated_time" content="2017-01-11T07:25:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="logistic regression的公式手推相关">
-<meta name="twitter:description" content="本文有关logistic regression的公式相关的手推，包括假说函数、极大似然估计以及梯度下降算法。">
-<meta name="twitter:image" content="http://frankchen.xyz/\images\2017\01\octave-workspace.png">
+<meta name="twitter:title" content="fuck">
+<meta name="twitter:description" content="近来偶然读到林彪元帅关于如何进行军事工作写的工作总结，不光是军事，应用到日常工作、做事也是很好的指导，这是林彪不到30岁时候写下的文字，顿时明白为何人家23岁就可以当军长的原因。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>logistic regression的公式手推相关 | loop in data</title>
+<title>fuck | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -277,11 +274,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-logistic-regression" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-fuck" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/09/logistic-regression/" class="article-date">
-      <time datetime="2017-01-09T07:56:59.000Z" itemprop="datePublished">2017-01-09</time>
+      <a href="/2017/01/11/fuck/" class="article-date">
+      <time datetime="2017-01-11T07:19:05.000Z" itemprop="datePublished">2017-01-11</time>
 </a>
 
 
@@ -296,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      logistic regression的公式手推相关
+      fuck
     </h1>
   
 
@@ -306,10 +303,6 @@
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -317,46 +310,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文有关logistic regression的公式相关的手推，包括假说函数、极大似然估计以及梯度下降算法。</p>
+        <p>近来偶然读到林彪元帅关于如何进行军事工作写的工作总结，不光是军事，应用到日常工作、做事也是很好的指导，这是林彪不到30岁时候写下的文字，顿时明白为何人家23岁就可以当军长的原因。</p>
 <a id="more"></a>
-<h2 id="Hypothesis"><a href="#Hypothesis" class="headerlink" title="Hypothesis"></a>Hypothesis</h2><p>首选我们要明确，logistic regression虽然叫“回归”，但是它却是用来做分类的，也是最最常用的分类机器学习算法。其假说模型为：</p>
-<p>$$<br>h_{\theta}(x) = g(\theta ^T x)<br>$$</p>
-<p>其中$g(z) = \frac{1}{1+e^{-z}}$，so</p>
-<p>$$<br>h_{\theta}(x) = \frac{1}{1+e^{-\theta ^T x}}<br>$$</p>
-<p>可以看到，函数主体和线性回归一样，都是样本与参数的内积，但是逻辑回归是用来打分的，也就是判断样本是正负例的概率，需要$g(z)$也就是sigmoid或者logistics函数来将这个内积映射到一个区间(0,1)，所以实际上</p>
-<p>$$<br>h_{\theta}(x) = p(y=1 | x;\theta)<br>$$</p>
-<p>以上只是得出了样本点是正例的概率，到底预测它是正例还是负例，我们还需要一个decision boundary，例如</p>
-<p>$$<br>h_{\theta}(x) \ge 0.5 \rightarrow y=1 \<br>h_{\theta}(x) \lt 0.5 \rightarrow y=0<br>$$</p>
-<p>由于sigmoid函数的形状我们容易得到</p>
-<p>$$<br>\theta ^T x \ge 0 \rightarrow y=1 \<br>\theta ^T x \lt 0 \rightarrow y=0<br>$$</p>
-<p>当然，decision boundary属于假说函数的一部分，不一定就是0.5.</p>
-<h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><p>二元分类可以看做是一个伯努利分布，又叫做0-1分布，上面提到<br>$$<br>p(y=1 | x;\theta) = h_{\theta}(x)<br>$$</p>
-<p>那么自然有</p>
-<p>$$<br>p(y=0 | x;\theta) = 1 - h_{\theta}(x)<br>$$</p>
-<p>那么总体分布也就是得到一个观测值的概率可以用Trick写成<br>$$<br>p(y | x;\theta) = (h_{\theta}(x))^y (1 - h_{\theta}(x^i))^{(1-y)}<br>$$</p>
-<p>因为每一个样本和其他样本是独立同分布的，把它们的概率相乘得到似然函数，</p>
-<p>$$<br>L(\theta) = \prod_{i=1}^{m}((h_{\theta}(x^i))^{y^i} (1 - h_{\theta}(x^i))^{(1-y^i)})<br>$$<br>为计算方便，取对数，得到</p>
-<p>$$<br>l(\theta) = \sum_{i=1}^{m} (y^i \log(h_{\theta}(x^i)) +<br>(1-y^i) (1 - h_{\theta}(x^i))<br>)<br>$$</p>
-<h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><p>既然逻辑回归是做预测的，那么损失函数就是预测错了多少的度量咯。比如我们就可以统计到底预测错了多少个，来当做损失函数，但是呢，这样的函数肯定是非凸的，不好优化，所以实际采用的损失函数是这样的</p>
-<p>$$<br>J(\theta) = \frac{1}{m}\sum_{i=1}^{m} (Cost(h_{\theta}(x^i)), y^i)<br>$$</p>
-<p>其中<br>$$<br>Cost(h_{\theta}(x), y) = -\log(h_{\theta}(x)) \ \  if \ \ y=1 \<br>;Cost (h_{\theta}(x), y) = -\log(1 - h_{\theta}(x)) \ \  if \ \ y=0<br>$$</p>
-<p>可简写成：</p>
-<p>$$<br>Cost(h_{\theta}(x), y) = -  y \log(h_{\theta}(x)) - (1-y) \log(1 - h_{\theta}(x))<br>$$</p>
-<p>函数图像如下</p>
-<p><img src="\images\2017\01\octave-workspace.png" alt=""></p>
-<p><img src="\images\2017\01\Ut7vvXnxEead-BJkoDOYOw_f719f2858d78dd66d80c5ec0d8e6b3fa_Logistic_regression_cost_function_negative_class.png" alt=""></p>
-<p>可以直观的看到，就是概率预测的和标签越接近惩罚越小，反之越大。当然，这里讲的只是二元分类，标签不是0就是1.</p>
-<p>最后，逻辑回归的损失函数为</p>
-<p>$$<br>J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} (y^i \log(h_{\theta}(x^i)) + (1-y^i) \log (1-h_{\theta}(x^i))<br>$$</p>
-<h2 id="优化过程"><a href="#优化过程" class="headerlink" title="优化过程"></a>优化过程</h2><p>梯度下降更新算法</p>
-<p>$$<br>\theta_j = \theta_j - \alpha \frac{\partial J(\theta)}{\partial \theta_j}<br>$$</p>
-<p>其中，</p>
-<p>$$<br>\frac{\partial J(\theta)}{\partial \theta_j} = - \frac{1}{m} \sum{i=1}^{m} (y^i \log(g(z)) + (1-y^i) \log (1-g(z))<br>$$</p>
-<p>$$<br>= - \frac{1}{m} \sum_{i=1}^{m} ( \frac{y^i}{g(z)} \frac{\partial g(z)}{\theta_j} - \frac{1-y^i}{1-g(z)} \frac{\partial g(z)}{\theta_j})<br>$$</p>
-<p>$$<br>= - \frac{1}{m} \sum_{i=1}^{m}   \frac{y^i - g(z)}{g(z)(1-g(z))}  \frac{\partial g(z)}{\theta_j}<br>$$</p>
-<p>又<br>$$<br>\frac{\partial g(z)}{\theta_j} = g(z)(1-g(z)x_j^i<br>$$</p>
-<p>代入上式可得<br>$$<br>\frac{\partial J(\theta)}{\partial \theta_j} =<br>\frac{1}{m} \sum_{i=1}^{m}(h_{\theta}(x^i)-y^i)x_j^i<br>$$<br>这就得到了逻辑回归的梯度下降更新式子<br>$$<br>\theta_j = \theta_j - \alpha \frac{1}{m} \sum_{i=1}^{m}(h_{\theta}(x^i)-y^i)x_j^i<br>$$<br>是不是感觉和线性回归的式子一模一样？哈哈，很神奇吧！不过注意两者的假说函数$h_{\theta}(x)$是不同的，区别在这儿。</p>
-<h2 id="牛顿法优化"><a href="#牛顿法优化" class="headerlink" title="牛顿法优化"></a>牛顿法优化</h2><p>除了梯度下降，其实还有许多可以对逻辑回归做优化的方法，例如牛顿法，这里有待下次更新。</p>
+<p>杨成武回忆：1936年12月,西安事变爆发，红军大学第一期毕业。即将奔赴前线，林彪找我谈话，给我留下很深的印象。我过去当政委，还想干老本行。但军 委经过全面考虑,确定我当师长。林彪说毛主席要我和你谈一次话，讲一下怎样当好师长的问题。谈话时罗瑞卿也在场,杨成武认真作了记录。林彪讲了九条,这也 是他自己在战争中的体会：</p>
+<p>一、要勤快。不勤快的人办不好事情，不能当好军事指挥员。应该自己干的事情一定要亲自过目，亲自动手。比如，应该上去看的山头就要爬上去，应该了解的情况 就要及时了解，应该检查的问题就要严格检查。不能懒，军事指挥员切忌懒，因为懒会带来危险，带来失败。比方说，一个军事指挥员，到了宿营地就进房子，搞水 洗脸洗脚，搞鸡蛋煮面吃，吃饱了就睡大觉。他对住的村子有多大，在什么位置，附近有几个山头周围有几条道路，敌情怎么样，群众条件怎么样，可能发生什么情 况，部队到齐了没有，哨位在什么地方，发生紧急情况时的处置预案如何，都不过问，都不知道。这样，如果半夜三更发生了情况，敌人来个突然袭击，就没有办法 了。到那种时候，即使平时很勇敢的指挥员，也会束手无策，只好三十六计，跑为上计，结果，变成一个机会主义者。机会主义和打败仗，常常是因为没有思想准 备，没有组织准备，工作没有做到家，懒的结果。因此，不论大小指挥员都要勤快，要不惜走路，不怕劳累，要多用脑子，要做到心到、眼到、口到、脚到、手到。 事情没有做好以前，不能贪闲。贪闲就隐伏着犯错误的根子。什么事都要心中有底，“凡事预则立，不预则废”。雷打不动的干部，牛皮糖式的干部，不管有多大本 事，都不是好干部。</p>
+<p>　　二、要摸清上级的意图。对上级的意图要真正理解，真正融会贯通，真正认识自己所受领的任务在战役、战斗全局中的 地位和作用。这样，才能充分发挥自己的主观能动性；才能打破框框，有敢于和善于在新情况中找到新办法的创造性；才能有大勇，才能决心强、决心狠，敢于彻底 胜利，有强烈的吞掉敌人的企图和雄心。指挥员的勇敢集中表现在歼敌决心的坚定顽强上面。指挥员的大勇建立在革命的最高自觉性和正确理解上级意图的基础上 面。</p>
+<p>　　三、要调查研究。对于敌情、地形、部队的情况和社会情况，要经常做到心中有数。要天天摸，天天琢磨，不能间断。这样做，不能看 作是重复，实际上这不是重复，而是不断深化不断提高的过程，是取得正确认识的必不可少的手段。平时积累掌握的情况越多，越系统，在战时，特别是在紧张复杂 的情况下，就越沉着，越有办法。急中生智的“智”，才有基础。因此，调查研究工作要贯串在各项工作中，要贯串在每一次战役、战斗的整个过程，反对打莽撞 仗、糊涂仗，反对急性病，反对不亲自动手做调查研究的懒汉作风。特别是敌情，必须切实摸透。因为敌情是活的，敌人必然会极力隐蔽、伪装他们的真实企图和行 动。要尽一切可能不间断地侦察，查清敌人的部署和动向，看他扮演什么角色？是主角还是配角？是主力还是非主力？是骄兵还是败兵？能集中多大兵力向我们进攻 和阻挡我们的进攻。查明敌主官的特性，看他惯用和擅长用什么战法，根据他当前的企图判断他可能采用什么打法，等等。只要摸清了敌情、我情、地形的底，决心 就快，就硬，就坚定。就不会被任何假象所迷惑，就不会被任何困难所吓住。如果情况不清，就会犹豫不决，举棋不定，坐失良机，或者勉强下了决心，一遇风吹草 动，听到畏难叫苦和不正确的建议，就容易动摇，可能一念之差，前功尽弃。</p>
+<p>　　四、要有个活地图。指挥员和参谋必须熟悉地图，要经常读地 图。熟读地图可以产生见解，产生智慧，产生办法，产生信心。读的方法是把图挂起来，搬个凳子坐下来，对着地图看，从大的方向到活动地区，从地区全貌到每一 地段的地形特点，从粗读到细读，逐块逐块地读，用红蓝铅笔把主要的山脉、河流、城镇、村庄、道路标划出来，边读，边划，等到地图差不多快划烂了，也就差不 多把地图背熟了，背出来了。在熟读地图的基础上，要亲自组织有关指挥员和参谋对作战地区和战场进行实地勘察，核正地图，把战场的地形情况和敌我双方的兵力 部署都装至脑子里去，做到闭上眼睛面前就有一幅鲜明的战场图影，离开地图也能指挥作战。这样，在你死我活、瞬息万变的战斗情况下，可以比敌人来得快，争取 先机，先敌一着，掌握主动，稳操胜券。</p>
+<p>　　五、要把各方面的问题想够想透。每一次战役、战斗的组织，要让大家提出各种可能出现的问题， 要让大家来找答案，而且要从最坏的最严重的情况来找答案。把所有提出来的问题都回答了，再没有问题没有回答的了，这样，打起仗来才不会犯大错误，万一犯了 错误，也比较容易纠正。没有得到答案的问题，不能因为想了很久想不出来就把它丢开，留下一个疙瘩。如果这样，是很危险的，在紧要关头，这个疙瘩很可能冒出 来，就会使你们心中无数，措手不及。当然，在战争环境中，要考虑的问题很多，不可能一次都提完，也不可能一次都回答完，整个战役、战斗的过程，就是不断提 出问题和不断回答问题的过程。有时脑子很疲劳，有的问题可能立即回答不了。这时，除了好好地和别人商量以外，就好好地睡一觉，睡好了，睡醒了，头脑清醒 了，再躺在床上好好想一想，就可能开窍，可能想通了，回答了，解决了。总之，对每一个问题不能含糊了事。问题回答完了，战役、战斗的组织才算完成。</p>
+<p>　 　六、要及时下达决心。在什么样的情况下可以下决心打呢？指挥员必须以最大努力组织战役、战斗的准备工作，力求确有把握才动手，不打无把握之仗。但是任何 一次战斗都不可能完全具备各种条件，不可能有百分之百的把握。一般说有百分之七十左右的把握，就很不错了，就要坚决地打，放手地打。不足的条件，要通过充 分发挥人的因素的作用，依靠人民群众的力量，充分发挥人民军队特有的政治上的优势，充分发挥指战员的智慧和英勇顽强的战斗作风来弥补，以主观努力来创造条 件，化冒险性为创造性，取得胜利。</p>
+<p>　　七、要有一个很好的很团结的班子。领导班子思想认识要一致，行动要协调、合拍，要雷厉风行，要有革命英雄主义的气概。都要勤快，都千方百计地办好事情，完成任务。不互相扯皮，不互相干扰，不抱旁观者的态度。如果领导班子不好，人多不但无用，反而有害。</p>
+<p>　 　八、要有一个很好的战斗作风。有好的战斗作风的部队才能打好仗，打胜仗。好的战斗作风首先是不叫苦，抢着去担负最艰巨的任务，英勇顽强，不怕牺牲，猛打 猛冲猛追。特别是要勇于穷追。因为把敌人打垮以后，追击是解决战斗、扩大战果、彻底歼灭敌人最关键的一招。在追击时，要跑步追，快步追，走不动的扶着拐棍 追，就是爬、滚，也要往前追，只有抓住敌人，才能吃掉敌人。好的战斗作风要靠平时养成，要靠实际锻炼，要在紧张、残酷的战斗中才能锻炼出来。不敢打硬仗、 恶仗的部队，让他打几次就打出来了，因为已经见识过硬仗、恶仗的场面，有了体会，有了经验，知道怎么打了，百炼成钢就是这个道理。做工作也要有好的作风， 说了就要做，说到那里做到那里，要做得干脆利索，要一竿子插到底，一点不含糊，不做好不撒手。好的作风的养成，关键在于干部。强将手下无弱兵，干部的作风 怎么样，部队的作风就会怎么样。因此，首先要抓好干部，要干部做出样子，影响带动部队。只要干部作风好，指挥好战斗，多打胜仗，即使是新建的部队或者原来 基础较弱的部队，也会很快打出好作风来，像铁锤一样，砸到那里，那里就碎。</p>
+<p>　　九、要重视政治，亲自做政治工作。部队战斗力的提高 要靠平时坚强的党的领导、坚强的政治工作。连队的支部一定要建设好，支部的工作要做活，就是要把所有党团员的革命劲头鼓得足足的，充分发挥他们的模范作 用、带头作用，通过他们把全连带动起来，通过他们去做政治工作，提高全体指战员的阶级觉悟。有了坚强的党支部的领导，有了坚强的政治工作，就可以做到一呼 百应，争先恐后，不怕牺牲，前赴后继。战术、技术也要练好，特别是技术，如果枪打不准，战场上就不能消灭敌人，就不能解决战斗。因此，军事训练不能马虎， 党政工作要领导好训练。艺高人胆大，胆大艺更高，部队有了高度的无产阶级觉悟，有了好的战斗作风，再加上过硬的作战本领，就如虎添翼，就可以无敌于天下。</p>
 
       
     </div>
@@ -365,13 +330,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/01/09/logistic-regression/">logistic regression的公式手推相关</a></p>
+        <p><span>本文标题:</span><a href="/2017/01/11/fuck/">fuck</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2017-01-09, 15:56:59</p>
-        <p><span>最后更新:</span>2017-01-09, 21:25:11</p>
+        <p><span>发布时间:</span>2017-01-11, 15:19:05</p>
+        <p><span>最后更新:</span>2017-01-11, 15:25:19</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/01/09/logistic-regression/" title="logistic regression的公式手推相关">http://frankchen.xyz/2017/01/09/logistic-regression/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/01/09/logistic-regression/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/11/fuck/" title="fuck">http://frankchen.xyz/2017/01/11/fuck/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/01/11/fuck/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -383,16 +348,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/11/fuck/">
-                    fuck
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/06/linear-regression/">
-                    linear regression 的公式手推相关
+                <a href="/2017/01/09/logistic-regression/">
+                    logistic regression的公式手推相关
                 </a>
             </div>
         
@@ -404,7 +363,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hypothesis"><span class="toc-number">1.</span> <span class="toc-text">Hypothesis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极大似然估计"><span class="toc-number">2.</span> <span class="toc-text">极大似然估计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cost-Function"><span class="toc-number">3.</span> <span class="toc-text">Cost Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化过程"><span class="toc-number">4.</span> <span class="toc-text">优化过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#牛顿法优化"><span class="toc-number">5.</span> <span class="toc-text">牛顿法优化</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -440,7 +399,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"logistic regression的公式手推相关　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"fuck　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -456,7 +415,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/09/logistic-regression/" data-title="logistic regression的公式手推相关" data-url="http://frankchen.xyz/2017/01/09/logistic-regression/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/11/fuck/" data-title="fuck" data-url="http://frankchen.xyz/2017/01/11/fuck/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -479,15 +438,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/11/fuck/" title="上一篇: fuck">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/06/linear-regression/" title="下一篇: linear regression 的公式手推相关">
+            <a href="/2017/01/09/logistic-regression/" title="下一篇: logistic regression的公式手推相关">
                 <i class="fa fa-angle-right"></i>
             </a>
         
