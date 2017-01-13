@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="本文主要内容关于python归并排序求逆序数的算法。">
+<meta name="description" content="最近面试被问到Java的多态怎么理解，自己含含糊糊的感觉自己知道点含义可是就是具体怎么说打不出来，尴尬死。接下来打算把三大特性：封装、继承、多态都好好的写下来，以参考。本文先写关于Java的多态吧。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Devide and Conquer Counting Inversions with Python">
-<meta property="og:url" content="http://frankchen.xyz/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/index.html">
+<meta property="og:title" content="Polymorphism of Java">
+<meta property="og:url" content="http://frankchen.xyz/2017/01/13/Polymorphism-of-Java/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="本文主要内容关于python归并排序求逆序数的算法。">
-<meta property="og:updated_time" content="2017-01-13T09:48:56.000Z">
+<meta property="og:description" content="最近面试被问到Java的多态怎么理解，自己含含糊糊的感觉自己知道点含义可是就是具体怎么说打不出来，尴尬死。接下来打算把三大特性：封装、继承、多态都好好的写下来，以参考。本文先写关于Java的多态吧。">
+<meta property="og:updated_time" content="2017-01-13T11:09:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Devide and Conquer Counting Inversions with Python">
-<meta name="twitter:description" content="本文主要内容关于python归并排序求逆序数的算法。">
+<meta name="twitter:title" content="Polymorphism of Java">
+<meta name="twitter:description" content="最近面试被问到Java的多态怎么理解，自己含含糊糊的感觉自己知道点含义可是就是具体怎么说打不出来，尴尬死。接下来打算把三大特性：封装、继承、多态都好好的写下来，以参考。本文先写关于Java的多态吧。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Devide and Conquer Counting Inversions with Python | loop in data</title>
+<title>Polymorphism of Java | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -274,11 +274,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Devide-and-Conquer-Counting-Inversions-with-Python" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Polymorphism-of-Java" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/" class="article-date">
-      <time datetime="2016-11-25T08:55:15.000Z" itemprop="datePublished">2016-11-25</time>
+      <a href="/2017/01/13/Polymorphism-of-Java/" class="article-date">
+      <time datetime="2017-01-13T10:15:27.000Z" itemprop="datePublished">2017-01-13</time>
 </a>
 
 
@@ -293,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Devide and Conquer Counting Inversions with Python
+      Polymorphism of Java
     </h1>
   
 
@@ -304,7 +304,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OOP/">OOP</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -314,10 +314,49 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文主要内容关于python归并排序求逆序数的算法。</p>
+        <p>最近面试被问到Java的多态怎么理解，自己含含糊糊的感觉自己知道点含义可是就是具体怎么说打不出来，尴尬死。接下来打算把三大特性：封装、继承、多态都好好的写下来，以参考。本文先写关于Java的多态吧。</p>
 <a id="more"></a>
-<p>解决问题：给定有限长度的无重复乱序数组，求其逆序数个数。简单来说我们可以用两个循环来解决，但是复杂度为$O(N^2)$，若利用归并排序，复杂度就降为了$O(N \log(N))$。以下给出一个实现，</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ivrs_num</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, filename)</span>:</span></div><div class="line">        self.count = <span class="number">0</span></div><div class="line">        self.filename = filename</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">load_txt</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''载入txt文件保存为list'''</span></div><div class="line">        int_list = []</div><div class="line">        <span class="keyword">with</span> open(self.filename) <span class="keyword">as</span> f:</div><div class="line">            <span class="keyword">for</span> line <span class="keyword">in</span> f:</div><div class="line">                int_list.append(int(line))</div><div class="line">        <span class="keyword">return</span> int_list</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, ListA, ListB)</span>:</span></div><div class="line">        <span class="string">'''将两个已经排序好的数组合并成新的排序好的数组</span></div><div class="line">        顺便计算逆序数'''</div><div class="line">        newList = []</div><div class="line">        <span class="keyword">while</span> ListA <span class="keyword">and</span> ListB:</div><div class="line">            <span class="keyword">if</span> int(ListA[<span class="number">0</span>]) &gt; int(ListB[<span class="number">0</span>]):</div><div class="line">                self.count += len(ListA)</div><div class="line">                newList.append(ListB.pop(<span class="number">0</span>))</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                newList.append(ListA.pop(<span class="number">0</span>))</div><div class="line">        <span class="keyword">return</span> newList + ListA + ListB</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(self, A)</span>:</span></div><div class="line">        <span class="string">'''归并排序'''</span></div><div class="line">        <span class="keyword">if</span> len(A) == <span class="number">1</span>: <span class="keyword">return</span> A</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            middle = len(A) // <span class="number">2</span></div><div class="line">            <span class="keyword">return</span> self.merge(self.merge_sort(A[:middle]), self.merge_sort(A[middle:]))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">count_ivrs</span><span class="params">(self)</span>:</span></div><div class="line">        data = self.load_txt()</div><div class="line">        self.merge_sort(data)</div><div class="line">        <span class="keyword">return</span> self.count</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    ivrs = Ivrs_num(<span class="string">"IntegerArray.txt"</span>)</div><div class="line">    <span class="keyword">print</span> ivrs.count_ivrs()</div></pre></td></tr></table></figure>
+<p>多态，用一句话来说，就是<strong>事物在运行过程中存在不同的状态</strong>。多态的存在有三个前提:</p>
+<ol>
+<li>要有继承关系</li>
+<li>子类要重写父类的方法</li>
+<li>父类引用指向子类对</li>
+</ol>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>我们先定义一个父类Animal</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Animal&#123;</div><div class="line">  int num = 10;</div><div class="line">  int age = 20;</div><div class="line"></div><div class="line">  public void eat()&#123;</div><div class="line">    System.out.println(&quot;动物在吃饭&quot;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  public stastic void sleep()&#123;</div><div class="line">    System.out.println(&quot;动物在睡觉&quot;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  public void run()&#123;</div><div class="line">    System.out.println(&quot;动物在奔跑&quot;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再定义一个子类Cat</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Cat extends Animal&#123;</div><div class="line">  int num = 30;</div><div class="line">  int age = 40;</div><div class="line">  String name = &quot;Tom&quot;;</div><div class="line"></div><div class="line">  public void eat()&#123;</div><div class="line">    System.out.println(&quot;猫在吃饭&quot;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  public stastic void sleep()&#123;</div><div class="line">    System.out.println(&quot;猫在睡觉&quot;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  public void catchMouse()&#123;</div><div class="line">    System.out.println(&quot;猫在抓老鼠&quot;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再来一个测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Demo_Test&#123;</div><div class="line">  public stastic void main(String[] args)&#123;</div><div class="line">    Animal am = new Cat();</div><div class="line">    am.eat();</div><div class="line">    am.sleep();</div><div class="line">    am.run();</div><div class="line">    System.out.println(am.num);</div><div class="line">    System.out.println(am.age);</div><div class="line"></div><div class="line">    am.catchMouse();</div><div class="line">    System.out.println(am.name);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>先来看看上面是否满足三个条件：</p>
+<ol>
+<li>子类Cat继承了父类Animal；</li>
+<li>子类重写了父类的eat()、sleep()方法，其中前者是非静态，后者是静态方法；</li>
+<li>在堆内存中开辟了子类Cat()对象，并把存在于栈内存中的Animal()引用指向这个对象。</li>
+</ol>
+<p>然后我们看一下运行结果，应该是</p>
+<p>猫在吃饭<br>动物在睡觉<br>动物在奔跑<br>10<br>20</p>
+<p>那么为什么呢？</p>
+<ul>
+<li>子类重写了父类的非静态成员方法，对象am.eat()的输出结果是“猫在吃饭”；</li>
+<li>子类重写了父类的静态成员方法，对象am.sleep()的输出结果是“动物在睡觉”；</li>
+<li>未被子类重写的方法am.run()的输出结果是“动物在奔跑”。</li>
+</ul>
+<p>那么可以总结出多态成员访问的特点：</p>
+<ul>
+<li>成员变量：编译看左边(父类),运行看左边(父类)</li>
+<li>成员方法：编译看左边(父类)，运行看右边(子类)。动态绑定</li>
+<li>静态方法：编译看左边(父类)，运行看左边(父类)(静态和类相关，算不上重写，所以，访问还是左边的)</li>
+</ul>
+<p>只有非静态的成员方法,编译看左边,运行看右边，而以上的这个过程就叫做<strong>多态的向上转型</strong>。</p>
+<h2 id="多态的缺点"><a href="#多态的缺点" class="headerlink" title="多态的缺点"></a>多态的缺点</h2><p>多态也存在缺点，也就是无法尝试调用子类特有的方法，如上面未展示am.catchMouse();<br>System.out.println(am.name);两行代码都是会报错的，因为这是子类特有的成员方法和成员属性。</p>
+<p>如果我们需要调用子类的特有成员方法和成员属性，那么应该将这个父类强制转换为子类类型，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Demo_Test &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line"></div><div class="line">	Animal am = new Cat();</div><div class="line">	am.eat();</div><div class="line">	am.sleep();</div><div class="line">	am.run();</div><div class="line">//	am.catchMouse();</div><div class="line">//	System.out.println(am.name);</div><div class="line">	System.out.println(am.num);</div><div class="line">	System.out.println(am.age);</div><div class="line"></div><div class="line">	System.out.println(&quot;------------------------------&quot;);</div><div class="line">	Cat ct = (Cat)am;</div><div class="line">	ct.eat();</div><div class="line">	ct.sleep();</div><div class="line">	ct.run();</div><div class="line">	ct.catchMouse();</div><div class="line">	&#125;        </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行强制类型转换<code>Cat ct = (Cat)am</code>后，这时ct就指向堆里最先创建的Cat()对象了，自然能使用Cat类的一切成员方法和成员属性了。这也是多态的魅力，为了使用子类的某些方法不需要重新再开辟内存。以上就是<strong>多态中的向下转型</strong>。</p>
+<h2 id="通俗解释"><a href="#通俗解释" class="headerlink" title="通俗解释"></a>通俗解释</h2><p>花木兰替父从军<br>大家都知道花木兰替父从军的例子，花木兰替父亲花弧从军。那么这时候花木兰是子类，花弧是父类。花弧有自己的成员属性年龄，姓名，性别。花木兰也有这些属性，但是很明显二者的属性完全不一样。花弧有自己的非静态成员方法‘骑马杀敌’，同样花木兰也遗传了父亲一样的方法‘骑马杀敌’。花弧还有一个静态方法‘自我介绍’，每个人都可以问花弧姓甚名谁。同时花木兰还有一个自己特有的非静态成员方法‘涂脂抹粉’。但是，现在花木兰替父从军，女扮男装。这时候相当于父类的引用（花弧这个名字）指向了子类对象（花木兰这个人），那么在其他类（其他的人）中访问子类对象（花木兰这个人）的成员属性（姓名，年龄，性别）时，其实看到的都是花木兰她父亲的名字（花弧）、年龄（60岁）、性别（男）。当访问子类对象（花木兰这个人）的非静态成员方法（骑马打仗）时，其实都是看到花木兰自己运用十八般武艺在骑马打仗。当访问花木兰的静态方法时（自我介绍），花木兰自己都是用她父亲的名字信息在向别人作自我介绍。并且这时候花木兰不能使用自己特有的成员方法‘涂脂抹粉’。—–多态中的向上转型<br>那么终于一将功成万骨枯，打仗旗开得胜了，花木兰告别了战争生活。有一天，遇到了自己心爱的男人，这时候爱情的力量将父类对象的引用（花弧这个名字）强制转换为子类对象本来的引用（花木兰这个名字），那么花木兰又从新成为了她自己，这时候她完全是她自己了。名字是花木兰，年龄是28，性别是女，打仗依然那样生猛女汉子，自我介绍则堂堂正正地告诉别人我叫花木兰。OMG！终于，终于可以使用自己特有的成员方法‘涂脂抹粉’了。从此，花木兰完全回到了替父从军前的那个花木兰了。并且和自己心爱的男人幸福的过完了一生。—–多态中的向下转型<br>。</p>
+<h2 id="参考出处"><a href="#参考出处" class="headerlink" title="参考出处"></a>参考出处</h2><ul>
+<li>作者：程序狗<br>链接：<a href="https://www.zhihu.com/question/30082151/answer/120520568" target="_blank" rel="external">https://www.zhihu.com/question/30082151/answer/120520568</a><br>来源：知乎</li>
+</ul>
 
       
     </div>
@@ -326,13 +365,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/">Devide and Conquer Counting Inversions with Python</a></p>
+        <p><span>本文标题:</span><a href="/2017/01/13/Polymorphism-of-Java/">Polymorphism of Java</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2016-11-25, 16:55:15</p>
-        <p><span>最后更新:</span>2017-01-13, 17:48:56</p>
+        <p><span>发布时间:</span>2017-01-13, 18:15:27</p>
+        <p><span>最后更新:</span>2017-01-13, 19:09:14</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/" title="Devide and Conquer Counting Inversions with Python">http://frankchen.xyz/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/13/Polymorphism-of-Java/" title="Polymorphism of Java">http://frankchen.xyz/2017/01/13/Polymorphism-of-Java/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/01/13/Polymorphism-of-Java/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -344,16 +383,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/">
-                    Workflow for automatic extract and jump to the true URL of 91porn.com
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/11/18/Understanding-EM-algorithm/">
-                    Understanding EM algorithm
+                <a href="/2017/01/13/Map-0f-Java/">
+                    Map 0f Java
                 </a>
             </div>
         
@@ -365,7 +398,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实验"><span class="toc-number">1.</span> <span class="toc-text">实验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态的缺点"><span class="toc-number">2.</span> <span class="toc-text">多态的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通俗解释"><span class="toc-number">3.</span> <span class="toc-text">通俗解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考出处"><span class="toc-number">4.</span> <span class="toc-text">参考出处</span></a></li></ol>
         
     </div>
     <style>
@@ -401,7 +434,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Devide and Conquer Counting Inversions with Python　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Polymorphism of Java　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -417,7 +450,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/" data-title="Devide and Conquer Counting Inversions with Python" data-url="http://frankchen.xyz/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/13/Polymorphism-of-Java/" data-title="Polymorphism of Java" data-url="http://frankchen.xyz/2017/01/13/Polymorphism-of-Java/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -440,15 +473,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/" title="上一篇: Workflow for automatic extract and jump to the true URL of 91porn.com">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/11/18/Understanding-EM-algorithm/" title="下一篇: Understanding EM algorithm">
+            <a href="/2017/01/13/Map-0f-Java/" title="下一篇: Map 0f Java">
                 <i class="fa fa-angle-right"></i>
             </a>
         
