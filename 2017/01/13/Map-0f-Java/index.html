@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="本文主要内容关于python归并排序求逆序数的算法。">
+<meta name="description" content="整理关于Java的Map相关的知识，最近面试有被问到关于此类数据结构的知识，故写下来总结一番。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Devide and Conquer Counting Inversions with Python">
-<meta property="og:url" content="http://frankchen.xyz/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/index.html">
+<meta property="og:title" content="Map 0f Java">
+<meta property="og:url" content="http://frankchen.xyz/2017/01/13/Map-0f-Java/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="本文主要内容关于python归并排序求逆序数的算法。">
-<meta property="og:updated_time" content="2016-11-25T09:05:54.000Z">
+<meta property="og:description" content="整理关于Java的Map相关的知识，最近面试有被问到关于此类数据结构的知识，故写下来总结一番。">
+<meta property="og:updated_time" content="2017-01-13T06:43:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Devide and Conquer Counting Inversions with Python">
-<meta name="twitter:description" content="本文主要内容关于python归并排序求逆序数的算法。">
+<meta name="twitter:title" content="Map 0f Java">
+<meta name="twitter:description" content="整理关于Java的Map相关的知识，最近面试有被问到关于此类数据结构的知识，故写下来总结一番。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Devide and Conquer Counting Inversions with Python | loop in data</title>
+<title>Map 0f Java | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -274,11 +274,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Devide-and-Conquer-Counting-Inversions-with-Python" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Map-0f-Java" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/" class="article-date">
-      <time datetime="2016-11-25T08:55:15.000Z" itemprop="datePublished">2016-11-25</time>
+      <a href="/2017/01/13/Map-0f-Java/" class="article-date">
+      <time datetime="2017-01-13T05:53:14.000Z" itemprop="datePublished">2017-01-13</time>
 </a>
 
 
@@ -293,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Devide and Conquer Counting Inversions with Python
+      Map 0f Java
     </h1>
   
 
@@ -304,7 +304,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm-Python/">Algorithm, Python</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -314,10 +314,130 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文主要内容关于python归并排序求逆序数的算法。</p>
+        <p>整理关于Java的Map相关的知识，最近面试有被问到关于此类数据结构的知识，故写下来总结一番。</p>
 <a id="more"></a>
-<p>解决问题：给定有限长度的无重复乱序数组，求其逆序数个数。简单来说我们可以用两个循环来解决，但是复杂度为$O(N^2)$，若利用归并排序，复杂度就降为了$O(N \log(N))$。以下给出一个实现，</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ivrs_num</span><span class="params">(object)</span>:</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, filename)</span>:</span></div><div class="line">        self.count = <span class="number">0</span></div><div class="line">        self.filename = filename</div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">load_txt</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''载入txt文件保存为list'''</span></div><div class="line">        int_list = []</div><div class="line">        <span class="keyword">with</span> open(self.filename) <span class="keyword">as</span> f:</div><div class="line">            <span class="keyword">for</span> line <span class="keyword">in</span> f:</div><div class="line">                int_list.append(int(line))</div><div class="line">        <span class="keyword">return</span> int_list</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, ListA, ListB)</span>:</span></div><div class="line">        <span class="string">'''将两个已经排序好的数组合并成新的排序好的数组</span></div><div class="line">        顺便计算逆序数'''</div><div class="line">        newList = []</div><div class="line">        <span class="keyword">while</span> ListA <span class="keyword">and</span> ListB:</div><div class="line">            <span class="keyword">if</span> int(ListA[<span class="number">0</span>]) &gt; int(ListB[<span class="number">0</span>]):</div><div class="line">                self.count += len(ListA)</div><div class="line">                newList.append(ListB.pop(<span class="number">0</span>))</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                newList.append(ListA.pop(<span class="number">0</span>))</div><div class="line">        <span class="keyword">return</span> newList + ListA + ListB</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(self, A)</span>:</span></div><div class="line">        <span class="string">'''归并排序'''</span></div><div class="line">        <span class="keyword">if</span> len(A) == <span class="number">1</span>: <span class="keyword">return</span> A</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            middle = len(A) // <span class="number">2</span></div><div class="line">            <span class="keyword">return</span> self.merge(self.merge_sort(A[:middle]), self.merge_sort(A[middle:]))</div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">count_ivrs</span><span class="params">(self)</span>:</span></div><div class="line">        data = self.load_txt()</div><div class="line">        self.merge_sort(data)</div><div class="line">        <span class="keyword">return</span> self.count</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    ivrs = Ivrs_num(<span class="string">"IntegerArray.txt"</span>)</div><div class="line">    <span class="keyword">print</span> ivrs.count_ivrs()</div></pre></td></tr></table></figure>
+<p>List和Map都是java.util里面有关集合的数据结构类。Map主要的功能是元素对（键值对）的形式，每个键都映射到一个类。接下来我们介绍Map的分类、初始化、遍历的方式、排序方法以及常用API。</p>
+<h2 id="Map类"><a href="#Map类" class="headerlink" title="Map类"></a>Map类</h2><p>Java中的Map类可分为三种：</p>
+<ul>
+<li>通用Map：用于在应用程序内管理映射，通常在java.utils内<ul>
+<li>HashMap、</li>
+<li>Hashtable、</li>
+<li>Properties、</li>
+<li>LinkedHashMap、</li>
+<li>IdentityHashMap、</li>
+<li>TreeMap、WeakHashMap、</li>
+<li>ConcurrentHashMap</li>
+</ul>
+</li>
+<li>专用Map：不必我们自己创建，而是通过其他应用程序访问<ul>
+<li>java.util.jar.Attribute、javax.print.attribute.standard.PrinterStateReasons、java.security.Provider、java.awt.RenderingHints、javax.swing.UIDefaults</li>
+</ul>
+</li>
+<li>自定义Map</li>
+</ul>
+<h2 id="常用类型的区别"><a href="#常用类型的区别" class="headerlink" title="常用类型的区别"></a>常用类型的区别</h2><ul>
+<li>HashMap<ul>
+<li>最常用的Map，速度快，非同步（不支持线程同步）</li>
+<li>允许一条键为null：多了覆盖</li>
+<li>允许多条值为null</li>
+</ul>
+</li>
+<li>TreeMap<ul>
+<li>用Iterator遍历的时候返回以key为序的序列</li>
+<li>故不允许key为空</li>
+<li>非同步</li>
+</ul>
+</li>
+<li>HashTable<ul>
+<li>类似HashMap，但是写入速度慢</li>
+<li>因为支持线程同步：同一时刻只能有一线程能写HashTable</li>
+</ul>
+</li>
+<li>LinkedHashMap<ul>
+<li>保持了插入顺序，Iterator遍历时先进先出</li>
+<li>key、value都允许为空</li>
+</ul>
+</li>
+</ul>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//建立</span></div><div class="line">HashMap&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</div><div class="line"><span class="comment">//寻值</span></div><div class="line">map.get(<span class="string">"key1"</span>);</div><div class="line"><span class="comment">//插入</span></div><div class="line">map.put(<span class="string">"key2"</span>, <span class="string">"value2"</span>);</div><div class="line"><span class="comment">//移除</span></div><div class="line">map.remove(<span class="string">"key1"</span>);</div><div class="line"><span class="comment">//清空</span></div><div class="line">map.clear();</div><div class="line"><span class="comment">//</span></div></pre></td></tr></table></figure>
+<h2 id="Map的遍历"><a href="#Map的遍历" class="headerlink" title="Map的遍历"></a>Map的遍历</h2><p>初始化<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</div><div class="line">map.put(<span class="string">"key1"</span>, <span class="string">"value1"</span>);</div><div class="line">map.put(<span class="string">"key2"</span>, <span class="string">"value2"</span>);</div></pre></td></tr></table></figure></p>
+<p>分别使用增强for循环和Iterator来遍历</p>
+<h3 id="增强for循环遍历"><a href="#增强for循环遍历" class="headerlink" title="增强for循环遍历"></a>增强for循环遍历</h3><h4 id="KeySet遍历"><a href="#KeySet遍历" class="headerlink" title="KeySet遍历"></a>KeySet遍历</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (String key: map.keySet())&#123;</div><div class="line">  System.out.println(key + <span class="string">": "</span> + map.get(key));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="entrySet遍历"><a href="#entrySet遍历" class="headerlink" title="entrySet遍历"></a>entrySet遍历</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (Map.Entry&lt;String, String&gt; entry: map.entrySet())&#123;</div><div class="line">  System.out.println(entry.getKey() + <span class="string">": "</span> + entry.getValue());</div></pre></td></tr></table></figure>
+<h3 id="Iterator遍历"><a href="#Iterator遍历" class="headerlink" title="Iterator遍历"></a>Iterator遍历</h3><h4 id="KeySet遍历-1"><a href="#KeySet遍历-1" class="headerlink" title="KeySet遍历"></a>KeySet遍历</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Iterator&lt;String&gt; iterator = map.keySet().iterator();</div><div class="line"><span class="keyword">while</span> (iterator.hasNext())&#123;</div><div class="line">  String key = iterator.next();</div><div class="line">  System.out.println(key + <span class="string">": "</span> + map.get(key));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="entrySet遍历-1"><a href="#entrySet遍历-1" class="headerlink" title="entrySet遍历"></a>entrySet遍历</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Iterator&lt;Map.Entry&lt;String, String&gt;&gt; iterator = map.entrySet().iterator();</div><div class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</div><div class="line">    Map.Entry&lt;String, String&gt; entry = iterator.next();</div><div class="line">    System.out.println(entry.getKey() + <span class="string">"："</span> + entry.getValue());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="遍历性能"><a href="#遍历性能" class="headerlink" title="遍历性能"></a>遍历性能</h3><p>就实验比较，</p>
+<ul>
+<li><p>增强for循环使用方便，但性能较差，不适合处理超大量级的数据。</p>
+</li>
+<li><p>迭代器的遍历速度要比增强for循环快很多，是增强for循环的2倍左右。</p>
+</li>
+<li><p>使用entrySet遍历的速度要比keySet快很多，是keySet的1.5倍左右。</p>
+</li>
+</ul>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>TreeMap排序，若是升序只需要按序输出即可，降序需要改写比较器：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Map&lt;String, String&gt; map = <span class="keyword">new</span> TreeMap&lt;String, String&gt;(<span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String obj1, String obj2)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> obj2.compareTo(obj1);<span class="comment">// 降序排序</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">map.put(<span class="string">"a"</span>, <span class="string">"c"</span>);</div><div class="line">map.put(<span class="string">"b"</span>, <span class="string">"b"</span>);</div><div class="line">map.put(<span class="string">"c"</span>, <span class="string">"a"</span>);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (String key : map.keySet()) &#123;</div><div class="line">    System.out.println(key + <span class="string">" ："</span> + map.get(key));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>HashMap\HashTable\LinkedHashMap排序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</div><div class="line">map.put(<span class="string">"a"</span>, <span class="string">"c"</span>);</div><div class="line">map.put(<span class="string">"b"</span>, <span class="string">"b"</span>);</div><div class="line">map.put(<span class="string">"c"</span>, <span class="string">"a"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 通过ArrayList构造函数把map.entrySet()转换成list</span></div><div class="line">List&lt;Map.Entry&lt;String, String&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;Map.Entry&lt;String, String&gt;&gt;(map.entrySet());</div><div class="line"><span class="comment">// 通过比较器实现比较排序</span></div><div class="line">Collections.sort(list, <span class="keyword">new</span> Comparator&lt;Map.Entry&lt;String, String&gt;&gt;() &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Map.Entry&lt;String, String&gt; mapping1, Map.Entry&lt;String, String&gt; mapping2)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mapping1.getKey().compareTo(mapping2.getKey());</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (Map.Entry&lt;String, String&gt; mapping : list) &#123;</div><div class="line">    System.out.println(mapping.getKey() + <span class="string">" ："</span> + mapping.getValue());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h2><table>
+<thead>
+<tr>
+<th>method</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clear()</td>
+<td>从 Map 中删除所有映射</td>
+</tr>
+<tr>
+<td>remove(Object key)</td>
+<td>从 Map 中删除键和关联的值</td>
+</tr>
+<tr>
+<td>put(Object key, Object value)</td>
+<td>将指定值与指定键相关联</td>
+</tr>
+<tr>
+<td>putAll(Map t)</td>
+<td>将指定 Map 中的所有映射复制到此 map</td>
+</tr>
+<tr>
+<td>entrySet()</td>
+<td>返回 Map 中所包含映射的 Set 视图。Set 中的每个元素都是一个 Map.Entry 对象，可以使用 getKey() 和 getValue() 方法（还有一个 setValue() 方法）访问后者的键元素和值元素</td>
+</tr>
+<tr>
+<td>keySet()</td>
+<td>返回 Map 中所包含键的 Set 视图。删除 Set 中的元素还将删除 Map 中相应的映射（键和值）</td>
+</tr>
+<tr>
+<td>values()</td>
+<td>返回 map 中所包含值的 Collection 视图。删除 Collection 中的元素还将删除 Map 中相应的映射（键和值）</td>
+</tr>
+<tr>
+<td>get(Object key)</td>
+<td>返回与指定键关联的值</td>
+</tr>
+<tr>
+<td>containsKey(Object key)</td>
+<td>如果 Map 包含指定键的映射，则返回 true</td>
+</tr>
+<tr>
+<td>containsValue(Object value)</td>
+<td>如果此 Map 将一个或多个键映射到指定值，则返回 true</td>
+</tr>
+<tr>
+<td>isEmpty()</td>
+<td>如果 Map 不包含键-值映射，则返回 true</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>返回 Map 中的键-值映射的数目</td>
+</tr>
+</tbody>
+</table>
+
       
     </div>
     
@@ -325,13 +445,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/">Devide and Conquer Counting Inversions with Python</a></p>
+        <p><span>本文标题:</span><a href="/2017/01/13/Map-0f-Java/">Map 0f Java</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2016-11-25, 16:55:15</p>
-        <p><span>最后更新:</span>2016-11-25, 17:05:54</p>
+        <p><span>发布时间:</span>2017-01-13, 13:53:14</p>
+        <p><span>最后更新:</span>2017-01-13, 14:43:27</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/" title="Devide and Conquer Counting Inversions with Python">http://frankchen.xyz/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/13/Map-0f-Java/" title="Map 0f Java">http://frankchen.xyz/2017/01/13/Map-0f-Java/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/01/13/Map-0f-Java/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -343,16 +463,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/">
-                    Workflow for automatic extract and jump to the true URL of 91porn.com
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/11/18/Understanding-EM-algorithm/">
-                    Understanding EM algorithm
+                <a href="/2017/01/11/good commander/">
+                    To be a great commander
                 </a>
             </div>
         
@@ -364,7 +478,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Map类"><span class="toc-number">1.</span> <span class="toc-text">Map类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用类型的区别"><span class="toc-number">2.</span> <span class="toc-text">常用类型的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用法"><span class="toc-number">3.</span> <span class="toc-text">用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map的遍历"><span class="toc-number">4.</span> <span class="toc-text">Map的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#增强for循环遍历"><span class="toc-number">4.1.</span> <span class="toc-text">增强for循环遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#KeySet遍历"><span class="toc-number">4.1.1.</span> <span class="toc-text">KeySet遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#entrySet遍历"><span class="toc-number">4.1.2.</span> <span class="toc-text">entrySet遍历</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Iterator遍历"><span class="toc-number">4.2.</span> <span class="toc-text">Iterator遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#KeySet遍历-1"><span class="toc-number">4.2.1.</span> <span class="toc-text">KeySet遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#entrySet遍历-1"><span class="toc-number">4.2.2.</span> <span class="toc-text">entrySet遍历</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历性能"><span class="toc-number">4.3.</span> <span class="toc-text">遍历性能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排序"><span class="toc-number">5.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用API"><span class="toc-number">6.</span> <span class="toc-text">常用API</span></a></li></ol>
         
     </div>
     <style>
@@ -400,7 +514,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Devide and Conquer Counting Inversions with Python　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Map 0f Java　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -416,7 +530,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/" data-title="Devide and Conquer Counting Inversions with Python" data-url="http://frankchen.xyz/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/13/Map-0f-Java/" data-title="Map 0f Java" data-url="http://frankchen.xyz/2017/01/13/Map-0f-Java/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -439,15 +553,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/" title="上一篇: Workflow for automatic extract and jump to the true URL of 91porn.com">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/11/18/Understanding-EM-algorithm/" title="下一篇: Understanding EM algorithm">
+            <a href="/2017/01/11/good commander/" title="下一篇: To be a great commander">
                 <i class="fa fa-angle-right"></i>
             </a>
         
