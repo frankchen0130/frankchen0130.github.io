@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="本文有关logistic regression的公式相关的手推，包括假说函数、极大似然估计以及梯度下降算法。">
+<meta name="description" content="常用排序算法如归并、快排、堆排序等基于比较的排序方法都是不能突破$O(n \log n)$时间复杂度的，本文着重介绍几种线性时间复杂度的排序方法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="logistic regression的公式手推相关">
-<meta property="og:url" content="http://frankchen.xyz/2017/01/09/logistic-regression/index.html">
+<meta property="og:title" content="Sort Algorithms of Linear Time Complexity">
+<meta property="og:url" content="http://frankchen.xyz/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="本文有关logistic regression的公式相关的手推，包括假说函数、极大似然估计以及梯度下降算法。">
-<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\octave-workspace.png">
-<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\Ut7vvXnxEead-BJkoDOYOw_f719f2858d78dd66d80c5ec0d8e6b3fa_Logistic_regression_cost_function_negative_class.png">
-<meta property="og:updated_time" content="2017-01-09T13:25:11.000Z">
+<meta property="og:description" content="常用排序算法如归并、快排、堆排序等基于比较的排序方法都是不能突破$O(n \log n)$时间复杂度的，本文着重介绍几种线性时间复杂度的排序方法。">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\Screen Shot 2017-01-13 at 23.06.23.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\Screen Shot 2017-01-13 at 23.06.41.png">
+<meta property="og:updated_time" content="2017-01-13T15:18:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="logistic regression的公式手推相关">
-<meta name="twitter:description" content="本文有关logistic regression的公式相关的手推，包括假说函数、极大似然估计以及梯度下降算法。">
-<meta name="twitter:image" content="http://frankchen.xyz/\images\2017\01\octave-workspace.png">
+<meta name="twitter:title" content="Sort Algorithms of Linear Time Complexity">
+<meta name="twitter:description" content="常用排序算法如归并、快排、堆排序等基于比较的排序方法都是不能突破$O(n \log n)$时间复杂度的，本文着重介绍几种线性时间复杂度的排序方法。">
+<meta name="twitter:image" content="http://frankchen.xyz/\images\2017\01\Screen Shot 2017-01-13 at 23.06.23.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>logistic regression的公式手推相关 | loop in data</title>
+<title>Sort Algorithms of Linear Time Complexity | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -277,11 +277,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-logistic-regression" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Sort-Algorithms-of-Linear-Time-Complexity" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/09/logistic-regression/" class="article-date">
-      <time datetime="2017-01-09T07:56:59.000Z" itemprop="datePublished">2017-01-09</time>
+      <a href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/" class="article-date">
+      <time datetime="2017-01-13T12:05:31.000Z" itemprop="datePublished">2017-01-13</time>
 </a>
 
 
@@ -296,7 +296,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      logistic regression的公式手推相关
+      Sort Algorithms of Linear Time Complexity
     </h1>
   
 
@@ -307,7 +307,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -317,47 +317,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文有关logistic regression的公式相关的手推，包括假说函数、极大似然估计以及梯度下降算法。</p>
-<a id="more"></a>
-<h2 id="Hypothesis"><a href="#Hypothesis" class="headerlink" title="Hypothesis"></a>Hypothesis</h2><p>首选我们要明确，logistic regression虽然叫“回归”，但是它却是用来做分类的，也是最最常用的分类机器学习算法。其假说模型为：</p>
-<p>$$<br>h_{\theta}(x) = g(\theta ^T x)<br>$$</p>
-<p>其中$g(z) = \frac{1}{1+e^{-z}}$，so</p>
-<p>$$<br>h_{\theta}(x) = \frac{1}{1+e^{-\theta ^T x}}<br>$$</p>
-<p>可以看到，函数主体和线性回归一样，都是样本与参数的内积，但是逻辑回归是用来打分的，也就是判断样本是正负例的概率，需要$g(z)$也就是sigmoid或者logistics函数来将这个内积映射到一个区间(0,1)，所以实际上</p>
-<p>$$<br>h_{\theta}(x) = p(y=1 | x;\theta)<br>$$</p>
-<p>以上只是得出了样本点是正例的概率，到底预测它是正例还是负例，我们还需要一个decision boundary，例如</p>
-<p>$$<br>h_{\theta}(x) \ge 0.5 \rightarrow y=1 \<br>h_{\theta}(x) \lt 0.5 \rightarrow y=0<br>$$</p>
-<p>由于sigmoid函数的形状我们容易得到</p>
-<p>$$<br>\theta ^T x \ge 0 \rightarrow y=1 \<br>\theta ^T x \lt 0 \rightarrow y=0<br>$$</p>
-<p>当然，decision boundary属于假说函数的一部分，不一定就是0.5.</p>
-<h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><p>二元分类可以看做是一个伯努利分布，又叫做0-1分布，上面提到<br>$$<br>p(y=1 | x;\theta) = h_{\theta}(x)<br>$$</p>
-<p>那么自然有</p>
-<p>$$<br>p(y=0 | x;\theta) = 1 - h_{\theta}(x)<br>$$</p>
-<p>那么总体分布也就是得到一个观测值的概率可以用Trick写成<br>$$<br>p(y | x;\theta) = (h_{\theta}(x))^y (1 - h_{\theta}(x^i))^{(1-y)}<br>$$</p>
-<p>因为每一个样本和其他样本是独立同分布的，把它们的概率相乘得到似然函数，</p>
-<p>$$<br>L(\theta) = \prod_{i=1}^{m}((h_{\theta}(x^i))^{y^i} (1 - h_{\theta}(x^i))^{(1-y^i)})<br>$$<br>为计算方便，取对数，得到</p>
-<p>$$<br>l(\theta) = \sum_{i=1}^{m} (y^i \log(h_{\theta}(x^i)) +<br>(1-y^i) (1 - h_{\theta}(x^i))<br>)<br>$$</p>
-<h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><p>既然逻辑回归是做预测的，那么损失函数就是预测错了多少的度量咯。比如我们就可以统计到底预测错了多少个，来当做损失函数，但是呢，这样的函数肯定是非凸的，不好优化，所以实际采用的损失函数是这样的</p>
-<p>$$<br>J(\theta) = \frac{1}{m}\sum_{i=1}^{m} (Cost(h_{\theta}(x^i)), y^i)<br>$$</p>
-<p>其中<br>$$<br>Cost(h_{\theta}(x), y) = -\log(h_{\theta}(x)) \ \  if \ \ y=1 \<br>;Cost (h_{\theta}(x), y) = -\log(1 - h_{\theta}(x)) \ \  if \ \ y=0<br>$$</p>
-<p>可简写成：</p>
-<p>$$<br>Cost(h_{\theta}(x), y) = -  y \log(h_{\theta}(x)) - (1-y) \log(1 - h_{\theta}(x))<br>$$</p>
-<p>函数图像如下</p>
-<p><img src="\images\2017\01\octave-workspace.png" alt=""></p>
-<p><img src="\images\2017\01\Ut7vvXnxEead-BJkoDOYOw_f719f2858d78dd66d80c5ec0d8e6b3fa_Logistic_regression_cost_function_negative_class.png" alt=""></p>
-<p>可以直观的看到，就是概率预测的和标签越接近惩罚越小，反之越大。当然，这里讲的只是二元分类，标签不是0就是1.</p>
-<p>最后，逻辑回归的损失函数为</p>
-<p>$$<br>J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} (y^i \log(h_{\theta}(x^i)) + (1-y^i) \log (1-h_{\theta}(x^i))<br>$$</p>
-<h2 id="优化过程"><a href="#优化过程" class="headerlink" title="优化过程"></a>优化过程</h2><p>梯度下降更新算法</p>
-<p>$$<br>\theta_j = \theta_j - \alpha \frac{\partial J(\theta)}{\partial \theta_j}<br>$$</p>
-<p>其中，</p>
-<p>$$<br>\frac{\partial J(\theta)}{\partial \theta_j} = - \frac{1}{m} \sum{i=1}^{m} (y^i \log(g(z)) + (1-y^i) \log (1-g(z))<br>$$</p>
-<p>$$<br>= - \frac{1}{m} \sum_{i=1}^{m} ( \frac{y^i}{g(z)} \frac{\partial g(z)}{\theta_j} - \frac{1-y^i}{1-g(z)} \frac{\partial g(z)}{\theta_j})<br>$$</p>
-<p>$$<br>= - \frac{1}{m} \sum_{i=1}^{m}   \frac{y^i - g(z)}{g(z)(1-g(z))}  \frac{\partial g(z)}{\theta_j}<br>$$</p>
-<p>又<br>$$<br>\frac{\partial g(z)}{\theta_j} = g(z)(1-g(z)x_j^i<br>$$</p>
-<p>代入上式可得<br>$$<br>\frac{\partial J(\theta)}{\partial \theta_j} =<br>\frac{1}{m} \sum_{i=1}^{m}(h_{\theta}(x^i)-y^i)x_j^i<br>$$<br>这就得到了逻辑回归的梯度下降更新式子<br>$$<br>\theta_j = \theta_j - \alpha \frac{1}{m} \sum_{i=1}^{m}(h_{\theta}(x^i)-y^i)x_j^i<br>$$<br>是不是感觉和线性回归的式子一模一样？哈哈，很神奇吧！不过注意两者的假说函数$h_{\theta}(x)$是不同的，区别在这儿。</p>
-<h2 id="牛顿法优化"><a href="#牛顿法优化" class="headerlink" title="牛顿法优化"></a>牛顿法优化</h2><p>除了梯度下降，其实还有许多可以对逻辑回归做优化的方法，例如牛顿法，这里有待下次更新。</p>
-
+        <p>常用排序算法如归并、快排、堆排序等基于比较的排序方法都是不能突破$O(n \log n)$时间复杂度的，本文着重介绍几种线性时间复杂度的排序方法。<br><a id="more"></a></p>
+<p>基于比较的排序为何不能突破$O(n \log n)$时间复杂度？因为$N$个数有$N!$个可能的排列情况，也就是说基于比较的排序算法的判定树有$N!$个叶子结点，比较次数至少为$\log(N!)= O(N \log N)$ (斯特林公式)</p>
+<p>而线性复杂度的排序方法通常来说有计数排序、桶排序和基数排序三种。</p>
+<h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><p>计数排序（Counting sort）是一种稳定的线性时间排序算法，Θ(n + k)的时间复杂度。n 是待排序数组的大小，k 是辅助数组 count 的大小。</p>
+<p>因为它并不是基于比较的的排序算法，所以它没有O(NlogN)的下限。并且在一定的条件下，使用该算法比使用快排能带来更好的效率。例如在基数排序中就运用了计数排序，因为它只需要额外的10个元素大小的辅助数组，线性的效率，并保证了稳定性。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>计数排序的主要思想是将待排序元素的值作为下标，利用辅助数组 count 记录所有的元素出现的次数。即 count[i] 的值代表元素 i 在原始数组中出现的次数。这样，原始数组的所有元素就被有有序地记录下来。</p>
+<p>当然，只知道某个元素出现的次数是不足以排序的。仔细观察 count 数组，发现对 count 数组进行累加（count[i] += count[i-1]）后，count[i] 的含义就变成了原始数组 i 前面有 count[i]个数是不大于它的。最后就可以根据 count 数组中的排名去构造一个已排序的数组了。</p>
+<p>下面以原始数组d = {8, 13, 0, 3, 20, 16, 9, 7, 11, 5} 去演示上述的过程：</p>
+<p><img src="\images\2017\01\Screen Shot 2017-01-13 at 23.06.23.png" alt=""></p>
+<p>或者是数组中有重复元素的情况：</p>
+<p><img src="\images\2017\01\Screen Shot 2017-01-13 at 23.06.41.png" alt=""></p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>计数排序虽然效率高，却有其受限的条件。</p>
+<p>只能对[0, K]区间的非负整数进行排序。<br>当 K 很大时，空间复杂度会变得很大。<br>所以，如果是对于[0, 100]这样的区间，计数排序是个好的选择。考虑到空间复杂度的优化，也可以用原始数组中的 (最大值 - 最小值 + 1) 作为 count 数组的大小。</p>
+<h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">    数组 d 的元素只能位于[0, K)区间的非负整数，O(n + K)</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">counting_sort</span><span class="params">(<span class="keyword">int</span> d[], <span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> max = <span class="number">0</span>, min = <span class="number">2147483647</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (max &lt; d[i])</div><div class="line">            max = d[i];</div><div class="line">        <span class="keyword">if</span> (min &gt; d[i])</div><div class="line">            min = d[i];</div><div class="line">    &#125;</div><div class="line">    max++;</div><div class="line">    <span class="keyword">int</span>[]  count = <span class="keyword">new</span> <span class="keyword">int</span>[max - min; <span class="comment">//优化空间</span></div><div class="line">    <span class="keyword">int</span>[] ans = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; max; ++i) count[i] = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) count[d[i] - min]++;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; max; ++i) count[i] += count[i - <span class="number">1</span>];</div><div class="line">    <span class="comment">//这里必须逆序循环，不然会造成排序结果失去稳定性。</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</div><div class="line">      ans[ --count[d[i]- min] ] = d[i];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> ans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2>
       
     </div>
     
@@ -365,13 +339,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/01/09/logistic-regression/">logistic regression的公式手推相关</a></p>
+        <p><span>本文标题:</span><a href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/">Sort Algorithms of Linear Time Complexity</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2017-01-09, 15:56:59</p>
-        <p><span>最后更新:</span>2017-01-09, 21:25:11</p>
+        <p><span>发布时间:</span>2017-01-13, 20:05:31</p>
+        <p><span>最后更新:</span>2017-01-13, 23:18:39</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/01/09/logistic-regression/" title="logistic regression的公式手推相关">http://frankchen.xyz/2017/01/09/logistic-regression/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/01/09/logistic-regression/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/" title="Sort Algorithms of Linear Time Complexity">http://frankchen.xyz/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -383,16 +357,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/11/good commander/">
-                    To be a great commander
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/06/linear-regression/">
-                    linear regression 的公式手推相关
+                <a href="/2017/01/13/Polymorphism-of-Java/">
+                    Polymorphism of Java
                 </a>
             </div>
         
@@ -404,7 +372,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hypothesis"><span class="toc-number">1.</span> <span class="toc-text">Hypothesis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极大似然估计"><span class="toc-number">2.</span> <span class="toc-text">极大似然估计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cost-Function"><span class="toc-number">3.</span> <span class="toc-text">Cost Function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化过程"><span class="toc-number">4.</span> <span class="toc-text">优化过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#牛顿法优化"><span class="toc-number">5.</span> <span class="toc-text">牛顿法优化</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#计数排序"><span class="toc-number">1.</span> <span class="toc-text">计数排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-number">1.2.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考代码"><span class="toc-number">1.3.</span> <span class="toc-text">参考代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基数排序"><span class="toc-number">2.</span> <span class="toc-text">基数排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#桶排序"><span class="toc-number">3.</span> <span class="toc-text">桶排序</span></a></li></ol>
         
     </div>
     <style>
@@ -440,7 +408,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"logistic regression的公式手推相关　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Sort Algorithms of Linear Time Complexity　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -456,7 +424,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/09/logistic-regression/" data-title="logistic regression的公式手推相关" data-url="http://frankchen.xyz/2017/01/09/logistic-regression/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/" data-title="Sort Algorithms of Linear Time Complexity" data-url="http://frankchen.xyz/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -479,15 +447,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/11/good commander/" title="上一篇: To be a great commander">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/06/linear-regression/" title="下一篇: linear regression 的公式手推相关">
+            <a href="/2017/01/13/Polymorphism-of-Java/" title="下一篇: Polymorphism of Java">
                 <i class="fa fa-angle-right"></i>
             </a>
         
