@@ -15,19 +15,16 @@
 
 
 
-<meta name="description" content="常用排序算法如归并、快排、堆排序等基于比较的排序方法都是不能突破$O(n \log n)$时间复杂度的，本文着重介绍几种线性时间复杂度的排序方法。">
+<meta name="description" content="本文主要关于项亮的《推荐系统实践》的笔记。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sort Algorithms of Linear Time Complexity">
-<meta property="og:url" content="http://frankchen.xyz/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/index.html">
+<meta property="og:title" content="Action">
+<meta property="og:url" content="http://frankchen.xyz/2017/01/16/Action/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="常用排序算法如归并、快排、堆排序等基于比较的排序方法都是不能突破$O(n \log n)$时间复杂度的，本文着重介绍几种线性时间复杂度的排序方法。">
-<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\Screen Shot 2017-01-13 at 23.06.23.png">
-<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\Screen Shot 2017-01-13 at 23.06.41.png">
-<meta property="og:updated_time" content="2017-01-14T10:48:52.000Z">
+<meta property="og:description" content="本文主要关于项亮的《推荐系统实践》的笔记。">
+<meta property="og:updated_time" content="2017-01-15T16:21:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sort Algorithms of Linear Time Complexity">
-<meta name="twitter:description" content="常用排序算法如归并、快排、堆排序等基于比较的排序方法都是不能突破$O(n \log n)$时间复杂度的，本文着重介绍几种线性时间复杂度的排序方法。">
-<meta name="twitter:image" content="http://frankchen.xyz/\images\2017\01\Screen Shot 2017-01-13 at 23.06.23.png">
+<meta name="twitter:title" content="Action">
+<meta name="twitter:description" content="本文主要关于项亮的《推荐系统实践》的笔记。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Sort Algorithms of Linear Time Complexity | loop in data</title>
+<title>Action | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -277,11 +274,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-Sort-Algorithms-of-Linear-Time-Complexity" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="Note of &quot;Recommendation System in Action&quot;-Action" class="article article-type-Note of &quot;Recommendation System in Action&quot;" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/" class="article-date">
-      <time datetime="2017-01-13T12:05:31.000Z" itemprop="datePublished">2017-01-13</time>
+      <a href="/2017/01/16/Action/" class="article-date">
+      <time datetime="2017-01-15T16:19:00.000Z" itemprop="datePublished">2017-01-16</time>
 </a>
 
 
@@ -296,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Sort Algorithms of Linear Time Complexity
+      Action
     </h1>
   
 
@@ -307,7 +304,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Recommendation-System/">Recommendation System</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -317,21 +314,97 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>常用排序算法如归并、快排、堆排序等基于比较的排序方法都是不能突破$O(n \log n)$时间复杂度的，本文着重介绍几种线性时间复杂度的排序方法。<br><a id="more"></a></p>
-<p>基于比较的排序为何不能突破$O(n \log n)$时间复杂度？因为$N$个数有$N!$个可能的排列情况，也就是说基于比较的排序算法的判定树有$N!$个叶子结点，比较次数至少为$\log(N!)= O(N \log N)$ (斯特林公式)</p>
-<p>而线性复杂度的排序方法通常来说有计数排序、桶排序和基数排序三种。</p>
-<h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><p>计数排序（Counting sort）是一种稳定的线性时间排序算法，Θ(n + k)的时间复杂度。n 是待排序数组的大小，k 是辅助数组 count 的大小。</p>
-<p>因为它并不是基于比较的的排序算法，所以它没有O(NlogN)的下限。并且在一定的条件下，使用该算法比使用快排能带来更好的效率。例如在基数排序中就运用了计数排序，因为它只需要额外的10个元素大小的辅助数组，线性的效率，并保证了稳定性。</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>计数排序的主要思想是将待排序元素的值作为下标，利用辅助数组 count 记录所有的元素出现的次数。即 count[i] 的值代表元素 i 在原始数组中出现的次数。这样，原始数组的所有元素就被有有序地记录下来。</p>
-<p>当然，只知道某个元素出现的次数是不足以排序的。仔细观察 count 数组，发现对 count 数组进行累加（count[i] += count[i-1]）后，count[i] 的含义就变成了原始数组 i 前面有 count[i]个数是不大于它的。最后就可以根据 count 数组中的排名去构造一个已排序的数组了。</p>
-<p>下面以原始数组d = {8, 13, 0, 3, 20, 16, 9, 7, 11, 5} 去演示上述的过程：</p>
-<p><img src="\images\2017\01\Screen Shot 2017-01-13 at 23.06.23.png" alt=""></p>
-<p>或者是数组中有重复元素的情况：</p>
-<p><img src="\images\2017\01\Screen Shot 2017-01-13 at 23.06.41.png" alt=""></p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>计数排序虽然效率高，却有其受限的条件。</p>
-<p>只能对[0, K]区间的非负整数进行排序。<br>当 K 很大时，空间复杂度会变得很大。<br>所以，如果是对于[0, 100]这样的区间，计数排序是个好的选择。考虑到空间复杂度的优化，也可以用原始数组中的 (最大值 - 最小值 + 1) 作为 count 数组的大小。</p>
-<h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">    数组 d 的元素只能位于[0, K)区间的非负整数，O(n + K)</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">counting_sort</span><span class="params">(<span class="keyword">int</span> d[], <span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> max = <span class="number">0</span>, min = Integer.MAX_VALUE;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (max &lt; d[i])</div><div class="line">            max = d[i];</div><div class="line">        <span class="keyword">if</span> (min &gt; d[i])</div><div class="line">            min = d[i];</div><div class="line">    &#125;</div><div class="line">    max++;</div><div class="line">    <span class="keyword">int</span>[]  count = <span class="keyword">new</span> <span class="keyword">int</span>[max - min; <span class="comment">//优化空间</span></div><div class="line">    <span class="keyword">int</span>[] ans = <span class="keyword">new</span> <span class="keyword">int</span>[n];</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; max; ++i) count[i] = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) count[d[i] - min]++;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; max; ++i) count[i] += count[i - <span class="number">1</span>];</div><div class="line">    <span class="comment">//这里必须逆序循环，不然会造成排序结果失去稳定性。</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</div><div class="line">      ans[ --count[d[i]- min] ] = d[i];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> ans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2>
+        <p>本文主要关于项亮的《推荐系统实践》的笔记。</p>
+<a id="more"></a>
+<h2 id="推荐系统的评测方式"><a href="#推荐系统的评测方式" class="headerlink" title="推荐系统的评测方式"></a>推荐系统的评测方式</h2><p>以下也是一项最终能上线的推荐算法的依次测试顺序，</p>
+<ul>
+<li>离线评测<ul>
+<li>将数据集分为训练集和测试集，离线对算法进行评测</li>
+</ul>
+</li>
+<li>用户调查<ul>
+<li>在上线之前通过调查得到用户满意度的信息</li>
+</ul>
+</li>
+<li>在线评测<ul>
+<li>进行AB测试，对比推荐算法指标</li>
+</ul>
+</li>
+</ul>
+<h2 id="推荐系统的评测指标"><a href="#推荐系统的评测指标" class="headerlink" title="推荐系统的评测指标"></a>推荐系统的评测指标</h2><ul>
+<li>满意度<ul>
+<li>是推荐系统的最重要标准</li>
+<li>无法离线计算，只能通过用户调查和在线实验得到</li>
+<li>可通过停留时间、点击率和转化率来统计</li>
+</ul>
+</li>
+<li>预测准确度<ul>
+<li>最重要的离线测试标准</li>
+<li>主要方法是，在离线数据集内的训练集训练的结果与测试集对比，比较重合度。</li>
+<li>又分为评分预测和Top N推荐</li>
+<li>对于评分预测，有均方根误差（RMSE）和平均绝对误差（MAE）计算两种方式，相差不大，前者对于偏离项惩罚大，后者对于评分取整的情况会降低误差。</li>
+<li>对于Top N推荐，通常通过准确率和招呼率来评测<ul>
+<li>假设$R(u)$和$T(u)$分别是训练集和测试集上的推荐，那么两者的交集长度除以$R(u)$的长度就是precision，交集长度除以$T(u)$就是recall。</li>
+</ul>
+</li>
+<li>评分预测关注预测用户看了电影后会给电影什么样的评分，而Top N是找到用户最有可能感兴趣的电影</li>
+</ul>
+</li>
+<li>覆盖率coverage<ul>
+<li>粗略定义为推荐系统发掘的物品占全部物品的比率，精确定义为物品流行度与全部物品流行度的比率</li>
+<li>可通过信息熵和基尼系数来计算</li>
+<li>两者都是计算不同物品流行度之间的平衡度</li>
+<li>推荐系统一般具有马太效应：强者更强</li>
+</ul>
+</li>
+<li>多样性<ul>
+<li>要覆盖满足用户广大的兴趣，可以用不同的物品相似度度量函数来定义不同的多样性</li>
+<li>多样性和相似性是trade off的，需要达到一定的平衡，让推荐效果最好</li>
+</ul>
+</li>
+<li>新颖性<ul>
+<li>推荐用户未见过的物品，最简单的是推荐流行度低的物品</li>
+<li>难点在于不牺牲精度的前提下提高多样性和新颖性</li>
+</ul>
+</li>
+<li>惊喜度<ul>
+<li>推荐结果和用户的历史兴趣不相似，但却让用户觉得满意，那么就可以说推荐结果的惊喜度很高，而推荐的新颖性仅仅取决于用户是否听说过这个推荐结果。</li>
+</ul>
+</li>
+<li>信任度<ul>
+<li>用户对推荐系统的信任度高，能增加用户与推荐系统的交互</li>
+<li>提升用户对推荐系统的信任度的方法<ul>
+<li>增加推荐系统的透明度：对用户的推荐需要进行解释</li>
+<li>提高用户的社交关系进行推荐</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实时性<ul>
+<li>实时更新追踪用户的行为和状态的变化</li>
+<li>能够将新加入的物品推荐给用户</li>
+</ul>
+</li>
+<li>鲁棒性<ul>
+<li>反作弊性</li>
+<li>作弊方法<ul>
+<li>行为注入攻击</li>
+<li>评分系统攻击：大批给某物品打高分</li>
+</ul>
+</li>
+<li>如何对抗作弊<ul>
+<li>采用作弊代价高的行为作为推荐系统采纳的数据</li>
+<li>使用数据前进行检测、清理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>商业目标<ul>
+<li>不同利益方关注不同</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
     
@@ -339,13 +412,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/">Sort Algorithms of Linear Time Complexity</a></p>
+        <p><span>Title:</span><a href="/2017/01/16/Action/">Action</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">江南消夏</a></p>
-        <p><span>Created:</span>2017-01-13, 20:05:31</p>
-        <p><span>Updated:</span>2017-01-14, 18:48:52</p>
+        <p><span>Created:</span>2017-01-16, 00:19:00</p>
+        <p><span>Updated:</span>2017-01-16, 00:21:39</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/" title="Sort Algorithms of Linear Time Complexity">http://frankchen.xyz/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/</a>
-            <span class="copy-path" data-clipboard-text="From http://frankchen.xyz/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2017/01/16/Action/" title="Action">http://frankchen.xyz/2017/01/16/Action/</a>
+            <span class="copy-path" data-clipboard-text="From http://frankchen.xyz/2017/01/16/Action/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -357,16 +430,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/16/Action/">
-                    Action
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/13/Polymorphism-of-Java/">
-                    Polymorphism of Java
+                <a href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/">
+                    Sort Algorithms of Linear Time Complexity
                 </a>
             </div>
         
@@ -378,7 +445,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#计数排序"><span class="toc-number">1.</span> <span class="toc-text">计数排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-number">1.2.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考代码"><span class="toc-number">1.3.</span> <span class="toc-text">参考代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基数排序"><span class="toc-number">2.</span> <span class="toc-text">基数排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#桶排序"><span class="toc-number">3.</span> <span class="toc-text">桶排序</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐系统的评测方式"><span class="toc-number">1.</span> <span class="toc-text">推荐系统的评测方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐系统的评测指标"><span class="toc-number">2.</span> <span class="toc-text">推荐系统的评测指标</span></a></li></ol>
         
     </div>
     <style>
@@ -414,7 +481,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Sort Algorithms of Linear Time Complexity　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Action　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -430,7 +497,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/" data-title="Sort Algorithms of Linear Time Complexity" data-url="http://frankchen.xyz/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/16/Action/" data-title="Action" data-url="http://frankchen.xyz/2017/01/16/Action/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -453,15 +520,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/16/Action/" title="Pre: Action">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/13/Polymorphism-of-Java/" title="Next: Polymorphism of Java">
+            <a href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/" title="Next: Sort Algorithms of Linear Time Complexity">
                 <i class="fa fa-angle-right"></i>
             </a>
         
