@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="江南消夏" />
+
+
+
+<meta name="description" content="本文主要关于SQL的基本语法的笔记，来自SoloLearn。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Note for SoloLearn SQL">
+<meta property="og:url" content="http://frankchen.xyz/2017/01/17/Note-for-SoloLearn-SQL/index.html">
+<meta property="og:site_name" content="loop in data">
+<meta property="og:description" content="本文主要关于SQL的基本语法的笔记，来自SoloLearn。">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\1.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\2.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\3.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\4.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\5.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\6.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\7.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\8.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\9.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\10.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\11.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\12.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\13.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\14.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\15.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\16.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\17.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\18.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\19.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\20.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\21.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\22.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\23.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\24.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\25.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\26.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\27.png">
+<meta property="og:image" content="http://frankchen.xyz/\images\2017\01\28.png">
+<meta property="og:updated_time" content="2017-01-17T15:57:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Note for SoloLearn SQL">
+<meta name="twitter:description" content="本文主要关于SQL的基本语法的笔记，来自SoloLearn。">
+<meta name="twitter:image" content="http://frankchen.xyz/\images\2017\01\1.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="loop in data" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Note for SoloLearn SQL | loop in data</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">江南消夏</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Enjoy everything fun and challenging</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:947118251@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="http://weibo.com/znwindy" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/frankchen0130" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/people/frankchen0130" title="知乎"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS-Store/">.DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/">Deep Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSTM/">LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/">Old Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN/">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recommendation-System/">Recommendation System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hujiaweibujidao.github.io/">胡家威</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://my.csdn.net/yywan1314520">-dragon-</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://e1ias.github.io/">E1ias</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://cuiqingcai.com/">静觅</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">机器学习、数据挖掘</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">江南消夏</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">江南消夏</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Enjoy everything fun and challenging</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:947118251@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/znwindy" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/frankchen0130" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/frankchen0130" title="知乎"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Note-for-SoloLearn-SQL" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/17/Note-for-SoloLearn-SQL/" class="article-date">
+      <time datetime="2017-01-17T08:11:48.000Z" itemprop="datePublished">2017-01-17</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Note for SoloLearn SQL
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Note/">Note</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>本文主要关于SQL的基本语法的笔记，来自SoloLearn。<br><a id="more"></a></p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="介绍数据库"><a href="#介绍数据库" class="headerlink" title="介绍数据库"></a>介绍数据库</h3><h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>数据库是指以利于容易地连接、有效管理和更新的方式来管理的一系列的数据。数据库由储存相关联的信息的表格组成，举例来说，假设我们需要建立一个如YouTube的网站，那么我们需要数据库来存储视频信息、用户名与密码以及评论等等。</p>
+<h4 id="数据库表格"><a href="#数据库表格" class="headerlink" title="数据库表格"></a>数据库表格</h4><p>数据库表格用类似Excel的方式存储和展示数据，数据库通常由许多的表格构成，例如想象一个由名字和电话号码构成的表格。</p>
+<p><img src="\images\2017\01\1.png" alt=""></p>
+<h4 id="primary-key"><a href="#primary-key" class="headerlink" title="primary key"></a>primary key</h4><p>primary key是表格中特殊的一列，主要特性是</p>
+<ul>
+<li>每行都有独特的primary key</li>
+<li>不能为null</li>
+</ul>
+<p>例如下图中，ID是个primary key的好选择，因为可能会有重名的情况。</p>
+<p><img src="\images\2017\01\2.png" alt=""></p>
+<h4 id="什么是SQL"><a href="#什么是SQL" class="headerlink" title="什么是SQL"></a>什么是SQL</h4><p>我们已经理解了什么是数据库，那么理解什么是SQL就很简单了。SQL 全称是结构化序列语言（Structured Query Language）。SQL用于连接和操作数据库，而MySQL指的是一种能理解SQL的程序语言。可以这么说，SQL是一种标准，而有许多遵循这个版本却自带许多特性的程序语言的实现。</p>
+<p>SQL可以：</p>
+<ul>
+<li>插入、更新、删除数据库里的记录</li>
+<li>创建新的数据库、表格、存储程序和外观</li>
+<li>从数据库取回数据</li>
+</ul>
+<h3 id="SQL语句-SELECT"><a href="#SQL语句-SELECT" class="headerlink" title="SQL语句 SELECT"></a>SQL语句 SELECT</h3><h4 id="基本SQL语句"><a href="#基本SQL语句" class="headerlink" title="基本SQL语句"></a>基本SQL语句</h4><p><code>SHOW DATABASES</code>：返回服务器上所有数据库的序列</p>
+<p><code>SHOW TABLES</code>：返回当前数据库上的所有表格</p>
+<p><code>SHOW COLUMNS FROM customers</code>：返回选定表格内的列信息</p>
+<h4 id="SELECT-语句"><a href="#SELECT-语句" class="headerlink" title="SELECT 语句"></a>SELECT 语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> column_list</div><div class="line"><span class="keyword">FROM</span> table_name</div></pre></td></tr></table></figure>
+<p>在制定表格内选中一列或者多列</p>
+<h3 id="语法规则"><a href="#语法规则" class="headerlink" title="语法规则"></a>语法规则</h3><h4 id="多行语句"><a href="#多行语句" class="headerlink" title="多行语句"></a>多行语句</h4><p>SQL允许同时运行多句语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT FirstName FROM customers;</div><div class="line">SELECT City FROM customers;</div></pre></td></tr></table></figure>
+<h4 id="大小写不敏感"><a href="#大小写不敏感" class="headerlink" title="大小写不敏感"></a>大小写不敏感</h4><p>SQL是大小写不敏感的，如下三行是同样的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select City from customers;</div><div class="line">SELECT City FROM customers;</div><div class="line">sElEct City From customers;</div></pre></td></tr></table></figure>
+<h4 id="忽略空白"><a href="#忽略空白" class="headerlink" title="忽略空白"></a>忽略空白</h4><p>whitespace和多行被忽略，以下语句是ok的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT        City</div><div class="line"></div><div class="line"></div><div class="line">FROM customers;</div></pre></td></tr></table></figure>
+<h3 id="选择多列"><a href="#选择多列" class="headerlink" title="选择多列"></a>选择多列</h3><h4 id="选择多列-1"><a href="#选择多列-1" class="headerlink" title="选择多列"></a>选择多列</h4><p>以逗号分隔，可以同时选择多列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT FirstName, LastName, City</div><div class="line">FROM customers;</div></pre></td></tr></table></figure>
+<h4 id="选择所有列"><a href="#选择所有列" class="headerlink" title="选择所有列"></a>选择所有列</h4><p><code>SELECT * FROM customers;</code></p>
+<h3 id="DISTINCT和LIMIT"><a href="#DISTINCT和LIMIT" class="headerlink" title="DISTINCT和LIMIT"></a>DISTINCT和LIMIT</h3><h4 id="DISTINCT关键词"><a href="#DISTINCT关键词" class="headerlink" title="DISTINCT关键词"></a>DISTINCT关键词</h4><p>DISTINCT关键词指排除重复项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT DISTINCT column_name1, column_name2</div><div class="line">FROM table_name;</div></pre></td></tr></table></figure></p>
+<h4 id="LIMIT关键词"><a href="#LIMIT关键词" class="headerlink" title="LIMIT关键词"></a>LIMIT关键词</h4><p>指定返回的子集大小</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT column list</div><div class="line">FROM table_name</div><div class="line">LIMIT [number of records];</div></pre></td></tr></table></figure>
+<p>如选择前五项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT ID, FirstName, LastName, City</div><div class="line">FROM customers LIMIT 5;</div></pre></td></tr></table></figure>
+<p>选择从3<strong>后面</strong>的4项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT ID, FirstName, LastName, City</div><div class="line"> FROM customers LIMIT 3, 4;</div></pre></td></tr></table></figure>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><h4 id="全名"><a href="#全名" class="headerlink" title="全名"></a>全名</h4><p>当要操作拥有相同列名字的多个表格时，可以使用全名如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT City FROM customers;</div><div class="line"></div><div class="line">SELECT customers.City FROM customers;</div></pre></td></tr></table></figure>
+<h4 id="Order-By"><a href="#Order-By" class="headerlink" title="Order By"></a>Order By</h4><p>Order By用于与SELECT来排序数据<br>用 Firstname排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM customers</div><div class="line">ORDER BY FirstName;</div></pre></td></tr></table></figure>
+<p><img src="\images\2017\01\3.png" alt=""></p>
+<h4 id="多列排序"><a href="#多列排序" class="headerlink" title="多列排序"></a>多列排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM customers</div><div class="line">ORDER BY LastName, Age;</div></pre></td></tr></table></figure>
+<p>先用LastName排序，在LastName相同的情况下，用Age排序</p>
+<h2 id="Filtering-Functions-Subqueries"><a href="#Filtering-Functions-Subqueries" class="headerlink" title="Filtering, Functions, Subqueries"></a>Filtering, Functions, Subqueries</h2><h3 id="WHERE语句"><a href="#WHERE语句" class="headerlink" title="WHERE语句"></a>WHERE语句</h3><h4 id="WHERE语句-1"><a href="#WHERE语句-1" class="headerlink" title="WHERE语句"></a>WHERE语句</h4><p>WHERE语句类似一个过滤器的作用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT column_list</div><div class="line">FROM table_name</div><div class="line">WHERE condition;</div></pre></td></tr></table></figure></p>
+<h4 id="SQL操作符"><a href="#SQL操作符" class="headerlink" title="SQL操作符"></a>SQL操作符</h4><p>比较操作符和逻辑操作符用于WHERE语句内</p>
+<p><img src="\images\2017\01\4.png" alt=""></p>
+<h4 id="BETWEEN-操作符"><a href="#BETWEEN-操作符" class="headerlink" title="BETWEEN 操作符"></a>BETWEEN 操作符</h4><p>用于选中一定范围内的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT column_name(s)</div><div class="line">FROM table_name</div><div class="line">WHERE column_name BETWEEN value1 AND value2;</div></pre></td></tr></table></figure>
+<h4 id="Text-值"><a href="#Text-值" class="headerlink" title="Text 值"></a>Text 值</h4><p>需要用单引号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT ID, FirstName, LastName, City</div><div class="line">FROM customers</div><div class="line">WHERE City = &apos;New York&apos;;</div></pre></td></tr></table></figure></p>
+<h3 id="AND-OR逻辑操作符"><a href="#AND-OR逻辑操作符" class="headerlink" title="AND OR逻辑操作符"></a>AND OR逻辑操作符</h3><p>逻辑操作符用于操作两个布尔值，返回true、false、或者null</p>
+<p><img src="\images\2017\01\5.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT ID, FirstName, LastName, Age</div><div class="line">FROM customers</div><div class="line">WHERE Age &gt;= 30 AND Age &lt;= 40;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM customers</div><div class="line">WHERE City = &apos;New York&apos; OR City = &apos;Chicago&apos;;</div></pre></td></tr></table></figure>
+<h4 id="结合AND-amp-OR"><a href="#结合AND-amp-OR" class="headerlink" title="结合AND &amp; OR"></a>结合AND &amp; OR</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM customers</div><div class="line">WHERE City = &apos;New York&apos;</div><div class="line">AND (Age=30 OR Age=35);</div></pre></td></tr></table></figure>
+<h3 id="IN-NOT-IN"><a href="#IN-NOT-IN" class="headerlink" title="IN NOT IN"></a>IN NOT IN</h3><p>IN操作符用于需要将一列与许多值比较的情况，如用OR语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM customers</div><div class="line">WHERE City = &apos;New York&apos;</div><div class="line">OR City = &apos;Los Angeles&apos;</div><div class="line">OR City = &apos;Chicago&apos;;</div></pre></td></tr></table></figure>
+<p>用IN语句替代可简写为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM customers</div><div class="line">WHERE City IN (&apos;New York&apos;, &apos;Los Angeles&apos;, &apos;Chicago&apos;);</div></pre></td></tr></table></figure></p>
+<p>NOT IN就是反面情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM customers</div><div class="line">WHERE City NOT IN (&apos;New York&apos;, &apos;Los Angeles&apos;, &apos;Chicago&apos;);</div></pre></td></tr></table></figure>
+<h3 id="Custom-列"><a href="#Custom-列" class="headerlink" title="Custom 列"></a>Custom 列</h3><h4 id="CONCAT语句"><a href="#CONCAT语句" class="headerlink" title="CONCAT语句"></a>CONCAT语句</h4><p>CONCAT语句用于联合多个Text值，返回字符串</p>
+<p><code>SELECT CONCAT(FirstName, &#39;, &#39; , City) FROM customers;</code><br><img src="\images\2017\01\6.png" alt=""></p>
+<h4 id="AS-操作符"><a href="#AS-操作符" class="headerlink" title="AS 操作符"></a>AS 操作符</h4><p>AS 操作符用于生成新的列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT CONCAT(FirstName,&apos;, &apos;, City) AS new_column</div><div class="line">FROM customers;</div></pre></td></tr></table></figure>
+<p><img src="\images\2017\01\7.png" alt=""></p>
+<h4 id="算数操作符"><a href="#算数操作符" class="headerlink" title="算数操作符"></a>算数操作符</h4><ul>
+<li><ul>
+<li><ul>
+<li>/</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>如将Salary自增500<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT ID, FirstName, LastName, Salary+500 AS Salary</div><div class="line">FROM employees;</div></pre></td></tr></table></figure></p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="UPPER-LOWER函数"><a href="#UPPER-LOWER函数" class="headerlink" title="UPPER LOWER函数"></a>UPPER LOWER函数</h4><p>用于转换为大小写格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT FirstName, UPPER(LastName) AS LastName</div><div class="line">FROM employees;</div></pre></td></tr></table></figure>
+<h4 id="SQRT-、-AVG"><a href="#SQRT-、-AVG" class="headerlink" title="SQRT 、 AVG"></a>SQRT 、 AVG</h4><p>SQRT返回平方根</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT Salary, SQRT(Salary)</div><div class="line">FROM employees;</div></pre></td></tr></table></figure>
+<p>AVG返回均值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT AVG(Salary) FROM employees;</div></pre></td></tr></table></figure>
+<h4 id="SUM函数"><a href="#SUM函数" class="headerlink" title="SUM函数"></a>SUM函数</h4><p>返回列的加和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT SUM(Salary) FROM employees;</div></pre></td></tr></table></figure>
+<h3 id="子语句"><a href="#子语句" class="headerlink" title="子语句"></a>子语句</h3><p>子语句是指含有其他语句的语句，假设我们需要选中全部薪水大于均值的人，那么可能需要先获取均值</p>
+<p><code>SELECT AVG(Salary) FROM employees;</code></p>
+<p>再</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT FirstName, Salary FROM employees</div><div class="line">WHERE  Salary &gt; 3100</div><div class="line">ORDER BY Salary DESC;</div></pre></td></tr></table></figure>
+<p>其实可以结合起来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT FirstName, Salary FROM employees</div><div class="line">WHERE  Salary &gt; (SELECT AVG(Salary) FROM employees)</div><div class="line">ORDER BY Salary DESC;</div></pre></td></tr></table></figure>
+<h3 id="LIKE和MIN"><a href="#LIKE和MIN" class="headerlink" title="LIKE和MIN"></a>LIKE和MIN</h3><h4 id="LIKE函数"><a href="#LIKE函数" class="headerlink" title="LIKE函数"></a>LIKE函数</h4><p>LIKE用于在WHERE里指定条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT column_name(s)</div><div class="line">FROM table_name</div><div class="line">WHERE column_name LIKE pattern;</div></pre></td></tr></table></figure>
+<p>例如，选择所有A开头的人</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM employees</div><div class="line">WHERE FirstName LIKE &apos;A%&apos;;</div></pre></td></tr></table></figure>
+<p>选择所有s结尾名字的人<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM employees</div><div class="line">WHERE LastName LIKE &apos;%s&apos;;</div></pre></td></tr></table></figure></p>
+<h4 id="MIN函数"><a href="#MIN函数" class="headerlink" title="MIN函数"></a>MIN函数</h4><p>用于选择最小值</p>
+<p><code>SELECT MIN(Salary) AS Salary FROM employees;</code></p>
+<h2 id="JOIN、表操作"><a href="#JOIN、表操作" class="headerlink" title="JOIN、表操作"></a>JOIN、表操作</h2><h3 id="合并表格"><a href="#合并表格" class="headerlink" title="合并表格"></a>合并表格</h3><p>对于以下两个表格</p>
+<p><img src="\images\2017\01\8.png" alt=""></p>
+<p><img src="\images\2017\01\9.png" alt=""></p>
+<p>可用以下语句结合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT customers.ID, customers.Name, orders.Name, orders.Amount</div><div class="line">FROM customers, orders</div><div class="line">WHERE customers.ID=orders.Customer_ID</div><div class="line">ORDER BY customers.ID;</div></pre></td></tr></table></figure>
+<p>结果</p>
+<p><img src="\images\2017\01\10.png" alt=""></p>
+<h3 id="Join的类型"><a href="#Join的类型" class="headerlink" title="Join的类型"></a>Join的类型</h3><p>可以用“小名”来简化join操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT ct.ID, ct.Name, ord.Name, ord.Amount</div><div class="line">FROM customers AS ct, orders AS ord</div><div class="line">WHERE ct.ID=ord.Customer_ID</div><div class="line">ORDER BY ct.ID;</div></pre></td></tr></table></figure>
+<h4 id="JOIN类型"><a href="#JOIN类型" class="headerlink" title="JOIN类型"></a>JOIN类型</h4><ul>
+<li>INNER JOIN</li>
+<li>LEFT JOIN</li>
+<li>RIGHT JOIN</li>
+</ul>
+<p>INNER JOIN等同于JOIN</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT column_name(s)</div><div class="line">FROM table1 INNER JOIN table2</div><div class="line">ON table1.column_name=table2.column_name;</div></pre></td></tr></table></figure>
+<p>关系如图</p>
+<p><img src="\images\2017\01\11.png" alt=""></p>
+<p>LEFT JOIN 返回所有左边表格的行，甚至是在右边表格没有符合的也是如此。</p>
+<p>基本语法为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT table1.column1, table2.column2...</div><div class="line">FROM table1 LEFT OUTER JOIN table2</div><div class="line">ON table1.column_name = table2.column_name;</div></pre></td></tr></table></figure>
+<p><img src="\images\2017\01\12.png" alt=""></p>
+<p>举例来说，考虑以下两个依次是customers和items，<br><img src="\images\2017\01\13.png" alt=""></p>
+<p><img src="\images\2017\01\14.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT customers.Name, items.Name</div><div class="line">FROM customers LEFT OUTER JOIN items</div><div class="line">ON customers.ID=items.Seller_id;</div></pre></td></tr></table></figure>
+<p>结果</p>
+<p><img src="\images\2017\01\15.png" alt=""></p>
+<p>如果用RIGHT JOIN</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT table1.column1, table2.column2...</div><div class="line">FROM table1 RIGHT OUTER JOIN table2</div><div class="line">ON table1.column_name = table2.column_name;</div></pre></td></tr></table></figure>
+<p>结果是</p>
+<p><img src="\images\2017\01\16.png" alt=""></p>
+<h3 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h3><p>当需要合并相似的表格时，可以用到UNION and UNION ALL，两者主要区别是前者会丢弃重复项。</p>
+<p>如考虑以下两个表格</p>
+<p><img src="\images\2017\01\17.png" alt=""></p>
+<p><img src="\images\2017\01\18.png" alt=""></p>
+<p>使用语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT ID, FirstName, LastName, City FROM First</div><div class="line">UNION</div><div class="line">SELECT ID, FirstName, LastName, City FROM Second;</div></pre></td></tr></table></figure></p>
+<p>结果为</p>
+<p><img src="\images\2017\01\19.png" alt=""></p>
+<p>而使用UNION ALL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT ID, FirstName, LastName, City FROM First</div><div class="line">UNION ALL</div><div class="line">SELECT ID, FirstName, LastName, City FROM Second;</div></pre></td></tr></table></figure>
+<p>结果为</p>
+<p><img src="\images\2017\01\20.png" alt=""></p>
+<h3 id="INSERT语句"><a href="#INSERT语句" class="headerlink" title="INSERT语句"></a>INSERT语句</h3><h4 id="插入语句"><a href="#插入语句" class="headerlink" title="插入语句"></a>插入语句</h4><p>INSERT语句用于在表格插入一条数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INSERT INTO table_name</div><div class="line">VALUES (value1, value2, value3,...);</div></pre></td></tr></table></figure>
+<p>也可以指定插入列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INSERT INTO table_name (column1, column2, column3, ...,columnN)  </div><div class="line">VALUES (value1, value2, value3,...valueN);</div></pre></td></tr></table></figure>
+<p>亦可只插入指定列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INSERT INTO table_name (column1, column2, column3, ...,columnN)  </div><div class="line">VALUES (value1, value2, value3,...valueN);</div></pre></td></tr></table></figure>
+<p><img src="\images\2017\01\21.png" alt=""></p>
+<h3 id="UPDATE、DELETE语句"><a href="#UPDATE、DELETE语句" class="headerlink" title="UPDATE、DELETE语句"></a>UPDATE、DELETE语句</h3><p>UPDATE语句用于更改表格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UPDATE table_name</div><div class="line">SET column1=value1, column2=value2, ...</div><div class="line">WHERE condition;</div></pre></td></tr></table></figure>
+<p>例如</p>
+<p><img src="\images\2017\01\22.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UPDATE Employees</div><div class="line">SET Salary=5000</div><div class="line">WHERE ID=1;</div></pre></td></tr></table></figure>
+<p><img src="\images\2017\01\23.png" alt=""></p>
+<p>也可以同时更改数项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UPDATE Employees</div><div class="line">SET Salary=5000, FirstName=&apos;Robert&apos;</div><div class="line">WHERE ID=1;</div></pre></td></tr></table></figure>
+<p>DELETE用于删除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DELETE FROM table_name</div><div class="line">WHERE condition;</div></pre></td></tr></table></figure>
+<h3 id="创建表格"><a href="#创建表格" class="headerlink" title="创建表格"></a>创建表格</h3><p>CREATE TABLE 用于创建表格</p>
+<p>基本语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE table_name</div><div class="line">(</div><div class="line">column_name1 data_type(size),</div><div class="line">column_name2 data_type(size),</div><div class="line">column_name3 data_type(size),</div><div class="line">....</div><div class="line">columnN data_type(size)</div><div class="line">);</div></pre></td></tr></table></figure>
+<ul>
+<li>column_names指定列名</li>
+<li>data_type指定存储数据的类型如int</li>
+<li>size指定最大长度</li>
+</ul>
+<p>如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE Users</div><div class="line">(</div><div class="line">   UserID int,</div><div class="line">   FirstName varchar(100),</div><div class="line">   LastName varchar(100),</div><div class="line">   City varchar(100)</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>varchar指的是字符类型</p>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><p>数值<br>INT - 带符号或者非符号integer<br>FLOAT(M,D) - 带符号浮点数M是展示长度，D是小数点位<br>DOUBLE(M,D) - 带符号long类型浮点数M是展示长度，D是小数点位</p>
+<p>日期和时间<br>DATE - YYYY-MM-DD 格式<br>DATETIME - YYYY-MM-DD HH:MM:SS 格式<br>TIMESTAMP - 从 1970年1月1日午夜开始计算的时间长度<br>TIME - Stores the time in HH:MM:SS format.</p>
+<p>字符串<br>CHAR(M) - 固定长度的字符串，M是长度，最大为255 byte.<br>VARCHAR(M) - 可变长度字符串，M是最大长度<br>BLOB - “二进制大型对象” Binary Large Objects， 用于存储图片等<br>TEXT - 大规模的text数据</p>
+<p>指定primary key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE Users</div><div class="line">(</div><div class="line">   UserID int,</div><div class="line">   FirstName varchar(100),</div><div class="line">   LastName varchar(100),</div><div class="line">   City varchar(100),</div><div class="line">   PRIMARY KEY(UserID)</div><div class="line">);</div></pre></td></tr></table></figure>
+<h3 id="NOT-NULL-和-AUTO-INCREMENT"><a href="#NOT-NULL-和-AUTO-INCREMENT" class="headerlink" title="NOT NULL 和 AUTO_INCREMENT"></a>NOT NULL 和 AUTO_INCREMENT</h3><h4 id="SQL约束"><a href="#SQL约束" class="headerlink" title="SQL约束"></a>SQL约束</h4><p>NOT NULL -  强制列不能含有NULL<br>UNIQUE - 不允许列中出现重复值<br>PRIMARY KEY - 强制表格对于特定的列接受数据并创建单独的加速索引<br>CHECK - 通过逻辑表达式来判断值是否有效<br>DEFAULT - 往表格插入数据时，若某列未指定值，则自动插入默认值</p>
+<p>例如，如下语句指name列不允许出现NULL</p>
+<p><code>name varchar(100) NOT NULL</code></p>
+<h4 id="AUTO-INCREMENT"><a href="#AUTO-INCREMENT" class="headerlink" title="AUTO INCREMENT"></a>AUTO INCREMENT</h4><p>当新一条记录加入时，自动生成某数，通常从1开始，每次新纪录加入，自增1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">UserID int NOT NULL AUTO_INCREMENT,</div><div class="line">PRIMARY KEY (UserID)</div></pre></td></tr></table></figure>
+<h3 id="ALTER-DROP-RANAME"><a href="#ALTER-DROP-RANAME" class="headerlink" title="ALTER DROP RANAME"></a>ALTER DROP RANAME</h3><p>ALTER用于对表格中的列进行添加、删除和编辑操作，也可以对表格的约束进行添加或移除。</p>
+<p><img src="\images\2017\01\24.png" alt=""></p>
+<p><code>ALTER TABLE People ADD DateOfBirth date;</code></p>
+<p><img src="\images\2017\01\25.png" alt=""></p>
+<p>DROP用于删除整列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE People</div><div class="line">DROP COLUMN DateOfBirth;</div></pre></td></tr></table></figure>
+<p>要删除整个表格</p>
+<p><code>DROP TABLE People;</code></p>
+<p>RENAME用于列改名或者对表格改名</p>
+<p>将People的FirstName列改名为name</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE People</div><div class="line">CHANGE FirstName name varchar(100);</div></pre></td></tr></table></figure>
+<p>将整个表格改名</p>
+<p><code>RENAME TABLE People TO Users;</code></p>
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>为了更加方便的组织和操作数据库，经常需要使用视图。视图包含行和列，就像一个真实的表。视图中的字段就是来自一个或多个数据库中的真实的表中的字段。我们可以向视图添加 SQL 函数、WHERE 以及 JOIN 语句，我们也可以提交数据，就像这些来自于某个单一的表。</p>
+<p>创建语句如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">CREATE VIEW view_name AS</div><div class="line">SELECT column_name(s)</div><div class="line">FROM table_name</div><div class="line">WHERE condition;</div></pre></td></tr></table></figure>
+<p>假设一表格，如<br><img src="\images\2017\01\26.png" alt=""></p>
+<p>我们要创建一个视图来展示职工的名字和薪水</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">CREATE VIEW List AS</div><div class="line">SELECT FirstName, Salary</div><div class="line">FROM  Employees;</div></pre></td></tr></table></figure>
+<p>接下来可以类似展示表格一样展示视图</p>
+<p><code>SELECT * FROM List;</code></p>
+<p><img src="\images\2017\01\27.png" alt=""></p>
+<p>可以用以下语句来更新视图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">CREATE OR REPLACE VIEW view_name AS</div><div class="line">SELECT column_name(s)</div><div class="line">FROM table_name</div><div class="line">WHERE condition;</div></pre></td></tr></table></figure>
+<p>例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">CREATE OR REPLACE VIEW List AS</div><div class="line">SELECT FirstName, LastName, Salary</div><div class="line">FROM  Employees;</div></pre></td></tr></table></figure>
+<p><img src="\images\2017\01\28.png" alt=""></p>
+<p>丢弃视图<br><code>DROP VIEW List;</code></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/17/Note-for-SoloLearn-SQL/">Note for SoloLearn SQL</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
+        <p><span>发布时间:</span>2017-01-17, 16:11:48</p>
+        <p><span>最后更新:</span>2017-01-17, 23:57:03</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/17/Note-for-SoloLearn-SQL/" title="Note for SoloLearn SQL">http://frankchen.xyz/2017/01/17/Note-for-SoloLearn-SQL/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/01/17/Note-for-SoloLearn-SQL/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/01/16/Action/">
+                    Note of Recommendation System in Action
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍数据库"><span class="toc-number">1.1.</span> <span class="toc-text">介绍数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库"><span class="toc-number">1.1.1.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库表格"><span class="toc-number">1.1.2.</span> <span class="toc-text">数据库表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#primary-key"><span class="toc-number">1.1.3.</span> <span class="toc-text">primary key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是SQL"><span class="toc-number">1.1.4.</span> <span class="toc-text">什么是SQL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL语句-SELECT"><span class="toc-number">1.2.</span> <span class="toc-text">SQL语句 SELECT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本SQL语句"><span class="toc-number">1.2.1.</span> <span class="toc-text">基本SQL语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SELECT-语句"><span class="toc-number">1.2.2.</span> <span class="toc-text">SELECT 语句</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法规则"><span class="toc-number">1.3.</span> <span class="toc-text">语法规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#多行语句"><span class="toc-number">1.3.1.</span> <span class="toc-text">多行语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#大小写不敏感"><span class="toc-number">1.3.2.</span> <span class="toc-text">大小写不敏感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#忽略空白"><span class="toc-number">1.3.3.</span> <span class="toc-text">忽略空白</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择多列"><span class="toc-number">1.4.</span> <span class="toc-text">选择多列</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#选择多列-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">选择多列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择所有列"><span class="toc-number">1.4.2.</span> <span class="toc-text">选择所有列</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DISTINCT和LIMIT"><span class="toc-number">1.5.</span> <span class="toc-text">DISTINCT和LIMIT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DISTINCT关键词"><span class="toc-number">1.5.1.</span> <span class="toc-text">DISTINCT关键词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LIMIT关键词"><span class="toc-number">1.5.2.</span> <span class="toc-text">LIMIT关键词</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排序"><span class="toc-number">1.6.</span> <span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#全名"><span class="toc-number">1.6.1.</span> <span class="toc-text">全名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Order-By"><span class="toc-number">1.6.2.</span> <span class="toc-text">Order By</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多列排序"><span class="toc-number">1.6.3.</span> <span class="toc-text">多列排序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Filtering-Functions-Subqueries"><span class="toc-number">2.</span> <span class="toc-text">Filtering, Functions, Subqueries</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WHERE语句"><span class="toc-number">2.1.</span> <span class="toc-text">WHERE语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WHERE语句-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">WHERE语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL操作符"><span class="toc-number">2.1.2.</span> <span class="toc-text">SQL操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BETWEEN-操作符"><span class="toc-number">2.1.3.</span> <span class="toc-text">BETWEEN 操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Text-值"><span class="toc-number">2.1.4.</span> <span class="toc-text">Text 值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AND-OR逻辑操作符"><span class="toc-number">2.2.</span> <span class="toc-text">AND OR逻辑操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#结合AND-amp-OR"><span class="toc-number">2.2.1.</span> <span class="toc-text">结合AND & OR</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IN-NOT-IN"><span class="toc-number">2.3.</span> <span class="toc-text">IN NOT IN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Custom-列"><span class="toc-number">2.4.</span> <span class="toc-text">Custom 列</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CONCAT语句"><span class="toc-number">2.4.1.</span> <span class="toc-text">CONCAT语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AS-操作符"><span class="toc-number">2.4.2.</span> <span class="toc-text">AS 操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算数操作符"><span class="toc-number">2.4.3.</span> <span class="toc-text">算数操作符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数"><span class="toc-number">2.5.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#UPPER-LOWER函数"><span class="toc-number">2.5.1.</span> <span class="toc-text">UPPER LOWER函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQRT-、-AVG"><span class="toc-number">2.5.2.</span> <span class="toc-text">SQRT 、 AVG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SUM函数"><span class="toc-number">2.5.3.</span> <span class="toc-text">SUM函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子语句"><span class="toc-number">2.6.</span> <span class="toc-text">子语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LIKE和MIN"><span class="toc-number">2.7.</span> <span class="toc-text">LIKE和MIN</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#LIKE函数"><span class="toc-number">2.7.1.</span> <span class="toc-text">LIKE函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MIN函数"><span class="toc-number">2.7.2.</span> <span class="toc-text">MIN函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JOIN、表操作"><span class="toc-number">3.</span> <span class="toc-text">JOIN、表操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#合并表格"><span class="toc-number">3.1.</span> <span class="toc-text">合并表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Join的类型"><span class="toc-number">3.2.</span> <span class="toc-text">Join的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JOIN类型"><span class="toc-number">3.2.1.</span> <span class="toc-text">JOIN类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UNION"><span class="toc-number">3.3.</span> <span class="toc-text">UNION</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#INSERT语句"><span class="toc-number">3.4.</span> <span class="toc-text">INSERT语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#插入语句"><span class="toc-number">3.4.1.</span> <span class="toc-text">插入语句</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UPDATE、DELETE语句"><span class="toc-number">3.5.</span> <span class="toc-text">UPDATE、DELETE语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建表格"><span class="toc-number">3.6.</span> <span class="toc-text">创建表格</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据类型"><span class="toc-number">3.6.1.</span> <span class="toc-text">数据类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NOT-NULL-和-AUTO-INCREMENT"><span class="toc-number">3.7.</span> <span class="toc-text">NOT NULL 和 AUTO_INCREMENT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL约束"><span class="toc-number">3.7.1.</span> <span class="toc-text">SQL约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AUTO-INCREMENT"><span class="toc-number">3.7.2.</span> <span class="toc-text">AUTO INCREMENT</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ALTER-DROP-RANAME"><span class="toc-number">3.8.</span> <span class="toc-text">ALTER DROP RANAME</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图"><span class="toc-number">3.9.</span> <span class="toc-text">视图</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Note for SoloLearn SQL　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/17/Note-for-SoloLearn-SQL/" data-title="Note for SoloLearn SQL" data-url="http://frankchen.xyz/2017/01/17/Note-for-SoloLearn-SQL/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"frankchen0130"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/01/16/Action/" title="下一篇: Note of Recommendation System in Action">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/17/Note-for-SoloLearn-SQL/">Note for SoloLearn SQL</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Action/">Note of Recommendation System in Action</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/">Sort Algorithms of Linear Time Complexity</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Polymorphism-of-Java/">Polymorphism of Java</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Map-0f-Java/">Map 0f Java</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/good commander/">To be a great commander</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/logistic-regression/">logistic regression的公式手推相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/linear-regression/">linear regression 的公式手推相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/AliPay-RedEnvelope-Hacker/">AliPay RedEnvelope Hacker</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/pointer-and/">pointer and ++--</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/09/C++ Basic/">C++ Cheat Sheet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/QuickSort-in-C/">QuickSort in C & Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/">Workflow for automatic extract and jump to the true URL of 91porn.com</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/">Devide and Conquer Counting Inversions with Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/18/Understanding-EM-algorithm/">Understanding EM algorithm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/">Way to solving the .DS_Store problem of Mac</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/">Vim 练级攻略一</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/">Vim 练级攻略二</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/">遗传算法简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/07/2016-06-07-edit-dns-of-ubuntu/">ubuntu下修改DNS并且避免重启失效的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-understanding-lstm-networks/">理解LSTM网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-rephil-and-mapreduce/">Rephil和MapReduce： 描述长尾数据的数学模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-note-for-cs224d-1/">note for CS224d:1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/2016-05-26-char-rnn-chinese/">char-rnn-chinese</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/2016-05-25-pythonoop/">Python OOP（Object Oriented Programming）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/24/2016-05-24-di-pian-bo-ke/">使用文本处理命令获取链接批量下载</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 江南消夏
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 4;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+             menu: ".header-menu a", 
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
