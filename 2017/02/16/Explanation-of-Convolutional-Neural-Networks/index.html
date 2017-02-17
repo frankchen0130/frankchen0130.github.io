@@ -15,16 +15,33 @@
 
 
 
-<meta name="description" content="Machine Learning and Data Mining">
+<meta name="description" content="卷积神经网络(Convolutional Neural Network)，简称CNN，是机器视觉领域的主要神经网络模型。本文主要对CNN做一个简明全面的介绍。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Explanation of Convolutional Neural Networks">
 <meta property="og:url" content="http://frankchen.xyz/2017/02/16/Explanation-of-Convolutional-Neural-Networks/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="Machine Learning and Data Mining">
-<meta property="og:updated_time" content="2017-02-16T06:56:16.000Z">
+<meta property="og:description" content="卷积神经网络(Convolutional Neural Network)，简称CNN，是机器视觉领域的主要神经网络模型。本文主要对CNN做一个简明全面的介绍。">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/screen-shot-2016-08-07-at-4-59-29-pm.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/8-gif.gif">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/screen-shot-2016-07-24-at-11-25-13-pm.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/screen-shot-2016-07-24-at-11-25-24-pm.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/convolution_schematic.gif">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/111.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/screen-shot-2016-08-05-at-11-03-00-pm.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/giphy.gif">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/screen-shot-2016-08-07-at-6-18-19-pm.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/screen-shot-2016-08-10-at-3-38-39-am.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/screen-shot-2016-08-07-at-6-19-37-pm.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/screen-shot-2016-08-07-at-6-11-53-pm.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/screen-shot-2016-08-06-at-12-34-02-am.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/screen-shot-2016-08-07-at-9-15-21-pm.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/screen-shot-2016-08-10-at-12-58-30-pm.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/conv_all.png">
+<meta property="og:updated_time" content="2017-02-17T12:16:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Explanation of Convolutional Neural Networks">
-<meta name="twitter:description" content="Machine Learning and Data Mining">
+<meta name="twitter:description" content="卷积神经网络(Convolutional Neural Network)，简称CNN，是机器视觉领域的主要神经网络模型。本文主要对CNN做一个简明全面的介绍。">
+<meta name="twitter:image" content="http://frankchen.xyz/images/2017/02/screen-shot-2016-08-07-at-4-59-29-pm.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -187,7 +204,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS-Store/">.DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/">Data Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/">Deep Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSTM/">LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/">Old Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN/">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recommendation-System/">Recommendation System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS-Store/">.DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNN/">CNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/">Data Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/">Deep Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSTM/">LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/">Old Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN/">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recommendation-System/">Recommendation System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li></ul>
                     </div>
                 </section>
                 
@@ -303,6 +320,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning/">Deep Learning</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -310,7 +331,82 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <p>卷积神经网络(Convolutional Neural Network)，简称CNN，是机器视觉领域的主要神经网络模型。本文主要对CNN做一个简明全面的介绍。</p>
+<a id="more"></a>
+<p><img src="/images/2017/02/screen-shot-2016-08-07-at-4-59-29-pm.png" alt=""></p>
+<p>上图是90年代的LeNet的结构，当时主要用于字符的识别，当前有许多的新的CNN结构，但是大体上都是采用了与LeNet类似的主要思想。本文主要以LeNet为例来做讲解。</p>
+<p>LeNet的主要组成部分：</p>
+<ul>
+<li>卷积层</li>
+<li>非线性变换(ReLU)</li>
+<li>池化层或者下采样</li>
+<li>分类(全连接)</li>
+</ul>
+<h2 id="图片就是矩阵"><a href="#图片就是矩阵" class="headerlink" title="图片就是矩阵"></a>图片就是矩阵</h2><p>在讲卷积与卷积层之前，我们首先介绍一下图片的相关的概念。本质上，每张图片都是像素值的矩阵。</p>
+<p><img src="/images/2017/02/8-gif.gif" alt=""></p>
+<p>彩色图片具有三个<strong>通道</strong>，所谓的RGB图片，也就是在红色、绿色和蓝色三个颜色的矩阵，每个像素值都是[0,255]的值。灰度图片只有一个通道，所以只有一个矩阵。</p>
+<h2 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h2><p>CNN由卷积而得名，那么什么是卷积呢？先来看图片</p>
+<p>首先我们有如下的5*5的矩阵，它的每个像素值都由0或者1组成</p>
+<p><img src="/images/2017/02/screen-shot-2016-07-24-at-11-25-13-pm.png" alt=""></p>
+<p>再来一张如下的3*3的矩阵</p>
+<p><img src="/images/2017/02/screen-shot-2016-07-24-at-11-25-24-pm.png" alt=""></p>
+<p>用这个3<em>3的矩阵对以上5</em>5的矩阵进行卷积，可以表示为如下的过程，</p>
+<p><img src="/images/2017/02/convolution_schematic.gif" alt=""></p>
+<p>上述过程可以描述成，3<em>3的矩阵首先定位到5</em>5的矩阵的左上角，两者覆盖重叠到的部位进行点乘再求和，得到的值是新的矩阵的左上角第一个元素，接着3<em>3矩阵向右移动一个像素，也叫一个stride，进行下一次卷积操作，知道遍历完毕，得到一个新的矩阵。在CNN中，这个3</em>3的矩阵叫做<em>滤波器</em>或者<em>卷积核</em>，得到的新的矩阵叫做<em>特征映射</em>。可以说，卷积核的作用就是从原图片中发现特征。所以对于同一张图片，我们可以用不同的卷积核去操作，得到完全不同的特征映射。考虑如下的图片，</p>
+<p><img src="/images/2017/02/111.png" alt=""></p>
+<p>我们用不同的卷积核进行操作，得到的结果如下，</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-05-at-11-03-00-pm.png" alt=""></p>
+<p>另一个例子如下，</p>
+<p><img src="/images/2017/02/giphy.gif" alt=""></p>
+<p>如图，两个非常相似但是方向不同的卷积核对同一张图片进行卷积，得到的不同的结果。在训练过程中，CNN会自动学习到这些卷积核的参数，但是我们还有一些超参数需要手动确定，如卷积核个数、大小以及网络的结构等等。而特征映射的大小由三个参数来确定，</p>
+<ul>
+<li><em>Depth</em>：也就是卷积核的个数，我们用几个卷积核进行操作，那么就可以得到多少个重叠着的特征映射，也就是特征映射的深度。</li>
+<li><em>Stride</em>：卷积时每步移动的大小，容易得知，步子越大，那么卷积的次数也就越小，那么特征映射矩阵也就越小。</li>
+<li><em>Zero-Padding</em>：指的是是否在原图像周围补上零再进行卷积，，这样也是控制特征映射大小的方法，带有Padding和不带有Padding的卷积分别叫做宽卷积和窄卷积。</li>
+</ul>
+<h2 id="非线性映射-ReLU"><a href="#非线性映射-ReLU" class="headerlink" title="非线性映射(ReLU)"></a>非线性映射(ReLU)</h2><p>ReLU函数是什么？初一看它的全称Rectified Linear Unit好像特别高大上，其实它的函数形式非常简单，就是</p>
+<p>$$output = max(0, input)$$</p>
+<p>也就是将原输入的负值全部替换为0。顺便一说，深度学习业界充斥着这种现象，如多层感知机与神经网络、甚至是Deep Learning这个称号本身都是这样改过来的“好名字”，不得不说，起个好名字对于成功也是非常主要的啊！</p>
+<p>话说回来，用ReLU处理过的图片的效果如下：</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-07-at-6-18-19-pm.png" alt=""></p>
+<p>除ReLU之外，还有sigmoid函数和tanh双曲函数等非线性变换，但是ReLU被证明表现更加，所以也就更常用。</p>
+<h2 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h2><p>池化(pooling)也就是信号处理领域的下采样Downsampling，其作用是对特征映射保留主要信息的同时进行降维。根据计算方式的不同可以有Max、Average、Sum等多种pooling方式。</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-10-at-3-38-39-am.png" alt=""></p>
+<p>以上展示了使用2*2的窗口对经过卷积和非线性映射的矩阵的Max pooling操作。这里的stride是2个像素，对每个区域采用最大值。在网络中，pooling是对每个特征映射单独操作的，于是我们会得到相同数目的输出。</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-07-at-6-19-37-pm.png" alt=""></p>
+<p>下图展示了pooling操作，</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-07-at-6-11-53-pm.png" alt=""></p>
+<p>pooling操作显著地减小了输入的空间大小，除此之外，</p>
+<ul>
+<li>使得输入更加小，更加容易计算</li>
+<li>减小网络的复杂程度，有利于对抗过拟合</li>
+<li>使得网络对于扰动等噪音更加鲁棒，因为微小的扰动对于pooling结果没有影响</li>
+<li>有益于物体探测的准确性</li>
+</ul>
+<h2 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h2><p>经过两轮的卷积-ReLU-pooling操作，接下来就是标准的全连接神经网络结构了，所谓全连接，也就是上一层的每个神经元都与下一层的每个神经元有连接，倒数第二层的输出是每个类的概率，再经过一个softmax层进行归一化处理，我们得到了最终的输出：和为1的每个分类的概率。</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-06-at-12-34-02-am.png" alt=""></p>
+<h2 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h2><p>上面把CNN拆开了讲，接下来我们把各个组件合起来看一下CNN的训练过程。比如我们的输入是一张船的图片，而输出则是属于船的概率是1，如[0,0,1,0]。</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-07-at-9-15-21-pm.png" alt=""></p>
+<p>那么训练过程如下</p>
+<ul>
+<li>步骤1：以随机值初始化卷积核和权重参数</li>
+<li>步骤2：网络得到输入，进行前向的计算（卷积、ReLU和pooling）得到最终各分类的概率，假设是[0.1, 0.3, 0.2, 0.4]，因为参数都是随机的，那么结果肯定也是随机的</li>
+<li>步骤3：利用平方误差计算错误的损失函数大小</li>
+<li>步骤4：反向传播计算error对于各个参数的梯度，对参数进行更新，以减小错误程度<ul>
+<li>注意到我们只更新卷积核的参数以及全连接的权重，其余的参数已经在训练之前指定</li>
+<li>在训练过程中，网络逐渐“学习”到如何正确分类图片，这是通过逐渐修改更新参数得到的</li>
+</ul>
+</li>
+<li>步骤5：对于所有训练集内的图片重复步骤2-4</li>
+</ul>
+<h2 id="CNN的可视化"><a href="#CNN的可视化" class="headerlink" title="CNN的可视化"></a>CNN的可视化</h2><p><img src="/images/2017/02/screen-shot-2016-08-10-at-12-58-30-pm.png" alt=""></p>
+<p>CNN在人脸识别内的应用，如上图所示。对于CNN的原理，结合上图我们可以进行如下的解释：CNN的卷积核由下到上是逐渐探测复杂的特征的，比如第一层卷积核的特征映射是简单的明暗线段纹理，第二层就可以得到曲线等复杂一些的特征，到了第三层探测的特征已经是人脸的形状轮廓了，后面的层对于前面层的特征进行组合变化而得到更加复杂的组合。这就类似单层感知机连异或函数都无法表示，多层感知机组合起来也就是神经网络却可以拟合任意复杂的函数的原理一样。</p>
+<p><a href="http://scs.ryerson.ca/~aharley/vis/conv/flat.html" target="_blank" rel="external">这里</a>有一个很棒的关于CNN原理的展示demo，如图</p>
+<p><img src="/images/2017/02/conv_all.png" alt=""></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/" target="_blank" rel="external">An Intuitive Explanation of Convolutional Neural Networks</a></li>
+</ul>
+
       
     </div>
     
@@ -321,7 +417,7 @@
         <p><span>本文标题:</span><a href="/2017/02/16/Explanation-of-Convolutional-Neural-Networks/">Explanation of Convolutional Neural Networks</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
         <p><span>发布时间:</span>2017-02-16, 14:56:16</p>
-        <p><span>最后更新:</span>2017-02-16, 14:56:16</p>
+        <p><span>最后更新:</span>2017-02-17, 20:16:54</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/02/16/Explanation-of-Convolutional-Neural-Networks/" title="Explanation of Convolutional Neural Networks">http://frankchen.xyz/2017/02/16/Explanation-of-Convolutional-Neural-Networks/</a>
             <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/02/16/Explanation-of-Convolutional-Neural-Networks/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -357,7 +453,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#图片就是矩阵"><span class="toc-number">1.</span> <span class="toc-text">图片就是矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#卷积层"><span class="toc-number">2.</span> <span class="toc-text">卷积层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非线性映射-ReLU"><span class="toc-number">3.</span> <span class="toc-text">非线性映射(ReLU)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#池化层"><span class="toc-number">4.</span> <span class="toc-text">池化层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全连接层"><span class="toc-number">5.</span> <span class="toc-text">全连接层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#训练过程"><span class="toc-number">6.</span> <span class="toc-text">训练过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CNN的可视化"><span class="toc-number">7.</span> <span class="toc-text">CNN的可视化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">8.</span> <span class="toc-text">参考</span></a></li></ol>
         
     </div>
     <style>
