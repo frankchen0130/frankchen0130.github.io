@@ -15,34 +15,21 @@
 
 
 
-<meta name="description" content="RNN，也即是递归神经网络，是许多NLP任务的流行处理模型。本部分中将简介RNN。
-本部分主要实现此模型– recurrent neural network based language model，模型有两个作用：
-
-可以基于出现的概率对句子进行打分，可以对于语法和语义正确性进行评估，从而应用于机器翻译等领域。
-可以依据概率生成新的语料。">
+<meta name="description" content="整理一些关于Deep Learning的面试问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS">
-<meta property="og:url" content="http://frankchen.xyz/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/index.html">
+<meta property="og:title" content="Deep Learning Interview">
+<meta property="og:url" content="http://frankchen.xyz/2017/02/18/Deep-Learning-Interview/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="RNN，也即是递归神经网络，是许多NLP任务的流行处理模型。本部分中将简介RNN。
-本部分主要实现此模型– recurrent neural network based language model，模型有两个作用：
-
-可以基于出现的概率对句子进行打分，可以对于语法和语义正确性进行评估，从而应用于机器翻译等领域。
-可以依据概率生成新的语料。">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/rnn.jpg">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/Screen-Shot-2015-09-17-at-10.39.06-AM-1024x557.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/Screen-Shot-2015-09-17-at-11.44.24-AM-1024x349.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/bidirectional-rnn-300x196.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/Screen-Shot-2015-09-16-at-2.21.51-PM-272x300.png">
-<meta property="og:updated_time" content="2017-01-13T09:47:17.000Z">
+<meta property="og:description" content="整理一些关于Deep Learning的面试问题。">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/v2-8555de443211e31f6e3967fe0fab83b3_b.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/v2-ee269730f637849151525ab8ac299840_b.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/v2-29d9d42212fd2294e71c2f3e760791d4_b.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/02/v2-d081992735ff19112770f8aa8e273c13_b.png">
+<meta property="og:updated_time" content="2017-02-18T03:21:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS">
-<meta name="twitter:description" content="RNN，也即是递归神经网络，是许多NLP任务的流行处理模型。本部分中将简介RNN。
-本部分主要实现此模型– recurrent neural network based language model，模型有两个作用：
-
-可以基于出现的概率对句子进行打分，可以对于语法和语义正确性进行评估，从而应用于机器翻译等领域。
-可以依据概率生成新的语料。">
-<meta name="twitter:image" content="http://frankchen.xyz/images/2016/06/rnn.jpg">
+<meta name="twitter:title" content="Deep Learning Interview">
+<meta name="twitter:description" content="整理一些关于Deep Learning的面试问题。">
+<meta name="twitter:image" content="http://frankchen.xyz/images/2017/02/v2-8555de443211e31f6e3967fe0fab83b3_b.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -74,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS | loop in data</title>
+<title>Deep Learning Interview | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -292,11 +279,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Deep-Learning-Interview" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/" class="article-date">
-      <time datetime="2016-06-06T11:18:44.000Z" itemprop="datePublished">2016-06-06</time>
+      <a href="/2017/02/18/Deep-Learning-Interview/" class="article-date">
+      <time datetime="2017-02-18T02:25:31.000Z" itemprop="datePublished">2017-02-18</time>
 </a>
 
 
@@ -311,7 +298,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS
+      Deep Learning Interview
     </h1>
   
 
@@ -319,14 +306,10 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
-    </div>
-
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning/">Deep Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RNN/">RNN</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning/">Deep Learning</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -336,65 +319,108 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>RNN，也即是递归神经网络，是许多NLP任务的流行处理模型。本部分中将简介RNN。</p>
-<p>本部分主要实现此模型–<a href="http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf" target="_blank" rel="external"> recurrent neural network based language model</a>，模型有两个作用：</p>
-<ol>
-<li>可以基于出现的概率对句子进行打分，可以对于语法和语义正确性进行评估，从而应用于机器翻译等领域。</li>
-<li>可以依据概率生成新的语料。</li>
-</ol>
+        <p>整理一些关于Deep Learning的面试问题。</p>
 <a id="more"></a>
-<p>##什么是RNN</p>
-<p>RNN背后的核心理念是利用序列的信息。传统的神经网络常常假设输入（输出）是独立于彼此的，这对于某些应用来说是不可行的，例如NLP任务，如果你需要预测下一个单词是什么，你不可能不用到之前的单词的信息。RNN之中的<strong>recurrent</strong>指的就是循环往复的意思，网络对于序列数据的每个元素进行同样的操作，网络的输出取决于之前的计算。另一种理解RNN的方法则是把它们看成是有记忆的网络，记忆收集从开始到现在被考虑的信息。理论上RNN可以利用任意时间长度的信息，但是实际上这比较困难。以下是RNN的典型结构：</p>
-<p><img src="/images/2016/06/rnn.jpg" alt="A recurrent neural network and the unfolding in time of the computation involved in its forward computation. Source: Nature"></p>
-<p>以上的结构将RNN展开成完整的网络。例如，我们需要处理一个5层的序列，那么就需要展开成5层：每层对应一个词。</p>
+<h2 id="问题列表"><a href="#问题列表" class="headerlink" title="问题列表"></a>问题列表</h2><ul>
+<li><p>CNN最成功的应用是在CV，那为什么NLP和Speech的很多问题也可以用CNN解出来？为什么AlphaGo里也用了CNN？这几个不相关的问题的相似性在哪里？CNN通过什么手段抓住了这个共性？</p>
 <ul>
-<li>$$x_t$$是$$t$$时刻的输入</li>
-<li>$$s_t$$是$$t$$时刻的隐藏状态，代表网络的“记忆”，计算公式为$$s_t = f(Ux<em>t + Ws</em>{t-1})$$，其中$$f$$通常是tanh函数或者RELU函数。</li>
-<li>$$o_t$$是$$t$$时刻的输出，如果我们想预测下一个词，那么计算公式为$$o_t = softmax(Vs_t)$$，指的是在整个词表内词的概率值。</li>
+<li>以上几个不相关问题的相关性在于，都存在局部与整体的关系，由低层次的特征经过组合，组成高层次的特征，并且得到不同特征之间的空间相关性。如下图：低层次的直线／曲线等特征，组合成为不同的形状，最后得到汽车的表示。<br><img src="/images/2017/02/v2-8555de443211e31f6e3967fe0fab83b3_b.png" alt=""></li>
+<li><em>CNN抓住此共性的手段主要有四个：局部连接／权值共享／池化操作／多层次结构。</em><ul>
+<li>局部连接使网络可以提取数据的局部特征；</li>
+<li>权值共享大大降低了网络的训练难度，一个Filter只提取一个特征，在整个图片（或者语音／文本） 中进行卷积；</li>
+<li>池化操作与多层次结构一起，实现了数据的降维，将低层次的局部特征组合成为较高层次的特征，从而对整个图片进行表示。</li>
 </ul>
-<p>对于以上有几点需要提示：</p>
+</li>
+</ul>
+</li>
+<li><p>为什么很多做人脸的Paper会最后加入一个Local Connected Conv？</p>
 <ul>
-<li>我们可以把隐藏状态$$s_t$$看成是网络的“记忆”，其捕捉到在之前所有时间的信息。输出$$o_t$$只取决于在$$t$$时刻的记忆。而在实际上，由于长期依赖问题，$$s_t$$很难捕捉到很长时间以前的信息。</li>
-<li>RNN每个step中的参数（$$U,V,W$$）是相同的，这使得学习的代价减小许多。</li>
-<li>取决于实际任务，我们可能并不需要每个step都有输入和输出。</li>
+<li>如果每一个点的处理使用相同的Filter，则为全卷积，如果使用不同的Filter，则为Local-Conv。</li>
+<li>后接了3个Local-Conv层，这里是用Local-Conv的原因是，人脸在不同的区域存在不同的特征（眼睛／鼻子／嘴的分布位置相对固定），当不存在全局的局部特征分布时，Local-Conv更适合特征的提取。</li>
 </ul>
-<p>##RNN的实际应用<br>以下是RNN在NLP领域的一些实际应用。</p>
-<p>###语言模型与生成语句<br>在给定之前词语的情况下我们希望产生出下一个词语是什么。语言模型的作用就是让我们可以衡量一个句子的可能性，这对于机器翻译是很重要的（可能性越高的更可能正确）。而语言模型的另一个作用则是预测下一个词语是什么，我们可以通过在输出的概率词汇中采样得到，。对于语言模型，输入是一序列的词语（每一个词语都是one-hot表示），输出则是一序列的预测的词语。在训练时我们设置$$o<em>t = x</em>{t + 1}$$，因为这一时刻的输出就是下一时刻的输入。</p>
-<p>关于语言模型与生成语句的论文：</p>
+</li>
+<li><p>什么样的资料集不适合用深度学习?</p>
 <ul>
-<li><a href="http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf" target="_blank" rel="external">Recurrent neural network based language model</a></li>
-<li><a href="http://www.fit.vutbr.cz/research/groups/speech/publi/2011/mikolov_icassp2011_5528.pdf" target="_blank" rel="external">Extensions of Recurrent neural network based language model</a></li>
-<li><a href="http://machinelearning.wustl.edu/mlpapers/paper_files/ICML2011Sutskever_524.pdf" target="_blank" rel="external">Generating Text with Recurrent Neural Networks</a></li>
+<li>数据集太小，数据样本不足时，深度学习相对其它机器学习算法，没有明显优势。</li>
+<li>数据集没有局部相关特性，目前深度学习表现比较好的领域主要是图像／语音／自然语言处理等领域，这些领域的一个共性是局部相关性。图像中像素组成物体，语音信号中音位组合成单词，文本数据中单词组合成句子，这些特征元素的组合一旦被打乱，表示的含义同时也被改变。对于没有这样的局部相关性的数据集，不适于使用深度学习算法进行处理。举个例子：预测一个人的健康状况，相关的参数会有年龄、职业、收入、家庭状况等各种元素，将这些元素打乱，并不会影响相关的结果。</li>
 </ul>
-<p>###机器翻译</p>
-<p>机器翻译类似于语言模型，其输入为需要翻译的句子，输出则是翻译的目标语言的句子。与语言模型不同的是，我们在输入整个句子之后才输出。</p>
-<p><img src="/images/2016/06/Screen-Shot-2015-09-17-at-10.39.06-AM-1024x557.png" alt=""></p>
-<p>关于机器翻译的论文：</p>
+</li>
+<li><p>对所有优化问题来说, 有没有可能找到比現在已知算法更好的算法?</p>
 <ul>
-<li><a href="http://www.aclweb.org/anthology/P14-1140.pdf" target="_blank" rel="external">A Recursive Recurrent Neural Network for Statistical Machine Translation</a></li>
-<li><a href="http://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf" target="_blank" rel="external">Sequence to Sequence Learning with Neural Networks</a></li>
-<li><a href="http://research.microsoft.com/en-us/um/people/gzweig/Pubs/EMNLP2013RNNMT.pdf" target="_blank" rel="external">Joint Language and Translation Modeling with Recurrent Neural Networks</a></li>
+<li>No Free Lunch定律：不存在一个通用普适的模型，对于所有的学习问题都能做到性能最佳。<br><img src="/images/2017/02/v2-ee269730f637849151525ab8ac299840_b.png" alt=""></li>
+<li>对于训练样本（黑点），不同的算法A/B在不同的测试样本（白点）中有不同的表现，这表示：对于一个学习算法A，若它在某些问题上比学习算法 B更好，则必然存在一些问题，在那里B比A好。</li>
+<li>也就是说：对于所有问题，无论学习算法A多聪明，学习算法 B多笨拙，它们的期望性能相同。</li>
+<li>但是：没有免费午餐定力假设所有问题出现几率相同，实际应用中，不同的场景，会有不同的问题分布，所以，在优化算法时，针对具体问题进行分析，是算法优化的核心所在。</li>
 </ul>
-<p>###语言识别</p>
-<p>给予一段说话人语言的声音序列，我们预测出一序列的带有概率的语言成分的序列。</p>
-<p>相关论文：</p>
+</li>
+<li><p>用贝叶斯机率说明Dropout的原理</p>
 <ul>
-<li><a href="http://www.jmlr.org/proceedings/papers/v32/graves14.pdf" target="_blank" rel="external">Towards End-to-End Speech Recognition with Recurrent Neural Networks</a></li>
+<li><a href="http://mlg.eng.cam.ac.uk/yarin/PDFs/Dropout_as_a_Bayesian_approximation.pdf" target="_blank" rel="external">Dropout as a Bayesian Approximation: Insights and Applications</a></li>
 </ul>
-<p>###生成图片描述</p>
-<p>与CNN结合，RNN可以为无标签的图片生成描述，模型甚至可以排列好这些描述成更加类似人类语言的形式。</p>
-<p><img src="/images/2016/06/Screen-Shot-2015-09-17-at-11.44.24-AM-1024x349.png" alt="Deep Visual-Semantic Alignments for Generating Image Descriptions. Source: http://cs.stanford.edu/people/karpathy/deepimagesent/"></p>
-<p>##训练RNN</p>
-<p>训练RNN与典型的神经网络类似，值得注意的是Backpropagation Through Time (BPTT)，并且通过BPTT训练的vanilla RNN由于梯度弥散或者梯度爆炸，不能有效的解决长期依赖的问题。</p>
-<p>##其他的一些RNN</p>
-<p>针对vanilla RNN的一些缺陷，近年来许多RNN的变体涌现出来。</p>
-<p><strong>双向RNN</strong>，主要输入不仅与过去的输入，并且与将来的输入有关的理念。例如我们需要预测一个句子中间缺失的词语。双向RNN的结构很简单，只是把两个RNN在顶部<br>结合，其输出取决于了两个RNN的隐藏状态。</p>
-<p><img src="/images/2016/06/bidirectional-rnn-300x196.png" alt=""></p>
-<p><strong>深度（双向）RNN</strong>，与双向RNN类似，只是每个step需要训练多层的网络，这使得模型更为强大（也需要更多的数据来训练）。</p>
-<p><img src="/images/2016/06/Screen-Shot-2015-09-16-at-2.21.51-PM-272x300.png" alt=""></p>
-<p><strong>LSTM网络</strong>，对RNN的隐藏层做了改进以解决长期依赖问题，是近来流行的RNN类型。LSTM可以通过gate决定网络需要记住和遗忘多长时间之前的记忆，以此联合之前的状态、记忆和输入。对于LSTM的详细知识可以见此：<a href="http://frankchen0130.github.io/2016/06/04/understanding-lstm-networks/" target="_blank" rel="external">理解LSTM网络</a>。</p>
-<p>##结论</p>
-<p>到此我们对于RNN有了一个基本的认识，之后我们将对其进行代码的实现。</p>
+</li>
+<li><p>何为共线性, 跟过拟合有啥关联?</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Multicollinearity" target="_blank" rel="external">Multicollinearity－Wikipedia</a></li>
+<li>共线性：多变量线性回归中，变量之间由于存在高度相关关系而使回归估计不准确。</li>
+<li>共线性会造成冗余，导致过拟合。</li>
+<li>解决方法：排除变量的相关性／加入权重正则。</li>
+</ul>
+</li>
+<li><p>说明如何用支持向量机实现深度学习(列出相关数学公式)</p>
+</li>
+<li><p>广义线性模型是怎被应用在深度学习中?</p>
+<ul>
+<li><a href="http://blog.shakirm.com/2015/01/a-statistical-view-of-deep-learning-i-recursive-glms/" target="_blank" rel="external">A Statistical View of Deep Learning (I): Recursive GLMs ← The Spectator</a></li>
+<li>深度学习从统计学角度，可以看做递归的广义线性模型。</li>
+<li>广义线性模型相对于经典的线性模型(y=wx+b)，核心在于引入了连接函数g(.)，形式变为：y=g−1(wx+b)。</li>
+<li>深度学习时递归的广义线性模型，神经元的激活函数，即为广义线性模型的链接函数。逻辑回归（广义线性模型的一种）的Logistic函数即为神经元激活函数中的Sigmoid函数，很多类似的方法在统计学和神经网络中的名称不一样，容易引起初学者的困惑。下图是一个对照表：<br><img src="/images/2017/02/v2-29d9d42212fd2294e71c2f3e760791d4_b.png" alt=""></li>
+</ul>
+</li>
+<li><p>什么造成梯度消失问题? 推导一下</p>
+<ul>
+<li><a href="https://www.quora.com/How-does-the-ReLu-solve-the-vanishing-gradient-problem" target="_blank" rel="external">How does the ReLu solve the vanishing gradient problem? - Quora</a></li>
+<li><a href="https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b#.nq9lr4sdn" target="_blank" rel="external">Yes you should understand backprop – Medium</a></li>
+<li>神经网络的训练中，通过改变神经元的权重，使网络的输出值尽可能逼近标签以降低误差值，训练普遍使用BP算法，核心思想是，计算出输出与标签间的损失函数值，然后计算其相对于每个神经元的梯度，进行权值的迭代。梯度消失会造成权值更新缓慢，模型训练难度增加。造成梯度消失的一个原因是，许多激活函数将输出值挤压在很小的区间内，在激活函数两端较大范围的定义域内梯度为0。造成学习停止<br><img src="/images/2017/02/v2-d081992735ff19112770f8aa8e273c13_b.png" alt=""></li>
+</ul>
+</li>
+<li><p>Weights Initialization. 不同的方式，造成的后果。为什么会造成这样的结果。</p>
+<ul>
+<li>几种主要的权值初始化方法：lecun_uniform /  glorot_normal / he_normal / batch_normal</li>
+<li>lecun_uniform：<a href="https://www.researchgate.net/publication/2811922_Efficient_BackProp" target="_blank" rel="external">Efficient BackProp (PDF Download Available)</a></li>
+<li>glorot_normal：<a href="http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf" target="_blank" rel="external">Understanding the difficulty of training deep feedforward neural networks</a></li>
+<li>he_normal：<a href="https://arxiv.org/pdf/1502.01852.pdf" target="_blank" rel="external">Delving Deep into Rectifiers:Surpassing Human-Level Performance on ImageNet Classification</a></li>
+<li>batch_normal：<a href="https://arxiv.org/pdf/1502.03167.pdf" target="_blank" rel="external">Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</a></li>
+</ul>
+</li>
+<li><p>为什么网络够深(Neurons 足够多)的时候，总是可以避开较差Local Optima？</p>
+<ul>
+<li><a href="https://arxiv.org/abs/1412.0233" target="_blank" rel="external">[1412.0233] The Loss Surfaces of Multilayer Networks</a></li>
+</ul>
+</li>
+<li><p>Loss. 有哪些定义方式（基于什么？）， 有哪些优化方式，怎么优化，各自的好处，以及解释。</p>
+<ul>
+<li>Cross-Entropy / MSE / K-L散度</li>
+</ul>
+</li>
+<li><p>Dropout。 怎么做，有什么用处，解释。</p>
+<ul>
+<li><a href="https://www.quora.com/How-does-the-dropout-method-work-in-deep-learning" target="_blank" rel="external">How does the dropout method work in deep learning? - Quora</a></li>
+<li><a href="https://arxiv.org/pdf/1312.6197.pdf" target="_blank" rel="external">An empirical analysis of dropout in piecewise linear networks</a></li>
+<li><a href="https://arxiv.org/pdf/1207.0580.pdf" target="_blank" rel="external">Improving neural networks by preventing co-adaptation of feature detectors</a></li>
+</ul>
+</li>
+<li><p>Activation Function. 选用什么，有什么好处，为什么会有这样的好处。</p>
+<ul>
+<li>几种主要的激活函数：Sigmond / ReLU ／PReLU</li>
+<li><a href="http://jmlr.org/proceedings/papers/v15/glorot11a/glorot11a.pdf" target="_blank" rel="external">Deep Sparse Rectifier Neural Networks</a></li>
+<li><a href="https://arxiv.org/pdf/1502.01852.pdf" target="_blank" rel="external">Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.zhihu.com/question/41233373" target="_blank" rel="external">如果你是面试官，你怎么去判断一个面试者的深度学习水平？ - 知乎</a></li>
+<li><a href="https://www.zhihu.com/question/54308150" target="_blank" rel="external">深度学习相关的职位面试时一般会问什么？会问一些传统的机器学习算法吗？ - 知乎</a></li>
+</ul>
 
       
     </div>
@@ -403,13 +429,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/18/Deep-Learning-Interview/">Deep Learning Interview</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2016-06-06, 19:18:44</p>
-        <p><span>最后更新:</span>2017-01-13, 17:47:17</p>
+        <p><span>发布时间:</span>2017-02-18, 10:25:31</p>
+        <p><span>最后更新:</span>2017-02-18, 11:21:37</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/" title="RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS">http://frankchen.xyz/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/18/Deep-Learning-Interview/" title="Deep Learning Interview">http://frankchen.xyz/2017/02/18/Deep-Learning-Interview/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/02/18/Deep-Learning-Interview/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -421,16 +447,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/06/07/2016-06-07-edit-dns-of-ubuntu/">
-                    ubuntu下修改DNS并且避免重启失效的方法
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/04/2016-06-04-understanding-lstm-networks/">
-                    理解LSTM网络
+                <a href="/2017/02/17/Docker-Windows-Speed-up/">
+                    在Windows上安装并加速拉取Docker镜像的方法
                 </a>
             </div>
         
@@ -442,7 +462,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题列表"><span class="toc-number">1.</span> <span class="toc-text">问题列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
         
     </div>
     <style>
@@ -478,7 +498,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Deep Learning Interview　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -494,7 +514,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/" data-title="RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS" data-url="http://frankchen.xyz/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/18/Deep-Learning-Interview/" data-title="Deep Learning Interview" data-url="http://frankchen.xyz/2017/02/18/Deep-Learning-Interview/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -517,15 +537,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/07/2016-06-07-edit-dns-of-ubuntu/" title="上一篇: ubuntu下修改DNS并且避免重启失效的方法">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/04/2016-06-04-understanding-lstm-networks/" title="下一篇: 理解LSTM网络">
+            <a href="/2017/02/17/Docker-Windows-Speed-up/" title="下一篇: 在Windows上安装并加速拉取Docker镜像的方法">
                 <i class="fa fa-angle-right"></i>
             </a>
         
