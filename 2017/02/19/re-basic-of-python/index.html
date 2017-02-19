@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="作为数据科学业界独占鳌头的竞赛网站Kaggle为我们提供了简便的一键安装的Docker镜像，使得我们可以方便的在本地使用与Kaggle网站在线完全一致的环境，那么在Mac上如何安装和使用Kaggle的Docker镜像呢？">
+<meta name="description" content="本文主要关于python的正则表达式的符号与方法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac上安装Kaggle Docker 镜像的方法">
-<meta property="og:url" content="http://frankchen.xyz/2017/02/13/Install-Kaggle-Docker-on-Mac/index.html">
+<meta property="og:title" content="re basic of python">
+<meta property="og:url" content="http://frankchen.xyz/2017/02/19/re-basic-of-python/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="作为数据科学业界独占鳌头的竞赛网站Kaggle为我们提供了简便的一键安装的Docker镜像，使得我们可以方便的在本地使用与Kaggle网站在线完全一致的环境，那么在Mac上如何安装和使用Kaggle的Docker镜像呢？">
-<meta property="og:updated_time" content="2017-02-17T06:40:55.000Z">
+<meta property="og:description" content="本文主要关于python的正则表达式的符号与方法。">
+<meta property="og:updated_time" content="2017-02-19T15:43:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac上安装Kaggle Docker 镜像的方法">
-<meta name="twitter:description" content="作为数据科学业界独占鳌头的竞赛网站Kaggle为我们提供了简便的一键安装的Docker镜像，使得我们可以方便的在本地使用与Kaggle网站在线完全一致的环境，那么在Mac上如何安装和使用Kaggle的Docker镜像呢？">
+<meta name="twitter:title" content="re basic of python">
+<meta name="twitter:description" content="本文主要关于python的正则表达式的符号与方法。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Mac上安装Kaggle Docker 镜像的方法 | loop in data</title>
+<title>re basic of python | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -274,11 +274,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Install-Kaggle-Docker-on-Mac" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-re-basic-of-python" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/13/Install-Kaggle-Docker-on-Mac/" class="article-date">
-      <time datetime="2017-02-12T18:31:56.000Z" itemprop="datePublished">2017-02-13</time>
+      <a href="/2017/02/19/re-basic-of-python/" class="article-date">
+      <time datetime="2017-02-19T10:52:00.000Z" itemprop="datePublished">2017-02-19</time>
 </a>
 
 
@@ -293,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Mac上安装Kaggle Docker 镜像的方法
+      re basic of python
     </h1>
   
 
@@ -304,7 +304,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/">Data Science</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -314,13 +314,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>作为数据科学业界独占鳌头的竞赛网站Kaggle为我们提供了简便的一键安装的Docker镜像，使得我们可以方便的在本地<br>使用与Kaggle网站在线完全一致的环境，那么在Mac上如何安装和使用Kaggle的Docker镜像呢？</p>
+        <p>本文主要关于python的正则表达式的符号与方法。</p>
 <a id="more"></a>
-<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><p>参考<a href="https://www.docker.com/" target="_blank" rel="external">Docker官网</a>的教程可以方便的下载安装Docker在Mac上。</p>
-<h2 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h2><p>安装好Docker并运行成功后，参考<a href="https://github.com/kaggle/docker-python" target="_blank" rel="external">这里</a>，在终端用如下这行命令<code>docker run --rm -it kaggle/python</code>，就会下载kaggle的python环境Docker镜像到本地，大小数G，如果出现握手失败等提示可以尝试挂VPN或者用Daocloud的服务来加速。</p>
-<h2 id="jupyter-notebook设置"><a href="#jupyter-notebook设置" class="headerlink" title="jupyter notebook设置"></a>jupyter notebook设置</h2><p>我们装好环境后当然不是只是为了在命令行内使用python环境，必须用jupyter notebook！那么怎么设置才能在本地的浏览器上连接容器内运行的内核呢？<br>参考<a href="http://blog.kaggle.com/2016/02/05/how-to-get-started-with-data-science-in-containers/" target="_blank" rel="external">这里</a>，在你的<code>.bashrc</code>或者<code>.bash_profile</code>文件内添加如下数行，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">kpython()&#123;</div><div class="line">  docker run -v $PWD:/tmp/working -w=/tmp/working --rm -it kaggle/python python &quot;$@&quot;</div><div class="line">&#125;</div><div class="line">ikpython() &#123;</div><div class="line">  docker run -v $PWD:/tmp/working -w=/tmp/working --rm -it kaggle/python ipython</div><div class="line">&#125;</div><div class="line">kjupyter() &#123;</div><div class="line">  (sleep 3 &amp;&amp; open &quot;http://$(docker-machine ip docker):8888&quot;)&amp;</div><div class="line">  docker run -v $PWD:/tmp/working -w=/tmp/working -p 8888:8888 --rm -it kaggle/python jupyter notebook --no-browser --ip=&quot;0.0.0.0&quot; --notebook-dir=/tmp/working</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>别忘了<code>source .bashrc</code>，之后就可以用<code>kjupyter</code>命令来运行<code>jupyter notebook</code>，只要进入命令行中提供的网址如<code>http://0.0.0.0:8888/?token=16185adf197d30dc82e9b88508a5ac585e6fa072c682117d</code>就可进入<code>jupyter notebook</code>。</p>
+<p>findall: 找寻所有匹配，返回所有组合的列表<br>search: 找寻第一个匹配并返回<br>sub: 替换符合规律的内容，并返回替换后的内容</p>
+<p>.：匹配除了换行符以外的任意字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = &apos;xy123&apos;</div><div class="line">b = re.findall(&apos;x...&apos;,a)</div><div class="line">print(b)</div><div class="line"># [&apos;xy12&apos;]</div></pre></td></tr></table></figure>
+<p>*：匹配前一个字符0次或者无限次</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = &apos;xyxy123&apos;</div><div class="line">b = re.findall(&apos;x*&apos;,a)</div><div class="line">print(b)</div><div class="line"># [&apos;x&apos;, &apos;&apos;, &apos;x&apos;, &apos;&apos;, &apos;&apos;, &apos;&apos;, &apos;&apos;, &apos;&apos;]</div></pre></td></tr></table></figure>
+<p>?：匹配前一个字符0次或者1次</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = &apos;xy123&apos;</div><div class="line">b = re.findall(&apos;x?&apos;,a)</div><div class="line">print(b)</div><div class="line"># [&apos;x&apos;, &apos;&apos;, &apos;&apos;, &apos;&apos;, &apos;&apos;, &apos;&apos;]</div></pre></td></tr></table></figure>
+<p>.*：贪心算法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">b = re.findall(&apos;xx.*xx&apos;,secret_code)</div><div class="line">print(b)</div><div class="line"># [&apos;xxIxxfasdjifja134xxlovexx23345sdfxxyouxx&apos;]</div></pre></td></tr></table></figure>
+<p>.*?：非贪心算法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">c = re.findall(&apos;xx.*?xx&apos;,secret_code)</div><div class="line">print(c)</div><div class="line"># [&apos;xxIxx&apos;, &apos;xxlovexx&apos;, &apos;xxyouxx&apos;]</div></pre></td></tr></table></figure></p>
+<p>():：括号内结果返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">d = re.findall(&apos;xx(.*?)xx&apos;,secret_code)</div><div class="line">print(d)</div><div class="line">for each in d:</div><div class="line">    print(each)</div><div class="line"># [&apos;I&apos;, &apos;love&apos;, &apos;you&apos;]</div><div class="line"># I</div><div class="line"># love</div><div class="line"># you</div></pre></td></tr></table></figure>
+<p>re.S使得.的作用域包括换行符”\n”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">s = &apos;&apos;&apos;sdfxxhello</div><div class="line">xxfsdfxxworldxxasdf&apos;&apos;&apos;</div><div class="line"></div><div class="line">d = re.findall(&apos;xx(.*?)xx&apos;,s,re.S)</div><div class="line">print(d)</div><div class="line">#  [&apos;hello\n&apos;, &apos;world&apos;]</div></pre></td></tr></table></figure>
+<p>对比findall与search的区别<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">s2 = &apos;asdfxxIxx123xxlovexxdfd&apos;</div><div class="line">f = re.search(&apos;xx(.*?)xx123xx(.*?)xx&apos;,s2).group(2)</div><div class="line">print(f)</div><div class="line">f2 = re.findall(&apos;xx(.*?)xx123xx(.*?)xx&apos;,s2)</div><div class="line">print(f2[0][1])</div><div class="line"># love</div><div class="line"># love</div></pre></td></tr></table></figure></p>
+<p>虽然两者结果相同，但是search是搭配group来得到第二个匹配，而findall的结果是[(‘I’, ‘love’)]，包含元组的列表，所以需要f2[0][1]来引入。</p>
+<p>sub的使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">s = &apos;123rrrrr123&apos;</div><div class="line">output = re.sub(&apos;123(.*?)123&apos;,&apos;123%d123&apos;%789,s)</div><div class="line">print(output)</div><div class="line"># 123789123</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -329,13 +342,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/13/Install-Kaggle-Docker-on-Mac/">Mac上安装Kaggle Docker 镜像的方法</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/19/re-basic-of-python/">re basic of python</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2017-02-13, 02:31:56</p>
-        <p><span>最后更新:</span>2017-02-17, 14:40:55</p>
+        <p><span>发布时间:</span>2017-02-19, 18:52:00</p>
+        <p><span>最后更新:</span>2017-02-19, 23:43:55</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/13/Install-Kaggle-Docker-on-Mac/" title="Mac上安装Kaggle Docker 镜像的方法">http://frankchen.xyz/2017/02/13/Install-Kaggle-Docker-on-Mac/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/02/13/Install-Kaggle-Docker-on-Mac/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/19/re-basic-of-python/" title="re basic of python">http://frankchen.xyz/2017/02/19/re-basic-of-python/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/02/19/re-basic-of-python/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -347,16 +360,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/02/16/Explanation-of-Convolutional-Neural-Networks/">
-                    Explanation of Convolutional Neural Networks
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/17/Note-for-SoloLearn-SQL/">
-                    Note for SoloLearn SQL
+                <a href="/2017/02/18/Deep-Learning-Interview/">
+                    Deep Learning Interview
                 </a>
             </div>
         
@@ -368,7 +375,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker"><span class="toc-number">1.</span> <span class="toc-text">安装Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拉取镜像"><span class="toc-number">2.</span> <span class="toc-text">拉取镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jupyter-notebook设置"><span class="toc-number">3.</span> <span class="toc-text">jupyter notebook设置</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -404,7 +411,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Mac上安装Kaggle Docker 镜像的方法　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"re basic of python　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -420,7 +427,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/13/Install-Kaggle-Docker-on-Mac/" data-title="Mac上安装Kaggle Docker 镜像的方法" data-url="http://frankchen.xyz/2017/02/13/Install-Kaggle-Docker-on-Mac/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/19/re-basic-of-python/" data-title="re basic of python" data-url="http://frankchen.xyz/2017/02/19/re-basic-of-python/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -443,15 +450,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/16/Explanation-of-Convolutional-Neural-Networks/" title="上一篇: Explanation of Convolutional Neural Networks">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/17/Note-for-SoloLearn-SQL/" title="下一篇: Note for SoloLearn SQL">
+            <a href="/2017/02/18/Deep-Learning-Interview/" title="下一篇: Deep Learning Interview">
                 <i class="fa fa-angle-right"></i>
             </a>
         
