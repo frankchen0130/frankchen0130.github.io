@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="loop in data">
 <meta property="og:description" content="关于Amdahl’s law。">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/02/AmdahlsLaw.svg.png">
-<meta property="og:updated_time" content="2017-02-22T10:24:32.000Z">
+<meta property="og:updated_time" content="2017-02-22T10:36:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Amdahl's law">
 <meta name="twitter:description" content="关于Amdahl’s law。">
@@ -321,7 +321,7 @@
 <p>则加速比就为</p>
 <p>$$<br>S_{\text{latency}}(s) = \frac {T} {T’} = \frac{1}{1 - p + \frac p s}<br>$$</p>
 <h2 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h2><p>Amdahl’s law揭示了不管如何的进行并行计算，只要任务包含无法被并行加速的部分，那么加速比是有上限的，因为</p>
-<p>$$<br>\lim<em>{s \rightarrow \infty} S</em>{\text{latency}}(s) = \frac {T} {T’} = \frac{1}{1 - p}<br>$$</p>
+<p>$$<br>\lim_{s \rightarrow \infty} S_{\text{latency}}(s) = \frac {T} {T’} = \frac{1}{1 - p}<br>$$</p>
 <p>例如如下图中的例子，如果任务的95%可以并行，那么加速的极限约为20倍。</p>
 <p><img src="/images/2017/02/AmdahlsLaw.svg.png" alt=""></p>
 
@@ -335,7 +335,7 @@
         <p><span>Title:</span><a href="/2017/02/22/Amdahl-s-law/">Amdahl&#39;s law</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">江南消夏</a></p>
         <p><span>Created:</span>2017-02-22, 18:03:29</p>
-        <p><span>Updated:</span>2017-02-22, 18:24:32</p>
+        <p><span>Updated:</span>2017-02-22, 18:36:50</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2017/02/22/Amdahl-s-law/" title="Amdahl&#39;s law">http://frankchen.xyz/2017/02/22/Amdahl-s-law/</a>
             <span class="copy-path" data-clipboard-text="From http://frankchen.xyz/2017/02/22/Amdahl-s-law/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
