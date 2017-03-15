@@ -29,9 +29,14 @@
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/07.png">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/08.png">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/09.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/03/11.png">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/10.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/03/12.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/03/13.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/03/14.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/03/15.png">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/02.png">
-<meta property="og:updated_time" content="2017-03-15T08:58:59.000Z">
+<meta property="og:updated_time" content="2017-03-15T10:24:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据挖掘流程：数据可视化与预处理">
 <meta name="twitter:description" content="数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。">
@@ -149,13 +154,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -283,7 +288,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap"><article id="post-数据挖掘流程：数据可视化与预处理" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -363,15 +368,27 @@
 <p><img src="/images/2017/03/09.png" alt=""></p>
 <p>这里我们简单的将missing超过1的feature丢弃，再将missing值为1的样本删去，其他方法有待之后补充。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#dealing with missing data</div><div class="line">df_train = df_train.drop((missing_data[missing_data[&apos;Total&apos;] &gt; 1]).index,1)</div><div class="line">df_train = df_train.drop(df_train.loc[df_train[&apos;Electrical&apos;].isnull()].index)</div><div class="line">df_train.isnull().sum().max()</div></pre></td></tr></table></figure>
-<h3 id="离群点"><a href="#离群点" class="headerlink" title="离群点"></a>离群点</h3><p>离群点可以简单删去，如</p>
+<h3 id="离群点"><a href="#离群点" class="headerlink" title="离群点"></a>离群点</h3><p>单特征情况，可以以如下形式观察</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#standardizing data</div><div class="line">saleprice_scaled = StandardScaler().fit_transform(df_train[&apos;SalePrice&apos;][:,np.newaxis]);</div><div class="line">low_range = saleprice_scaled[saleprice_scaled[:,0].argsort()][:10]</div><div class="line">high_range= saleprice_scaled[saleprice_scaled[:,0].argsort()][-10:]</div><div class="line">print(&apos;outer range (low) of the distribution:&apos;)</div><div class="line">print(low_range)</div><div class="line">print(&apos;\nouter range (high) of the distribution:&apos;)</div><div class="line">print(high_range)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">outer range (low) of the distribution:</div><div class="line">[[-1.83820775]</div><div class="line"> [-1.83303414]</div><div class="line"> [-1.80044422]</div><div class="line"> [-1.78282123]</div><div class="line"> [-1.77400974]</div><div class="line"> [-1.62295562]</div><div class="line"> [-1.6166617 ]</div><div class="line"> [-1.58519209]</div><div class="line"> [-1.58519209]</div><div class="line"> [-1.57269236]]</div><div class="line"></div><div class="line">outer range (high) of the distribution:</div><div class="line">[[ 3.82758058]</div><div class="line"> [ 4.0395221 ]</div><div class="line"> [ 4.49473628]</div><div class="line"> [ 4.70872962]</div><div class="line"> [ 4.728631  ]</div><div class="line"> [ 5.06034585]</div><div class="line"> [ 5.42191907]</div><div class="line"> [ 5.58987866]</div><div class="line"> [ 7.10041987]</div><div class="line"> [ 7.22629831]]</div></pre></td></tr></table></figure>
+<p>双特征关系如特征标签关系那样，先concat再scatter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#bivariate analysis saleprice/grlivarea</div><div class="line">var = &apos;GrLivArea&apos;</div><div class="line">data = pd.concat([df_train[&apos;SalePrice&apos;], df_train[var]], axis=1)</div><div class="line">data.plot.scatter(x=var, y=&apos;SalePrice&apos;, ylim=(0,800000));</div></pre></td></tr></table></figure></p>
+<p><img src="/images/2017/03/11.png" alt=""></p>
+<p>离群点可以简单删去，如</p>
 <p><img src="/images/2017/03/10.png" alt=""></p>
-<p>###</p>
-<p>如果偏度太大，可以使用<code>log1p</code>来处理，并对比前后的差距</p>
+<h3 id="正态分布"><a href="#正态分布" class="headerlink" title="正态分布"></a>正态分布</h3><p>用histogram 和 normal probability可以观察数据的峰度偏度以及是否符合正态分布</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sns.distplot(df_train[&apos;SalePrice&apos;], fit=norm);</div><div class="line">fig = plt.figure()</div><div class="line">res = stats.probplot(df_train[&apos;SalePrice&apos;], plot=plt)</div></pre></td></tr></table></figure>
+<p><img src="/images/2017/03/12.png" alt=""><br><img src="/images/2017/03/13.png" alt=""></p>
+<p>对于正偏度，取log通常不错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#applying log transformation</div><div class="line">df_train[&apos;SalePrice&apos;] = np.log(df_train[&apos;SalePrice&apos;])</div><div class="line">In [22]:</div><div class="line">#transformed histogram and normal probability plot</div><div class="line">sns.distplot(df_train[&apos;SalePrice&apos;], fit=norm);</div><div class="line">fig = plt.figure()</div><div class="line">res = stats.probplot(df_train[&apos;SalePrice&apos;], plot=plt)</div></pre></td></tr></table></figure>
+<p><img src="/images/2017/03/14.png" alt=""><br><img src="/images/2017/03/15.png" alt=""></p>
+<p>有时我们会遇到具有许多0值得特征，而从istogram 和 normal probability可以看出其具有偏度，那么可以使用如下方法：将非零点取log保留零点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#create column for new variable (one is enough because it&apos;s a binary categorical feature)</div><div class="line">#if area&gt;0 it gets 1, for area==0 it gets 0</div><div class="line">df_train[&apos;HasBsmt&apos;] = pd.Series(len(df_train[&apos;TotalBsmtSF&apos;]), index=df_train.index)</div><div class="line">df_train[&apos;HasBsmt&apos;] = 0</div><div class="line">df_train.loc[df_train[&apos;TotalBsmtSF&apos;]&gt;0,&apos;HasBsmt&apos;] = 1</div><div class="line">In [28]:</div><div class="line">#transform data</div><div class="line">df_train.loc[df_train[&apos;HasBsmt&apos;]==1,&apos;TotalBsmtSF&apos;] = np.log(df_train[&apos;TotalBsmtSF&apos;])</div></pre></td></tr></table></figure>
+<p>对于标签，如果偏度太大，可以使用<code>log1p</code>来处理，并对比前后的差距</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">matplotlib.rcParams[&apos;figure.figsize&apos;] = (12.0, 6.0)</div><div class="line">prices = pd.DataFrame(&#123;&quot;price&quot;:train[&quot;SalePrice&quot;],</div><div class="line">                       &quot;log(price + 1)&quot;:np.log1p(train[&quot;SalePrice&quot;])</div><div class="line">                      &#125;)</div><div class="line">prices.hist()</div></pre></td></tr></table></figure>
 <p><img src="/images/2017/03/02.png" alt=""></p>
 <p>对全部Dataframe处理需要concat test与train，一并处理，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">all_data = pd.concat((train.loc[:,&quot;MSSubClass&quot;: &quot;SaleCondition&quot;], test.loc[:,&quot;MSSubClass&quot;: &quot;SaleCondition&quot;]))</div></pre></td></tr></table></figure>
-<p>最后需要将预测数据放大还原，如</p>
+<p>最后需要将预测的标签值放大还原，如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lasso_preds = np.expm1(model_lasso.predict(X_test))</div></pre></td></tr></table></figure>
 <h2 id="参考出处"><a href="#参考出处" class="headerlink" title="参考出处"></a>参考出处</h2><ul>
 <li><a href="https://www.kaggle.com/pmarcelino/house-prices-advanced-regression-techniques/comprehensive-data-exploration-with-python/notebook" target="_blank" rel="external">House Prices: Advanced Regression Techniques | Kaggle</a></li>
@@ -384,17 +401,17 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2017/03/15/数据挖掘流程：数据可视化与预处理/">数据挖掘流程：数据可视化与预处理</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">江南消夏</a></p>
-        <p><span>Created:</span>2017-03-15, 11:14:11</p>
-        <p><span>Updated:</span>2017-03-15, 16:58:59</p>
+        <p><span>本文标题:</span><a href="/2017/03/15/数据挖掘流程：数据可视化与预处理/">数据挖掘流程：数据可视化与预处理</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
+        <p><span>发布时间:</span>2017-03-15, 11:14:11</p>
+        <p><span>最后更新:</span>2017-03-15, 18:24:36</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2017/03/15/数据挖掘流程：数据可视化与预处理/" title="数据挖掘流程：数据可视化与预处理">http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/</a>
-            <span class="copy-path" data-clipboard-text="From http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/15/数据挖掘流程：数据可视化与预处理/" title="数据挖掘流程：数据可视化与预处理">http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -415,9 +432,9 @@
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
+        <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#观察与可视化"><span class="toc-number">1.</span> <span class="toc-text">观察与可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特征与标签关系"><span class="toc-number">1.1.</span> <span class="toc-text">特征与标签关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征与特征的关系"><span class="toc-number">1.2.</span> <span class="toc-text">特征与特征的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预处理"><span class="toc-number">2.</span> <span class="toc-text">预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缺失值-Missing-data¶"><span class="toc-number">2.1.</span> <span class="toc-text">缺失值 Missing data¶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#离群点"><span class="toc-number">2.2.</span> <span class="toc-text">离群点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考出处"><span class="toc-number">3.</span> <span class="toc-text">参考出处</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#观察与可视化"><span class="toc-number">1.</span> <span class="toc-text">观察与可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特征与标签关系"><span class="toc-number">1.1.</span> <span class="toc-text">特征与标签关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征与特征的关系"><span class="toc-number">1.2.</span> <span class="toc-text">特征与特征的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预处理"><span class="toc-number">2.</span> <span class="toc-text">预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缺失值-Missing-data¶"><span class="toc-number">2.1.</span> <span class="toc-text">缺失值 Missing data¶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#离群点"><span class="toc-number">2.2.</span> <span class="toc-text">离群点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正态分布"><span class="toc-number">2.3.</span> <span class="toc-text">正态分布</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考出处"><span class="toc-number">3.</span> <span class="toc-text">参考出处</span></a></li></ol>
         
     </div>
     <style>
@@ -431,10 +448,10 @@
         }
     </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
@@ -492,13 +509,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/02/22/Amdahl-s-law/" title="Next: Amdahl&#39;s law">
+            <a href="/2017/02/22/Amdahl-s-law/" title="下一篇: Amdahl&#39;s law">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -521,14 +538,14 @@
                 2016-2017 江南消夏
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -537,7 +554,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -591,9 +608,9 @@ MathJax.Hub.Queue(function() {
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
