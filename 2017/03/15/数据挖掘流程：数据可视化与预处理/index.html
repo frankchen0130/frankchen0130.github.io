@@ -15,27 +15,16 @@
 
 
 
-<meta name="description" content="本文主要关于演示C语言中的快排算法。">
+<meta name="description" content="数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="QuickSort in C & Python">
-<meta property="og:url" content="http://frankchen.xyz/2016/12/02/QuickSort-in-C/index.html">
+<meta property="og:title" content="数据挖掘流程：数据可视化与预处理">
+<meta property="og:url" content="http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="本文主要关于演示C语言中的快排算法。">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/12/QuickSort/QuickSort.001.jpeg">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/12/QuickSort/QuickSort.002.jpeg">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/12/QuickSort/QuickSort.003.jpeg">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/12/QuickSort/QuickSort.004.jpeg">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/12/QuickSort/QuickSort.005.jpeg">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/12/QuickSort/QuickSort.006.jpeg">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/12/QuickSort/QuickSort.007.jpeg">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/12/QuickSort/QuickSort.008.jpeg">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/12/QuickSort/QuickSort.009.jpeg">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/12/QuickSort/QuickSort.010.jpeg">
-<meta property="og:updated_time" content="2016-12-10T07:36:15.000Z">
+<meta property="og:description" content="数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。">
+<meta property="og:updated_time" content="2017-03-15T05:11:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QuickSort in C & Python">
-<meta name="twitter:description" content="本文主要关于演示C语言中的快排算法。">
-<meta name="twitter:image" content="http://frankchen.xyz/images/2016/12/QuickSort/QuickSort.001.jpeg">
+<meta name="twitter:title" content="数据挖掘流程：数据可视化与预处理">
+<meta name="twitter:description" content="数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -67,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>QuickSort in C &amp; Python | loop in data</title>
+<title>数据挖掘流程：数据可视化与预处理 | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -285,11 +274,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-QuickSort-in-C" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-数据挖掘流程：数据可视化与预处理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/02/QuickSort-in-C/" class="article-date">
-      <time datetime="2016-12-02T11:55:35.000Z" itemprop="datePublished">2016-12-02</time>
+      <a href="/2017/03/15/数据挖掘流程：数据可视化与预处理/" class="article-date">
+      <time datetime="2017-03-15T03:14:11.000Z" itemprop="datePublished">2017-03-15</time>
 </a>
 
 
@@ -304,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      QuickSort in C &amp; Python
+      数据挖掘流程：数据可视化与预处理
     </h1>
   
 
@@ -315,7 +304,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/">Data Science</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -325,19 +314,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文主要关于演示C语言中的快排算法。<br><a id="more"></a></p>
-<p>大名鼎鼎的QuickSort–快速排序算法，如此的高效、快速而优雅，今天让我们用图片和文字形象地展示一下它吧！</p>
-<p>快排是一种分治算法，其主要思想在于通过选取一个基准Pivot将序列分为左右两个子序列，其中左序列的数都小于等于Pivot，右边的都大于等于Pivot，再在这两个子序列上递归调用快排算法即可。</p>
-<p>而理解快排算法的核心就在于分解这个步骤，这里我们先给出代码，再用图片展示步骤。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  main.c</span></div><div class="line"><span class="comment">//  QuickSort</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by frankchen on 12/2/16.</span></div><div class="line"><span class="comment">//  Copyright © 2016 frankchen. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> s[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> s[],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> a[N], i;</div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"Enter %d numbers to be sorted: "</span>, N);</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;N; i++)</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</div><div class="line">    </div><div class="line">    QuickSort(a, <span class="number">0</span>, N<span class="number">-1</span>);</div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"In sorted order: \n"</span>);</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;N; i++)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//交换数组中的两个元素</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> s[],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> temp;</div><div class="line">    temp=s[i];</div><div class="line">    s[i]=s[j];</div><div class="line">    s[j]=temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> s[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, pivot;<span class="comment">//记录界限的位置</span></div><div class="line">    <span class="keyword">if</span>(low &lt; high)<span class="comment">//只有数组中元素大于1时才操作</span></div><div class="line">    &#123;</div><div class="line">        pivot = low;<span class="comment">//选取第一个元素作为基准</span></div><div class="line">        <span class="keyword">for</span>(i=low+<span class="number">1</span>; i&lt;=high; i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (s[i] &lt; s[low])</div><div class="line">                swap(s, ++pivot, i);</div><div class="line">        &#125;</div><div class="line">        swap(s, low, pivot);<span class="comment">//基准元与界限交换</span></div><div class="line">        QuickSort(s, low, pivot<span class="number">-1</span>);</div><div class="line">        QuickSort(s, pivot+<span class="number">1</span>, high);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>以下是Python版本：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, l)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line">        初始化</div><div class="line">        '''</div><div class="line">        self.l = l</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line">        打印排序后的list</div><div class="line">        '''</div><div class="line">        <span class="keyword">return</span> <span class="string">'list\t:%s'</span> % (self.l)</div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">swap</span><span class="params">(self, s, i, j)</span>:</span></div><div class="line">        <span class="string">'''</span></div><div class="line">        交换位置</div><div class="line">        '''</div><div class="line">        tmp = <span class="number">0</span></div><div class="line">        tmp = s[i]</div><div class="line">        s[i] = s[j]</div><div class="line">        s[j] = tmp</div><div class="line"></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">QuickSort</span><span class="params">(self, s, low, high)</span>:</span></div><div class="line">        i = <span class="number">0</span>; pivot = <span class="number">0</span></div><div class="line">        <span class="keyword">if</span> low &lt; high:</div><div class="line">            pivot = low</div><div class="line">            i = low + <span class="number">1</span></div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(i, high+<span class="number">1</span>):</div><div class="line">                <span class="keyword">if</span> s[i] &lt; s[low]:</div><div class="line">                    pivot += <span class="number">1</span></div><div class="line">                    self.swap(s, pivot, i)</div><div class="line">            self.swap(s, low, pivot)</div><div class="line">            self.QuickSort(s, low, pivot<span class="number">-1</span>)</div><div class="line">            self.QuickSort(s, pivot+<span class="number">1</span>, high)</div><div class="line">        <span class="keyword">return</span> s</div><div class="line">    </div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getList</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">'''</span></div><div class="line">    读取文件内的数存入数组</div><div class="line">    '''</div><div class="line">    MyFile = <span class="string">"QuickSort.txt"</span></div><div class="line">    l = []</div><div class="line">    <span class="keyword">with</span> open(MyFile) <span class="keyword">as</span> f:</div><div class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</div><div class="line">            l.append(int(line))</div><div class="line">    <span class="keyword">return</span> l</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Sort</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">'''</span></div><div class="line">    排序</div><div class="line">    '''</div><div class="line">    <span class="comment"># 创建QuickSort对象</span></div><div class="line">    l = getList()</div><div class="line">    p = QuickSort(l)</div><div class="line">    N = len(l)</div><div class="line">    p.QuickSort(l, <span class="number">0</span>, N<span class="number">-1</span>)</div><div class="line">    <span class="keyword">return</span> p</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    p = Sort()</div><div class="line">    <span class="keyword">print</span> p</div></pre></td></tr></table></figure>
-<ul>
-<li>为了排序整个序列，只需要调用QuickSort(R，0，n-1)即可完成对R[0..n-1]的排序。</li>
-<li>这里选取了第一个元素作为基准，如果输入是随机序列，那么没什么大碍，但是如果输入是预排序或者逆序的，那么会产生坏的排序，使得时间复杂度提高，随机选取基准是一种可行的方法，另外一种是选取开头、中间点和末位点的中位数。</li>
-</ul>
-<p>```</p>
-<p><img src="/images/2016/12/QuickSort/QuickSort.001.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.002.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.003.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.004.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.005.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.006.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.007.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.008.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.009.jpeg" alt="image"><br><img src="/images/2016/12/QuickSort/QuickSort.010.jpeg" alt="image"></p>
+        <p>数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。</p>
+<a id="more"></a>
+<h2 id="观察与可视化"><a href="#观察与可视化" class="headerlink" title="观察与可视化"></a>观察与可视化</h2><p>一般来说，我们应该首先观察<strong>标签的分布</strong>，通常使用pandas Dataframe的<code>value_counts()</code>来展示。</p>
 
       
     </div>
@@ -346,13 +325,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/02/QuickSort-in-C/">QuickSort in C &amp; Python</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/15/数据挖掘流程：数据可视化与预处理/">数据挖掘流程：数据可视化与预处理</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2016-12-02, 19:55:35</p>
-        <p><span>最后更新:</span>2016-12-10, 15:36:15</p>
+        <p><span>发布时间:</span>2017-03-15, 11:14:11</p>
+        <p><span>最后更新:</span>2017-03-15, 13:11:01</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/02/QuickSort-in-C/" title="QuickSort in C &amp; Python">http://frankchen.xyz/2016/12/02/QuickSort-in-C/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2016/12/02/QuickSort-in-C/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/15/数据挖掘流程：数据可视化与预处理/" title="数据挖掘流程：数据可视化与预处理">http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -364,16 +343,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/09/C++ Basic/">
-                    C++ Cheat Sheet
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/">
-                    Workflow for automatic extract and jump to the true URL of 91porn.com
+                <a href="/2017/02/22/Amdahl-s-law/">
+                    Amdahl&#39;s law
                 </a>
             </div>
         
@@ -385,7 +358,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#观察与可视化"><span class="toc-number">1.</span> <span class="toc-text">观察与可视化</span></a></li></ol>
         
     </div>
     <style>
@@ -421,7 +394,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"QuickSort in C & Python　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"数据挖掘流程：数据可视化与预处理　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -437,7 +410,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/02/QuickSort-in-C/" data-title="QuickSort in C &amp; Python" data-url="http://frankchen.xyz/2016/12/02/QuickSort-in-C/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/15/数据挖掘流程：数据可视化与预处理/" data-title="数据挖掘流程：数据可视化与预处理" data-url="http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -460,15 +433,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/09/C++ Basic/" title="上一篇: C++ Cheat Sheet">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/" title="下一篇: Workflow for automatic extract and jump to the true URL of 91porn.com">
+            <a href="/2017/02/22/Amdahl-s-law/" title="下一篇: Amdahl&#39;s law">
                 <i class="fa fa-angle-right"></i>
             </a>
         
