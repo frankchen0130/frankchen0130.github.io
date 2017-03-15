@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/06.png">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/07.png">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/08.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/09.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/03/09.jpg">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/11.png">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/10.png">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/12.png">
@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/14.png">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/15.png">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/02.png">
-<meta property="og:updated_time" content="2017-03-15T10:24:36.000Z">
+<meta property="og:updated_time" content="2017-03-15T10:25:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据挖掘流程：数据可视化与预处理">
 <meta name="twitter:description" content="数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。">
@@ -365,7 +365,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#missing data</div><div class="line">total = df_train.isnull().sum().sort_values(ascending=False)</div><div class="line">percent = (df_train.isnull().sum()/df_train.isnull().count()).sort_values(ascending=False)</div><div class="line">missing_data = pd.concat([total, percent], axis=1, keys=[&apos;Total&apos;, &apos;Percent&apos;])</div><div class="line">missing_data.head(20)</div></pre></td></tr></table></figure>
 <p>以上将打印包含缺失值的特征的缺失个数和比例</p>
 <p>当然对于缺失值，不同情况有不同的处理方法，例如</p>
-<p><img src="/images/2017/03/09.png" alt=""></p>
+<p><img src="/images/2017/03/09.jpg" alt=""></p>
 <p>这里我们简单的将missing超过1的feature丢弃，再将missing值为1的样本删去，其他方法有待之后补充。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#dealing with missing data</div><div class="line">df_train = df_train.drop((missing_data[missing_data[&apos;Total&apos;] &gt; 1]).index,1)</div><div class="line">df_train = df_train.drop(df_train.loc[df_train[&apos;Electrical&apos;].isnull()].index)</div><div class="line">df_train.isnull().sum().max()</div></pre></td></tr></table></figure>
 <h3 id="离群点"><a href="#离群点" class="headerlink" title="离群点"></a>离群点</h3><p>单特征情况，可以以如下形式观察</p>
@@ -404,7 +404,7 @@
         <p><span>本文标题:</span><a href="/2017/03/15/数据挖掘流程：数据可视化与预处理/">数据挖掘流程：数据可视化与预处理</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
         <p><span>发布时间:</span>2017-03-15, 11:14:11</p>
-        <p><span>最后更新:</span>2017-03-15, 18:24:36</p>
+        <p><span>最后更新:</span>2017-03-15, 18:25:59</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/15/数据挖掘流程：数据可视化与预处理/" title="数据挖掘流程：数据可视化与预处理">http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/</a>
             <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
