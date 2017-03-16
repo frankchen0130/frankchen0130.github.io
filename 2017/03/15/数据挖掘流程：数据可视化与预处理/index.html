@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/14.png">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/15.png">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/03/02.png">
-<meta property="og:updated_time" content="2017-03-15T10:25:59.000Z">
+<meta property="og:updated_time" content="2017-03-16T10:46:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据挖掘流程：数据可视化与预处理">
 <meta name="twitter:description" content="数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。">
@@ -332,6 +332,15 @@
           
         <p>数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。</p>
 <a id="more"></a>
+<h2 id="import-掉包？"><a href="#import-掉包？" class="headerlink" title="import 掉包？"></a>import 掉包？</h2><p>第0步，调包。。</p>
+<p>通常numpy、pandas、scipy、seaborn已经matplotlib是必须的</p>
+<p>为防止烦人的warning，还需要</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import warnings</div><div class="line">warnings.filterwarnings(&apos;ignore&apos;)</div></pre></td></tr></table></figure>
+<p>因为我们不管warning只管error，哈哈😂</p>
+<p>seaborn的设置颜色格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sns.set_style(&apos;whitegrid&apos;)</div></pre></td></tr></table></figure>
+<p>以及</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%matplotlib inline</div></pre></td></tr></table></figure>
 <h2 id="观察与可视化"><a href="#观察与可视化" class="headerlink" title="观察与可视化"></a>观察与可视化</h2><p>一般来说，我们应该首先观察<strong>标签的分布</strong>以及<strong>特征的分布</strong>，对于前者通常使用pandas Dataframe的<code>columns</code>，对于后者则是<code>value_counts()</code>和<code>describe()</code>来展示。如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df_train.columns</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int_level = train_df[&apos;interest_level&apos;].value_counts()</div></pre></td></tr></table></figure>
@@ -404,7 +413,7 @@
         <p><span>本文标题:</span><a href="/2017/03/15/数据挖掘流程：数据可视化与预处理/">数据挖掘流程：数据可视化与预处理</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
         <p><span>发布时间:</span>2017-03-15, 11:14:11</p>
-        <p><span>最后更新:</span>2017-03-15, 18:25:59</p>
+        <p><span>最后更新:</span>2017-03-16, 18:46:45</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/15/数据挖掘流程：数据可视化与预处理/" title="数据挖掘流程：数据可视化与预处理">http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/</a>
             <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -440,7 +449,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#观察与可视化"><span class="toc-number">1.</span> <span class="toc-text">观察与可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特征与标签关系"><span class="toc-number">1.1.</span> <span class="toc-text">特征与标签关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征与特征的关系"><span class="toc-number">1.2.</span> <span class="toc-text">特征与特征的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预处理"><span class="toc-number">2.</span> <span class="toc-text">预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缺失值-Missing-data¶"><span class="toc-number">2.1.</span> <span class="toc-text">缺失值 Missing data¶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#离群点"><span class="toc-number">2.2.</span> <span class="toc-text">离群点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正态分布"><span class="toc-number">2.3.</span> <span class="toc-text">正态分布</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考出处"><span class="toc-number">3.</span> <span class="toc-text">参考出处</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#import-掉包？"><span class="toc-number">1.</span> <span class="toc-text">import 掉包？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#观察与可视化"><span class="toc-number">2.</span> <span class="toc-text">观察与可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特征与标签关系"><span class="toc-number">2.1.</span> <span class="toc-text">特征与标签关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征与特征的关系"><span class="toc-number">2.2.</span> <span class="toc-text">特征与特征的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预处理"><span class="toc-number">3.</span> <span class="toc-text">预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缺失值-Missing-data¶"><span class="toc-number">3.1.</span> <span class="toc-text">缺失值 Missing data¶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#离群点"><span class="toc-number">3.2.</span> <span class="toc-text">离群点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正态分布"><span class="toc-number">3.3.</span> <span class="toc-text">正态分布</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考出处"><span class="toc-number">4.</span> <span class="toc-text">参考出处</span></a></li></ol>
         
     </div>
     <style>
