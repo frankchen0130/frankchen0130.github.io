@@ -15,32 +15,16 @@
 
 
 
-<meta name="description" content="在之前的部分我们实现了RNN，但是并未深入探究时间反向传播算法，本文将对这一点作详细说明。我们将了解关于梯度消失问题的知识，它促使了LSTM和GRU的出现，而这两者都是NLP领域非常常见的模型。
-##BACKPROPAGATION THROUGH TIME (BPTT)
-首先我们回顾一下RNN的基本等式：">
+<meta name="description" content="Overview of Basic Linux/Unix command Interview Questions: 常见Linux命令的概述记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS">
-<meta property="og:url" content="http://frankchen.xyz/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/index.html">
+<meta property="og:title" content="Basic Linux/Unix command Interview Questions">
+<meta property="og:url" content="http://frankchen.xyz/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="在之前的部分我们实现了RNN，但是并未深入探究时间反向传播算法，本文将对这一点作详细说明。我们将了解关于梯度消失问题的知识，它促使了LSTM和GRU的出现，而这两者都是NLP领域非常常见的模型。
-##BACKPROPAGATION THROUGH TIME (BPTT)
-首先我们回顾一下RNN的基本等式：">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/latex.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/latex1.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/latex2.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/latex3.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/latex4.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/rnn-bptt-with-gradients.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/latex5.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/latex6.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/tanh.png">
-<meta property="og:updated_time" content="2017-01-13T09:47:07.000Z">
+<meta property="og:description" content="Overview of Basic Linux/Unix command Interview Questions: 常见Linux命令的概述记录">
+<meta property="og:updated_time" content="2017-03-18T18:02:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS">
-<meta name="twitter:description" content="在之前的部分我们实现了RNN，但是并未深入探究时间反向传播算法，本文将对这一点作详细说明。我们将了解关于梯度消失问题的知识，它促使了LSTM和GRU的出现，而这两者都是NLP领域非常常见的模型。
-##BACKPROPAGATION THROUGH TIME (BPTT)
-首先我们回顾一下RNN的基本等式：">
-<meta name="twitter:image" content="http://frankchen.xyz/images/2016/06/latex.png">
+<meta name="twitter:title" content="Basic Linux/Unix command Interview Questions">
+<meta name="twitter:description" content="Overview of Basic Linux/Unix command Interview Questions: 常见Linux命令的概述记录">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -72,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS | loop in data</title>
+<title>Basic Linux/Unix command Interview Questions | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -290,11 +274,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Basic-Linux-Unix-command-Interview-Questions" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/" class="article-date">
-      <time datetime="2016-06-22T07:42:14.000Z" itemprop="datePublished">2016-06-22</time>
+      <a href="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/" class="article-date">
+      <time datetime="2017-03-18T16:53:08.000Z" itemprop="datePublished">2017-03-19</time>
 </a>
 
 
@@ -309,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS
+      Basic Linux/Unix command Interview Questions
     </h1>
   
 
@@ -317,14 +301,10 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
-    </div>
-
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning/">Deep Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RNN/">RNN</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -334,39 +314,62 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在之前的部分我们实现了RNN，但是并未深入探究时间反向传播算法，本文将对这一点作详细说明。我们将了解关于梯度消失问题的知识，它促使了LSTM和GRU的出现，而这两者都是NLP领域非常常见的模型。</p>
-<p>##BACKPROPAGATION THROUGH TIME (BPTT)</p>
-<p>首先我们回顾一下RNN的基本等式：</p>
-<p><img src="/images/2016/06/latex.png" alt=""></p>
+        <p>Overview of Basic Linux/Unix command Interview Questions: 常见Linux命令的概述记录</p>
 <a id="more"></a>
-<p>我们也定义了损失函数（交叉熵）：</p>
-<p><img src="/images/2016/06/latex1.png" alt=""></p>
-<p>在这里，$$y_t$$是 $$t$$时刻的正确的词语， $$\tilde{y_t}$$ 是我们的预测。因为我们把一整个序列（句子）当做是输入，那么错误等同于每个时间step（词语）的错误的和。</p>
-<p>![](/images/2016/06/rnn-bptt1.png）</p>
-<p>需要注意，我们的目标是计算基于参数$$U, V, W$$错误的梯度，并且通过SGD来学习到好的参数。类似于我们将错误相加的做法，对于一个训练样本，我们将各个时间点的梯度相加。</p>
-<p>$$<br>\frac{\partial{E}}{\partial{W}} = \sum_{t} \frac{\partial{E_t}}{\partial{W}}<br>$$</p>
-<p>我们使用链式求导法则来计算这些梯度，这就是反向传播算法:从错误处反向计算。以下我们使用$$E_3$$作为例子。</p>
-<p><img src="/images/2016/06/latex2.png" alt=""></p>
-<p>其中，$$z_3 = V s_3$$，并且$$\otimes$$指的是向量外积。在这里我们需要注意到，$$\frac{\partial{E_3}}{\partial{V}}$$只取决于当前时刻的值$$\tilde{y_3}, y_3, s_3$$。如果你明确了这一点，那么计算$$V$$的梯度只是矩阵计算罢了。</p>
-<p>但是，对于$$\frac{\partial{E_3}}{\partial{W}}$$和$$V$$就不一样了。我们写出链式法则：</p>
-<p><img src="/images/2016/06/latex3.png" alt=""></p>
-<p>可以看到，$$s_3 = \tanh(U x_t + W s_2)$$取决于$$s_2$$，而$$s_2$$又取决于$$W$$和$$s_1$$，以此类推。所以我们计算$$W$$的偏导，我们不能把$$s_2$$当做一个常量，相反我们需要一遍遍的应用链式法则：</p>
-<p><img src="/images/2016/06/latex4.png" alt=""></p>
-<p>我们把每个时间点对于梯度贡献综合起来。换句话说，因为$$W$$在直到我们需要输出的时刻都被用到，所以我们需要计算$$t=3$$时刻直到$$t=0$$时刻：</p>
-<p><img src="/images/2016/06/rnn-bptt-with-gradients.png" alt=""></p>
-<p>这其实和深度前馈神经网络里的标准的反向传播算法是类似的。主要的不同点在于我们把每个时间点的$$W$$的梯度综合起来。传统的神经网络的不同层之间不共享参数，于是我们也不需要综合什么。但是在我看来，BPTT只不过是在没有展开的RNN上的标准BP算法的别名罢了。类似于标准的BP算法，你也可以定义一个徳塔项来表示反向传播的内容。例如：$$\delta_{2}^{(3)} = \frac{\partial{E_3}}{\partial{z_2}} = \frac{\partial{E_3}}{\partial{s_3}} \frac{\partial{s_3}}{\partial{s_2}} \frac{\partial{s_2}}{\partial{z_2}}$$，其中$$z_2 = Ux_2 + Ws_1$$。以此类推。</p>
-<p>代码实现BPTT如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">bptt</span><span class="params">(self, x, y)</span>:</span></div><div class="line">    T = len(y)</div><div class="line">    <span class="comment"># Perform forward propagation</span></div><div class="line">    o, s = self.forward_propagation(x)</div><div class="line">    <span class="comment"># We accumulate the gradients in these variables</span></div><div class="line">    dLdU = np.zeros(self.U.shape)</div><div class="line">    dLdV = np.zeros(self.V.shape)</div><div class="line">    dLdW = np.zeros(self.W.shape)</div><div class="line">    delta_o = o</div><div class="line">    delta_o[np.arange(len(y)), y] -= <span class="number">1.</span></div><div class="line">    <span class="comment"># For each output backwards...</span></div><div class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> np.arange(T)[::<span class="number">-1</span>]:</div><div class="line">        dLdV += np.outer(delta_o[t], s[t].T)</div><div class="line">        <span class="comment"># Initial delta calculation: dL/dz</span></div><div class="line">        delta_t = self.V.T.dot(delta_o[t]) * (<span class="number">1</span> - (s[t] ** <span class="number">2</span>))</div><div class="line">        <span class="comment"># Backpropagation through time (for at most self.bptt_truncate steps)</span></div><div class="line">        <span class="keyword">for</span> bptt_step <span class="keyword">in</span> np.arange(max(<span class="number">0</span>, t-self.bptt_truncate), t+<span class="number">1</span>)[::<span class="number">-1</span>]:</div><div class="line">            <span class="comment"># print "Backpropagation step t=%d bptt step=%d " % (t, bptt_step)</span></div><div class="line">            <span class="comment"># Add to gradients at each previous step</span></div><div class="line">            dLdW += np.outer(delta_t, s[bptt_step<span class="number">-1</span>])</div><div class="line">            dLdU[:,x[bptt_step]] += delta_t</div><div class="line">            <span class="comment"># Update delta for next step dL/dz at t-1</span></div><div class="line">            delta_t = self.W.T.dot(delta_t) * (<span class="number">1</span> - s[bptt_step<span class="number">-1</span>] ** <span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> [dLdU, dLdV, dLdW]</div></pre></td></tr></table></figure></p>
-<p>从代码你也可以观察到RNN不容易训练：由于序列比较长，每次传播需要计算很多层，实践上通常许多人的做法是将传播限制在几步之内。</p>
-<p>##梯度消失问题</p>
-<p>之前的部分我们已经讲述了关于RNN的长期依赖问题。为了解这一点，我们来观察上面我们计算过的梯度。</p>
-<p><img src="/images/2016/06/latex5.png" alt=""></p>
-<p>注意到是对于自身的链式法则，如。再注意到，我们这里计算的是向量对向量的偏导，其结果是一个雅可比矩阵。因此可以改写上面的梯度式为：</p>
-<p><img src="/images/2016/06/latex6.png" alt=""></p>
-<p>式子中的雅克比矩阵的二范数具有上限1.这导致激活函数tanh（或者sigmoid）映射所有的值到[-1,1]，那么偏导也被限制在1（对于sigmoid是$$\frac{1}{4} $$）。</p>
-<p><img src="/images/2016/06/tanh.png" alt=""></p>
-<p>图中我们可以看到，在tanh函数两边，梯度都接近于0.这导致它之前的梯度也接近于0，那么，与矩阵中的数字多次相乘使得梯度迅速减小，直到接近消失。院出的时间点对于现在的影响接近于0，这就是长期依赖问题的原因。但是，长期依赖问题并不只是对于RNN出现，深度神经网络都具有这个问题，只不过RNN经常要处理长序列问题，所以网络层数很多，这个问题就经常出现了。</p>
-<p>容易想到的是，与梯度消失问题对应的是，梯度爆炸问题。当雅克比矩阵中的数值较大时，容易出现这个问题。但是，通常来说，对于梯度爆炸，业界关注并不太多。有两个原因，其一，梯度爆炸发生时通常容易发现，因为可能导致程序崩溃之类的后果；其二，通常为梯度设置上限是应对梯度爆炸的简便做法。</p>
-<p>那么怎么应对梯度弥散问题呢？首先，更好的初始化权重可以减少梯度弥散的效果；其次，使用正则化；更加通用的方法是使用ReLU作为激活函数，其梯度要么是1要么是0，所以更少的可能出现梯度弥散的问题。另外，更加流行的做法则是使用 Long Short-Term Memory (LSTM)或者Gated Recurrent Unit (GRU)，LSTM<a href="http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf" target="_blank" rel="external">出现于1997年</a>，也许是NLP领域近期最流行的网络结构。GRU，<a href="http://arxiv.org/pdf/1406.1078v3.pdf" target="_blank" rel="external">出现于2014年</a>，是LSTM的简化版本。两种网络都是为了应对梯度弥散和长期依赖问题。我们将会在之后的教程中涉及它们。</p>
+<h2 id="初级问题"><a href="#初级问题" class="headerlink" title="初级问题"></a>初级问题</h2><ul>
+<li>列出目录内所有的软链接文件</li>
+</ul>
+<p><code>ls -la | grep &quot;^l&quot;</code></p>
+<p><code>ls -la</code>会以ASCII列出所有文件，而软链接文件都是以<code>l</code>开头的，<code>grep &quot;^l&quot;</code>会找出它们。关于grep的正则pattern可以见此：<a href="https://www.digitalocean.com/community/tutorials/using-grep-regular-expressions-to-search-for-text-patterns-in-linux#regular-expressions" target="_blank" rel="external">Using Grep &amp; Regular Expressions to Search for Text Patterns in Linux | DigitalOcean</a></p>
+<ul>
+<li>创建一个只读的文件？</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">touch file</div><div class="line">chmod 400 file</div></pre></td></tr></table></figure>
+<p>更多可见：<a href="http://javarevisited.blogspot.com/2011/11/file-permissions-in-unix-linux-example.html" target="_blank" rel="external">File permissions in UNIX Linux with Example &gt;&gt; Unix Tutorial</a></p>
+<ul>
+<li>如何将一个进程在后端运行？如何将其返回前端？如何杀死进程？</li>
+</ul>
+<p>分别是在命令后加上<code>&amp;</code>；<code>fg jobid</code>(用<code>jobs</code>来看jobid)；<code>kill -KILL PID</code> 可见<a href="https://kb.iu.edu/d/afnz" target="_blank" rel="external">How do I run a Unix process in the background?</a></p>
+<ul>
+<li>测试远程链接？</li>
+</ul>
+<p>用<code>ping</code>或<code>telnet</code>即可</p>
+<ul>
+<li>找寻历史命令？</li>
+</ul>
+<p><code>history | grep &quot;Pattern&quot;</code></p>
+<ul>
+<li>远程复制文件？</li>
+</ul>
+<p><code>scp</code>，或者<code>rsync</code>，<code>sftp</code></p>
+<ul>
+<li>进程的CPU占用？</li>
+</ul>
+<p><code>top</code></p>
+<ul>
+<li>当前磁盘用量？</li>
+</ul>
+<p><code>df -h</code></p>
+<ul>
+<li>Swapping交换和Paging分页的区别？</li>
+</ul>
+<p>paging指的是以页为单位的交换，<br>swapping指的是以整个进程为单位的交换。</p>
+<p>paging机制是进程内外交换的主流，某些情况下仍然会使用swapping机制，比如：<br>1、系统内存严重短缺，paging机制的速度已经不足以满足需要。<br>2、进程处于完全非激活状态超过10秒钟。<br>swapping会把整个进程移出主存，而不像paging那样只弄点页面出去。</p>
+<p>swapping和paging都是内存与磁盘(虚拟内存)之间的交互方式当内存不够用时，为了加载急需的程序进内存，需要将一部分暂时不用的内存存到磁盘上，两者对比swapping更快更粗暴，paging更慢更flexibly，<br>更多可见此<a href="http://blog.sina.com.cn/s/blog_5b68591b0102v1q7.html" target="_blank" rel="external">[转载]内存的分页与交换<em>流苏</em>新浪博客</a></p>
+<p>##<br>-</p>
+<p>``</p>
+<p>-</p>
+<p>``</p>
+<p>-</p>
+<p>``</p>
+<p>-</p>
+<p>``</p>
+<p>-</p>
+<p>``</p>
+<ul>
+<li>如何统计一个文件内字符”Unix”出现次数？</li>
+</ul>
+<p><code>grep -c &quot;Unix&quot; filename</code></p>
 
       
     </div>
@@ -375,13 +378,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/">Basic Linux/Unix command Interview Questions</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2016-06-22, 15:42:14</p>
-        <p><span>最后更新:</span>2017-01-13, 17:47:07</p>
+        <p><span>发布时间:</span>2017-03-19, 00:53:08</p>
+        <p><span>最后更新:</span>2017-03-19, 02:02:38</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/" title="RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS">http://frankchen.xyz/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/" title="Basic Linux/Unix command Interview Questions">http://frankchen.xyz/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -393,16 +396,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">
-                    RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/">
-                    Vim 练级攻略一
+                <a href="/2017/03/18/python-source-code-reading-0/">
+                    python源码解析0：趣事
                 </a>
             </div>
         
@@ -414,7 +411,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#初级问题"><span class="toc-number">1.</span> <span class="toc-text">初级问题</span></a></li></ol>
         
     </div>
     <style>
@@ -450,7 +447,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Basic Linux/Unix command Interview Questions　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -466,7 +463,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/" data-title="RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS" data-url="http://frankchen.xyz/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/19/Basic-Linux-Unix-command-Interview-Questions/" data-title="Basic Linux/Unix command Interview Questions" data-url="http://frankchen.xyz/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -489,15 +486,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/" title="上一篇: RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/" title="下一篇: Vim 练级攻略一">
+            <a href="/2017/03/18/python-source-code-reading-0/" title="下一篇: python源码解析0：趣事">
                 <i class="fa fa-angle-right"></i>
             </a>
         
