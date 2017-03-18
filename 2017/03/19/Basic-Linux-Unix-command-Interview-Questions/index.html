@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://frankchen.xyz/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/index.html">
 <meta property="og:site_name" content="loop in data">
 <meta property="og:description" content="Overview of Basic Linux/Unix command Interview Questions: 常见Linux命令的概述记录">
-<meta property="og:updated_time" content="2017-03-18T18:02:38.000Z">
+<meta property="og:updated_time" content="2017-03-18T19:26:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Basic Linux/Unix command Interview Questions">
 <meta name="twitter:description" content="Overview of Basic Linux/Unix command Interview Questions: 常见Linux命令的概述记录">
@@ -356,20 +356,75 @@
 <p>paging指的是以页为单位的交换，<br>swapping指的是以整个进程为单位的交换。</p>
 <p>paging机制是进程内外交换的主流，某些情况下仍然会使用swapping机制，比如：<br>1、系统内存严重短缺，paging机制的速度已经不足以满足需要。<br>2、进程处于完全非激活状态超过10秒钟。<br>swapping会把整个进程移出主存，而不像paging那样只弄点页面出去。</p>
 <p>swapping和paging都是内存与磁盘(虚拟内存)之间的交互方式当内存不够用时，为了加载急需的程序进内存，需要将一部分暂时不用的内存存到磁盘上，两者对比swapping更快更粗暴，paging更慢更flexibly，<br>更多可见此<a href="http://blog.sina.com.cn/s/blog_5b68591b0102v1q7.html" target="_blank" rel="external">[转载]内存的分页与交换<em>流苏</em>新浪博客</a></p>
-<p>##<br>-</p>
-<p>``</p>
-<p>-</p>
-<p>``</p>
-<p>-</p>
-<p>``</p>
-<p>-</p>
-<p>``</p>
-<p>-</p>
-<p>``</p>
+<h2 id="中级问题"><a href="#中级问题" class="headerlink" title="中级问题"></a>中级问题</h2><ul>
+<li><code>ps -ef</code> 和 <code>ps -auxwww</code>有什么区别？</li>
+</ul>
+<p><code>ps -auxwww</code>可以打印死进程？？</p>
+<ul>
+<li>cpu信息？</li>
+</ul>
+<p><code>cat /proc/cpuinfo</code></p>
+<ul>
+<li>软链接与硬链接区别</li>
+</ul>
+<p><a href="http://javarevisited.blogspot.com/2011/04/symbolic-link-or-symlink-in-unix-linux.html" target="_blank" rel="external">How to Create, Update and Remove Soft link in UNIX</a></p>
+<ul>
+<li>什么是僵尸进程？如何找到僵尸进程？</li>
+</ul>
+<p>When a program forks and the child finishes before the parent, the kernel still keeps some of its information about the child in case the parent might need it - for example, the parent may need to check the child’s exit status. To be able to get this information, the parent calls ‘wait()’; In the interval between the child terminating and the parent calling ‘wait()’, the child is said to be a ‘zombie’</p>
+<p><code>ps</code>中，僵尸进程的状态将带有’Z’</p>
 <ul>
 <li>如何统计一个文件内字符”Unix”出现次数？</li>
 </ul>
 <p><code>grep -c &quot;Unix&quot; filename</code></p>
+<ul>
+<li>chmod是什么意思？<code>r-- -w- --x</code>代表着什么？</li>
+</ul>
+<p><code>chmod</code>用于改变一个文件或者目录在Linux里的权限，rwx分别代表读写执行，而字符顺序代表着用户 组 以及 其他， 那么这里的意思就是这个文件用户可读，组内用户可写，其他只能执行。</p>
+<ul>
+<li>系统内有个文件包含字符”UnixCommandInterviewQuestions”，如何找到？</li>
+</ul>
+<p>见此<a href="http://javarevisited.blogspot.com/2011/03/10-find-command-in-unix-examples-basic.html" target="_blank" rel="external">10 Example of find command in Unix and Linux</a></p>
+<ul>
+<li>如何检查是否某进程在监听某端口？</li>
+</ul>
+<p><code>telnet hostname port</code> <a href="http://javarevisited.blogspot.com/2010/10/basic-networking-commands-in-linuxunix.html" target="_blank" rel="external">Top 10 basic networking commands in linux/unix</a></p>
+<h3 id="高级问题"><a href="#高级问题" class="headerlink" title="高级问题"></a>高级问题</h3><ul>
+<li>怎么知道某个文件被哪些进程使用？</li>
+</ul>
+<p><code>lsof</code>，尼玛呀，这就是我baidu电话面试时碰到的问题。。</p>
+<ul>
+<li>查看你的某个端口被什么远程服务器连接？</li>
+</ul>
+<p><code>netstat -a | grep &quot;port&quot;</code></p>
+<ul>
+<li>nohup是什么？</li>
+</ul>
+<p>用于在后端运行程序，但是和<code>&amp;</code>不同，<code>nohup</code>在用户log off 时不会停止运行，而<code>&amp;</code>会终止。</p>
+<ul>
+<li>ephemeral port？</li>
+</ul>
+<p>临时端口也叫做暂时端口。通常存在于客户机中。它在客户端应用程序需要连接到服务器时建立而在客户端应用程序终止时取消。它的端口号是随机选取的，数值大于1023。</p>
+<ul>
+<li>如果一个进程正在往MYSQL里写数据，如何管查它写入的速度？</li>
+</ul>
+<p><code>watch</code></p>
+<ul>
+<li>替换某文件内所有某字符？</li>
+</ul>
+<p><code>sed s/Unix/UNIX/g fileName</code></p>
+<ul>
+<li>某文件包含以tab分隔的Name, Address and Phone Number，如何提取所有的Phone Number？</li>
+</ul>
+<p><code>cut -f3 filename</code></p>
+<ul>
+<li>服务器运行时间？</li>
+</ul>
+<p><code>uptime</code></p>
+<ul>
+<li>IP 与 hostname互转？</li>
+</ul>
+<p><code>nslookup</code></p>
 
       
     </div>
@@ -381,7 +436,7 @@
         <p><span>本文标题:</span><a href="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/">Basic Linux/Unix command Interview Questions</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
         <p><span>发布时间:</span>2017-03-19, 00:53:08</p>
-        <p><span>最后更新:</span>2017-03-19, 02:02:38</p>
+        <p><span>最后更新:</span>2017-03-19, 03:26:32</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/" title="Basic Linux/Unix command Interview Questions">http://frankchen.xyz/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/</a>
             <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -411,7 +466,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#初级问题"><span class="toc-number">1.</span> <span class="toc-text">初级问题</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#初级问题"><span class="toc-number">1.</span> <span class="toc-text">初级问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中级问题"><span class="toc-number">2.</span> <span class="toc-text">中级问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#高级问题"><span class="toc-number">2.1.</span> <span class="toc-text">高级问题</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -498,7 +553,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/">Basic Linux/Unix command Interview Questions</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/18/python-source-code-reading-0/">python源码解析0：趣事</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/programmer-humor-week-0/">programmer humor week 0</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/数据挖掘流程：数据可视化与预处理/">数据挖掘流程：数据可视化与预处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/Amdahl-s-law/">Amdahl's law</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/19/re-basic-of-python/">re basic of python</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/Deep-Learning-Interview/">Deep Learning Interview</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/Docker-Windows-Speed-up/">在Windows上安装并加速拉取Docker镜像的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/Explanation-of-Convolutional-Neural-Networks/">Explanation of Convolutional Neural Networks</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/Install-Kaggle-Docker-on-Mac/">Mac上安装Kaggle Docker 镜像的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/17/Note-for-SoloLearn-SQL/">Note for SoloLearn SQL</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Action/">Note of Recommendation System in Action</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/">Sort Algorithms of Linear Time Complexity</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Polymorphism-of-Java/">Polymorphism of Java</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Map-0f-Java/">Map 0f Java</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/good commander/">To be a great commander</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/logistic-regression/">logistic regression的公式手推相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/linear-regression/">linear regression 的公式手推相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/AliPay-RedEnvelope-Hacker/">AliPay RedEnvelope Hacker</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/pointer-and/">pointer and ++--</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/09/C++ Basic/">C++ Cheat Sheet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/QuickSort-in-C/">QuickSort in C & Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/">Workflow for automatic extract and jump to the true URL of 91porn.com</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/">Devide and Conquer Counting Inversions with Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/18/Understanding-EM-algorithm/">Understanding EM algorithm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/">Way to solving the .DS_Store problem of Mac</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/">Vim 练级攻略一</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/">Vim 练级攻略二</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/">遗传算法简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/07/2016-06-07-edit-dns-of-ubuntu/">ubuntu下修改DNS并且避免重启失效的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-understanding-lstm-networks/">理解LSTM网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-rephil-and-mapreduce/">Rephil和MapReduce： 描述长尾数据的数学模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-note-for-cs224d-1/">note for CS224d:1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/2016-05-26-char-rnn-chinese/">char-rnn-chinese</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/2016-05-25-pythonoop/">Python OOP（Object Oriented Programming）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/24/2016-05-24-di-pian-bo-ke/">使用文本处理命令获取链接批量下载</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/">Basic Linux/Unix command Interview Questions</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/18/python-source-code-reading-0/">python源码解析0：趣事</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/programmer-humor-week-0/">programmer humor week 0</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/数据挖掘流程：数据可视化与预处理/">数据挖掘流程：数据可视化与预处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/Amdahl-s-law/">Amdahl's law</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/19/re-basic-of-python/">re basic of python</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/Deep-Learning-Interview/">Deep Learning Interview</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/Docker-Windows-Speed-up/">在Windows上安装并加速拉取Docker镜像的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/Explanation-of-Convolutional-Neural-Networks/">Explanation of Convolutional Neural Networks</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/Install-Kaggle-Docker-on-Mac/">Mac上安装Kaggle Docker 镜像的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/17/Note-for-SoloLearn-SQL/">Note for SoloLearn SQL</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Action/">Note of Recommendation System in Action</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/">Sort Algorithms of Linear Time Complexity</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Polymorphism-of-Java/">Polymorphism of Java</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Map-0f-Java/">Map 0f Java</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/good commander/">To be a great commander</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/logistic-regression/">logistic regression的公式手推相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/linear-regression/">linear regression 的公式手推相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/AliPay-RedEnvelope-Hacker/">AliPay RedEnvelope Hacker</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/pointer-and/">pointer and ++--</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/09/C++ Basic/">C++ Cheat Sheet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/QuickSort-in-C/">QuickSort in C & Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/">Workflow for automatic extract and jump to the true URL of 91porn.com</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/">Devide and Conquer Counting Inversions with Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/18/Understanding-EM-algorithm/">Understanding EM algorithm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/">Way to solving the .DS_Store problem of Mac</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/">Vim 练级攻略二</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/">Vim 练级攻略一</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/">遗传算法简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/07/2016-06-07-edit-dns-of-ubuntu/">ubuntu下修改DNS并且避免重启失效的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-understanding-lstm-networks/">理解LSTM网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-rephil-and-mapreduce/">Rephil和MapReduce： 描述长尾数据的数学模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-note-for-cs224d-1/">note for CS224d:1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/2016-05-26-char-rnn-chinese/">char-rnn-chinese</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/2016-05-25-pythonoop/">Python OOP（Object Oriented Programming）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/24/2016-05-24-di-pian-bo-ke/">使用文本处理命令获取链接批量下载</a></li></ul>
 
 
 
