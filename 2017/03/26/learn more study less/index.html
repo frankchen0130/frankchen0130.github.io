@@ -15,18 +15,16 @@
 
 
 
-<meta name="description" content="Google Rephil是Google AdSense背后广告相关性计算的头号秘密武器。但是这个系统没有发表过论文。只是其作者（博士Uri Lerner和工程师Mike Yar）在2002年在湾区举办的几次小规模交流中简要介绍过。所以Kevin Murphy把这些内容写进了他的书《Machine Learning: a Probabilitic Perspecitve》里。在吴军博士的《数学之美">
+<meta name="description" content="关于learn more study less 的思维导图">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rephil和MapReduce： 描述长尾数据的数学模型">
-<meta property="og:url" content="http://frankchen.xyz/2016/06/04/2016-06-04-rephil-and-mapreduce/index.html">
+<meta property="og:title" content="Learn More,Study Less">
+<meta property="og:url" content="http://frankchen.xyz/2017/03/26/learn more study less/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="Google Rephil是Google AdSense背后广告相关性计算的头号秘密武器。但是这个系统没有发表过论文。只是其作者（博士Uri Lerner和工程师Mike Yar）在2002年在湾区举办的几次小规模交流中简要介绍过。所以Kevin Murphy把这些内容写进了他的书《Machine Learning: a Probabilitic Perspecitve》里。在吴军博士的《数学之美">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/conceptual.jpg">
-<meta property="og:updated_time" content="2016-11-11T13:50:33.000Z">
+<meta property="og:description" content="关于learn more study less 的思维导图">
+<meta property="og:updated_time" content="2017-03-26T07:11:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rephil和MapReduce： 描述长尾数据的数学模型">
-<meta name="twitter:description" content="Google Rephil是Google AdSense背后广告相关性计算的头号秘密武器。但是这个系统没有发表过论文。只是其作者（博士Uri Lerner和工程师Mike Yar）在2002年在湾区举办的几次小规模交流中简要介绍过。所以Kevin Murphy把这些内容写进了他的书《Machine Learning: a Probabilitic Perspecitve》里。在吴军博士的《数学之美">
-<meta name="twitter:image" content="http://frankchen.xyz/images/2016/06/conceptual.jpg">
+<meta name="twitter:title" content="Learn More,Study Less">
+<meta name="twitter:description" content="关于learn more study less 的思维导图">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Rephil和MapReduce： 描述长尾数据的数学模型 | loop in data</title>
+<title>Learn More,Study Less | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -276,11 +274,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-2016-06-04-rephil-and-mapreduce" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-learn more study less" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/04/2016-06-04-rephil-and-mapreduce/" class="article-date">
-      <time datetime="2016-06-04T07:02:32.000Z" itemprop="datePublished">2016-06-04</time>
+      <a href="/2017/03/26/learn more study less/" class="article-date">
+      <time datetime="2017-03-26T07:11:56.000Z" itemprop="datePublished">2017-03-26</time>
 </a>
 
 
@@ -295,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Rephil和MapReduce： 描述长尾数据的数学模型
+      Learn More,Study Less
     </h1>
   
 
@@ -303,14 +301,10 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/note/">note</a>
-    </div>
-
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LDA/">LDA</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Life/">Life</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Time-Management/">Time Management</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -320,27 +314,358 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Google Rephil是Google AdSense背后广告相关性计算的头号秘密武器。但是这个系统没有发表过论文。只是其作者（博士Uri Lerner和工程师Mike Yar）在2002年在湾区举办的几次小规模交流中简要介绍过。所以Kevin Murphy把这些内容写进了他的书《Machine Learning: a Probabilitic Perspecitve》里。在吴军博士的《数学之美》里也提到了Rephil。</p>
-<p>Rephil的模型是一个全新的模型，更像一个神经元网络。这个网络的学习过程从Web scale的文本数据中归纳海量的语义——比如“apple”这个词有多个意思：一个公司的名字、一种水果、以及其他。当一个网页里包含”apple”, “stock”, “ipad”等词汇的时候，Rephil可以告诉我们这个网页是关于apple这个公司的，而不是水果。</p>
-<p>这个功能按说pLSA和LDA也都能实现。为什么需要一个全新的模型呢？ 从2007年至今，国内外很多团队都尝试过并行化pLSA和LDA。心灵手巧的工程师们，成功的开发出能学习数万甚至上十万语义（latent topics）的训练系统。但是不管大家用什么训练数据，都会发现，得到的大部分语义（相关的词的聚类）都是非常类似，或者说“重复”的。如果做一个“去重”处理，几万甚至十万的语义，就只剩下几百几千了。</p>
-<p>这是怎么回事？</p>
+        <p>关于learn more study less 的思维导图  </p>
 <a id="more"></a>
-<p>如果大家尝试着把训练语料中的低频词去掉，会发现训练得到的语义和用全量数据训练得到的差不多。换句话说，pLSA和LDA模型的训练算法没有在意低频数据。</p>
-<p>为什么会这样呢？因为pLSA和LDA这类概率模型的主要构造单元都是指数族分布（exponential family）。比如pLSA假设一个文档中的语义的分布是multinomial的，每个语义中的词的分布也是multinomial的。因为multinomial是一种典型的指数族分布，这样整个模型描述的海量数据的分布，不管哪个维度上的marginalization，都是指数族分布。在LDA中也类似——因为LDA假设各个文档中的语义分布的multinomial distributions的参数是符合Dirichlet分布的，并且各个语义中的词的分布的multinomial distributions的参数也是符合Dirichlet分布的，这样整个模型是假设数据是指数族分布的。</p>
-<p>可是Internet上的实际数据基本都不是指数族分布的——而是长尾分布的。至于为什么是这样？可以参见2006年纽约时报排名畅销书The Long Tail: Why the Future of Business is Selling Less of More。或者看看其作者Chris Anderson的博客<a href="http://www.thelongtail.com/" target="_blank" rel="external">The Long Tail</a>。</p>
-<p>长尾分布的形状大致如下图所示：</p>
-<p><img src="/images/2016/06/conceptual.jpg" alt=""></p>
-<p>其中x轴表示数据的类型，y轴是各种类型的频率，少数类型的频率很高（称为大头，图中红色部分），大部分很低，但是大于0（称为长尾，图中黄色部分）。一个典型的例子是文章中词的分布，有个具体的名字Zipf’s law，就是典型的长尾分布。而指数族分布基本就只有大头部分——换句话说，如果我们假设长尾数据是指数族分布的，我们实际上就把尾巴给割掉了。</p>
-<p>割掉数据的尾巴——这就是pLSA和LDA这样的模型做的——那条长尾巴覆盖的多种多样的数据类型，就是Internet上的人生百态。理解这样的百态是很重要的。比如百度和Google为什么能如此赚钱？因为互联网广告收益。传统广告行业，只有有钱的大企业才有财力联系广告代理公司，一帮西装革履的高富帅聚在一起讨论，竞争电视或者纸媒体上的广告机会。互联网广告里，任何人都可以登录到一个网站上去投放广告，即使每日广告预算只有几十块人民币。这样一来，刘备这样织席贩屡的小业主，也能推销自己做的席子和鞋子。而搜索引擎用户的兴趣也是百花齐放的——从人人爱戴的陈老师苍老师到各种小众需求包括“红酒木瓜汤”（一种丰胸秘方，应该出丰胸广告）或者“苹果大尺度”（在搜索范冰冰主演的《苹果》电影呢）。把各种需求和各种广告通过智能技术匹配起来，就酝酿了互联网广告的革命性力量。这其中，理解各种小众需求、长尾意图就非常重要了。</p>
-<p>实际上，Rephil就是这样一个能理解百态的模型。因为它把Google AdSense的盈利能力大幅提升，最终达到Google收入的一半。两位作者荣获Google的多次大奖，包括Founders’ Award。</p>
-<p>而切掉长尾是一个很糟糕的做法。大家还记得小说《1984》里有这样一个情节吗？老大哥要求发布“新话”——一种新的语言，删掉自然英语中大部分词汇，只留下那些主流的词汇。看看小说里的人们生活的世界，让人浑身发毛，咱们就能体会“割尾巴”的恶果了。没有看过《1984》的朋友可以想象一下水木首页上只有“全站十大”，连“分类十大”都删掉之后的样子。</p>
-<p>既然如此，为什么这类模型还要假设数据是指数族分布的呢？——实在是不得已。指数族分布是一种数值计算上非常方便的数学元素。拿LDA来说，它利用了Dirichlet和multinomial两种分布的共轭性，使得其计算过程中，模型的参数都被积分给积掉了（integrated out）。这是AD-LDA这样的ad hoc并行算法——在其他模型上都不好使的做法——在LDA上好用的原因之一。换句话说，这是为了计算方便，掩耳盗铃地假设数据是指数族分布的。</p>
-<p>实际上，这种掩耳盗铃在机器学习领域很普遍。比如有个兄弟听了上面的故事后说：“那我们就别用概率模型做语义分析了，咱们还用矩阵分解吧？SVD分解怎么样？” 很不好意思的，当我们把SVD分解用在语义分析（称为LSA，latent semantic analysis）上的时候，我们还是引入了指数族分布假设——Gaussian assumption或者叫normality assumption。这怎么可能呢？SVD不就是个矩阵分解方法吗？确实传统SVD没有对数据分布的假设，但是当我们用EM之类的算法解决存在missing data的问题——比如LSA，还有推荐系统里的协同过滤（collaborative filtering）——这时不仅引入了Gaussian assumption，而且引入了linearity assumption。当我们用其他很多矩阵分解方法做，都存在同样的问题。</p>
-<p>掩耳盗铃的做法怎么能存在得如此自然呢？这是因为指数族分布假设（尤其是Gaussian assumption）有过很多成功的应用，包括通信、数据压缩、制导系统等。这些应用里，我们关注的就是数据中的低频部分；而高频部分（或者说距离mean比较远的数据）即使丢掉了，电话里的声音也能听懂，压缩还原的图像也看得明白，导弹也还是能沿着“最可能”靠谱的路线飞行。我们当然会假设数据是指数族分布的，这样不仅省计算开销，而且自然的忽略高频数据，我们还鄙夷地称之为outlier或者noise。</p>
-<p>可是在互联网的世界里，正是这些五花八门的outliers和noise，蕴含了世间百态，让数据不可压缩，从而产生了“大数据”这么个概念。处理好大数据的公司，赚得盆满钵满，塑造了一个个传奇。这里有一个听起来比较极端的说法大数据里无噪声——很多一开始频率很低，相当长尾，会被词过滤系统认为是拼写错误的queries，都能后来居上成为主流。比如“神马”，“酱紫”。</p>
-<p>Rephil系统实现的模型是一个神经元网络模型（neural network）。它的设计的主要考虑，就是要能尽量好的描述长尾分布的文本数据和其中蕴含的语义。Rephil模型的具体技术细节因为没有在论文中发表过，所以不便在这里透露。但是Rephil模型描述长尾数据的能力，是下文将要介绍的Peacock系统的原动力，虽然两者在模型上完全不同。</p>
-<p>Rephil系统是基于Google MapReduce构建的。如上节所述，MapReduce在用来实现迭代算法的时候，效率是比较低的。这也是Peacock要设计全新框架的原动力——使其比MapReduce高效，但同时像MapReduce一样支持fault recovery。</p>
-
+<h2 id="holistic-learning-的流程"><a href="#holistic-learning-的流程" class="headerlink" title="holistic learning 的流程"></a>holistic learning 的流程</h2><h3 id="Acquire-获取"><a href="#Acquire-获取" class="headerlink" title="Acquire 获取"></a>Acquire 获取</h3><ul>
+<li>准确、精炼地得到信息  </li>
+<li>简化  <ul>
+<li>提取精华、略去无用信息  </li>
+</ul>
+</li>
+<li>容量  <ul>
+<li>知道的信息越多越好  </li>
+</ul>
+</li>
+<li>速度  <ul>
+<li>尽快完成获取阶段  </li>
+</ul>
+</li>
+</ul>
+<h3 id="Understand-理解"><a href="#Understand-理解" class="headerlink" title="Understand 理解"></a>Understand 理解</h3><ul>
+<li>了解信息的基本意思，并联系上下文来理解  </li>
+<li>理解信息的第一阶段：理解信息的表层含义  <ul>
+<li>当遇到不明白之处，应该分解问题，找到真正不明白之处  </li>
+</ul>
+</li>
+</ul>
+<h3 id="Explore-扩展"><a href="#Explore-扩展" class="headerlink" title="Explore 扩展"></a>Explore 扩展</h3><ul>
+<li>形成高速公路、模型及内部联系良好的结构  </li>
+<li>深度扩展  <ul>
+<li>知识的由来、背景的探究  </li>
+</ul>
+</li>
+<li>横向扩展  <ul>
+<li>构造模型：寻找类似的知识的联系  </li>
+</ul>
+</li>
+<li>纵向扩展  <ul>
+<li>创建高速公路：跨学科、跨领域的知识联系  <ul>
+<li>最重要、最有挑战性的扩展方法，有益于创造性思考  </li>
+<li>比喻metaphor  </li>
+<li>内在法visceralization  <ul>
+<li><a href="https://www.scotthyoung.com/learnonsteroids/grab/Visceralization-GettingStarted.pdf" target="_blank" rel="external"> Getting Started with Visceralization </a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Test-测试"><a href="#Test-测试" class="headerlink" title="Test 测试"></a>Test 测试</h3><h3 id="Debug纠错"><a href="#Debug纠错" class="headerlink" title="Debug纠错"></a>Debug纠错</h3><ul>
+<li>在模型和高速公路中寻找改正错误  </li>
+<li>知识网络的修剪，添加特殊例子，删减错误的联系等  <ul>
+<li>阅读与你观点相反的书籍  </li>
+<li>将你的知识放入现实世界来观察等  </li>
+</ul>
+</li>
+</ul>
+<h3 id="Apply-应用"><a href="#Apply-应用" class="headerlink" title="Apply 应用"></a>Apply 应用</h3><ul>
+<li>创造新途径，将所学知识知识应用起来，这是学习的最终目的  </li>
+<li>通过比较知识如何在现实中应用来调整，防止成为“书呆子”  </li>
+</ul>
+<h2 id="找出自己的薄弱环节"><a href="#找出自己的薄弱环节" class="headerlink" title="找出自己的薄弱环节"></a>找出自己的薄弱环节</h2><h3 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h3><ul>
+<li>症状  <ul>
+<li>阅读和听讲速度慢  </li>
+<li>需要反复阅读  </li>
+</ul>
+</li>
+<li>原因  <ul>
+<li>阅读/学习习惯不好  </li>
+<li>记笔记习惯不好  </li>
+<li>不理解基本概念、术语  </li>
+</ul>
+</li>
+<li>解决  <ul>
+<li>养成良好的学习、阅读和记笔记的习惯  </li>
+</ul>
+</li>
+</ul>
+<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ul>
+<li>表现  <ul>
+<li>阅读时不明白作者意思  </li>
+<li>笔记很完善，却不明白其含义  </li>
+</ul>
+</li>
+<li>解决  <ul>
+<li>放慢阅读速度，寻找其他资料，以求得更加详细，另一角度的阐述  <ul>
+<li>基本的理解是后续高级技巧的基石  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><ul>
+<li>表现  <ul>
+<li>缺少灵活性  <ul>
+<li>已经掌握了一个新东西，但是没有或不会将 它与其他学过的知识联系起来，假如让你用这个新的知识去解决一个非常规问题，就常常束手无策。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="纠错"><a href="#纠错" class="headerlink" title="纠错"></a>纠错</h3><ul>
+<li>表现  <ul>
+<li>错误联系太多  </li>
+<li>在课堂上很少出现，而在实际世界中却很普遍  <ul>
+<li>课堂上人们很少去扩展：发生错误机会少  </li>
+<li>实际中人们经常想出各种联系，却不验证这些联系是否正确：各种迷信的产生  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><ul>
+<li>表现  <ul>
+<li>不能在真实世界中很好地运用知识  </li>
+</ul>
+</li>
+<li>解决  <ul>
+<li>更多的实践，抛开书本，走出去，去做实验，去接触生活，去融入社会  </li>
+</ul>
+</li>
+</ul>
+<h2 id="holistic-learning-techniques"><a href="#holistic-learning-techniques" class="headerlink" title="holistic  learning techniques"></a>holistic  learning techniques</h2><h3 id="获取知识"><a href="#获取知识" class="headerlink" title="获取知识"></a>获取知识</h3><ul>
+<li>快速阅读法  <ul>
+<li>指读法  <ul>
+<li>用食指放在你要读的那一行下面，不断移动食指  </li>
+</ul>
+</li>
+<li>练习阅读  <ul>
+<li>对比指读法与常规读法，测试阅读速度提高潜力  </li>
+<li>对比先读后记与边读边记来测试理解能力  </li>
+</ul>
+</li>
+<li>积极阅读  <ul>
+<li>边读边记笔记  <ul>
+<li>这一节中主要点是什么？  <ul>
+<li>是否完整地获取信息  </li>
+</ul>
+</li>
+<li>我怎样才能记住主要点？  <ul>
+<li>联系信息，视觉化和比喻法  </li>
+</ul>
+</li>
+<li>我要怎样将主要点拓展开以及应用它  <ul>
+<li>将信息应用在不同的情境中  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>流笔记法  <ul>
+<li>重点在于提取主要信息，删减次要信息，重点记录联系和按照你理解的方式给信息分类  </li>
+<li>用很短的单词来记下最主要的观点  </li>
+<li>在相联系的观点之间划上一些箭头  </li>
+</ul>
+</li>
+</ul>
+<h3 id="理解与扩展"><a href="#理解与扩展" class="headerlink" title="理解与扩展"></a>理解与扩展</h3><ul>
+<li><p>关键信息  </p>
+<ul>
+<li>学习其他知识的基础，与之后的信息关系极强，对于之后的理解至关重要  </li>
+<li>比喻  <ul>
+<li>要点：不熟悉的知识和熟悉的知识联系起来  <ul>
+<li>确定你要深入理解和记忆信息  </li>
+<li>在你的个人经验中寻找与信息部分相似的东西，不求达到完全符合，可找到多个部分符合的“不完美比喻”。  </li>
+<li>重复上述过程，检查比喻不恰当的地方  </li>
+</ul>
+</li>
+<li>运用技巧：要有寻找比喻的欲望  <ul>
+<li>遇到有理解困难的知识，首先应想到比喻  </li>
+<li>注意第一个出现在脑海中的念头  </li>
+<li>优化和测试你的比喻  <ul>
+<li>多找几个不同角度的比喻  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>抽象信息较适合比喻  </li>
+</ul>
+</li>
+<li>内在化  <ul>
+<li>调动更多的感知、情感与知识联系在一起，形成强联系  <ul>
+<li>视觉  </li>
+<li>听觉  </li>
+<li>运动  </li>
+<li>情感  </li>
+</ul>
+</li>
+<li>步骤  <ul>
+<li>明确要内在化概念  </li>
+<li>从建立脑海中的静态图像开始  </li>
+<li>将脑海中的静态图像转换为栩栩如生的动态场景  </li>
+<li>加上其他感官，试着用手去拿，去摸，去打它，去嗅它的味道，去听它的声音，动用你身体的所有感官，将所有的感觉与运动的图像相联系。  </li>
+<li>加入更多的感觉或情感  </li>
+<li>不断重复和优化图像  </li>
+</ul>
+</li>
+<li>具体信息较适合内在化  </li>
+</ul>
+</li>
+<li><p>简图法  </p>
+<ul>
+<li><p>简图与比喻和内在化结合在一起  </p>
+<p>  简图可以和比喻及内在化混合在一起，以加深对知识的理解  </p>
+</li>
+<li><p>流简图  </p>
+<ul>
+<li>从一个简单的元素开始，然后在这个成分及与之相联系的不同知识之间 画出联系箭头  </li>
+</ul>
+</li>
+<li>概念图  <ul>
+<li>将观点联系在一起，与流笔记密切相关。概念图里的关系观点之间的内在关系，在不同观点之间画上箭头， 箭头上还需要加上一些简单的话语  </li>
+</ul>
+</li>
+<li>图像简图  <ul>
+<li>粗糙简单的涂鸦来代替文字  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>困难信息  <ul>
+<li>联想法  <ul>
+<li>将一系列观点串在一起，就像链条  </li>
+<li>步骤  <ul>
+<li>创造顺序  <ul>
+<li>先在纸上写下你打算记住的很多信息，在你能理解的前提下，迅速地将信息分成几个类 别  </li>
+</ul>
+</li>
+<li>设计符号  <ul>
+<li>要能迅速让你联想到原始的知识  </li>
+</ul>
+</li>
+<li>创建属于自己的联想  <ul>
+<li>发挥想象力，把符号之间连接起来  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>难点  <ul>
+<li>符号重复  <ul>
+<li>可以尝试不同颜色来区分  </li>
+</ul>
+</li>
+<li>断裂的联系  <ul>
+<li>符号串不宜太长  </li>
+</ul>
+</li>
+<li>难以辨认的符号  <ul>
+<li>用只有自己能懂的很好，但是一定不能让自己迷惑  </li>
+</ul>
+</li>
+<li>触发物丢失  <ul>
+<li>防止记不起第一个：增加中第一项和触发物之间的联想  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>抽象信息、随意信息，关联程度不强  </li>
+</ul>
+</li>
+</ul>
+<h2 id="信息的结构"><a href="#信息的结构" class="headerlink" title="信息的结构"></a>信息的结构</h2><h3 id="随意信息"><a href="#随意信息" class="headerlink" title="随意信息"></a>随意信息</h3><ul>
+<li>特点  <ul>
+<li>缺少内在逻辑联系，需要死记硬背的知识  </li>
+</ul>
+</li>
+<li>方法  <ul>
+<li>着力去寻找知识点之间的联系  </li>
+</ul>
+</li>
+</ul>
+<h3 id="观点信息"><a href="#观点信息" class="headerlink" title="观点信息"></a>观点信息</h3><ul>
+<li>特点  <ul>
+<li>存在争议的信息  </li>
+</ul>
+</li>
+<li>方法  <ul>
+<li>在获取阶段，快速检索大量信息：找寻其中的模式（不记忆具体细节）  <ul>
+<li>速读  </li>
+<li>图示：以加强对比以提取模式，增进理解  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="大多数学科都是这几种信息不同比例的组合"><a href="#大多数学科都是这几种信息不同比例的组合" class="headerlink" title="大多数学科都是这几种信息不同比例的组合"></a>大多数学科都是这几种信息不同比例的组合</h3><h3 id="过程信息"><a href="#过程信息" class="headerlink" title="过程信息"></a>过程信息</h3><ul>
+<li>特点  <ul>
+<li>教导如何行动，一系列操作的集合  </li>
+</ul>
+</li>
+<li>方法  <ul>
+<li>打造良好的结构与模型：加速过程信息的学习  <ul>
+<li>需要大量时间投入练习  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="具体信息"><a href="#具体信息" class="headerlink" title="具体信息"></a>具体信息</h3><ul>
+<li>特点  <ul>
+<li>能与感官、实际相联系的信息  </li>
+</ul>
+</li>
+<li>方法  <ul>
+<li>内在化：有助于你将信息与多个感 官相联系  </li>
+</ul>
+</li>
+</ul>
+<h3 id="运用各种方法找寻信息之间的联系：以把弱结构的信息转化为强结构的信息"><a href="#运用各种方法找寻信息之间的联系：以把弱结构的信息转化为强结构的信息" class="headerlink" title="运用各种方法找寻信息之间的联系：以把弱结构的信息转化为强结构的信息"></a>运用各种方法找寻信息之间的联系：以把弱结构的信息转化为强结构的信息</h3><h3 id="抽象信息"><a href="#抽象信息" class="headerlink" title="抽象信息"></a>抽象信息</h3><ul>
+<li>特点  <ul>
+<li>缺少与感官的直接联系  </li>
+</ul>
+</li>
+<li>方法  <ul>
+<li>运用方法将抽象信息降低到一个基本的级别  <ul>
+<li>内在法  </li>
+<li>比喻  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="三个基本概念"><a href="#三个基本概念" class="headerlink" title="三个基本概念"></a>三个基本概念</h2><h3 id="Constructs"><a href="#Constructs" class="headerlink" title="Constructs"></a>Constructs</h3><ul>
+<li>Familiar Constructs  <ul>
+<li>感官结构  <ul>
+<li>来自人类的感官知觉，是最熟悉、最生动的结构  </li>
+</ul>
+</li>
+<li>关系结构  <ul>
+<li>来自人类生活经验中人与事务、事物之间的联系  </li>
+</ul>
+</li>
+<li>基本数学结构  <ul>
+<li>来自我们以掌握的简单的基本数学概念  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>结构：就是一系列联系紧密的知识，一个知识点与越多的其它的知识点相联系，则你对于这个知识点的掌握就越牢固，应用起来也就越简单明了。  </li>
+</ul>
+<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><ul>
+<li>模型是对结构的索引，是对于结构的形象化的抽象，它将关键的结构压缩和概括，  </li>
+</ul>
+<h3 id="Highway"><a href="#Highway" class="headerlink" title="Highway"></a>Highway</h3><ul>
+<li>高速公路是不同结构之间的联系，这种联系是跨学科的，也即是我们可以把A领域的知识迁移到B领域。  </li>
+</ul>
+<h1 id="将每个-知识点都要经过整体性学习里的明白、拓展和应用三个阶段"><a href="#将每个-知识点都要经过整体性学习里的明白、拓展和应用三个阶段" class="headerlink" title="将每个 知识点都要经过整体性学习里的明白、拓展和应用三个阶段"></a>将每个 知识点都要经过整体性学习里的明白、拓展和应用三个阶段</h1><h1 id="比喻法、图表法以及信息压-缩技术"><a href="#比喻法、图表法以及信息压-缩技术" class="headerlink" title="比喻法、图表法以及信息压 缩技术"></a>比喻法、图表法以及信息压 缩技术</h1>
       
     </div>
     
@@ -348,13 +673,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/04/2016-06-04-rephil-and-mapreduce/">Rephil和MapReduce： 描述长尾数据的数学模型</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/26/learn more study less/">Learn More,Study Less</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2016-06-04, 15:02:32</p>
-        <p><span>最后更新:</span>2016-11-11, 21:50:33</p>
+        <p><span>发布时间:</span>2017-03-26, 15:11:56</p>
+        <p><span>最后更新:</span>2017-03-26, 15:11:14</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/04/2016-06-04-rephil-and-mapreduce/" title="Rephil和MapReduce： 描述长尾数据的数学模型">http://frankchen.xyz/2016/06/04/2016-06-04-rephil-and-mapreduce/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2016/06/04/2016-06-04-rephil-and-mapreduce/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/26/learn more study less/" title="Learn More,Study Less">http://frankchen.xyz/2017/03/26/learn more study less/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/03/26/learn more study less/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -366,16 +691,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/06/04/2016-06-04-understanding-lstm-networks/">
-                    理解LSTM网络
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/04/2016-06-04-note-for-cs224d-1/">
-                    note for CS224d:1
+                <a href="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/">
+                    Basic Linux/Unix command Interview Questions
                 </a>
             </div>
         
@@ -387,7 +706,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#holistic-learning-的流程"><span class="toc-number">1.</span> <span class="toc-text">holistic learning 的流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Acquire-获取"><span class="toc-number">1.1.</span> <span class="toc-text">Acquire 获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Understand-理解"><span class="toc-number">1.2.</span> <span class="toc-text">Understand 理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Explore-扩展"><span class="toc-number">1.3.</span> <span class="toc-text">Explore 扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Test-测试"><span class="toc-number">1.4.</span> <span class="toc-text">Test 测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Debug纠错"><span class="toc-number">1.5.</span> <span class="toc-text">Debug纠错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apply-应用"><span class="toc-number">1.6.</span> <span class="toc-text">Apply 应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#找出自己的薄弱环节"><span class="toc-number">2.</span> <span class="toc-text">找出自己的薄弱环节</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取"><span class="toc-number">2.1.</span> <span class="toc-text">获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解"><span class="toc-number">2.2.</span> <span class="toc-text">理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展"><span class="toc-number">2.3.</span> <span class="toc-text">扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#纠错"><span class="toc-number">2.4.</span> <span class="toc-text">纠错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用"><span class="toc-number">2.5.</span> <span class="toc-text">应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#holistic-learning-techniques"><span class="toc-number">3.</span> <span class="toc-text">holistic  learning techniques</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取知识"><span class="toc-number">3.1.</span> <span class="toc-text">获取知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解与扩展"><span class="toc-number">3.2.</span> <span class="toc-text">理解与扩展</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#信息的结构"><span class="toc-number">4.</span> <span class="toc-text">信息的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#随意信息"><span class="toc-number">4.1.</span> <span class="toc-text">随意信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#观点信息"><span class="toc-number">4.2.</span> <span class="toc-text">观点信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大多数学科都是这几种信息不同比例的组合"><span class="toc-number">4.3.</span> <span class="toc-text">大多数学科都是这几种信息不同比例的组合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过程信息"><span class="toc-number">4.4.</span> <span class="toc-text">过程信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体信息"><span class="toc-number">4.5.</span> <span class="toc-text">具体信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运用各种方法找寻信息之间的联系：以把弱结构的信息转化为强结构的信息"><span class="toc-number">4.6.</span> <span class="toc-text">运用各种方法找寻信息之间的联系：以把弱结构的信息转化为强结构的信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象信息"><span class="toc-number">4.7.</span> <span class="toc-text">抽象信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三个基本概念"><span class="toc-number">5.</span> <span class="toc-text">三个基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Constructs"><span class="toc-number">5.1.</span> <span class="toc-text">Constructs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Model"><span class="toc-number">5.2.</span> <span class="toc-text">Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Highway"><span class="toc-number">5.3.</span> <span class="toc-text">Highway</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将每个-知识点都要经过整体性学习里的明白、拓展和应用三个阶段"><span class="toc-number"></span> <span class="toc-text">将每个 知识点都要经过整体性学习里的明白、拓展和应用三个阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#比喻法、图表法以及信息压-缩技术"><span class="toc-number"></span> <span class="toc-text">比喻法、图表法以及信息压 缩技术</span></a>
         
     </div>
     <style>
@@ -423,7 +742,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Rephil和MapReduce： 描述长尾数据的数学模型　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Learn More,Study Less　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -439,7 +758,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/06/04/2016-06-04-rephil-and-mapreduce/" data-title="Rephil和MapReduce： 描述长尾数据的数学模型" data-url="http://frankchen.xyz/2016/06/04/2016-06-04-rephil-and-mapreduce/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/26/learn more study less/" data-title="Learn More,Study Less" data-url="http://frankchen.xyz/2017/03/26/learn more study less/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -462,15 +781,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/04/2016-06-04-understanding-lstm-networks/" title="上一篇: 理解LSTM网络">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/04/2016-06-04-note-for-cs224d-1/" title="下一篇: note for CS224d:1">
+            <a href="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/" title="下一篇: Basic Linux/Unix command Interview Questions">
                 <i class="fa fa-angle-right"></i>
             </a>
         
