@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="本文有关多元linear Regression的损失函数从极大似然估计的角度的推导以及梯度下降算法。纯手打，^^">
+<meta name="description" content="利用pymysql与Pandas读取远程数据库上的表格，并存储为本地csv文件。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linear regression 的公式手推相关">
-<meta property="og:url" content="http://frankchen.xyz/2017/01/06/linear-regression/index.html">
+<meta property="og:title" content="利用Pandas读取远程mysql数据库">
+<meta property="og:url" content="http://frankchen.xyz/2017/04/11/利用Pandas读取远程mysql数据库/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="本文有关多元linear Regression的损失函数从极大似然估计的角度的推导以及梯度下降算法。纯手打，^^">
-<meta property="og:updated_time" content="2017-01-09T07:58:11.000Z">
+<meta property="og:description" content="利用pymysql与Pandas读取远程数据库上的表格，并存储为本地csv文件。">
+<meta property="og:updated_time" content="2017-04-11T10:00:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linear regression 的公式手推相关">
-<meta name="twitter:description" content="本文有关多元linear Regression的损失函数从极大似然估计的角度的推导以及梯度下降算法。纯手打，^^">
+<meta name="twitter:title" content="利用Pandas读取远程mysql数据库">
+<meta name="twitter:description" content="利用pymysql与Pandas读取远程数据库上的表格，并存储为本地csv文件。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>linear regression 的公式手推相关 | loop in data</title>
+<title>利用Pandas读取远程mysql数据库 | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -274,11 +274,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-linear-regression" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-利用Pandas读取远程mysql数据库" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/06/linear-regression/" class="article-date">
-      <time datetime="2017-01-06T13:55:30.000Z" itemprop="datePublished">2017-01-06</time>
+      <a href="/2017/04/11/利用Pandas读取远程mysql数据库/" class="article-date">
+      <time datetime="2017-04-11T09:31:49.000Z" itemprop="datePublished">2017-04-11</time>
 </a>
 
 
@@ -293,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      linear regression 的公式手推相关
+      利用Pandas读取远程mysql数据库
     </h1>
   
 
@@ -304,7 +304,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pandas/">Pandas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -314,45 +314,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文有关多元linear Regression的损失函数从极大似然估计的角度的推导以及梯度下降算法。纯手打，^^</p>
+        <p>利用pymysql与Pandas读取远程数据库上的表格，并存储为本地csv文件。</p>
 <a id="more"></a>
-<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>我们的模型为</p>
-<p>$$<br>h_{\theta}(x) =  \theta_0 + \theta_1x + \theta_2 x^2 … = \theta ^ TX<br>$$</p>
-<p>似然函数为：</p>
-<p>$$y^i = \theta ^ T x^i + \epsilon ^ i$$</p>
-<p>，残差用$\epsilon$表示，对于每一个样本点的残差$\epsilon^i$，（注意以下标号中上标i表示第i个样本点），有：</p>
-<p>$$<br>\epsilon^i = y^i - h_{\theta}(x^i) = y^i - \theta ^ T x^i<br>$$</p>
-<p>那么我们有假设所有的残差根据中心极限定理，其密度函数$p(\epsilon^i)$符合均值为0，方差为$\sigma^2$的高斯分布，即</p>
-<p>$$<br>p(\epsilon^i) = \frac{1}{\sqrt {2\pi} \sigma} \exp (-\frac{(\epsilon^i)^2}{2 \sigma ^2}) \<br>= \frac{1}{\sqrt {2\pi} \sigma} \exp (-\frac{(y^i - \theta ^ T x^i)^2}{2 \sigma ^2})<br>$$</p>
-<p>那么，似然函数就是所有样本点的出现的概率乘积，即</p>
-<p>$$<br>L(\theta) = \prod_{i=1}^{m} p(\epsilon^i) \<br>$$</p>
-<p>$$<br>= \prod_{i=1}^{m} \frac{1}{\sqrt {2\pi} \sigma} \exp (-\frac{(y^i - \theta ^ T x^i)^2}{2 \sigma ^2})<br>$$</p>
-<p>我们最终是求$\theta$的最优解，于是对似然函数取对数，</p>
-<p>$$<br>l(\theta) = \log \left(\prod_{i=1}^{m} \frac{1}{\sqrt {2\pi} \sigma} \exp (-\frac{(y^i - \theta ^ T x^i)^2}{2 \sigma ^2})\right) \<br>$$</p>
-<p>$$<br>= m \log \frac{1}{\sqrt {2\pi} \sigma} - \frac{1}{2 \sigma ^2} \sum _{i=1}^{m} (y^i - \theta ^ T x^i)^2<br>$$</p>
-<p>扔掉常数项，就得到了线性回归的目标函数或error function，</p>
-<p>$$<br>J(\theta) = \frac{1}{2} \sum_{i=1}^m (h_{\theta}(x^i) - y^i) ^ 2<br>$$</p>
-<h2 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h2><p>以上可以把目标函数写成这样的形式：</p>
-<p>$$<br>J(\theta) = \frac{1}{2} (X \theta - y)^T (X \theta - y)<br>$$</p>
-<p>对向量$\theta$求导，</p>
-<p>$$<br>\frac{\partial J(\theta)}{\partial \theta} =  X^T(X \theta - y)<br>$$</p>
-<p>直接令上式为零，得到</p>
-<p>$$<br>\theta = (X^TX)^{-1} X^Ty<br>$$</p>
-<p>最小二乘法解线性回归理论很漂亮，但是因为复杂度的原因实际上不常用。因为矩阵求逆的复杂度为$O(n^3)$，很慢。另外一种解释是通常X不是满秩的，譬如生物学科里面的数据，特征有成千上万个，数据却少得可怜，这种通常是解不出特定的解的。</p>
-<h2 id="梯度下降算法"><a href="#梯度下降算法" class="headerlink" title="梯度下降算法"></a>梯度下降算法</h2><p>常用的还是梯度下降法。以上得到了损失函数为</p>
-<p>$$<br>J(\theta) = \frac{1}{2} \sum_{i=1}^m (h_{\theta}(x^i) - y^i) ^ 2<br>$$</p>
-<p>那么，通过对$\theta$的各分量$\theta_i$根据梯度更新其值即可</p>
-<p>$$<br>\theta_j = \theta_j -  \alpha \frac{\partial J(\theta)}{\partial \theta_j}<br>$$</p>
-<p>而上式中</p>
-<p>$$<br>\frac {\partial J(\theta)}{\partial \theta_i} =<br>$$</p>
-<p>$$<br>\frac{1}{2m} \sum_{i=1}^m \frac{\partial(h_{\theta}(x^i) - y^i) ^ 2}{\partial \theta_j}<br>$$</p>
-<p>$$<br>= \frac{2}{2m} \sum_{i=1}^m (h_{\theta}(x^i) - y^i)  \frac{\partial h_{\theta}(x^i)}{\partial \theta_j}<br>$$</p>
-<p>又上式中</p>
-<p>$$<br>\frac{\partial h_{\theta}(x^i)}{\partial \theta_j} =<br>\frac{\partial (\theta_0 x_0^i + \theta_1 x_1^i + \cdots+ \theta_j x_j^i + \cdots)}{\partial \theta_j} \<br>= \frac{\partial ( \theta_j x_j^i )}{\partial \theta_j}<br>= x_j^i<br>$$</p>
-<p>一步步代上去可得</p>
-<p>$$<br>\theta_j = \theta_j -  \alpha \frac{1}{m} \sum_{i=1}^m {(h_{\theta}(x^i) - y^i)} x_j^i<br>$$</p>
-<p>这就是梯度下降法更新多元线性回归的公式啦！^_^</p>
-<p>PS：有细心的同学可能发现上面的式子中添加了$\frac{1}{m}$，可能有疑惑，想问有什么区别。回答：其实是一样的，因为在机器学习中，我们并不关心最优化的时候，目标函数的极值是多少，而我们只关注，目标函数取极值的时候，参数的值是多少。所以因为这个原因，我们经常为了式子简便而对目标函数做缩放，比如上面的取对数，对数的底是e还是2根本没有区别。</p>
+<p>因为业务需要读取服务器上的数据进行分析，能连接到sql服务器，但是当我企图用mysqldump备份（复制）database到本地却经常出现<code>mysqldump: Error 2013: Lost connection to MySQL server during query when dumping table</code>错误，这个需要改<code>net_write_timeout</code>来增加等待时长来解决，苦于我的账号并没有权限，难不成只好之间上sql用odbs大法直接做数据分析？我的天，那得多麻烦，经过几番思考，我的解决方案是：用sql的python接口包pymysql进行sql登录以及操作，再用Pandas以DataFrame格式接受table数据，最后存为csv文件。</p>
+<h2 id="登录模块"><a href="#登录模块" class="headerlink" title="登录模块"></a>登录模块</h2><p>注意，若数据库含有中文，需要<code>use_unicode=True</code>避免乱码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*_coding:utf8-*-</span></div><div class="line"><span class="comment"># Created by frank at 07/04/2017</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"></div><div class="line">host = <span class="string">'#########'</span></div><div class="line">port = <span class="comment">####</span></div><div class="line">user = <span class="string">'########'</span></div><div class="line">password = <span class="string">'#######'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_database</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"></div><div class="line">    :return: return the pre-connect database</div><div class="line">    """</div><div class="line"></div><div class="line">    connection = pymysql.connect(host=host,</div><div class="line">                         user=user,</div><div class="line">                         password=password,</div><div class="line">                         port=port,</div><div class="line">                         charset=<span class="string">'utf8mb4'</span>,</div><div class="line">                         use_unicode=<span class="keyword">True</span>,)</div><div class="line">    <span class="keyword">return</span> connection</div></pre></td></tr></table></figure>
+<h2 id="处理模块"><a href="#处理模块" class="headerlink" title="处理模块"></a>处理模块</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*_coding:utf8-*-</span></div><div class="line"><span class="comment"># Created by frank at 07/04/2017</span></div><div class="line"><span class="comment"># 连接数据库</span></div><div class="line"><span class="keyword">from</span> connection <span class="keyword">import</span> get_database</div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"></div><div class="line"><span class="comment"># 执行sql命令，打印返回结果</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">execute</span><span class="params">(sql_command)</span>:</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">with</span> connection.cursor() <span class="keyword">as</span> cursor:</div><div class="line">            cursor.execute(sql_command)</div><div class="line">            result = cursor.fetchall()</div><div class="line">            print(<span class="string">"COMMAND: "</span>, sql_command)</div><div class="line">            print(<span class="string">"RESULT: "</span>, result)         </div><div class="line">            print()</div><div class="line">            dic[sql_command] = result</div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        pprint(<span class="string">"Command %s failed!"</span> % sql_command)</div><div class="line">        print()</div><div class="line"></div><div class="line"><span class="comment"># 建立连接</span></div><div class="line">connection = get_database()</div><div class="line">connection.commit()</div><div class="line"></div><div class="line"><span class="comment"># 存放命令与对应结果，便于之后调试</span></div><div class="line">dic = &#123;&#125;</div><div class="line"></div><div class="line"><span class="comment"># SQL 查询语句</span></div><div class="line">sql_commands = [</div><div class="line"><span class="comment"># "SHOW DATABASES;",</span></div><div class="line"><span class="string">"use wind_data;"</span>,</div><div class="line"><span class="comment"># "show tables;",</span></div><div class="line"><span class="comment"># "SHOW COLUMNS FROM absdescription;",</span></div><div class="line"><span class="comment"># "SHOW COLUMNS FROM absdescription2;",</span></div><div class="line"><span class="comment"># "SHOW COLUMNS FROM ashareagency;"</span></div><div class="line"><span class="comment"># "select * from absdescription;",</span></div><div class="line"><span class="comment">#     "select count(*) from absdescription;"</span></div><div class="line"><span class="comment">#     "SHOW COLUMNS FROM xcashflow;",</span></div><div class="line">]</div><div class="line"></div><div class="line"><span class="keyword">for</span> sql_command <span class="keyword">in</span> sql_commands:</div><div class="line">    execute(sql_command)</div><div class="line"></div><div class="line"><span class="comment"># 将所有table名字存于list</span></div><div class="line">tables = []</div><div class="line">l = list(dic[<span class="string">"show tables;"</span>])</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> l:</div><div class="line">    tables.append(i[<span class="number">0</span>])</div><div class="line"></div><div class="line"><span class="comment"># 取得所有table，分别存放于csv文件</span></div><div class="line"><span class="keyword">for</span> table <span class="keyword">in</span> tables:</div><div class="line"><span class="comment">#     table = 'absdescription'</span></div><div class="line">    sql_cmd = <span class="string">"select * from %s"</span> % table</div><div class="line"></div><div class="line">    df = pd.read_sql(sql=sql_cmd, con=connection)</div><div class="line"></div><div class="line">    df.to_csv(<span class="string">"data/%s.csv"</span> % table)</div><div class="line"></div><div class="line"><span class="comment"># 断开连接</span></div><div class="line">connection.close()</div></pre></td></tr></table></figure>
+<h2 id="参考自"><a href="#参考自" class="headerlink" title="参考自"></a>参考自</h2><ul>
+<li><a href="http://www.jianshu.com/p/2dbf454a386e" target="_blank" rel="external">mysqldump 错误2013 Lost connection - 简书</a></li>
+<li><a href="http://www.ttlsa.com/mysql/mysql-common-error-analysis-and-solution-methods/" target="_blank" rel="external">MySQL常见错误分析与解决方法总结 - 运维生存时间</a></li>
+<li><a href="http://www.cnblogs.com/arkenstone/p/6271923.html" target="_blank" rel="external">Python中从SQL型数据库读写dataframe型数据 - Arkenstone - 博客园</a></li>
+<li><a href="http://jingyan.baidu.com/article/eae0782785a4c21fec548525.html" target="_blank" rel="external">pandas教程：[19]读写sql数据库_百度经验</a></li>
+</ul>
 
       
     </div>
@@ -361,13 +334,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/01/06/linear-regression/">linear regression 的公式手推相关</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/11/利用Pandas读取远程mysql数据库/">利用Pandas读取远程mysql数据库</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2017-01-06, 21:55:30</p>
-        <p><span>最后更新:</span>2017-01-09, 15:58:11</p>
+        <p><span>发布时间:</span>2017-04-11, 17:31:49</p>
+        <p><span>最后更新:</span>2017-04-11, 18:00:28</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/01/06/linear-regression/" title="linear regression 的公式手推相关">http://frankchen.xyz/2017/01/06/linear-regression/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/01/06/linear-regression/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/11/利用Pandas读取远程mysql数据库/" title="利用Pandas读取远程mysql数据库">http://frankchen.xyz/2017/04/11/利用Pandas读取远程mysql数据库/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/04/11/利用Pandas读取远程mysql数据库/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -379,16 +352,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/09/logistic-regression/">
-                    logistic regression的公式手推相关
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/25/AliPay-RedEnvelope-Hacker/">
-                    AliPay RedEnvelope Hacker
+                <a href="/2017/04/05/machine-learning-cheat-sheet/">
+                    Data Science cheatsheet
                 </a>
             </div>
         
@@ -400,7 +367,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#损失函数"><span class="toc-number">1.</span> <span class="toc-text">损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最小二乘法"><span class="toc-number">2.</span> <span class="toc-text">最小二乘法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#梯度下降算法"><span class="toc-number">3.</span> <span class="toc-text">梯度下降算法</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#登录模块"><span class="toc-number">1.</span> <span class="toc-text">登录模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理模块"><span class="toc-number">2.</span> <span class="toc-text">处理模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考自"><span class="toc-number">3.</span> <span class="toc-text">参考自</span></a></li></ol>
         
     </div>
     <style>
@@ -436,7 +403,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"linear regression 的公式手推相关　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"利用Pandas读取远程mysql数据库　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -452,7 +419,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/06/linear-regression/" data-title="linear regression 的公式手推相关" data-url="http://frankchen.xyz/2017/01/06/linear-regression/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/04/11/利用Pandas读取远程mysql数据库/" data-title="利用Pandas读取远程mysql数据库" data-url="http://frankchen.xyz/2017/04/11/利用Pandas读取远程mysql数据库/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -475,15 +442,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/09/logistic-regression/" title="上一篇: logistic regression的公式手推相关">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/25/AliPay-RedEnvelope-Hacker/" title="下一篇: AliPay RedEnvelope Hacker">
+            <a href="/2017/04/05/machine-learning-cheat-sheet/" title="下一篇: Data Science cheatsheet">
                 <i class="fa fa-angle-right"></i>
             </a>
         
