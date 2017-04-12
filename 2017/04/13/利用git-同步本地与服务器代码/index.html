@@ -15,32 +15,16 @@
 
 
 
-<meta name="description" content="数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。">
+<meta name="description" content="在服务器端直接用vim写代码固然不是个好体验，本文介绍用git在两者之间同步的方法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据挖掘流程：数据可视化与预处理">
-<meta property="og:url" content="http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/index.html">
+<meta property="og:title" content="利用git 同步本地与服务器代码">
+<meta property="og:url" content="http://frankchen.xyz/2017/04/13/利用git-同步本地与服务器代码/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/1.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/03.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/04.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/05.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/06.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/07.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/08.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/09.jpg">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/11.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/10.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/12.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/13.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/14.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/15.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/02.png">
-<meta property="og:updated_time" content="2017-03-16T10:46:45.000Z">
+<meta property="og:description" content="在服务器端直接用vim写代码固然不是个好体验，本文介绍用git在两者之间同步的方法。">
+<meta property="og:updated_time" content="2017-04-12T17:07:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据挖掘流程：数据可视化与预处理">
-<meta name="twitter:description" content="数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。">
-<meta name="twitter:image" content="http://frankchen.xyz/images/2017/03/1.png">
+<meta name="twitter:title" content="利用git 同步本地与服务器代码">
+<meta name="twitter:description" content="在服务器端直接用vim写代码固然不是个好体验，本文介绍用git在两者之间同步的方法。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -72,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>数据挖掘流程：数据可视化与预处理 | loop in data</title>
+<title>利用git 同步本地与服务器代码 | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -290,11 +274,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-数据挖掘流程：数据可视化与预处理" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-利用git-同步本地与服务器代码" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/15/数据挖掘流程：数据可视化与预处理/" class="article-date">
-      <time datetime="2017-03-15T03:14:11.000Z" itemprop="datePublished">2017-03-15</time>
+      <a href="/2017/04/13/利用git-同步本地与服务器代码/" class="article-date">
+      <time datetime="2017-04-12T16:53:49.000Z" itemprop="datePublished">2017-04-13</time>
 </a>
 
 
@@ -309,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数据挖掘流程：数据可视化与预处理
+      利用git 同步本地与服务器代码
     </h1>
   
 
@@ -320,7 +304,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/">Data Science</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -330,78 +314,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。</p>
+        <p>在服务器端直接用vim写代码固然不是个好体验，本文介绍用git在两者之间同步的方法。</p>
 <a id="more"></a>
-<h2 id="import-掉包？"><a href="#import-掉包？" class="headerlink" title="import 掉包？"></a>import 掉包？</h2><p>第0步，调包。。</p>
-<p>通常numpy、pandas、scipy、seaborn已经matplotlib是必须的</p>
-<p>为防止烦人的warning，还需要</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import warnings</div><div class="line">warnings.filterwarnings(&apos;ignore&apos;)</div></pre></td></tr></table></figure>
-<p>因为我们不管warning只管error，哈哈😂</p>
-<p>seaborn的设置颜色格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sns.set_style(&apos;whitegrid&apos;)</div></pre></td></tr></table></figure>
-<p>以及</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%matplotlib inline</div></pre></td></tr></table></figure>
-<h2 id="观察与可视化"><a href="#观察与可视化" class="headerlink" title="观察与可视化"></a>观察与可视化</h2><p>一般来说，我们应该首先观察<strong>标签的分布</strong>以及<strong>特征的分布</strong>，对于前者通常使用pandas Dataframe的<code>columns</code>，对于后者则是<code>value_counts()</code>和<code>describe()</code>来展示。如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df_train.columns</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int_level = train_df[&apos;interest_level&apos;].value_counts()</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df_train[&apos;SalePrice&apos;].describe()</div></pre></td></tr></table></figure>
-<p><code>describe()</code>会给出标签的各种数值信息，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">count      1460.000000</div><div class="line">mean     180921.195890</div><div class="line">std       79442.502883</div><div class="line">min       34900.000000</div><div class="line">25%      129975.000000</div><div class="line">50%      163000.000000</div><div class="line">75%      214000.000000</div><div class="line">max      755000.000000</div><div class="line">Name: SalePrice, dtype: float64</div></pre></td></tr></table></figure>
-<p>同时也可以借助于seaborn图来显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sns.distplot(df_train[&apos;SalePrice&apos;]);</div></pre></td></tr></table></figure>
-<p><img src="/images/2017/03/1.png" alt=""></p>
-<p>接下来可以看看标签的偏度和峰度(skewness and kurtosis)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(&quot;Skewness: %f&quot; % df_train[&apos;SalePrice&apos;].skew())</div><div class="line">print(&quot;Kurtosis: %f&quot; % df_train[&apos;SalePrice&apos;].kurt())</div></pre></td></tr></table></figure>
-<h3 id="特征与标签关系"><a href="#特征与标签关系" class="headerlink" title="特征与标签关系"></a>特征与标签关系</h3><p>对于数值特征可用散点图来展示</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var = <span class="string">'GrLivArea'</span></div><div class="line">data = pd.concat([df_train[<span class="string">'SalePrice'</span>], df_train[var]], axis=<span class="number">1</span>)</div><div class="line">data.plot.scatter(x=var, y=<span class="string">'SalePrice'</span>, ylim=(<span class="number">0</span>,<span class="number">800000</span>));</div></pre></td></tr></table></figure>
-<p><img src="/images/2017/03/03.png" alt=""></p>
-<p>对于类别特征，则可用箱型图</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var = &apos;OverallQual&apos;</div><div class="line">data = pd.concat([df_train[&apos;SalePrice&apos;], df_train[var]], axis=1)</div><div class="line">f, ax = plt.subplots(figsize=(8, 6))</div><div class="line">fig = sns.boxplot(x=var, y=&quot;SalePrice&quot;, data=data)</div><div class="line">fig.axis(ymin=0, ymax=800000);</div></pre></td></tr></table></figure>
-<p><img src="/images/2017/03/04.png" alt=""></p>
-<p>时间特征类似</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var = &apos;YearBuilt&apos;</div><div class="line">data = pd.concat([df_train[&apos;SalePrice&apos;], df_train[var]], axis=1)</div><div class="line">f, ax = plt.subplots(figsize=(16, 8))</div><div class="line">fig = sns.boxplot(x=var, y=&quot;SalePrice&quot;, data=data)</div><div class="line">fig.axis(ymin=0, ymax=800000);</div><div class="line">plt.xticks(rotation=90);</div></pre></td></tr></table></figure>
-<p><img src="/images/2017/03/05.png" alt=""></p>
-<h3 id="特征与特征的关系"><a href="#特征与特征的关系" class="headerlink" title="特征与特征的关系"></a>特征与特征的关系</h3><p>用关联矩阵Correlation matrix的heatmap类型可以展示所有特征与特征的关系</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#correlation matrix</div><div class="line">corrmat = df_train.corr()</div><div class="line">f, ax = plt.subplots(figsize=(12, 9))</div><div class="line">sns.heatmap(corrmat, vmax=.8, square=True);</div></pre></td></tr></table></figure>
-<p><img src="/images/2017/03/06.png" alt=""></p>
-<p>从关联矩阵我们可以对特征的总体关系有个认识，那么进一步可以用zoomed heatmap来筛选几个特征进行观察其之间的关系</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#saleprice correlation matrix</div><div class="line">k = 10 #number of variables for heatmap</div><div class="line">cols = corrmat.nlargest(k, &apos;SalePrice&apos;)[&apos;SalePrice&apos;].index</div><div class="line">cm = np.corrcoef(df_train[cols].values.T)</div><div class="line">sns.set(font_scale=1.25)</div><div class="line">hm = sns.heatmap(cm, cbar=True, annot=True, square=True, fmt=&apos;.2f&apos;, annot_kws=&#123;&apos;size&apos;: 10&#125;, yticklabels=cols.values, xticklabels=cols.values)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-<p><img src="/images/2017/03/07.png" alt=""></p>
-<p>大杀器则是scatterplot，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#scatterplot</div><div class="line">sns.set()</div><div class="line">cols = [&apos;SalePrice&apos;, &apos;OverallQual&apos;, &apos;GrLivArea&apos;, &apos;GarageCars&apos;, &apos;TotalBsmtSF&apos;, &apos;FullBath&apos;, &apos;YearBuilt&apos;]</div><div class="line">sns.pairplot(df_train[cols], size = 2.5)</div><div class="line">plt.show();</div></pre></td></tr></table></figure>
-<p><img src="/images/2017/03/08.png" alt=""></p>
-<h2 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h2><h3 id="缺失值-Missing-data¶"><a href="#缺失值-Missing-data¶" class="headerlink" title="缺失值 Missing data¶"></a>缺失值 Missing data¶</h3><p>首先观察包含缺失值的特征</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#missing data</div><div class="line">total = df_train.isnull().sum().sort_values(ascending=False)</div><div class="line">percent = (df_train.isnull().sum()/df_train.isnull().count()).sort_values(ascending=False)</div><div class="line">missing_data = pd.concat([total, percent], axis=1, keys=[&apos;Total&apos;, &apos;Percent&apos;])</div><div class="line">missing_data.head(20)</div></pre></td></tr></table></figure>
-<p>以上将打印包含缺失值的特征的缺失个数和比例</p>
-<p>当然对于缺失值，不同情况有不同的处理方法，例如</p>
-<p><img src="/images/2017/03/09.jpg" alt=""></p>
-<p>这里我们简单的将missing超过1的feature丢弃，再将missing值为1的样本删去，其他方法有待之后补充。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#dealing with missing data</div><div class="line">df_train = df_train.drop((missing_data[missing_data[&apos;Total&apos;] &gt; 1]).index,1)</div><div class="line">df_train = df_train.drop(df_train.loc[df_train[&apos;Electrical&apos;].isnull()].index)</div><div class="line">df_train.isnull().sum().max()</div></pre></td></tr></table></figure>
-<h3 id="离群点"><a href="#离群点" class="headerlink" title="离群点"></a>离群点</h3><p>单特征情况，可以以如下形式观察</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#standardizing data</div><div class="line">saleprice_scaled = StandardScaler().fit_transform(df_train[&apos;SalePrice&apos;][:,np.newaxis]);</div><div class="line">low_range = saleprice_scaled[saleprice_scaled[:,0].argsort()][:10]</div><div class="line">high_range= saleprice_scaled[saleprice_scaled[:,0].argsort()][-10:]</div><div class="line">print(&apos;outer range (low) of the distribution:&apos;)</div><div class="line">print(low_range)</div><div class="line">print(&apos;\nouter range (high) of the distribution:&apos;)</div><div class="line">print(high_range)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">outer range (low) of the distribution:</div><div class="line">[[-1.83820775]</div><div class="line"> [-1.83303414]</div><div class="line"> [-1.80044422]</div><div class="line"> [-1.78282123]</div><div class="line"> [-1.77400974]</div><div class="line"> [-1.62295562]</div><div class="line"> [-1.6166617 ]</div><div class="line"> [-1.58519209]</div><div class="line"> [-1.58519209]</div><div class="line"> [-1.57269236]]</div><div class="line"></div><div class="line">outer range (high) of the distribution:</div><div class="line">[[ 3.82758058]</div><div class="line"> [ 4.0395221 ]</div><div class="line"> [ 4.49473628]</div><div class="line"> [ 4.70872962]</div><div class="line"> [ 4.728631  ]</div><div class="line"> [ 5.06034585]</div><div class="line"> [ 5.42191907]</div><div class="line"> [ 5.58987866]</div><div class="line"> [ 7.10041987]</div><div class="line"> [ 7.22629831]]</div></pre></td></tr></table></figure>
-<p>双特征关系如特征标签关系那样，先concat再scatter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#bivariate analysis saleprice/grlivarea</div><div class="line">var = &apos;GrLivArea&apos;</div><div class="line">data = pd.concat([df_train[&apos;SalePrice&apos;], df_train[var]], axis=1)</div><div class="line">data.plot.scatter(x=var, y=&apos;SalePrice&apos;, ylim=(0,800000));</div></pre></td></tr></table></figure></p>
-<p><img src="/images/2017/03/11.png" alt=""></p>
-<p>离群点可以简单删去，如</p>
-<p><img src="/images/2017/03/10.png" alt=""></p>
-<h3 id="正态分布"><a href="#正态分布" class="headerlink" title="正态分布"></a>正态分布</h3><p>用histogram 和 normal probability可以观察数据的峰度偏度以及是否符合正态分布</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sns.distplot(df_train[&apos;SalePrice&apos;], fit=norm);</div><div class="line">fig = plt.figure()</div><div class="line">res = stats.probplot(df_train[&apos;SalePrice&apos;], plot=plt)</div></pre></td></tr></table></figure>
-<p><img src="/images/2017/03/12.png" alt=""><br><img src="/images/2017/03/13.png" alt=""></p>
-<p>对于正偏度，取log通常不错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#applying log transformation</div><div class="line">df_train[&apos;SalePrice&apos;] = np.log(df_train[&apos;SalePrice&apos;])</div><div class="line">In [22]:</div><div class="line">#transformed histogram and normal probability plot</div><div class="line">sns.distplot(df_train[&apos;SalePrice&apos;], fit=norm);</div><div class="line">fig = plt.figure()</div><div class="line">res = stats.probplot(df_train[&apos;SalePrice&apos;], plot=plt)</div></pre></td></tr></table></figure>
-<p><img src="/images/2017/03/14.png" alt=""><br><img src="/images/2017/03/15.png" alt=""></p>
-<p>有时我们会遇到具有许多0值得特征，而从istogram 和 normal probability可以看出其具有偏度，那么可以使用如下方法：将非零点取log保留零点。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#create column for new variable (one is enough because it&apos;s a binary categorical feature)</div><div class="line">#if area&gt;0 it gets 1, for area==0 it gets 0</div><div class="line">df_train[&apos;HasBsmt&apos;] = pd.Series(len(df_train[&apos;TotalBsmtSF&apos;]), index=df_train.index)</div><div class="line">df_train[&apos;HasBsmt&apos;] = 0</div><div class="line">df_train.loc[df_train[&apos;TotalBsmtSF&apos;]&gt;0,&apos;HasBsmt&apos;] = 1</div><div class="line">In [28]:</div><div class="line">#transform data</div><div class="line">df_train.loc[df_train[&apos;HasBsmt&apos;]==1,&apos;TotalBsmtSF&apos;] = np.log(df_train[&apos;TotalBsmtSF&apos;])</div></pre></td></tr></table></figure>
-<p>对于标签，如果偏度太大，可以使用<code>log1p</code>来处理，并对比前后的差距</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">matplotlib.rcParams[&apos;figure.figsize&apos;] = (12.0, 6.0)</div><div class="line">prices = pd.DataFrame(&#123;&quot;price&quot;:train[&quot;SalePrice&quot;],</div><div class="line">                       &quot;log(price + 1)&quot;:np.log1p(train[&quot;SalePrice&quot;])</div><div class="line">                      &#125;)</div><div class="line">prices.hist()</div></pre></td></tr></table></figure>
-<p><img src="/images/2017/03/02.png" alt=""></p>
-<p>对全部Dataframe处理需要concat test与train，一并处理，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">all_data = pd.concat((train.loc[:,&quot;MSSubClass&quot;: &quot;SaleCondition&quot;], test.loc[:,&quot;MSSubClass&quot;: &quot;SaleCondition&quot;]))</div></pre></td></tr></table></figure>
-<p>最后需要将预测的标签值放大还原，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lasso_preds = np.expm1(model_lasso.predict(X_test))</div></pre></td></tr></table></figure>
-<h2 id="参考出处"><a href="#参考出处" class="headerlink" title="参考出处"></a>参考出处</h2><ul>
-<li><a href="https://www.kaggle.com/pmarcelino/house-prices-advanced-regression-techniques/comprehensive-data-exploration-with-python/notebook" target="_blank" rel="external">House Prices: Advanced Regression Techniques | Kaggle</a></li>
-</ul>
+<h2 id="免认证登录"><a href="#免认证登录" class="headerlink" title="免认证登录"></a>免认证登录</h2><p>先设置ssh公钥私钥来免密码登录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/.ssh</div><div class="line">ssh-keygen -t rsa -C &quot;mail@domain.com&quot;</div></pre></td></tr></table></figure>
+<p>复制过去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scp ~/.ssh/id_rsa.pub user@vps:./</div><div class="line">ssh user@vps</div><div class="line">cat id_rsa.pub &gt;&gt; /home/user/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+<p>注意cat 后是&gt;&gt; 不是&gt;，前者是追加，后者是覆盖。</p>
+<h2 id="进入服务器项目"><a href="#进入服务器项目" class="headerlink" title="进入服务器项目"></a>进入服务器项目</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ssh user@vps  </div><div class="line">cd /home/project</div><div class="line">git init</div><div class="line">echo &quot;hello&quot; &gt;&gt; README</div><div class="line">git add README</div><div class="line">git commit -m &quot;add README&quot;</div><div class="line">exit</div></pre></td></tr></table></figure>
+<p>在本机上把项目 Clone 下来：</p>
+<p>git clone user@vps:/home/project</p>
+<p>若22端口不能使用，可以执行：</p>
+<p>git clone ssh://user@vps:1280/home/project</p>
+<h2 id="修改钩子使其接受push"><a href="#修改钩子使其接受push" class="headerlink" title="修改钩子使其接受push"></a>修改钩子使其接受push</h2><p>在服务器端<br><code>git config receive.denyCurrentBranch ignore</code></p>
+<p>编辑 VPS 端 Git 钩子.git/hooks/post-receive 文件，内容为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">cd ..</div><div class="line">env -i git reset --hard</div></pre></td></tr></table></figure></p>
+<p>最后将文件设置为可执行：<br><code>chmod a+x .git/hooks/post-receive</code></p>
 
       
     </div>
@@ -410,13 +337,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/15/数据挖掘流程：数据可视化与预处理/">数据挖掘流程：数据可视化与预处理</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/13/利用git-同步本地与服务器代码/">利用git 同步本地与服务器代码</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2017-03-15, 11:14:11</p>
-        <p><span>最后更新:</span>2017-03-16, 18:46:45</p>
+        <p><span>发布时间:</span>2017-04-13, 00:53:49</p>
+        <p><span>最后更新:</span>2017-04-13, 01:07:25</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/15/数据挖掘流程：数据可视化与预处理/" title="数据挖掘流程：数据可视化与预处理">http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/03/15/数据挖掘流程：数据可视化与预处理/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/13/利用git-同步本地与服务器代码/" title="利用git 同步本地与服务器代码">http://frankchen.xyz/2017/04/13/利用git-同步本地与服务器代码/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/04/13/利用git-同步本地与服务器代码/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -428,16 +355,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/15/programmer-humor-week-0/">
-                    programmer humor week 0
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/02/22/Amdahl-s-law/">
-                    Amdahl&#39;s law
+                <a href="/2017/04/11/利用Pandas读取远程mysql数据库/">
+                    利用Pandas读取远程mysql数据库
                 </a>
             </div>
         
@@ -449,7 +370,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#import-掉包？"><span class="toc-number">1.</span> <span class="toc-text">import 掉包？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#观察与可视化"><span class="toc-number">2.</span> <span class="toc-text">观察与可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特征与标签关系"><span class="toc-number">2.1.</span> <span class="toc-text">特征与标签关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征与特征的关系"><span class="toc-number">2.2.</span> <span class="toc-text">特征与特征的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预处理"><span class="toc-number">3.</span> <span class="toc-text">预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缺失值-Missing-data¶"><span class="toc-number">3.1.</span> <span class="toc-text">缺失值 Missing data¶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#离群点"><span class="toc-number">3.2.</span> <span class="toc-text">离群点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正态分布"><span class="toc-number">3.3.</span> <span class="toc-text">正态分布</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考出处"><span class="toc-number">4.</span> <span class="toc-text">参考出处</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#免认证登录"><span class="toc-number">1.</span> <span class="toc-text">免认证登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进入服务器项目"><span class="toc-number">2.</span> <span class="toc-text">进入服务器项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改钩子使其接受push"><span class="toc-number">3.</span> <span class="toc-text">修改钩子使其接受push</span></a></li></ol>
         
     </div>
     <style>
@@ -485,7 +406,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"数据挖掘流程：数据可视化与预处理　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"利用git 同步本地与服务器代码　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -519,15 +440,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/15/programmer-humor-week-0/" title="上一篇: programmer humor week 0">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/02/22/Amdahl-s-law/" title="下一篇: Amdahl&#39;s law">
+            <a href="/2017/04/11/利用Pandas读取远程mysql数据库/" title="下一篇: 利用Pandas读取远程mysql数据库">
                 <i class="fa fa-angle-right"></i>
             </a>
         
