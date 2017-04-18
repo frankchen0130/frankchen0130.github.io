@@ -15,15 +15,16 @@
 
 
 
-<meta name="description" content="Machine Learning and Data Mining">
-<meta property="og:type" content="website">
-<meta property="og:title" content="loop in data">
-<meta property="og:url" content="http://frankchen.xyz/archives/2016/12/index.html">
+<meta name="description" content="本文主要记录Python2 Python3的各种冲突及解决方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python2 Python3的各种冲突及解决方法">
+<meta property="og:url" content="http://frankchen.xyz/2017/04/18/Python3-安装opencv的简易方法/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="Machine Learning and Data Mining">
+<meta property="og:description" content="本文主要记录Python2 Python3的各种冲突及解决方法。">
+<meta property="og:updated_time" content="2017-04-18T10:05:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="loop in data">
-<meta name="twitter:description" content="Machine Learning and Data Mining">
+<meta name="twitter:title" content="Python2 Python3的各种冲突及解决方法">
+<meta name="twitter:description" content="本文主要记录Python2 Python3的各种冲突及解决方法。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2016/12 | loop in data</title>
+<title>Python2 Python3的各种冲突及解决方法 | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,8 +66,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -273,122 +274,191 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Python3-安装opencv的简易方法" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2017/04/18/Python3-安装opencv的简易方法/" class="article-date">
+      <time datetime="2017-04-18T09:52:06.000Z" itemprop="datePublished">2017-04-18</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python2 Python3的各种冲突及解决方法
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/25/AliPay-RedEnvelope-Hacker/" class="archive-article-date">
-      <time datetime="2016-12-25T15:16:53.000Z" itemprop="datePublished">12-25</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/25/AliPay-RedEnvelope-Hacker/">AliPay RedEnvelope Hacker</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
+        <p>本文主要记录Python2 Python3的各种冲突及解决方法。</p>
+<a id="more"></a>
+<h2 id="Opencv在Python3下的安装"><a href="#Opencv在Python3下的安装" class="headerlink" title="Opencv在Python3下的安装"></a>Opencv在Python3下的安装</h2><p>目前opencv对于Python2.7支持不错，我折腾了许久才弄好Python3下的安装方法，最简单的既是利用Anaconda<br>来安装，步骤如</p>
+<ol>
+<li>安装Anaconda下载对应平台的安装包<a href="https://www.continuum.io/downloads" target="_blank" rel="external">Download Anaconda Now! | Continuum</a></li>
+<li>下载完毕，用终端命令安装刚下的包<code>bash Anaconda3-4.3.0-MacOSX-x86_64.sh</code></li>
+<li>命令行会询问是否需要添加PATH如<code>.bash_profile &gt;&gt;</code>填<code>yes</code></li>
+<li>刷新 <code>cd &amp;&amp; source .bash_profile</code></li>
+<li>检测安装位置<code>check python</code>，结果若是<code>$ which python $ /.../anaconda/bin/python</code>则OK</li>
+<li>最后用这条命令安装<code>pip install opencv-pyhton</code>（不需要pip3）</li>
+</ol>
+<h2 id="urlparse"><a href="#urlparse" class="headerlink" title="urlparse"></a>urlparse</h2><p><code>import urlparse</code> 需要变为 <code>import urllib.parse as urlparse</code></p>
+<h2 id="整数相除"><a href="#整数相除" class="headerlink" title="整数相除"></a>整数相除</h2><p>python2的 <code>/</code> 等价于3里的 <code>//</code></p>
+<h2 id="map-与-zip"><a href="#map-与-zip" class="headerlink" title="map 与 zip"></a>map 与 zip</h2><p>Python3里的map与zip返回生成器，所以需要将list(map(func, b))， list(zip(a,b))之后才可以按下标访问。</p>
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2017/04/18/Python3-安装opencv的简易方法/">Python2 Python3的各种冲突及解决方法</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">江南消夏</a></p>
+        <p><span>Created:</span>2017-04-18, 17:52:06</p>
+        <p><span>Updated:</span>2017-04-18, 18:05:33</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2017/04/18/Python3-安装opencv的简易方法/" title="Python2 Python3的各种冲突及解决方法">http://frankchen.xyz/2017/04/18/Python3-安装opencv的简易方法/</a>
+            <span class="copy-path" data-clipboard-text="From http://frankchen.xyz/2017/04/18/Python3-安装opencv的简易方法/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/04/17/programmer-humor-week-2/">
+                    programmer humor week 2
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/11/pointer-and/" class="archive-article-date">
-      <time datetime="2016-12-11T08:50:45.000Z" itemprop="datePublished">12-11</time>
-</a>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Opencv在Python3下的安装"><span class="toc-number">1.</span> <span class="toc-text">Opencv在Python3下的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#urlparse"><span class="toc-number">2.</span> <span class="toc-text">urlparse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整数相除"><span class="toc-number">3.</span> <span class="toc-text">整数相除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#map-与-zip"><span class="toc-number">4.</span> <span class="toc-text">map 与 zip</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
 
 
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
         </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/11/pointer-and/">pointer and ++--</a>
-    </h1>
-  
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Python2 Python3的各种冲突及解决方法　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
 
-        <div class="article-info info-on-archive">
-          
+    
+</div>
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2130750';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/04/17/programmer-humor-week-2/" title="Next: programmer humor week 2">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/02/QuickSort-in-C/" class="archive-article-date">
-      <time datetime="2016-12-02T11:55:35.000Z" itemprop="datePublished">12-02</time>
-</a>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/18/Python3-安装opencv的简易方法/">Python2 Python3的各种冲突及解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/17/programmer-humor-week-2/">programmer humor week 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/13/利用git-同步本地与服务器代码/">利用git 同步本地与服务器代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/11/利用Pandas读取远程mysql数据库/">利用Pandas读取远程mysql数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/05/machine-learning-cheat-sheet/">Data Science cheatsheet</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/01/programmer-humor-week-1/">programmer humor week 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/26/learn more study less/">Learn More,Study Less</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/">Basic Linux/Unix command Interview Questions</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/18/python-source-code-reading-0/">python源码解析0：趣事</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/programmer-humor-week-0/">programmer humor week 0</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/数据挖掘流程：数据可视化与预处理/">数据挖掘流程：数据可视化与预处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/Amdahl-s-law/">Amdahl's law</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/19/re-basic-of-python/">re basic of python</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/Deep-Learning-Interview/">Deep Learning Interview</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/Docker-Windows-Speed-up/">在Windows上安装并加速拉取Docker镜像的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/Explanation-of-Convolutional-Neural-Networks/">Explanation of Convolutional Neural Networks</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/Install-Kaggle-Docker-on-Mac/">Mac上安装Kaggle Docker 镜像的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/17/Note-for-SoloLearn-SQL/">Note for SoloLearn SQL</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Action/">Note of Recommendation System in Action</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/">Sort Algorithms of Linear Time Complexity</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Polymorphism-of-Java/">Polymorphism of Java</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Map-0f-Java/">Map 0f Java</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/good commander/">To be a great commander</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/logistic-regression/">logistic regression的公式手推相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/linear-regression/">linear regression 的公式手推相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/AliPay-RedEnvelope-Hacker/">AliPay RedEnvelope Hacker</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/pointer-and/">pointer and ++--</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/QuickSort-in-C/">QuickSort in C & Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/">Workflow for automatic extract and jump to the true URL of 91porn.com</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/">Devide and Conquer Counting Inversions with Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/18/Understanding-EM-algorithm/">Understanding EM algorithm</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/">Way to solving the .DS_Store problem of Mac</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/">A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/21/2016-09-21-jing-que-lu-,-zhao-hui-lu-,-f1-zhi-,-roc-slash-slash-auc-,-star-star-prc-star-star-ge-zi-de-you-que-dian-shi-shi-yao-?/">精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/2016-09-07-pdf-click-return/">PDF click return</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">如何解决Linux 下 zip 文件解压乱码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/">Vim 练级攻略一</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/">Vim 练级攻略二</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/19/2016-06-19-yi-chuan-suan-fa-jian-shu/">遗传算法简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/07/2016-06-07-edit-dns-of-ubuntu/">ubuntu下修改DNS并且避免重启失效的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/">RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-understanding-lstm-networks/">理解LSTM网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-rephil-and-mapreduce/">Rephil和MapReduce： 描述长尾数据的数学模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/04/2016-06-04-note-for-cs224d-1/">note for CS224d:1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/2016-05-26-char-rnn-chinese/">char-rnn-chinese</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/2016-05-25-pythonoop/">Python OOP（Object Oriented Programming）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/24/2016-05-24-di-pian-bo-ke/">使用文本处理命令获取链接批量下载</a></li></ul>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/02/QuickSort-in-C/">QuickSort in C &amp; Python</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
