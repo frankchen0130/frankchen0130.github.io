@@ -15,22 +15,18 @@
 
 
 
-<meta name="description" content="本文中，我们将学习关于LSTM (Long Short Term Memory)网络和 GRUs (Gated Recurrent Units)的知识。LSTM最初由Sepp Hochreiter and Jürgen Schmidhuber于1997年提出，如今是深度学习自然语言处理领域最流行的模型。GRU，出现于2014年，是LSTM的简化版，与LSTM有许多相似的特性。">
+<meta name="description" content="近来入坑了TITAN 1080显卡，在Ubuntu 16.04下为装好驱动以使用Gpu版TensorFlow可不简单，踩了许多坑之后写下此篇为记录。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO">
-<meta property="og:url" content="http://frankchen.xyz/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/index.html">
+<meta property="og:title" content="Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&CudNN)及Gpu版TensorFlow">
+<meta property="og:url" content="http://frankchen.xyz/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/index.html">
 <meta property="og:site_name" content="loop in data">
-<meta property="og:description" content="本文中，我们将学习关于LSTM (Long Short Term Memory)网络和 GRUs (Gated Recurrent Units)的知识。LSTM最初由Sepp Hochreiter and Jürgen Schmidhuber于1997年提出，如今是深度学习自然语言处理领域最流行的模型。GRU，出现于2014年，是LSTM的简化版，与LSTM有许多相似的特性。">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/latex7.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/gru-lstm.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/Screen-Shot-2015-10-23-at-10.00.55-AM.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/latex8.png">
-<meta property="og:image" content="http://frankchen.xyz/images/2016/06/Screen-Shot-2015-10-23-at-10.36.51-AM.png">
-<meta property="og:updated_time" content="2017-01-13T09:47:09.000Z">
+<meta property="og:description" content="近来入坑了TITAN 1080显卡，在Ubuntu 16.04下为装好驱动以使用Gpu版TensorFlow可不简单，踩了许多坑之后写下此篇为记录。">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/04/3864914136-589146eda380f_articlex.png">
+<meta property="og:updated_time" content="2017-04-20T02:04:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO">
-<meta name="twitter:description" content="本文中，我们将学习关于LSTM (Long Short Term Memory)网络和 GRUs (Gated Recurrent Units)的知识。LSTM最初由Sepp Hochreiter and Jürgen Schmidhuber于1997年提出，如今是深度学习自然语言处理领域最流行的模型。GRU，出现于2014年，是LSTM的简化版，与LSTM有许多相似的特性。">
-<meta name="twitter:image" content="http://frankchen.xyz/images/2016/06/latex7.png">
+<meta name="twitter:title" content="Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&CudNN)及Gpu版TensorFlow">
+<meta name="twitter:description" content="近来入坑了TITAN 1080显卡，在Ubuntu 16.04下为装好驱动以使用Gpu版TensorFlow可不简单，踩了许多坑之后写下此篇为记录。">
+<meta name="twitter:image" content="http://frankchen.xyz/images/2017/04/3864914136-589146eda380f_articlex.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -62,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO | loop in data</title>
+<title>Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&amp;CudNN)及Gpu版TensorFlow | loop in data</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -282,11 +278,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/" class="article-date">
-      <time datetime="2016-06-22T13:42:51.000Z" itemprop="datePublished">2016-06-22</time>
+      <a href="/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/" class="article-date">
+      <time datetime="2017-04-20T01:29:22.000Z" itemprop="datePublished">2017-04-20</time>
 </a>
 
 
@@ -301,7 +297,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO
+      Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&amp;CudNN)及Gpu版TensorFlow
     </h1>
   
 
@@ -309,14 +305,10 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
-    </div>
-
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning/">Deep Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RNN/">RNN</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -326,36 +318,32 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文中，我们将学习关于LSTM (Long Short Term Memory)网络和 GRUs (Gated Recurrent Units)的知识。LSTM最初由<a href="http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf" target="_blank" rel="external">Sepp Hochreiter and Jürgen Schmidhuber于1997年提出</a>，如今是深度学习自然语言处理领域最流行的模型。GRU，<a href="http://arxiv.org/pdf/1406.1078v3.pdf" target="_blank" rel="external">出现于2014年</a>，是LSTM的简化版，与LSTM有许多相似的特性。</p>
-<a id="more"></a>
-<p>##LSTM 网络</p>
-<p>在<a href="http://frankchen0130.github.io/2016/06/22/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/" target="_blank" rel="external">第三部分</a>我们提到了梯度消失问题妨碍了标准的RNN学习长期依赖问题。LSTM被设计于用gate结构解决梯度消失问题。为了理解这个机制，我们来看看LSTM如何计算隐藏状态$$s_t$$（其中小圆圈代表Hadamard product，即同型矩阵各元素对应相乘，不同于矩阵点乘）。</p>
-<p><img src="/images/2016/06/latex7.png" alt=""></p>
-<p>式子看起来复杂，一步一步来理解实则简单。首先，LSTM的一层代表的只是另一种计算隐藏层的方法。之前我们计算了隐藏状态$$s_t = tanh(Ux<em>t + WS</em>{s-1})$$。对于当前的单元，输入是$$t$$时刻的$$x<em>t$$，而$$s</em>{t-1}$$是之前的隐藏状态，输出是新的隐藏状态$$s_t$$。其实，LSTM做的事情是完全一样的，只不过换了种方式，这也是理解LSTM的核心。我们可以把LSTM单元看作是黑盒子，给予其当前输入和之前的隐藏状态，它可以输出下一个隐藏状态。</p>
-<p><img src="/images/2016/06/gru-lstm.png" alt=""></p>
-<p>把这个牢记于心，我们开始来阐述LSTM如何计算隐藏状态。关于这一点，详细可看<a href="http://frankchen0130.github.io/2016/06/04/understanding-lstm-networks/" target="_blank" rel="external">这篇文章</a>，这里我们只作简短描述：</p>
-<ul>
-<li>$$i,f,o$$分别被称为输入门、遗忘门和输出门。注意到，它们具有相同的等式，只是参数矩阵不同。它们之所以被称为“门”，是因为sigmoid函数将向量值压缩到0和1之间，再与另一个向量相乘，我们因此决定向量的多少“通过”。输入门决定当前输入计算出来的状态的多少成分被通过，遗忘门决定之前的状态有多少可以被保留到之后，输出门决定当前的状态有多少被传送到外层的网络（高层网络和下一时刻）。这些门的维度都是$$d_s$$，即隐藏层的大小。</li>
-<li>$$g$$是一个候选的隐藏状态，基于当前的输入和之前的隐藏状态计算而出。其与vanilla RNN的计算等式相同，只是把参数$$U,W$$改名为$$U^g,W^g$$。和RNN的直接将$$g$$作为心的隐藏状态不同，我们将其通过一个输入门来决定保留它的多少成分。</li>
-<li>$$c<em>t$$是单元的内部的记忆，它由之前的记忆$$c</em>{t-1}$$通过遗忘门再加上新计算出来的隐藏状态$$g$$通过输入门计算得出。因此，它代表了旧的记忆与新的输入的结合。我们可以选择全部忽略旧的记忆（遗忘门全部置零），或者忽略全部的计算出的新状态（输入门全部置零），但是通常来说，我们可能更希望介于两者之间。</li>
-<li>给定记忆$$c_t$$，我们最终通过让记忆和输出门相乘计算出输出隐藏层状态$$s_t$$。在网络内，不是所有的内部记忆都与其他单元使用的隐藏状态有关。</li>
-</ul>
-<p><img src="/images/2016/06/Screen-Shot-2015-10-23-at-10.00.55-AM.png" alt=""></p>
-<p>换一种说法，我们可以将标准的RNN看作是特殊的LSTM，如果我们将遗忘门全部置零，输入门全部置一，输出门全部置一，我们就几乎得到一个标准的RNN。通过门机制，LSTM可以操作记忆从而解决长期依赖问题。</p>
-<p>注意到，还有许多的LSTM变种，一种添加上“猫眼”结构，它的门同时取决于之前的隐藏状态$$s<em>{t-1}$$和之前的内部状态$$c</em>{t-1}$$。<a href="http://arxiv.org/pdf/1503.04069.pdf" target="_blank" rel="external"> LSTM: A Search Space Odyssey </a>实验观察了许多不同的LSTM机制。</p>
-<p>##GRU网络</p>
-<p>GRU的理念类似于LSTM，其等式如下：</p>
-<p><img src="/images/2016/06/latex8.png" alt=""></p>
-<p>GRU拥有两个门，称为重置门$$r$$和更新门$$z$$。直观来说，重置门决定如何联合新的输入和之前的记忆，而更新门决定留下多少之前的记忆。如果将重置门全部置一并且更新门全部置零，那么我们又得到了我们原始的RNN了。GRU的解决长期依赖的理念和LSTM基本类似，以下是一些不同之处：</p>
-<ul>
-<li>两个门VS三个门</li>
-<li>GRU不处理内层记忆$$c_t$$</li>
-<li>输入门和遗忘门被组合成更新门$$z$$,重置门$$r$$直接连接之前的隐藏状态。因此，</li>
-<li>计算输出是不加上第二个非线性变换</li>
-</ul>
-<p><img src="/images/2016/06/Screen-Shot-2015-10-23-at-10.36.51-AM.png" alt=""></p>
-<p>##GRU VS LSTM</p>
-<p>如今你认识了两个对抗梯度消失的模型</p>
+        <p>近来入坑了TITAN 1080显卡，在Ubuntu 16.04下为装好驱动以使用Gpu版TensorFlow可不简单，踩了许多坑之后写下此篇为记录。<br><a id="more"></a></p>
+<h1 id="下载Cuda"><a href="#下载Cuda" class="headerlink" title="下载Cuda"></a>下载Cuda</h1><p>按装官方教程，我们可以应该安装Cuda8.0和Cudnn V5.1，在此下载<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="external">CUDA 8.0 Downloads | NVIDIA Developer</a></p>
+<p><img src="/images/2017/04/3864914136-589146eda380f_articlex.png" alt=""></p>
+<p>在这里最好选runfile local，因为选deb的话会遇到apt get的源损坏问题。</p>
+<h1 id="降级gcc和g"><a href="#降级gcc和g" class="headerlink" title="降级gcc和g++"></a>降级gcc和g++</h1><p>由于Cuda不支持新版本的gcc和g++，所以如果建议先降级到4版本，方法见<a href="http://m.blog.csdn.net/article/details?id=48135125" target="_blank" rel="external">ubuntu 中 gcc/g++版本降级</a></p>
+<h1 id="安装显卡驱动"><a href="#安装显卡驱动" class="headerlink" title="安装显卡驱动"></a>安装显卡驱动</h1><p><code>sudo apt-get install nvidia-367</code></p>
+<h1 id="安装Cuda"><a href="#安装Cuda" class="headerlink" title="安装Cuda"></a>安装Cuda</h1><h2 id="关闭你的图形界面"><a href="#关闭你的图形界面" class="headerlink" title="关闭你的图形界面"></a>关闭你的图形界面</h2><p><code>sudo service lightdm stop</code></p>
+<p>此时电脑应该会黑屏，</p>
+<p><code>CTRL + ALT + F1</code>进入命令行，登录，cd 到你存放下载的目录，执行</p>
+<p><code>sudo bash cuda_8.0.44_linux.run</code></p>
+<p>然后你会看到如<br><code>Do you accept the previously read EULA?accept/decline/quit:</code> 输入<code>accept</code></p>
+<p><code>Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 3xx.xx?</code> 输入 <code>no</code></p>
+<p>之后还会问你是否安装<code>X configuration</code> 输入<code>no</code></p>
+<p>安装好了之后，再用命令<code>sudo bash cuda_8.0.44_linux.run -slient -driver</code> 来安装驱动。</p>
+<p>最后<code>sudo service lightdm start</code>或者重启。</p>
+<h2 id="设置Cuda环境变量"><a href="#设置Cuda环境变量" class="headerlink" title="设置Cuda环境变量"></a>设置Cuda环境变量</h2><p><code>sudo vi ~/.bashrc</code></p>
+<p>添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export LD_LIBRARY_PATH=&quot;$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64&quot;</div><div class="line">export CUDA_HOME=/usr/local/cuda-8.0</div></pre></td></tr></table></figure>
+<p>保存退出</p>
+<p>再<code>source  .bashrc</code></p>
+<h1 id="Cudnn-安装"><a href="#Cudnn-安装" class="headerlink" title="Cudnn 安装"></a>Cudnn 安装</h1><h2 id="下载Cudnn"><a href="#下载Cudnn" class="headerlink" title="下载Cudnn"></a>下载Cudnn</h2><p>在此处下载：<a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="external">Membership Required | NVIDIA Developer</a>，这里你先得注册一个NVIDA账号，添一堆问卷。<br>有两种方法，一是deb安装包，二是下载tar</p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>选择 Download cuDNN v5.1 (Jan 20, 2017), for CUDA 8.0下载<br>cuDNN v5.1 Runtime Library for Ubuntu16.04 Power8 (Deb)安装</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>二是下载tar，解压后会得到一个Cuda文件夹，复制到Cuda-8.0文件夹中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda-8.0/include</div><div class="line">sudo cp cuda/lib64/libcudnn* /usr/local/cuda-8.0/lib64</div><div class="line">sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda-8.0/lib64/libcudnn*</div></pre></td></tr></table></figure></p>
+<h1 id="安装TensorFlow"><a href="#安装TensorFlow" class="headerlink" title="安装TensorFlow"></a>安装TensorFlow</h1><p><code>pip install tensorflow-gpu</code></p>
+<h1 id="测试TF"><a href="#测试TF" class="headerlink" title="测试TF"></a>测试TF</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ python</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>hello = tf.constant(<span class="string">'Hello, TensorFlow!'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>sess = tf.Session()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(sess.run(hello))</div><div class="line">Hello, TensorFlow!</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = tf.constant(<span class="number">10</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = tf.constant(<span class="number">32</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(sess.run(a + b))</div><div class="line"><span class="number">42</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<p>若打印一系列包含Gpu信息的说明，恭喜你，安装成功！！！</p>
 
       
     </div>
@@ -364,13 +352,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/">RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/">Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&amp;CudNN)及Gpu版TensorFlow</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2016-06-22, 21:42:51</p>
-        <p><span>最后更新:</span>2017-01-13, 17:47:09</p>
+        <p><span>发布时间:</span>2017-04-20, 09:29:22</p>
+        <p><span>最后更新:</span>2017-04-20, 10:04:39</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/" title="RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO">http://frankchen.xyz/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/" title="Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&amp;CudNN)及Gpu版TensorFlow">http://frankchen.xyz/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -382,16 +370,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/">
-                    如何解决Linux 下 zip 文件解压乱码
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">
-                    RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS
+                <a href="/2017/04/19/创建双击可执行的sh脚本/">
+                    创建双击可执行的sh脚本
                 </a>
             </div>
         
@@ -403,7 +385,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#下载Cuda"><span class="toc-number">1.</span> <span class="toc-text">下载Cuda</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#降级gcc和g"><span class="toc-number">2.</span> <span class="toc-text">降级gcc和g++</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装显卡驱动"><span class="toc-number">3.</span> <span class="toc-text">安装显卡驱动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Cuda"><span class="toc-number">4.</span> <span class="toc-text">安装Cuda</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关闭你的图形界面"><span class="toc-number">4.1.</span> <span class="toc-text">关闭你的图形界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置Cuda环境变量"><span class="toc-number">4.2.</span> <span class="toc-text">设置Cuda环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Cudnn-安装"><span class="toc-number">5.</span> <span class="toc-text">Cudnn 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载Cudnn"><span class="toc-number">5.1.</span> <span class="toc-text">下载Cudnn</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-number">5.1.1.</span> <span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二"><span class="toc-number">5.1.2.</span> <span class="toc-text">方法二</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装TensorFlow"><span class="toc-number">6.</span> <span class="toc-text">安装TensorFlow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试TF"><span class="toc-number">7.</span> <span class="toc-text">测试TF</span></a></li></ol>
         
     </div>
     <style>
@@ -439,7 +421,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&CudNN)及Gpu版TensorFlow　| loop in data　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -473,15 +455,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/16/2016-07-16-ru-he-jie-jue-linux-xia-zip-wen-jian-jie-ya-luan-ma/" title="上一篇: 如何解决Linux 下 zip 文件解压乱码">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/" title="下一篇: RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS">
+            <a href="/2017/04/19/创建双击可执行的sh脚本/" title="下一篇: 创建双击可执行的sh脚本">
                 <i class="fa fa-angle-right"></i>
             </a>
         
