@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="loop in data">
 <meta property="og:description" content="近来入坑了TITAN 1080显卡，在Ubuntu 16.04下为装好驱动以使用Gpu版TensorFlow可不简单，踩了许多坑之后写下此篇为记录。">
 <meta property="og:image" content="http://frankchen.xyz/images/2017/04/3864914136-589146eda380f_articlex.png">
-<meta property="og:updated_time" content="2017-04-20T02:14:40.000Z">
+<meta property="og:updated_time" content="2017-04-20T07:49:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&CudNN)及Gpu版TensorFlow">
 <meta name="twitter:description" content="近来入坑了TITAN 1080显卡，在Ubuntu 16.04下为装好驱动以使用Gpu版TensorFlow可不简单，踩了许多坑之后写下此篇为记录。">
@@ -142,13 +142,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
+                        <li>Menu</li>
+                        <li>Tags</li>
                         
-                        <li>友情链接</li>
+                        <li>Friends</li>
                         
                         
-                        <li>关于我</li>
+                        <li>About Me</li>
                         
                     </ul>
                 </div>
@@ -276,7 +276,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
       <div class="body-wrap"><article id="post-Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -341,7 +341,11 @@
 <h1 id="Cudnn-安装"><a href="#Cudnn-安装" class="headerlink" title="Cudnn 安装"></a>Cudnn 安装</h1><h2 id="下载Cudnn"><a href="#下载Cudnn" class="headerlink" title="下载Cudnn"></a>下载Cudnn</h2><p>在此处下载：<a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="external">Membership Required | NVIDIA Developer</a>，这里你先得注册一个NVIDA账号，填写一堆问卷。<br>有两种方法，一是deb安装包，二是下载tar</p>
 <h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>选择 Download cuDNN v5.1 (Jan 20, 2017), for CUDA 8.0下载<br>cuDNN v5.1 Runtime Library for Ubuntu16.04 Power8 (Deb)安装</p>
 <h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>二是下载tar，解压后会得到一个Cuda文件夹，复制到Cuda-8.0文件夹中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda-8.0/include</div><div class="line">sudo cp cuda/lib64/libcudnn* /usr/local/cuda-8.0/lib64</div><div class="line">sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda-8.0/lib64/libcudnn*</div></pre></td></tr></table></figure></p>
-<h1 id="安装TensorFlow"><a href="#安装TensorFlow" class="headerlink" title="安装TensorFlow"></a>安装TensorFlow</h1><p><code>pip install tensorflow-gpu</code></p>
+<h1 id="安装TensorFlow"><a href="#安装TensorFlow" class="headerlink" title="安装TensorFlow"></a>安装TensorFlow</h1><p>这里我们使用Anaconda装Python3，</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>下载好安装脚本之后，<br><code>bash ~/Downloads/Anaconda3-4.3.0-Linux-x86_64.sh</code>安装，记得在询问是否添加PATH时选择<code>yes</code></p>
+<p><code>pip install tensorflow-gpu</code></p>
+<h2 id="建立虚拟环境"><a href="#建立虚拟环境" class="headerlink" title="建立虚拟环境"></a>建立虚拟环境</h2><p>新建环境<code>conda create -n tensorflow</code><br>激活环境<code>source activate tensorflow</code><br>此时已处于此环境下</p>
+<h2 id="安装TensorFlow-1"><a href="#安装TensorFlow-1" class="headerlink" title="安装TensorFlow"></a>安装TensorFlow</h2><p><code>conda install tensorflow-gpu</code><br>这里Anaconda会自动安装依赖，直到全部完成</p>
 <h1 id="测试TF"><a href="#测试TF" class="headerlink" title="测试TF"></a>测试TF</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ python</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>hello = tf.constant(<span class="string">'Hello, TensorFlow!'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>sess = tf.Session()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(sess.run(hello))</div><div class="line">Hello, TensorFlow!</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = tf.constant(<span class="number">10</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = tf.constant(<span class="number">32</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(sess.run(a + b))</div><div class="line"><span class="number">42</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <p>若打印一系列包含Gpu信息的说明，恭喜你，安装成功！！！</p>
 
@@ -352,17 +356,17 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/">Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&amp;CudNN)及Gpu版TensorFlow</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2017-04-20, 09:29:22</p>
-        <p><span>最后更新:</span>2017-04-20, 10:14:40</p>
+        <p><span>Title:</span><a href="/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/">Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&amp;CudNN)及Gpu版TensorFlow</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">江南消夏</a></p>
+        <p><span>Created:</span>2017-04-20, 09:29:22</p>
+        <p><span>Updated:</span>2017-04-20, 15:49:47</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/" title="Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&amp;CudNN)及Gpu版TensorFlow">http://frankchen.xyz/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/" title="Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&amp;CudNN)及Gpu版TensorFlow">http://frankchen.xyz/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/</a>
+            <span class="copy-path" data-clipboard-text="From http://frankchen.xyz/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
         </p>
     </div>
 
@@ -383,9 +387,9 @@
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#下载Cuda"><span class="toc-number">1.</span> <span class="toc-text">下载Cuda</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#降级gcc和g"><span class="toc-number">2.</span> <span class="toc-text">降级gcc和g++</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装显卡驱动"><span class="toc-number">3.</span> <span class="toc-text">安装显卡驱动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Cuda"><span class="toc-number">4.</span> <span class="toc-text">安装Cuda</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关闭你的图形界面"><span class="toc-number">4.1.</span> <span class="toc-text">关闭你的图形界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置Cuda环境变量"><span class="toc-number">4.2.</span> <span class="toc-text">设置Cuda环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Cudnn-安装"><span class="toc-number">5.</span> <span class="toc-text">Cudnn 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载Cudnn"><span class="toc-number">5.1.</span> <span class="toc-text">下载Cudnn</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-number">5.1.1.</span> <span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二"><span class="toc-number">5.1.2.</span> <span class="toc-text">方法二</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装TensorFlow"><span class="toc-number">6.</span> <span class="toc-text">安装TensorFlow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试TF"><span class="toc-number">7.</span> <span class="toc-text">测试TF</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#下载Cuda"><span class="toc-number">1.</span> <span class="toc-text">下载Cuda</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#降级gcc和g"><span class="toc-number">2.</span> <span class="toc-text">降级gcc和g++</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装显卡驱动"><span class="toc-number">3.</span> <span class="toc-text">安装显卡驱动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Cuda"><span class="toc-number">4.</span> <span class="toc-text">安装Cuda</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关闭你的图形界面"><span class="toc-number">4.1.</span> <span class="toc-text">关闭你的图形界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置Cuda环境变量"><span class="toc-number">4.2.</span> <span class="toc-text">设置Cuda环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Cudnn-安装"><span class="toc-number">5.</span> <span class="toc-text">Cudnn 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载Cudnn"><span class="toc-number">5.1.</span> <span class="toc-text">下载Cudnn</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-number">5.1.1.</span> <span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二"><span class="toc-number">5.1.2.</span> <span class="toc-text">方法二</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装TensorFlow"><span class="toc-number">6.</span> <span class="toc-text">安装TensorFlow</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载"><span class="toc-number">6.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建立虚拟环境"><span class="toc-number">6.2.</span> <span class="toc-text">建立虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装TensorFlow-1"><span class="toc-number">6.3.</span> <span class="toc-text">安装TensorFlow</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试TF"><span class="toc-number">7.</span> <span class="toc-text">测试TF</span></a></li></ol>
         
     </div>
     <style>
@@ -399,10 +403,10 @@
         }
     </style>
 
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
 
     <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
     </script>
 
 
@@ -455,13 +459,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/19/创建双击可执行的sh脚本/" title="下一篇: 创建双击可执行的sh脚本">
+            <a href="/2017/04/19/创建双击可执行的sh脚本/" title="Next: 创建双击可执行的sh脚本">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -484,14 +488,14 @@
                 2016-2017 江南消夏
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -500,7 +504,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -554,9 +558,9 @@ MathJax.Hub.Queue(function() {
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
