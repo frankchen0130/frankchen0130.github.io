@@ -15,16 +15,19 @@
 
 
 
-<meta name="description" content="作为数据科学业界独占鳌头的竞赛网站Kaggle为我们提供了简便的一键安装的Docker镜像，使得我们可以方便的在本地使用与Kaggle网站在线完全一致的环境，那么在Mac上如何安装和使用Kaggle的Docker镜像呢？">
+<meta name="description" content="总结一下基本算法，以备忘，以复习。当然，你别指望考官会直接考你这些，太基础，但是，当他知道你这些都写不出来的时候，你面试绝对没希望了。
+PS: 真的有面试官会考啊，至少Baidu会考…………">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac上安装Kaggle Docker 镜像的方法">
-<meta property="og:url" content="http://frankchen.xyz/2017/02/13/Install-Kaggle-Docker-on-Mac/index.html">
+<meta property="og:title" content="面试常见基础算法:排序/查找/树的遍历/链表/hash/堆栈（python版）">
+<meta property="og:url" content="http://frankchen.xyz/2017/05/04/Basic-Algorithms-in-Python/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
-<meta property="og:description" content="作为数据科学业界独占鳌头的竞赛网站Kaggle为我们提供了简便的一键安装的Docker镜像，使得我们可以方便的在本地使用与Kaggle网站在线完全一致的环境，那么在Mac上如何安装和使用Kaggle的Docker镜像呢？">
-<meta property="og:updated_time" content="2017-02-17T06:40:55.000Z">
+<meta property="og:description" content="总结一下基本算法，以备忘，以复习。当然，你别指望考官会直接考你这些，太基础，但是，当他知道你这些都写不出来的时候，你面试绝对没希望了。
+PS: 真的有面试官会考啊，至少Baidu会考…………">
+<meta property="og:updated_time" content="2017-05-04T06:23:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac上安装Kaggle Docker 镜像的方法">
-<meta name="twitter:description" content="作为数据科学业界独占鳌头的竞赛网站Kaggle为我们提供了简便的一键安装的Docker镜像，使得我们可以方便的在本地使用与Kaggle网站在线完全一致的环境，那么在Mac上如何安装和使用Kaggle的Docker镜像呢？">
+<meta name="twitter:title" content="面试常见基础算法:排序/查找/树的遍历/链表/hash/堆栈（python版）">
+<meta name="twitter:description" content="总结一下基本算法，以备忘，以复习。当然，你别指望考官会直接考你这些，太基础，但是，当他知道你这些都写不出来的时候，你面试绝对没希望了。
+PS: 真的有面试官会考啊，至少Baidu会考…………">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Mac上安装Kaggle Docker 镜像的方法 | 不正经数据科学家</title>
+<title>面试常见基础算法:排序/查找/树的遍历/链表/hash/堆栈（python版） | 不正经数据科学家</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -276,11 +279,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Install-Kaggle-Docker-on-Mac" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Basic-Algorithms-in-Python" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/13/Install-Kaggle-Docker-on-Mac/" class="article-date">
-      <time datetime="2017-02-12T18:31:56.000Z" itemprop="datePublished">2017-02-13</time>
+      <a href="/2017/05/04/Basic-Algorithms-in-Python/" class="article-date">
+      <time datetime="2017-05-04T06:08:10.000Z" itemprop="datePublished">2017-05-04</time>
 </a>
 
 
@@ -295,7 +298,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Mac上安装Kaggle Docker 镜像的方法
+      面试常见基础算法:排序/查找/树的遍历/链表/hash/堆栈（python版）
     </h1>
   
 
@@ -306,7 +309,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/">Data Science</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -316,14 +319,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>作为数据科学业界独占鳌头的竞赛网站Kaggle为我们提供了简便的一键安装的Docker镜像，使得我们可以方便的在本地<br>使用与Kaggle网站在线完全一致的环境，那么在Mac上如何安装和使用Kaggle的Docker镜像呢？</p>
-<a id="more"></a>
-<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><p>参考<a href="https://www.docker.com/" target="_blank" rel="external">Docker官网</a>的教程可以方便的下载安装Docker在Mac上。</p>
-<h2 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h2><p>安装好Docker并运行成功后，参考<a href="https://github.com/kaggle/docker-python" target="_blank" rel="external">这里</a>，在终端用如下这行命令<code>docker run --rm -it kaggle/python</code>，就会下载kaggle的python环境Docker镜像到本地，大小数G，如果出现握手失败等提示可以尝试挂VPN或者用Daocloud的服务来加速。</p>
-<h2 id="jupyter-notebook设置"><a href="#jupyter-notebook设置" class="headerlink" title="jupyter notebook设置"></a>jupyter notebook设置</h2><p>我们装好环境后当然不是只是为了在命令行内使用python环境，必须用jupyter notebook！那么怎么设置才能在本地的浏览器上连接容器内运行的内核呢？<br>参考<a href="http://blog.kaggle.com/2016/02/05/how-to-get-started-with-data-science-in-containers/" target="_blank" rel="external">这里</a>，在你的<code>.bashrc</code>或者<code>.bash_profile</code>文件内添加如下数行，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">kpython()&#123;</div><div class="line">  docker run -v $PWD:/tmp/working -w=/tmp/working --rm -it kaggle/python python &quot;$@&quot;</div><div class="line">&#125;</div><div class="line">ikpython() &#123;</div><div class="line">  docker run -v $PWD:/tmp/working -w=/tmp/working --rm -it kaggle/python ipython</div><div class="line">&#125;</div><div class="line">kjupyter() &#123;</div><div class="line">  (sleep 3 &amp;&amp; open &quot;http://$(docker-machine ip docker):8888&quot;)&amp;</div><div class="line">  docker run -v $PWD:/tmp/working -w=/tmp/working -p 8888:8888 --rm -it kaggle/python jupyter notebook --no-browser --ip=&quot;0.0.0.0&quot; --notebook-dir=/tmp/working</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>别忘了<code>source .bashrc</code>，之后就可以用<code>kjupyter</code>命令来运行<code>jupyter notebook</code>，只要进入命令行中提供的网址如<code>http://0.0.0.0:8888/?token=16185adf197d30dc82e9b88508a5ac585e6fa072c682117d</code>就可进入<code>jupyter notebook</code>。</p>
-
+        <p>总结一下基本算法，以备忘，以复习。<br>当然，你别指望考官会直接考你这些，太基础，但是，当他知道你这些都写不出来的时候，你面试绝对没希望了。</p>
+<p>PS: 真的有面试官会考啊，至少Baidu会考…………<br><a id="more"></a></p>
+<h2 id="8大排序"><a href="#8大排序" class="headerlink" title="8大排序"></a>8大排序</h2><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><h3 id="快速排序-QuickSort"><a href="#快速排序-QuickSort" class="headerlink" title="快速排序 QuickSort"></a>快速排序 QuickSort</h3><p>快速排序通常明显比同为 $Ο(n log n)$ 的其他算法更快，因此常被采用，而且快排采用了分治法的思想，所以在很多笔试面试中能经常看到快排的影子。可见掌握快排的重要性.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(arr)</span>:</span></div><div class="line">    <span class="keyword">if</span> len(arr) &lt;= <span class="number">1</span>: <span class="keyword">return</span> arr</div><div class="line">    </div><div class="line">    pivot = arr[len(arr) // <span class="number">2</span>]</div><div class="line">    left = [i <span class="keyword">for</span> i <span class="keyword">in</span> arr <span class="keyword">if</span> i&lt;pivot]    </div><div class="line">    middle = [i <span class="keyword">for</span> i <span class="keyword">in</span> arr <span class="keyword">if</span> i==pivot]</div><div class="line">    right = [i <span class="keyword">for</span> i <span class="keyword">in</span> arr <span class="keyword">if</span> i&gt;pivot]</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> quicksort(left) + middle + quicksort(right)</div></pre></td></tr></table></figure></p>
+<h3 id="堆排序-HeapSort"><a href="#堆排序-HeapSort" class="headerlink" title="堆排序 HeapSort"></a>堆排序 HeapSort</h3><h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><h2 id="查找："><a href="#查找：" class="headerlink" title="查找："></a>查找：</h2><h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><h2 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h2><h3 id="递归实现"><a href="#递归实现" class="headerlink" title="递归实现"></a>递归实现</h3><h3 id="非递归实现前序遍历（堆栈）"><a href="#非递归实现前序遍历（堆栈）" class="headerlink" title="非递归实现前序遍历（堆栈）"></a>非递归实现前序遍历（堆栈）</h3><h3 id="利用队列实现树的层次遍历"><a href="#利用队列实现树的层次遍历" class="headerlink" title="利用队列实现树的层次遍历"></a>利用队列实现树的层次遍历</h3><h3 id="二叉树的顺序查找"><a href="#二叉树的顺序查找" class="headerlink" title="二叉树的顺序查找"></a>二叉树的顺序查找</h3>
       
     </div>
     
@@ -331,13 +330,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/13/Install-Kaggle-Docker-on-Mac/">Mac上安装Kaggle Docker 镜像的方法</a></p>
+        <p><span>本文标题:</span><a href="/2017/05/04/Basic-Algorithms-in-Python/">面试常见基础算法:排序/查找/树的遍历/链表/hash/堆栈（python版）</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2017-02-13, 02:31:56</p>
-        <p><span>最后更新:</span>2017-02-17, 14:40:55</p>
+        <p><span>发布时间:</span>2017-05-04, 14:08:10</p>
+        <p><span>最后更新:</span>2017-05-04, 14:23:58</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/13/Install-Kaggle-Docker-on-Mac/" title="Mac上安装Kaggle Docker 镜像的方法">http://frankchen.xyz/2017/02/13/Install-Kaggle-Docker-on-Mac/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/02/13/Install-Kaggle-Docker-on-Mac/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/04/Basic-Algorithms-in-Python/" title="面试常见基础算法:排序/查找/树的遍历/链表/hash/堆栈（python版）">http://frankchen.xyz/2017/05/04/Basic-Algorithms-in-Python/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/05/04/Basic-Algorithms-in-Python/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -349,16 +348,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/02/16/Explanation-of-Convolutional-Neural-Networks/">
-                    Explanation of Convolutional Neural Networks
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/17/Note-for-SoloLearn-SQL/">
-                    Note for SoloLearn SQL
+                <a href="/2017/04/22/个人面经/">
+                    个人面经（百度、腾讯、鹏元数据、行云智能数据岗）
                 </a>
             </div>
         
@@ -370,7 +363,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker"><span class="toc-number">1.</span> <span class="toc-text">安装Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拉取镜像"><span class="toc-number">2.</span> <span class="toc-text">拉取镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jupyter-notebook设置"><span class="toc-number">3.</span> <span class="toc-text">jupyter notebook设置</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#8大排序"><span class="toc-number">1.</span> <span class="toc-text">8大排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#冒泡排序"><span class="toc-number">1.1.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择排序"><span class="toc-number">1.2.</span> <span class="toc-text">选择排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入排序"><span class="toc-number">1.3.</span> <span class="toc-text">插入排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#希尔排序"><span class="toc-number">1.4.</span> <span class="toc-text">希尔排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#归并排序"><span class="toc-number">1.5.</span> <span class="toc-text">归并排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速排序-QuickSort"><span class="toc-number">1.6.</span> <span class="toc-text">快速排序 QuickSort</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#堆排序-HeapSort"><span class="toc-number">1.7.</span> <span class="toc-text">堆排序 HeapSort</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基数排序"><span class="toc-number">1.8.</span> <span class="toc-text">基数排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找："><span class="toc-number">2.</span> <span class="toc-text">查找：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二分查找"><span class="toc-number">2.1.</span> <span class="toc-text">二分查找</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#树的遍历"><span class="toc-number">3.</span> <span class="toc-text">树的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#递归实现"><span class="toc-number">3.1.</span> <span class="toc-text">递归实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非递归实现前序遍历（堆栈）"><span class="toc-number">3.2.</span> <span class="toc-text">非递归实现前序遍历（堆栈）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用队列实现树的层次遍历"><span class="toc-number">3.3.</span> <span class="toc-text">利用队列实现树的层次遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉树的顺序查找"><span class="toc-number">3.4.</span> <span class="toc-text">二叉树的顺序查找</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -406,7 +399,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Mac上安装Kaggle Docker 镜像的方法　| 不正经数据科学家　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"面试常见基础算法:排序/查找/树的遍历/链表/hash/堆栈（python版）　| 不正经数据科学家　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -440,15 +433,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/16/Explanation-of-Convolutional-Neural-Networks/" title="上一篇: Explanation of Convolutional Neural Networks">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/17/Note-for-SoloLearn-SQL/" title="下一篇: Note for SoloLearn SQL">
+            <a href="/2017/04/22/个人面经/" title="下一篇: 个人面经（百度、腾讯、鹏元数据、行云智能数据岗）">
                 <i class="fa fa-angle-right"></i>
             </a>
         
