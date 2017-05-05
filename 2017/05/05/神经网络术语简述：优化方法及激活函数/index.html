@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="记录自找工作以来个人的面试经历与一些思考。">
+<meta name="description" content="简述关于神经网络的各种优化方法（SGD，Adagrad，Adadelta，Adam，Adamax，Nadam）以及各种激活函数（Sigmoid，Tanh、Hard Sigmoid、Softplus、ReLU、ElU、PReLU、RReLU）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="个人面经（百度、腾讯、鹏元数据、行云智能数据岗）">
-<meta property="og:url" content="http://frankchen.xyz/2017/04/22/个人面经/index.html">
+<meta property="og:title" content="神经网络术语简述：优化方法及激活函数">
+<meta property="og:url" content="http://frankchen.xyz/2017/05/05/神经网络术语简述：优化方法及激活函数/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
-<meta property="og:description" content="记录自找工作以来个人的面试经历与一些思考。">
-<meta property="og:updated_time" content="2017-04-25T01:23:44.000Z">
+<meta property="og:description" content="简述关于神经网络的各种优化方法（SGD，Adagrad，Adadelta，Adam，Adamax，Nadam）以及各种激活函数（Sigmoid，Tanh、Hard Sigmoid、Softplus、ReLU、ElU、PReLU、RReLU）">
+<meta property="og:updated_time" content="2017-05-05T06:29:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人面经（百度、腾讯、鹏元数据、行云智能数据岗）">
-<meta name="twitter:description" content="记录自找工作以来个人的面试经历与一些思考。">
+<meta name="twitter:title" content="神经网络术语简述：优化方法及激活函数">
+<meta name="twitter:description" content="简述关于神经网络的各种优化方法（SGD，Adagrad，Adadelta，Adam，Adamax，Nadam）以及各种激活函数（Sigmoid，Tanh、Hard Sigmoid、Softplus、ReLU、ElU、PReLU、RReLU）">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>个人面经（百度、腾讯、鹏元数据、行云智能数据岗） | 不正经数据科学家</title>
+<title>神经网络术语简述：优化方法及激活函数 | 不正经数据科学家</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -276,11 +276,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-个人面经" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-神经网络术语简述：优化方法及激活函数" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/22/个人面经/" class="article-date">
-      <time datetime="2017-04-22T06:51:17.000Z" itemprop="datePublished">2017-04-22</time>
+      <a href="/2017/05/05/神经网络术语简述：优化方法及激活函数/" class="article-date">
+      <time datetime="2017-05-05T06:25:21.000Z" itemprop="datePublished">2017-05-05</time>
 </a>
 
 
@@ -295,7 +295,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      个人面经（百度、腾讯、鹏元数据、行云智能数据岗）
+      神经网络术语简述：优化方法及激活函数
     </h1>
   
 
@@ -306,7 +306,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Interview/">Interview</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning/">Deep Learning</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -316,53 +316,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>记录自找工作以来个人的面试经历与一些思考。</p>
+        <p>简述关于神经网络的各种优化方法（SGD，Adagrad，Adadelta，Adam，Adamax，Nadam）以及各种激活函数（Sigmoid，Tanh、Hard Sigmoid、Softplus、ReLU、ElU、PReLU、RReLU）</p>
 <a id="more"></a>
-<h2 id="百度数据挖掘一面（电话面）"><a href="#百度数据挖掘一面（电话面）" class="headerlink" title="百度数据挖掘一面（电话面）"></a>百度数据挖掘一面（电话面）</h2><ol>
-<li>介绍项目</li>
-<li>问题</li>
-<li>基础知识：java的多态、map和垃圾回收</li>
-<li>如何用网络知识让抢火车票更快</li>
-<li>快排的思想、时间和空间复杂度、如果是整数排序有没有O(n)的解法</li>
-<li>逻辑回归线性回归区别</li>
-<li>linux怎么查看某文件当前被哪些进程访问</li>
-<li>vim如何查找替换</li>
-</ol>
-<h2 id="百度运维一面（电话面）"><a href="#百度运维一面（电话面）" class="headerlink" title="百度运维一面（电话面）"></a>百度运维一面（电话面）</h2><ol>
-<li>聊项目</li>
-<li>python字符串的替换</li>
-<li>SQL的优化</li>
-<li>LInux 如何找进程杀进程</li>
-</ol>
-<h2 id="百度运维二面（现场面）"><a href="#百度运维二面（现场面）" class="headerlink" title="百度运维二面（现场面）"></a>百度运维二面（现场面）</h2><ol>
-<li>聊项目</li>
-<li>手写冒泡</li>
-</ol>
-<h2 id="行云智能一面（现场面）"><a href="#行云智能一面（现场面）" class="headerlink" title="行云智能一面（现场面）"></a>行云智能一面（现场面）</h2><p>遇到面试官是西电校友</p>
-<ol>
-<li>聊项目</li>
-<li>CNN的思想：pooling的方式、卷积的思想</li>
-<li>设计模式有什么了解</li>
-<li>多线程多进程的了解</li>
-<li>快排的思想</li>
-<li>手写代码二叉树删除</li>
-</ol>
-<h2 id="中科乐创一面（现场面）"><a href="#中科乐创一面（现场面）" class="headerlink" title="中科乐创一面（现场面）"></a>中科乐创一面（现场面）</h2><p>最尴尬的一次，面试官是南洋理工的，聊了聊我的项目就似乎对我不感兴趣，就开始和我聊家常。。。</p>
-<h2 id="鹏元数据一面（现场面）"><a href="#鹏元数据一面（现场面）" class="headerlink" title="鹏元数据一面（现场面）"></a>鹏元数据一面（现场面）</h2><ol>
-<li>聊项目</li>
-<li>做了张试卷如 </li>
-</ol>
-<ul>
-<li>推导极大似然估计</li>
-<li>聚类与分类区别，列举常用聚类算法及程序包</li>
-<li>一些简单的SQL命令</li>
-<li>编程题：列举一串数字内奇偶数出现次数及引申出的结合他们业务的评级转换矩阵的打印</li>
-</ul>
-<h2 id="腾讯基础研究一面（现场面）"><a href="#腾讯基础研究一面（现场面）" class="headerlink" title="腾讯基础研究一面（现场面）"></a>腾讯基础研究一面（现场面）</h2><ol>
-<li>聊项目</li>
-<li>聚类与分类区别，常用聚类算法<br>思考：诸如此类列举算法的问题，最好是迅速流利的列举出多个，不要有迟疑，不过对于其基本含义要有了解。</li>
-<li>场景题，两个含有数字的文件，找出同时出现在两个文件内的数字；若文件太大放不进内存该怎么办？<br>思考：这种问题可小可大，可难可易。因为哪怕再小的问题在规模变大也就是涉及到大数据都是不简单的，这个问题，对于小文件，两三行代码即可搞定，那么你写出来之后，面试官基本上就会进一步问你：如果文件很大，无法同时把这两个文件装进内存，怎么办？我当时回答的是用Pandas的read_csv分块读取，这是个很不好的回答，因为掉包不是基本功。我回头想了想，也许这个答案是用generator比较好。</li>
-</ol>
+<p>PASS</p>
 
       
     </div>
@@ -371,13 +327,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/22/个人面经/">个人面经（百度、腾讯、鹏元数据、行云智能数据岗）</a></p>
+        <p><span>本文标题:</span><a href="/2017/05/05/神经网络术语简述：优化方法及激活函数/">神经网络术语简述：优化方法及激活函数</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
-        <p><span>发布时间:</span>2017-04-22, 14:51:17</p>
-        <p><span>最后更新:</span>2017-04-25, 09:23:44</p>
+        <p><span>发布时间:</span>2017-05-05, 14:25:21</p>
+        <p><span>最后更新:</span>2017-05-05, 14:29:55</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/22/个人面经/" title="个人面经（百度、腾讯、鹏元数据、行云智能数据岗）">http://frankchen.xyz/2017/04/22/个人面经/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/04/22/个人面经/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/05/神经网络术语简述：优化方法及激活函数/" title="神经网络术语简述：优化方法及激活函数">http://frankchen.xyz/2017/05/05/神经网络术语简述：优化方法及激活函数/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/05/05/神经网络术语简述：优化方法及激活函数/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -389,16 +345,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/05/04/Basic-Algorithms-in-Python/">
-                    面试常见基础算法:排序/查找/树的遍历等（python版）
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/">
-                    Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&amp;CudNN)及Gpu版TensorFlow
+                <a href="/2017/05/04/Basic-Algorithms-in-Python/">
+                    面试常见基础算法:排序/查找/树的遍历等（python版）
                 </a>
             </div>
         
@@ -410,7 +360,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#百度数据挖掘一面（电话面）"><span class="toc-number">1.</span> <span class="toc-text">百度数据挖掘一面（电话面）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#百度运维一面（电话面）"><span class="toc-number">2.</span> <span class="toc-text">百度运维一面（电话面）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#百度运维二面（现场面）"><span class="toc-number">3.</span> <span class="toc-text">百度运维二面（现场面）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行云智能一面（现场面）"><span class="toc-number">4.</span> <span class="toc-text">行云智能一面（现场面）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中科乐创一面（现场面）"><span class="toc-number">5.</span> <span class="toc-text">中科乐创一面（现场面）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#鹏元数据一面（现场面）"><span class="toc-number">6.</span> <span class="toc-text">鹏元数据一面（现场面）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#腾讯基础研究一面（现场面）"><span class="toc-number">7.</span> <span class="toc-text">腾讯基础研究一面（现场面）</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -446,7 +396,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"个人面经（百度、腾讯、鹏元数据、行云智能数据岗）　| 不正经数据科学家　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"神经网络术语简述：优化方法及激活函数　| 不正经数据科学家　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -462,7 +412,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/04/22/个人面经/" data-title="个人面经（百度、腾讯、鹏元数据、行云智能数据岗）" data-url="http://frankchen.xyz/2017/04/22/个人面经/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/05/05/神经网络术语简述：优化方法及激活函数/" data-title="神经网络术语简述：优化方法及激活函数" data-url="http://frankchen.xyz/2017/05/05/神经网络术语简述：优化方法及激活函数/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -485,15 +435,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/05/04/Basic-Algorithms-in-Python/" title="上一篇: 面试常见基础算法:排序/查找/树的遍历等（python版）">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/20/Ubuntu-16-04下为TITAN-1080-显卡安装驱动-Cuda-CudNN-及Gpu版TensorFlow/" title="下一篇: Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&amp;CudNN)及Gpu版TensorFlow">
+            <a href="/2017/05/04/Basic-Algorithms-in-Python/" title="下一篇: 面试常见基础算法:排序/查找/树的遍历等（python版）">
                 <i class="fa fa-angle-right"></i>
             </a>
         
