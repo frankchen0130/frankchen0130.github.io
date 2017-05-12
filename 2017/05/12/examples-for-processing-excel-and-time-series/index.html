@@ -15,18 +15,20 @@
 
 
 
-<meta name="description" content="About 两处python源码的趣味解读。">
+<meta name="description" content="记录一些利用Pandas处理Excel和时间戳的例子。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python源码解析0：趣事">
-<meta property="og:url" content="http://frankchen.xyz/2017/03/18/python-source-code-reading-0/index.html">
+<meta property="og:title" content="Pandas 处理 Excel 和 时间序列的一些例子">
+<meta property="og:url" content="http://frankchen.xyz/2017/05/12/examples-for-processing-excel-and-time-series/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
-<meta property="og:description" content="About 两处python源码的趣味解读。">
-<meta property="og:image" content="http://frankchen.xyz/images/2017/03/python.png">
-<meta property="og:updated_time" content="2017-04-18T01:14:26.000Z">
+<meta property="og:description" content="记录一些利用Pandas处理Excel和时间戳的例子。">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/05/Screen Shot 2017-05-12 at 11.50.35.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/05/Screen Shot 2017-05-12 at 11.51.26.png">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/05/Screen Shot 2017-05-12 at 12.02.33.png">
+<meta property="og:updated_time" content="2017-05-12T04:03:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python源码解析0：趣事">
-<meta name="twitter:description" content="About 两处python源码的趣味解读。">
-<meta name="twitter:image" content="http://frankchen.xyz/images/2017/03/python.png">
+<meta name="twitter:title" content="Pandas 处理 Excel 和 时间序列的一些例子">
+<meta name="twitter:description" content="记录一些利用Pandas处理Excel和时间戳的例子。">
+<meta name="twitter:image" content="http://frankchen.xyz/images/2017/05/Screen Shot 2017-05-12 at 11.50.35.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>python源码解析0：趣事 | 不正经数据科学家</title>
+<title>Pandas 处理 Excel 和 时间序列的一些例子 | 不正经数据科学家</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -280,11 +282,11 @@
     </div>
     <link class="menu-list" tags="標籤" friends="友情鏈接" about="關於我"/>
 </nav>
-      <div class="body-wrap"><article id="post-python-source-code-reading-0" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-examples-for-processing-excel-and-time-series" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/18/python-source-code-reading-0/" class="article-date">
-      <time datetime="2017-03-17T19:56:23.000Z" itemprop="datePublished">2017-03-18</time>
+      <a href="/2017/05/12/examples-for-processing-excel-and-time-series/" class="article-date">
+      <time datetime="2017-05-12T03:43:34.000Z" itemprop="datePublished">2017-05-12</time>
 </a>
 
 
@@ -299,7 +301,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      python源码解析0：趣事
+      Pandas 处理 Excel 和 时间序列的一些例子
     </h1>
   
 
@@ -310,7 +312,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/">Data Science</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pandas/">Pandas</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -320,26 +322,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>About 两处python源码的趣味解读。</p>
-<a id="more"></a>
-<h3 id="The-Zen-of-Python"><a href="#The-Zen-of-Python" class="headerlink" title="The Zen of Python"></a>The Zen of Python</h3><p>我们知道，<code>import this</code>会打印如下“蟒蛇之禅”：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">The Zen of Python, by Tim Peters</div><div class="line"></div><div class="line">Beautiful is better than ugly.</div><div class="line">Explicit is better than implicit.</div><div class="line">Simple is better than complex.</div><div class="line">Complex is better than complicated.</div><div class="line">Flat is better than nested.</div><div class="line">Sparse is better than dense.</div><div class="line">Readability counts.</div><div class="line">Special cases aren't special enough to break the rules.</div><div class="line">Although practicality beats purity.</div><div class="line">Errors should never pass silently.</div><div class="line">Unless explicitly silenced.</div><div class="line">In the face of ambiguity, refuse the temptation to guess.</div><div class="line">There should be one-- and preferably only one --obvious way to do it.</div><div class="line">Although that way may not be obvious at first unless you're Dutch.</div><div class="line">Now is better than never.</div><div class="line">Although never is often better than *right* now.</div><div class="line">If the implementation is hard to explain, it's a bad idea.</div><div class="line">If the implementation is easy to explain, it may be a good idea.</div><div class="line">Namespaces are one honking great idea -- let's do more of those!</div></pre></td></tr></table></figure>
-<p>但是在source里面也就是<code>2.7/Lib/this.py</code>里，是这样的：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">"""Gur Mra bs Clguba, ol Gvz Crgref</span></div><div class="line"></div><div class="line">Ornhgvshy vf orggre guna htyl.</div><div class="line">Rkcyvpvg vf orggre guna vzcyvpvg.</div><div class="line">Fvzcyr vf orggre guna pbzcyrk.</div><div class="line">Pbzcyrk vf orggre guna pbzcyvpngrq.</div><div class="line">Syng vf orggre guna arfgrq.</div><div class="line">Fcnefr vf orggre guna qrafr.</div><div class="line">Ernqnovyvgl pbhagf.</div><div class="line">Fcrpvny pnfrf nera'g fcrpvny rabhtu gb oernx gur ehyrf.</div><div class="line">Nygubhtu cenpgvpnyvgl orngf chevgl.</div><div class="line">Reebef fubhyq arire cnff fvyragyl.</div><div class="line">Hayrff rkcyvpvgyl fvyraprq.</div><div class="line">Va gur snpr bs nzovthvgl, ershfr gur grzcgngvba gb thrff.</div><div class="line">Gurer fubhyq or bar-- naq cersrenoyl bayl bar --boivbhf jnl gb qb vg.</div><div class="line">Nygubhtu gung jnl znl abg or boivbhf ng svefg hayrff lbh'er Qhgpu.</div><div class="line">Abj vf orggre guna arire.</div><div class="line">Nygubhtu arire vf bsgra orggre guna *evtug* abj.</div><div class="line">Vs gur vzcyrzragngvba vf uneq gb rkcynva, vg'f n onq vqrn.</div><div class="line">Vs gur vzcyrzragngvba vf rnfl gb rkcynva, vg znl or n tbbq vqrn.</div><div class="line">Anzrfcnprf ner bar ubaxvat terng vqrn -- yrg'f qb zber bs gubfr!"""</div><div class="line"></div><div class="line">d = &#123;&#125;</div><div class="line"><span class="keyword">for</span> c <span class="keyword">in</span> (<span class="number">65</span>, <span class="number">97</span>):</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">26</span>):</div><div class="line">        d[chr(i+c)] = chr((i+<span class="number">13</span>) % <span class="number">26</span> + c)</div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">""</span>.join([d.get(c, c) <span class="keyword">for</span> c <span class="keyword">in</span> s])</div></pre></td></tr></table></figure>
-<p>哈哈，这不就是<a href="https://zh.wikipedia.org/wiki/%E5%87%B1%E6%92%92%E5%AF%86%E7%A2%BC" target="_blank" rel="external">凯撒密码</a>么。。。每个字母分大小写(65:A, 97:a)都被对应到ASCII 表后13个位置，于是就有</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="string">'A'</span>: <span class="string">'N'</span>,</div><div class="line"> <span class="string">'B'</span>: <span class="string">'O'</span>,</div><div class="line"> <span class="string">'C'</span>: <span class="string">'P'</span>,</div><div class="line"> <span class="string">'D'</span>: <span class="string">'Q'</span>,</div><div class="line"> <span class="string">'E'</span>: <span class="string">'R'</span>,</div><div class="line"> <span class="string">'F'</span>: <span class="string">'S'</span>,</div><div class="line">....</div><div class="line"><span class="string">'s'</span>: <span class="string">'f'</span>,</div><div class="line"> <span class="string">'t'</span>: <span class="string">'g'</span>,</div><div class="line"> <span class="string">'u'</span>: <span class="string">'h'</span>,</div><div class="line"> <span class="string">'v'</span>: <span class="string">'i'</span>,</div><div class="line"> <span class="string">'w'</span>: <span class="string">'j'</span>,</div><div class="line"> <span class="string">'x'</span>: <span class="string">'k'</span>,</div><div class="line"> <span class="string">'y'</span>: <span class="string">'l'</span>,</div><div class="line"> <span class="string">'z'</span>: <span class="string">'m'</span>&#125;</div></pre></td></tr></table></figure>
-<p> 所以，原作者应该是这样写出来的密码的</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">"""The Zen of Python, by Tim Peters</span></div><div class="line"></div><div class="line">Beautiful is better than ugly.</div><div class="line">Explicit is better than implicit.</div><div class="line">Simple is better than complex.</div><div class="line">Complex is better than complicated.</div><div class="line">Flat is better than nested.</div><div class="line">Sparse is better than dense.</div><div class="line">Readability counts.</div><div class="line">Special cases aren't special enough to break the rules.</div><div class="line">Although practicality beats purity.</div><div class="line">Errors should never pass silently.</div><div class="line">Unless explicitly silenced.</div><div class="line">In the face of ambiguity, refuse the temptation to guess.</div><div class="line">There should be one-- and preferably only one --obvious way to do it.</div><div class="line">Although that way may not be obvious at first unless you're Dutch.</div><div class="line">Now is better than never.</div><div class="line">Although never is often better than *right* now.</div><div class="line">If the implementation is hard to explain, it's a bad idea.</div><div class="line">If the implementation is easy to explain, it may be a good idea.</div><div class="line">Namespaces are one honking great idea -- let's do more of those!"""</div><div class="line"></div><div class="line">d = &#123;&#125;</div><div class="line"><span class="keyword">for</span> c <span class="keyword">in</span> (<span class="number">65</span>, <span class="number">97</span>):</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">26</span>):</div><div class="line">        d[chr(i+c)] = chr((i<span class="number">-13</span>) % <span class="number">26</span> + c)</div><div class="line"></div><div class="line">print(<span class="string">""</span>.join([d.get(c, c) <span class="keyword">for</span> c <span class="keyword">in</span> s]))</div></pre></td></tr></table></figure>
-<p> 很神奇吧？哈哈，其实就是逆向一下就ok😎</p>
-<h3 id="antigravity"><a href="#antigravity" class="headerlink" title="antigravity"></a>antigravity</h3><p> 我们知道，在python里，<code>import antigravity</code>会让我们弹到一个<a href="https://xkcd.com/353/" target="_blank" rel="external">网站</a>，里面有这幅著名的图画</p>
-<p> <img src="/images/2017/03/python.png" alt=""></p>
-<p> python带我们飞！那么为什么会这样呢？</p>
-<p> 看看源码，</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> webbrowser</div><div class="line"></div><div class="line">webbrowser.open(<span class="string">"http://xkcd.com/353/"</span>)</div></pre></td></tr></table></figure>
-<p> 哈哈，原来就这两行，Are you kidding me?</p>
-<p> 关于这个的来龙去脉，可以看看这里：<a href="http://python-history.blogspot.com/2010/06/import-antigravity.html" target="_blank" rel="external">The History of Python: import antigravity</a>以及这里：<a href="http://sciyoshi.com/2008/12/import-antigravity/" target="_blank" rel="external">import antigravity | sciyoshi.com</a>，大意是源自google的一个复活节彩蛋。值得注意的是，python3的antigravity彩蛋升级了！不信你看</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> webbrowser</div><div class="line"><span class="keyword">import</span> hashlib</div><div class="line"></div><div class="line">webbrowser.open(<span class="string">"https://xkcd.com/353/"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">geohash</span><span class="params">(latitude, longitude, datedow)</span>:</span></div><div class="line">    <span class="string">'''Compute geohash() using the Munroe algorithm.</span></div><div class="line"></div><div class="line">    &gt;&gt;&gt; geohash(37.421542, -122.085589, b'2005-05-26-10458.68')</div><div class="line">    37.857713 -122.544543</div><div class="line"></div><div class="line">    '''</div><div class="line">    <span class="comment"># http://xkcd.com/426/</span></div><div class="line">    h = hashlib.md5(datedow).hexdigest()</div><div class="line">    p, q = [(<span class="string">'%f'</span> % float.fromhex(<span class="string">'0.'</span> + x)) <span class="keyword">for</span> x <span class="keyword">in</span> (h[:<span class="number">16</span>], h[<span class="number">16</span>:<span class="number">32</span>])]</div><div class="line">    print(<span class="string">'%d%s %d%s'</span> % (latitude, p[<span class="number">1</span>:], longitude, q[<span class="number">1</span>:]))</div></pre></td></tr></table></figure>
-<p> 里面隐藏了一个计算<a href="https://en.wikipedia.org/wiki/Geohashing" target="_blank" rel="external">Geohashing</a>的算法，可以根据给定点坐标的经纬度以及当前时间计算一个随机的新的点坐标。</p>
+        <p>记录一些利用Pandas处理Excel和时间戳的例子。<br><a id="more"></a></p>
+<h3 id="读取和保存Excel"><a href="#读取和保存Excel" class="headerlink" title="读取和保存Excel"></a>读取和保存Excel</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># sheetname指定读取子表</div><div class="line">dfs = pd.read_excel(&apos;/Users/frank/Desktop/hebing.xlsx&apos;, sheetname=0)</div><div class="line"></div><div class="line">c.to_excel(&apos;/Users/frank/Desktop/result.xlsx&apos;,index=False)</div></pre></td></tr></table></figure>
+<h3 id="DataFrame合并及排序"><a href="#DataFrame合并及排序" class="headerlink" title="DataFrame合并及排序"></a>DataFrame合并及排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dfs_group = dfs.groupby(by=&apos;订单号&apos;).sum()</div><div class="line">dfs_group.sort_values(ascending=False, by=&apos;子订单金额&apos;)</div></pre></td></tr></table></figure>
+<h3 id="时间段切片"><a href="#时间段切片" class="headerlink" title="时间段切片"></a>时间段切片</h3><p>这个我暂时没发现如何用一行表达式完成，暂时用的这种low方式🤣<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = dfs.loc[dfs[&quot;付款时间&quot;] &lt; &apos;2017-05-10 09:00:00&apos;]</div><div class="line">b = a.loc[a[&quot;付款时间&quot;] &gt; &apos;2017-05-08 10:00:00&apos;]</div></pre></td></tr></table></figure></p>
+<h3 id="解决长数字被转为科学计数法的问题"><a href="#解决长数字被转为科学计数法的问题" class="headerlink" title="解决长数字被转为科学计数法的问题"></a>解决长数字被转为科学计数法的问题</h3><p>比如好好的订单号，</p>
+<p><img src="/images/2017/05/Screen Shot 2017-05-12 at 11.50.35.png" width="200"><br>保存为xlsx或者csv就变成了这样，这是什么玩意儿，完全不能忍啊！🤡🤓🤑</p>
+<p><img src="/images/2017/05/Screen Shot 2017-05-12 at 11.51.26.png" width="100"><br>如何解决呢？如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c[&apos;订单号&apos;] = c[&apos;订单号&apos;].apply(lambda x: &apos;&#123;:.0f&#125;&apos;.format(x))</div></pre></td></tr></table></figure>
+<p>即将其长数字转为不带小数点的浮点数形式即可😎</p>
+<p><img src="/images/2017/05/Screen Shot 2017-05-12 at 12.02.33.png" width="200"></p>
 
       
     </div>
@@ -348,13 +340,13 @@
   
     
     <div class="copyright">
-        <p><span>本文標題:</span><a href="/2017/03/18/python-source-code-reading-0/">python源码解析0：趣事</a></p>
+        <p><span>本文標題:</span><a href="/2017/05/12/examples-for-processing-excel-and-time-series/">Pandas 处理 Excel 和 时间序列的一些例子</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主頁">江南消夏</a></p>
-        <p><span>發布時間:</span>2017-03-18, 03:56:23</p>
-        <p><span>最後更新:</span>2017-04-18, 09:14:26</p>
+        <p><span>發布時間:</span>2017-05-12, 11:43:34</p>
+        <p><span>最後更新:</span>2017-05-12, 12:03:32</p>
         <p>
-            <span>原始鏈接:</span><a class="post-url" href="/2017/03/18/python-source-code-reading-0/" title="python源码解析0：趣事">http://frankchen.xyz/2017/03/18/python-source-code-reading-0/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/03/18/python-source-code-reading-0/　　作者: 江南消夏" title="點擊複製文章鏈接"><i class="fa fa-clipboard"></i></span>
+            <span>原始鏈接:</span><a class="post-url" href="/2017/05/12/examples-for-processing-excel-and-time-series/" title="Pandas 处理 Excel 和 时间序列的一些例子">http://frankchen.xyz/2017/05/12/examples-for-processing-excel-and-time-series/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/05/12/examples-for-processing-excel-and-time-series/　　作者: 江南消夏" title="點擊複製文章鏈接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -366,16 +358,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/">
-                    Basic Linux/Unix command Interview Questions
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/03/15/programmer-humor-week-0/">
-                    programmer humor week 0
+                <a href="/2017/05/05/神经网络术语简述：优化方法及激活函数/">
+                    神经网络术语简述：优化方法及激活函数
                 </a>
             </div>
         
@@ -387,7 +373,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目錄</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Zen-of-Python"><span class="toc-number">1.</span> <span class="toc-text">The Zen of Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#antigravity"><span class="toc-number">2.</span> <span class="toc-text">antigravity</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#读取和保存Excel"><span class="toc-number">1.</span> <span class="toc-text">读取和保存Excel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataFrame合并及排序"><span class="toc-number">2.</span> <span class="toc-text">DataFrame合并及排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间段切片"><span class="toc-number">3.</span> <span class="toc-text">时间段切片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决长数字被转为科学计数法的问题"><span class="toc-number">4.</span> <span class="toc-text">解决长数字被转为科学计数法的问题</span></a></li></ol>
         
     </div>
     <style>
@@ -423,7 +409,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"python源码解析0：趣事　| 不正经数据科学家　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Pandas 处理 Excel 和 时间序列的一些例子　| 不正经数据科学家　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -439,7 +425,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/18/python-source-code-reading-0/" data-title="python源码解析0：趣事" data-url="http://frankchen.xyz/2017/03/18/python-source-code-reading-0/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/05/12/examples-for-processing-excel-and-time-series/" data-title="Pandas 处理 Excel 和 时间序列的一些例子" data-url="http://frankchen.xyz/2017/05/12/examples-for-processing-excel-and-time-series/"></div>
     <script>
         var duoshuoQuery = {short_name:"frankchen0130"};
         var loadComment = function(){
@@ -462,15 +448,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/" title="上一篇: Basic Linux/Unix command Interview Questions">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主頁"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/03/15/programmer-humor-week-0/" title="下一篇: programmer humor week 0">
+            <a href="/2017/05/05/神经网络术语简述：优化方法及激活函数/" title="下一篇: 神经网络术语简述：优化方法及激活函数">
                 <i class="fa fa-angle-right"></i>
             </a>
         
