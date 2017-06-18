@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="“Fluent Python” 真是一本不可多得的中级Python神书！读时感觉就像一个老司机讲他的经历，">
+<meta name="description" content="“Fluent Python” 真是一本不可多得的中级Python神书！读时感觉就像一个老司机讲他的经历，而你情不自禁的喊“666~”。本文记录一些从书里看到的精彩片段与心得。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Learning Something from Fluent Python">
 <meta property="og:url" content="http://frankchen.xyz/2017/06/18/Learning-Something-from-Fluent-Python/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
-<meta property="og:description" content="“Fluent Python” 真是一本不可多得的中级Python神书！读时感觉就像一个老司机讲他的经历，">
-<meta property="og:updated_time" content="2017-06-18T11:43:58.000Z">
+<meta property="og:description" content="“Fluent Python” 真是一本不可多得的中级Python神书！读时感觉就像一个老司机讲他的经历，而你情不自禁的喊“666~”。本文记录一些从书里看到的精彩片段与心得。">
+<meta property="og:updated_time" content="2017-06-18T12:01:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learning Something from Fluent Python">
-<meta name="twitter:description" content="“Fluent Python” 真是一本不可多得的中级Python神书！读时感觉就像一个老司机讲他的经历，">
+<meta name="twitter:description" content="“Fluent Python” 真是一本不可多得的中级Python神书！读时感觉就像一个老司机讲他的经历，而你情不自禁的喊“666~”。本文记录一些从书里看到的精彩片段与心得。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -322,7 +322,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>“Fluent Python” 真是一本不可多得的中级Python神书！读时感觉就像一个老司机讲他的经历，</p>
+        <p>“Fluent Python” 真是一本不可多得的中级Python神书！读时感觉就像一个老司机讲他的经历，而你情不自禁的喊“666~”。本文记录一些从书里看到的精彩片段与心得。</p>
+<a id="more"></a>
+<h2 id="singledispatch装饰器"><a href="#singledispatch装饰器" class="headerlink" title="singledispatch装饰器"></a>singledispatch装饰器</h2><p>functools.singledispatch 装饰器是在Python 3.4中引入的新特性，类似java 的方法重载，可以让你方便的为不同的类型参数调用不同函数。书中举的一个场景是比如，我们需要为不同的参数生成不同格式的HTML tag，那么如果用一个函数来表达这个逻辑，可能需要非常多的if-else逻辑的跳转，这不仅很繁杂，而且不利于后期的维护与迭代，那么singledispatch 装饰器就可以让你从这个局面里解放出来，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf8 -*-</span></div><div class="line"><span class="comment"># Created by frank at 18/06/2017</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> singledispatch</div><div class="line"></div><div class="line"><span class="meta">@singledispatch</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">myprint</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="meta">@myprint.register(str)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_</span><span class="params">(text)</span>:</span></div><div class="line">    print(<span class="string">"FUCKING STRING! &#123;0&#125;"</span>.format(text))</div><div class="line"></div><div class="line"><span class="meta">@myprint.register(int)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_</span><span class="params">(n)</span>:</span></div><div class="line">    print(<span class="string">"FUCKING INT! &#123;0&#125;"</span>.format(n))</div><div class="line"></div><div class="line"><span class="meta">@myprint.register(float)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_</span><span class="params">(f)</span>:</span></div><div class="line">    print(<span class="string">"FUCKING FLOAT! &#123;0&#125;"</span>.format(f))</div><div class="line"></div><div class="line"><span class="meta">@myprint.register(tuple)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_</span><span class="params">(seq)</span>:</span></div><div class="line">    print(<span class="string">"FUCKING TUPLE!"</span> + str([item <span class="keyword">for</span> item <span class="keyword">in</span> seq]))</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    myprint(<span class="number">1</span>)</div><div class="line">    myprint(<span class="number">0.5</span>)</div><div class="line">    myprint(<span class="string">'frank'</span>)</div><div class="line">    myprint((<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))</div></pre></td></tr></table></figure>
+<p>结果是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">FUCK INT! 1</div><div class="line">FUCK FLOAT! 0.5</div><div class="line">FUCK STRING! frank</div><div class="line">FUCK tuple![1, 2, 3]</div></pre></td></tr></table></figure></p>
+<p>以上的简单的例子中，singledispatch装饰器为myprint函数的不同参数选择了不同的调用。</p>
 
       
     </div>
@@ -334,7 +339,7 @@
         <p><span>Title:</span><a href="/2017/06/18/Learning-Something-from-Fluent-Python/">Learning Something from Fluent Python</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">江南消夏</a></p>
         <p><span>Created:</span>2017-06-18, 19:42:32</p>
-        <p><span>Updated:</span>2017-06-18, 19:43:58</p>
+        <p><span>Updated:</span>2017-06-18, 20:01:01</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2017/06/18/Learning-Something-from-Fluent-Python/" title="Learning Something from Fluent Python">http://frankchen.xyz/2017/06/18/Learning-Something-from-Fluent-Python/</a>
             <span class="copy-path" data-clipboard-text="From http://frankchen.xyz/2017/06/18/Learning-Something-from-Fluent-Python/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -364,7 +369,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#singledispatch装饰器"><span class="toc-number">1.</span> <span class="toc-text">singledispatch装饰器</span></a></li></ol>
         
     </div>
     <style>
