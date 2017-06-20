@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="本文主要关于项亮的《推荐系统实践》的笔记。">
+<meta name="description" content="设置Hadoop集群的第一步很可能就是设置固定IP于DNS，而网上这一做法由于Ubuntu版本及桌面版服务器版的不同导致残差不齐，本文记录一下Ubuntu16.04在非图形界面固定IP与设置DNS的过程。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Note of Recommendation System in Action">
-<meta property="og:url" content="http://frankchen.xyz/2017/01/16/Action/index.html">
+<meta property="og:title" content="Ubuntu16.04 固定IP与设置DNS">
+<meta property="og:url" content="http://frankchen.xyz/2017/06/20/Ubuntu-16-04-static-IP/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
-<meta property="og:description" content="本文主要关于项亮的《推荐系统实践》的笔记。">
-<meta property="og:updated_time" content="2017-01-15T16:25:13.000Z">
+<meta property="og:description" content="设置Hadoop集群的第一步很可能就是设置固定IP于DNS，而网上这一做法由于Ubuntu版本及桌面版服务器版的不同导致残差不齐，本文记录一下Ubuntu16.04在非图形界面固定IP与设置DNS的过程。">
+<meta property="og:updated_time" content="2017-06-20T07:24:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Note of Recommendation System in Action">
-<meta name="twitter:description" content="本文主要关于项亮的《推荐系统实践》的笔记。">
+<meta name="twitter:title" content="Ubuntu16.04 固定IP与设置DNS">
+<meta name="twitter:description" content="设置Hadoop集群的第一步很可能就是设置固定IP于DNS，而网上这一做法由于Ubuntu版本及桌面版服务器版的不同导致残差不齐，本文记录一下Ubuntu16.04在非图形界面固定IP与设置DNS的过程。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Note of Recommendation System in Action | 不正经数据科学家</title>
+<title>Ubuntu16.04 固定IP与设置DNS | 不正经数据科学家</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -282,11 +282,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-Action" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Ubuntu-16-04-static-IP" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/16/Action/" class="article-date">
-      <time datetime="2017-01-15T16:19:00.000Z" itemprop="datePublished">2017-01-16</time>
+      <a href="/2017/06/20/Ubuntu-16-04-static-IP/" class="article-date">
+      <time datetime="2017-06-20T07:13:31.000Z" itemprop="datePublished">2017-06-20</time>
 </a>
 
 
@@ -301,7 +301,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Note of Recommendation System in Action
+      Ubuntu16.04 固定IP与设置DNS
     </h1>
   
 
@@ -312,7 +312,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Recommendation-System/">Recommendation System</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -322,95 +322,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文主要关于项亮的《推荐系统实践》的笔记。</p>
+        <p>设置Hadoop集群的第一步很可能就是设置固定IP于DNS，而网上这一做法由于Ubuntu版本及桌面版服务器版的不同导致残差不齐，本文记录一下Ubuntu16.04在非图形界面固定IP与设置DNS的过程。</p>
 <a id="more"></a>
-<h2 id="推荐系统的评测方式"><a href="#推荐系统的评测方式" class="headerlink" title="推荐系统的评测方式"></a>推荐系统的评测方式</h2><p>以下也是一项最终能上线的推荐算法的依次测试顺序，</p>
-<ul>
-<li>离线评测<ul>
-<li>将数据集分为训练集和测试集，离线对算法进行评测</li>
-</ul>
-</li>
-<li>用户调查<ul>
-<li>在上线之前通过调查得到用户满意度的信息</li>
-</ul>
-</li>
-<li>在线评测<ul>
-<li>进行AB测试，对比推荐算法指标</li>
-</ul>
-</li>
-</ul>
-<h2 id="推荐系统的评测指标"><a href="#推荐系统的评测指标" class="headerlink" title="推荐系统的评测指标"></a>推荐系统的评测指标</h2><ul>
-<li>满意度<ul>
-<li>是推荐系统的最重要标准</li>
-<li>无法离线计算，只能通过用户调查和在线实验得到</li>
-<li>可通过停留时间、点击率和转化率来统计</li>
-</ul>
-</li>
-<li>预测准确度<ul>
-<li>最重要的离线测试标准</li>
-<li>主要方法是，在离线数据集内的训练集训练的结果与测试集对比，比较重合度。</li>
-<li>又分为评分预测和Top N推荐</li>
-<li>对于评分预测，有均方根误差（RMSE）和平均绝对误差（MAE）计算两种方式，相差不大，前者对于偏离项惩罚大，后者对于评分取整的情况会降低误差。</li>
-<li>对于Top N推荐，通常通过准确率和招呼率来评测<ul>
-<li>假设$R(u)$和$T(u)$分别是训练集和测试集上的推荐，那么两者的交集长度除以$R(u)$的长度就是precision，交集长度除以$T(u)$就是recall。</li>
-</ul>
-</li>
-<li>评分预测关注预测用户看了电影后会给电影什么样的评分，而Top N是找到用户最有可能感兴趣的电影</li>
-</ul>
-</li>
-<li>覆盖率coverage<ul>
-<li>粗略定义为推荐系统发掘的物品占全部物品的比率，精确定义为物品流行度与全部物品流行度的比率</li>
-<li>可通过信息熵和基尼系数来计算</li>
-<li>两者都是计算不同物品流行度之间的平衡度</li>
-<li>推荐系统一般具有马太效应：强者更强</li>
-</ul>
-</li>
-<li>多样性<ul>
-<li>要覆盖满足用户广大的兴趣，可以用不同的物品相似度度量函数来定义不同的多样性</li>
-<li>多样性和相似性是trade off的，需要达到一定的平衡，让推荐效果最好</li>
-</ul>
-</li>
-<li>新颖性<ul>
-<li>推荐用户未见过的物品，最简单的是推荐流行度低的物品</li>
-<li>难点在于不牺牲精度的前提下提高多样性和新颖性</li>
-</ul>
-</li>
-<li>惊喜度<ul>
-<li>推荐结果和用户的历史兴趣不相似，但却让用户觉得满意，那么就可以说推荐结果的惊喜度很高，而推荐的新颖性仅仅取决于用户是否听说过这个推荐结果。</li>
-</ul>
-</li>
-<li>信任度<ul>
-<li>用户对推荐系统的信任度高，能增加用户与推荐系统的交互</li>
-<li>提升用户对推荐系统的信任度的方法<ul>
-<li>增加推荐系统的透明度：对用户的推荐需要进行解释</li>
-<li>提高用户的社交关系进行推荐</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>实时性<ul>
-<li>实时更新追踪用户的行为和状态的变化</li>
-<li>能够将新加入的物品推荐给用户</li>
-</ul>
-</li>
-<li>鲁棒性<ul>
-<li>反作弊性</li>
-<li>作弊方法<ul>
-<li>行为注入攻击</li>
-<li>评分系统攻击：大批给某物品打高分</li>
-</ul>
-</li>
-<li>如何对抗作弊<ul>
-<li>采用作弊代价高的行为作为推荐系统采纳的数据</li>
-<li>使用数据前进行检测、清理</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>商业目标<ul>
-<li>不同利益方关注不同</li>
-</ul>
-</li>
+<h2 id="Ubuntu16-04-固定IP"><a href="#Ubuntu16-04-固定IP" class="headerlink" title="Ubuntu16.04 固定IP"></a>Ubuntu16.04 固定IP</h2><h3 id="Step-One【Ubuntu-server不需，跳过即可】"><a href="#Step-One【Ubuntu-server不需，跳过即可】" class="headerlink" title="Step-One【Ubuntu-server不需，跳过即可】"></a>Step-One【Ubuntu-server不需，跳过即可】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/NetworkManager/NetworkManager.conf</div><div class="line"><span class="comment"># 将`managed=false`修改成`managed=true`</span></div><div class="line">sudo reboot</div></pre></td></tr></table></figure>
+<h3 id="Step-Two"><a href="#Step-Two" class="headerlink" title="Step-Two"></a>Step-Two</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 修改配置文件</span></div><div class="line">sudo vim /etc/network/interfaces</div><div class="line">``` </div><div class="line">改为</div><div class="line"></div><div class="line"></div><div class="line">``` bash</div><div class="line"><span class="comment"># interfaces(5) file used by ifup(8) and ifdown(8)</span></div><div class="line">auto lo</div><div class="line">iface lo inet loopback</div><div class="line"></div><div class="line">auto enp0s31f6</div><div class="line">iface enp0s31f6 inet static</div><div class="line">address 192.168.1.109</div><div class="line">netmask 255.255.255.0</div><div class="line"><span class="comment">#network 192.168.1.0</span></div><div class="line"><span class="comment">#broadcast 192.168.1.255</span></div><div class="line">gateway 192.168.1.254</div></pre></td></tr></table></figure>
+<p>其中‘enp0s31f6’就是<code>ifconfig</code>中以太网名称。</p>
+<h3 id="Step-Three"><a href="#Step-Three" class="headerlink" title="Step-Three"></a>Step-Three</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 重启networking服务</span></div><div class="line">sudo systemctl restart networking.service</div></pre></td></tr></table></figure>
+<h2 id="Ubuntu16-04-设置DNS"><a href="#Ubuntu16-04-设置DNS" class="headerlink" title="Ubuntu16.04 设置DNS"></a>Ubuntu16.04 设置DNS</h2><p>但是固定IP使得电脑很可能无法上网，那么需要手动设置DNS。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 默认文件不存在</span></div><div class="line">sudo vim /etc/resolvconf/resolv.conf.d/base</div></pre></td></tr></table></figure>
+<p>添加下面内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">meserver 8.8.8.8</div><div class="line">nameserver 8.8.4.4</div><div class="line"></div><div class="line">nameserver 192.168.1.254</div><div class="line">nameserver 114.114.114.114</div></pre></td></tr></table></figure>
+<p>其中114.114.114.114是国内移动、电信和联通通用的DNS，8.8.8.8和8.8.4.4是GOOGLE公司提供的DNS，192.168.1.254是网关地址。</p>
+<h2 id="参考自"><a href="#参考自" class="headerlink" title="参考自"></a>参考自</h2><ul>
+<li><a href="http://www.jianshu.com/p/ea4bca38e5d7" target="_blank" rel="external">ubuntu16.04固定IP与设置DNS - 简书</a></li>
 </ul>
 
       
@@ -420,13 +344,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2017/01/16/Action/">Note of Recommendation System in Action</a></p>
+        <p><span>Title:</span><a href="/2017/06/20/Ubuntu-16-04-static-IP/">Ubuntu16.04 固定IP与设置DNS</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">江南消夏</a></p>
-        <p><span>Created:</span>2017-01-16, 00:19:00</p>
-        <p><span>Updated:</span>2017-01-16, 00:25:13</p>
+        <p><span>Created:</span>2017-06-20, 15:13:31</p>
+        <p><span>Updated:</span>2017-06-20, 15:24:47</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2017/01/16/Action/" title="Note of Recommendation System in Action">http://frankchen.xyz/2017/01/16/Action/</a>
-            <span class="copy-path" data-clipboard-text="From http://frankchen.xyz/2017/01/16/Action/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2017/06/20/Ubuntu-16-04-static-IP/" title="Ubuntu16.04 固定IP与设置DNS">http://frankchen.xyz/2017/06/20/Ubuntu-16-04-static-IP/</a>
+            <span class="copy-path" data-clipboard-text="From http://frankchen.xyz/2017/06/20/Ubuntu-16-04-static-IP/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -438,16 +362,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/17/Note-for-SoloLearn-SQL/">
-                    Note for SoloLearn SQL
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/">
-                    Sort Algorithms of Linear Time Complexity
+                <a href="/2017/06/19/Pycharm-Tips/">
+                    Pycharm Tips
                 </a>
             </div>
         
@@ -459,7 +377,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐系统的评测方式"><span class="toc-number">1.</span> <span class="toc-text">推荐系统的评测方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐系统的评测指标"><span class="toc-number">2.</span> <span class="toc-text">推荐系统的评测指标</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu16-04-固定IP"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu16.04 固定IP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-One【Ubuntu-server不需，跳过即可】"><span class="toc-number">1.1.</span> <span class="toc-text">Step-One【Ubuntu-server不需，跳过即可】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-Two"><span class="toc-number">1.2.</span> <span class="toc-text">Step-Two</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-Three"><span class="toc-number">1.3.</span> <span class="toc-text">Step-Three</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu16-04-设置DNS"><span class="toc-number">2.</span> <span class="toc-text">Ubuntu16.04 设置DNS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考自"><span class="toc-number">3.</span> <span class="toc-text">参考自</span></a></li></ol>
         
     </div>
     <style>
@@ -495,7 +413,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Note of Recommendation System in Action　| 不正经数据科学家　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Ubuntu16.04 固定IP与设置DNS　| 不正经数据科学家　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -514,8 +432,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://frankchen.xyz/2017/01/16/Action/';
-            this.page.identifier = '2017/01/16/Action/';
+            this.page.url = 'http://frankchen.xyz/2017/06/20/Ubuntu-16-04-static-IP/';
+            this.page.identifier = '2017/06/20/Ubuntu-16-04-static-IP/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -537,15 +455,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/17/Note-for-SoloLearn-SQL/" title="Pre: Note for SoloLearn SQL">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/" title="Next: Sort Algorithms of Linear Time Complexity">
+            <a href="/2017/06/19/Pycharm-Tips/" title="Next: Pycharm Tips">
                 <i class="fa fa-angle-right"></i>
             </a>
         
