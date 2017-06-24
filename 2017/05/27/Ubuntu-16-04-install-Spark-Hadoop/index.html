@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://frankchen.xyz/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
 <meta property="og:description" content="在Ubuntu 16.04 安装 Spark &amp;amp; Hadoop分布式集群的记录">
-<meta property="og:updated_time" content="2017-06-21T13:26:26.000Z">
+<meta property="og:updated_time" content="2017-06-24T09:39:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 16.04 搭建 Spark & Hadoop集群的详细步骤及报错填坑">
 <meta name="twitter:description" content="在Ubuntu 16.04 安装 Spark &amp;amp; Hadoop分布式集群的记录">
@@ -140,13 +140,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -280,7 +280,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap"><article id="post-Ubuntu-16-04-install-Spark-Hadoop" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -323,8 +323,28 @@
       
           
         <p>在Ubuntu 16.04 安装 Spark &amp; Hadoop分布式集群的记录<br><a id="more"></a></p>
-<h2 id="Hadoop-安装脚本"><a href="#Hadoop-安装脚本" class="headerlink" title="Hadoop 安装脚本"></a>Hadoop 安装脚本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Copy line by line and paste to an interactive shell</span></div><div class="line"></div><div class="line"><span class="comment"># Update system</span></div><div class="line">sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade</div><div class="line"></div><div class="line"><span class="comment"># Install Java</span></div><div class="line">sudo add-apt-repository ppa:openjdk-r/ppa  </div><div class="line">sudo apt-get update   </div><div class="line">sudo apt-get install openjdk-8-jdk  </div><div class="line"></div><div class="line"><span class="comment"># Download &amp; Install Hadoop</span></div><div class="line">wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz -P ~/Downloads</div><div class="line">sudo tar zxvf ~/Downloads/hadoop-* -C /usr/<span class="built_in">local</span></div><div class="line">sudo mv /usr/<span class="built_in">local</span>/hadoop-* /usr/<span class="built_in">local</span>/hadoop</div><div class="line"></div><div class="line"><span class="comment"># Configure environment (copy the whole block)</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"</span></div><div class="line">export JAVA_HOME=<span class="variable">$(readlink -f $(which java)</span>)</div><div class="line">export PATH=\$PATH:\$JAVA_HOME/bin</div><div class="line">export HADOOP_HOME=/usr/local/hadoop</div><div class="line">export PATH=\$PATH:\$HADOOP_HOME/bin</div><div class="line">export HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop</div><div class="line">" &gt;&gt; ~/.bashrc</div><div class="line"></div><div class="line"><span class="comment"># Load configure</span></div><div class="line"><span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure>
-<p>##报错及解决</p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>如下设置默认都在每一台机器上都要进行。</p>
+<h3 id="配置hadoop用户"><a href="#配置hadoop用户" class="headerlink" title="配置hadoop用户"></a>配置hadoop用户</h3><p>首先是在每个机器上创建hadoop用户，设置密码（方便起见建议都设置一样的），并赋予其root权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo useradd -m hadoop -s /bin/bash</div><div class="line">sudo passwd hadoop</div><div class="line">sudo adduser hadoop sudo</div></pre></td></tr></table></figure>
+<h3 id="固定IP"><a href="#固定IP" class="headerlink" title="固定IP"></a>固定IP</h3><p>为防止重启导致IP变化，需要固定Ip方法参考<a href="http://frankchen.xyz/2017/06/20/Ubuntu-16-04-static-IP/">Ubuntu16.04 固定IP与设置DNS | 不正经数据科学家</a></p>
+<h3 id="配置hosts"><a href="#配置hosts" class="headerlink" title="配置hosts"></a>配置hosts</h3><p>为方便部署，可配置hosts名，方便输入地址，如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /etc/hosts</div><div class="line">192.168.1.113      czn.shise.com</div><div class="line">192.168.1.102      czm.shise.com</div><div class="line">192.168.1.120      wwj.shise.com</div><div class="line">192.168.1.123      bas.shise.com</div></pre></td></tr></table></figure>
+<p>测试能否ping通<br><code>ping czn.shise.com -c 3</code></p>
+<h3 id="配置-ssh-无密码访问集群机器"><a href="#配置-ssh-无密码访问集群机器" class="headerlink" title="配置 ssh 无密码访问集群机器"></a>配置 ssh 无密码访问集群机器</h3><p>每台机器之间以及每台机器与自己的localhost都需配置ssh免密码登录。<br>如未安装ssh需<br><code>sudo apt install openssh-server</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ssh localhost</div><div class="line">exit                           # 退出刚才的 ssh localhost</div><div class="line">cd ~/.ssh/                     # 若没有该目录，请先执行一次ssh localhost</div><div class="line">ssh-keygen -t rsa              # 会有提示，都按回车就可以</div></pre></td></tr></table></figure>
+<p>再用<code>ssh-copy-id</code>来设置免密码登录，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ssh-copy-id localhost</div><div class="line">ssh-copy-id czn.shise.com</div><div class="line">ssh-copy-id czm.shise.com</div><div class="line">ssh-copy-id bas.shise.com</div></pre></td></tr></table></figure>
+<p>在每个机器上都如此设置与其它机器的免密码登录。<br>这里默认都是<code>hadoop</code>用户，所以不需带用户名，如果不是则需要带用户名如</p>
+<p><code>ssh-copy-id hadoop@czn.shise.com</code></p>
+<h3 id="Java环境"><a href="#Java环境" class="headerlink" title="Java环境"></a>Java环境</h3><p>统一使用openjdk-8，<code>sudo apt-get install openjdk-8-jre openjdk-8-jdk</code><br>会默认安装在<code>/usr/lib/jvm/java-8-openjdk-amd64</code></p>
+<h2 id="Hadoop集群配置"><a href="#Hadoop集群配置" class="headerlink" title="Hadoop集群配置"></a>Hadoop集群配置</h2><p>我们先登录至作为master的机器，配置好之后再将hadoop环境复制至各slave即可，非常方便。<br>首先是Hadoop集群的配置，下载<a href="https://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/" target="_blank" rel="external">Index of /apache/hadoop/common</a>，我们选择2.7.3版本。<br>放置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo tar -zxf ~/Downloads/hadoop-2.7.3.tar.gz -C /usr/local    # 解压到/usr/local中</div><div class="line">cd /usr/local/</div><div class="line">sudo mv ./hadoop-2.7.3/ ./hadoop            # 将文件夹名改为hadoop</div><div class="line">sudo chown -R hadoop:hadoop ./hadoop       # 修改文件权限</div></pre></td></tr></table></figure></p>
+<h3 id="各文件配置"><a href="#各文件配置" class="headerlink" title="各文件配置"></a>各文件配置</h3><p>PASS待续</p>
+<h3 id="复制配置好的hadoop至各机器"><a href="#复制配置好的hadoop至各机器" class="headerlink" title="复制配置好的hadoop至各机器"></a>复制配置好的hadoop至各机器</h3><p>在master上压缩文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">cd /usr/local</div><div class="line">sudo rm -r ./hadoop/tmp     # 删除 Hadoop 临时文件</div><div class="line">sudo rm -r ./hadoop/logs/*   # 删除日志文件</div><div class="line">tar -zcf ~/hadoop.master.tar.gz ./hadoop   # 先压缩再复制</div><div class="line">cd ~</div><div class="line">scp ./hadoop.master.tar.gz czn.shise.com:/home/hadoop # 复制至各机器</div><div class="line">scp ./hadoop.master.tar.gz czm.shise.com:/home/hadoop</div><div class="line">scp ./hadoop.master.tar.gz bas.shise.com:/home/hadoop</div></pre></td></tr></table></figure></p>
+<p>在登录至复制过去的每个slave<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo rm -r /usr/local/hadoop    # 删掉旧的（如果存在）</div><div class="line">sudo tar -zxf ~/hadoop.master.tar.gz -C /usr/local</div><div class="line">sudo chown -R hadoop /usr/local/hadoop</div></pre></td></tr></table></figure></p>
+<h3 id="各机器环境变量"><a href="#各机器环境变量" class="headerlink" title="各机器环境变量"></a>各机器环境变量</h3><p><code>sudo vim ~/.profile</code><br>我的环境变量设置如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># Java Env</div><div class="line">export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64</div><div class="line">export JRE_HOME=$JAVA_HOME/jre</div><div class="line">export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:$JRE_HOME/lib</div><div class="line">export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div><div class="line"></div><div class="line"># Hadoop Env</div><div class="line">export HADOOP_HOME=/usr/local/hadoop</div><div class="line">export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</div></pre></td></tr></table></figure></p>
+<p><code>source ~/.profile</code></p>
+<h3 id="启动检查"><a href="#启动检查" class="headerlink" title="启动检查"></a>启动检查</h3><p>登录master机器，执行 NameNode 的格式化：<code>hdfs namenode -format</code><br>先dfs、再yarn<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<h2 id="Spark分布式配置"><a href="#Spark分布式配置" class="headerlink" title="Spark分布式配置"></a>Spark分布式配置</h2><p>##报错及解决</p>
 <blockquote>
 <p>Python in worker has different version 2.7 than that in driver 3.6, PySpark cannot run with different minor versions.Please check environment variables PYSPARK_PYTHON and PYSPARK_DRIVER_PYTHON are correctly set.<br>出现这个错误的原因是为worker与driver设置了不同的Python版本，解决方法是（以anaconda3.6为例）：</p>
 </blockquote>
@@ -339,17 +359,17 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/">Ubuntu 16.04 搭建 Spark &amp; Hadoop集群的详细步骤及报错填坑</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">江南消夏</a></p>
-        <p><span>Created:</span>2017-05-27, 16:13:04</p>
-        <p><span>Updated:</span>2017-06-21, 21:26:26</p>
+        <p><span>本文标题:</span><a href="/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/">Ubuntu 16.04 搭建 Spark &amp; Hadoop集群的详细步骤及报错填坑</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">江南消夏</a></p>
+        <p><span>发布时间:</span>2017-05-27, 16:13:04</p>
+        <p><span>最后更新:</span>2017-06-24, 17:39:31</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/" title="Ubuntu 16.04 搭建 Spark &amp; Hadoop集群的详细步骤及报错填坑">http://frankchen.xyz/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/</a>
-            <span class="copy-path" data-clipboard-text="From http://frankchen.xyz/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/　　By 江南消夏" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/" title="Ubuntu 16.04 搭建 Spark &amp; Hadoop集群的详细步骤及报错填坑">http://frankchen.xyz/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://frankchen.xyz/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/　　作者: 江南消夏" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -376,9 +396,9 @@
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
+        <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hadoop-安装脚本"><span class="toc-number">1.</span> <span class="toc-text">Hadoop 安装脚本</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境配置"><span class="toc-number">1.</span> <span class="toc-text">环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置hadoop用户"><span class="toc-number">1.1.</span> <span class="toc-text">配置hadoop用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#固定IP"><span class="toc-number">1.2.</span> <span class="toc-text">固定IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置hosts"><span class="toc-number">1.3.</span> <span class="toc-text">配置hosts</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-ssh-无密码访问集群机器"><span class="toc-number">1.4.</span> <span class="toc-text">配置 ssh 无密码访问集群机器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java环境"><span class="toc-number">1.5.</span> <span class="toc-text">Java环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hadoop集群配置"><span class="toc-number">2.</span> <span class="toc-text">Hadoop集群配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#各文件配置"><span class="toc-number">2.1.</span> <span class="toc-text">各文件配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制配置好的hadoop至各机器"><span class="toc-number">2.2.</span> <span class="toc-text">复制配置好的hadoop至各机器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#各机器环境变量"><span class="toc-number">2.3.</span> <span class="toc-text">各机器环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动检查"><span class="toc-number">2.4.</span> <span class="toc-text">启动检查</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spark分布式配置"><span class="toc-number">3.</span> <span class="toc-text">Spark分布式配置</span></a></li></ol>
         
     </div>
     <style>
@@ -392,10 +412,10 @@
         }
     </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
@@ -456,15 +476,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/05/27/programmer-humor-week-3/" title="Pre: programmer humor week 3">
+            <a href="/2017/05/27/programmer-humor-week-3/" title="上一篇: programmer humor week 3">
                 <i class="fa fa-angle-left"></i>
             </a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/05/12/examples-for-processing-excel-and-time-series/" title="Next: 解决Excel长数字被转为科学计数法的问题">
+            <a href="/2017/05/12/examples-for-processing-excel-and-time-series/" title="下一篇: 解决Excel长数字被转为科学计数法的问题">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -487,14 +507,14 @@
                 2016-2017 江南消夏
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -503,7 +523,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -557,9 +577,9 @@ MathJax.Hub.Queue(function() {
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
