@@ -93,12 +93,12 @@
 <meta property="og:url" content="http://frankchen.xyz/2017/07/06/Use-supervisor-support-Python3-program/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
 <meta property="og:description" content="Supervisor是python2写就的一款强大的运维工具，众所周知，目前Supervisor还不支持python3，那么怎么利用Supervisor监控python3程序呢？本文主要讲述Supervisor在Ubuntu下的安装部署以及上述问题的解决。">
-<meta property="og:image" content="http://frankchen.xyz/Screenshot from 2017-07-06 11-49-21.png">
-<meta property="og:updated_time" content="2017-07-06T03:54:42.000Z">
+<meta property="og:image" content="http://frankchen.xyz/images/2017/05/Screenshot from 2017-07-06 11-49-21.png">
+<meta property="og:updated_time" content="2017-07-06T05:52:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用supervisor支持Python3程序">
 <meta name="twitter:description" content="Supervisor是python2写就的一款强大的运维工具，众所周知，目前Supervisor还不支持python3，那么怎么利用Supervisor监控python3程序呢？本文主要讲述Supervisor在Ubuntu下的安装部署以及上述问题的解决。">
-<meta name="twitter:image" content="http://frankchen.xyz/Screenshot from 2017-07-06 11-49-21.png">
+<meta name="twitter:image" content="http://frankchen.xyz/images/2017/05/Screenshot from 2017-07-06 11-49-21.png">
 
 
 
@@ -355,7 +355,8 @@
 <p>运行<code>supervisorctl</code>，即可在shell里面方便的操作，如<code>start app</code>、<code>restart app</code>等。</p>
 <p>若需要web界面，可在<code>/etc/supervisor/supervisord.conf</code>内修改，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[inet_http_server]         ; inet (TCP) server disabled by default</div><div class="line">port=127.0.0.1:9001        ; (ip_address:port specifier, *:port for all iface)</div><div class="line">;username=user              ; (default is no username (open server))</div><div class="line">;password=123               ; (default is no password (open server))</div></pre></td></tr></table></figure>
-<p>重启<code>supervisorctl</code>后即可在<code>127.0.0.1:9001</code>见到web界面，<br><img src="Screenshot from 2017-07-06 11-49-21.png" alt=""></p>
+<p>重启<code>supervisorctl</code>后即可在<code>127.0.0.1:9001</code>见到web界面，</p>
+<p><img src="/images/2017/05/Screenshot from 2017-07-06 11-49-21.png" alt=""></p>
 <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
 <li>如果修改了 /etc/supervisord.conf ,需要执行 supervisorctl reload 来重新加载配置文件，否则不会生效。。。</li>
 </ul>
