@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="python,Linux,Jupyter Notebook," />
 
 
 
@@ -87,15 +87,18 @@
 
 
 
-<meta name="description" content="当你的才华还撑不起你的野心时，你就应该静下心来学习。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="不正经数据科学家">
-<meta property="og:url" content="http://frankchen.xyz/archives/2016/12/index.html">
+<meta name="description" content="让Jupyter Notebook支持跨网络访问的方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何远程访问Jupyter Notebook">
+<meta property="og:url" content="http://frankchen.xyz/2017/07/18/Remote-jupyter-notebook/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
-<meta property="og:description" content="当你的才华还撑不起你的野心时，你就应该静下心来学习。">
+<meta property="og:description" content="让Jupyter Notebook支持跨网络访问的方法。">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-07-18%20at%2014.16.18.png">
+<meta property="og:updated_time" content="2017-07-18T06:17:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="不正经数据科学家">
-<meta name="twitter:description" content="当你的才华还撑不起你的野心时，你就应该静下心来学习。">
+<meta name="twitter:title" content="如何远程访问Jupyter Notebook">
+<meta name="twitter:description" content="让Jupyter Notebook支持跨网络访问的方法。">
+<meta name="twitter:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-07-18%20at%2014.16.18.png">
 
 
 
@@ -123,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://frankchen.xyz/archives/2016/12/"/>
+  <link rel="canonical" href="http://frankchen.xyz/2017/07/18/Remote-jupyter-notebook/"/>
 
 
 
 
 
-  <title> 归档 | 不正经数据科学家 </title>
+  <title> 如何远程访问Jupyter Notebook | 不正经数据科学家 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -154,7 +157,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  page-archive  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,139 +241,221 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-       
-        
-      好! 目前共计 66 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/25/AliPay-RedEnvelope-Hacker/" itemprop="url">
-              
-                <span itemprop="name">AliPay RedEnvelope Hacker</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-25T23:16:53+08:00"
-              content="2016-12-25" >
-          12-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/11/pointer-and/" itemprop="url">
-              
-                <span itemprop="name">pointer and ++--</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-11T16:50:45+08:00"
-              content="2016-12-11" >
-          12-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/02/QuickSort-in-C/" itemprop="url">
-              
-                <span itemprop="name">QuickSort in C & Python</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-02T19:55:35+08:00"
-              content="2016-12-02" >
-          12-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://frankchen.xyz/2017/07/18/Remote-jupyter-notebook/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江南消夏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不正经数据科学家">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                如何远程访问Jupyter Notebook
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T10:43:17+08:00">
+                2017-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/18/Remote-jupyter-notebook/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/18/Remote-jupyter-notebook/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/07/18/Remote-jupyter-notebook/" class="leancloud_visitors" data-flag-title="如何远程访问Jupyter Notebook">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>让Jupyter Notebook支持跨网络访问的方法。<br><a id="more"></a></p>
+<h2 id="完全开放，不需密码"><a href="#完全开放，不需密码" class="headerlink" title="完全开放，不需密码"></a>完全开放，不需密码</h2><h3 id="1-登陆远程服务器"><a href="#1-登陆远程服务器" class="headerlink" title="1.  登陆远程服务器"></a>1.  登陆远程服务器</h3><h3 id="2-生成配置文件"><a href="#2-生成配置文件" class="headerlink" title="2.生成配置文件"></a>2.生成配置文件</h3><p><code>$jupyter notebook --generate-config</code></p>
+<h3 id="3-修改默认配置文件"><a href="#3-修改默认配置文件" class="headerlink" title="3. 修改默认配置文件"></a>3. 修改默认配置文件</h3><p><code>$vim ~/.jupyter/jupyter_notebook_config.py</code><br>进行如下修改：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">c.NotebookApp.ip = <span class="string">'*'</span>      <span class="comment">#支持其它IP访问，关键</span></div><div class="line">c.NotebookApp.open_browser = <span class="keyword">False</span> 不在本地打开浏览器</div><div class="line">c.NotebookApp.port = <span class="number">10000</span> <span class="comment">#随便指定一个端口</span></div></pre></td></tr></table></figure>
+<h3 id="4-启动jupyter-notebook："><a href="#4-启动jupyter-notebook：" class="headerlink" title="4. 启动jupyter notebook："></a>4. 启动jupyter notebook：</h3><p><code>jupyter notebook</code></p>
+<h3 id="5-远程访问"><a href="#5-远程访问" class="headerlink" title="5. 远程访问"></a>5. 远程访问</h3><p>此时应该可以直接从本地浏览器直接访问<code>http://address_of_remote:10000</code>就可以看到jupyter的登陆界面，输入密码即可。</p>
+<h2 id="需要密码"><a href="#需要密码" class="headerlink" title="需要密码"></a>需要密码</h2><h3 id="1-生成密码"><a href="#1-生成密码" class="headerlink" title="1. 生成密码"></a>1. 生成密码</h3><p>打开ipython，创建一个密文的密码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">1</span>]: <span class="keyword">from</span> notebook.auth <span class="keyword">import</span> passwd</div><div class="line">In [<span class="number">2</span>]: passwd()</div><div class="line">Enter password: </div><div class="line">Verify password: </div><div class="line">Out[<span class="number">2</span>]: <span class="string">'sha1:ce23d945972f:34769685a7ccd3d08c84a18c63968a41f1140274'</span></div></pre></td></tr></table></figure>
+<h3 id="2-添加密码"><a href="#2-添加密码" class="headerlink" title="2. 添加密码"></a>2. 添加密码</h3><p><code>$vim ~/.jupyter/jupyter_notebook_config.py</code><br>进行如下修改：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c.NotebookApp.password = <span class="string">u'sha:ce...刚才复制的那个密文'</span></div></pre></td></tr></table></figure>
+<p><img src="/images/Screen%20Shot%202017-07-18%20at%2014.16.18.png" alt="Screen Shot 2017-07-18 at 14.16.18"></p>
+<h3 id="3-建立ssh通道"><a href="#3-建立ssh通道" class="headerlink" title="3. 建立ssh通道"></a>3. 建立ssh通道</h3><p>若还是无法登录，也可用</p>
+<p><code>ssh username@address_of_remote -L 127.0.0.1:10000:127.0.0.1:10000</code></p>
+<p>建立ssh通道，便可以在localhost:10000直接访问远程的jupyter了。</p>
+<h2 id="参考自"><a href="#参考自" class="headerlink" title="参考自"></a>参考自</h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/23110830" target="_blank" rel="external">Jupyter (IPython notebook)用于服务器的配置方法(Windows) - 知乎专栏</a></li>
+<li><a href="http://blog.leanote.com/post/jevonswang/%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEjupyter-notebook" target="_blank" rel="external">远程访问jupyter notebook</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Jupyter-Notebook/" rel="tag"># Jupyter Notebook</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/07/Hive-install-on-Ubuntu/" rel="next" title="Hive install on Ubuntu，并以Mysql作为Metastore">
+                <i class="fa fa-chevron-left"></i> Hive install on Ubuntu，并以Mysql作为Metastore
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
           
           </div>
@@ -378,6 +463,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -397,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -498,6 +603,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#完全开放，不需密码"><span class="nav-number">1.</span> <span class="nav-text">完全开放，不需密码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-登陆远程服务器"><span class="nav-number">1.1.</span> <span class="nav-text">1.  登陆远程服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-生成配置文件"><span class="nav-number">1.2.</span> <span class="nav-text">2.生成配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-修改默认配置文件"><span class="nav-number">1.3.</span> <span class="nav-text">3. 修改默认配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-启动jupyter-notebook："><span class="nav-number">1.4.</span> <span class="nav-text">4. 启动jupyter notebook：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-远程访问"><span class="nav-number">1.5.</span> <span class="nav-text">5. 远程访问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要密码"><span class="nav-number">2.</span> <span class="nav-text">需要密码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-生成密码"><span class="nav-number">2.1.</span> <span class="nav-text">1. 生成密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-添加密码"><span class="nav-number">2.2.</span> <span class="nav-text">2. 添加密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-建立ssh通道"><span class="nav-number">2.3.</span> <span class="nav-text">3. 建立ssh通道</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考自"><span class="nav-number">3.</span> <span class="nav-text">参考自</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -615,11 +736,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
 
 
   
@@ -637,9 +756,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'frankchen';
-      var disqus_identifier = 'archives/2016/12/index.html';
+      var disqus_identifier = '2017/07/18/Remote-jupyter-notebook/';
 
-      var disqus_title = "";
+      var disqus_title = "如何远程访问Jupyter Notebook";
 
 
       function run_disqus_script(disqus_script) {
@@ -652,6 +771,13 @@
 
       run_disqus_script('count.js');
 
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
       
 
     </script>
