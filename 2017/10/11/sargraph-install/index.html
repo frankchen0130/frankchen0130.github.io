@@ -106,7 +106,7 @@ sar的配置通过这里我们可以看到sar 找出系统瓶颈的利器 — Li
 <meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-10-11%20at%2011.55.59.png">
 <meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-10-11%20at%2012.00.55.png">
 <meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-10-11%20at%2012.05.12.png">
-<meta property="og:updated_time" content="2017-10-11T04:06:02.000Z">
+<meta property="og:updated_time" content="2017-10-11T04:09:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="服务器负载GUI 神器sargraph 的安装">
 <meta name="twitter:description" content="通过Linux 的sar命令可以很容易知道服务器的负载，那么如何通过网页等更好地可视化呢？本文介绍实现此功能的神器SARGRAPH-Graphical front-end for sar的使用及安装。
@@ -377,10 +377,11 @@ sar的配置通过这里我们可以看到sar 找出系统瓶颈的利器 — Li
 <li>有的linux系统下，默认可能没有安装这个包，使用apt-get install sysstat 来安装；</li>
 <li>安装完毕，将性能收集工具的开关打开： vi /etc/default/sysstat</li>
 <li>设置 ENABLED=”true”</li>
-<li>启动这个工具来收集系统性能数据： /etc/init.d/sysstat start</li>
+<li>启动这个工具来收集系统性能数据： /etc/init.d/sysstat start<a id="more"></a>
+<h2 id="sargraph-的安装"><a href="#sargraph-的安装" class="headerlink" title="sargraph 的安装"></a>sargraph 的安装</h2></li>
 </ol>
 </blockquote>
-<h2 id="sargraph-的安装"><a href="#sargraph-的安装" class="headerlink" title="sargraph 的安装"></a>sargraph 的安装</h2><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>根据<a href="http://sargraph.com/index.php?option=com_content&amp;view=article&amp;id=48&amp;Itemid=13" target="_blank" rel="external">Documentation</a>，<br><img src="/images/Screen%20Shot%202017-10-11%20at%2011.52.07-1.png" alt="Screen Shot 2017-10-11 at 11.52.07"></p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>根据<a href="http://sargraph.com/index.php?option=com_content&amp;view=article&amp;id=48&amp;Itemid=13" target="_blank" rel="external">Documentation</a>，<br><img src="/images/Screen%20Shot%202017-10-11%20at%2011.52.07-1.png" alt="Screen Shot 2017-10-11 at 11.52.07"></p>
 <ul>
 <li>安装php</li>
 </ul>
