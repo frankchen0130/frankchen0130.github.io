@@ -260,6 +260,181 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://frankchen.xyz/2017/10/11/sargraph-install/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江南消夏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不正经数据科学家">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/11/sargraph-install/" itemprop="url">
+                  服务器负载GUI 神器sargraph 的安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T11:40:21+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/11/sargraph-install/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/10/11/sargraph-install/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/11/sargraph-install/" class="leancloud_visitors" data-flag-title="服务器负载GUI 神器sargraph 的安装">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>通过Linux 的<code>sar</code>命令可以很容易知道服务器的负载，那么如何通过网页等更好地可视化呢？本文介绍实现此功能的神器<a href="http://www.sargraph.com/sargraph/chart.php?id=dbserv" target="_blank" rel="external">SARGRAPH-Graphical front-end for sar</a>的使用及安装。</p>
+<h2 id="sar的配置"><a href="#sar的配置" class="headerlink" title="sar的配置"></a>sar的配置</h2><p>通过这里我们可以看到<br><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/sar.html" target="_blank" rel="external">sar 找出系统瓶颈的利器 — Linux Tools Quick Tutorial</a><br>安装sar</p>
+<blockquote>
+<ol>
+<li>有的linux系统下，默认可能没有安装这个包，使用apt-get install sysstat 来安装；</li>
+<li>安装完毕，将性能收集工具的开关打开： vi /etc/default/sysstat</li>
+<li>设置 ENABLED=”true”</li>
+<li>启动这个工具来收集系统性能数据： /etc/init.d/sysstat start</li>
+</ol>
+</blockquote>
+<h2 id="sargraph-的安装"><a href="#sargraph-的安装" class="headerlink" title="sargraph 的安装"></a>sargraph 的安装</h2><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>根据<a href="http://sargraph.com/index.php?option=com_content&amp;view=article&amp;id=48&amp;Itemid=13" target="_blank" rel="external">Documentation</a>，<br><img src="/images/Screen%20Shot%202017-10-11%20at%2011.52.07-1.png" alt="Screen Shot 2017-10-11 at 11.52.07"></p>
+<ul>
+<li>安装php</li>
+</ul>
+<p><code>sudo apt-get install php libapache2-mod-php</code></p>
+<ul>
+<li>安装apache2 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install apache2</div></pre></td></tr></table></figure>
+<h2 id="配置apache2"><a href="#配置apache2" class="headerlink" title="配置apache2"></a>配置apache2</h2><p><code>systemctl status apache2</code>查看apache2的情况，若发现其不是active，可能是由于与nginx监听默认端口冲突，那么需要在<code>vim /etc/apache2/ports.conf</code>，把80修改为81即可。<br><img src="/images/Screen%20Shot%202017-10-11%20at%2011.57.39.png" alt="Screen Shot 2017-10-11 at 11.57.39"><br>再‘service apache2 restart’，查看<code>systemctl status apache2</code>为active即成功，</p>
+<p><img src="/images/Screen%20Shot%202017-10-11%20at%2011.55.59.png" alt="Screen Shot 2017-10-11 at 11.55.59"></p>
+<h2 id="sargraph安装及配置"><a href="#sargraph安装及配置" class="headerlink" title="sargraph安装及配置"></a>sargraph安装及配置</h2><p>参考<a href="http://www.sargraph.com/index.php?option=com_content&amp;view=article&amp;id=47&amp;Itemid=14" target="_blank" rel="external">Download Sargraph</a>安装即可，</p>
+<blockquote>
+<p>Download sargraph_version3.tgz to /tmp. Unzip and untar it. And run the INSTALLER</p>
+<p>tar xzf sargraph_version3.tgz</p>
+<p>cd sargraph_version3</p>
+<p> ./INSTALLER</p>
+</blockquote>
+<p>注意需要修改其config，<code>vim /etc/sargraph.conf</code>，</p>
+<p><img src="/images/Screen%20Shot%202017-10-11%20at%2012.00.55.png" alt="Screen Shot 2017-10-11 at 12.00.55"></p>
+<p>注意是SARUSER修改为需要监听的服务器的用户名，KEY修改为sargraph服务器当前用户公钥文件即可。</p>
+<h3 id="添加server"><a href="#添加server" class="headerlink" title="添加server"></a>添加server</h3><p>使用<code>/var/www/html/sargraph/scripts/addserver datalab</code>添加server，比如之前我们把config里user改为root，那么这里我们添加的server就是<code>root@datalab</code>，再可用<code>/var/www/html/sargraph/scripts</code>里的脚本添加删除用户修改密码等等。</p>
+<p>最后在如<a href="http://datalab:81/sargraph/" target="_blank" rel="external">Sargraph Login</a>访问即可，负载等信息可视化出现！<img src="/images/Screen%20Shot%202017-10-11%20at%2012.05.12.png" alt="Screen Shot 2017-10-11 at 12.05.12"></p>
+<p>😎</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://frankchen.xyz/2017/09/01/spark-submit-avoid-upload-jars/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1564,150 +1739,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://frankchen.xyz/2017/07/06/ssh-web-tunnel/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江南消夏">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不正经数据科学家">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/06/ssh-web-tunnel/" itemprop="url">
-                  ssh 建立本地localhost与远程服务器localhost的连接
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-06T14:23:29+08:00">
-                2017-07-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/06/ssh-web-tunnel/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/06/ssh-web-tunnel/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/07/06/ssh-web-tunnel/" class="leancloud_visitors" data-flag-title="ssh 建立本地localhost与远程服务器localhost的连接">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>远程连接服务器开发时，经常需要连接到服务器的localhost的web界面查看，如深度学习服务器的jupyter notebook、服务器上的hadoop的hdfs和yarn以及spark的web界面，还有Supervisor等等，很多时候服务器都没有图形界面，很多时候用服务器IP在本地查看又因为防火墙的原因被阻挡，那么这里有一个很简单的方法即可达到目的：即<strong>从本地建立一个ssh通道</strong>，如</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh username@address_of_remote -L 127.0.0.1:1234:127.0.0.1:8888</div></pre></td></tr></table></figure>
-<p>即可在本地的1234端口访问远程服务器的<code>127.0.0.1:8888</code>地址了！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1757,7 +1788,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">73</span>
+                <span class="site-state-item-count">74</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
