@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>不正经数据科学家</title>
+  
+  <subtitle>Enjoy everything fun and challenging</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://frankchen.xyz/"/>
+  <updated>2017-10-27T02:58:07.000Z</updated>
+  <id>http://frankchen.xyz/</id>
+  
+  <author>
+    <name>江南消夏</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Install Opencv3.2 on Ununtu 16.04</title>
+    <link href="http://frankchen.xyz/2017/10/25/Install-Opencv3-2-on-Ununtu-16-04/"/>
+    <id>http://frankchen.xyz/2017/10/25/Install-Opencv3-2-on-Ununtu-16-04/</id>
+    <published>2017-10-25T04:34:28.000Z</published>
+    <updated>2017-10-27T02:58:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/15089061400380.jpg" alt=""></p><p>Opencv3.2 在 Ununtu 16.04 上的编译安装<br><a id="more"></a></p><p>参考自<a href="http://blog.topspeedsnail.com/archives/4755" target="_blank" rel="external">Ubuntu 16.04编译安装OpenCV（Python） – WTF Daily Blog</a>，不过这位博主装的是3.1版本，而且有些问题。</p><h2 id="安装OpenCV依赖"><a href="#安装OpenCV依赖" class="headerlink" title="安装OpenCV依赖"></a>安装OpenCV依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get upgrade</div><div class="line">sudo apt-get install build-essential cmake pkg-config</div><div class="line"> sudo apt-get install libjpeg8-dev libtiff5-dev libjasper-dev libpng12-dev</div><div class="line"> sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev</div><div class="line"> sudo apt-get install libxvidcore-dev libx264-dev</div><div class="line">sudo apt-get install libgtk-3-dev</div><div class="line">sudo apt-get install libatlas-base-dev gfortran</div><div class="line">sudo apt-get install python2.7-dev python3.5-dev</div></pre></td></tr></table></figure><h2 id="下载OpenCV源码"><a href="#下载OpenCV源码" class="headerlink" title="下载OpenCV源码"></a>下载OpenCV源码</h2><p>这里下载 3.2.0</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~</div><div class="line">$ wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.2.0.zip</div><div class="line">$ unzip opencv.zip</div></pre></td></tr></table></figure><p>下载和OpenCV版本对应的opencv_contrib（一些扩展功能和non-free代码）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.2.0.zip</div><div class="line">$ unzip opencv_contrib.zip</div></pre></td></tr></table></figure></p><h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/opencv-3.2.0/</div><div class="line">$ mkdir build</div><div class="line">$ <span class="built_in">cd</span> build</div></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">    -D CMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span> \</div><div class="line">    -D INSTALL_PYTHON_EXAMPLES=ON \</div><div class="line">    -D INSTALL_C_EXAMPLES=OFF \</div><div class="line">    -D OPENCV_EXTRA_MODULES_PATH=/root/Downloads/opencv_contrib-3.2.0/modules  -D PYTHON_EXECUTABLE=/root/miniconda3/bin/python  ..</div></pre></td></tr></table></figure><p>其中<code>OPENCV_EXTRA_MODULES_PATH</code>是opencv_contrib的解压后的地址，<code>PYTHON_EXECUTABLE</code>是# 你的python 解释器地址 可用<code>witch python</code> 查看。<br>若出现，需要下载<code>ippicv_linux_20151201.tgz</code>的长时间等待，可在此<a href="https://github.com/opencv/opencv_3rdparty/tree/ippicv/master_20151201/ippicv" target="_blank" rel="external">opencv_3rdparty/ippicv at ippicv/master_20151201 · opencv/opencv_3rdparty</a>手动下载对应文件，并放在对应位置如Put the ippicv_linux…tgz under<br>&lt;…&gt;/opencv-3.2.0/3rdparty/ippicv/downloads/linux-808b791a6eac9ed78d32a7666804320e/， 参考自<a href="https://github.com/opencv/opencv/issues/5973" target="_blank" rel="external">incorrect hash in cmake ippicv when installing · Issue #5973 · opencv/opencv</a>。</p><p>编译：</p><p><code>$ make</code></p><p>安装：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo make install</div><div class="line">$ sudo ldconfig</div></pre></td></tr></table></figure><p>再<code>pip install opencv</code>即可😎</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/15089061400380.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Opencv3.2 在 Ununtu 16.04 上的编译安装&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git notes in action</title>
+    <link href="http://frankchen.xyz/2017/10/21/git-notes-in-action/"/>
+    <id>http://frankchen.xyz/2017/10/21/git-notes-in-action/</id>
+    <published>2017-10-21T06:03:47.000Z</published>
+    <updated>2017-10-21T06:14:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/15085663573989.jpg" alt=""></p><a id="more"></a><ul><li>更改远程链接 <a href="https://help.github.com/articles/changing-a-remote-s-url/" target="_blank" rel="external">Changing a remote’s URL - User Documentation</a></li><li>redo add操作 <a href="http://data.agaric.com/undo-git-add-remove-files-staged-git-commit" target="_blank" rel="external">Undo a git add - remove files staged for a git commit | Open Data</a> </li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/15085663573989.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://frankchen.xyz/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>服务器负载GUI 神器sargraph 的安装</title>
+    <link href="http://frankchen.xyz/2017/10/11/sargraph-install/"/>
+    <id>http://frankchen.xyz/2017/10/11/sargraph-install/</id>
+    <published>2017-10-11T03:40:21.000Z</published>
+    <updated>2017-10-12T09:25:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>通过Linux 的<code>sar</code>命令可以很容易知道服务器的负载，那么如何通过网页等更好地可视化呢？本文介绍实现此功能的神器<a href="http://www.sargraph.com/sargraph/chart.php?id=dbserv" target="_blank" rel="external">SARGRAPH-Graphical front-end for sar</a>的使用及安装。</p><h2 id="sar的配置"><a href="#sar的配置" class="headerlink" title="sar的配置"></a>sar的配置</h2><p>通过这里我们可以看到<br><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/sar.html" target="_blank" rel="external">sar 找出系统瓶颈的利器 — Linux Tools Quick Tutorial</a><br>安装sar</p><blockquote><ol><li>有的linux系统下，默认可能没有安装这个包，使用apt-get install sysstat 来安装；</li><li>安装完毕，将性能收集工具的开关打开： vi /etc/default/sysstat</li><li>设置 ENABLED=”true”</li><li>启动这个工具来收集系统性能数据： /etc/init.d/sysstat start<a id="more"></a>可使用命令<code>vi /etc/cron.d/sysstat</code>调整报告频率，例如下面就将默认的十分钟修改为隔两分钟报告一次。<br><img src="/images/Screen%20Shot%202017-10-12%20at%2017.23.55.png" alt="Screen Shot 2017-10-12 at 17.23.55"></li></ol></blockquote><h2 id="sargraph-的安装"><a href="#sargraph-的安装" class="headerlink" title="sargraph 的安装"></a>sargraph 的安装</h2><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>根据<a href="http://sargraph.com/index.php?option=com_content&amp;view=article&amp;id=48&amp;Itemid=13" target="_blank" rel="external">Documentation</a>，<br><img src="/images/Screen%20Shot%202017-10-11%20at%2011.52.07-1.png" alt="Screen Shot 2017-10-11 at 11.52.07"></p><ul><li>安装php</li></ul><p><code>sudo apt-get install php libapache2-mod-php</code></p><ul><li>安装apache2 </li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install apache2</div></pre></td></tr></table></figure><h2 id="配置apache2"><a href="#配置apache2" class="headerlink" title="配置apache2"></a>配置apache2</h2><p><code>systemctl status apache2</code>查看apache2的情况，若发现其不是active，可能是由于与nginx监听默认端口冲突，那么需要在<code>vim /etc/apache2/ports.conf</code>，把80修改为81即可。<br><img src="/images/Screen%20Shot%202017-10-11%20at%2011.57.39.png" alt="Screen Shot 2017-10-11 at 11.57.39"><br>再‘service apache2 restart’，查看<code>systemctl status apache2</code>为active即成功，</p><p><img src="/images/Screen%20Shot%202017-10-11%20at%2011.55.59.png" alt="Screen Shot 2017-10-11 at 11.55.59"></p><h2 id="sargraph安装及配置"><a href="#sargraph安装及配置" class="headerlink" title="sargraph安装及配置"></a>sargraph安装及配置</h2><p>参考<a href="http://www.sargraph.com/index.php?option=com_content&amp;view=article&amp;id=47&amp;Itemid=14" target="_blank" rel="external">Download Sargraph</a>安装即可，</p><blockquote><p>Download sargraph_version3.tgz to /tmp. Unzip and untar it. And run the INSTALLER</p><p>tar xzf sargraph_version3.tgz</p><p>cd sargraph_version3</p><p> ./INSTALLER</p></blockquote><p>注意需要修改其config，<code>vim /etc/sargraph.conf</code>，</p><p><img src="/images/Screen%20Shot%202017-10-11%20at%2012.00.55.png" alt="Screen Shot 2017-10-11 at 12.00.55"></p><p>注意是SARUSER修改为需要监听的服务器的用户名，KEY修改为sargraph服务器当前用户公钥文件即可。</p><h3 id="添加server"><a href="#添加server" class="headerlink" title="添加server"></a>添加server</h3><p>使用<code>/var/www/html/sargraph/scripts/addserver datalab</code>添加server，比如之前我们把config里user改为root，那么这里我们添加的server就是<code>root@datalab</code>，再可用<code>/var/www/html/sargraph/scripts</code>里的脚本添加删除用户修改密码等等。</p><p>最后在如<a href="http://datalab:81/sargraph/" target="_blank" rel="external">Sargraph Login</a>访问即可，负载等信息可视化出现！<img src="/images/Screen%20Shot%202017-10-11%20at%2012.05.12.png" alt="Screen Shot 2017-10-11 at 12.05.12"></p><p>😎</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;通过Linux 的&lt;code&gt;sar&lt;/code&gt;命令可以很容易知道服务器的负载，那么如何通过网页等更好地可视化呢？本文介绍实现此功能的神器&lt;a href=&quot;http://www.sargraph.com/sargraph/chart.php?id=dbserv&quot;&gt;SARGRAPH-Graphical front-end for sar&lt;/a&gt;的使用及安装。&lt;/p&gt;
+&lt;h2 id=&quot;sar的配置&quot;&gt;&lt;a href=&quot;#sar的配置&quot; class=&quot;headerlink&quot; title=&quot;sar的配置&quot;&gt;&lt;/a&gt;sar的配置&lt;/h2&gt;&lt;p&gt;通过这里我们可以看到&lt;br&gt;&lt;a href=&quot;http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/sar.html&quot;&gt;sar 找出系统瓶颈的利器 — Linux Tools Quick Tutorial&lt;/a&gt;&lt;br&gt;安装sar&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;有的linux系统下，默认可能没有安装这个包，使用apt-get install sysstat 来安装；&lt;/li&gt;
+&lt;li&gt;安装完毕，将性能收集工具的开关打开： vi /etc/default/sysstat&lt;/li&gt;
+&lt;li&gt;设置 ENABLED=”true”&lt;/li&gt;
+&lt;li&gt;启动这个工具来收集系统性能数据： /etc/init.d/sysstat start
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>避免 spark 提交 上传自带 jar包解决办法</title>
+    <link href="http://frankchen.xyz/2017/09/01/spark-submit-avoid-upload-jars/"/>
+    <id>http://frankchen.xyz/2017/09/01/spark-submit-avoid-upload-jars/</id>
+    <published>2017-09-01T08:15:04.000Z</published>
+    <updated>2017-09-01T08:25:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">17/09/01 15:38:59 INFO yarn.Client: Uploading resource file:/usr/<span class="built_in">local</span>/spark-2.1.1-bin-without-hadoop/spark-46d1bd70-b346-4027-bce4-9540f4b6035a/__spark_libs__4051900056689219834.zip -&gt; hdfs://wwj.shise.com:9000/user/hadoop/.sparkStaging/application_1504148698505_0021/__spark_libs__4051900056689219834.zip</div><div class="line">17/09/01 15:41:45 INFO yarn.Client: Uploading resource file:/Users/frank/IdeaProjects/simpleApp/target/scala-2.11/simpleApp-assembly-1.0.jar -&gt; hdfs://wwj.shise.com:9000/user/hadoop/.sparkStaging/application_1504148698505_0021/simpleApp-assembly-1.0.jar</div></pre></td></tr></table></figure><p>可以看到，上传花费约3分钟，这段时间是为了将$SPARK_HOME/jar下的所有jar包上传到yarn，实际上可以完全避免。<br><img src="/images/Screen%20Shot%202017-09-01%20at%2016.16.35.png" alt="Screen Shot 2017-09-01 at 16.16.35"></p><p>实际上这部分文件完全可以就放在hdfs上，<br><img src="/images/Screen%20Shot%202017-09-01%20at%2016.21.32.png" alt="Screen Shot 2017-09-01 at 16.21.32"></p><p>先将这部分jar包复制到hdfs：<br>hadoop fs -mkdir /tmp/spark/lib_jars/<br>hadoop fs -put  $SPARK_HOME/jars/* /tmp/spark/lib_jars/</p><p>设置<code>vim $SPARK_HOME/conf/spark-defaults.conf</code>：<br>添加这行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spark.yarn.jars                  /tmp/spark/lib_jars/* <span class="comment">##这里用hdfs相对路径即可</span></div></pre></td></tr></table></figure></p><p>再submit不会出现将jar文件打包成zip文件上传的信息了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;co
+      
+    
+    </summary>
+    
+    
+      <category term="spark" scheme="http://frankchen.xyz/tags/spark/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hbase rest 绑定到内网localhost</title>
+    <link href="http://frankchen.xyz/2017/08/29/hbase-rest-bindAddress-to-localhost/"/>
+    <id>http://frankchen.xyz/2017/08/29/hbase-rest-bindAddress-to-localhost/</id>
+    <published>2017-08-29T08:34:08.000Z</published>
+    <updated>2017-08-29T08:42:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>通过开启Hbase 的REST 服务我们可以很方便的以API的形式访问Hbase，</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Foreground</span></div><div class="line">$ bin/hbase rest start -p &lt;port&gt;</div><div class="line"></div><div class="line"><span class="comment"># Background, logging to a file in $HBASE_LOGS_DIR</span></div><div class="line">$ bin/hbase-daemon.sh start rest -p &lt;port&gt;</div></pre></td></tr></table></figure><p>但是其默认是绑定<code>0.0.0.0</code>地址的，也就是对外网开放，而通过REST 服务别有用心的人是可以删表的。。。如何只对内网开放呢？</p><p>查了无数中英文网页不得，最后决定：看源码！最后在这里发现如下片段，<a href="https://github.com/apache/hbase/blob/master/hbase-rest/src/main/java/org/apache/hadoop/hbase/rest/RESTServer.java" target="_blank" rel="external">hbase/RESTServer.java at master · apache/hbase</a><br><img src="/images/Screen%20Shot%202017-08-29%20at%2016.30.16.png" alt="Screen Shot 2017-08-29 at 16.30.16"><br>那么解决方法就显而易见了：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># sudo vim /usr/local/hbase/conf/hbase-site.xml</span></div><div class="line">&lt;configuration&gt;</div><div class="line">&lt;property&gt;</div><div class="line">         &lt;name&gt;hbase.rest.host&lt;/name&gt;</div><div class="line">         &lt;value&gt;127.0.0.1&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;通过开启Hbase 的REST 服务我们可以很方便的以API的形式访问Hbase，&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="Hbase" scheme="http://frankchen.xyz/tags/Hbase/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>scala-notes</title>
+    <link href="http://frankchen.xyz/2017/08/22/scala-note/"/>
+    <id>http://frankchen.xyz/2017/08/22/scala-note/</id>
+    <published>2017-08-22T03:06:48.000Z</published>
+    <updated>2017-08-22T03:06:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="call-by-name-与-call-by-value的区别"><a href="#call-by-name-与-call-by-value的区别" class="headerlink" title="call by name 与 call by value的区别"></a>call by name 与 call by value的区别</h2><p>两者的区别就是调用之前需不需要evaluation，前者不需要，后者需要。例如一个函数$f(x, y) = x$，我们分别调用$f(1+1, 2 )$，call by name 直接引用1+1，再计算出为2，而 call by value是先算出函数参数的值，再去调用$f(2, 2 )$，scala默认是call by value，但是可以在需要call by name 的参数加箭头如<code>=&gt;</code>。</p><p>scala里面定义变量<code>def</code>和<code>val</code>的区别即在此，前者是call by name，例如我们分别定义两个函数：</p><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">loop</span></span>: <span class="type">Boolean</span> = loop</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">x</span> </span>= loop</div><div class="line"></div><div class="line"><span class="keyword">val</span> y = loop</div></pre></td></tr></table></figure><p>函数x可以被成功定义，而后者不行，因为在call by name 的参数evaluation的时候就进入死循环了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;call-by-name-与-call-by-value的区别&quot;&gt;&lt;a href=&quot;#call-by-name-与-call-by-value的区别&quot; class=&quot;headerlink&quot; title=&quot;call by name 与 call by value的区
+      
+    
+    </summary>
+    
+    
+      <category term="scala" scheme="http://frankchen.xyz/tags/scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>详解Coursera 奖学金申请步骤</title>
+    <link href="http://frankchen.xyz/2017/08/21/coursera-scholarship/"/>
+    <id>http://frankchen.xyz/2017/08/21/coursera-scholarship/</id>
+    <published>2017-08-21T04:06:29.000Z</published>
+    <updated>2017-09-05T09:30:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/15046037829976.jpg" alt=""><br>最新Coursera 奖学金申请步骤！成功率100%🏆</p><a id="more"></a><p>以这门<a href="https://www.coursera.org/learn/progfun1" target="_blank" rel="external">Scala 函数式程序设计原理 | Coursera</a>为例：</p><p><img src="/images/Screen%20Shot%202017-08-21%20at%2012.09.20.png" alt="Screen Shot 2017-08-21 at 12.09.20"><br><img src="/images/Screen%20Shot%202017-08-21%20at%2012.16.21.png" alt="Screen Shot 2017-08-21 at 12.16.21"><br><img src="/images/Screen%20Shot%202017-08-21%20at%2012.17.47.png" alt="Screen Shot 2017-08-21 at 12.17.47"><br>以下问题必须填写英文，必须大于等于150字，从我的申请记录来看，基本不会审核你究竟填写了什么，这只是为免费用户设置一个门槛，吸引你氪金😂😎<br><img src="/images/Screen%20Shot%202017-08-21%20at%2012.19.16.png" alt="Screen Shot 2017-08-21 at 12.19.16"><br><img src="/images/Screen%20Shot%202017-08-21%20at%2012.19.26.png" alt="Screen Shot 2017-08-21 at 12.19.26"><br><img src="/images/Screen%20Shot%202017-08-21%20at%2012.19.30.png" alt="Screen Shot 2017-08-21 at 12.19.30"></p><p>之前是立即可以获得证书，现在需要等待十五天即可。<br><img src="/images/Screen%20Shot%202017-08-21%20at%2012.20.21.png" alt="Screen Shot 2017-08-21 at 12.20.21"></p><p>关于上面的三个问题回复提供一模板：</p><blockquote><p>I am a graduate student in mainland China, was born in a peasant family, the family has four people, my father, my mother, my brother and I, we four and grandparents living in the same home. Mom and Dad did not work, can only rely on two acres of the family to be barely subsistence income is very meager, good for my brother and I can learn, the family live frugally money supply year my brother and I go to school Reading used. The family also owe a lot of money, so my brother and I grew to know two people not to spend money.</p><p>Dad, Mom no cultural knowledge, they know the importance of knowledge, so small they are strict requirements of our brothers and both learn to be good in the future to test a good university, find a good job, do not like them, did not work in the countryside. We two brothers are also very competitive, it has been among the best in school, in our view, only with honors in order to make my parents happy, to return to their pains. Monthly income of around one hundred US dollars to pay tuition for this course certificate will be spent half of my cost of living, it will bring a lot of economic pressure to my normal life, and this course is the first door I finished on the site class, have a special meaning for me, I wanted to get this certificate course, this will inspire my passion for learning and motivation.</p><p>1, many people have recommended this course for the learning experience to enhance learning method above, I think learning is a lifelong, this course I will gain the knowledge of my lifetime. All the copyright.</p><p>This door exercise logic and thinking about Coursera course is one of the most popular courses, course descriptions and practical reasoning methods and common logical fallacies, teach you how to properly reasoning, learning a few simple but critical general rules apply to all topics, while avoiding prone to problems when reasoning. 2, almost all individuals can enhance the quality of life of the curriculum to enhance areas of interest I have, I will continue to follow up. 3. Harvest course certificate for me is a recognition of my pay, my motivation for future learning enhance the effect is self-evident, thank you!</p><p>1, I guarantee independence to complete a full course, to ensure that all academic tasks independently myself by myself.</p><p>2, actively participate in discussions and course work, upload your own achievement, strive to contribute their efforts for curriculum community.</p><p>3, actively publicize the site to friends and relatives, for future expansion of community development programs and make a contribution.</p><p>4, to participate in and complete the course more sites to learn more new knowledge.</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/15046037829976.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;最新Coursera 奖学金申请步骤！成功率100%🏆&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Coursera" scheme="http://frankchen.xyz/tags/Coursera/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>server certificate verification failed solution</title>
+    <link href="http://frankchen.xyz/2017/08/15/server-certificate-verification-failed-solution/"/>
+    <id>http://frankchen.xyz/2017/08/15/server-certificate-verification-failed-solution/</id>
+    <published>2017-08-15T10:23:03.000Z</published>
+    <updated>2017-08-15T10:26:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none 的正确解决方法。</p><p>出现此错误时，问题出在证书的缺失，不可用如<code>export GIT_SSL_NO_VERIFY=1</code>方法去解除安全限制，正确方法是下载证书，</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hostname=XXX</div><div class="line">port=443</div><div class="line">trust_cert_file_location=`curl-config --ca`</div><div class="line">sudo bash -c <span class="string">"echo -n | openssl s_client -showcerts -connect <span class="variable">$hostname</span>:<span class="variable">$port</span> 2&gt;/dev/null  | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' &gt;&gt; <span class="variable">$trust_cert_file_location</span>"</span></div></pre></td></tr></table></figure><p>若不起作用，可用IP代替真实hostname。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none 的正确解决方法。&lt;/p&gt;
+&lt;p&gt;出现此错误时，问题出在证书的缺失，不可用如&lt;co
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx 反向代理 REST API</title>
+    <link href="http://frankchen.xyz/2017/08/04/nginx-reverse-proxy-for-rest-API/"/>
+    <id>http://frankchen.xyz/2017/08/04/nginx-reverse-proxy-for-rest-API/</id>
+    <published>2017-08-04T08:31:16.000Z</published>
+    <updated>2017-08-09T07:57:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>利用nginx 为REST API提供负载均衡。利用nginx的负载均衡可以极大提升API服务的稳定性，本文简述此过程配置方法。<br><a id="more"></a></p><p><code>sudo apt install nginx</code>安装nginx，接下来找出nginx配置地址，使用代码<code>nginx -V</code>可打印出一系列配置信息，不同平台和发行版可能不同，我这边是<code>--prefix=/usr/share/nginx</code>，即为nginx根目录，<code>--conf-path=/etc/nginx/nginx.conf</code>即为配置目录。</p><p><code>vim /etc/nginx/nginx.conf</code><br>注意其中的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">61         include /etc/nginx/conf.d/*.conf;</div><div class="line">62         include /etc/nginx/sites-enabled/*;</div></pre></td></tr></table></figure><p>在<code>/etc/nginx/conf.d/</code>新建<code>service.conf</code>，</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">upstream tornadoes &#123;</div><div class="line">    server 127.0.0.1:6001;</div><div class="line">    server 127.0.0.1:6002;</div><div class="line">    server 127.0.0.1:6003;</div><div class="line">    server 127.0.0.1:6004;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">listen 5000;</div><div class="line">    ## Individual nginx logs</div><div class="line">    access_log  /var/log/nginx/web_proxy_access.log;</div><div class="line">    error_log   /var/log/nginx/web_proxy_error.log;</div><div class="line">    location / &#123;</div><div class="line">proxy_pass http://tornadoes; ## 和upstream 名称组对应即可</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>这里我们将本地的5000端口负载均衡到四个REST Tornado服务上。<br><code>service nginx restart</code>即可。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;利用nginx 为REST API提供负载均衡。利用nginx的负载均衡可以极大提升API服务的稳定性，本文简述此过程配置方法。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="运维" scheme="http://frankchen.xyz/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="nginx" scheme="http://frankchen.xyz/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Personal Tips on Mac &amp; Linux &amp; Iphone</title>
+    <link href="http://frankchen.xyz/2017/07/18/All_kinds_of_TIPS/"/>
+    <id>http://frankchen.xyz/2017/07/18/All_kinds_of_TIPS/</id>
+    <published>2017-07-18T02:43:17.000Z</published>
+    <updated>2017-09-05T09:38:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>随手记录自己在用Mac开发上随时发现的各种Tips。<br><a id="more"></a></p><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="别用Bash啦用zsh！🈲"><a href="#别用Bash啦用zsh！🈲" class="headerlink" title="别用Bash啦用zsh！🈲"></a>别用Bash啦用zsh！🈲</h3><p>zsh的自动补全功能各种神奇，可以补齐路径，补齐命令，补齐参数等，再也不用<a href="https://zh.wikipedia.org/zh/RTFM" target="_blank" rel="external">RTFM</a>了。按下连按Tap还有二级菜单。<br><img src="/images/Screen%20Shot%202017-07-19%20at%2023.44.06.png" alt="Screen Shot 2017-07-19 at 23.44.06"><br><img src="/images/Screen%20Shot%202017-07-19%20at%2023.42.56.png" alt="Screen Shot 2017-07-19 at 23.42.56"></p><p>kill命令不需<code>ps aux | grep xxx</code>，只需<code>kill xxx</code>然后tap即可，如，这里我需要kill jupyter notebook只需要<code>kill python</code>再tap，非常方便。</p><p><img src="/images/Screen%20Shot%202017-07-19%20at%2023.47.58.png" alt="Screen Shot 2017-07-19 at 23.47.58"></p><p>跳转时，只需<code>..</code>即可不需<code>cd</code>，而<code>...</code>等于<code>../../</code>。</p><p>输入d，将列出当前 session 访问过的所有目录，再按提示的数字即可进入相应目录。</p><p><img src="/images/Screen%20Shot%202017-07-19%20at%2023.52.08.png" alt="Screen Shot 2017-07-19 at 23.52.08"></p><p>查找：zsh 的历史记录跨 session，可以共享。历史记录支持受限查找。比如，输入git，再按向上箭头，会搜索用过的所有 git 命令。搭配<a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">oh-my-zsh</a>更佳哦😎</p><h2 id="工具篇"><a href="#工具篇" class="headerlink" title="工具篇"></a>工具篇</h2><h3 id="MWeb-目前体验最好的markdown编辑器"><a href="#MWeb-目前体验最好的markdown编辑器" class="headerlink" title="MWeb 目前体验最好的markdown编辑器"></a>MWeb 目前体验最好的markdown编辑器</h3><p><a href="http://zh.mweb.im/" target="_blank" rel="external">MWeb - 专业的Markdown写作、记笔记、静态博客生成软件 - MWeb</a>，各种markdown编辑器都用过，什么Mou、Macdown等等，都是远不如这个MWeb的。个人最喜欢图片拖入功能，在此处设置好后<br><img src="/images/Screen%20Shot%202017-07-19%20at%2023.58.33.png" alt="Screen Shot 2017-07-19 at 23.58.33"></p><p>之间拖入图片，即可自动写入路径并实时预览（我用的hexo搭的博客）😘<strong>杀手级功能，效率神器！</strong>，除此之外其他的功能也是各种方便，这只需要￥98，还在等什么，赶快行动吧！<br><img src="/images/Screen%20Shot%202017-07-20%20at%2000.00.06.png" alt="Screen Shot 2017-07-20 at 00.00.06"></p><h3 id="Transserra"><a href="#Transserra" class="headerlink" title="Transserra"></a>Transserra</h3><p>iOS App，可以离线下载Coursera课程，杀手功能：<strong>翻译字幕！！！</strong>，看公开课实在是太方便啦！不过需要注意，不要在还有下载任务的时候开启cellular（蜂窝网络）下使用，本人就是这样在月初被烧完了整个月的流量！！！👻， 翻译功能需要付费，不过不贵。<br><img src="/images/IMG_1750.png" alt="IMG_1750"></p><h3 id="Iterm2"><a href="#Iterm2" class="headerlink" title="Iterm2"></a>Iterm2</h3><p><a href="https://www.iterm2.com/" target="_blank" rel="external">iTerm2 - macOS Terminal Replacement</a>是一款Mac上体验极佳的终端软件，拥有许多出色特性，如拖动字符串、多Tap广播输入等等<img src="/images/Screen%20Shot%202017-08-10%20at%2012.49.06.png" alt="Screen Shot 2017-08-10 at 12.49.06"><br>按住⌘键:</p><ul><li>可以拖拽选中的字符串；</li><li>点击 url：调用默认浏览器访问该网址；</li><li>点击文件：调用默认程序打开文件；</li><li>如果文件名是filename:42，且默认文本编辑器是 Macvim、Textmate或BBEdit，将会直接打开到这一行；</li><li>点击文件夹：在 finder 中打开该文件夹；</li><li>同时按住option键，可以以矩形选中，类似于vim中的ctrl v操作。</li></ul><p>常用快捷键</p><ul><li>切换 tab：⌘+←, ⌘+→, ⌘+{, ⌘+}。⌘+数字直接定位到该 tab；</li><li>新建 tab：⌘+t；</li><li>顺序切换 pane：⌘+[, ⌘+]；</li><li>按方向切换 pane：⌘+Option+方向键；</li><li>切分屏幕：⌘+d 水平切分，⌘+Shift+d 垂直切分；</li><li>智能查找，支持正则查找：⌘+f。</li></ul><p>iTerm2 可以自动补齐命令，输入若干字符，按⌘+;弹出自动补齐窗口，列出曾经使用过的命令。iTerm2 也可以使用历史记录，按⌘+Shift+h弹出历史粘贴记录窗口，<br><img src="/images/Screen%20Shot%202017-08-21%20at%2011.29.29.png" alt="Screen Shot 2017-08-21 at 11.29.29"></p><p>⌘+Shift+;弹出历史命令记录窗口。⌘+Option+e全屏展示所有的 tab，可以搜索。<br>一个标签页中开的窗口太多，有时候会找不到当前的鼠标，⌘+/找到它。</p><p><a href="http://iterm2colorschemes.com/" target="_blank" rel="external">这里</a>收集了大量 iTerm2 的主题，你可以选择使用。我用的是Zenburn。在其 github repo 里下载对应的xxx.itermcolors文件，双击安装使用。<br><img src="/images/15023408306576.jpg" alt=""></p><p>更新：</p><ul><li>取消鼠标滚轮浏览历史记录的设置：<a href="https://gxnotes.com/article/48116.html" target="_blank" rel="external">如何关闭iTerm2中的“scrolling the history” - 共享笔记</a></li></ul><h3 id="Mosh"><a href="#Mosh" class="headerlink" title="Mosh"></a>Mosh</h3><p> 替代SSH的<a href="https://mosh.org/" target="_blank" rel="external">Mosh: the mobile shell</a>，极大降低ssh延迟，并且持续时间极佳。<br> <img src="/images/15023407365562.jpg" alt=""></p><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="表情符号"><a href="#表情符号" class="headerlink" title="表情符号"></a>表情符号</h3><p>按 Control-Command-空格键。此时会显示“字符显示程序”弹出窗口：<br><img src="/images/15004806123652.jpg" alt=""></p><h3 id="Linux-终端快速清行"><a href="#Linux-终端快速清行" class="headerlink" title="Linux 终端快速清行"></a>Linux 终端快速清行</h3><p>有时候我们在终端里打出了一个很长很长的命令，这时候我们需要清空重新输入，有个快捷键就是ctr+p，即可快速清除当前输入。</p><h3 id="Linux-切到上一个目录"><a href="#Linux-切到上一个目录" class="headerlink" title="Linux 切到上一个目录"></a>Linux 切到上一个目录</h3><p><code>cd -</code>即可：<br><img src="/images/Screen%20Shot%202017-07-21%20at%2011.24.53.png" alt="Screen Shot 2017-07-21 at 11.24.53"></p><h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><ul><li>Command(⌘)-Shift-3 对整个屏幕拍摄屏幕快照</li><li>Command(⌘)-Shift-4 对屏幕的某个部分拍摄屏幕快照，可以选择截图区域</li><li>Command(⌘)-Shift-4-空格键 对某个窗口拍摄屏幕快照</li><li>Command(⌘)-Ctrl-Shift-4 对选定区域进行截屏，屏幕截图，文件保存在剪贴板</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;随手记录自己在用Mac开发上随时发现的各种Tips。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+      <category term="Mac" scheme="http://frankchen.xyz/tags/Mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何远程访问Jupyter Notebook</title>
+    <link href="http://frankchen.xyz/2017/07/18/Remote-jupyter-notebook/"/>
+    <id>http://frankchen.xyz/2017/07/18/Remote-jupyter-notebook/</id>
+    <published>2017-07-18T02:43:17.000Z</published>
+    <updated>2017-07-18T06:17:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>让Jupyter Notebook支持跨网络访问的方法。<br><a id="more"></a></p><h2 id="完全开放，不需密码"><a href="#完全开放，不需密码" class="headerlink" title="完全开放，不需密码"></a>完全开放，不需密码</h2><h3 id="1-登陆远程服务器"><a href="#1-登陆远程服务器" class="headerlink" title="1.  登陆远程服务器"></a>1.  登陆远程服务器</h3><h3 id="2-生成配置文件"><a href="#2-生成配置文件" class="headerlink" title="2.生成配置文件"></a>2.生成配置文件</h3><p><code>$jupyter notebook --generate-config</code></p><h3 id="3-修改默认配置文件"><a href="#3-修改默认配置文件" class="headerlink" title="3. 修改默认配置文件"></a>3. 修改默认配置文件</h3><p><code>$vim ~/.jupyter/jupyter_notebook_config.py</code><br>进行如下修改：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">c.NotebookApp.ip = <span class="string">'*'</span>      <span class="comment">#支持其它IP访问，关键</span></div><div class="line">c.NotebookApp.open_browser = <span class="keyword">False</span> 不在本地打开浏览器</div><div class="line">c.NotebookApp.port = <span class="number">10000</span> <span class="comment">#随便指定一个端口</span></div></pre></td></tr></table></figure><h3 id="4-启动jupyter-notebook："><a href="#4-启动jupyter-notebook：" class="headerlink" title="4. 启动jupyter notebook："></a>4. 启动jupyter notebook：</h3><p><code>jupyter notebook</code></p><h3 id="5-远程访问"><a href="#5-远程访问" class="headerlink" title="5. 远程访问"></a>5. 远程访问</h3><p>此时应该可以直接从本地浏览器直接访问<code>http://address_of_remote:10000</code>就可以看到jupyter的登陆界面，输入密码即可。</p><h2 id="需要密码"><a href="#需要密码" class="headerlink" title="需要密码"></a>需要密码</h2><h3 id="1-生成密码"><a href="#1-生成密码" class="headerlink" title="1. 生成密码"></a>1. 生成密码</h3><p>打开ipython，创建一个密文的密码：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">1</span>]: <span class="keyword">from</span> notebook.auth <span class="keyword">import</span> passwd</div><div class="line">In [<span class="number">2</span>]: passwd()</div><div class="line">Enter password: </div><div class="line">Verify password: </div><div class="line">Out[<span class="number">2</span>]: <span class="string">'sha1:ce23d945972f:34769685a7ccd3d08c84a18c63968a41f1140274'</span></div></pre></td></tr></table></figure><h3 id="2-添加密码"><a href="#2-添加密码" class="headerlink" title="2. 添加密码"></a>2. 添加密码</h3><p><code>$vim ~/.jupyter/jupyter_notebook_config.py</code><br>进行如下修改：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c.NotebookApp.password = <span class="string">u'sha:ce...刚才复制的那个密文'</span></div></pre></td></tr></table></figure><p><img src="/images/Screen%20Shot%202017-07-18%20at%2014.16.18.png" alt="Screen Shot 2017-07-18 at 14.16.18"></p><h3 id="3-建立ssh通道"><a href="#3-建立ssh通道" class="headerlink" title="3. 建立ssh通道"></a>3. 建立ssh通道</h3><p>若还是无法登录，也可用</p><p><code>ssh username@address_of_remote -L 127.0.0.1:10000:127.0.0.1:10000</code></p><p>建立ssh通道，便可以在localhost:10000直接访问远程的jupyter了。</p><h2 id="参考自"><a href="#参考自" class="headerlink" title="参考自"></a>参考自</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/23110830" target="_blank" rel="external">Jupyter (IPython notebook)用于服务器的配置方法(Windows) - 知乎专栏</a></li><li><a href="http://blog.leanote.com/post/jevonswang/%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AEjupyter-notebook" target="_blank" rel="external">远程访问jupyter notebook</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;让Jupyter Notebook支持跨网络访问的方法。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+      <category term="Jupyter Notebook" scheme="http://frankchen.xyz/tags/Jupyter-Notebook/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive install on Ubuntu，并以Mysql作为Metastore</title>
+    <link href="http://frankchen.xyz/2017/07/07/Hive-install-on-Ubuntu/"/>
+    <id>http://frankchen.xyz/2017/07/07/Hive-install-on-Ubuntu/</id>
+    <published>2017-07-07T02:43:17.000Z</published>
+    <updated>2017-07-07T03:03:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>安装配置Hive虽然比较简单，但是网上的资料各种坑，总结下来写下本文作为成功后的记录。<br><a id="more"></a></p><h2 id="下载与放置"><a href="#下载与放置" class="headerlink" title="下载与放置"></a>下载与放置</h2><h3 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h3><p><a href="http://www.apache.org/dyn/closer.cgi/hive/" target="_blank" rel="external">Hive下载地址</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo tar xzvf apache-hive-2.1.1-bin.tar.gz -C /usr/local</div><div class="line">$ cd /usr/local</div><div class="line">$ sudo mv apache-hive-2.1.1-bin/ hive</div><div class="line">$ sudo chown hadoop@hadoop -R hive</div><div class="line">$</div></pre></td></tr></table></figure><h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><p><code>$ sudo apt-get install mysql-server</code></p><h3 id="mysql-Java连接"><a href="#mysql-Java连接" class="headerlink" title="mysql Java连接"></a>mysql Java连接</h3><p><code>$ sudo apt-get install libmysql-java</code><br>并创建软连接<br><code>$ ln -s /usr/share/java/mysql-connector-java.jar $HIVE_HOME/lib/mysql-connector-java.jar</code></p><h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>在<code>~/.profile</code>里添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export HIVE_HOME=/usr/local/hive</div><div class="line">export PATH=$PATH:$HIVE_HOME/bin</div></pre></td></tr></table></figure></p><p>并<code>source ~/.profile</code></p><h2 id="建表与连接"><a href="#建表与连接" class="headerlink" title="建表与连接"></a>建表与连接</h2><h3 id="初始表格"><a href="#初始表格" class="headerlink" title="初始表格"></a>初始表格</h3><p>在mysql里创建数据库，格式同<code>hive-schema-2.1.0.mysql.sql</code> ，这里依据你的版本号来</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ mysql -u root -p</div><div class="line">Enter password:</div><div class="line">mysql&gt; CREATE DATABASE metastore;</div><div class="line">mysql&gt; USE metastore;</div><div class="line">mysql&gt; SOURCE /usr/local/hive/scripts/metastore/upgrade/mysql/hive-schema-2.1.0.mysql.sql;;</div></pre></td></tr></table></figure><h3 id="创建用户并给予权限"><a href="#创建用户并给予权限" class="headerlink" title="创建用户并给予权限"></a>创建用户并给予权限</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE USER 'hiveuser'@'%' IDENTIFIED BY 'hivepassword'; </div><div class="line">mysql&gt; GRANT all on *.* to 'hiveuser'@localhost identified by 'hivepassword';</div><div class="line">mysql&gt;  flush privileges;</div></pre></td></tr></table></figure><h3 id="hive-site-xml"><a href="#hive-site-xml" class="headerlink" title="hive-site.xml"></a>hive-site.xml</h3><p>在<code>$HIVE_HOME/conf</code>文件夹创建<code>hive-site.xml</code>文件，配置如下</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionURL<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>jdbc:mysql://localhost/metastore?createDatabaseIfNotExist=true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">description</span>&gt;</span>metadata is stored in a MySQL server<span class="tag">&lt;/<span class="name">description</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionDriverName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">description</span>&gt;</span>MySQL JDBC driver class<span class="tag">&lt;/<span class="name">description</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionUserName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>hiveuser<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">description</span>&gt;</span>user name for connecting to mysql server<span class="tag">&lt;/<span class="name">description</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionPassword<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>hivepassword<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">description</span>&gt;</span>password for connecting to mysql server<span class="tag">&lt;/<span class="name">description</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure><h3 id="OK，启动Hive-Shell试试看吧"><a href="#OK，启动Hive-Shell试试看吧" class="headerlink" title="OK，启动Hive Shell试试看吧"></a>OK，启动Hive Shell试试看吧</h3><p>测试一下，在hive shell里建表<br><code>hive&gt; create table saurzcode(id int, name string);</code></p><p>再在mysql里查看</p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div><div class="line">Enter password:                                                             </div><div class="line">mysql&gt; use metastore;</div><div class="line">mysql&gt; show tables ;</div><div class="line">mysql&gt; select * from TBLS;</div></pre></td></tr></table></figure><p>若可以看见上面在hive里建的表<code>saurzcode</code>，恭喜你大功告成！😆😎🤠</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;安装配置Hive虽然比较简单，但是网上的资料各种坑，总结下来写下本文作为成功后的记录。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+      <category term="Hive" scheme="http://frankchen.xyz/tags/Hive/"/>
+    
+      <category term="Hadoop" scheme="http://frankchen.xyz/tags/Hadoop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ssh 建立本地localhost与远程服务器localhost的连接</title>
+    <link href="http://frankchen.xyz/2017/07/06/ssh-web-tunnel/"/>
+    <id>http://frankchen.xyz/2017/07/06/ssh-web-tunnel/</id>
+    <published>2017-07-06T06:23:29.000Z</published>
+    <updated>2017-07-06T07:06:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>远程连接服务器开发时，经常需要连接到服务器的localhost的web界面查看，如深度学习服务器的jupyter notebook、服务器上的hadoop的hdfs和yarn以及spark的web界面，还有Supervisor等等，很多时候服务器都没有图形界面，很多时候用服务器IP在本地查看又因为防火墙的原因被阻挡，那么这里有一个很简单的方法即可达到目的：即<strong>从本地建立一个ssh通道</strong>，如</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh username@address_of_remote -L 127.0.0.1:1234:127.0.0.1:8888</div></pre></td></tr></table></figure><p>即可在本地的1234端口访问远程服务器的<code>127.0.0.1:8888</code>地址了！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;远程连接服务器开发时，经常需要连接到服务器的localhost的web界面查看，如深度学习服务器的jupyter notebook、服务器上的hadoop的hdfs和yarn以及spark的web界面，还有Supervisor等等，很多时候服务器都没有图形界面，很多时候用服
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用supervisor支持Python3程序</title>
+    <link href="http://frankchen.xyz/2017/07/06/Use-supervisor-support-Python3-program/"/>
+    <id>http://frankchen.xyz/2017/07/06/Use-supervisor-support-Python3-program/</id>
+    <published>2017-07-06T03:23:07.000Z</published>
+    <updated>2017-08-03T07:54:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://supervisord.org/index.html" target="_blank" rel="external">Supervisor</a>是python2写就的一款强大的运维工具，众所周知，<br>目前Supervisor还不支持python3，那么怎么利用Supervisor监控python3程序呢？本文主要讲述Supervisor在<br>Ubuntu下的安装部署以及上述问题的解决。<br><a id="more"></a></p><h2 id="安装及设置"><a href="#安装及设置" class="headerlink" title="安装及设置"></a>安装及设置</h2><p>可通过pip安装，如果你已经是python3的pip，会安装失败，那么可以用<code>sudo apt-get install supervisor</code>来安装，默认由Ubuntu自带的<code>/usr/bin/python2.7</code>驱动。</p><p>运行<code>echo_supervisord_conf  &gt; /etc/supervisor/supervisord.conf</code>来产生设置，未避免产生非root用户的权限错误，将<code>/etc/supervisor/supervisord.conf</code>内<code>[unix_http_server]</code>这项改为（<code>;</code>即是注释）：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[unix_http_server]</div><div class="line">file=/tmp/supervisor.sock   ; (the path to the socket file)</div><div class="line">chmod=0766                 ; socket file mode (default 0700)</div><div class="line">;chown=nobody:nogroup       ; socket file uid:gid owner</div><div class="line">;username=user              ; (default is no username (open server))</div><div class="line">;password=123               ; (default is no password (open server))</div></pre></td></tr></table></figure><p>再将末尾的<code>[include]</code>部分改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[include]</div><div class="line">files = /etc/supervisor/*.conf</div><div class="line">files = /etc/supervisor/conf.d/*.conf</div></pre></td></tr></table></figure></p><p>这样方便为每个app单独设置conf文件而不必全部写在全局设置里面。<br> <a href="https://stackoverflow.com/questions/18859063/supervisor-socket-error-issue" target="_blank" rel="external">在启动<code>supervisorctl</code>须先启动<code>supervisord</code></a>，否则会出现<code>error: &lt;class &#39;socket.error&#39;&gt;, [Errno 99] Cannot assign requested address: file: /usr/lib/python2.7/socket.py line: 575</code>错误：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo supervisord -c /etc/supervisor/supervisord.conf</div><div class="line">sudo supervisorctl -c /etc/supervisor/supervisord.conf</div></pre></td></tr></table></figure><p>在<code>/etc/supervisor/conf.d/</code>里新建<code>app.conf</code>文件，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[program:app]</div><div class="line">directory = ~/su/ ; 程序的启动目录</div><div class="line"><span class="built_in">command</span> = /home/hadoop/anaconda3/bin/python /home/hadoop/su/app.py  ; 启动命令，可以看出与手动在命令行启动的命令是一样的，注意这里home不可用~代替</div><div class="line">autostart = <span class="literal">true</span>     ; 在 supervisord 启动的时候也自动启动</div><div class="line">startsecs = 5        ; 启动 5 秒后没有异常退出，就当作已经正常启动了</div><div class="line">autorestart = <span class="literal">true</span>   ; 程序异常退出后自动重启</div><div class="line">startretries = 3     ; 启动失败自动重试次数，默认是 3</div><div class="line">user = hadoop          ; 用哪个用户启动</div><div class="line">redirect_stderr = <span class="literal">true</span>  ; 把 stderr 重定向到 stdout，默认 <span class="literal">false</span></div><div class="line">stdout_logfile_maxbytes = 20MB  ; stdout 日志文件大小，默认 50MB</div><div class="line">stdout_logfile_backups = 20     ; stdout 日志文件备份数</div><div class="line">; stdout 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）</div><div class="line">stdout_logfile = /tmp/app.log</div></pre></td></tr></table></figure></p><p>再介绍两个有用的配置项<code>stopasgroup</code>和<code>killasgroup</code>，如果我们用Flask等Rest服务，通常其会开启几个进程，那么如果<code>stopasgroup</code>不启用的话，supervisor无法重启此服务（关闭主进程时其子进程没有关闭，再开启主进程时会提示端口被占用等错误信息）。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">; 默认为 false，如果设置为 true，当进程收到 stop 信号时，会自动将该信号发给该进程的子进程。如果这个配置项为 true，那么也隐含 killasgroup 为 true。例如在 Debug 模式使用 Flask 时，Flask 不会将接收到的 stop 信号也传递给它的子进程，因此就需要设置这个配置项。</div><div class="line">stopasgroup=false             ; send stop signal to the UNIX process </div><div class="line">; 默认为 false，如果设置为 true，当进程收到 kill 信号时，会自动将该信号发给该进程的子进程。如果这个程序使用了 python 的 multiprocessing 时，就能自动停止它的子线程。</div><div class="line">killasgroup=false             ; SIGKILL the UNIX process group (def false)</div></pre></td></tr></table></figure><p>这里我们可以看出，虽然supervisor是python2写的，但只要我们指定运行的python3解释器去运行程序就行了。</p><p>运行<code>supervisorctl</code>，即可在shell里面方便的操作，如<code>start app</code>、<code>restart app</code>等。</p><p>若需要web界面，可在<code>/etc/supervisor/supervisord.conf</code>内修改，</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[inet_http_server]         ; inet (TCP) server disabled by default</div><div class="line">port=127.0.0.1:9001        ; (ip_address:port specifier, *:port <span class="keyword">for</span> all iface, 若的形式*:port则开放外网访问 )</div><div class="line">;username=user              ; (default is no username (open server))</div><div class="line">;password=123               ; (default is no password (open server))</div></pre></td></tr></table></figure><p>重启<code>supervisorctl</code>后即可在<code>127.0.0.1:9001</code>见到web界面，</p><p><img src="/images/2017/07/Screenshot from 2017-07-06 11-49-21.png" alt=""></p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul><li>如果修改了 /etc/supervisord.conf ,需要执行 supervisorctl reload 来重新加载配置文件，否则不会生效。。。</li><li>很多时候用supervisor管理后台进程容易失败，如<code>hbase/bin/hbase-daemon.sh start thrift</code>，这时候可以改用前台进程如<code>/usr/local/hbase/bin/hbase thrift start</code>。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;http://supervisord.org/index.html&quot;&gt;Supervisor&lt;/a&gt;是python2写就的一款强大的运维工具，众所周知，&lt;br&gt;目前Supervisor还不支持python3，那么怎么利用Supervisor监控python3程序呢？本文主要讲述Supervisor在&lt;br&gt;Ubuntu下的安装部署以及上述问题的解决。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+      <category term="运维" scheme="http://frankchen.xyz/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu16.04 固定IP与设置DNS</title>
+    <link href="http://frankchen.xyz/2017/06/20/Ubuntu-16-04-static-IP/"/>
+    <id>http://frankchen.xyz/2017/06/20/Ubuntu-16-04-static-IP/</id>
+    <published>2017-06-20T07:13:31.000Z</published>
+    <updated>2017-06-24T06:24:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>设置Hadoop集群的第一步很可能就是设置固定IP于DNS，而网上这一做法由于Ubuntu版本及桌面版服务器版的不同导致残差不齐，本文记录一下Ubuntu16.04在非图形界面固定IP与设置DNS的过程。</p><a id="more"></a><h2 id="Ubuntu16-04-固定IP"><a href="#Ubuntu16-04-固定IP" class="headerlink" title="Ubuntu16.04 固定IP"></a>Ubuntu16.04 固定IP</h2><h3 id="Step-One【Ubuntu-server不需，跳过即可】"><a href="#Step-One【Ubuntu-server不需，跳过即可】" class="headerlink" title="Step-One【Ubuntu-server不需，跳过即可】"></a>Step-One【Ubuntu-server不需，跳过即可】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/NetworkManager/NetworkManager.conf</div><div class="line"><span class="comment"># 将`managed=false`修改成`managed=true`</span></div><div class="line">sudo reboot</div></pre></td></tr></table></figure><h3 id="Step-Two"><a href="#Step-Two" class="headerlink" title="Step-Two"></a>Step-Two</h3><p>如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 修改配置文件</span></div><div class="line">sudo vim /etc/network/interfaces</div><div class="line">``` </div><div class="line">改为</div><div class="line"></div><div class="line">``` bash</div><div class="line"><span class="comment"># interfaces(5) file used by ifup(8) and ifdown(8)</span></div><div class="line">auto lo</div><div class="line">iface lo inet loopback</div><div class="line"></div><div class="line">auto enp0s31f6</div><div class="line">iface enp0s31f6 inet static</div><div class="line">address 192.168.1.109</div><div class="line">netmask 255.255.255.0</div><div class="line"><span class="comment">#network 192.168.1.0</span></div><div class="line"><span class="comment">#broadcast 192.168.1.255</span></div><div class="line">gateway 192.168.1.254</div></pre></td></tr></table></figure></p><p>其中‘enp0s31f6’就是<code>ifconfig</code>中以太网名称。</p><h3 id="Step-Three"><a href="#Step-Three" class="headerlink" title="Step-Three"></a>Step-Three</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 重启networking服务</span></div><div class="line">sudo systemctl restart networking.service</div></pre></td></tr></table></figure><h2 id="Ubuntu16-04-设置DNS"><a href="#Ubuntu16-04-设置DNS" class="headerlink" title="Ubuntu16.04 设置DNS"></a>Ubuntu16.04 设置DNS</h2><p>但是固定IP使得电脑很可能无法上网，那么需要手动设置DNS。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 默认文件不存在</span></div><div class="line">sudo vim /etc/resolvconf/resolv.conf.d/base</div></pre></td></tr></table></figure><p>添加下面内容：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">meserver 8.8.8.8</div><div class="line">nameserver 8.8.4.4</div><div class="line"></div><div class="line">nameserver 192.168.1.254</div><div class="line">nameserver 114.114.114.114</div></pre></td></tr></table></figure><p>其中114.114.114.114是国内移动、电信和联通通用的DNS，8.8.8.8和8.8.4.4是GOOGLE公司提供的DNS，192.168.1.254是网关地址。</p><h2 id="参考自"><a href="#参考自" class="headerlink" title="参考自"></a>参考自</h2><ul><li><a href="http://www.jianshu.com/p/ea4bca38e5d7" target="_blank" rel="external">ubuntu16.04固定IP与设置DNS - 简书</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;设置Hadoop集群的第一步很可能就是设置固定IP于DNS，而网上这一做法由于Ubuntu版本及桌面版服务器版的不同导致残差不齐，本文记录一下Ubuntu16.04在非图形界面固定IP与设置DNS的过程。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pycharm Tips</title>
+    <link href="http://frankchen.xyz/2017/06/19/Pycharm-Tips/"/>
+    <id>http://frankchen.xyz/2017/06/19/Pycharm-Tips/</id>
+    <published>2017-06-19T11:36:01.000Z</published>
+    <updated>2017-06-19T13:12:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录一些Pycharm的提高生产力的Tips。</p><a id="more"></a><h3 id="调整代码行次序"><a href="#调整代码行次序" class="headerlink" title="调整代码行次序"></a>调整代码行次序</h3><p>Command + Shift + ⬆️/⬇️<br>有时我们需要调整两行代码的上下次序，那么用剪切、粘贴的方法不如这个方法简洁自然。</p><h3 id="查看源码及跳转"><a href="#查看源码及跳转" class="headerlink" title="查看源码及跳转"></a>查看源码及跳转</h3><p>摁住Command键去点击即可跳转到源码处，而查看源码时我们可以通过Command + [/]来方便的前进或后退。</p><h3 id="批量展开收缩代码"><a href="#批量展开收缩代码" class="headerlink" title="批量展开收缩代码"></a>批量展开收缩代码</h3><p>Command + Shift +/-</p><p>当项目写到一定规模的时候，难免方法/函数会很多，这个时候我们可以使用此命令来收缩代码，这个主要是为了方便查看。</p><h3 id="快速插入常用代码"><a href="#快速插入常用代码" class="headerlink" title="快速插入常用代码"></a>快速插入常用代码</h3><p>Command + J 是弹出插入常用代码块的快捷键，比如Dict/List/Set 的comprehension都有，之前我只会‘main’然后跳出<code>if __name__ == &#39;__main__&#39;:</code>😜</p><p><img src="/images/2017/06/05.png" alt=""></p><h3 id="一键-PEP8"><a href="#一键-PEP8" class="headerlink" title="一键 PEP8"></a>一键 PEP8</h3><p>其实在了解这个tips之前我都是点击函数名，等待一个黄色的小灯泡再去点击灯泡。。。其实只需要<code>Command+Option+L</code>即可！</p><h3 id="cheat-sheet"><a href="#cheat-sheet" class="headerlink" title="cheat sheet"></a>cheat sheet</h3><p>顺便更新两张cheat sheet</p><p><img src="/images/2017/06/06.png" alt=""><br><img src="/images/2017/06/07.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录一些Pycharm的提高生产力的Tips。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+      <category term="Pycharm" scheme="http://frankchen.xyz/tags/Pycharm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Learning Something from Fluent Python</title>
+    <link href="http://frankchen.xyz/2017/06/18/Learning-Something-from-Fluent-Python/"/>
+    <id>http://frankchen.xyz/2017/06/18/Learning-Something-from-Fluent-Python/</id>
+    <published>2017-06-18T11:42:32.000Z</published>
+    <updated>2017-06-18T12:01:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>“Fluent Python” 真是一本不可多得的进阶Python神书！读时感觉就像一个老司机讲他的经历，而你情不自禁的喊“666~”。本文记录一些从书里看到的精彩片段与心得。</p><a id="more"></a><h2 id="singledispatch装饰器"><a href="#singledispatch装饰器" class="headerlink" title="singledispatch装饰器"></a>singledispatch装饰器</h2><p>functools.singledispatch 装饰器是在Python 3.4中引入的新特性，类似java 的方法重载，可以让你方便的为不同的类型参数调用不同函数。书中举的一个场景是比如，我们需要为不同的参数生成不同格式的HTML tag，那么如果用一个函数来表达这个逻辑，可能需要非常多的if-else逻辑的跳转，这不仅很繁杂，而且不利于后期的维护与迭代，那么singledispatch 装饰器就可以让你从这个局面里解放出来，如：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf8 -*-</span></div><div class="line"><span class="comment"># Created by frank at 18/06/2017</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> singledispatch</div><div class="line"></div><div class="line"><span class="meta">@singledispatch</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">myprint</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="meta">@myprint.register(str)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_</span><span class="params">(text)</span>:</span></div><div class="line">    print(<span class="string">"FUCKING STRING! &#123;0&#125;"</span>.format(text))</div><div class="line"></div><div class="line"><span class="meta">@myprint.register(int)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_</span><span class="params">(n)</span>:</span></div><div class="line">    print(<span class="string">"FUCKING INT! &#123;0&#125;"</span>.format(n))</div><div class="line"></div><div class="line"><span class="meta">@myprint.register(float)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_</span><span class="params">(f)</span>:</span></div><div class="line">    print(<span class="string">"FUCKING FLOAT! &#123;0&#125;"</span>.format(f))</div><div class="line"></div><div class="line"><span class="meta">@myprint.register(tuple)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_</span><span class="params">(seq)</span>:</span></div><div class="line">    print(<span class="string">"FUCKING TUPLE!"</span> + str([item <span class="keyword">for</span> item <span class="keyword">in</span> seq]))</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    myprint(<span class="number">1</span>)</div><div class="line">    myprint(<span class="number">0.5</span>)</div><div class="line">    myprint(<span class="string">'frank'</span>)</div><div class="line">    myprint((<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))</div></pre></td></tr></table></figure><p>结果是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">FUCK INT! 1</div><div class="line">FUCK FLOAT! 0.5</div><div class="line">FUCK STRING! frank</div><div class="line">FUCK tuple![1, 2, 3]</div></pre></td></tr></table></figure></p><p>以上的简单的例子中，singledispatch装饰器为myprint函数的不同参数选择了不同的调用。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;“Fluent Python” 真是一本不可多得的进阶Python神书！读时感觉就像一个老司机讲他的经历，而你情不自禁的喊“666~”。本文记录一些从书里看到的精彩片段与心得。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>programmer humor week 4</title>
+    <link href="http://frankchen.xyz/2017/06/18/programmer-humor-week-4/"/>
+    <id>http://frankchen.xyz/2017/06/18/programmer-humor-week-4/</id>
+    <published>2017-06-18T11:28:36.000Z</published>
+    <updated>2017-06-19T11:50:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>programmer humor from reddit 🤣😂😜</p><a id="more"></a><h3 id="Passwords"><a href="#Passwords" class="headerlink" title="Passwords"></a>Passwords</h3><p><img src="/images/2017/06/00.png" alt=""></p><h3 id="Haters-will-say-he-she-doesn’t-even-code"><a href="#Haters-will-say-he-she-doesn’t-even-code" class="headerlink" title="Haters will say he/she doesn’t even code"></a>Haters will say he/she doesn’t even code</h3><p><img src="/images/2017/06/01.jpg" alt=""></p><h3 id="Just-a-bit"><a href="#Just-a-bit" class="headerlink" title="Just a bit."></a>Just a bit.</h3><p><img src="/images/2017/06/02.jpg" alt=""></p><h3 id="Happy-Birthday-Linux"><a href="#Happy-Birthday-Linux" class="headerlink" title="Happy Birthday Linux!"></a>Happy Birthday Linux!</h3><p><img src="/images/2017/06/03.jpg" alt=""></p><h3 id="How-to-get-tomorrow’s-date"><a href="#How-to-get-tomorrow’s-date" class="headerlink" title="How to get tomorrow’s date"></a>How to get tomorrow’s date</h3><p><img src="/images/2017/06/04.png" alt=""></p><h2 id="引用自"><a href="#引用自" class="headerlink" title="引用自"></a>引用自</h2><p><a href="https://www.reddit.com/r/ProgrammerHumor/" target="_blank" rel="external">Programmer Humor</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;programmer humor from reddit 🤣😂😜&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Funny" scheme="http://frankchen.xyz/tags/Funny/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python PATH是怎么一回事？从“import pyspark”报错说起</title>
+    <link href="http://frankchen.xyz/2017/06/15/About-Python-PATH/"/>
+    <id>http://frankchen.xyz/2017/06/15/About-Python-PATH/</id>
+    <published>2017-06-14T18:57:57.000Z</published>
+    <updated>2017-06-17T06:11:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>为何import pyspark报错？让我们从捋一捋Python的环境变量PATH开始！<br><a id="more"></a></p><p>Spark装好后直接在代码开头<code>import pyspark</code>不出意外是要报错的，没有这个模块？当然不是，只是python找不到这个地址而已，有很quick and dirty的解决方法，就是利用包<code>findspark</code>，只要在开头<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> findspark</div><div class="line">findspark.init()</div></pre></td></tr></table></figure></p><p>接下来即可顺利<code>import pyspark</code>，不过这个在“import其他依赖之前先运行函数”实在是有碍观赏性。。。什么是“优雅的解决方法”呢？别急，我们先来看看<code>import findspark</code>做了什么吧：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ensure SPARK_HOME is defined</span></div><div class="line">os.environ[<span class="string">'SPARK_HOME'</span>] = spark_home</div><div class="line"></div><div class="line"><span class="comment"># ensure PYSPARK_PYTHON is defined</span></div><div class="line">os.environ[<span class="string">'PYSPARK_PYTHON'</span>] = python_path</div><div class="line"></div><div class="line"><span class="comment"># add pyspark to sys.path</span></div><div class="line">spark_python = os.path.join(spark_home, <span class="string">'python'</span>)</div><div class="line">py4j = glob(os.path.join(spark_python, <span class="string">'lib'</span>, <span class="string">'py4j-*.zip'</span>))[<span class="number">0</span>]</div><div class="line">sys.path[:<span class="number">0</span>] = [spark_python, py4j]</div><div class="line"></div><div class="line"><span class="keyword">if</span> edit_rc:</div><div class="line">    change_rc(spark_home, spark_python, py4j) </div><div class="line"></div><div class="line"><span class="keyword">if</span> edit_profile:</div><div class="line">    edit_ipython_profile(spark_home, spark_python, py4j)</div></pre></td></tr></table></figure><p>debug一下，原来init()的作用即是将如’/usr/local/spark/python’和’/usr/local/spark/python/lib/py4j-0.9-src.zip’写入 sys.path内，其中可选是否写入’~/.bashrc’或者IPython profile里。再通过查阅一些资料，我们开始验证想法，比如，我们在桌面建立’fuck.py’文件：</p><p><code>echo &quot;print(&#39;FUCK&#39;)&quot; &gt; fuck.py</code><br>那么，只要我们import fuck 成功即打印此文字，我们在Desktop下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">frank@mac:Desktop$ python -c <span class="string">"import fuck"</span></div><div class="line">FUCK</div><div class="line">frank@mac:Desktop$ python -c <span class="string">"import sys; print(sys.path)"</span></div><div class="line">[<span class="string">''</span>, <span class="string">'/Users/frank/Desktop'</span>, <span class="string">'/Users/frank/anaconda/lib/python36.zip'</span>, <span class="string">'/Users/frank/anaconda/lib/python3.6'</span>, <span class="string">'/Users/frank/anaconda/lib/python3.6/lib-dynload'</span>, <span class="string">'/Users/frank/anaconda/lib/python3.6/site-packages'</span>, <span class="string">'/Users/frank/anaconda/lib/python3.6/site-packages/Sphinx-1.5.1-py3.6.egg'</span>, <span class="string">'/Users/frank/anaconda/lib/python3.6/site-packages/aeosa'</span>, <span class="string">'/Users/frank/anaconda/lib/python3.6/site-packages/setuptools-27.2.0-py3.6.egg'</span>]</div></pre></td></tr></table></figure><p>没问题，因为<code>sys.path</code>虽不包括当前目录，但是buildin函数import默认寻找当前目录。</p><p>那我们切到其他文件夹？</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">frank@mac:tmp$ python</div><div class="line"></div><div class="line">frank@mac:tmp$ python -c <span class="string">"import fuck"</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;string&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">ModuleNotFoundError: No module named <span class="string">'fuck'</span></div><div class="line">frank@mac:tmp$ python -c <span class="string">"import sys; print(sys.path)"</span></div><div class="line">[<span class="string">''</span>, <span class="string">'/Users/frank/anaconda/lib/python36.zip'</span>, <span class="string">'/Users/frank/anaconda/lib/python3.6'</span>, <span class="string">'/Users/frank/anaconda/lib/python3.6/lib-dynload'</span>, <span class="string">'/Users/frank/anaconda/lib/python3.6/site-packages'</span>, <span class="string">'/Users/frank/anaconda/lib/python3.6/site-packages/Sphinx-1.5.1-py3.6.egg'</span>, <span class="string">'/Users/frank/anaconda/lib/python3.6/site-packages/aeosa'</span>, <span class="string">'/Users/frank/anaconda/lib/python3.6/site-packages/setuptools-27.2.0-py3.6.egg'</span>]</div></pre></td></tr></table></figure><p><code>fuck.py</code>既不在当前目录也不在<code>sys.path</code>，那么如何添加呢？有两种方法：一是添加进<code>sys.path</code>里：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; sys.path.append(<span class="string">'/Users/frank/Desktop'</span>)</div><div class="line">&gt;&gt;&gt; import fuck</div><div class="line">FUCK</div></pre></td></tr></table></figure><p>不过这个只对当前程序起作用，想要持久效果的话，通过查阅<a href="https://docs.python.org/3/library/sys.html#sys.path" target="_blank" rel="external">29.1. sys — System-specific parameters and functions — Python 3.6.1 documentation</a>可得，<code>sys.path</code>是通过PYTHONPATH环境变量起作用的，那么把需要的目录添加到PYTHONPATH即可：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">frank@mac:~$ <span class="built_in">echo</span> <span class="string">"export PYTHONPATH=/Users/frank/Desktop:<span class="variable">$PYTHONPATH</span>"</span> &gt;&gt; ~/.profile &amp;&amp; <span class="built_in">source</span>  ~/.profile</div></pre></td></tr></table></figure><p>再import即可成功：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">frank@mac:tmp$ python -c <span class="string">"import fuck"</span></div><div class="line">FUCK</div></pre></td></tr></table></figure><p>综上，需要一劳永逸解决<code>import pyspark</code>失败的问题，那么在`~/.profile’内添加如下即可（py4j-0.10.4-部分版本号可能不同））：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> SPARK_HOME=/usr/<span class="built_in">local</span>/spark</div><div class="line"><span class="built_in">export</span> PYTHONPATH=<span class="variable">$SPARK_HOME</span>/python:<span class="variable">$SPARK_HOME</span>/python/lib/py4j-0.10.4-src.zip:<span class="variable">$PYTHONPATH</span></div></pre></td></tr></table></figure><p>在<code>source  ~/.profile</code>即可。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为何import pyspark报错？让我们从捋一捋Python的环境变量PATH开始！&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>programmer humor week 3</title>
+    <link href="http://frankchen.xyz/2017/05/27/programmer-humor-week-3/"/>
+    <id>http://frankchen.xyz/2017/05/27/programmer-humor-week-3/</id>
+    <published>2017-05-27T09:58:39.000Z</published>
+    <updated>2017-06-07T08:45:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>programmer humor from reddit 🤣😂😜</p><a id="more"></a><h3 id="“what-sales-does”"><a href="#“what-sales-does”" class="headerlink" title="“what sales does”"></a>“what sales does”</h3><p><img src="/images/2017/05/00.png" alt=""></p><h3 id="Harry-Potter-can-code-Python"><a href="#Harry-Potter-can-code-Python" class="headerlink" title="Harry Potter can code Python"></a>Harry Potter can code Python</h3><p><img src="/images/2017/05/01.jpg" alt=""></p><h3 id="The-neverending-story"><a href="#The-neverending-story" class="headerlink" title="The neverending story."></a>The neverending story.</h3><p><img src="/images/2017/05/02.png" alt=""></p><h3 id="relationship"><a href="#relationship" class="headerlink" title="relationship"></a>relationship</h3><p><img src="/images/2017/05/03.jpg" alt=""></p><h3 id="Functional-Programming-For-Beginners"><a href="#Functional-Programming-For-Beginners" class="headerlink" title="Functional Programming For Beginners"></a>Functional Programming For Beginners</h3><p><img src="/images/2017/05/04.png" alt=""></p><h2 id="引用自"><a href="#引用自" class="headerlink" title="引用自"></a>引用自</h2><p><a href="https://www.reddit.com/r/ProgrammerHumor/" target="_blank" rel="external">Programmer Humor</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;programmer humor from reddit 🤣😂😜&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Funny" scheme="http://frankchen.xyz/tags/Funny/"/>
+    
+  </entry>
+  
+</feed>
