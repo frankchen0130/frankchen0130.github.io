@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankchen.xyz/"/>
-  <updated>2017-10-27T02:58:07.000Z</updated>
+  <updated>2017-11-01T02:14:03.000Z</updated>
   <id>http://frankchen.xyz/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Ubuntu16.04 安装IKEV2 VPN 并在Mac上使用以解决Google Drive 同步问题</title>
+    <link href="http://frankchen.xyz/2017/11/01/Google-Drive-Sync/"/>
+    <id>http://frankchen.xyz/2017/11/01/Google-Drive-Sync/</id>
+    <published>2017-11-01T01:56:43.000Z</published>
+    <updated>2017-11-01T02:14:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><p><img src="/images/15095018008987.jpg" alt=""></p><p><img src="/images/15095018930547.jpg" alt=""></p><p>Google Drive无法识别shadowsocks所用的socks5代理，故这边有需求在VPS上部署http代理的VPN。</p><h2 id="服务端安装说明"><a href="#服务端安装说明" class="headerlink" title="服务端安装说明"></a>服务端安装说明</h2><ul><li><p>下载脚本:</p><p>   <code>wget --no-check-certificate https://raw.githubusercontent.com/quericy/one-key-ikev2-vpn/master/one-key-ikev2.sh</code></p></li><li><p>运行脚本：</p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod +x one-key-ikev2.sh</div><div class="line">bash one-key-ikev2.sh</div></pre></td></tr></table></figure></li><li><p>等待自动配置部分内容后，选择vps类型（OpenVZ还是Xen、KVM），选错将无法成功连接，请务必核实服务器的类型。输入服务器ip或者绑定的域名(连接vpn时服务器地址将需要与此保持一致,如果是导入泛域名证书这里需要写*.域名的形式),这里推荐直接输入域名。</p></li><li>选择使用使用证书颁发机构签发的SSL证书还是生成自签名证书，这里我们选择自签名即选择no：‘’<ul><li>如果选择no,使用自签名证书（客户端如果使用IkeV2方式连接，将需要导入生成的证书并信任）则需要填写证书的相关信息(C,O,CN)，为空将使用默认值(default value)，确认无误后按任意键继续,后续安装过程中会出现输入两次pkcs12证书的密码的提示(可以设置为空)    </li></ul></li><li>接下来一直空格即可。<br>*看到install Complete字样即表示安装完成。默认用户名密码将以黄字显示，可根据提示自行修改配置文件中的用户名密码,多用户则在配置文件中按格式一行一个(多用户时用户名不能使用%any),保存并重启服务生效。</li><li>将提示信息中的证书文件ca.cert.pem拷贝到客户端，修改后缀名为.cer后导入。ios设备使用Ikev1无需导入证书，而是需要在连接时输入共享密钥，共享密钥即是提示信息中的黄字PSK.<ul><li><img src="/images/15095022245212.jpg" alt=""><h2 id="客户端配置说明"><a href="#客户端配置说明" class="headerlink" title="客户端配置说明"></a>客户端配置说明</h2></li></ul></li><li>iOS/OSX/Windows7+/WindowsPhone8.1+/Linux 均可使用IkeV2,认证方式为用户名+密码。使用SSL证书则无需导入证书；使用自签名证书则需要先导入证书才能连接,可将ca.cert.pem更改后缀名作为邮件附件发送给客户端,手机端也可通过浏览器导入,其中:<ul><li>iOS/OSX 的远程ID和服务器地址保持一致,用户鉴定选择”用户名”.如果通过浏览器导入,将证书放在可访问的远程外链上,并在系统浏览器(Safari)中访问外链地址;</li></ul></li><li>注意OSX导入后需要在钥匙串内设置信任，如：<ul><li><img src="/images/15095023464796.png" alt=""></li></ul></li><li>设置连接成功后Google Drive就会连接成功开始同步<br>😎😎😎😎😎😎<ul><li><img src="/images/Screen%20Shot%202017-11-01%20at%2010.13.03.png" alt="Screen Shot 2017-11-01 at 10.13.03"></li></ul></li></ul><h2 id="参考自"><a href="#参考自" class="headerlink" title="参考自"></a>参考自</h2><ul><li><a href="https://quericy.me/blog/699/" target="_blank" rel="external">CentOS/Ubuntu一键安装IPSEC/IKEV2 VPN服务器 | Quericy Eden*</a></li><li><a href="https://github.com/quericy/one-key-ikev2-vpn/issues/58" target="_blank" rel="external">安装完成后，mac不能连接 · Issue #58 · quericy/one-key-ikev2-vpn</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;img src=&quot;/images/15095018008987.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/15095018930547.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Google Drive无
+      
+    
+    </summary>
+    
+    
+      <category term="VPN" scheme="http://frankchen.xyz/tags/VPN/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Install Opencv3.2 on Ununtu 16.04</title>
     <link href="http://frankchen.xyz/2017/10/25/Install-Opencv3-2-on-Ununtu-16-04/"/>
     <id>http://frankchen.xyz/2017/10/25/Install-Opencv3-2-on-Ununtu-16-04/</id>
     <published>2017-10-25T04:34:28.000Z</published>
-    <updated>2017-10-27T02:58:07.000Z</updated>
+    <updated>2017-11-01T01:54:39.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/images/15089061400380.jpg" alt=""></p><p>Opencv3.2 在 Ununtu 16.04 上的编译安装<br><a id="more"></a></p><p>参考自<a href="http://blog.topspeedsnail.com/archives/4755" target="_blank" rel="external">Ubuntu 16.04编译安装OpenCV（Python） – WTF Daily Blog</a>，不过这位博主装的是3.1版本，而且有些问题。</p><h2 id="安装OpenCV依赖"><a href="#安装OpenCV依赖" class="headerlink" title="安装OpenCV依赖"></a>安装OpenCV依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get upgrade</div><div class="line">sudo apt-get install build-essential cmake pkg-config</div><div class="line"> sudo apt-get install libjpeg8-dev libtiff5-dev libjasper-dev libpng12-dev</div><div class="line"> sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev</div><div class="line"> sudo apt-get install libxvidcore-dev libx264-dev</div><div class="line">sudo apt-get install libgtk-3-dev</div><div class="line">sudo apt-get install libatlas-base-dev gfortran</div><div class="line">sudo apt-get install python2.7-dev python3.5-dev</div></pre></td></tr></table></figure><h2 id="下载OpenCV源码"><a href="#下载OpenCV源码" class="headerlink" title="下载OpenCV源码"></a>下载OpenCV源码</h2><p>这里下载 3.2.0</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~</div><div class="line">$ wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.2.0.zip</div><div class="line">$ unzip opencv.zip</div></pre></td></tr></table></figure><p>下载和OpenCV版本对应的opencv_contrib（一些扩展功能和non-free代码）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.2.0.zip</div><div class="line">$ unzip opencv_contrib.zip</div></pre></td></tr></table></figure></p><h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/opencv-3.2.0/</div><div class="line">$ mkdir build</div><div class="line">$ <span class="built_in">cd</span> build</div></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">    -D CMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span> \</div><div class="line">    -D INSTALL_PYTHON_EXAMPLES=ON \</div><div class="line">    -D INSTALL_C_EXAMPLES=OFF \</div><div class="line">    -D OPENCV_EXTRA_MODULES_PATH=/root/Downloads/opencv_contrib-3.2.0/modules  -D PYTHON_EXECUTABLE=/root/miniconda3/bin/python  ..</div></pre></td></tr></table></figure><p>其中<code>OPENCV_EXTRA_MODULES_PATH</code>是opencv_contrib的解压后的地址，<code>PYTHON_EXECUTABLE</code>是# 你的python 解释器地址 可用<code>witch python</code> 查看。<br>若出现，需要下载<code>ippicv_linux_20151201.tgz</code>的长时间等待，可在此<a href="https://github.com/opencv/opencv_3rdparty/tree/ippicv/master_20151201/ippicv" target="_blank" rel="external">opencv_3rdparty/ippicv at ippicv/master_20151201 · opencv/opencv_3rdparty</a>手动下载对应文件，并放在对应位置如Put the ippicv_linux…tgz under<br>&lt;…&gt;/opencv-3.2.0/3rdparty/ippicv/downloads/linux-808b791a6eac9ed78d32a7666804320e/， 参考自<a href="https://github.com/opencv/opencv/issues/5973" target="_blank" rel="external">incorrect hash in cmake ippicv when installing · Issue #5973 · opencv/opencv</a>。</p><p>编译：</p><p><code>$ make</code></p><p>安装：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo make install</div><div class="line">$ sudo ldconfig</div></pre></td></tr></table></figure><p>再<code>pip install opencv</code>即可😎</p>]]></content>
     
@@ -221,30 +247,6 @@
   </entry>
   
   <entry>
-    <title>Personal Tips on Mac &amp; Linux &amp; Iphone</title>
-    <link href="http://frankchen.xyz/2017/07/18/All_kinds_of_TIPS/"/>
-    <id>http://frankchen.xyz/2017/07/18/All_kinds_of_TIPS/</id>
-    <published>2017-07-18T02:43:17.000Z</published>
-    <updated>2017-09-05T09:38:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>随手记录自己在用Mac开发上随时发现的各种Tips。<br><a id="more"></a></p><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="别用Bash啦用zsh！🈲"><a href="#别用Bash啦用zsh！🈲" class="headerlink" title="别用Bash啦用zsh！🈲"></a>别用Bash啦用zsh！🈲</h3><p>zsh的自动补全功能各种神奇，可以补齐路径，补齐命令，补齐参数等，再也不用<a href="https://zh.wikipedia.org/zh/RTFM" target="_blank" rel="external">RTFM</a>了。按下连按Tap还有二级菜单。<br><img src="/images/Screen%20Shot%202017-07-19%20at%2023.44.06.png" alt="Screen Shot 2017-07-19 at 23.44.06"><br><img src="/images/Screen%20Shot%202017-07-19%20at%2023.42.56.png" alt="Screen Shot 2017-07-19 at 23.42.56"></p><p>kill命令不需<code>ps aux | grep xxx</code>，只需<code>kill xxx</code>然后tap即可，如，这里我需要kill jupyter notebook只需要<code>kill python</code>再tap，非常方便。</p><p><img src="/images/Screen%20Shot%202017-07-19%20at%2023.47.58.png" alt="Screen Shot 2017-07-19 at 23.47.58"></p><p>跳转时，只需<code>..</code>即可不需<code>cd</code>，而<code>...</code>等于<code>../../</code>。</p><p>输入d，将列出当前 session 访问过的所有目录，再按提示的数字即可进入相应目录。</p><p><img src="/images/Screen%20Shot%202017-07-19%20at%2023.52.08.png" alt="Screen Shot 2017-07-19 at 23.52.08"></p><p>查找：zsh 的历史记录跨 session，可以共享。历史记录支持受限查找。比如，输入git，再按向上箭头，会搜索用过的所有 git 命令。搭配<a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">oh-my-zsh</a>更佳哦😎</p><h2 id="工具篇"><a href="#工具篇" class="headerlink" title="工具篇"></a>工具篇</h2><h3 id="MWeb-目前体验最好的markdown编辑器"><a href="#MWeb-目前体验最好的markdown编辑器" class="headerlink" title="MWeb 目前体验最好的markdown编辑器"></a>MWeb 目前体验最好的markdown编辑器</h3><p><a href="http://zh.mweb.im/" target="_blank" rel="external">MWeb - 专业的Markdown写作、记笔记、静态博客生成软件 - MWeb</a>，各种markdown编辑器都用过，什么Mou、Macdown等等，都是远不如这个MWeb的。个人最喜欢图片拖入功能，在此处设置好后<br><img src="/images/Screen%20Shot%202017-07-19%20at%2023.58.33.png" alt="Screen Shot 2017-07-19 at 23.58.33"></p><p>之间拖入图片，即可自动写入路径并实时预览（我用的hexo搭的博客）😘<strong>杀手级功能，效率神器！</strong>，除此之外其他的功能也是各种方便，这只需要￥98，还在等什么，赶快行动吧！<br><img src="/images/Screen%20Shot%202017-07-20%20at%2000.00.06.png" alt="Screen Shot 2017-07-20 at 00.00.06"></p><h3 id="Transserra"><a href="#Transserra" class="headerlink" title="Transserra"></a>Transserra</h3><p>iOS App，可以离线下载Coursera课程，杀手功能：<strong>翻译字幕！！！</strong>，看公开课实在是太方便啦！不过需要注意，不要在还有下载任务的时候开启cellular（蜂窝网络）下使用，本人就是这样在月初被烧完了整个月的流量！！！👻， 翻译功能需要付费，不过不贵。<br><img src="/images/IMG_1750.png" alt="IMG_1750"></p><h3 id="Iterm2"><a href="#Iterm2" class="headerlink" title="Iterm2"></a>Iterm2</h3><p><a href="https://www.iterm2.com/" target="_blank" rel="external">iTerm2 - macOS Terminal Replacement</a>是一款Mac上体验极佳的终端软件，拥有许多出色特性，如拖动字符串、多Tap广播输入等等<img src="/images/Screen%20Shot%202017-08-10%20at%2012.49.06.png" alt="Screen Shot 2017-08-10 at 12.49.06"><br>按住⌘键:</p><ul><li>可以拖拽选中的字符串；</li><li>点击 url：调用默认浏览器访问该网址；</li><li>点击文件：调用默认程序打开文件；</li><li>如果文件名是filename:42，且默认文本编辑器是 Macvim、Textmate或BBEdit，将会直接打开到这一行；</li><li>点击文件夹：在 finder 中打开该文件夹；</li><li>同时按住option键，可以以矩形选中，类似于vim中的ctrl v操作。</li></ul><p>常用快捷键</p><ul><li>切换 tab：⌘+←, ⌘+→, ⌘+{, ⌘+}。⌘+数字直接定位到该 tab；</li><li>新建 tab：⌘+t；</li><li>顺序切换 pane：⌘+[, ⌘+]；</li><li>按方向切换 pane：⌘+Option+方向键；</li><li>切分屏幕：⌘+d 水平切分，⌘+Shift+d 垂直切分；</li><li>智能查找，支持正则查找：⌘+f。</li></ul><p>iTerm2 可以自动补齐命令，输入若干字符，按⌘+;弹出自动补齐窗口，列出曾经使用过的命令。iTerm2 也可以使用历史记录，按⌘+Shift+h弹出历史粘贴记录窗口，<br><img src="/images/Screen%20Shot%202017-08-21%20at%2011.29.29.png" alt="Screen Shot 2017-08-21 at 11.29.29"></p><p>⌘+Shift+;弹出历史命令记录窗口。⌘+Option+e全屏展示所有的 tab，可以搜索。<br>一个标签页中开的窗口太多，有时候会找不到当前的鼠标，⌘+/找到它。</p><p><a href="http://iterm2colorschemes.com/" target="_blank" rel="external">这里</a>收集了大量 iTerm2 的主题，你可以选择使用。我用的是Zenburn。在其 github repo 里下载对应的xxx.itermcolors文件，双击安装使用。<br><img src="/images/15023408306576.jpg" alt=""></p><p>更新：</p><ul><li>取消鼠标滚轮浏览历史记录的设置：<a href="https://gxnotes.com/article/48116.html" target="_blank" rel="external">如何关闭iTerm2中的“scrolling the history” - 共享笔记</a></li></ul><h3 id="Mosh"><a href="#Mosh" class="headerlink" title="Mosh"></a>Mosh</h3><p> 替代SSH的<a href="https://mosh.org/" target="_blank" rel="external">Mosh: the mobile shell</a>，极大降低ssh延迟，并且持续时间极佳。<br> <img src="/images/15023407365562.jpg" alt=""></p><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="表情符号"><a href="#表情符号" class="headerlink" title="表情符号"></a>表情符号</h3><p>按 Control-Command-空格键。此时会显示“字符显示程序”弹出窗口：<br><img src="/images/15004806123652.jpg" alt=""></p><h3 id="Linux-终端快速清行"><a href="#Linux-终端快速清行" class="headerlink" title="Linux 终端快速清行"></a>Linux 终端快速清行</h3><p>有时候我们在终端里打出了一个很长很长的命令，这时候我们需要清空重新输入，有个快捷键就是ctr+p，即可快速清除当前输入。</p><h3 id="Linux-切到上一个目录"><a href="#Linux-切到上一个目录" class="headerlink" title="Linux 切到上一个目录"></a>Linux 切到上一个目录</h3><p><code>cd -</code>即可：<br><img src="/images/Screen%20Shot%202017-07-21%20at%2011.24.53.png" alt="Screen Shot 2017-07-21 at 11.24.53"></p><h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><ul><li>Command(⌘)-Shift-3 对整个屏幕拍摄屏幕快照</li><li>Command(⌘)-Shift-4 对屏幕的某个部分拍摄屏幕快照，可以选择截图区域</li><li>Command(⌘)-Shift-4-空格键 对某个窗口拍摄屏幕快照</li><li>Command(⌘)-Ctrl-Shift-4 对选定区域进行截屏，屏幕截图，文件保存在剪贴板</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;随手记录自己在用Mac开发上随时发现的各种Tips。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
-    
-      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
-    
-      <category term="Mac" scheme="http://frankchen.xyz/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
     <title>如何远程访问Jupyter Notebook</title>
     <link href="http://frankchen.xyz/2017/07/18/Remote-jupyter-notebook/"/>
     <id>http://frankchen.xyz/2017/07/18/Remote-jupyter-notebook/</id>
@@ -265,6 +267,30 @@
       <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
     
       <category term="Jupyter Notebook" scheme="http://frankchen.xyz/tags/Jupyter-Notebook/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Personal Tips on Mac &amp; Linux &amp; Iphone</title>
+    <link href="http://frankchen.xyz/2017/07/18/All_kinds_of_TIPS/"/>
+    <id>http://frankchen.xyz/2017/07/18/All_kinds_of_TIPS/</id>
+    <published>2017-07-18T02:43:17.000Z</published>
+    <updated>2017-09-05T09:38:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>随手记录自己在用Mac开发上随时发现的各种Tips。<br><a id="more"></a></p><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="别用Bash啦用zsh！🈲"><a href="#别用Bash啦用zsh！🈲" class="headerlink" title="别用Bash啦用zsh！🈲"></a>别用Bash啦用zsh！🈲</h3><p>zsh的自动补全功能各种神奇，可以补齐路径，补齐命令，补齐参数等，再也不用<a href="https://zh.wikipedia.org/zh/RTFM" target="_blank" rel="external">RTFM</a>了。按下连按Tap还有二级菜单。<br><img src="/images/Screen%20Shot%202017-07-19%20at%2023.44.06.png" alt="Screen Shot 2017-07-19 at 23.44.06"><br><img src="/images/Screen%20Shot%202017-07-19%20at%2023.42.56.png" alt="Screen Shot 2017-07-19 at 23.42.56"></p><p>kill命令不需<code>ps aux | grep xxx</code>，只需<code>kill xxx</code>然后tap即可，如，这里我需要kill jupyter notebook只需要<code>kill python</code>再tap，非常方便。</p><p><img src="/images/Screen%20Shot%202017-07-19%20at%2023.47.58.png" alt="Screen Shot 2017-07-19 at 23.47.58"></p><p>跳转时，只需<code>..</code>即可不需<code>cd</code>，而<code>...</code>等于<code>../../</code>。</p><p>输入d，将列出当前 session 访问过的所有目录，再按提示的数字即可进入相应目录。</p><p><img src="/images/Screen%20Shot%202017-07-19%20at%2023.52.08.png" alt="Screen Shot 2017-07-19 at 23.52.08"></p><p>查找：zsh 的历史记录跨 session，可以共享。历史记录支持受限查找。比如，输入git，再按向上箭头，会搜索用过的所有 git 命令。搭配<a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">oh-my-zsh</a>更佳哦😎</p><h2 id="工具篇"><a href="#工具篇" class="headerlink" title="工具篇"></a>工具篇</h2><h3 id="MWeb-目前体验最好的markdown编辑器"><a href="#MWeb-目前体验最好的markdown编辑器" class="headerlink" title="MWeb 目前体验最好的markdown编辑器"></a>MWeb 目前体验最好的markdown编辑器</h3><p><a href="http://zh.mweb.im/" target="_blank" rel="external">MWeb - 专业的Markdown写作、记笔记、静态博客生成软件 - MWeb</a>，各种markdown编辑器都用过，什么Mou、Macdown等等，都是远不如这个MWeb的。个人最喜欢图片拖入功能，在此处设置好后<br><img src="/images/Screen%20Shot%202017-07-19%20at%2023.58.33.png" alt="Screen Shot 2017-07-19 at 23.58.33"></p><p>之间拖入图片，即可自动写入路径并实时预览（我用的hexo搭的博客）😘<strong>杀手级功能，效率神器！</strong>，除此之外其他的功能也是各种方便，这只需要￥98，还在等什么，赶快行动吧！<br><img src="/images/Screen%20Shot%202017-07-20%20at%2000.00.06.png" alt="Screen Shot 2017-07-20 at 00.00.06"></p><h3 id="Transserra"><a href="#Transserra" class="headerlink" title="Transserra"></a>Transserra</h3><p>iOS App，可以离线下载Coursera课程，杀手功能：<strong>翻译字幕！！！</strong>，看公开课实在是太方便啦！不过需要注意，不要在还有下载任务的时候开启cellular（蜂窝网络）下使用，本人就是这样在月初被烧完了整个月的流量！！！👻， 翻译功能需要付费，不过不贵。<br><img src="/images/IMG_1750.png" alt="IMG_1750"></p><h3 id="Iterm2"><a href="#Iterm2" class="headerlink" title="Iterm2"></a>Iterm2</h3><p><a href="https://www.iterm2.com/" target="_blank" rel="external">iTerm2 - macOS Terminal Replacement</a>是一款Mac上体验极佳的终端软件，拥有许多出色特性，如拖动字符串、多Tap广播输入等等<img src="/images/Screen%20Shot%202017-08-10%20at%2012.49.06.png" alt="Screen Shot 2017-08-10 at 12.49.06"><br>按住⌘键:</p><ul><li>可以拖拽选中的字符串；</li><li>点击 url：调用默认浏览器访问该网址；</li><li>点击文件：调用默认程序打开文件；</li><li>如果文件名是filename:42，且默认文本编辑器是 Macvim、Textmate或BBEdit，将会直接打开到这一行；</li><li>点击文件夹：在 finder 中打开该文件夹；</li><li>同时按住option键，可以以矩形选中，类似于vim中的ctrl v操作。</li></ul><p>常用快捷键</p><ul><li>切换 tab：⌘+←, ⌘+→, ⌘+{, ⌘+}。⌘+数字直接定位到该 tab；</li><li>新建 tab：⌘+t；</li><li>顺序切换 pane：⌘+[, ⌘+]；</li><li>按方向切换 pane：⌘+Option+方向键；</li><li>切分屏幕：⌘+d 水平切分，⌘+Shift+d 垂直切分；</li><li>智能查找，支持正则查找：⌘+f。</li></ul><p>iTerm2 可以自动补齐命令，输入若干字符，按⌘+;弹出自动补齐窗口，列出曾经使用过的命令。iTerm2 也可以使用历史记录，按⌘+Shift+h弹出历史粘贴记录窗口，<br><img src="/images/Screen%20Shot%202017-08-21%20at%2011.29.29.png" alt="Screen Shot 2017-08-21 at 11.29.29"></p><p>⌘+Shift+;弹出历史命令记录窗口。⌘+Option+e全屏展示所有的 tab，可以搜索。<br>一个标签页中开的窗口太多，有时候会找不到当前的鼠标，⌘+/找到它。</p><p><a href="http://iterm2colorschemes.com/" target="_blank" rel="external">这里</a>收集了大量 iTerm2 的主题，你可以选择使用。我用的是Zenburn。在其 github repo 里下载对应的xxx.itermcolors文件，双击安装使用。<br><img src="/images/15023408306576.jpg" alt=""></p><p>更新：</p><ul><li>取消鼠标滚轮浏览历史记录的设置：<a href="https://gxnotes.com/article/48116.html" target="_blank" rel="external">如何关闭iTerm2中的“scrolling the history” - 共享笔记</a></li></ul><h3 id="Mosh"><a href="#Mosh" class="headerlink" title="Mosh"></a>Mosh</h3><p> 替代SSH的<a href="https://mosh.org/" target="_blank" rel="external">Mosh: the mobile shell</a>，极大降低ssh延迟，并且持续时间极佳。<br> <img src="/images/15023407365562.jpg" alt=""></p><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="表情符号"><a href="#表情符号" class="headerlink" title="表情符号"></a>表情符号</h3><p>按 Control-Command-空格键。此时会显示“字符显示程序”弹出窗口：<br><img src="/images/15004806123652.jpg" alt=""></p><h3 id="Linux-终端快速清行"><a href="#Linux-终端快速清行" class="headerlink" title="Linux 终端快速清行"></a>Linux 终端快速清行</h3><p>有时候我们在终端里打出了一个很长很长的命令，这时候我们需要清空重新输入，有个快捷键就是ctr+p，即可快速清除当前输入。</p><h3 id="Linux-切到上一个目录"><a href="#Linux-切到上一个目录" class="headerlink" title="Linux 切到上一个目录"></a>Linux 切到上一个目录</h3><p><code>cd -</code>即可：<br><img src="/images/Screen%20Shot%202017-07-21%20at%2011.24.53.png" alt="Screen Shot 2017-07-21 at 11.24.53"></p><h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><ul><li>Command(⌘)-Shift-3 对整个屏幕拍摄屏幕快照</li><li>Command(⌘)-Shift-4 对屏幕的某个部分拍摄屏幕快照，可以选择截图区域</li><li>Command(⌘)-Shift-4-空格键 对某个窗口拍摄屏幕快照</li><li>Command(⌘)-Ctrl-Shift-4 对选定区域进行截屏，屏幕截图，文件保存在剪贴板</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;随手记录自己在用Mac开发上随时发现的各种Tips。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+      <category term="Mac" scheme="http://frankchen.xyz/tags/Mac/"/>
     
   </entry>
   
@@ -436,26 +462,6 @@
     
     
       <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>programmer humor week 3</title>
-    <link href="http://frankchen.xyz/2017/05/27/programmer-humor-week-3/"/>
-    <id>http://frankchen.xyz/2017/05/27/programmer-humor-week-3/</id>
-    <published>2017-05-27T09:58:39.000Z</published>
-    <updated>2017-06-07T08:45:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>programmer humor from reddit 🤣😂😜</p><a id="more"></a><h3 id="“what-sales-does”"><a href="#“what-sales-does”" class="headerlink" title="“what sales does”"></a>“what sales does”</h3><p><img src="/images/2017/05/00.png" alt=""></p><h3 id="Harry-Potter-can-code-Python"><a href="#Harry-Potter-can-code-Python" class="headerlink" title="Harry Potter can code Python"></a>Harry Potter can code Python</h3><p><img src="/images/2017/05/01.jpg" alt=""></p><h3 id="The-neverending-story"><a href="#The-neverending-story" class="headerlink" title="The neverending story."></a>The neverending story.</h3><p><img src="/images/2017/05/02.png" alt=""></p><h3 id="relationship"><a href="#relationship" class="headerlink" title="relationship"></a>relationship</h3><p><img src="/images/2017/05/03.jpg" alt=""></p><h3 id="Functional-Programming-For-Beginners"><a href="#Functional-Programming-For-Beginners" class="headerlink" title="Functional Programming For Beginners"></a>Functional Programming For Beginners</h3><p><img src="/images/2017/05/04.png" alt=""></p><h2 id="引用自"><a href="#引用自" class="headerlink" title="引用自"></a>引用自</h2><p><a href="https://www.reddit.com/r/ProgrammerHumor/" target="_blank" rel="external">Programmer Humor</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;programmer humor from reddit 🤣😂😜&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Funny" scheme="http://frankchen.xyz/tags/Funny/"/>
     
   </entry>
   
