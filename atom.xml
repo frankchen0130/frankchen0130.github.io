@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankchen.xyz/"/>
-  <updated>2017-11-08T03:15:04.000Z</updated>
+  <updated>2017-11-08T10:52:09.000Z</updated>
   <id>http://frankchen.xyz/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Pycharm Pro</title>
+    <link href="http://frankchen.xyz/2017/11/08/pycharm-pro/"/>
+    <id>http://frankchen.xyz/2017/11/08/pycharm-pro/</id>
+    <published>2017-11-08T10:44:13.000Z</published>
+    <updated>2017-11-08T10:52:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/15101362178541.jpg" alt=""><br>Pycharm，只为提高python开发者的生产力！<br><a id="more"></a></p><h2 id="版本管理"><a href="#版本管理" class="headerlink" title="版本管理"></a>版本管理</h2><p><img src="/images/Screen%20Shot%202017-11-08%20at%2018.17.59.png" alt="Screen Shot 2017-11-08 at 18.17.59"><br>版本管理，主要是依靠这两个按钮，左边是pull，右边是commit。一般我们开发，打开项目，先pull下代码仓库的变更，开始开发，然后commit，再pull，合并冲突，再push。<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.21.55.png" alt="Screen Shot 2017-11-08 at 18.21.55"><br>pycharm非常人性化地为我们标出了，黑色则是没有变更，蓝色是有变更，绿色是新add的文件。<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.23.21.png" alt="Screen Shot 2017-11-08 at 18.23.21"><br>commit时，可以很方便地看出变更对比，对于需要回滚的零时操作文件可以用紫色的revert按钮回退变更，总之填写commit message之后就可以commit了。<br>然后，为防止在此期间，代码仓库又有人push了新变更，在push之前，我们需要再次pull，如果没有变更，push即可。<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.26.24.png" alt="Screen Shot 2017-11-08 at 18.26.24"><br>如果有冲突呢，pycharm有非常human的解决冲突界面，<br><img src="/images/15101368989889.jpg" alt=""><br>总之，选择修改的、丢弃的、保留的，就可以push了，当然，这次push会有两条message，第二条是解决冲突的。</p><h2 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h2><p>利用pycharm我们可以在服务器直接run、debug，非常的便捷。<br>首先要设置deployment，<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.31.20.png" alt="Screen Shot 2017-11-08 at 18.31.20"><br>选择SFTP，也就是ssh，这里用密码或者私钥都是ok的。设置好映射目录，<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.31.56.png" alt="Screen Shot 2017-11-08 at 18.31.56"><br>接下来添加远程解释器，<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.33.05.png" alt="Screen Shot 2017-11-08 at 18.33.05"><br>，并勾选auto upload，<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.33.46.png" alt="Screen Shot 2017-11-08 at 18.33.46"><br>那么，每次本地的更改都会同步到服务器，直接run或者debug都是获取服务器的结果，非常方便。</p><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="调整代码行次序"><a href="#调整代码行次序" class="headerlink" title="调整代码行次序"></a>调整代码行次序</h3><p>Command + Shift + ⬆️/⬇️<br>有时我们需要调整两行代码的上下次序，那么用剪切、粘贴的方法不如这个方法简洁自然。</p><h3 id="查看源码及跳转"><a href="#查看源码及跳转" class="headerlink" title="查看源码及跳转"></a>查看源码及跳转</h3><p>摁住Command键去点击即可跳转到源码处，而查看源码时我们可以通过Command + [/]来方便的前进或后退。</p><h3 id="批量展开收缩代码"><a href="#批量展开收缩代码" class="headerlink" title="批量展开收缩代码"></a>批量展开收缩代码</h3><p>Command + Shift +/-</p><p>当项目写到一定规模的时候，难免方法/函数会很多，这个时候我们可以使用此命令来收缩代码，这个主要是为了方便查看。</p><h3 id="快速插入常用代码"><a href="#快速插入常用代码" class="headerlink" title="快速插入常用代码"></a>快速插入常用代码</h3><p>Command + J 是弹出插入常用代码块的快捷键，比如Dict/List/Set 的comprehension都有，之前我只会‘main’然后跳出<code>if __name__ == &#39;__main__&#39;:</code>😜</p><p><img src="/images/2017/06/05.png" alt=""></p><h3 id="一键-PEP8"><a href="#一键-PEP8" class="headerlink" title="一键 PEP8"></a>一键 PEP8</h3><p>其实在了解这个tips之前我都是点击函数名，等待一个黄色的小灯泡再去点击灯泡。。。其实只需要<code>Command+Option+L</code>即可！</p><h3 id="cheat-sheet"><a href="#cheat-sheet" class="headerlink" title="cheat sheet"></a>cheat sheet</h3><p>顺便更新两张cheat sheet</p><p><img src="/images/2017/06/06.png" alt=""><br><img src="/images/2017/06/07.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/15101362178541.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;Pycharm，只为提高python开发者的生产力！&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+      <category term="Pycharm" scheme="http://frankchen.xyz/tags/Pycharm/"/>
+    
+  </entry>
   
   <entry>
     <title>go hbase</title>
@@ -32,9 +54,9 @@
     </summary>
     
     
-      <category term="Hbase" scheme="http://frankchen.xyz/tags/Hbase/"/>
-    
       <category term="Go" scheme="http://frankchen.xyz/tags/Go/"/>
+    
+      <category term="Hbase" scheme="http://frankchen.xyz/tags/Hbase/"/>
     
   </entry>
   
@@ -278,9 +300,9 @@
     </summary>
     
     
-      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
-    
       <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
     
       <category term="Jupyter Notebook" scheme="http://frankchen.xyz/tags/Jupyter-Notebook/"/>
     
@@ -302,9 +324,9 @@
     </summary>
     
     
-      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
-    
       <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
     
       <category term="Mac" scheme="http://frankchen.xyz/tags/Mac/"/>
     
@@ -396,28 +418,6 @@
     
     
       <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Pycharm Tips</title>
-    <link href="http://frankchen.xyz/2017/06/19/Pycharm-Tips/"/>
-    <id>http://frankchen.xyz/2017/06/19/Pycharm-Tips/</id>
-    <published>2017-06-19T11:36:01.000Z</published>
-    <updated>2017-06-19T13:12:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>记录一些Pycharm的提高生产力的Tips。</p><a id="more"></a><h3 id="调整代码行次序"><a href="#调整代码行次序" class="headerlink" title="调整代码行次序"></a>调整代码行次序</h3><p>Command + Shift + ⬆️/⬇️<br>有时我们需要调整两行代码的上下次序，那么用剪切、粘贴的方法不如这个方法简洁自然。</p><h3 id="查看源码及跳转"><a href="#查看源码及跳转" class="headerlink" title="查看源码及跳转"></a>查看源码及跳转</h3><p>摁住Command键去点击即可跳转到源码处，而查看源码时我们可以通过Command + [/]来方便的前进或后退。</p><h3 id="批量展开收缩代码"><a href="#批量展开收缩代码" class="headerlink" title="批量展开收缩代码"></a>批量展开收缩代码</h3><p>Command + Shift +/-</p><p>当项目写到一定规模的时候，难免方法/函数会很多，这个时候我们可以使用此命令来收缩代码，这个主要是为了方便查看。</p><h3 id="快速插入常用代码"><a href="#快速插入常用代码" class="headerlink" title="快速插入常用代码"></a>快速插入常用代码</h3><p>Command + J 是弹出插入常用代码块的快捷键，比如Dict/List/Set 的comprehension都有，之前我只会‘main’然后跳出<code>if __name__ == &#39;__main__&#39;:</code>😜</p><p><img src="/images/2017/06/05.png" alt=""></p><h3 id="一键-PEP8"><a href="#一键-PEP8" class="headerlink" title="一键 PEP8"></a>一键 PEP8</h3><p>其实在了解这个tips之前我都是点击函数名，等待一个黄色的小灯泡再去点击灯泡。。。其实只需要<code>Command+Option+L</code>即可！</p><h3 id="cheat-sheet"><a href="#cheat-sheet" class="headerlink" title="cheat sheet"></a>cheat sheet</h3><p>顺便更新两张cheat sheet</p><p><img src="/images/2017/06/06.png" alt=""><br><img src="/images/2017/06/07.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记录一些Pycharm的提高生产力的Tips。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
-    
-      <category term="Pycharm" scheme="http://frankchen.xyz/tags/Pycharm/"/>
     
   </entry>
   
