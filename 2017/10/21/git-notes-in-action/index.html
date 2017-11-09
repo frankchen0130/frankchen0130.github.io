@@ -90,13 +90,13 @@
 
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="git notes in action">
+<meta property="og:title" content="git notes in action | 生产环境各场景下git常用命令">
 <meta property="og:url" content="http://frankchen.xyz/2017/10/21/git-notes-in-action/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
 <meta property="og:image" content="http://frankchen.xyz/images/15085663573989.jpg">
-<meta property="og:updated_time" content="2017-10-21T06:14:00.000Z">
+<meta property="og:updated_time" content="2017-11-09T01:59:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git notes in action">
+<meta name="twitter:title" content="git notes in action | 生产环境各场景下git常用命令">
 <meta name="twitter:image" content="http://frankchen.xyz/images/15085663573989.jpg">
 
 
@@ -131,7 +131,7 @@
 
 
 
-  <title> git notes in action | 不正经数据科学家 </title>
+  <title> git notes in action | 生产环境各场景下git常用命令 | 不正经数据科学家 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -281,7 +281,7 @@
             
             
               
-                git notes in action
+                git notes in action | 生产环境各场景下git常用命令
               
             
           </h1>
@@ -314,7 +314,7 @@
 
           
           
-             <span id="/2017/10/21/git-notes-in-action/" class="leancloud_visitors" data-flag-title="git notes in action">
+             <span id="/2017/10/21/git-notes-in-action/" class="leancloud_visitors" data-flag-title="git notes in action | 生产环境各场景下git常用命令">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -345,10 +345,12 @@
       
         <p><img src="/images/15085663573989.jpg" alt=""></p>
 <a id="more"></a>
-<ul>
+<ol>
 <li>更改远程链接 <a href="https://help.github.com/articles/changing-a-remote-s-url/" target="_blank" rel="external">Changing a remote’s URL - User Documentation</a></li>
-<li>redo add操作 <a href="http://data.agaric.com/undo-git-add-remove-files-staged-git-commit" target="_blank" rel="external">Undo a git add - remove files staged for a git commit | Open Data</a> </li>
-</ul>
+<li>redo add单文件操作 <a href="http://data.agaric.com/undo-git-add-remove-files-staged-git-commit" target="_blank" rel="external">Undo a git add - remove files staged for a git commit | Open Data</a> </li>
+<li>移除所有已经add的文件，场景例如你刚刚add了all，才发现有许多是可以ignore的，那么就运行<code>git rm --cached -r .</code>移除也就是撤回刚刚add的所有文件，再去管理ignore，再add就好了。</li>
+<li>revert当前文件变更，场景例如比如你上传本地的一个config上服务器调试，调试结束，需要将这个文件回滚变更，那么<code>git checkout -- &lt;file-you-want-revert&gt;</code>即可。</li>
+</ol>
 
       
     </div>
