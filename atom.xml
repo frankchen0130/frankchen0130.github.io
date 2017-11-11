@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankchen.xyz/"/>
-  <updated>2017-11-09T08:31:53.000Z</updated>
+  <updated>2017-11-11T18:41:42.538Z</updated>
   <id>http://frankchen.xyz/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>frp的内网穿透及外网访问内网jupyter-notebook的实现</title>
+    <link href="http://frankchen.xyz/2017/11/12/ftp-using/"/>
+    <id>http://frankchen.xyz/2017/11/12/ftp-using/</id>
+    <published>2017-11-11T18:20:38.000Z</published>
+    <updated>2017-11-11T18:41:42.538Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/15104246654723.png" alt=""></p><a id="more"></a><p><a href="https://github.com/fatedier/frp" target="_blank" rel="external">fatedier/frp: A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.</a>是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议， 这里我们用它来搭建外网访问内网jupyter-notebook的服务。<br>我们基于Ubuntu16.04 选用amd64版本，<br><img src="/images/Screen%20Shot%202017-11-12%20at%2002.25.46.png" alt="Screen Shot 2017-11-12 at 02.25.46"></p><h3 id="server设置"><a href="#server设置" class="headerlink" title="server设置"></a>server设置</h3><p>server就是你拥有外网IP的服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[common]</div><div class="line">bind_port = 7000</div><div class="line">vhost_http_port = 8888</div></pre></td></tr></table></figure></p><p>用<code>./frps -c ./frps.ini</code>启动，注意服务端需要先启动。</p><h3 id="client设置"><a href="#client设置" class="headerlink" title="client设置"></a>client设置</h3><p>client就是没有外网IP，但是你想在外网访问的机器，</p><p>XXXXXXXXX就是上面的server的外网IP。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[common]</div><div class="line">server_addr = XXXXXXXXX</div><div class="line">server_port = 7000</div><div class="line"></div><div class="line">[web]</div><div class="line"><span class="built_in">type</span> = http</div><div class="line">local_port = 8888</div><div class="line">custom_domains = XXXXXXXXX</div></pre></td></tr></table></figure><p>以<code>./frpc -c ./frpc.ini</code>启动。</p><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>接下来，在client端，在8888段端口启动jupyter-notebook即可在XXXXXXXXX:8888访问内网机器上的Notebook了。</p><p><img src="/images/Screen%20Shot%202017-11-12%20at%2002.37.55.png" alt="Screen Shot 2017-11-12 at 02.37.55"></p><p>另外，由于jupyter-notebook自带终端，这也一举两得，也是一个内网穿透ssh的方案。<br>当然，必须使用一些运维工具来保证服务的稳定性，如supervisor，可参考<a href="http://frankchen.xyz/2017/07/06/Use-supervisor-support-Python3-program/">使用supervisor支持Python3程序 | 不正经数据科学家</a>。<br><img src="/images/Screen%20Shot%202017-11-12%20at%2002.39.36.png" alt="Screen Shot 2017-11-12 at 02.39.36"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/15104246654723.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Pycharm Pro</title>
@@ -300,9 +320,9 @@
     </summary>
     
     
-      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
-    
       <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
     
       <category term="Jupyter Notebook" scheme="http://frankchen.xyz/tags/Jupyter-Notebook/"/>
     
@@ -324,9 +344,9 @@
     </summary>
     
     
-      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
-    
       <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
     
       <category term="Mac" scheme="http://frankchen.xyz/tags/Mac/"/>
     
@@ -438,26 +458,6 @@
     
     
       <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>programmer humor week 4</title>
-    <link href="http://frankchen.xyz/2017/06/18/programmer-humor-week-4/"/>
-    <id>http://frankchen.xyz/2017/06/18/programmer-humor-week-4/</id>
-    <published>2017-06-18T11:28:36.000Z</published>
-    <updated>2017-06-19T11:50:07.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>programmer humor from reddit 🤣😂😜</p><a id="more"></a><h3 id="Passwords"><a href="#Passwords" class="headerlink" title="Passwords"></a>Passwords</h3><p><img src="/images/2017/06/00.png" alt=""></p><h3 id="Haters-will-say-he-she-doesn’t-even-code"><a href="#Haters-will-say-he-she-doesn’t-even-code" class="headerlink" title="Haters will say he/she doesn’t even code"></a>Haters will say he/she doesn’t even code</h3><p><img src="/images/2017/06/01.jpg" alt=""></p><h3 id="Just-a-bit"><a href="#Just-a-bit" class="headerlink" title="Just a bit."></a>Just a bit.</h3><p><img src="/images/2017/06/02.jpg" alt=""></p><h3 id="Happy-Birthday-Linux"><a href="#Happy-Birthday-Linux" class="headerlink" title="Happy Birthday Linux!"></a>Happy Birthday Linux!</h3><p><img src="/images/2017/06/03.jpg" alt=""></p><h3 id="How-to-get-tomorrow’s-date"><a href="#How-to-get-tomorrow’s-date" class="headerlink" title="How to get tomorrow’s date"></a>How to get tomorrow’s date</h3><p><img src="/images/2017/06/04.png" alt=""></p><h2 id="引用自"><a href="#引用自" class="headerlink" title="引用自"></a>引用自</h2><p><a href="https://www.reddit.com/r/ProgrammerHumor/" target="_blank" rel="external">Programmer Humor</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;programmer humor from reddit 🤣😂😜&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Funny" scheme="http://frankchen.xyz/tags/Funny/"/>
     
   </entry>
   
