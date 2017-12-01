@@ -97,11 +97,8 @@
 <meta property="og:description" content="聊一聊Normalization and Standardization">
 <meta property="og:image" content="http://frankchen.xyz/images/15119359203487.png">
 <meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-11-29%20at%2012.35.41.png">
-<meta property="og:image" content="http://frankchen.xyz/images/15119303759385.jpg">
-<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-11-29%20at%2012.36.35.png">
-<meta property="og:image" content="http://frankchen.xyz/images/15119303856238.jpg">
 <meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-11-29%20at%2012.41.13.png">
-<meta property="og:updated_time" content="2017-11-29T06:26:33.837Z">
+<meta property="og:updated_time" content="2017-12-01T11:09:06.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据的标准化与归一化">
 <meta name="twitter:description" content="聊一聊Normalization and Standardization">
@@ -353,13 +350,13 @@
       
         <p><img src="/images/15119359203487.png" alt=""><br>聊一聊Normalization and Standardization<br><a id="more"></a></p>
 <h2 id="什么是"><a href="#什么是" class="headerlink" title="什么是"></a>什么是</h2><p>Normalization就是归一化，是最小-最大缩放(min-max scaling)的特例，指的是将数据缩放到指定range，这个range通常是0~1或者-1~+1，直观来讲就是下图，在数据不包含离群点时很有用，<br><img src="/images/Screen%20Shot%202017-11-29%20at%2012.35.41.png" alt="Screen Shot 2017-11-29 at 12.35.41"></p>
-<p>公式则是<br><img src="/images/15119303759385.jpg" alt=""></p>
-<p>若要缩放至-1~+1，则是<br><img src="/images/Screen%20Shot%202017-11-29%20at%2012.36.35.png" alt="Screen Shot 2017-11-29 at 12.36.35"></p>
+<p>公式则是</p>
+<p>$$<br>x^{(i)}_{norm} = \frac {x^{(i)} - x_{min}} {x_{max} - x_{min}}<br>$$</p>
+<p>若要缩放至-1~+1，则是<br>$$<br>x’ = \frac{x - min}{max - min}<br>$$</p>
 <p>代码实现</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#导入数据预处理库</span></div><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</div><div class="line"></div><div class="line"><span class="comment">#范围缩放标准化</span></div><div class="line">min_max_scaler = preprocessing.MinMaxScaler()</div><div class="line"></div><div class="line"><span class="comment">#训练集缩放标准化</span></div><div class="line">min_max_scaler.fit_transform(X_train)</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#测试集缩放标准化</span></div><div class="line">min_max_scaler.fit_transform(X_test)</div></pre></td></tr></table></figure>
-<p>Z-score 标准化指的是，通过缩放让数据的均值为0（移除均值），标准差为固定值（比如1）。在许多模型里，如SVM的RBF、线性模型的 L1 &amp; L2 正则项对于所有的feature都有这样的假设。</p>
-<p><img src="/images/15119303856238.jpg" alt=""></p>
+<p>Z-score 标准化指的是，通过缩放让数据的均值为0（移除均值），标准差为固定值（比如1）。在许多模型里，如SVM的RBF、线性模型的 L1 &amp; L2 正则项对于所有的feature都有这样的假设。<br>$$<br>x^{(i)}_{std} = \frac{x^{(i)} - \mu_x}{\sigma_x}<br>$$</p>
 <p>以下是一个简单的例子展示了两者的区别：</p>
 <p><img src="/images/Screen%20Shot%202017-11-29%20at%2012.41.13.png" alt="Screen Shot 2017-11-29 at 12.41.13"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#导入数据预处理库</span></div><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</div><div class="line"></div><div class="line"><span class="comment">#数据标准化</span></div><div class="line">scaler = preprocessing.StandardScaler().fit(X_train)</div><div class="line"></div><div class="line"><span class="comment">#训练集数据标准化</span></div><div class="line">scaler.transform(X_train)</div></pre></td></tr></table></figure>
