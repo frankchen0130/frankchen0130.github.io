@@ -397,7 +397,7 @@
 <p>以上的结构将RNN展开成完整的网络。例如，我们需要处理一个5层的序列，那么就需要展开成5层：每层对应一个词。</p>
 <ul>
 <li>$$x_t$$是$$t$$时刻的输入</li>
-<li>$$s_t$$是$$t$$时刻的隐藏状态，代表网络的“记忆”，计算公式为$$s_t = f(Ux<em>t + Ws</em>{t-1})$$，其中$$f$$通常是tanh函数或者RELU函数。</li>
+<li>$$s_t$$是$$t$$时刻的隐藏状态，代表网络的“记忆”，计算公式为$$s_t = f(Ux_t + Ws_{t-1})$$，其中$$f$$通常是tanh函数或者RELU函数。</li>
 <li>$$o_t$$是$$t$$时刻的输出，如果我们想预测下一个词，那么计算公式为$$o_t = softmax(Vs_t)$$，指的是在整个词表内词的概率值。</li>
 </ul>
 <p>对于以上有几点需要提示：</p>
@@ -407,7 +407,7 @@
 <li>取决于实际任务，我们可能并不需要每个step都有输入和输出。</li>
 </ul>
 <p>##RNN的实际应用<br>以下是RNN在NLP领域的一些实际应用。</p>
-<p>###语言模型与生成语句<br>在给定之前词语的情况下我们希望产生出下一个词语是什么。语言模型的作用就是让我们可以衡量一个句子的可能性，这对于机器翻译是很重要的（可能性越高的更可能正确）。而语言模型的另一个作用则是预测下一个词语是什么，我们可以通过在输出的概率词汇中采样得到，。对于语言模型，输入是一序列的词语（每一个词语都是one-hot表示），输出则是一序列的预测的词语。在训练时我们设置$$o<em>t = x</em>{t + 1}$$，因为这一时刻的输出就是下一时刻的输入。</p>
+<p>###语言模型与生成语句<br>在给定之前词语的情况下我们希望产生出下一个词语是什么。语言模型的作用就是让我们可以衡量一个句子的可能性，这对于机器翻译是很重要的（可能性越高的更可能正确）。而语言模型的另一个作用则是预测下一个词语是什么，我们可以通过在输出的概率词汇中采样得到，。对于语言模型，输入是一序列的词语（每一个词语都是one-hot表示），输出则是一序列的预测的词语。在训练时我们设置$$o_t = x_{t + 1}$$，因为这一时刻的输出就是下一时刻的输入。</p>
 <p>关于语言模型与生成语句的论文：</p>
 <ul>
 <li><a href="http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf" target="_blank" rel="external">Recurrent neural network based language model</a></li>
@@ -587,7 +587,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -609,7 +609,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

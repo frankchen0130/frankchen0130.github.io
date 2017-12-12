@@ -91,21 +91,21 @@
 
 <meta name="description" content="本文将用Python实现完整的RNN，并且用Theano来优化。
 语言模型我们的目标是使用RNN建立一个语言模型。以下我们举例说明什么是语言模型。例如，你说了一句包括$$m$$个词语的句子，语言模型可以为这句话出现的概率打分：
-$$P(w_1,\cdots,wm) = \prod{i=1}^m P(w_i \mid w1,\cdots,w{i-1})$$">
+$$P(w_1,\cdots,w_m) = \prod_{i=1}^m P(w_i \mid w_1,\cdots,w_{i-1})$$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO">
 <meta property="og:url" content="http://frankchen.xyz/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
 <meta property="og:description" content="本文将用Python实现完整的RNN，并且用Theano来优化。
 语言模型我们的目标是使用RNN建立一个语言模型。以下我们举例说明什么是语言模型。例如，你说了一句包括$$m$$个词语的句子，语言模型可以为这句话出现的概率打分：
-$$P(w_1,\cdots,wm) = \prod{i=1}^m P(w_i \mid w1,\cdots,w{i-1})$$">
+$$P(w_1,\cdots,w_m) = \prod_{i=1}^m P(w_i \mid w_1,\cdots,w_{i-1})$$">
 <meta property="og:image" content="http://frankchen.xyz/images/2016/06/rnn.jpg">
 <meta property="og:updated_time" content="2017-01-13T09:47:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO">
 <meta name="twitter:description" content="本文将用Python实现完整的RNN，并且用Theano来优化。
 语言模型我们的目标是使用RNN建立一个语言模型。以下我们举例说明什么是语言模型。例如，你说了一句包括$$m$$个词语的句子，语言模型可以为这句话出现的概率打分：
-$$P(w_1,\cdots,wm) = \prod{i=1}^m P(w_i \mid w1,\cdots,w{i-1})$$">
+$$P(w_1,\cdots,w_m) = \prod_{i=1}^m P(w_i \mid w_1,\cdots,w_{i-1})$$">
 <meta name="twitter:image" content="http://frankchen.xyz/images/2016/06/rnn.jpg">
 
 
@@ -376,7 +376,7 @@ $$P(w_1,\cdots,wm) = \prod{i=1}^m P(w_i \mid w1,\cdots,w{i-1})$$">
       
         <p>本文将用Python实现完整的RNN，并且用Theano来优化。</p>
 <h2 id="语言模型"><a href="#语言模型" class="headerlink" title="语言模型"></a>语言模型</h2><p>我们的目标是使用RNN建立一个语言模型。以下我们举例说明什么是语言模型。例如，你说了一句包括$$m$$个词语的句子，语言模型可以为这句话出现的概率打分：</p>
-<p>$$P(w_1,\cdots,w<em>m) = \prod</em>{i=1}^m P(w_i \mid w<em>1,\cdots,w</em>{i-1})$$</p>
+<p>$$P(w_1,\cdots,w_m) = \prod_{i=1}^m P(w_i \mid w_1,\cdots,w_{i-1})$$</p>
 <a id="more"></a>
 <p> 每一个词语的概率都取决于它之前的所有的词的概率。</p>
 <p>这样的模型有什么用处呢？</p>
@@ -395,7 +395,7 @@ $$P(w_1,\cdots,wm) = \prod{i=1}^m P(w_i \mid w1,\cdots,w{i-1})$$">
 <p>##建立RNN</p>
 <p><img src="/images/2016/06/rnn.jpg" alt=""></p>
 <p>总结一下我们的RNN模型的形式。初始输入$$x$$是一个代表一条句子的矩阵，每一时刻的输入$$x_t$$是一个代表一个词语的向量，每一时刻的输出$$o_t$$也是一个向量，其中每个元素代表词表内每一个词被预测的概率。</p>
-<p>RNN中的等式：<br>$$<br>s_t = tanh(Ux<em>t + Ws</em>{t-1})<br>o_t = softmax(Vs_t)<br>$$</p>
+<p>RNN中的等式：<br>$$<br>s_t = tanh(Ux_t + Ws_{t-1})<br>o_t = softmax(Vs_t)<br>$$</p>
 <p>介绍一下各个变量的维度：假设我们的词表大小$$C$$为8000，隐藏层大小$$H$$为100，可以把隐藏层大小理解为网络内存的大小，内存越大，网络能记忆的信息也越多，但是也要耗费更多的代价来计算。综上，我们的模型参数维度为：</p>
 <p>$$<br>x_t \in \Bbb{R}^{8000} \ o_t \in \Bbb{R}^{8000} \ s_t \in \Bbb{R}^{100} \ U_t \in \Bbb{R}^{100 \times 8000} \ V_t \in \Bbb{R}^{8000 \times 100} \ W_t \in \Bbb{R}^{100 \times 100} \<br>$$</p>
 <p>其中$$U，V，W$$是网络的参数，根据上面的等式，我们需要学习$$2HC+H^2$$个参数，由于$$x_t$$是稀疏的one-hot向量，所以其与$$U$$的乘积一步即可算出，$$W$$和$$S_t$$的维度都比较小，所以最繁琐的计算就是$$VS_t$$了。</p>
@@ -515,8 +515,8 @@ $$P(w_1,\cdots,wm) = \prod{i=1}^m P(w_i \mid w1,\cdots,w{i-1})$$">
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/22/2016-06-22-vim-lian-ji-gong-er/" rel="prev" title="Vim 练级攻略二">
-                Vim 练级攻略二 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/" rel="prev" title="Vim 练级攻略一">
+                Vim 练级攻略一 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -614,7 +614,7 @@ $$P(w_1,\cdots,wm) = \prod{i=1}^m P(w_i \mid w1,\cdots,w{i-1})$$">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -636,7 +636,7 @@ $$P(w_1,\cdots,wm) = \prod{i=1}^m P(w_i \mid w1,\cdots,w{i-1})$$">
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

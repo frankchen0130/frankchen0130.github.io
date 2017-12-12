@@ -415,7 +415,7 @@
 <p>LSTM具有对cell state进行增减信息的功能，是靠如下的部件–gate完成的。</p>
 <p><img src="/images/2016/06/LSTM3-gate.png" alt=""></p>
 <p>gate由一个sigmoid层和逐点乘操作构成，我们都知道sigmoid函数输出的是一个介于0和1之间的数，那么gate的作用就显而易见了：<strong>通过sigmoid层的输入决定gate的输入有多少能被输入。</strong>而LSTM具有三个gate，都是为了保持和控制cell state。</p>
-<h2 id="分步理解LSTM"><a href="#分步理解LSTM" class="headerlink" title="分步理解LSTM"></a>分步理解LSTM</h2><p>LSTM结构的第一步是决定我们应该把多少信息从cell state里面丢弃。这是有一个叫做“forget gate”的部分完成的。其接收$$h_{t-1}$$和$$x<em>t$$，输出一个0和1之间的数，再与上一时刻的cell state$$C</em>{t-1}$$做逐点乘。</p>
+<h2 id="分步理解LSTM"><a href="#分步理解LSTM" class="headerlink" title="分步理解LSTM"></a>分步理解LSTM</h2><p>LSTM结构的第一步是决定我们应该把多少信息从cell state里面丢弃。这是有一个叫做“forget gate”的部分完成的。其接收$$h_{t-1}$$和$$x_t$$，输出一个0和1之间的数，再与上一时刻的cell state$$C_{t-1}$$做逐点乘。</p>
 <p><img src="/images/2016/06/LSTM3-focus-f.png" alt=""></p>
 <p>下一步则是决定把多少的新信息存储在cell state里面。首先，一个称为“input gate layer”的sigmoid层决定要更新的信息的多少，接下来一个tanh层产生一个称为$$\tilde{C}_t$$的向量，它代表了新的状态值，最后我们整合以上两者，添加到cell state里面去。</p>
 <p><img src="/images/2016/06/LSTM3-focus-i.png" alt=""></p>
@@ -576,7 +576,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -598,7 +598,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
