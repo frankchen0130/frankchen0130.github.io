@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankchen.xyz/"/>
-  <updated>2017-12-25T11:48:42.351Z</updated>
+  <updated>2018-01-12T06:58:51.384Z</updated>
   <id>http://frankchen.xyz/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Data Science Notes |  数据科学笔记剪藏</title>
+    <link href="http://frankchen.xyz/2018/01/12/Data-Science-Notes/"/>
+    <id>http://frankchen.xyz/2018/01/12/Data-Science-Notes/</id>
+    <published>2018-01-12T06:22:50.000Z</published>
+    <updated>2018-01-12T06:58:51.384Z</updated>
+    
+    <content type="html"><![CDATA[<p>暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关。</p><a id="more"></a><h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 用于查看Dataframe各列数据类型</span></div><div class="line">ts.dtypes</div></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 用于将Dataframe中被读取为object的数据转换为数值型，errors='coerce'代表错误将被置为NaN</span></div><div class="line">ts[<span class="string">'Value'</span>] = pd.to_numeric(ts[<span class="string">'Value'</span>] , errors=<span class="string">'coerce'</span>)</div></pre></td></tr></table></figure><h3 id="DataFrame-画图相关"><a href="#DataFrame-画图相关" class="headerlink" title="DataFrame 画图相关"></a>DataFrame 画图相关</h3><p>将若干个Dataframe画在同一个图里面相同坐标</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">fig, ax = plt.subplots()</div><div class="line"><span class="comment"># desc, group 是一个Dataframe groupby desc 出的结果</span></div><div class="line"><span class="keyword">for</span> desc, group <span class="keyword">in</span> Energy_sources:</div><div class="line">    group.plot(x = group.index, y=<span class="string">'Value'</span>, label=desc,ax = ax, title=<span class="string">'Carbon Emissions per Energy Source'</span>, fontsize = <span class="number">20</span>)</div><div class="line">    ax.set_xlabel(<span class="string">'Time(Monthly)'</span>)</div><div class="line">    ax.set_ylabel(<span class="string">'Carbon Emissions in MMT'</span>)</div><div class="line">    ax.xaxis.label.set_size(<span class="number">20</span>)</div><div class="line">    ax.yaxis.label.set_size(<span class="number">20</span>)</div><div class="line">    ax.legend(fontsize = <span class="number">16</span>)</div></pre></td></tr></table></figure><p>结果如下图，<br><img src="/images/15157398435931.jpg" alt=""></p><p>画a*b的子图</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">fig, axes = plt.subplots(<span class="number">3</span>,<span class="number">3</span>, figsize = (<span class="number">30</span>, <span class="number">20</span>))</div><div class="line"><span class="comment"># desc, group 是一个Dataframe groupby desc 出的结果 也就是下面的Energy_sources</span></div><div class="line"><span class="keyword">for</span> (desc, group), ax <span class="keyword">in</span> zip(Energy_sources, axes.flatten()):</div><div class="line">    group.plot(x = group.index, y=<span class="string">'Value'</span>,ax = ax, title=desc, fontsize = <span class="number">18</span>)</div><div class="line">    ax.set_xlabel(<span class="string">'Time(Monthly)'</span>)</div><div class="line">    ax.set_ylabel(<span class="string">'Carbon Emissions in MMT'</span>)</div><div class="line">    ax.xaxis.label.set_size(<span class="number">18</span>)</div><div class="line">    ax.yaxis.label.set_size(<span class="number">18</span>)</div></pre></td></tr></table></figure><p><img src="/images/15157402388676.jpg" alt=""></p><h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><h2 id="Seaborn"><a href="#Seaborn" class="headerlink" title="Seaborn"></a>Seaborn</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Data Science" scheme="http://frankchen.xyz/tags/Data-Science/"/>
+    
+      <category term="Python" scheme="http://frankchen.xyz/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>DIY远程Jupyter Notebook服务器</title>
@@ -32,9 +54,9 @@
     </summary>
     
     
-      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
-    
       <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
     
       <category term="Jupyter Notebook" scheme="http://frankchen.xyz/tags/Jupyter-Notebook/"/>
     
@@ -448,28 +470,6 @@
     
     
       <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nginx 反向代理 REST API</title>
-    <link href="http://frankchen.xyz/2017/08/04/nginx-reverse-proxy-for-rest-API/"/>
-    <id>http://frankchen.xyz/2017/08/04/nginx-reverse-proxy-for-rest-API/</id>
-    <published>2017-08-04T08:31:16.000Z</published>
-    <updated>2017-08-09T07:57:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>利用nginx 为REST API提供负载均衡。利用nginx的负载均衡可以极大提升API服务的稳定性，本文简述此过程配置方法。<br><a id="more"></a></p><p><code>sudo apt install nginx</code>安装nginx，接下来找出nginx配置地址，使用代码<code>nginx -V</code>可打印出一系列配置信息，不同平台和发行版可能不同，我这边是<code>--prefix=/usr/share/nginx</code>，即为nginx根目录，<code>--conf-path=/etc/nginx/nginx.conf</code>即为配置目录。</p><p><code>vim /etc/nginx/nginx.conf</code><br>注意其中的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">61         include /etc/nginx/conf.d/*.conf;</div><div class="line">62         include /etc/nginx/sites-enabled/*;</div></pre></td></tr></table></figure><p>在<code>/etc/nginx/conf.d/</code>新建<code>service.conf</code>，</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">upstream tornadoes &#123;</div><div class="line">    server 127.0.0.1:6001;</div><div class="line">    server 127.0.0.1:6002;</div><div class="line">    server 127.0.0.1:6003;</div><div class="line">    server 127.0.0.1:6004;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">listen 5000;</div><div class="line">    ## Individual nginx logs</div><div class="line">    access_log  /var/log/nginx/web_proxy_access.log;</div><div class="line">    error_log   /var/log/nginx/web_proxy_error.log;</div><div class="line">    location / &#123;</div><div class="line">proxy_pass http://tornadoes; ## 和upstream 名称组对应即可</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>这里我们将本地的5000端口负载均衡到四个REST Tornado服务上。<br><code>service nginx restart</code>即可。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;利用nginx 为REST API提供负载均衡。利用nginx的负载均衡可以极大提升API服务的稳定性，本文简述此过程配置方法。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="运维" scheme="http://frankchen.xyz/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="nginx" scheme="http://frankchen.xyz/tags/nginx/"/>
     
   </entry>
   
