@@ -89,14 +89,15 @@
 
 
 
-<meta name="description" content="暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关。">
+<meta name="description" content="暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关，通常来说，项目基本步骤可以分为EDA、特征工程以及调参。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Data Science Notes |  数据科学笔记剪藏">
+<meta property="og:title" content="Data Science Pipelines |  数据科学比赛工程中的管道和案例">
 <meta property="og:url" content="http://frankchen.xyz/2018/01/12/Data-Science-Notes/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
-<meta property="og:description" content="暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关。">
+<meta property="og:description" content="暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关，通常来说，项目基本步骤可以分为EDA、特征工程以及调参。">
+<meta property="og:image" content="http://frankchen.xyz/images/15161698020879.png">
 <meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-12%20at%2015.27.58.png">
-<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-12%20at%2016.16.30.png">
+<meta property="og:image" content="http://frankchen.xyz/images/15161679439549.jpg">
 <meta property="og:image" content="http://frankchen.xyz/images/15157398435931.jpg">
 <meta property="og:image" content="http://frankchen.xyz/images/15157402388676.jpg">
 <meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-12%20at%2015.19.32.png">
@@ -113,11 +114,13 @@
 <meta property="og:image" content="http://frankchen.xyz/images/15159950249702.jpg">
 <meta property="og:image" content="http://frankchen.xyz/images/15159951024672.jpg">
 <meta property="og:image" content="http://frankchen.xyz/images/15159971204332.jpg">
-<meta property="og:updated_time" content="2018-01-15T06:19:51.526Z">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-12%20at%2016.16.30.png">
+<meta property="og:image" content="http://frankchen.xyz/images/15161696298310.jpg">
+<meta property="og:updated_time" content="2018-01-17T06:17:54.866Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data Science Notes |  数据科学笔记剪藏">
-<meta name="twitter:description" content="暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关。">
-<meta name="twitter:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-12%20at%2015.27.58.png">
+<meta name="twitter:title" content="Data Science Pipelines |  数据科学比赛工程中的管道和案例">
+<meta name="twitter:description" content="暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关，通常来说，项目基本步骤可以分为EDA、特征工程以及调参。">
+<meta name="twitter:image" content="http://frankchen.xyz/images/15161698020879.png">
 
 
 
@@ -151,7 +154,7 @@
 
 
 
-  <title> Data Science Notes |  数据科学笔记剪藏 | 不正经数据科学家 </title>
+  <title> Data Science Pipelines |  数据科学比赛工程中的管道和案例 | 不正经数据科学家 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -301,7 +304,7 @@
             
             
               
-                Data Science Notes |  数据科学笔记剪藏
+                Data Science Pipelines |  数据科学比赛工程中的管道和案例
               
             
           </h1>
@@ -334,7 +337,7 @@
 
           
           
-             <span id="/2018/01/12/Data-Science-Notes/" class="leancloud_visitors" data-flag-title="Data Science Notes |  数据科学笔记剪藏">
+             <span id="/2018/01/12/Data-Science-Notes/" class="leancloud_visitors" data-flag-title="Data Science Pipelines |  数据科学比赛工程中的管道和案例">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -363,27 +366,22 @@
       
 
       
-        <p>暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关。</p>
+        <p><img src="/images/15161698020879.png" alt=""></p>
+<p>暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关，通常来说，项目基本步骤可以分为EDA、特征工程以及调参。</p>
 <a id="more"></a>
-<h2 id="NoteBook-Head"><a href="#NoteBook-Head" class="headerlink" title="NoteBook Head"></a>NoteBook Head</h2><p>过滤warning：有句话说的好，在计算机科学里，我们只在意错误不在意warning</p>
+<h2 id="准备阶段-与-NoteBook-Head"><a href="#准备阶段-与-NoteBook-Head" class="headerlink" title="准备阶段 与 NoteBook Head"></a>准备阶段 与 NoteBook Head</h2><p>过滤warning：有句话说的好，在计算机科学里，我们只在意错误不在意warning</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> warnings</div><div class="line">warnings.filterwarnings(<span class="string">"ignore"</span>)</div></pre></td></tr></table></figure>
 <hr>
 <p>Notebook交互输出所有结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> IPython.core.interactiveshell <span class="keyword">import</span> InteractiveShell</div><div class="line">InteractiveShell.ast_node_interactivity=<span class="string">'all'</span></div></pre></td></tr></table></figure>
 <p>结果如下<br><img src="/images/Screen%20Shot%202018-01-12%20at%2015.27.58.png" alt="Screen Shot 2018-01-12 at 15.27.58"></p>
-<h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 用于查看Dataframe各列数据类型</span></div><div class="line">ts.dtypes</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 用于将Dataframe中被读取为object的数据转换为数值型，errors='coerce'代表错误将被置为NaN</span></div><div class="line">ts[<span class="string">'Value'</span>] = pd.to_numeric(ts[<span class="string">'Value'</span>] , errors=<span class="string">'coerce'</span>)</div></pre></td></tr></table></figure>
+<p>一般对train以及test做一个concat，并记录train的条数ntrain<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">train = pd.read_csv(<span class="string">"train.csv.gz"</span>)</div><div class="line">test = pd.read_csv(<span class="string">"test.csv.gz"</span>)</div><div class="line"></div><div class="line">combined = pd.concat([train,test],axis =<span class="number">0</span>, ignore_index =<span class="keyword">True</span>)</div><div class="line">ntrain = train.shape[<span class="number">0</span>]</div><div class="line">Y_train = train[<span class="string">"SalePrice"</span>]</div><div class="line">X_train = train.drop([<span class="string">"Id"</span>,<span class="string">"SalePrice"</span>],axis=<span class="number">1</span>)</div><div class="line">print(<span class="string">"train data shape:\t "</span>,train.shape)</div><div class="line">print(<span class="string">"test data shape:\t "</span>,test.shape)</div><div class="line">print(<span class="string">"combined data shape:\t"</span>,combined.shape)</div></pre></td></tr></table></figure></p>
+<h2 id="EDA相关"><a href="#EDA相关" class="headerlink" title="EDA相关"></a>EDA相关</h2><p>缺失值分析</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cols_missing_value = combined.isnull().sum()/combined.shape[<span class="number">0</span>]</div><div class="line">cols_missing_value = cols_missing_value[cols_missing_value&gt;<span class="number">0</span>]</div><div class="line">print(<span class="string">"How many features is bad/missing value? The answer is:"</span>,cols_missing_value.shape[<span class="number">0</span>])</div><div class="line">cols_missing_value.sort_values(ascending=<span class="keyword">False</span>).head(<span class="number">10</span>).plot.barh()</div></pre></td></tr></table></figure>
+<p><img src="/images/15161679439549.jpg" alt=""></p>
+<p>有缺失 - 需要填充或者删除，通常用均值或者中指，或者用人工分析（人工分析是提分关键）</p>
 <hr>
-<p>过滤index 里面的NaN值，推广也可以过滤其他列</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ts = df.loc[pd.Series(pd.to_datetime(df.index, errors=<span class="string">'coerce'</span>)).notnull().values]</div></pre></td></tr></table></figure>
-<hr>
-<p>按月groupby，以及unstack解构</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Emissions.groupby([<span class="string">'Description'</span>, pd.TimeGrouper(<span class="string">'M'</span>)])[<span class="string">'Value'</span>].sum().unstack(level = <span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p><img src="/images/Screen%20Shot%202018-01-12%20at%2016.16.30.png" alt="Screen Shot 2018-01-12 at 16.16.30"></p>
-<hr>
-<p>将value_counts、groupby等Series转换为Dataframe<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tree=response[<span class="string">'Country'</span>].value_counts().to_frame()</div></pre></td></tr></table></figure></p>
-<h3 id="DataFrame-画图相关"><a href="#DataFrame-画图相关" class="headerlink" title="DataFrame 画图相关"></a>DataFrame 画图相关</h3><hr>
 <p>将若干个Dataframe画在同一个图里面相同坐标</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">fig, ax = plt.subplots()</div><div class="line"><span class="comment"># desc, group 是一个Dataframe groupby desc 出的结果</span></div><div class="line"><span class="keyword">for</span> desc, group <span class="keyword">in</span> Energy_sources:</div><div class="line">    group.plot(x = group.index, y=<span class="string">'Value'</span>, label=desc,ax = ax, title=<span class="string">'Carbon Emissions per Energy Source'</span>, fontsize = <span class="number">20</span>)</div><div class="line">    ax.set_xlabel(<span class="string">'Time(Monthly)'</span>)</div><div class="line">    ax.set_ylabel(<span class="string">'Carbon Emissions in MMT'</span>)</div><div class="line">    ax.xaxis.label.set_size(<span class="number">20</span>)</div><div class="line">    ax.yaxis.label.set_size(<span class="number">20</span>)</div><div class="line">    ax.legend(fontsize = <span class="number">16</span>)</div></pre></td></tr></table></figure>
 <p>结果如下图，<br><img src="/images/15157398435931.jpg" alt=""></p>
@@ -443,7 +441,66 @@
 <p>词云</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud, STOPWORDS</div><div class="line"><span class="keyword">import</span> nltk</div><div class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> stopwords</div><div class="line">free=pd.read_csv(<span class="string">'../input/freeformResponses.csv'</span>)</div><div class="line">stop_words=set(stopwords.words(<span class="string">'english'</span>))</div><div class="line">stop_words.update(<span class="string">','</span>,<span class="string">';'</span>,<span class="string">'!'</span>,<span class="string">'?'</span>,<span class="string">'.'</span>,<span class="string">'('</span>,<span class="string">')'</span>,<span class="string">'$'</span>,<span class="string">'#'</span>,<span class="string">'+'</span>,<span class="string">':'</span>,<span class="string">'...'</span>)</div><div class="line">motivation=free[<span class="string">'KaggleMotivationFreeForm'</span>].dropna().apply(nltk.word_tokenize)</div><div class="line">motivate=[]</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> motivation:</div><div class="line">    motivate.extend(i)</div><div class="line">motivate=pd.Series(motivate)</div><div class="line">motivate=([i <span class="keyword">for</span> i <span class="keyword">in</span> motivate.str.lower() <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> stop_words])</div><div class="line">f1=open(<span class="string">"kaggle.png"</span>, <span class="string">"wb"</span>)</div><div class="line">f1.write(codecs.decode(kaggle,<span class="string">'base64'</span>))</div><div class="line">f1.close()</div><div class="line">img1 = imread(<span class="string">"kaggle.png"</span>)</div><div class="line">hcmask1 = img1</div><div class="line">wc = WordCloud(background_color=<span class="string">"black"</span>, max_words=<span class="number">4000</span>, mask=hcmask1, </div><div class="line">               stopwords=STOPWORDS, max_font_size= <span class="number">60</span>,width=<span class="number">1000</span>,height=<span class="number">1000</span>)</div><div class="line">wc.generate(<span class="string">" "</span>.join(motivate))</div><div class="line">plt.imshow(wc)</div><div class="line">plt.axis(<span class="string">'off'</span>)</div><div class="line">fig=plt.gcf()</div><div class="line">fig.set_size_inches(<span class="number">10</span>,<span class="number">10</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
 <p><img src="/images/15159971204332.jpg" alt=""></p>
-<h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2>
+<h2 id="特征工程阶段"><a href="#特征工程阶段" class="headerlink" title="特征工程阶段"></a>特征工程阶段</h2><p>Numpy区间百分比切分异常值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cut off long distance trips</span></div><div class="line">lat_low, lat_hgh = np.percentile(latlong[:,<span class="number">0</span>], [<span class="number">2</span>, <span class="number">98</span>])</div><div class="line">lon_low, lon_hgh = np.percentile(latlong[:,<span class="number">1</span>], [<span class="number">2</span>, <span class="number">98</span>])</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 用于查看Dataframe各列数据类型</span></div><div class="line">ts.dtypes</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#skew是单变量工具，用来监测数据是否有长尾，左偏或者右偏</span></div><div class="line">print(Y_train.skew())</div><div class="line">``` </div><div class="line"></div><div class="line">``` python</div><div class="line"><span class="comment">#np.abs 是绝对值函数，用来取整个向量绝对值</span></div><div class="line"><span class="comment"># 这里对所有train里的特征求偏度并排序</span></div><div class="line">np.abs(combined[:ntrain].skew()).sort_values(ascending = <span class="keyword">False</span> ).head(<span class="number">20</span>)</div></pre></td></tr></table></figure>
+<p>有偏度 - 需要处理。通常是用log1p </p>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 用于将Dataframe中被读取为object的数据转换为数值型，errors='coerce'代表错误将被置为NaN</span></div><div class="line">ts[<span class="string">'Value'</span>] = pd.to_numeric(ts[<span class="string">'Value'</span>] , errors=<span class="string">'coerce'</span>)</div></pre></td></tr></table></figure>
+<hr>
+<p>过滤index 里面的NaN值，推广也可以过滤其他列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ts = df.loc[pd.Series(pd.to_datetime(df.index, errors=<span class="string">'coerce'</span>)).notnull().values]</div></pre></td></tr></table></figure>
+<hr>
+<p>按月groupby，以及unstack解构</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Emissions.groupby([<span class="string">'Description'</span>, pd.TimeGrouper(<span class="string">'M'</span>)])[<span class="string">'Value'</span>].sum().unstack(level = <span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p><img src="/images/Screen%20Shot%202018-01-12%20at%2016.16.30.png" alt="Screen Shot 2018-01-12 at 16.16.30"></p>
+<hr>
+<p>将value_counts、groupby等Series转换为Dataframe<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tree=response[<span class="string">'Country'</span>].value_counts().to_frame()</div></pre></td></tr></table></figure></p>
+<hr>
+<p>特征工程大杀器，<a href="http://pandas.pydata.org/pandas-docs/stable/basics.html?highlight=pipe#tablewise-function-application" target="_blank" rel="external">Pandas Pipe</a><br>这里有个简单的例子，,每个pipes里面都有若干个特征处理函数和一个快速测试的函数，其中为了对齐美观，用bypass函数来填充空白的地方（无用但是为了强行让pipes长度相同）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">pipe_basic = [pipe_basic_fillna,pipe_bypass,\</div><div class="line">              pipe_bypass,pipe_bypass,\</div><div class="line">              pipe_bypass,pipe_bypass,\</div><div class="line">              pipe_log_getdummies,pipe_bypass, \</div><div class="line">              pipe_export,pipe_r2test]</div><div class="line"></div><div class="line"></div><div class="line">pipe_ascat = [pipe_fillna_ascat,pipe_drop_cols,\</div><div class="line">              pipe_drop4cols,pipe_outliersdrop,\</div><div class="line">              pipe_extract,pipe_bypass,\</div><div class="line">              pipe_log_getdummies,pipe_drop_dummycols, \</div><div class="line">              pipe_export,pipe_r2test]</div><div class="line"></div><div class="line">pipe_ascat_unitprice = [pipe_fillna_ascat,pipe_drop_cols,\</div><div class="line">              pipe_drop4cols,pipe_outliersdrop,\</div><div class="line">              pipe_extract,pipe_unitprice,\</div><div class="line">              pipe_log_getdummies,pipe_drop_dummycols, \</div><div class="line">              pipe_export,pipe_r2test]</div><div class="line"></div><div class="line">pipes = [pipe_basic,pipe_ascat,pipe_ascat_unitprice ]</div></pre></td></tr></table></figure>
+<p>跑的代码为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(pipes)):</div><div class="line">    print(<span class="string">"*"</span>*<span class="number">10</span>,<span class="string">"\n"</span>)</div><div class="line">    pipe_output=pipes[i]</div><div class="line">    output_name =<span class="string">"_"</span>.join([x.__name__[<span class="number">5</span>:] <span class="keyword">for</span> x <span class="keyword">in</span> pipe_output <span class="keyword">if</span> x.__name__ <span class="keyword">is</span> <span class="keyword">not</span> <span class="string">"pipe_bypass"</span>])</div><div class="line">    output_name = <span class="string">"PIPE_"</span> +output_name</div><div class="line">    print(output_name)</div><div class="line">    (combined.pipe(pipe_output[<span class="number">0</span>])</div><div class="line">             .pipe(pipe_output[<span class="number">1</span>])</div><div class="line">             .pipe(pipe_output[<span class="number">2</span>])</div><div class="line">             .pipe(pipe_output[<span class="number">3</span>])</div><div class="line">             .pipe(pipe_output[<span class="number">4</span>])</div><div class="line">             .pipe(pipe_output[<span class="number">5</span>])          </div><div class="line">             .pipe(pipe_output[<span class="number">6</span>])</div><div class="line">             .pipe(pipe_output[<span class="number">7</span>])</div><div class="line">             .pipe(pipe_output[<span class="number">8</span>],name=output_name)</div><div class="line">             .pipe(pipe_output[<span class="number">9</span>])</div><div class="line">             ）</div></pre></td></tr></table></figure>
+<p>在这一步，我们可以初步看到三个特征工程的性能。并且文件已经输出到hd5格式文件。后期在训练和预测时，直接取出预处理的文件就可以。各个pipe代码可见<a href="https://gist.github.com/frankchen0130/5950eaa4d98ea4f93deed707b027b517" target="_blank" rel="external">此处</a>。</p>
+<h2 id="调参阶段"><a href="#调参阶段" class="headerlink" title="调参阶段"></a>调参阶段</h2><p>在数据准备好后训练时，最基本的就是要调整超参（Hyperparameter）耗时耗力，并且和发生错误和遗漏情况。<br>Stackoverflow上常见的算法训练错误有：</p>
+<ul>
+<li>算法预测的结果差异非常大。 其中一个可能就是训练时的标准化步骤，在预测时遗漏了。</li>
+<li>算法的调参结果差异非常大。（有的是0.01,有的就是10）。其中的一个可能就是不同的训练步骤中采用的标准化算法不同（例如,一次用了StandardScaler, 另一次用了RobustScaler)</li>
+<li>此外，繁多的超参数调整起来异常繁琐。比较容易错误或者写错。</li>
+</ul>
+<p><strong>解决方法：Pipeline + Gridsearch + 参数字典 + 容器。</strong><br>使用Pipeline的例子</p>
+<p>针对线形回归问题，Sklearn提供了超过15种回归算法。利用Pipeline 大法可以综合测试所有算法，找到最合适的算法。 具体步骤如下：</p>
+<ol>
+<li><p>初始化所有希望调测线形回归。</p>
+</li>
+<li><p>建立一个字典容器。{“算法名称”:[初始算法对象，参数字典，训练好的Pipeline模型对象，CV的成绩}</p>
+</li>
+<li><p>在调参步骤，将初始算法用Pipeline包装起来，利用Gridsearch进行调参。调参完成后可以得到针对相应的CV而获得的最后模型对象。 例如： lasso 算法的步骤如下：</p>
+</li>
+</ol>
+<ul>
+<li>包装 pipe=Pipeline([(“scaler”:None),(“selector”:None),(“clf”:Lasso())<ul>
+<li>Pipe就是刚刚包装好的算法。可以直接用于 训练(fit)和预测(predict)</li>
+<li>使用Pipe来处理训练集和测试集可以避免错误和遗漏，提高效率。</li>
+<li>但是Pipe中算法是默认的参数，直接训练出的模型RMSE不太理想。（例如：local CV, 0.12~0.14左右）。这时可以考虑调参。</li>
+</ul>
+</li>
+<li>调参第一步：准备参数字典：<br>  Params_lasso ={<br>  “Scaler”:[RobustScaler(),StandardScaler()], #两个标准化算法供调模型<br>  “selector<strong>threshold”:np.logspace(-5,-4,3), #3个选择门限供选特征<br>  “clf</strong>alpha”:np.logspace(-5,-1,10) }， #10个alpha指供调参</li>
+<li>调参第二步：暴力调参和生成模型 rsearch = GridSearchCV(pipe, param_grid=Params_lasso,scoring =’neg_mean_squared_error’,verbose=verbose,cv=10,refit =True)<ul>
+<li>GridSearch 是暴力调参。遍历所有参数组合，另外有一个RandomedSearch 可以随机选择参数组合，缩短调参时间，并且获得近似的调参性能</li>
+<li>Pipe就是刚刚包装好的算法。GridSearch把可选的参数和算法（放入，或者更好的组合。</li>
+<li>调参的训练标准是“’neg_mean_squared_error”, RMSE的负数。 这种处理方法，让最大值称为最小的MSE指。只需要对结果做一次np.sqrt( 结果负数）就能获得RMSE值。</li>
+<li>cv=10. Cross Validate 数据集为9：1。数据集小的情况，例如House Price. 3折和10折结果甚至比调参差异还大。</li>
+<li>refit =True. 在调参完成后，再需要做一次所有数据集的fit. 生成完整的训练模型</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Sklearn 流程图<br><img src="/images/15161696298310.jpg" alt=""></p>
+
       
     </div>
 
@@ -694,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NoteBook-Head"><span class="nav-number">1.</span> <span class="nav-text">NoteBook Head</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pandas"><span class="nav-number">2.</span> <span class="nav-text">Pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DataFrame-画图相关"><span class="nav-number">2.1.</span> <span class="nav-text">DataFrame 画图相关</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Seaborn"><span class="nav-number">3.</span> <span class="nav-text">Seaborn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Numpy"><span class="nav-number">4.</span> <span class="nav-text">Numpy</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备阶段-与-NoteBook-Head"><span class="nav-number">1.</span> <span class="nav-text">准备阶段 与 NoteBook Head</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EDA相关"><span class="nav-number">2.</span> <span class="nav-text">EDA相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Seaborn"><span class="nav-number">3.</span> <span class="nav-text">Seaborn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征工程阶段"><span class="nav-number">4.</span> <span class="nav-text">特征工程阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调参阶段"><span class="nav-number">5.</span> <span class="nav-text">调参阶段</span></a></li></ol></div>
             
 
           </div>
