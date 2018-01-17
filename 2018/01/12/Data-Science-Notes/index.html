@@ -116,7 +116,7 @@
 <meta property="og:image" content="http://frankchen.xyz/images/15159971204332.jpg">
 <meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-12%20at%2016.16.30.png">
 <meta property="og:image" content="http://frankchen.xyz/images/15161696298310.jpg">
-<meta property="og:updated_time" content="2018-01-17T06:17:54.866Z">
+<meta property="og:updated_time" content="2018-01-17T06:32:33.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data Science Pipelines |  数据科学比赛工程中的管道和案例">
 <meta name="twitter:description" content="暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关，通常来说，项目基本步骤可以分为EDA、特征工程以及调参。">
@@ -369,6 +369,31 @@
         <p><img src="/images/15161698020879.png" alt=""></p>
 <p>暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关，通常来说，项目基本步骤可以分为EDA、特征工程以及调参。</p>
 <a id="more"></a>
+<h2 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h2><ol>
+<li><p>以一个Kaggle上的House Price为案例，机器学习流程分成两个大步骤 ：即<br>EDA与特征工程（只使用Pandas, StatsModel，scipy,numpy, seaborn等库）</p>
+<ul>
+<li><p>输入： 原始Train, Test 数据集，将原始Train和Test 合并成一个数据集combined</p>
+</li>
+<li><p>处理： Pandas Pipe</p>
+<p>  根据各种可能和各种特征工程方法定义各种函数（输入combined, 输入pre_combined)</p>
+<p>  用PandasPipe 将这个函数像搭积木一样连在一起。用列表按序存放这些函数）</p>
+<p>  例如： pipe_basic = [pipe_basic_fillna,pipe_fillna_ascat,pipe_bypass,pipe_bypass,pipe_log_getdummies,pipe_export,pipe_r2test]</p>
+<p>  这个列表就是，1. 基本的填充空值, 2. 转换数据类型， 3. 空白函数（为了对齐美观而以，啥事不做），4. log 转换，类别数据哑元处理， 5. 导出到hdf5文件， 6.检查R2值</p>
+<p>  利用各种排列组合，或者各种参数组合，可以产生丰富的pipes，每一个pipes都可以产生一个预处理过的文件。</p>
+</li>
+<li><p>输出：某文件夹下 的N个预处理过的hdf5文件。 针对各种特征工程的排列组合，或者是Kaggle上面的各种新奇的特征工程方法。</p>
+</li>
+</ul>
+</li>
+<li><p>机器学习阶段（训练和产生模型，目标是尽可能获得尽可能低的RMSE值（针对训练数据），同时要具有范化的能力（针对测试数据））</p>
+<ul>
+<li>第一步，建立基准，筛选出最好的一个（几个）预处理文件（随机数设成固定值）</li>
+<li>第二步，针对筛选出来的预处理文件，进行调参。找到最合适的几个算法（通常是RMSE值最低，且不同Kernel）（随机数设成固定值）    </li>
+<li>第三步，用调好的参数来预处理文件中的Traing数据的做average 和stacking</li>
+<li>第四部，生成csv文件，提交到Kaggle 看看得分如何。</li>
+</ul>
+</li>
+</ol>
 <h2 id="准备阶段-与-NoteBook-Head"><a href="#准备阶段-与-NoteBook-Head" class="headerlink" title="准备阶段 与 NoteBook Head"></a>准备阶段 与 NoteBook Head</h2><p>过滤warning：有句话说的好，在计算机科学里，我们只在意错误不在意warning</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> warnings</div><div class="line">warnings.filterwarnings(<span class="string">"ignore"</span>)</div></pre></td></tr></table></figure>
 <hr>
@@ -751,7 +776,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备阶段-与-NoteBook-Head"><span class="nav-number">1.</span> <span class="nav-text">准备阶段 与 NoteBook Head</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EDA相关"><span class="nav-number">2.</span> <span class="nav-text">EDA相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Seaborn"><span class="nav-number">3.</span> <span class="nav-text">Seaborn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征工程阶段"><span class="nav-number">4.</span> <span class="nav-text">特征工程阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调参阶段"><span class="nav-number">5.</span> <span class="nav-text">调参阶段</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本流程"><span class="nav-number">1.</span> <span class="nav-text">基本流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备阶段-与-NoteBook-Head"><span class="nav-number">2.</span> <span class="nav-text">准备阶段 与 NoteBook Head</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EDA相关"><span class="nav-number">3.</span> <span class="nav-text">EDA相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Seaborn"><span class="nav-number">4.</span> <span class="nav-text">Seaborn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征工程阶段"><span class="nav-number">5.</span> <span class="nav-text">特征工程阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调参阶段"><span class="nav-number">6.</span> <span class="nav-text">调参阶段</span></a></li></ol></div>
             
 
           </div>
