@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankchen.xyz/"/>
-  <updated>2018-01-30T08:17:42.455Z</updated>
+  <updated>2018-02-07T18:11:41.628Z</updated>
   <id>http://frankchen.xyz/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Tex 写（中文）毕业论文全攻略</title>
+    <link href="http://frankchen.xyz/2018/02/08/Writing-Graduation-Thesis-in-Tex/"/>
+    <id>http://frankchen.xyz/2018/02/08/Writing-Graduation-Thesis-in-Tex/</id>
+    <published>2018-02-07T17:36:41.000Z</published>
+    <updated>2018-02-07T18:11:41.628Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/15180252634406.png" alt=""></p><p>用 Tex 写（中文）毕业论文全攻略，高效、便捷、优雅！</p><a id="more"></a><p>这里我们并不存在鄙视链，说什么Tex 优于 Word之类的，其实Word作为极其复杂的文本处理软件，我相信Tex能做到的，Word一定有其实现方式，只不过大部分人都只会用到Word的一小部分功能，相比Word，Tex解决方案更加便捷优雅，比如自动排号（章节、表格、参考文献的编号），全局设置的字体、间距格式等等。相比Word事无巨细的维护修改成本，Tex 的解决方案更加programmer，即软件开发，后期主要工作是迭代维护，若能在前期即考虑这点，后期能省下极多的脑细胞和精力。好了不说多，发车吧~</p><h2 id="总论"><a href="#总论" class="headerlink" title="总论"></a>总论</h2><p> 总体来说，是用上交Tex模板结合Atom编辑器在本地编辑<a href="https://atom.io/" target="_blank" rel="external">Atom</a>（这个用什么编辑器随意）以及Dropbox同步到云端<a href="https://www.dropbox.com/h" target="_blank" rel="external">Dropbox</a>以及云端上在sharelatex服务器上即时编译所见即所得。</p><h2 id="工具使用方法"><a href="#工具使用方法" class="headerlink" title="工具使用方法"></a>工具使用方法</h2><p>首先我们在sharelatex官网<a href="https://www.sharelatex.com/project" target="_blank" rel="external">Your Projects - ShareLaTeX, Online LaTeX Editor</a>注册账号，免费账号即可，如果需要多人协作可以用邀请小号的方式让自己增加权限（sharelatex新建账号不验证邮箱。。所以你懂的），接下来在上交模板<a href="https://github.com/sjtug/SJTUThesis" target="_blank" rel="external">sjtug/SJTUThesis: 上海交通大学 XeLaTeX 学位论文模板 A XeLaTeX template for Shanghai Jiao Tong University (SJTU) thesis.</a>处点击此处添加最新版模板到我们的sharelatex项目，<br><img src="/images/Screen%20Shot%202018-02-08%20at%2001.58.25.png" alt="Screen Shot 2018-02-08 at 01.58.25"></p><p><img src="/images/Screen%20Shot%202018-02-08%20at%2001.58.56.png" alt="Screen Shot 2018-02-08 at 01.58.56"></p><p>如图，再点进去，先别急着修改，我们先设置个网盘同步，Dropbox需要梯子，在sharelatex的账号设置处链接到Dropbox，<br><img src="/images/Screen%20Shot%202018-02-08%20at%2002.00.57.png" alt="Screen Shot 2018-02-08 at 02.00.57"></p><p>同时Dropbox安装一个桌面版，需要设置代理，<br><img src="/images/Screen%20Shot%202018-02-08%20at%2002.02.29.png" alt="Screen Shot 2018-02-08 at 02.02.29"><br>如图，我们使用ss作为代理。</p><p>接下来安装Atom编辑器，在插件里装一个如下插件，这里我们需要它只是为了注释这一个功能，因为我们不需要本地编译。<br><img src="/images/Screen%20Shot%202018-02-08%20at%2002.03.38.png" alt="Screen Shot 2018-02-08 at 02.03.38"></p><p>接下来我们就可以在本地用Atom编辑Dropbox网盘在本地的Tex项目，只要我们保存，Dropbox就会同步到sharelatex，如果开启自动编译云端就会展示当下编译的PDF效果，如图<br><img src="/images/Screen%20Shot%202018-02-08%20at%2002.07.11.png" alt="Screen Shot 2018-02-08 at 02.07.11"></p><h2 id="Tex模板使用说明"><a href="#Tex模板使用说明" class="headerlink" title="Tex模板使用说明"></a>Tex模板使用说明</h2><p>详见此处<a href="http://sjtug.org/SJTUThesis/README.pdf" target="_blank" rel="external">README.pdf</a>，主要思路就是把各章、摘要、参考文献等分为不同的tex文件，图表等资源放在一处文件夹内，逐个引用，有全局的的设置文件，编译时将这些零件拼接为pdf，后续会添加更多心得。</p><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ol><li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="external">MathJax basic tutorial and quick reference - Mathematics Meta Stack Exchange</a>：一个常用Latex公式符号的全集</li><li>如果上面没找到，可以试试这里，手写识别latex字符<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="external">Detexify LaTeX handwritten symbol recognition</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/15180252634406.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;用 Tex 写（中文）毕业论文全攻略，高效、便捷、优雅！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Tex" scheme="http://frankchen.xyz/tags/Tex/"/>
+    
+  </entry>
   
   <entry>
     <title>理解TSNE算法</title>
@@ -289,9 +310,9 @@
     </summary>
     
     
-      <category term="Go" scheme="http://frankchen.xyz/tags/Go/"/>
-    
       <category term="Hbase" scheme="http://frankchen.xyz/tags/Hbase/"/>
+    
+      <category term="Go" scheme="http://frankchen.xyz/tags/Go/"/>
     
   </entry>
   
@@ -450,26 +471,6 @@
     
     
       <category term="scala" scheme="http://frankchen.xyz/tags/scala/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>详解Coursera 奖学金申请步骤</title>
-    <link href="http://frankchen.xyz/2017/08/21/coursera-scholarship/"/>
-    <id>http://frankchen.xyz/2017/08/21/coursera-scholarship/</id>
-    <published>2017-08-21T04:06:29.000Z</published>
-    <updated>2017-09-05T09:30:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/images/15046037829976.jpg" alt=""><br>最新Coursera 奖学金申请步骤！成功率100%🏆</p><a id="more"></a><p>以这门<a href="https://www.coursera.org/learn/progfun1" target="_blank" rel="external">Scala 函数式程序设计原理 | Coursera</a>为例：</p><p><img src="/images/Screen%20Shot%202017-08-21%20at%2012.09.20.png" alt="Screen Shot 2017-08-21 at 12.09.20"><br><img src="/images/Screen%20Shot%202017-08-21%20at%2012.16.21.png" alt="Screen Shot 2017-08-21 at 12.16.21"><br><img src="/images/Screen%20Shot%202017-08-21%20at%2012.17.47.png" alt="Screen Shot 2017-08-21 at 12.17.47"><br>以下问题必须填写英文，必须大于等于150字，从我的申请记录来看，基本不会审核你究竟填写了什么，这只是为免费用户设置一个门槛，吸引你氪金😂😎<br><img src="/images/Screen%20Shot%202017-08-21%20at%2012.19.16.png" alt="Screen Shot 2017-08-21 at 12.19.16"><br><img src="/images/Screen%20Shot%202017-08-21%20at%2012.19.26.png" alt="Screen Shot 2017-08-21 at 12.19.26"><br><img src="/images/Screen%20Shot%202017-08-21%20at%2012.19.30.png" alt="Screen Shot 2017-08-21 at 12.19.30"></p><p>之前是立即可以获得证书，现在需要等待十五天即可。<br><img src="/images/Screen%20Shot%202017-08-21%20at%2012.20.21.png" alt="Screen Shot 2017-08-21 at 12.20.21"></p><p>关于上面的三个问题回复提供一模板：</p><blockquote><p>I am a graduate student in mainland China, was born in a peasant family, the family has four people, my father, my mother, my brother and I, we four and grandparents living in the same home. Mom and Dad did not work, can only rely on two acres of the family to be barely subsistence income is very meager, good for my brother and I can learn, the family live frugally money supply year my brother and I go to school Reading used. The family also owe a lot of money, so my brother and I grew to know two people not to spend money.</p><p>Dad, Mom no cultural knowledge, they know the importance of knowledge, so small they are strict requirements of our brothers and both learn to be good in the future to test a good university, find a good job, do not like them, did not work in the countryside. We two brothers are also very competitive, it has been among the best in school, in our view, only with honors in order to make my parents happy, to return to their pains. Monthly income of around one hundred US dollars to pay tuition for this course certificate will be spent half of my cost of living, it will bring a lot of economic pressure to my normal life, and this course is the first door I finished on the site class, have a special meaning for me, I wanted to get this certificate course, this will inspire my passion for learning and motivation.</p><p>1, many people have recommended this course for the learning experience to enhance learning method above, I think learning is a lifelong, this course I will gain the knowledge of my lifetime. All the copyright.</p><p>This door exercise logic and thinking about Coursera course is one of the most popular courses, course descriptions and practical reasoning methods and common logical fallacies, teach you how to properly reasoning, learning a few simple but critical general rules apply to all topics, while avoiding prone to problems when reasoning. 2, almost all individuals can enhance the quality of life of the curriculum to enhance areas of interest I have, I will continue to follow up. 3. Harvest course certificate for me is a recognition of my pay, my motivation for future learning enhance the effect is self-evident, thank you!</p><p>1, I guarantee independence to complete a full course, to ensure that all academic tasks independently myself by myself.</p><p>2, actively participate in discussions and course work, upload your own achievement, strive to contribute their efforts for curriculum community.</p><p>3, actively publicize the site to friends and relatives, for future expansion of community development programs and make a contribution.</p><p>4, to participate in and complete the course more sites to learn more new knowledge.</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/images/15046037829976.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;最新Coursera 奖学金申请步骤！成功率100%🏆&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Coursera" scheme="http://frankchen.xyz/tags/Coursera/"/>
     
   </entry>
   
