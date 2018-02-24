@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankchen.xyz/"/>
-  <updated>2018-02-07T18:11:41.628Z</updated>
+  <updated>2018-02-24T11:09:45.871Z</updated>
   <id>http://frankchen.xyz/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python 正则实用例子</title>
+    <link href="http://frankchen.xyz/2018/02/24/re-basic-of-python/"/>
+    <id>http://frankchen.xyz/2018/02/24/re-basic-of-python/</id>
+    <published>2018-02-24T10:52:00.000Z</published>
+    <updated>2018-02-24T11:09:45.871Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/15194705842254.png" alt=""></p><p>本文主要关于python的正则表达式的符号与方法。</p><a id="more"></a><ul><li>findall: 找寻所有匹配，返回所有组合的列表</li><li>search: 找寻第一个匹配并返回</li><li>sub: 替换符合规律的内容，并返回替换后的内容</li></ul><p><strong>.</strong>：匹配除了换行符以外的任意字符</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = <span class="string">'xy123'</span></div><div class="line">b = re.findall(<span class="string">'x...'</span>,a)</div><div class="line">print(b)</div><div class="line"><span class="comment"># ['xy12']</span></div></pre></td></tr></table></figure><p><strong>*</strong>：匹配前一个字符0次或者无限次</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = <span class="string">'xyxy123'</span></div><div class="line">b = re.findall(<span class="string">'x*'</span>,a)</div><div class="line">print(b)</div><div class="line"><span class="comment"># ['x', '', 'x', '', '', '', '', '']</span></div></pre></td></tr></table></figure><p><strong>?</strong>：匹配前一个字符0次或者1次</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = <span class="string">'xy123'</span></div><div class="line">b = re.findall(<span class="string">'x?'</span>,a)</div><div class="line">print(b)</div><div class="line"><span class="comment"># ['x', '', '', '', '', '']</span></div></pre></td></tr></table></figure><p><strong>.*</strong>：贪心算法</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">b = re.findall(<span class="string">'xx.*xx'</span>,secret_code)</div><div class="line">print(b)</div><div class="line"><span class="comment"># ['xxIxxfasdjifja134xxlovexx23345sdfxxyouxx']</span></div></pre></td></tr></table></figure><p><strong>.*?</strong>：非贪心算法</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">c = re.findall(<span class="string">'xx.*?xx'</span>,secret_code)</div><div class="line">print(c)</div><div class="line"><span class="comment"># ['xxIxx', 'xxlovexx', 'xxyouxx']</span></div></pre></td></tr></table></figure><p><strong>()</strong>：括号内结果返回</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">d = re.findall(<span class="string">'xx(.*?)xx'</span>,secret_code)</div><div class="line">print(d)</div><div class="line"><span class="keyword">for</span> each <span class="keyword">in</span> d:</div><div class="line">    print(each)</div><div class="line"><span class="comment"># ['I', 'love', 'you']</span></div><div class="line"><span class="comment"># I</span></div><div class="line"><span class="comment"># love</span></div><div class="line"><span class="comment"># you</span></div></pre></td></tr></table></figure><p><strong>re.S</strong>使得.的作用域包括换行符”\n”</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'''sdfxxhello</span></div><div class="line">xxfsdfxxworldxxasdf'''</div><div class="line"></div><div class="line">d = re.findall(<span class="string">'xx(.*?)xx'</span>,s,re.S)</div><div class="line">print(d)</div><div class="line"><span class="comment">#  ['hello\n', 'world']</span></div></pre></td></tr></table></figure><p>对比findall与search的区别</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">s2 = <span class="string">'asdfxxIxx123xxlovexxdfd'</span></div><div class="line">f = re.search(<span class="string">'xx(.*?)xx123xx(.*?)xx'</span>,s2).group(<span class="number">2</span>)</div><div class="line">print(f)</div><div class="line">f2 = re.findall(<span class="string">'xx(.*?)xx123xx(.*?)xx'</span>,s2)</div><div class="line">print(f2[<span class="number">0</span>][<span class="number">1</span>])</div><div class="line"><span class="comment"># love</span></div><div class="line"><span class="comment"># love</span></div></pre></td></tr></table></figure><p>虽然两者结果相同，但是search是搭配group来得到第二个匹配，而findall的结果是[(‘I’, ‘love’)]，包含元组的列表，所以需要f2[0][1]来引入。</p><p><strong>sub</strong>的使用</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'123rrrrr123'</span></div><div class="line">output = re.sub(<span class="string">'123(.*?)123'</span>,<span class="string">'123%d123'</span>%<span class="number">789</span>,s)</div><div class="line">print(output)</div><div class="line"><span class="comment"># 123789123</span></div></pre></td></tr></table></figure><p>例如我们需要将文档中的所有的png图片改变路径，即需要找到所有的<code>.png</code>结尾，再将其都加上路径，</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">multiply</span><span class="params">(m)</span>:</span></div><div class="line">    <span class="comment"># Convert group 0 to an integer.</span></div><div class="line">    v = m.group(<span class="number">0</span>)</div><div class="line">    print(v)</div><div class="line">    <span class="comment"># Multiply integer by 2.</span></div><div class="line">    <span class="comment"># ... Convert back into string and return it.</span></div><div class="line">    print(<span class="string">'basic/'</span>+v)</div><div class="line">    <span class="keyword">return</span> <span class="string">'basic/'</span>+v</div></pre></td></tr></table></figure><p>结果如下</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>autoencoder.png</div><div class="line">    basic/autoencoder.png</div><div class="line">    RNN.png</div><div class="line">    basic/RNN.png</div><div class="line">    rnn_step_forward.png</div><div class="line">    basic/rnn_step_forward.png</div><div class="line">    rnns.png</div><div class="line">    basic/rnns.png</div><div class="line">    rnn_cell_backprop.png</div><div class="line">    basic/rnn_cell_backprop.png</div><div class="line">    LSTM.png</div><div class="line">    basic/LSTM.png</div><div class="line">    LSTM_rnn.png</div><div class="line">    basic/LSTM_rnn.png</div><div class="line">    attn_mechanism.png</div><div class="line">    basic/attn_mechanism.png</div><div class="line">    attn_model.png</div><div class="line">    basic/attn_model.png</div></pre></td></tr></table></figure><p>仿照上面案例，我们可以方便的对我们的任务进行定制。</p><p><strong>subn</strong> 相比sub，subn返回元组，第二个元素表示替换发生的次数：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(m)</span>:</span></div><div class="line">    <span class="comment"># Convert.</span></div><div class="line">    v = int(m.group(<span class="number">0</span>))</div><div class="line">    <span class="comment"># Add 2.</span></div><div class="line">    <span class="keyword">return</span> str(v + <span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="comment"># Call re.subn.</span></div><div class="line">result = re.subn(<span class="string">"\d+"</span>, add, <span class="string">"1 2 3 4 5"</span>)</div><div class="line"></div><div class="line">print(<span class="string">"Result string:"</span>, result[<span class="number">0</span>])</div><div class="line">print(<span class="string">"Number of substitutions:"</span>, result[<span class="number">1</span>])</div></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span></div><div class="line">Result string: <span class="number">11</span> <span class="number">21</span> <span class="number">31</span> <span class="number">41</span> <span class="number">51</span></div><div class="line">Number of substitutions: <span class="number">5</span></div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/15194705842254.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;本文主要关于python的正则表达式的符号与方法。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+      <category term="re" scheme="http://frankchen.xyz/tags/re/"/>
+    
+  </entry>
   
   <entry>
     <title>Tex 写（中文）毕业论文全攻略</title>
@@ -310,9 +333,9 @@
     </summary>
     
     
-      <category term="Hbase" scheme="http://frankchen.xyz/tags/Hbase/"/>
-    
       <category term="Go" scheme="http://frankchen.xyz/tags/Go/"/>
+    
+      <category term="Hbase" scheme="http://frankchen.xyz/tags/Hbase/"/>
     
   </entry>
   
@@ -448,29 +471,6 @@
     
     
       <category term="Hbase" scheme="http://frankchen.xyz/tags/Hbase/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>scala-notes</title>
-    <link href="http://frankchen.xyz/2017/08/22/scala-note/"/>
-    <id>http://frankchen.xyz/2017/08/22/scala-note/</id>
-    <published>2017-08-22T03:06:48.000Z</published>
-    <updated>2017-08-22T03:06:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="call-by-name-与-call-by-value的区别"><a href="#call-by-name-与-call-by-value的区别" class="headerlink" title="call by name 与 call by value的区别"></a>call by name 与 call by value的区别</h2><p>两者的区别就是调用之前需不需要evaluation，前者不需要，后者需要。例如一个函数$f(x, y) = x$，我们分别调用$f(1+1, 2 )$，call by name 直接引用1+1，再计算出为2，而 call by value是先算出函数参数的值，再去调用$f(2, 2 )$，scala默认是call by value，但是可以在需要call by name 的参数加箭头如<code>=&gt;</code>。</p><p>scala里面定义变量<code>def</code>和<code>val</code>的区别即在此，前者是call by name，例如我们分别定义两个函数：</p><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">loop</span></span>: <span class="type">Boolean</span> = loop</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">x</span> </span>= loop</div><div class="line"></div><div class="line"><span class="keyword">val</span> y = loop</div></pre></td></tr></table></figure><p>函数x可以被成功定义，而后者不行，因为在call by name 的参数evaluation的时候就进入死循环了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;call-by-name-与-call-by-value的区别&quot;&gt;&lt;a href=&quot;#call-by-name-与-call-by-value的区别&quot; class=&quot;headerlink&quot; title=&quot;call by name 与 call by value的区
-      
-    
-    </summary>
-    
-    
-      <category term="scala" scheme="http://frankchen.xyz/tags/scala/"/>
     
   </entry>
   
