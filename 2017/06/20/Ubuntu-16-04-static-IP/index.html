@@ -95,7 +95,7 @@
 <meta property="og:url" content="http://frankchen.xyz/2017/06/20/Ubuntu-16-04-static-IP/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
 <meta property="og:description" content="设置Hadoop集群的第一步很可能就是设置固定IP于DNS，而网上这一做法由于Ubuntu版本及桌面版服务器版的不同导致残差不齐，本文记录一下Ubuntu16.04在非图形界面固定IP与设置DNS的过程。">
-<meta property="og:updated_time" content="2017-06-24T06:24:21.000Z">
+<meta property="og:updated_time" content="2018-02-28T04:22:49.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu16.04 固定IP与设置DNS">
 <meta name="twitter:description" content="设置Hadoop集群的第一步很可能就是设置固定IP于DNS，而网上这一做法由于Ubuntu版本及桌面版服务器版的不同导致残差不齐，本文记录一下Ubuntu16.04在非图形界面固定IP与设置DNS的过程。">
@@ -349,6 +349,16 @@
 <h2 id="Ubuntu16-04-固定IP"><a href="#Ubuntu16-04-固定IP" class="headerlink" title="Ubuntu16.04 固定IP"></a>Ubuntu16.04 固定IP</h2><h3 id="Step-One【Ubuntu-server不需，跳过即可】"><a href="#Step-One【Ubuntu-server不需，跳过即可】" class="headerlink" title="Step-One【Ubuntu-server不需，跳过即可】"></a>Step-One【Ubuntu-server不需，跳过即可】</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/NetworkManager/NetworkManager.conf</div><div class="line"><span class="comment"># 将`managed=false`修改成`managed=true`</span></div><div class="line">sudo reboot</div></pre></td></tr></table></figure>
 <h3 id="Step-Two"><a href="#Step-Two" class="headerlink" title="Step-Two"></a>Step-Two</h3><p>如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 修改配置文件</span></div><div class="line">sudo vim /etc/network/interfaces</div><div class="line">``` </div><div class="line">改为</div><div class="line"></div><div class="line">``` bash</div><div class="line"><span class="comment"># interfaces(5) file used by ifup(8) and ifdown(8)</span></div><div class="line">auto lo</div><div class="line">iface lo inet loopback</div><div class="line"></div><div class="line">auto enp0s31f6</div><div class="line">iface enp0s31f6 inet static</div><div class="line">address 192.168.1.109</div><div class="line">netmask 255.255.255.0</div><div class="line"><span class="comment">#network 192.168.1.0</span></div><div class="line"><span class="comment">#broadcast 192.168.1.255</span></div><div class="line">gateway 192.168.1.254</div></pre></td></tr></table></figure></p>
 <p>其中‘enp0s31f6’就是<code>ifconfig</code>中以太网名称。</p>
+<p>附Linux下查看网关gateway方法：</p>
+<ol>
+<li>route -n</li>
+<li>ip route show</li>
+<li>traceroute www.baidu.com -s 100 【第一行就是自己的网关】</li>
+<li>netstat -r</li>
+<li>more /etc/network/interfaces 【Debian/Ubuntu Linux】</li>
+<li>more /etc/sysconfig/network-scripts/ifcfg-eth0 【Red Hat Linux】</li>
+</ol>
+<p>如不清楚网关和子网掩码等参数，可在Ubuntu设置里将network里的ipv4先设置为DHCP（自动获取网络），再利用<code>ifconfig</code>和上述方法查看参数后更改固定参数。</p>
 <h3 id="Step-Three"><a href="#Step-Three" class="headerlink" title="Step-Three"></a>Step-Three</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 重启networking服务</span></div><div class="line">sudo systemctl restart networking.service</div></pre></td></tr></table></figure>
 <h2 id="Ubuntu16-04-设置DNS"><a href="#Ubuntu16-04-设置DNS" class="headerlink" title="Ubuntu16.04 设置DNS"></a>Ubuntu16.04 设置DNS</h2><p>但是固定IP使得电脑很可能无法上网，那么需要手动设置DNS。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 默认文件不存在</span></div><div class="line">sudo vim /etc/resolvconf/resolv.conf.d/base</div></pre></td></tr></table></figure>
