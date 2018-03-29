@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankchen.xyz/"/>
-  <updated>2018-02-24T11:09:45.871Z</updated>
+  <updated>2018-03-29T12:48:49.127Z</updated>
   <id>http://frankchen.xyz/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>numpy 中增加channel的方法</title>
+    <link href="http://frankchen.xyz/2018/03/29/numpy-add-channel/"/>
+    <id>http://frankchen.xyz/2018/03/29/numpy-add-channel/</id>
+    <published>2018-03-29T12:15:30.000Z</published>
+    <updated>2018-03-29T12:48:49.127Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/15223277046847.jpg" alt=""><br>numpy 数组中一维怎么转二维和多维？简述 numpy 中增加channel的方法。</p><a id="more"></a><p>在机器学习中，所有的数据都是向量和矩阵，而怎么根据我们所要解决的问题来调整模型以及数据的格式，也就是矩阵的维度和大小是一项重要的基本功，那么本文就具体介绍下numpy中数组的转换，也就是增加channel的方法。</p><h2 id="一维转二维"><a href="#一维转二维" class="headerlink" title="一维转二维"></a>一维转二维</h2><p>例如我们有一个一维的numpy array，有如下方法可以转为二维</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">a = np.arange(<span class="number">10</span>)</div><div class="line">a</div><div class="line">a.shape</div><div class="line">b = a[:,<span class="keyword">None</span>]</div><div class="line">b</div><div class="line">b.shape</div><div class="line"><span class="string">'''</span></div><div class="line">array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</div><div class="line">(10,)</div><div class="line">array([[0],</div><div class="line">       [1],</div><div class="line">       [2],</div><div class="line">       [3],</div><div class="line">       [4],</div><div class="line">       [5],</div><div class="line">       [6],</div><div class="line">       [7],</div><div class="line">       [8],</div><div class="line">       [9]])</div><div class="line">(10, 1)</div><div class="line">'''</div></pre></td></tr></table></figure><p> 可以看到，<code>a</code>确实被转为了二维，以下方法是一样的：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">c = a[:,np.newaxis]</div><div class="line">c</div><div class="line">(c == b).all()</div><div class="line">np.newaxis == <span class="keyword">None</span></div><div class="line"><span class="string">'''</span></div><div class="line">array([[0],</div><div class="line">       [1],</div><div class="line">       [2],</div><div class="line">       [3],</div><div class="line">       [4],</div><div class="line">       [5],</div><div class="line">       [6],</div><div class="line">       [7],</div><div class="line">       [8],</div><div class="line">       [9]])</div><div class="line">True</div><div class="line">True</div><div class="line">'''</div></pre></td></tr></table></figure><h2 id="转为多维"><a href="#转为多维" class="headerlink" title="转为多维"></a>转为多维</h2><p>时间序列预测中，我们一般需要的是(sample，time_stamp，feature)的3 个channel的数据，即一个三维矩阵，包含若干个sample，每个sample包含若干个时间序列点，而每个时间序列点有包括若干个feature，哪怕我们只是做单变量的时间序列预测，输入RNN网络例如LSTM的时候，数据也必须是三维的格式，下面我们讲一讲这么做的方法。</p><p>例如我们有一个若干个时间点每个时间点有两个特征的数据，</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">a = np.arange(<span class="number">24</span>).reshape((<span class="number">-1</span>,<span class="number">2</span>))</div><div class="line">a.shape</div><div class="line">a</div><div class="line"><span class="string">'''</span></div><div class="line">(12, 2)</div><div class="line">array([[ 0,  1],</div><div class="line">       [ 2,  3],</div><div class="line">       [ 4,  5],</div><div class="line">       [ 6,  7],</div><div class="line">       [ 8,  9],</div><div class="line">       [10, 11],</div><div class="line">       [12, 13],</div><div class="line">       [14, 15],</div><div class="line">       [16, 17],</div><div class="line">       [18, 19],</div><div class="line">       [20, 21],</div><div class="line">       [22, 23]])</div><div class="line">'''</div></pre></td></tr></table></figure><p>我们将a转化为三个channel，即可以</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">b = a[:,<span class="keyword">None</span>,:]</div><div class="line">b.shape</div><div class="line">b</div><div class="line"><span class="string">'''</span></div><div class="line">(12, 1, 2)</div><div class="line">array([[[ 0,  1]],</div><div class="line"></div><div class="line">       [[ 2,  3]],</div><div class="line"></div><div class="line">       [[ 4,  5]],</div><div class="line"></div><div class="line">       [[ 6,  7]],</div><div class="line"></div><div class="line">       [[ 8,  9]],</div><div class="line"></div><div class="line">       [[10, 11]],</div><div class="line"></div><div class="line">       [[12, 13]],</div><div class="line"></div><div class="line">       [[14, 15]],</div><div class="line"></div><div class="line">       [[16, 17]],</div><div class="line"></div><div class="line">       [[18, 19]],</div><div class="line"></div><div class="line">       [[20, 21]],</div><div class="line"></div><div class="line">       [[22, 23]]])</div><div class="line">       '''</div></pre></td></tr></table></figure><p>以上对应着pandas的Dataframe，及我们对Dataframe取values属性，会得到一个二维矩阵，做法就如同上面一样，但是如果是Series的话，取values属性得到的是一个一维的，这时候我们的做法则是，</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">c = np.arange(<span class="number">12</span>)</div><div class="line">c</div><div class="line">d = c[:,<span class="keyword">None</span>,<span class="keyword">None</span>]</div><div class="line">d.shape</div><div class="line">d</div><div class="line"><span class="string">'''</span></div><div class="line">array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11])</div><div class="line">(12, 1, 1)</div><div class="line">array([[[ 0]],</div><div class="line"></div><div class="line">       [[ 1]],</div><div class="line"></div><div class="line">       [[ 2]],</div><div class="line"></div><div class="line">       [[ 3]],</div><div class="line"></div><div class="line">       [[ 4]],</div><div class="line"></div><div class="line">       [[ 5]],</div><div class="line"></div><div class="line">       [[ 6]],</div><div class="line"></div><div class="line">       [[ 7]],</div><div class="line"></div><div class="line">       [[ 8]],</div><div class="line"></div><div class="line">       [[ 9]],</div><div class="line"></div><div class="line">       [[10]],</div><div class="line"></div><div class="line">       [[11]]])</div><div class="line">'''</div></pre></td></tr></table></figure><h2 id="减少维度"><a href="#减少维度" class="headerlink" title="减少维度"></a>减少维度</h2><p>若要减少数据的维度，我们可以用的方法如下，</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">d = np.arange(<span class="number">12</span>)[:,<span class="keyword">None</span>,<span class="keyword">None</span>]</div><div class="line">d.shape</div><div class="line">d</div><div class="line">e = np.squeeze(d)</div><div class="line">e.shape</div><div class="line">e</div><div class="line"><span class="string">'''(12, 1, 1)</span></div><div class="line">array([[[ 0]],</div><div class="line"></div><div class="line">       [[ 1]],</div><div class="line"></div><div class="line">       [[ 2]],</div><div class="line"></div><div class="line">       [[ 3]],</div><div class="line"></div><div class="line">       [[ 4]],</div><div class="line"></div><div class="line">       [[ 5]],</div><div class="line"></div><div class="line">       [[ 6]],</div><div class="line"></div><div class="line">       [[ 7]],</div><div class="line"></div><div class="line">       [[ 8]],</div><div class="line"></div><div class="line">       [[ 9]],</div><div class="line"></div><div class="line">       [[10]],</div><div class="line"></div><div class="line">       [[11]]])</div><div class="line">(12,)</div><div class="line">array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11])'''</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/15223277046847.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;numpy 数组中一维怎么转二维和多维？简述 numpy 中增加channel的方法。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>python 正则实用例子</title>
@@ -200,9 +220,9 @@
     
       <category term="Data Science" scheme="http://frankchen.xyz/tags/Data-Science/"/>
     
-      <category term="Numpy" scheme="http://frankchen.xyz/tags/Numpy/"/>
-    
       <category term="Pandas" scheme="http://frankchen.xyz/tags/Pandas/"/>
+    
+      <category term="Numpy" scheme="http://frankchen.xyz/tags/Numpy/"/>
     
   </entry>
   
@@ -447,30 +467,6 @@
     
     
       <category term="spark" scheme="http://frankchen.xyz/tags/spark/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hbase rest 绑定到内网localhost</title>
-    <link href="http://frankchen.xyz/2017/08/29/hbase-rest-bindAddress-to-localhost/"/>
-    <id>http://frankchen.xyz/2017/08/29/hbase-rest-bindAddress-to-localhost/</id>
-    <published>2017-08-29T08:34:08.000Z</published>
-    <updated>2017-08-29T08:42:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>通过开启Hbase 的REST 服务我们可以很方便的以API的形式访问Hbase，</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Foreground</span></div><div class="line">$ bin/hbase rest start -p &lt;port&gt;</div><div class="line"></div><div class="line"><span class="comment"># Background, logging to a file in $HBASE_LOGS_DIR</span></div><div class="line">$ bin/hbase-daemon.sh start rest -p &lt;port&gt;</div></pre></td></tr></table></figure><p>但是其默认是绑定<code>0.0.0.0</code>地址的，也就是对外网开放，而通过REST 服务别有用心的人是可以删表的。。。如何只对内网开放呢？</p><p>查了无数中英文网页不得，最后决定：看源码！最后在这里发现如下片段，<a href="https://github.com/apache/hbase/blob/master/hbase-rest/src/main/java/org/apache/hadoop/hbase/rest/RESTServer.java" target="_blank" rel="external">hbase/RESTServer.java at master · apache/hbase</a><br><img src="/images/Screen%20Shot%202017-08-29%20at%2016.30.16.png" alt="Screen Shot 2017-08-29 at 16.30.16"><br>那么解决方法就显而易见了：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># sudo vim /usr/local/hbase/conf/hbase-site.xml</span></div><div class="line">&lt;configuration&gt;</div><div class="line">&lt;property&gt;</div><div class="line">         &lt;name&gt;hbase.rest.host&lt;/name&gt;</div><div class="line">         &lt;value&gt;127.0.0.1&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;通过开启Hbase 的REST 服务我们可以很方便的以API的形式访问Hbase，&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="Hbase" scheme="http://frankchen.xyz/tags/Hbase/"/>
     
   </entry>
   
