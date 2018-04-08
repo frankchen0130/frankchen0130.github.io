@@ -89,24 +89,16 @@
 
 
 
-<meta name="description" content="如图所示，利用pipeline我们可以方便的减少代码量同时让机器学习的流程变得直观，
-例如我们需要做如下操作，容易看出，训练测试集重复了代码，
-123456789101112vect = CountVectorizer()tfidf = TfidfTransformer()clf = SGDClassifier()vX = vect.fit_transform(Xtrain)tfidfX = tf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习中的 pipeline">
+<meta property="og:title" content="机器学习之 sklearn中的pipeline">
 <meta property="og:url" content="http://frankchen.xyz/2018/04/08/pipeline-in-machine-learning/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
-<meta property="og:description" content="如图所示，利用pipeline我们可以方便的减少代码量同时让机器学习的流程变得直观，
-例如我们需要做如下操作，容易看出，训练测试集重复了代码，
-123456789101112vect = CountVectorizer()tfidf = TfidfTransformer()clf = SGDClassifier()vX = vect.fit_transform(Xtrain)tfidfX = tf">
+<meta property="og:image" content="http://frankchen.xyz/images/15231874915799.jpg">
 <meta property="og:image" content="http://frankchen.xyz/images/15231783974167.jpg">
-<meta property="og:updated_time" content="2018-04-08T11:31:57.232Z">
+<meta property="og:updated_time" content="2018-04-08T11:38:21.347Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习中的 pipeline">
-<meta name="twitter:description" content="如图所示，利用pipeline我们可以方便的减少代码量同时让机器学习的流程变得直观，
-例如我们需要做如下操作，容易看出，训练测试集重复了代码，
-123456789101112vect = CountVectorizer()tfidf = TfidfTransformer()clf = SGDClassifier()vX = vect.fit_transform(Xtrain)tfidfX = tf">
-<meta name="twitter:image" content="http://frankchen.xyz/images/15231783974167.jpg">
+<meta name="twitter:title" content="机器学习之 sklearn中的pipeline">
+<meta name="twitter:image" content="http://frankchen.xyz/images/15231874915799.jpg">
 
 
 
@@ -140,7 +132,7 @@
 
 
 
-  <title> 机器学习中的 pipeline | 不正经数据科学家 </title>
+  <title> 机器学习之 sklearn中的pipeline | 不正经数据科学家 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -290,7 +282,7 @@
             
             
               
-                机器学习中的 pipeline
+                机器学习之 sklearn中的pipeline
               
             
           </h1>
@@ -323,7 +315,7 @@
 
           
           
-             <span id="/2018/04/08/pipeline-in-machine-learning/" class="leancloud_visitors" data-flag-title="机器学习中的 pipeline">
+             <span id="/2018/04/08/pipeline-in-machine-learning/" class="leancloud_visitors" data-flag-title="机器学习之 sklearn中的pipeline">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -352,7 +344,7 @@
       
 
       
-        <p>如图所示，利用pipeline我们可以方便的减少代码量同时让机器学习的流程变得直观，<br><img src="/images/15231783974167.jpg" alt=""></p>
+        <p><img src="/images/15231874915799.jpg" alt=""><br><a id="more"></a><br>如图所示，利用pipeline我们可以方便的减少代码量同时让机器学习的流程变得直观，<br><img src="/images/15231783974167.jpg" alt=""></p>
 <p>例如我们需要做如下操作，容易看出，训练测试集重复了代码，</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">vect = CountVectorizer()</div><div class="line">tfidf = TfidfTransformer()</div><div class="line">clf = SGDClassifier()</div><div class="line"></div><div class="line">vX = vect.fit_transform(Xtrain)</div><div class="line">tfidfX = tfidf.fit_transform(vX)</div><div class="line">predicted = clf.fit_predict(tfidfX)</div><div class="line"></div><div class="line"><span class="comment"># Now evaluate all steps on test set</span></div><div class="line">vX = vect.fit_transform(Xtest)</div><div class="line">tfidfX = tfidf.fit_transform(vX)</div><div class="line">predicted = clf.fit_predict(tfidfX)</div></pre></td></tr></table></figure>
 <p>利用pipeline，上面代码可以抽象为，</p>
