@@ -89,18 +89,18 @@
 
 
 
-<meta name="description" content="用VPS搭建私人BT离线服务器的方法">
+<meta name="description" content="使用闲置的VPS搭建私人BT离线服务器的方法，亦或者推广至树莓派或者家用路由器亦可。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VPS搭建私人BT离线服务器">
 <meta property="og:url" content="http://frankchen.xyz/2018/04/08/private-BT-server/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
-<meta property="og:description" content="用VPS搭建私人BT离线服务器的方法">
+<meta property="og:description" content="使用闲置的VPS搭建私人BT离线服务器的方法，亦或者推广至树莓派或者家用路由器亦可。">
 <meta property="og:image" content="http://frankchen.xyz/images/15231584798585.jpg">
 <meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-04-08%20at%2011.25.35.png">
-<meta property="og:updated_time" content="2018-04-08T03:37:19.153Z">
+<meta property="og:updated_time" content="2018-04-08T03:47:02.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VPS搭建私人BT离线服务器">
-<meta name="twitter:description" content="用VPS搭建私人BT离线服务器的方法">
+<meta name="twitter:description" content="使用闲置的VPS搭建私人BT离线服务器的方法，亦或者推广至树莓派或者家用路由器亦可。">
 <meta name="twitter:image" content="http://frankchen.xyz/images/15231584798585.jpg">
 
 
@@ -347,7 +347,7 @@
       
 
       
-        <p>用VPS搭建私人BT离线服务器的方法<br><img src="/images/15231584798585.jpg" alt=""><br><a id="more"></a> </p>
+        <p><img src="/images/15231584798585.jpg" alt=""><br>使用闲置的VPS搭建私人BT离线服务器的方法，亦或者推广至树莓派或者家用路由器亦可。<br><a id="more"></a> </p>
 <h2 id="安装及配置-Transmission"><a href="#安装及配置-Transmission" class="headerlink" title="安装及配置 Transmission"></a>安装及配置 Transmission</h2><ul>
 <li>安装 <code>sudo apt-get install transmission-daemon</code></li>
 <li>配置 停止服务（否则配置文件锁定，无法修改）<code>sudo service transmission-daemon stop</code></li>
@@ -361,7 +361,7 @@
 <p> 此时在浏览器打开<code>VPS的IP地址/域名:9091</code>并输入刚刚设置的用户名及密码应该就可以访问 Transmission 的 Web-GUI了。<br> <img src="/images/Screen%20Shot%202018-04-08%20at%2011.25.35.png" alt="Screen Shot 2018-04-08 at 11.25.35"></p>
 <p> 可是在添加了第一个任务后出现保存路径写入权限的问题。<br>解决办法如<a href="https://askubuntu.com/questions/221081/permission-denied-when-downloading-with-transmission-deamon" target="_blank" rel="external">Permission denied when downloading with transmission deamon - Ask Ubuntu</a>所示：</p>
 <p>我们的下载地址是 <code>/var/www/html/Downloads</code> 用户名是<code>znwindy</code>:<br>那么 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将本用户加入 `debian-transmission`组</span></div><div class="line">sudo usermod <span class="_">-a</span> -G debian-transmission znwindy</div><div class="line"><span class="comment"># 文件夹所有者</span></div><div class="line">sudo chgrp debian-transmission /var/www/html/Downloads</div><div class="line"><span class="comment"># 组添加写权限</span></div><div class="line">sudo chmod 770 /var/www/html/Downloads</div><div class="line"><span class="comment"># 停止后台deamon </span></div><div class="line"></div><div class="line">sudo service transmission-daemon stop</div><div class="line"><span class="comment"># 更改 file creation mask</span></div><div class="line">sudo vim /etc/transmission-daemon/settings.json</div><div class="line"><span class="comment"># 把"umask": 18 改为 "umask": 2</span></div><div class="line"><span class="comment"># 重启服务</span></div><div class="line">sudo service transmission-daemon start</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将本用户加入 `debian-transmission`组</span></div><div class="line">sudo usermod <span class="_">-a</span> -G debian-transmission znwindy</div><div class="line"><span class="comment"># 文件夹所有者</span></div><div class="line">sudo chgrp debian-transmission /var/www/html/Downloads</div><div class="line"><span class="comment"># 组添加写权限</span></div><div class="line">sudo chmod -R 755 /var/www</div><div class="line"><span class="comment"># 停止后台deamon </span></div><div class="line"></div><div class="line">sudo service transmission-daemon stop</div><div class="line"><span class="comment"># 更改 file creation mask</span></div><div class="line">sudo vim /etc/transmission-daemon/settings.json</div><div class="line"><span class="comment"># 把"umask": 18 改为 "umask": 2</span></div><div class="line"><span class="comment"># 重启服务</span></div><div class="line">sudo service transmission-daemon start</div></pre></td></tr></table></figure>
 <p>即可解决写的问题。</p>
 <h2 id="配置-Apache-加密区域"><a href="#配置-Apache-加密区域" class="headerlink" title="配置 Apache 加密区域"></a>配置 Apache 加密区域</h2><p>安装apache2</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install apache2</div></pre></td></tr></table></figure>
