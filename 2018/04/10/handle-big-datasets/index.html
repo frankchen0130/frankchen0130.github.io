@@ -1,0 +1,940 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,Data Science,Kaggle," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="不正经数据科学家" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="最近的一些比赛如TalkingData AdTracking Fraud Detection Challenge | Kaggle提供了很大的数据集，一般来说，只有16G的内存的“小”电脑都无法直接处理这种数据集了，本文收集了一些关于处理这种数据的建议，供大家参考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="处理大数据集的建议">
+<meta property="og:url" content="http://frankchen.xyz/2018/04/10/handle-big-datasets/index.html">
+<meta property="og:site_name" content="不正经数据科学家">
+<meta property="og:description" content="最近的一些比赛如TalkingData AdTracking Fraud Detection Challenge | Kaggle提供了很大的数据集，一般来说，只有16G的内存的“小”电脑都无法直接处理这种数据集了，本文收集了一些关于处理这种数据的建议，供大家参考。">
+<meta property="og:updated_time" content="2018-04-10T08:15:51.972Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="处理大数据集的建议">
+<meta name="twitter:description" content="最近的一些比赛如TalkingData AdTracking Fraud Detection Challenge | Kaggle提供了很大的数据集，一般来说，只有16G的内存的“小”电脑都无法直接处理这种数据集了，本文收集了一些关于处理这种数据的建议，供大家参考。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://frankchen.xyz/2018/04/10/handle-big-datasets/"/>
+
+
+
+
+
+  <title> 处理大数据集的建议 | 不正经数据科学家 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不正经数据科学家</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Enjoy everything fun and challenging</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://frankchen.xyz/2018/04/10/handle-big-datasets/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江南消夏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不正经数据科学家">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                处理大数据集的建议
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T15:07:34+08:00">
+                2018-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/10/handle-big-datasets/" class="leancloud_visitors" data-flag-title="处理大数据集的建议">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近的一些比赛如<a href="https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection" target="_blank" rel="external">TalkingData AdTracking Fraud Detection Challenge | Kaggle</a>提供了很大的数据集，一般来说，只有16G的内存的“小”电脑都无法直接处理这种数据集了，本文收集了一些关于处理这种数据的建议，供大家参考。<br><a id="more"></a></p>
+<h2 id="1-及时删除无用变量并垃圾回收"><a href="#1-及时删除无用变量并垃圾回收" class="headerlink" title="1.及时删除无用变量并垃圾回收"></a>1.及时删除无用变量并垃圾回收</h2><p>通常我们在特征工程中会涉及大量的转换操作，产生很多的中间变量等，除了使用<code>del</code>以外，使用<code>gc.collect()</code>也是个不错的选择。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">temp = pd.read_csv(<span class="string">'../input/train_sample.csv'</span>)</div><div class="line"></div><div class="line"><span class="comment">#do something to the file</span></div><div class="line">temp[<span class="string">'os'</span>] = temp[<span class="string">'os'</span>].astype(<span class="string">'str'</span>)</div><div class="line"><span class="comment">#delete when no longer needed</span></div><div class="line"><span class="keyword">del</span> temp</div><div class="line"><span class="comment">#collect residual garbage</span></div><div class="line">gc.collect()</div></pre></td></tr></table></figure>
+<h2 id="2-预定义数据类型"><a href="#2-预定义数据类型" class="headerlink" title="2.预定义数据类型"></a>2.预定义数据类型</h2><p>pandas一般会自己推断数据类型，不过倾向于使用耗费空间大的，如下面例子所示，预定义数据类型节省了超过一半的空间。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">dtypes = &#123;</div><div class="line">        <span class="string">'ip'</span>            : <span class="string">'uint32'</span>,</div><div class="line">        <span class="string">'app'</span>           : <span class="string">'uint16'</span>,</div><div class="line">        <span class="string">'device'</span>        : <span class="string">'uint16'</span>,</div><div class="line">        <span class="string">'os'</span>            : <span class="string">'uint16'</span>,</div><div class="line">        <span class="string">'channel'</span>       : <span class="string">'uint16'</span>,</div><div class="line">        <span class="string">'is_attributed'</span> : <span class="string">'uint8'</span>,</div><div class="line">        &#125;</div><div class="line"></div><div class="line">dtypes2 = &#123;</div><div class="line">        <span class="string">'ip'</span>            : <span class="string">'int32'</span>,</div><div class="line">        <span class="string">'app'</span>           : <span class="string">'int16'</span>,</div><div class="line">        <span class="string">'device'</span>        : <span class="string">'int16'</span>,</div><div class="line">        <span class="string">'os'</span>            : <span class="string">'int16'</span>,</div><div class="line">        <span class="string">'channel'</span>       : <span class="string">'int16'</span>,</div><div class="line">        <span class="string">'is_attributed'</span> : <span class="string">'int8'</span>,</div><div class="line">        &#125;</div><div class="line"></div><div class="line">train = pd.read_csv(train_sample_file,parse_dates=[<span class="string">'click_time'</span>])</div><div class="line"></div><div class="line"><span class="comment">#check datatypes:</span></div><div class="line">train.info()</div><div class="line"></div><div class="line">train = pd.read_csv(train_sample_file,dtype=dtypes,parse_dates=[<span class="string">'click_time'</span>])</div><div class="line"></div><div class="line"><span class="comment">#check datatypes:</span></div><div class="line">train.info()</div><div class="line"></div><div class="line"></div><div class="line">train = pd.read_csv(train_sample_file,dtype=dtypes2,parse_dates=[<span class="string">'click_time'</span>])</div><div class="line"></div><div class="line"><span class="comment">#check datatypes:</span></div><div class="line">train.info()</div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line">&lt;class 'pandas.core.frame.DataFrame'&gt;</div><div class="line">RangeIndex: 100000 entries, 0 to 99999</div><div class="line">Data columns (total 8 columns):</div><div class="line">ip                 100000 non-null int64</div><div class="line">app                100000 non-null int64</div><div class="line">device             100000 non-null int64</div><div class="line">os                 100000 non-null int64</div><div class="line">channel            100000 non-null int64</div><div class="line">click_time         100000 non-null datetime64[ns]</div><div class="line">attributed_time    227 non-null object</div><div class="line">is_attributed      100000 non-null int64</div><div class="line">dtypes: datetime64[ns](1), int64(6), object(1)</div><div class="line">memory usage: 6.1+ MB</div><div class="line">&lt;class 'pandas.core.frame.DataFrame'&gt;</div><div class="line">RangeIndex: 100000 entries, 0 to 99999</div><div class="line">Data columns (total 8 columns):</div><div class="line">ip                 100000 non-null uint32</div><div class="line">app                100000 non-null uint16</div><div class="line">device             100000 non-null uint16</div><div class="line">os                 100000 non-null uint16</div><div class="line">channel            100000 non-null uint16</div><div class="line">click_time         100000 non-null datetime64[ns]</div><div class="line">attributed_time    227 non-null object</div><div class="line">is_attributed      100000 non-null uint8</div><div class="line">dtypes: datetime64[ns](1), object(1), uint16(4), uint32(1), uint8(1)</div><div class="line">memory usage: 2.8+ MB</div><div class="line">&lt;class 'pandas.core.frame.DataFrame'&gt;</div><div class="line">RangeIndex: 100000 entries, 0 to 99999</div><div class="line">Data columns (total 8 columns):</div><div class="line">ip                 100000 non-null int32</div><div class="line">app                100000 non-null int16</div><div class="line">device             100000 non-null int16</div><div class="line">os                 100000 non-null int16</div><div class="line">channel            100000 non-null int16</div><div class="line">click_time         100000 non-null datetime64[ns]</div><div class="line">attributed_time    227 non-null object</div><div class="line">is_attributed      100000 non-null int8</div><div class="line">dtypes: datetime64[ns](1), int16(4), int32(1), int8(1), object(1)</div><div class="line">memory usage: 2.8+ MB</div><div class="line">'''</div></pre></td></tr></table></figure>
+<h2 id="3-只使用csv文件内的指定行"><a href="#3-只使用csv文件内的指定行" class="headerlink" title="3.只使用csv文件内的指定行"></a>3.只使用csv文件内的指定行</h2><h3 id="a-指定行数"><a href="#a-指定行数" class="headerlink" title="a) 指定行数"></a>a) 指定行数</h3><p>直接使用nrows指定</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">train = pd.read_csv(<span class="string">'../input/train.csv'</span>, nrows=<span class="number">1e5</span>, dtype=dtypes)</div></pre></td></tr></table></figure>
+<h3 id="b-跳过行数"><a href="#b-跳过行数" class="headerlink" title="b) 跳过行数"></a>b) 跳过行数</h3><p>比如我们跳过前500w取100w下面保留了head，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">train = pd.read_csv(<span class="string">'../input/train.csv'</span>, skiprows=range(<span class="number">1</span>, <span class="number">5000000</span>), nrows=<span class="number">1000000</span>, dtype=dtypes)</div></pre></td></tr></table></figure>
+<h3 id="c-sampling"><a href="#c-sampling" class="headerlink" title="c) sampling"></a>c) sampling</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> subprocess</div><div class="line">print(<span class="string">'# Line count:'</span>)</div><div class="line"><span class="keyword">for</span> file <span class="keyword">in</span> [<span class="string">'train.csv'</span>, <span class="string">'test.csv'</span>, <span class="string">'train_sample.csv'</span>]:</div><div class="line">    lines = subprocess.run([<span class="string">'wc'</span>, <span class="string">'-l'</span>, <span class="string">'../input/&#123;&#125;'</span>.format(file)], stdout=subprocess.PIPE).stdout.decode(<span class="string">'utf-8'</span>)</div><div class="line">    print(lines, end=<span class="string">''</span>, flush=<span class="keyword">True</span>)</div><div class="line"><span class="string">'''</span></div><div class="line"># Line count:</div><div class="line">184903891 ../input/train.csv</div><div class="line">18790470 ../input/test.csv</div><div class="line">100001 ../input/train_sample.csv</div><div class="line">'''</div></pre></td></tr></table></figure>
+<p>train一共有<code>lines=184903891</code> 行，那么假设我们需要采样出100w行，那么我们需要跳过<code>lines - 1 - 1000000</code>行，即</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#generate list of lines to skip</span></div><div class="line">skiplines = np.random.choice(np.arange(<span class="number">1</span>, lines), size=lines<span class="number">-1</span><span class="number">-1000000</span>, replace=<span class="keyword">False</span>)</div><div class="line"></div><div class="line"><span class="comment">#sort the list</span></div><div class="line">skiplines=np.sort(skiplines)</div><div class="line"><span class="comment">#check our list</span></div><div class="line">print(<span class="string">'lines to skip:'</span>, len(skiplines))</div><div class="line">print(<span class="string">'remaining lines in sample:'</span>, lines-len(skiplines), <span class="string">'(remember that it includes the heading!)'</span>)</div><div class="line"></div><div class="line"><span class="comment">###################SANITY CHECK###################</span></div><div class="line"><span class="comment">#find lines that weren't skipped by checking difference between each consecutive line</span></div><div class="line"><span class="comment">#how many out of first 100000 will be imported into the csv?</span></div><div class="line">diff = skiplines[<span class="number">1</span>:<span class="number">100000</span>]-skiplines[<span class="number">2</span>:<span class="number">100001</span>]</div><div class="line">remain = sum(diff!=<span class="number">-1</span>)</div><div class="line">print(<span class="string">'Ratio of lines from first 100000 lines:'</span>,  <span class="string">'&#123;0:.5f&#125;'</span>.format(remain/<span class="number">100000</span>) ) </div><div class="line">print(<span class="string">'Ratio imported from all lines:'</span>, <span class="string">'&#123;0:.5f&#125;'</span>.format((lines-len(skiplines))/lines) )</div><div class="line">train = pd.read_csv(<span class="string">'../input/train.csv'</span>, skiprows=skiplines, dtype=dtypes)</div><div class="line">train.head()</div><div class="line"><span class="keyword">del</span> skiplines</div><div class="line">gc.collect()</div></pre></td></tr></table></figure>
+<h2 id="4-使用pandas-的生成器，用chunk处理"><a href="#4-使用pandas-的生成器，用chunk处理" class="headerlink" title="4.使用pandas 的生成器，用chunk处理"></a>4.使用pandas 的生成器，用chunk处理</h2><p>这里我们使用np.where过滤掉‘is_attributed’为0的部分（例如<code>[xv if c else yv for (c,xv,yv) in zip(condition,x,y)]</code>）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#set up an empty dataframe</span></div><div class="line">df_converted = pd.DataFrame()</div><div class="line"></div><div class="line"><span class="comment">#we are going to work with chunks of size 1 million rows</span></div><div class="line">chunksize = <span class="number">10</span> ** <span class="number">6</span></div><div class="line"></div><div class="line"><span class="comment">#in each chunk, filter for values that have 'is_attributed'==1, and merge these values into one dataframe</span></div><div class="line"><span class="keyword">for</span> chunk <span class="keyword">in</span> pd.read_csv(<span class="string">'../input/train.csv'</span>, chunksize=chunksize, dtype=dtypes):</div><div class="line">    filtered = (chunk[(np.where(chunk[<span class="string">'is_attributed'</span>]==<span class="number">1</span>, <span class="keyword">True</span>, <span class="keyword">False</span>))])</div><div class="line">    df_converted = pd.concat([df_converted, filtered], ignore_index=<span class="keyword">True</span>, )</div></pre></td></tr></table></figure></p>
+<h2 id="5-只载入若干列"><a href="#5-只载入若干列" class="headerlink" title="5.只载入若干列"></a>5.只载入若干列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#wanted columns</span></div><div class="line">columns = [<span class="string">'ip'</span>, <span class="string">'click_time'</span>, <span class="string">'is_attributed'</span>]</div><div class="line">dtypes = &#123;</div><div class="line">        <span class="string">'ip'</span>            : <span class="string">'uint32'</span>,</div><div class="line">        <span class="string">'is_attributed'</span> : <span class="string">'uint8'</span>,</div><div class="line">        &#125;</div><div class="line"></div><div class="line">ips_df = pd.read_csv(<span class="string">'../input/train.csv'</span>, usecols=columns, dtype=dtypes)</div><div class="line">print(ips_df.info())</div><div class="line">ips_df.head()</div><div class="line"><span class="string">'''</span></div><div class="line">&lt;class 'pandas.core.frame.DataFrame'&gt;</div><div class="line">RangeIndex: 184903890 entries, 0 to 184903889</div><div class="line">Data columns (total 3 columns):</div><div class="line">ip               uint32</div><div class="line">click_time       object</div><div class="line">is_attributed    uint8</div><div class="line">dtypes: object(1), uint32(1), uint8(1)</div><div class="line">memory usage: 2.2+ GB</div><div class="line">None'''</div></pre></td></tr></table></figure>
+<h2 id="6-结合多种方法创意性的处理数据"><a href="#6-结合多种方法创意性的处理数据" class="headerlink" title="6.结合多种方法创意性的处理数据"></a>6.结合多种方法创意性的处理数据</h2><p>例如无法使用整个数据来groupby那么可以分块来做，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">size=<span class="number">100000</span></div><div class="line">all_rows = len(ips_df)</div><div class="line">num_parts = all_rows//size</div><div class="line"></div><div class="line"><span class="comment">#generate the first batch</span></div><div class="line">ip_sums = ips_df[<span class="number">0</span>:size][[<span class="string">'ip'</span>, <span class="string">'is_attributed'</span>]].groupby(<span class="string">'ip'</span>, as_index=<span class="keyword">False</span>).sum()</div><div class="line"></div><div class="line"><span class="comment">#add remaining batches</span></div><div class="line"><span class="keyword">for</span> p <span class="keyword">in</span> range(<span class="number">1</span>,num_parts):</div><div class="line">    start = p*size</div><div class="line">    end = p*size + size</div><div class="line">    <span class="keyword">if</span> end &lt; all_rows:</div><div class="line">        group = ips_df[start:end][[<span class="string">'ip'</span>, <span class="string">'is_attributed'</span>]].groupby(<span class="string">'ip'</span>, as_index=<span class="keyword">False</span>).sum()</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        group = ips_df[start:][[<span class="string">'ip'</span>, <span class="string">'is_attributed'</span>]].groupby(<span class="string">'ip'</span>, as_index=<span class="keyword">False</span>).sum()</div><div class="line">    ip_sums = ip_sums.merge(group, on=<span class="string">'ip'</span>, how=<span class="string">'outer'</span>)</div><div class="line">    ip_sums.columns = [<span class="string">'ip'</span>, <span class="string">'sum1'</span>,<span class="string">'sum2'</span>]</div><div class="line">    ip_sums[<span class="string">'conversions_per_ip'</span>] = np.nansum((ip_sums[<span class="string">'sum1'</span>], ip_sums[<span class="string">'sum2'</span>]), axis = <span class="number">0</span>)</div><div class="line">    ip_sums.drop(columns=[<span class="string">'sum1'</span>, <span class="string">'sum2'</span>], axis = <span class="number">0</span>, inplace=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<h2 id="7-使用dask代替pandas"><a href="#7-使用dask代替pandas" class="headerlink" title="7.使用dask代替pandas"></a>7.使用dask代替pandas</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import dask</div><div class="line">import dask.dataframe as dd</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/Data-Science/" rel="tag"># Data Science</a>
+          
+            <a href="/tags/Kaggle/" rel="tag"># Kaggle</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/08/pipeline-in-machine-learning/" rel="next" title="机器学习之 sklearn中的pipeline">
+                <i class="fa fa-chevron-left"></i> 机器学习之 sklearn中的pipeline
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODQ5NS81MDY2"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="江南消夏" />
+          <p class="site-author-name" itemprop="name">江南消夏</p>
+           
+              <p class="site-description motion-element" itemprop="description">当你的才华还撑不起你的野心时，你就应该静下心来学习。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">91</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hujiaweibujidao.github.io/" title="胡家威" target="_blank">胡家威</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://my.csdn.net/yywan1314520" title="-dragon-" target="_blank">-dragon-</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://e1ias.github.io/" title="E1ias" target="_blank">E1ias</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://cuiqingcai.com/" title="静觅" target="_blank">静觅</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hubojing.me/" title="胡博靖" target="_blank">胡博靖</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://gjoker.github.io/" title="GJoker" target="_blank">GJoker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://medium.com/@znwindy/" title="My_Medium" target="_blank">My_Medium</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-及时删除无用变量并垃圾回收"><span class="nav-number">1.</span> <span class="nav-text">1.及时删除无用变量并垃圾回收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-预定义数据类型"><span class="nav-number">2.</span> <span class="nav-text">2.预定义数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-只使用csv文件内的指定行"><span class="nav-number">3.</span> <span class="nav-text">3.只使用csv文件内的指定行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-指定行数"><span class="nav-number">3.1.</span> <span class="nav-text">a) 指定行数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-跳过行数"><span class="nav-number">3.2.</span> <span class="nav-text">b) 跳过行数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-sampling"><span class="nav-number">3.3.</span> <span class="nav-text">c) sampling</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-使用pandas-的生成器，用chunk处理"><span class="nav-number">4.</span> <span class="nav-text">4.使用pandas 的生成器，用chunk处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-只载入若干列"><span class="nav-number">5.</span> <span class="nav-text">5.只载入若干列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-结合多种方法创意性的处理数据"><span class="nav-number">6.</span> <span class="nav-text">6.结合多种方法创意性的处理数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-使用dask代替pandas"><span class="nav-number">7.</span> <span class="nav-text">7.使用dask代替pandas</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江南消夏</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("fI3sRwLoiR3Em423yqCIWgeU-gzGzoHsz", "Cs92ouK8fpRmjGwdLvadr6vP");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
