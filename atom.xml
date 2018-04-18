@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankchen.xyz/"/>
-  <updated>2018-04-10T08:15:51.972Z</updated>
+  <updated>2018-04-18T08:01:50.756Z</updated>
   <id>http://frankchen.xyz/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>理解一维卷积</title>
+    <link href="http://frankchen.xyz/2018/04/17/conv1d-in-keras/"/>
+    <id>http://frankchen.xyz/2018/04/17/conv1d-in-keras/</id>
+    <published>2018-04-17T07:46:36.000Z</published>
+    <updated>2018-04-18T08:01:50.756Z</updated>
+    
+    <content type="html"><![CDATA[<p>下面是一个利用CNN进行NLP中的情感分类的例子，<br><img src="/images/15240224514694.png" alt=""></p><p>上图中，输入为表示为词表为d=5，长度为7的矩阵的句子，1D卷积核为长度分别为(2,3,4)的各两个，经过卷积并激活函数后，各自产生了(4x1, 5x1, 6x1)的各两个feature map，每个feature map经过一次1D max pooling后（即取每个feature map的最大值）再concatenate为一个6x1的1D向量，经过一个全连接层再softmax激活即可进行情感分类预测。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;下面是一个利用CNN进行NLP中的情感分类的例子，&lt;br&gt;&lt;img src=&quot;/images/15240224514694.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上图中，输入为表示为词表为d=5，长度为7的矩阵的句子，1D卷积核为长度分别为(2,3,4)的各两个，经过卷积
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>处理大数据集的建议</title>
@@ -386,9 +408,9 @@
     <link href="http://frankchen.xyz/2017/11/08/pycharm-pro/"/>
     <id>http://frankchen.xyz/2017/11/08/pycharm-pro/</id>
     <published>2017-11-08T10:44:13.000Z</published>
-    <updated>2017-11-09T08:31:53.000Z</updated>
+    <updated>2018-04-18T08:06:08.711Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="/images/15101362178541.jpg" alt=""><br>Pycharm，只为提高python开发者的生产力！<br><a id="more"></a></p><h2 id="版本管理"><a href="#版本管理" class="headerlink" title="版本管理"></a>版本管理</h2><p><img src="/images/Screen%20Shot%202017-11-08%20at%2018.17.59.png" alt="Screen Shot 2017-11-08 at 18.17.59"><br>版本管理，主要是依靠这两个按钮，左边是pull，右边是commit。一般我们开发，打开项目，先pull下代码仓库的变更，开始开发，然后commit，再pull，合并冲突，再push。<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.21.55.png" alt="Screen Shot 2017-11-08 at 18.21.55"><br>pycharm非常人性化地为我们标出了，黑色则是没有变更，蓝色是有变更，绿色是新add的文件。<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.23.21.png" alt="Screen Shot 2017-11-08 at 18.23.21"><br>commit时，可以很方便地看出变更对比，对于需要回滚的零时操作文件可以用紫色的revert按钮回退变更，总之填写commit message之后就可以commit了。<br>然后，为防止在此期间，代码仓库又有人push了新变更，在push之前，我们需要再次pull，如果没有变更，push即可。<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.26.24.png" alt="Screen Shot 2017-11-08 at 18.26.24"><br>如果有冲突呢，pycharm有非常human的解决冲突界面，<br><img src="/images/15101368989889.jpg" alt=""><br>总之，选择修改的、丢弃的、保留的，就可以push了，当然，这次push会有两条message，第二条是解决冲突的。</p><h2 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h2><p>利用pycharm我们可以在服务器直接run、debug，非常的便捷。<br>首先要设置deployment，<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.31.20.png" alt="Screen Shot 2017-11-08 at 18.31.20"><br>选择SFTP，也就是ssh，这里用密码或者私钥都是ok的。设置好映射目录，<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.31.56.png" alt="Screen Shot 2017-11-08 at 18.31.56"><br>接下来添加远程解释器，<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.33.05.png" alt="Screen Shot 2017-11-08 at 18.33.05"><br>，并勾选auto upload，<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.33.46.png" alt="Screen Shot 2017-11-08 at 18.33.46"><br>那么，每次本地的更改都会同步到服务器，直接run或者debug都是获取服务器的结果，非常方便。</p><p>## </p><h2 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h2><p>DEBUG可谓是开发中最最重要的技能了，也许我们在初级的开发的时候，还可以依靠各种print变量来查看，那么工程一旦变复杂，debug就必不可少了，；举个栗子，我们用TensorFlow写深度学习工程的时候，如果出现矩阵维度不匹配的情况，这个时候用debug去观察各个维度就相当高效了。<br>以下图为例，我们做debug，当然先要在我们希望观察的代码处打断点（Break Point），就是左边的红色小点，第一个断点debug停下来的地方。接下来就是debug按钮了，也就是红框内的这些箭头，依次是</p><ul><li>Step Over 直接从当前断点步进到下一个断点，也就是我们不希望看到中间的任何调用，直接跳过</li><li>Step Into，从当前断点，每一次调用都进入，如果调用比较多，可能很繁因为会一步步深入</li><li>Step Into Mycode，简单明了，一行一行的步进，不跳转到调用</li><li>Force Step Into，强制步进进入</li><li>Step Out 跳出当前调用，和Step Into结合，一个进入、一个跳出</li><li>Run to Cursor 不需打断点，直接步进到光标所在处，这个也很方便，只需把光标放在某处点击即可<br><img src="/images/Screen%20Shot%202017-11-09%20at%2015.49.12.png" alt="Screen Shot 2017-11-09 at 15.49.12"><br>此处类似堆栈，后面调用的进程在上面。<br><img src="/images/Screen%20Shot%202017-11-09%20at%2016.19.42.png" alt="Screen Shot 2017-11-09 at 16.19.42"><br>当然，最主要的，上面这些步骤按钮的最终目的就是观察Variable的变化，通过步进观察各个变量的信息，以找出bug等等。<br><img src="/images/Screen%20Shot%202017-11-09%20at%2016.21.15.png" alt="Screen Shot 2017-11-09 at 16.21.15"></li></ul><h2 id="Python-Console"><a href="#Python-Console" class="headerlink" title="Python Console"></a>Python Console</h2><p>相比iPython与Notebook，Pycharm自带的Python Console有其独到的优势，比如Special Variables与Code History ，如图，分别用一个两个三个下划线代表上一次上两次上三次的变量，在这里可以直接像debug一样查看各个变量的值；Code History则是使用户方便地使用之前的代码。<br><img src="/images/Screen%20Shot%202017-11-09%20at%2015.23.52.png" alt="Screen Shot 2017-11-09 at 15.23.52"></p><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="调整代码行次序"><a href="#调整代码行次序" class="headerlink" title="调整代码行次序"></a>调整代码行次序</h3><p>Command + Shift + ⬆️/⬇️<br>有时我们需要调整两行代码的上下次序，那么用剪切、粘贴的方法不如这个方法简洁自然。</p><h3 id="查看源码及跳转"><a href="#查看源码及跳转" class="headerlink" title="查看源码及跳转"></a>查看源码及跳转</h3><p>摁住Command键去点击即可跳转到源码处，而查看源码时我们可以通过Command + [/]来方便的前进或后退。</p><h3 id="批量展开收缩代码"><a href="#批量展开收缩代码" class="headerlink" title="批量展开收缩代码"></a>批量展开收缩代码</h3><p>Command + Shift +/-</p><p>当项目写到一定规模的时候，难免方法/函数会很多，这个时候我们可以使用此命令来收缩代码，这个主要是为了方便查看。</p><h3 id="快速插入常用代码"><a href="#快速插入常用代码" class="headerlink" title="快速插入常用代码"></a>快速插入常用代码</h3><p>Command + J 是弹出插入常用代码块的快捷键，比如Dict/List/Set 的comprehension都有，之前我只会‘main’然后跳出<code>if __name__ == &#39;__main__&#39;:</code>😜</p><p><img src="/images/2017/06/05.png" alt=""></p><h3 id="一键-PEP8"><a href="#一键-PEP8" class="headerlink" title="一键 PEP8"></a>一键 PEP8</h3><p>其实在了解这个tips之前我都是点击函数名，等待一个黄色的小灯泡再去点击灯泡。。。其实只需要<code>Command+Option+L</code>即可！</p><h3 id="cheat-sheet"><a href="#cheat-sheet" class="headerlink" title="cheat sheet"></a>cheat sheet</h3><p>顺便更新两张cheat sheet</p><p><img src="/images/2017/06/06.png" alt=""><br><img src="/images/2017/06/07.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<p><img src="/images/15101362178541.jpg" alt=""><br>Pycharm，只为提高python开发者的生产力！<br><a id="more"></a></p><h2 id="版本管理"><a href="#版本管理" class="headerlink" title="版本管理"></a>版本管理</h2><p><img src="/images/Screen%20Shot%202017-11-08%20at%2018.17.59.png" alt="Screen Shot 2017-11-08 at 18.17.59"><br>版本管理，主要是依靠这两个按钮，左边是pull，右边是commit。一般我们开发，打开项目，先pull下代码仓库的变更，开始开发，然后commit，再pull，合并冲突，再push。<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.21.55.png" alt="Screen Shot 2017-11-08 at 18.21.55"><br>pycharm非常人性化地为我们标出了，黑色则是没有变更，蓝色是有变更，绿色是新add的文件。<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.23.21.png" alt="Screen Shot 2017-11-08 at 18.23.21"><br>commit时，可以很方便地看出变更对比，对于需要回滚的零时操作文件可以用紫色的revert按钮回退变更，总之填写commit message之后就可以commit了。<br>然后，为防止在此期间，代码仓库又有人push了新变更，在push之前，我们需要再次pull，如果没有变更，push即可。<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.26.24.png" alt="Screen Shot 2017-11-08 at 18.26.24"><br>如果有冲突呢，pycharm有非常human的解决冲突界面，<br><img src="/images/15101368989889.jpg" alt=""><br>总之，选择修改的、丢弃的、保留的，就可以push了，当然，这次push会有两条message，第二条是解决冲突的。</p><h2 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h2><p>利用pycharm我们可以在服务器直接run、debug，非常的便捷。<br>首先要设置deployment，<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.31.20.png" alt="Screen Shot 2017-11-08 at 18.31.20"><br>选择SFTP，也就是ssh，这里用密码或者私钥都是ok的。设置好映射目录，<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.31.56.png" alt="Screen Shot 2017-11-08 at 18.31.56"><br>接下来添加远程解释器，<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.33.05.png" alt="Screen Shot 2017-11-08 at 18.33.05"><br>，并勾选auto upload，<br><img src="/images/Screen%20Shot%202017-11-08%20at%2018.33.46.png" alt="Screen Shot 2017-11-08 at 18.33.46"><br>那么，每次本地的更改都会同步到服务器，直接run或者debug都是获取服务器的结果，非常方便。</p><p>## </p><h2 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h2><p>DEBUG可谓是开发中最最重要的技能了，也许我们在初级的开发的时候，还可以依靠各种print变量来查看，那么工程一旦变复杂，debug就必不可少了，；举个栗子，我们用TensorFlow写深度学习工程的时候，如果出现矩阵维度不匹配的情况，这个时候用debug去观察各个维度就相当高效了。<br>以下图为例，我们做debug，当然先要在我们希望观察的代码处打断点（Break Point），就是左边的红色小点，第一个断点debug停下来的地方。接下来就是debug按钮了，也就是红框内的这些箭头，依次是</p><ul><li>Step Over 直接从当前断点步进到下一个断点，也就是我们不希望看到中间的任何调用，直接跳过</li><li>Step Into，从当前断点，每一次调用都进入，如果调用比较多，可能很繁因为会一步步深入</li><li>Step Into Mycode，简单明了，一行一行的步进，不跳转到调用</li><li>Force Step Into，强制步进进入</li><li>Step Out 跳出当前调用，和Step Into结合，一个进入、一个跳出</li><li>Run to Cursor 不需打断点，直接步进到光标所在处，这个也很方便，只需把光标放在某处点击即可<br><img src="/images/Screen%20Shot%202017-11-09%20at%2015.49.12.png" alt="Screen Shot 2017-11-09 at 15.49.12"><br>此处类似堆栈，后面调用的进程在上面。<br><img src="/images/Screen%20Shot%202017-11-09%20at%2016.19.42.png" alt="Screen Shot 2017-11-09 at 16.19.42"><br>当然，最主要的，上面这些步骤按钮的最终目的就是观察Variable的变化，通过步进观察各个变量的信息，以找出bug等等。<br><img src="/images/Screen%20Shot%202017-11-09%20at%2016.21.15.png" alt="Screen Shot 2017-11-09 at 16.21.15"></li></ul><h2 id="Python-Console"><a href="#Python-Console" class="headerlink" title="Python Console"></a>Python Console</h2><p>相比iPython与Notebook，Pycharm自带的Python Console有其独到的优势，比如Special Variables与Code History ，如图，分别用一个两个三个下划线代表上一次上两次上三次的变量，在这里可以直接像debug一样查看各个变量的值；Code History则是使用户方便地使用之前的代码。<br><img src="/images/Screen%20Shot%202017-11-09%20at%2015.23.52.png" alt="Screen Shot 2017-11-09 at 15.23.52"></p><h2 id="run-file-in-console"><a href="#run-file-in-console" class="headerlink" title="run file in console"></a>run file in console</h2><p><img src="/images/15240386105863.jpg" alt=""></p><p>右键的run file in console非常有用，之后我们可以在变量中直接观察，甚至在左侧直接调用计算。</p><p><img src="/images/15240387558710.jpg" alt=""></p><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="调整代码行次序"><a href="#调整代码行次序" class="headerlink" title="调整代码行次序"></a>调整代码行次序</h3><p>Command + Shift + ⬆️/⬇️<br>有时我们需要调整两行代码的上下次序，那么用剪切、粘贴的方法不如这个方法简洁自然。</p><h3 id="查看源码及跳转"><a href="#查看源码及跳转" class="headerlink" title="查看源码及跳转"></a>查看源码及跳转</h3><p>摁住Command键去点击即可跳转到源码处，而查看源码时我们可以通过Command + [/]来方便的前进或后退。</p><h3 id="批量展开收缩代码"><a href="#批量展开收缩代码" class="headerlink" title="批量展开收缩代码"></a>批量展开收缩代码</h3><p>Command + Shift +/-</p><p>当项目写到一定规模的时候，难免方法/函数会很多，这个时候我们可以使用此命令来收缩代码，这个主要是为了方便查看。</p><h3 id="快速插入常用代码"><a href="#快速插入常用代码" class="headerlink" title="快速插入常用代码"></a>快速插入常用代码</h3><p>Command + J 是弹出插入常用代码块的快捷键，比如Dict/List/Set 的comprehension都有，之前我只会‘main’然后跳出<code>if __name__ == &#39;__main__&#39;:</code>😜</p><p><img src="/images/2017/06/05.png" alt=""></p><h3 id="一键-PEP8"><a href="#一键-PEP8" class="headerlink" title="一键 PEP8"></a>一键 PEP8</h3><p>其实在了解这个tips之前我都是点击函数名，等待一个黄色的小灯泡再去点击灯泡。。。其实只需要<code>Command+Option+L</code>即可！</p><h3 id="cheat-sheet"><a href="#cheat-sheet" class="headerlink" title="cheat sheet"></a>cheat sheet</h3><p>顺便更新两张cheat sheet</p><p><img src="/images/2017/06/06.png" alt=""><br><img src="/images/2017/06/07.png" alt=""></p>]]></content>
     
     <summary type="html">
     
@@ -419,9 +441,9 @@
     </summary>
     
     
-      <category term="Go" scheme="http://frankchen.xyz/tags/Go/"/>
-    
       <category term="Hbase" scheme="http://frankchen.xyz/tags/Hbase/"/>
+    
+      <category term="Go" scheme="http://frankchen.xyz/tags/Go/"/>
     
   </entry>
   
@@ -442,27 +464,6 @@
     
     
       <category term="VPN" scheme="http://frankchen.xyz/tags/VPN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Install Opencv3.2 on Ununtu 16.04</title>
-    <link href="http://frankchen.xyz/2017/10/25/Install-Opencv3-2-on-Ununtu-16-04/"/>
-    <id>http://frankchen.xyz/2017/10/25/Install-Opencv3-2-on-Ununtu-16-04/</id>
-    <published>2017-10-25T04:34:28.000Z</published>
-    <updated>2017-11-09T02:00:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/images/15101928106001.jpg" alt=""></p><p>Opencv3.2 在 Ununtu 16.04 上的编译安装<br><a id="more"></a></p><p>参考自<a href="http://blog.topspeedsnail.com/archives/4755" target="_blank" rel="external">Ubuntu 16.04编译安装OpenCV（Python） – WTF Daily Blog</a>，不过这位博主装的是3.1版本，而且有些问题。</p><h2 id="安装OpenCV依赖"><a href="#安装OpenCV依赖" class="headerlink" title="安装OpenCV依赖"></a>安装OpenCV依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get upgrade</div><div class="line">sudo apt-get install build-essential cmake pkg-config</div><div class="line"> sudo apt-get install libjpeg8-dev libtiff5-dev libjasper-dev libpng12-dev</div><div class="line"> sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev</div><div class="line"> sudo apt-get install libxvidcore-dev libx264-dev</div><div class="line">sudo apt-get install libgtk-3-dev</div><div class="line">sudo apt-get install libatlas-base-dev gfortran</div><div class="line">sudo apt-get install python2.7-dev python3.5-dev</div></pre></td></tr></table></figure><h2 id="下载OpenCV源码"><a href="#下载OpenCV源码" class="headerlink" title="下载OpenCV源码"></a>下载OpenCV源码</h2><p>这里下载 3.2.0</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~</div><div class="line">$ wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.2.0.zip</div><div class="line">$ unzip opencv.zip</div></pre></td></tr></table></figure><p>下载和OpenCV版本对应的opencv_contrib（一些扩展功能和non-free代码）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.2.0.zip</div><div class="line">$ unzip opencv_contrib.zip</div></pre></td></tr></table></figure></p><h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/opencv-3.2.0/</div><div class="line">$ mkdir build</div><div class="line">$ <span class="built_in">cd</span> build</div></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">    -D CMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span> \</div><div class="line">    -D INSTALL_PYTHON_EXAMPLES=ON \</div><div class="line">    -D INSTALL_C_EXAMPLES=OFF \</div><div class="line">    -D OPENCV_EXTRA_MODULES_PATH=/root/Downloads/opencv_contrib-3.2.0/modules  -D PYTHON_EXECUTABLE=/root/miniconda3/bin/python  ..</div></pre></td></tr></table></figure><p>其中<code>OPENCV_EXTRA_MODULES_PATH</code>是opencv_contrib的解压后的地址，<code>PYTHON_EXECUTABLE</code>是# 你的python 解释器地址 可用<code>witch python</code> 查看。<br>若出现，需要下载<code>ippicv_linux_20151201.tgz</code>的长时间等待，可在此<a href="https://github.com/opencv/opencv_3rdparty/tree/ippicv/master_20151201/ippicv" target="_blank" rel="external">opencv_3rdparty/ippicv at ippicv/master_20151201 · opencv/opencv_3rdparty</a>手动下载对应文件，并放在对应位置如Put the ippicv_linux…tgz under<br>&lt;…&gt;/opencv-3.2.0/3rdparty/ippicv/downloads/linux-808b791a6eac9ed78d32a7666804320e/， 参考自<a href="https://github.com/opencv/opencv/issues/5973" target="_blank" rel="external">incorrect hash in cmake ippicv when installing · Issue #5973 · opencv/opencv</a>。</p><p>编译：</p><p><code>$ make</code></p><p>安装：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo make install</div><div class="line">$ sudo ldconfig</div></pre></td></tr></table></figure><p>再<code>pip install opencv</code>即可😎</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/images/15101928106001.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Opencv3.2 在 Ununtu 16.04 上的编译安装&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
     
   </entry>
   
