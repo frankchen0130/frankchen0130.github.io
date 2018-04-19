@@ -95,12 +95,12 @@
 <meta property="og:url" content="http://frankchen.xyz/2018/04/19/keras-reuse-model/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
 <meta property="og:description" content="Keras 保存及重用模型的方法">
-<meta property="og:image" content="http://frankchen.xyz/images/15241298637474.jpg">
-<meta property="og:updated_time" content="2018-04-19T09:24:50.185Z">
+<meta property="og:image" content="http://frankchen.xyz/images/15135840798621.jpg">
+<meta property="og:updated_time" content="2018-04-19T09:31:42.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="keras reuse model">
 <meta name="twitter:description" content="Keras 保存及重用模型的方法">
-<meta name="twitter:image" content="http://frankchen.xyz/images/15241298637474.jpg">
+<meta name="twitter:image" content="http://frankchen.xyz/images/15135840798621.jpg">
 
 
 
@@ -346,7 +346,7 @@
       
 
       
-        <p><img src="/images/15241298637474.jpg" alt=""><br>Keras 保存及重用模型的方法<br><a id="more"></a></p>
+        <p><img src="/images/15135840798621.jpg" alt=""><br>Keras 保存及重用模型的方法<br><a id="more"></a></p>
 <h2 id="保存模型"><a href="#保存模型" class="headerlink" title="保存模型"></a>保存模型</h2><p>如下，我们预定义保存的<code>hdf5</code>文件名，再初始化<code>ModelCheckpoint</code>，将其加入Keras的callback里（即每个batch结束后做的事情），那么模型就会在每次batch结束后对比，保存最好的模型。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> ModelCheckpoint</div><div class="line"></div><div class="line"><span class="comment"># create model</span></div><div class="line">model = Sequential()</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line"><span class="comment"># Compile model</span></div><div class="line">model.compile(...)</div><div class="line"><span class="comment"># checkpoint</span></div><div class="line">filepath=<span class="string">"weights-&#123;epoch:02d&#125;-&#123;val_acc:.2f&#125;.hdf5"</span></div><div class="line">checkpoint = ModelCheckpoint(filepath, monitor=<span class="string">'val_acc'</span>, verbose=<span class="number">1</span>, save_best_only=<span class="keyword">True</span>, mode=<span class="string">'max'</span>)</div><div class="line"><span class="comment"># Fit the model</span></div><div class="line">model.fit(X, Y, validation_split=<span class="number">0.33</span>, epochs=<span class="number">150</span>, batch_size=<span class="number">10</span>, callbacks=[checkpoint], verbose=<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p>结束后，我们会得到如下的结果，</p>
