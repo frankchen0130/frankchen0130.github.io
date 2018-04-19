@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Deep Learning," />
 
 
 
@@ -89,20 +89,17 @@
 
 
 
-<meta name="description" content="下面是一个利用CNN进行NLP中的情感分类的例子，
-上图中，输入为表示为词表为d=5，长度为7的矩阵的句子，1D卷积核为长度分别为(2,3,4)的各两个，经过卷积并激活函数后，各自产生了(4x1, 5x1, 6x1)的各两个feature map，每个feature map经过一次1D max pooling后（即取每个feature map的最大值）再concatenate为一个6x1的1D向量">
+<meta name="description" content="理解一维卷积">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解一维卷积">
 <meta property="og:url" content="http://frankchen.xyz/2018/04/17/conv1d-in-keras/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
-<meta property="og:description" content="下面是一个利用CNN进行NLP中的情感分类的例子，
-上图中，输入为表示为词表为d=5，长度为7的矩阵的句子，1D卷积核为长度分别为(2,3,4)的各两个，经过卷积并激活函数后，各自产生了(4x1, 5x1, 6x1)的各两个feature map，每个feature map经过一次1D max pooling后（即取每个feature map的最大值）再concatenate为一个6x1的1D向量">
+<meta property="og:description" content="理解一维卷积">
 <meta property="og:image" content="http://frankchen.xyz/images/15240224514694.png">
-<meta property="og:updated_time" content="2018-04-18T08:01:50.756Z">
+<meta property="og:updated_time" content="2018-04-19T08:50:30.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解一维卷积">
-<meta name="twitter:description" content="下面是一个利用CNN进行NLP中的情感分类的例子，
-上图中，输入为表示为词表为d=5，长度为7的矩阵的句子，1D卷积核为长度分别为(2,3,4)的各两个，经过卷积并激活函数后，各自产生了(4x1, 5x1, 6x1)的各两个feature map，每个feature map经过一次1D max pooling后（即取每个feature map的最大值）再concatenate为一个6x1的1D向量">
+<meta name="twitter:description" content="理解一维卷积">
 <meta name="twitter:image" content="http://frankchen.xyz/images/15240224514694.png">
 
 
@@ -349,7 +346,7 @@
       
 
       
-        <p>下面是一个利用CNN进行NLP中的情感分类的例子，<br><img src="/images/15240224514694.png" alt=""></p>
+        <p>理解一维卷积<br><a id="more"></a><br>下面是一个利用CNN进行NLP中的情感分类的例子，<br><img src="/images/15240224514694.png" alt=""></p>
 <p>上图中，输入为表示为词表为d=5，长度为7的矩阵的句子，1D卷积核为长度分别为(2,3,4)的各两个，经过卷积并激活函数后，各自产生了(4x1, 5x1, 6x1)的各两个feature map，每个feature map经过一次1D max pooling后（即取每个feature map的最大值）再concatenate为一个6x1的1D向量，经过一个全连接层再softmax激活即可进行情感分类预测。</p>
 
       
@@ -378,6 +375,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+          
+        </div>
+      
 
       
         
@@ -396,6 +399,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/19/keras-reuse-model/" rel="prev" title="keras reuse model">
+                keras reuse model <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -483,7 +490,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-count">93</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

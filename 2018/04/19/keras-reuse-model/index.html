@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Linux," />
+  <meta name="keywords" content="Keras," />
 
 
 
@@ -89,16 +89,18 @@
 
 
 
-<meta name="description" content="Overview of Basic Linux/Unix command Interview Questions: 常见Linux命令的概述记录">
+<meta name="description" content="Keras 保存及重用模型的方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Basic Linux/Unix command Interview Questions">
-<meta property="og:url" content="http://frankchen.xyz/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/index.html">
+<meta property="og:title" content="keras reuse model">
+<meta property="og:url" content="http://frankchen.xyz/2018/04/19/keras-reuse-model/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
-<meta property="og:description" content="Overview of Basic Linux/Unix command Interview Questions: 常见Linux命令的概述记录">
-<meta property="og:updated_time" content="2017-03-19T05:42:16.000Z">
+<meta property="og:description" content="Keras 保存及重用模型的方法">
+<meta property="og:image" content="http://frankchen.xyz/images/15241298637474.jpg">
+<meta property="og:updated_time" content="2018-04-19T09:24:50.185Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Basic Linux/Unix command Interview Questions">
-<meta name="twitter:description" content="Overview of Basic Linux/Unix command Interview Questions: 常见Linux命令的概述记录">
+<meta name="twitter:title" content="keras reuse model">
+<meta name="twitter:description" content="Keras 保存及重用模型的方法">
+<meta name="twitter:image" content="http://frankchen.xyz/images/15241298637474.jpg">
 
 
 
@@ -126,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://frankchen.xyz/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/"/>
+  <link rel="canonical" href="http://frankchen.xyz/2018/04/19/keras-reuse-model/"/>
 
 
 
 
 
-  <title> Basic Linux/Unix command Interview Questions | 不正经数据科学家 </title>
+  <title> keras reuse model | 不正经数据科学家 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://frankchen.xyz/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/">
+    <link itemprop="mainEntityOfPage" href="http://frankchen.xyz/2018/04/19/keras-reuse-model/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江南消夏">
@@ -282,7 +284,7 @@
             
             
               
-                Basic Linux/Unix command Interview Questions
+                keras reuse model
               
             
           </h1>
@@ -297,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-19T00:53:08+08:00">
-                2017-03-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-19T16:50:00+08:00">
+                2018-04-19
               </time>
             
 
@@ -315,7 +317,7 @@
 
           
           
-             <span id="/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/" class="leancloud_visitors" data-flag-title="Basic Linux/Unix command Interview Questions">
+             <span id="/2018/04/19/keras-reuse-model/" class="leancloud_visitors" data-flag-title="keras reuse model">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -344,117 +346,16 @@
       
 
       
-        <p>Overview of Basic Linux/Unix command Interview Questions: 常见Linux命令的概述记录</p>
-<a id="more"></a>
-<h2 id="初级问题"><a href="#初级问题" class="headerlink" title="初级问题"></a>初级问题</h2><ul>
-<li>列出目录内所有的软链接文件</li>
-</ul>
-<p><code>ls -la | grep &quot;^l&quot;</code></p>
-<p><code>ls -la</code>会以ASCII列出所有文件，而软链接文件都是以<code>l</code>开头的，<code>grep &quot;^l&quot;</code>会找出它们。关于grep的正则pattern可以见此：<a href="https://www.digitalocean.com/community/tutorials/using-grep-regular-expressions-to-search-for-text-patterns-in-linux#regular-expressions" target="_blank" rel="external">Using Grep &amp; Regular Expressions to Search for Text Patterns in Linux | DigitalOcean</a></p>
-<ul>
-<li>创建一个只读的文件？</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">touch file</div><div class="line">chmod 400 file</div></pre></td></tr></table></figure>
-<p>更多可见：<a href="http://javarevisited.blogspot.com/2011/11/file-permissions-in-unix-linux-example.html" target="_blank" rel="external">File permissions in UNIX Linux with Example &gt;&gt; Unix Tutorial</a></p>
-<ul>
-<li>如何将一个进程在后端运行？如何将其返回前端？如何杀死进程？</li>
-</ul>
-<p>分别是在命令后加上<code>&amp;</code>；<code>fg jobid</code>(用<code>jobs</code>来看jobid)；<code>kill -KILL PID</code> 可见<a href="https://kb.iu.edu/d/afnz" target="_blank" rel="external">How do I run a Unix process in the background?</a></p>
-<ul>
-<li>测试远程链接？</li>
-</ul>
-<p>用<code>ping</code>或<code>telnet</code>即可</p>
-<ul>
-<li>找寻历史命令？</li>
-</ul>
-<p><code>history | grep &quot;Pattern&quot;</code></p>
-<ul>
-<li>远程复制文件？</li>
-</ul>
-<p><code>scp</code>，或者<code>rsync</code>，<code>sftp</code></p>
-<ul>
-<li>进程的CPU占用？</li>
-</ul>
-<p><code>top</code></p>
-<ul>
-<li>当前磁盘用量？</li>
-</ul>
-<p><code>df -h</code></p>
-<ul>
-<li>Swapping交换和Paging分页的区别？</li>
-</ul>
-<p>paging指的是以页为单位的交换，<br>swapping指的是以整个进程为单位的交换。</p>
-<p>paging机制是进程内外交换的主流，某些情况下仍然会使用swapping机制，比如：<br>1、系统内存严重短缺，paging机制的速度已经不足以满足需要。<br>2、进程处于完全非激活状态超过10秒钟。<br>swapping会把整个进程移出主存，而不像paging那样只弄点页面出去。</p>
-<p>swapping和paging都是内存与磁盘(虚拟内存)之间的交互方式当内存不够用时，为了加载急需的程序进内存，需要将一部分暂时不用的内存存到磁盘上，两者对比swapping更快更粗暴，paging更慢更flexibly，<br>更多可见此<a href="http://blog.sina.com.cn/s/blog_5b68591b0102v1q7.html" target="_blank" rel="external">[转载]内存的分页与交换_流苏_新浪博客</a></p>
-<h2 id="中级问题"><a href="#中级问题" class="headerlink" title="中级问题"></a>中级问题</h2><ul>
-<li><code>ps -ef</code> 和 <code>ps -auxwww</code>有什么区别？</li>
-</ul>
-<p><code>ps -auxwww</code>可以打印死进程？？</p>
-<ul>
-<li>cpu信息？</li>
-</ul>
-<p><code>cat /proc/cpuinfo</code></p>
-<ul>
-<li>软链接与硬链接区别</li>
-</ul>
-<p><a href="http://javarevisited.blogspot.com/2011/04/symbolic-link-or-symlink-in-unix-linux.html" target="_blank" rel="external">How to Create, Update and Remove Soft link in UNIX</a></p>
-<ul>
-<li>什么是僵尸进程？如何找到僵尸进程？</li>
-</ul>
-<p>When a program forks and the child finishes before the parent, the kernel still keeps some of its information about the child in case the parent might need it - for example, the parent may need to check the child’s exit status. To be able to get this information, the parent calls ‘wait()’; In the interval between the child terminating and the parent calling ‘wait()’, the child is said to be a ‘zombie’</p>
-<p><code>ps</code>中，僵尸进程的状态将带有’Z’</p>
-<ul>
-<li>如何统计一个文件内字符”Unix”出现次数？</li>
-</ul>
-<p><code>grep -c &quot;Unix&quot; filename</code></p>
-<ul>
-<li>chmod是什么意思？<code>r-- -w- --x</code>代表着什么？</li>
-</ul>
-<p><code>chmod</code>用于改变一个文件或者目录在Linux里的权限，rwx分别代表读写执行，而字符顺序代表着用户 组 以及 其他， 那么这里的意思就是这个文件用户可读，组内用户可写，其他只能执行。</p>
-<ul>
-<li>系统内有个文件包含字符”UnixCommandInterviewQuestions”，如何找到？</li>
-</ul>
-<p>见此<a href="http://javarevisited.blogspot.com/2011/03/10-find-command-in-unix-examples-basic.html" target="_blank" rel="external">10 Example of find command in Unix and Linux</a></p>
-<ul>
-<li>如何检查是否某进程在监听某端口？</li>
-</ul>
-<p><code>telnet hostname port</code> <a href="http://javarevisited.blogspot.com/2010/10/basic-networking-commands-in-linuxunix.html" target="_blank" rel="external">Top 10 basic networking commands in linux/unix</a></p>
-<h3 id="高级问题"><a href="#高级问题" class="headerlink" title="高级问题"></a>高级问题</h3><ul>
-<li>怎么知道某个文件被哪些进程使用？</li>
-</ul>
-<p><code>lsof</code>，尼玛呀，这就是我baidu电话面试时碰到的问题。。</p>
-<ul>
-<li>查看你的某个端口被什么远程服务器连接？</li>
-</ul>
-<p><code>netstat -a | grep &quot;port&quot;</code></p>
-<ul>
-<li>nohup是什么？</li>
-</ul>
-<p>用于在后端运行程序，但是和<code>&amp;</code>不同，<code>nohup</code>在用户log off 时不会停止运行，而<code>&amp;</code>会终止。</p>
-<ul>
-<li>ephemeral port？</li>
-</ul>
-<p>临时端口也叫做暂时端口。通常存在于客户机中。它在客户端应用程序需要连接到服务器时建立而在客户端应用程序终止时取消。它的端口号是随机选取的，数值大于1023。</p>
-<ul>
-<li>如果一个进程正在往MYSQL里写数据，如何管查它写入的速度？</li>
-</ul>
-<p><code>watch</code></p>
-<ul>
-<li>替换某文件内所有某字符？</li>
-</ul>
-<p><code>sed s/Unix/UNIX/g fileName</code></p>
-<ul>
-<li>某文件包含以tab分隔的Name, Address and Phone Number，如何提取所有的Phone Number？</li>
-</ul>
-<p><code>cut -f3 filename</code></p>
-<ul>
-<li>服务器运行时间？</li>
-</ul>
-<p><code>uptime</code></p>
-<ul>
-<li>IP 与 hostname互转？</li>
-</ul>
-<p><code>nslookup</code></p>
+        <p><img src="/images/15241298637474.jpg" alt=""><br>Keras 保存及重用模型的方法<br><a id="more"></a></p>
+<h2 id="保存模型"><a href="#保存模型" class="headerlink" title="保存模型"></a>保存模型</h2><p>如下，我们预定义保存的<code>hdf5</code>文件名，再初始化<code>ModelCheckpoint</code>，将其加入Keras的callback里（即每个batch结束后做的事情），那么模型就会在每次batch结束后对比，保存最好的模型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> ModelCheckpoint</div><div class="line"></div><div class="line"><span class="comment"># create model</span></div><div class="line">model = Sequential()</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line"><span class="comment"># Compile model</span></div><div class="line">model.compile(...)</div><div class="line"><span class="comment"># checkpoint</span></div><div class="line">filepath=<span class="string">"weights-&#123;epoch:02d&#125;-&#123;val_acc:.2f&#125;.hdf5"</span></div><div class="line">checkpoint = ModelCheckpoint(filepath, monitor=<span class="string">'val_acc'</span>, verbose=<span class="number">1</span>, save_best_only=<span class="keyword">True</span>, mode=<span class="string">'max'</span>)</div><div class="line"><span class="comment"># Fit the model</span></div><div class="line">model.fit(X, Y, validation_split=<span class="number">0.33</span>, epochs=<span class="number">150</span>, batch_size=<span class="number">10</span>, callbacks=[checkpoint], verbose=<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p>结束后，我们会得到如下的结果，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">weights-53-0.76.hdf5</div><div class="line">weights-71-0.76.hdf5</div><div class="line">weights-77-0.78.hdf5</div><div class="line">weights-99-0.78.hdf5</div></pre></td></tr></table></figure>
+<p>如果我们只想保存一个最好的模型，那么把保存文件名字固定为<code>filepath=&quot;weights.best.hdf5&quot;</code>即可。</p>
+<h2 id="load模型"><a href="#load模型" class="headerlink" title="load模型"></a>load模型</h2><p>注意，之前保存的只是模型的weights，重新load需要再次定义模型结构再load weights并再次combine，例如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> ModelCheckpoint</div><div class="line"><span class="comment"># create model</span></div><div class="line">model = Sequential()</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line"><span class="comment"># load weights</span></div><div class="line">model.load_weights(<span class="string">"weights.best.hdf5"</span>)</div><div class="line"><span class="comment"># Compile model </span></div><div class="line">model.compile(...)</div><div class="line"><span class="comment"># estimate accuracy </span></div><div class="line">scores = model.evaluate(X, Y, verbose=<span class="number">0</span>)</div><div class="line">print(<span class="string">'&#123;&#125;: &#123;:.2%&#125;'</span>.format(model.metrics_names[<span class="number">1</span>], scores[<span class="number">1</span>]))</div></pre></td></tr></table></figure>
+<p>如果之前选择了连模型结构也一起保存（即在<code>ModelCheckpoint</code>中选择<code>save_weights_only=False</code>），那么load就很简单，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> ModelCheckpoint</div><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> load_model</div><div class="line"></div><div class="line"><span class="comment"># create model</span></div><div class="line">model = Sequential()</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line"><span class="comment"># Compile model</span></div><div class="line">model.compile(...)</div><div class="line"><span class="comment"># checkpoint</span></div><div class="line">filepath=<span class="string">"weights-best.hdf5"</span></div><div class="line">checkpoint = ModelCheckpoint(filepath, monitor=<span class="string">'val_acc'</span>, verbose=<span class="number">1</span>, save_best_only=<span class="keyword">True</span>, mode=<span class="string">'max'</span>, save_weights_only=<span class="keyword">False</span>)</div><div class="line"></div><div class="line"><span class="comment"># Fit the model</span></div><div class="line">model.fit(X, Y, validation_split=<span class="number">0.33</span>, epochs=<span class="number">150</span>, batch_size=<span class="number">10</span>, callbacks=[checkpoint], verbose=<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># Load the model</span></div><div class="line">model= load_model(filepath)</div><div class="line">scores=model.evaluate(X, Y,verbose=<span class="number">0</span>)</div><div class="line">print(<span class="string">'&#123;&#125;: &#123;:.2%&#125;'</span>.format(model.metrics_names[<span class="number">1</span>], scores[<span class="number">1</span>]))</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -484,7 +385,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
+            <a href="/tags/Keras/" rel="tag"># Keras</a>
           
         </div>
       
@@ -497,8 +398,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/18/python-source-code-reading-0/" rel="next" title="python源码解析0：趣事">
-                <i class="fa fa-chevron-left"></i> python源码解析0：趣事
+              <a href="/2018/04/17/conv1d-in-keras/" rel="next" title="理解一维卷积">
+                <i class="fa fa-chevron-left"></i> 理解一维卷积
               </a>
             
           </div>
@@ -506,10 +407,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/26/learn more study less/" rel="prev" title="Learn More,Study Less">
-                Learn More,Study Less <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -708,7 +605,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初级问题"><span class="nav-number">1.</span> <span class="nav-text">初级问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中级问题"><span class="nav-number">2.</span> <span class="nav-text">中级问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高级问题"><span class="nav-number">2.1.</span> <span class="nav-text">高级问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#保存模型"><span class="nav-number">1.</span> <span class="nav-text">保存模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#load模型"><span class="nav-number">2.</span> <span class="nav-text">load模型</span></a></li></ol></div>
             
 
           </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankchen.xyz/"/>
-  <updated>2018-04-18T08:01:50.756Z</updated>
+  <updated>2018-04-19T09:24:50.185Z</updated>
   <id>http://frankchen.xyz/</id>
   
   <author>
@@ -17,24 +17,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>keras reuse model</title>
+    <link href="http://frankchen.xyz/2018/04/19/keras-reuse-model/"/>
+    <id>http://frankchen.xyz/2018/04/19/keras-reuse-model/</id>
+    <published>2018-04-19T08:50:00.000Z</published>
+    <updated>2018-04-19T09:24:50.185Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/15241298637474.jpg" alt=""><br>Keras 保存及重用模型的方法<br><a id="more"></a></p><h2 id="保存模型"><a href="#保存模型" class="headerlink" title="保存模型"></a>保存模型</h2><p>如下，我们预定义保存的<code>hdf5</code>文件名，再初始化<code>ModelCheckpoint</code>，将其加入Keras的callback里（即每个batch结束后做的事情），那么模型就会在每次batch结束后对比，保存最好的模型。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> ModelCheckpoint</div><div class="line"></div><div class="line"><span class="comment"># create model</span></div><div class="line">model = Sequential()</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line"><span class="comment"># Compile model</span></div><div class="line">model.compile(...)</div><div class="line"><span class="comment"># checkpoint</span></div><div class="line">filepath=<span class="string">"weights-&#123;epoch:02d&#125;-&#123;val_acc:.2f&#125;.hdf5"</span></div><div class="line">checkpoint = ModelCheckpoint(filepath, monitor=<span class="string">'val_acc'</span>, verbose=<span class="number">1</span>, save_best_only=<span class="keyword">True</span>, mode=<span class="string">'max'</span>)</div><div class="line"><span class="comment"># Fit the model</span></div><div class="line">model.fit(X, Y, validation_split=<span class="number">0.33</span>, epochs=<span class="number">150</span>, batch_size=<span class="number">10</span>, callbacks=[checkpoint], verbose=<span class="number">0</span>)</div></pre></td></tr></table></figure><p>结束后，我们会得到如下的结果，</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">weights-53-0.76.hdf5</div><div class="line">weights-71-0.76.hdf5</div><div class="line">weights-77-0.78.hdf5</div><div class="line">weights-99-0.78.hdf5</div></pre></td></tr></table></figure><p>如果我们只想保存一个最好的模型，那么把保存文件名字固定为<code>filepath=&quot;weights.best.hdf5&quot;</code>即可。</p><h2 id="load模型"><a href="#load模型" class="headerlink" title="load模型"></a>load模型</h2><p>注意，之前保存的只是模型的weights，重新load需要再次定义模型结构再load weights并再次combine，例如</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> ModelCheckpoint</div><div class="line"><span class="comment"># create model</span></div><div class="line">model = Sequential()</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line"><span class="comment"># load weights</span></div><div class="line">model.load_weights(<span class="string">"weights.best.hdf5"</span>)</div><div class="line"><span class="comment"># Compile model </span></div><div class="line">model.compile(...)</div><div class="line"><span class="comment"># estimate accuracy </span></div><div class="line">scores = model.evaluate(X, Y, verbose=<span class="number">0</span>)</div><div class="line">print(<span class="string">'&#123;&#125;: &#123;:.2%&#125;'</span>.format(model.metrics_names[<span class="number">1</span>], scores[<span class="number">1</span>]))</div></pre></td></tr></table></figure><p>如果之前选择了连模型结构也一起保存（即在<code>ModelCheckpoint</code>中选择<code>save_weights_only=False</code>），那么load就很简单，</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> ModelCheckpoint</div><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> load_model</div><div class="line"></div><div class="line"><span class="comment"># create model</span></div><div class="line">model = Sequential()</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line">model.add(...)</div><div class="line"><span class="comment"># Compile model</span></div><div class="line">model.compile(...)</div><div class="line"><span class="comment"># checkpoint</span></div><div class="line">filepath=<span class="string">"weights-best.hdf5"</span></div><div class="line">checkpoint = ModelCheckpoint(filepath, monitor=<span class="string">'val_acc'</span>, verbose=<span class="number">1</span>, save_best_only=<span class="keyword">True</span>, mode=<span class="string">'max'</span>, save_weights_only=<span class="keyword">False</span>)</div><div class="line"></div><div class="line"><span class="comment"># Fit the model</span></div><div class="line">model.fit(X, Y, validation_split=<span class="number">0.33</span>, epochs=<span class="number">150</span>, batch_size=<span class="number">10</span>, callbacks=[checkpoint], verbose=<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="comment"># Load the model</span></div><div class="line">model= load_model(filepath)</div><div class="line">scores=model.evaluate(X, Y,verbose=<span class="number">0</span>)</div><div class="line">print(<span class="string">'&#123;&#125;: &#123;:.2%&#125;'</span>.format(model.metrics_names[<span class="number">1</span>], scores[<span class="number">1</span>]))</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/15241298637474.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;Keras 保存及重用模型的方法&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Keras" scheme="http://frankchen.xyz/tags/Keras/"/>
+    
+  </entry>
+  
+  <entry>
     <title>理解一维卷积</title>
     <link href="http://frankchen.xyz/2018/04/17/conv1d-in-keras/"/>
     <id>http://frankchen.xyz/2018/04/17/conv1d-in-keras/</id>
     <published>2018-04-17T07:46:36.000Z</published>
-    <updated>2018-04-18T08:01:50.756Z</updated>
+    <updated>2018-04-19T08:50:30.253Z</updated>
     
-    <content type="html"><![CDATA[<p>下面是一个利用CNN进行NLP中的情感分类的例子，<br><img src="/images/15240224514694.png" alt=""></p><p>上图中，输入为表示为词表为d=5，长度为7的矩阵的句子，1D卷积核为长度分别为(2,3,4)的各两个，经过卷积并激活函数后，各自产生了(4x1, 5x1, 6x1)的各两个feature map，每个feature map经过一次1D max pooling后（即取每个feature map的最大值）再concatenate为一个6x1的1D向量，经过一个全连接层再softmax激活即可进行情感分类预测。</p>]]></content>
+    <content type="html"><![CDATA[<p>理解一维卷积<br><a id="more"></a><br>下面是一个利用CNN进行NLP中的情感分类的例子，<br><img src="/images/15240224514694.png" alt=""></p><p>上图中，输入为表示为词表为d=5，长度为7的矩阵的句子，1D卷积核为长度分别为(2,3,4)的各两个，经过卷积并激活函数后，各自产生了(4x1, 5x1, 6x1)的各两个feature map，每个feature map经过一次1D max pooling后（即取每个feature map的最大值）再concatenate为一个6x1的1D向量，经过一个全连接层再softmax激活即可进行情感分类预测。</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;下面是一个利用CNN进行NLP中的情感分类的例子，&lt;br&gt;&lt;img src=&quot;/images/15240224514694.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;上图中，输入为表示为词表为d=5，长度为7的矩阵的句子，1D卷积核为长度分别为(2,3,4)的各两个，经过卷积
-      
+      &lt;p&gt;理解一维卷积&lt;br&gt;
     
     </summary>
     
+    
+      <category term="Deep Learning" scheme="http://frankchen.xyz/tags/Deep-Learning/"/>
     
   </entry>
   
@@ -441,29 +459,9 @@
     </summary>
     
     
-      <category term="Hbase" scheme="http://frankchen.xyz/tags/Hbase/"/>
-    
       <category term="Go" scheme="http://frankchen.xyz/tags/Go/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Ubuntu16.04 安装IKEV2 VPN 并在Mac上使用以解决Google Drive 同步问题</title>
-    <link href="http://frankchen.xyz/2017/11/01/Google-Drive-Sync/"/>
-    <id>http://frankchen.xyz/2017/11/01/Google-Drive-Sync/</id>
-    <published>2017-11-01T01:56:43.000Z</published>
-    <updated>2017-11-01T02:21:02.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/images/15095018008987.jpg" alt=""><br><img src="/images/15095018930547.jpg" alt=""></p><a id="more"></a><p>Google Drive无法识别shadowsocks所用的socks5代理，故这边有需求在VPS上部署http代理的VPN。</p><h2 id="服务端安装说明"><a href="#服务端安装说明" class="headerlink" title="服务端安装说明"></a>服务端安装说明</h2><ul><li><p>下载脚本:</p><p>   <code>wget --no-check-certificate https://raw.githubusercontent.com/quericy/one-key-ikev2-vpn/master/one-key-ikev2.sh</code></p></li><li><p>运行脚本：</p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod +x one-key-ikev2.sh</div><div class="line">bash one-key-ikev2.sh</div></pre></td></tr></table></figure></li><li><p>等待自动配置部分内容后，选择vps类型（OpenVZ还是Xen、KVM），选错将无法成功连接，请务必核实服务器的类型。输入服务器ip或者绑定的域名(连接vpn时服务器地址将需要与此保持一致,如果是导入泛域名证书这里需要写*.域名的形式),这里推荐直接输入域名。</p></li><li>选择使用使用证书颁发机构签发的SSL证书还是生成自签名证书，这里我们选择自签名即选择no：‘’<ul><li>如果选择no,使用自签名证书（客户端如果使用IkeV2方式连接，将需要导入生成的证书并信任）则需要填写证书的相关信息(C,O,CN)，为空将使用默认值(default value)，确认无误后按任意键继续,后续安装过程中会出现输入两次pkcs12证书的密码的提示(可以设置为空)    </li></ul></li><li>接下来一直空格即可。<br>*看到install Complete字样即表示安装完成。默认用户名密码将以黄字显示，可根据提示自行修改配置文件中的用户名密码,多用户则在配置文件中按格式一行一个(多用户时用户名不能使用%any),保存并重启服务生效。</li><li>将提示信息中的证书文件ca.cert.pem拷贝到客户端，修改后缀名为.cer后导入。ios设备使用Ikev1无需导入证书，而是需要在连接时输入共享密钥，共享密钥即是提示信息中的黄字PSK.<ul><li><img src="/images/15095022245212.jpg" alt=""><h2 id="客户端配置说明"><a href="#客户端配置说明" class="headerlink" title="客户端配置说明"></a>客户端配置说明</h2></li></ul></li><li>iOS/OSX/Windows7+/WindowsPhone8.1+/Linux 均可使用IkeV2,认证方式为用户名+密码。使用SSL证书则无需导入证书；使用自签名证书则需要先导入证书才能连接,可将ca.cert.pem更改后缀名作为邮件附件发送给客户端,手机端也可通过浏览器导入,其中:<ul><li>iOS/OSX 的远程ID和服务器地址保持一致,用户鉴定选择”用户名”.如果通过浏览器导入,将证书放在可访问的远程外链上,并在系统浏览器(Safari)中访问外链地址;</li></ul></li><li>注意OSX导入后需要在钥匙串内设置信任，如：<ul><li><img src="/images/15095023464796.png" alt=""></li></ul></li><li>设置连接成功后Google Drive就会连接成功开始同步<br>😎😎😎😎😎😎<ul><li><img src="/images/Screen%20Shot%202017-11-01%20at%2010.13.03.png" alt="Screen Shot 2017-11-01 at 10.13.03"></li></ul></li></ul><h2 id="参考自"><a href="#参考自" class="headerlink" title="参考自"></a>参考自</h2><ul><li><a href="https://quericy.me/blog/699/" target="_blank" rel="external">CentOS/Ubuntu一键安装IPSEC/IKEV2 VPN服务器 | Quericy Eden*</a></li><li><a href="https://github.com/quericy/one-key-ikev2-vpn/issues/58" target="_blank" rel="external">安装完成后，mac不能连接 · Issue #58 · quericy/one-key-ikev2-vpn</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/images/15095018008987.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/images/15095018930547.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="VPN" scheme="http://frankchen.xyz/tags/VPN/"/>
+      <category term="Hbase" scheme="http://frankchen.xyz/tags/Hbase/"/>
     
   </entry>
   
