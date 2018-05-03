@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankchen.xyz/"/>
-  <updated>2018-05-03T09:15:18.355Z</updated>
+  <updated>2018-05-03T13:14:06.639Z</updated>
   <id>http://frankchen.xyz/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从 spark 获取 表格内容的方法 🦄</title>
+    <link href="http://frankchen.xyz/2018/05/03/get-table-from-spark/"/>
+    <id>http://frankchen.xyz/2018/05/03/get-table-from-spark/</id>
+    <published>2018-05-03T12:51:14.000Z</published>
+    <updated>2018-05-03T13:14:06.639Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> <span class="number">1</span> <span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> *</div><div class="line"> <span class="number">2</span> <span class="keyword">import</span> pyspark</div><div class="line"> <span class="number">3</span> <span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line"> <span class="number">4</span>     spark = SparkSession.builder.master(<span class="string">"yarn"</span>).appName(<span class="string">"pyspark location process"</span>).enableHiveSupport().getOrCreate()</div><div class="line"> <span class="number">5</span>     sc = spark.sparkContext</div><div class="line"> <span class="number">6</span>    <span class="comment"># spark.sql('show databases').show()</span></div><div class="line"> <span class="number">7</span>     spark.sql(<span class="string">'use annals'</span>).show()</div><div class="line"> <span class="number">8</span>    <span class="comment"># spark.sql('describe gps2').show()</span></div><div class="line"> <span class="number">9</span>     spark.sql(<span class="string">'select * from gps2 limit 1'</span>).show()</div><div class="line"><span class="number">10</span>     sql_df = spark.sql(<span class="string">'select uid, lat, lgt, app_adjust_time from gps2 limit 5'</span>)</div><div class="line"><span class="number">11</span>     <span class="comment">#sql_df.show()</span></div><div class="line"><span class="number">12</span>     print(type(sql_df))</div><div class="line"><span class="number">13</span>     sql_df.write.save(<span class="string">"data/GrMWKfDj9eIjsRuh.parquet"</span>)</div></pre></td></tr></table></figure><p>这样我们就在hdfs上得到了一份parquet格式的文件。</p><p>从hdfs 复制到跳板机<br><code>hadoop fs  -get GrMWKfDj9eIjsRuh.parquet .</code><br>再scp 之类的 复制到本地即可。🐶🐒</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/d
+      
+    
+    </summary>
+    
+    
+      <category term="spark" scheme="http://frankchen.xyz/tags/spark/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac 通过 socks5 代理 连接 ssh 的方法🏆</title>
@@ -441,26 +464,6 @@
       <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
     
       <category term="TensorFlow" scheme="http://frankchen.xyz/tags/TensorFlow/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>frp的内网穿透及外网访问内网jupyter-notebook的实现</title>
-    <link href="http://frankchen.xyz/2017/11/12/ftp-using/"/>
-    <id>http://frankchen.xyz/2017/11/12/ftp-using/</id>
-    <published>2017-11-11T18:20:38.000Z</published>
-    <updated>2017-11-13T08:02:04.255Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/images/15104246654723.png" alt=""></p><a id="more"></a><p><a href="https://github.com/fatedier/frp" target="_blank" rel="external">fatedier/frp: A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.</a>是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议， 这里我们用它来搭建外网访问内网jupyter-notebook的服务。<br>我们基于Ubuntu16.04 选用amd64版本，<br><img src="/images/Screen%20Shot%202017-11-12%20at%2002.25.46.png" alt="Screen Shot 2017-11-12 at 02.25.46"></p><h3 id="server设置"><a href="#server设置" class="headerlink" title="server设置"></a>server设置</h3><p>server就是你拥有外网IP的服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[common]</div><div class="line">bind_port = 7000</div><div class="line">vhost_http_port = 8888</div></pre></td></tr></table></figure></p><p>用<code>./frps -c ./frps.ini</code>启动，注意服务端需要先启动。</p><h3 id="client设置"><a href="#client设置" class="headerlink" title="client设置"></a>client设置</h3><p>client就是没有外网IP，但是你想在外网访问的机器，</p><p>XXXXXXXXX就是上面的server的外网IP。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[common]</div><div class="line">server_addr = XXXXXXXXX</div><div class="line">server_port = 7000</div><div class="line"></div><div class="line">[web]</div><div class="line"><span class="built_in">type</span> = http</div><div class="line">local_port = 8888</div><div class="line">custom_domains = XXXXXXXXX</div></pre></td></tr></table></figure><p>以<code>./frpc -c ./frpc.ini</code>启动。</p><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>接下来，在client端，在8888段端口启动jupyter-notebook即可在XXXXXXXXX:8888访问内网机器上的Notebook了。</p><p><img src="/images/Screen%20Shot%202017-11-12%20at%2002.37.55.png" alt="Screen Shot 2017-11-12 at 02.37.55"></p><p>另外，由于jupyter-notebook自带终端，这也一举两得，也是一个内网穿透ssh的方案。<br>当然，必须使用一些运维工具来保证服务的稳定性，如supervisor，可参考<a href="http://frankchen.xyz/2017/07/06/Use-supervisor-support-Python3-program/">使用supervisor支持Python3程序 | 不正经数据科学家</a>。<br><img src="/images/Screen%20Shot%202017-11-12%20at%2002.39.36.png" alt="Screen Shot 2017-11-12 at 02.39.36"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/images/15104246654723.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
     
   </entry>
   
