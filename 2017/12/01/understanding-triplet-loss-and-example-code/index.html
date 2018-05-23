@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="不正经数据科学家">
 <meta property="og:description" content="理解triplet loss，与给出TensorFlow和numpy两种形式的example code。">
 <meta property="og:image" content="http://frankchen.xyz/images/15121200710041.jpg">
-<meta property="og:updated_time" content="2018-03-30T02:23:22.993Z">
+<meta property="og:updated_time" content="2018-05-23T07:43:15.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解triplet loss">
 <meta name="twitter:description" content="理解triplet loss，与给出TensorFlow和numpy两种形式的example code。">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-30T10:23:22+08:00">
-                2018-03-30
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T15:43:15+08:00">
+                2018-05-23
               </time>
             
           </span>
@@ -404,8 +404,8 @@
 <p>$$<br>\left\lVert  f(x^a_i) - f(x^p_i) \right\rVert ^2_2  +<br>\alpha \lt \left\lVert  f(x^a_i) - f(x^n_i) \right\rVert ^2_2 , \<br>\forall (f(x^a_i) , f(x^p_i) , f(x^n_i))  \in \mathscr T<br>$$</p>
 <p>其中$\alpha$ 是强制的正例和负例之间的margin，$\mathscr T$是具有基数为$N$的训练集中的三元组的集合。</p>
 <p>那么，损失函数很自然的可以写为：</p>
-<p>$$<br>\sum^N_i<br>\Bigl [<br>\left\lVert  f(x^a_i) - f(x^p_i) \right\rVert ^2_2   +<br> \left\lVert  f(x^a_i) - f(x^n_i) \right\rVert ^2_2 + \alpha<br> \Bigr ] _ +<br>$$</p>
-<p>其中加号指的，如果中括号内部分大于0，则没有损失（Anchor与Positive的距离加上margin小于与Negative的距离），否则计算这个距离为损失。</p>
+<p>$$<br>\sum^N_i<br>\Bigl [<br>\left\lVert  f(x^a_i) - f(x^p_i) \right\rVert ^2_2   -<br> \left\lVert  f(x^a_i) - f(x^n_i) \right\rVert ^2_2 + \alpha<br> \Bigr ] _ +<br>$$</p>
+<p>其中加号指的，如果中括号内部分小于0，则没有损失（Anchor与Positive的距离加上margin小于与Negative的距离），否则计算这个距离为损失。</p>
 <h2 id="代码表示"><a href="#代码表示" class="headerlink" title="代码表示"></a>代码表示</h2><p>Numpy 实现</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">batch_size = <span class="number">3</span>*<span class="number">12</span></div><div class="line">embedding_size = <span class="number">16</span></div><div class="line"></div><div class="line"><span class="comment"># 构造batch_size * embedding_size 维度的随机矩阵</span></div><div class="line">emb = np.random.uniform(size=[])</div><div class="line"></div><div class="line"><span class="comment"># 对emb逢三取1、2、3行分别为Anchor、Positive、Negative</span></div><div class="line"><span class="comment"># 计算其2范数的距离即欧氏距离</span></div><div class="line">pos_dist_sqr = np.sum(np.square(emb[<span class="number">0</span>::<span class="number">3</span>,:]-emb[<span class="number">1</span>::<span class="number">3</span>,:]), axis=<span class="number">1</span>)        </div><div class="line">neg_dist_sqr = np.sum(np.square(emb[<span class="number">0</span>::<span class="number">3</span>,:]-emb[<span class="number">2</span>::<span class="number">3</span>,:]), axis=<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="comment"># 这里就是照抄公式了，注意mean和sum是一样的</span></div><div class="line">np_triplet_loss = np.mean(np.maximum(<span class="number">0.</span>, pos_dist_sqr-neg_dist_sqr+alpha))</div></pre></td></tr></table></figure>
 <p>TensorFlow 实现</p>
