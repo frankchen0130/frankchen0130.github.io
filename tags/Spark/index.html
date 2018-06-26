@@ -92,7 +92,7 @@
 <meta name="description" content="当你的才华还撑不起你的野心时，你就应该静下心来学习。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="不正经数据科学家">
-<meta property="og:url" content="http://frankchen.xyz/tags/spark/index.html">
+<meta property="og:url" content="http://frankchen.xyz/tags/Spark/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
 <meta property="og:description" content="当你的才华还撑不起你的野心时，你就应该静下心来学习。">
 <meta name="twitter:card" content="summary">
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://frankchen.xyz/tags/spark/"/>
+  <link rel="canonical" href="http://frankchen.xyz/tags/Spark/"/>
 
 
 
 
 
-  <title> 标签: spark | 不正经数据科学家 </title>
+  <title> 标签: Spark | 不正经数据科学家 </title>
   <!-- Google AdSense start -->
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
@@ -263,7 +263,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        spark
+        Spark
         <small>标签</small>
       </h2>
     </div>
@@ -276,37 +276,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2018/05/03/get-table-from-spark/" itemprop="url">
+            <a class="post-title-link" href="/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/" itemprop="url">
               
-                <span itemprop="name">从 Hive 获取数据到本地的方法 🦄</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-03T20:51:14+08:00"
-              content="2018-05-03" >
-          05-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/01/spark-submit-avoid-upload-jars/" itemprop="url">
-              
-                <span itemprop="name">避免 spark 提交 上传自带 jar包解决办法</span>
+                <span itemprop="name">Ubuntu 16.04 搭建 Spark & Hadoop集群的详细步骤及报错填坑</span>
               
             </a>
         
@@ -314,9 +286,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-01T16:15:04+08:00"
-              content="2017-09-01" >
-          09-01
+              datetime="2017-05-27T16:13:04+08:00"
+              content="2017-05-27" >
+          05-27
         </time>
       </div>
 
@@ -746,6 +718,41 @@
               success: function(newcounter) {
                 var $element = $(document.getElementById(url));
                 $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
+lement.find('.leancloud-visitors-count').text(newcounter.get('time'));
               },
               error: function(newcounter, error) {
                 console.log('Failed to create');
