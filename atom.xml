@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankchen.xyz/"/>
-  <updated>2018-05-31T11:42:26.904Z</updated>
+  <updated>2018-07-12T08:54:35.450Z</updated>
   <id>http://frankchen.xyz/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在Linux上重新映射Win，Ctrl和Alt键</title>
+    <link href="http://frankchen.xyz/2018/07/12/remap-win-ctrl-and-alt-keys-on-linux/"/>
+    <id>http://frankchen.xyz/2018/07/12/remap-win-ctrl-and-alt-keys-on-linux/</id>
+    <published>2018-07-12T08:43:42.000Z</published>
+    <updated>2018-07-12T08:54:35.450Z</updated>
+    
+    <content type="html"><![CDATA[<p>用惯了Mac上的CMD + * 等操作，就习惯了左手大拇指这个组合键操作了，切换到Linux上必须要Ctrl各种小指不舒服。。。值得一提的是Mac上左侧按键顺序是control、alt/option、command，Ubuntu则是control、super、alt，Windows则是control、Win、alt。这里我们方便Mac用户起见，就把Ubuntu的control、super、alt映射为super、alt、control</p><a id="more"></a><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">vim ~/.Xmodmap</div><div class="line"></div><div class="line">clear control</div><div class="line">clear mod1</div><div class="line">clear mod4</div><div class="line"></div><div class="line"></div><div class="line">keycode 37  = Super_L     </div><div class="line">! left  Ctrl becomes Super</div><div class="line">keycode 64  = Control_L</div><div class="line">! left  Alt  becomes Control </div><div class="line">keycode 133 = Alt_L Meta_L</div><div class="line">! left  W<span class="keyword">in</span>  becomes Alt</div><div class="line">keycode 108 = Control_R</div><div class="line">! right Alt  becomes Control </div><div class="line">keycode 134 = Alt_R Meta_R</div><div class="line">! right W<span class="keyword">in</span>  becomes Alt</div><div class="line">keycode 105 = Super_R</div><div class="line">! right Ctrl becomes Super</div><div class="line"></div><div class="line"></div><div class="line">add control = Control_L Control_R</div><div class="line">add mod1 = Alt_L Meta_L</div><div class="line">add mod4 = Super_L Super_R</div></pre></td></tr></table></figure><p>再<code>xmodmap ~/.Xmodmap</code>即可！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用惯了Mac上的CMD + * 等操作，就习惯了左手大拇指这个组合键操作了，切换到Linux上必须要Ctrl各种小指不舒服。。。值得一提的是Mac上左侧按键顺序是control、alt/option、command，Ubuntu则是control、super、alt，Windows则是control、Win、alt。这里我们方便Mac用户起见，就把Ubuntu的control、super、alt映射为super、alt、control&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac 双开 ss 方法</title>
@@ -439,28 +459,6 @@
       <category term="Algorithm" scheme="http://frankchen.xyz/tags/Algorithm/"/>
     
       <category term="TensorFlow" scheme="http://frankchen.xyz/tags/TensorFlow/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据的标准化与归一化</title>
-    <link href="http://frankchen.xyz/2017/11/29/Data-Normalization-and-Standardization/"/>
-    <id>http://frankchen.xyz/2017/11/29/Data-Normalization-and-Standardization/</id>
-    <published>2017-11-29T03:53:57.000Z</published>
-    <updated>2017-12-01T11:10:13.685Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/images/15119359203487.png" alt=""><br>聊一聊Normalization and Standardization<br><a id="more"></a></p><h2 id="什么是"><a href="#什么是" class="headerlink" title="什么是"></a>什么是</h2><p>Normalization就是归一化，是最小-最大缩放(min-max scaling)的特例，指的是将数据缩放到指定range，这个range通常是0~1或者-1~+1，直观来讲就是下图，在数据不包含离群点时很有用，<br><img src="/images/Screen%20Shot%202017-11-29%20at%2012.35.41.png" alt="Screen Shot 2017-11-29 at 12.35.41"></p><p>公式则是</p><p>$$<br>x^{(i)}_{norm} = \frac {x^{(i)} - x_{min}} {x_{max} - x_{min}}<br>$$</p><p>若要缩放至-1~+1，则是<br>$$<br>x’ = \frac{x - min}{max - min}<br>$$</p><p>代码实现</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#导入数据预处理库</span></div><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</div><div class="line"></div><div class="line"><span class="comment">#范围缩放标准化</span></div><div class="line">min_max_scaler = preprocessing.MinMaxScaler()</div><div class="line"></div><div class="line"><span class="comment">#训练集缩放标准化</span></div><div class="line">min_max_scaler.fit_transform(X_train)</div></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#测试集缩放标准化</span></div><div class="line">min_max_scaler.fit_transform(X_test)</div></pre></td></tr></table></figure><p>Z-score 标准化指的是，通过缩放让数据的均值为0（移除均值），标准差为固定值（比如1）。在许多模型里，如SVM的RBF、线性模型的 L1 &amp; L2 正则项对于所有的feature都有这样的假设。<br>$$<br>x^{(i)}_{std} = \frac{x^{(i)} - \mu_x}{\sigma_x}<br>$$</p><p>以下是一个简单的例子展示了两者的区别：</p><p><img src="/images/Screen%20Shot%202017-11-29%20at%2012.41.13.png" alt="Screen Shot 2017-11-29 at 12.41.13"></p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#导入数据预处理库</span></div><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</div><div class="line"></div><div class="line"><span class="comment">#数据标准化</span></div><div class="line">scaler = preprocessing.StandardScaler().fit(X_train)</div><div class="line"></div><div class="line"><span class="comment">#训练集数据标准化</span></div><div class="line">scaler.transform(X_train)</div></pre></td></tr></table></figure><p>同时对测试集的数据进行标准化处理，以保证训练集和测试集的变换方式相同。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#测试集数据标准化</span></div><div class="line">scaler.transform(X_test)</div></pre></td></tr></table></figure><h2 id="值得注意"><a href="#值得注意" class="headerlink" title="值得注意"></a>值得注意</h2><p>从流程上讲，标准化和归一化应该在读入数据、处理缺失值，切分训练测试集之后，而且我们要做的是在切分之后，在训练集fit，再去transform测试集，而不是在整个数据上转换以后再切分，因为<strong>无论是标准化还是归一化，我们要么利用到了数据的max min值，要么利用到了数据的均值和标准差，这些数值在训练之前是不能被测试集所影响的。</strong></p><p>类似于缺失值的填充，举个例子，我们使用均值填充以下数据，</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#使用均值填充缺失值</span></div><div class="line">imp = Imputer(missing_values=<span class="string">"NaN"</span>, strategy=<span class="string">'mean'</span>, axis=<span class="number">0</span>)</div><div class="line">imp.fit(X_train)</div><div class="line"></div><div class="line"><span class="comment">#填充训练集</span></div><div class="line">X_train=imp.transform(X_train)</div></pre></td></tr></table></figure><p>以同样的方式填充测试集，以保证测试集和训练集的数据填充方式保持一致。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#填充测试集</span></div><div class="line">X_test=imp.transform(X_test)</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/images/15119359203487.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;聊一聊Normalization and Standardization&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
-    
-      <category term="Data Science" scheme="http://frankchen.xyz/tags/Data-Science/"/>
     
   </entry>
   
