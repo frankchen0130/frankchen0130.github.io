@@ -95,7 +95,7 @@
 <meta property="og:url" content="http://frankchen.xyz/2018/05/03/get-table-from-spark/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
 <meta property="og:description" content="我们使用pyspark 读取Hive里的表格，存储到HDFS，再get到跳板机，再rsync到本地，再用dask读取为Dataframe。">
-<meta property="og:updated_time" content="2018-07-19T06:52:18.470Z">
+<meta property="og:updated_time" content="2018-08-21T09:34:02.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从 Hive 获取数据到本地的方法 🦄">
 <meta name="twitter:description" content="我们使用pyspark 读取Hive里的表格，存储到HDFS，再get到跳板机，再rsync到本地，再用dask读取为Dataframe。">
@@ -323,8 +323,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-19T14:52:18+08:00">
-                2018-07-19
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-21T17:34:02+08:00">
+                2018-08-21
               </time>
             
           </span>
@@ -361,7 +361,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  587 字
+                  679 字
                 </span>
               
 
@@ -377,7 +377,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -402,7 +402,10 @@
 <p>这样我们就在hdfs上得到了一份parquet格式的文件。</p>
 <h2 id="第三版"><a href="#第三版" class="headerlink" title="第三版"></a>第三版</h2><p>有时候我们可以在hive或者impala上建表，例如</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create table tmp.czn_usersensorlog_of_may as SELECT uid, apptime, value0, value1, value2 FROM ods.usersensorlog WHERE month = <span class="string">"2018_05"</span></div></pre></td></tr></table></figure>
-<p><code>show create table tmp.czn_usersensorlog_of_may</code><br><code>CREATE TABLE tmp.czn_usersensorlog_of_may (   uid BIGINT,   apptime BIGINT,   value0 FLOAT,   value1 FLOAT,   value2 FLOAT ) STORED AS TEXTFILE LOCATION &#39;hdfs://nameservice1/user/hive/warehouse/tmp.db/czn_usersensorlog_of_may&#39;</code><br>得到了hdfs路径，这里我们可以直接用hdfs命令get</p>
+<p><code>show create table tmp.czn_usersensorlog_of_may</code><br><code>CREATE TABLE tmp.czn_usersensorlog_of_may (   uid BIGINT,   apptime BIGINT,   value0 FLOAT,   value1 FLOAT,   value2 FLOAT ) STORED AS TEXTFILE LOCATION &#39;hdfs://nameservice1/user/hive/warehouse/tmp.db/czn_usersensorlog_of_may&#39;</code></p>
+<h2 id="第四版"><a href="#第四版" class="headerlink" title="第四版"></a>第四版</h2><p>有时候我们需要指定表的格式为parquet，这样有利于用pandas或者dask读取，那么可以如下设置，这里我们先建表再插入数据，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">drop table <span class="keyword">if</span> exists tmp.czn_userlocation_tmp_test;</div><div class="line">CREATE TABLE tmp.czn_userlocation_tmp_test </div><div class="line">(   </div><div class="line">uid BIGINT,</div><div class="line">lat <span class="built_in">float</span>,</div><div class="line">lgt <span class="built_in">float</span>,</div><div class="line">apptime BIGINT,</div><div class="line">)</div><div class="line">STORED AS PARQUET</div><div class="line">TBLPROPERTIES (<span class="string">'parquet.compression'</span>=<span class="string">'SNAPPY'</span>);</div><div class="line"></div><div class="line">insert OVERWRITE TABLE tmp. czn_userlocation_tmp_test</div><div class="line">SELECT  uid, lat, lgt,  apptime </div><div class="line">from kafka_table.userlocation2 </div><div class="line">WHERE apptime between 1532156404000 and 1532156764000;</div></pre></td></tr></table></figure>
+<p>得到了hdfs路径，这里我们可以直接用hdfs命令get</p>
 <p>此时数据只是在hdfs上，我们要下载还需要将数据从hdfs 复制到跳板机，</p>
 <p><code>hadoop fs -get /user/akulaku/czn_userlocation_filteredby_black.parquet chenzn/</code></p>
 <p>再scp 之类的 复制到本地即可，不过相比scp，rsync更适合传输parquet，例如，可以压缩，断点续传等等，</p>
@@ -678,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一版"><span class="nav-number">1.</span> <span class="nav-text">第一版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二版"><span class="nav-number">2.</span> <span class="nav-text">第二版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三版"><span class="nav-number">3.</span> <span class="nav-text">第三版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">4.</span> <span class="nav-text">附录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一版"><span class="nav-number">1.</span> <span class="nav-text">第一版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二版"><span class="nav-number">2.</span> <span class="nav-text">第二版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三版"><span class="nav-number">3.</span> <span class="nav-text">第三版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四版"><span class="nav-number">4.</span> <span class="nav-text">第四版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a></li></ol></div>
             
 
           </div>
