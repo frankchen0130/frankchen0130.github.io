@@ -92,7 +92,7 @@
 <meta name="description" content="当你的才华还撑不起你的野心时，你就应该静下心来学习。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="不正经数据科学家">
-<meta property="og:url" content="http://frankchen.xyz/tags/Pandas/index.html">
+<meta property="og:url" content="http://frankchen.xyz/tags/pandas/index.html">
 <meta property="og:site_name" content="不正经数据科学家">
 <meta property="og:description" content="当你的才华还撑不起你的野心时，你就应该静下心来学习。">
 <meta name="twitter:card" content="summary">
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://frankchen.xyz/tags/Pandas/"/>
+  <link rel="canonical" href="http://frankchen.xyz/tags/pandas/"/>
 
 
 
 
 
-  <title> 标签: Pandas | 不正经数据科学家 </title>
+  <title> 标签: pandas | 不正经数据科学家 </title>
   <!-- Google AdSense start -->
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
@@ -263,7 +263,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        Pandas
+        pandas
         <small>标签</small>
       </h2>
     </div>
@@ -276,37 +276,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2017/12/12/Understanding-the-axis-parameter-in-Pandas-and-Numpy/" itemprop="url">
+            <a class="post-title-link" href="/2019/10/24/amazon-vat-cal/" itemprop="url">
               
-                <span itemprop="name">如何理解Pandas 和 Numpy里的axis</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-12T18:36:04+08:00"
-              content="2017-12-12" >
-          12-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/12/examples-for-processing-excel-and-time-series/" itemprop="url">
-              
-                <span itemprop="name">解决Excel长数字被转为科学计数法的问题</span>
+                <span itemprop="name">用python 自动计算亚马逊vat税款</span>
               
             </a>
         
@@ -314,37 +286,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-12T11:43:34+08:00"
-              content="2017-05-12" >
-          05-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/11/利用Pandas读取远程mysql数据库/" itemprop="url">
-              
-                <span itemprop="name">利用Pandas读取远程mysql数据库</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-11T17:31:49+08:00"
-              content="2017-04-11" >
-          04-11
+              datetime="2019-10-24T17:17:01+08:00"
+              content="2019-10-24" >
+          10-24
         </time>
       </div>
 
@@ -420,7 +364,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -754,6 +698,61 @@
               success: function(counter) {
                 var $element = $(document.getElementById(url));
                 $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
+(counter.get('time'));
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
