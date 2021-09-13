@@ -1,38 +1,296 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>TensorFlow on a GTX 1080 | 不正经数据科学家</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Ubuntu 16.03 安装 CUDA、NVIDIA驱动，CUDNN及GPU版TensorFlow。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TensorFlow on a GTX 1080">
+<meta property="og:url" content="http://frankchen.xyz/2017/11/13/TensorFlow-on-a-GTX-1080/index.html">
+<meta property="og:site_name" content="不正经数据科学家">
+<meta property="og:description" content="Ubuntu 16.03 安装 CUDA、NVIDIA驱动，CUDNN及GPU版TensorFlow。">
+<meta property="og:locale">
+<meta property="og:image" content="http://frankchen.xyz/images/15105686803158.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15105687114770.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-11-13%20at%2018.35.28.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-11-13%20at%2018.42.51.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-11-13%20at%2018.47.45.png">
+<meta property="og:image" content="http://frankchen.xyz/images/15210144246547.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15210146789201.jpg">
+<meta property="article:published_time" content="2017-11-13T10:23:28.000Z">
+<meta property="article:modified_time" content="2018-03-15T05:10:21.000Z">
+<meta property="article:author" content="江南消夏">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="TensorFlow">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://frankchen.xyz/images/15105686803158.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="不正经数据科学家" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
+  
 
-{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-{% block page_class %}page-post-detail{% endblock %}
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">不正经数据科学家</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://frankchen.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-TensorFlow-on-a-GTX-1080" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/13/TensorFlow-on-a-GTX-1080/" class="article-date">
+  <time datetime="2017-11-13T10:23:28.000Z" itemprop="datePublished">2017-11-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      TensorFlow on a GTX 1080
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/15105686803158.jpg"><br><img src="/images/15105687114770.jpg"></p>
+<p>Ubuntu 16.03 安装 CUDA、NVIDIA驱动，CUDNN及GPU版TensorFlow。</p>
+<span id="more"></span>
+<p>GPU 支持的TensorFlow让算力大幅提升，但是安装好一切支持却不那么容易！其实主要是三个东西：</p>
+<ol>
+<li>Nvidia 驱动：显卡驱动</li>
+<li>CUDA Toolkit CUDA工具箱</li>
+<li>CUDNN：CUDA Deep Neural Network library  神经网络库函数<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install \</span><br><span class="line">    freeglut3-dev \</span><br><span class="line">    g++-4.9 \</span><br><span class="line">    gcc-4.9 \</span><br><span class="line">    libglu1-mesa-dev \</span><br><span class="line">    libx11-dev \</span><br><span class="line">    libxi-dev \</span><br><span class="line">    libxmu-dev \</span><br><span class="line">    nvidia-modprobe \</span><br><span class="line">    python-dev \</span><br><span class="line">    python-pip \</span><br><span class="line">    python-virtualenv</span><br></pre></td></tr></table></figure>
+<h2 id="安装Nvidia驱动"><a href="#安装Nvidia驱动" class="headerlink" title="安装Nvidia驱动"></a>安装Nvidia驱动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get purge nvidia-* 删除nvidia 之前的</span><br><span class="line">$ sudo add-apt-repository ppa:graphics-drivers/ppa</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install nvidia-384</span><br></pre></td></tr></table></figure>
 
-{% block content %}
+<p>可在<a target="_blank" rel="noopener" href="https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa">Proprietary GPU Drivers : “Graphics Drivers” team</a>查看当前稳定版本Nvidia驱动，如笔者当前（2017-11-13）版本是‘nvidia-384’。</p>
+<p>接下来重启<code>$ sudo reboot</code>。<br>重启后，检测Nvidia驱动安装情况，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat /proc/driver/nvidia/version</span><br></pre></td></tr></table></figure>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NVRM version: NVIDIA UNIX x86_64 Kernel Module  384.98  Thu Oct 26 15:16:01 PDT 2017</span><br><span class="line">GCC version:  gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4)</span><br></pre></td></tr></table></figure>
+<p>显示Nvidia’s system management interface：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nvidia-smi</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------------------------------------------------------------+</span><br><span class="line">| NVIDIA-SMI 384.98                 Driver Version: 384.98                    |</span><br><span class="line">|-------------------------------+----------------------+----------------------+</span><br><span class="line">| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</span><br><span class="line">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span><br><span class="line">|===============================+======================+======================|</span><br><span class="line">|   0  GeForce GTX 1080    Off  | 00000000:01:00.0  On |                  N/A |</span><br><span class="line">|  0%   47C    P8    12W / 215W |   7992MiB /  8112MiB |      2%      Default |</span><br><span class="line">+-------------------------------+----------------------+----------------------+</span><br><span class="line"></span><br><span class="line">+-----------------------------------------------------------------------------+</span><br><span class="line">| Processes:                                                       GPU Memory |</span><br><span class="line">|  GPU       PID   Type   Process name                             Usage      |</span><br><span class="line">|=============================================================================|</span><br><span class="line">|    0       994      G   /usr/lib/xorg/Xorg                           193MiB |</span><br><span class="line">|    0      1889      G   compiz                                       151MiB |</span><br><span class="line">|    0      5068      C   /home/frank/anaconda3/bin/python            7643MiB |</span><br><span class="line">+-----------------------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+<p>设置GCC 4.9为默认</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 10</span><br><span class="line">$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 20</span><br><span class="line"></span><br><span class="line">$ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 10</span><br><span class="line">$ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 20</span><br></pre></td></tr></table></figure>
+<h2 id="安装CUDA"><a href="#安装CUDA" class="headerlink" title="安装CUDA"></a>安装CUDA</h2><p>当前虽然CUDA-9.0已经发布，但是TensorFlow默认编译版本还是基于CUDA-8.0的，我们在这里<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-80-ga2-download-archive">CUDA Toolkit 8.0 - Feb 2017 | NVIDIA Developer</a>下载runfile<br><img src="/images/Screen%20Shot%202017-11-13%20at%2018.35.28.png" alt="Screen Shot 2017-11-13 at 18.35.28"></p>
+<p>使用如下安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cuda_8.0.61_375.26_linux.run --override</span><br></pre></td></tr></table></figure>
+<p>安装时记得</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Do you accept the previously <span class="built_in">read</span> EULA? (accept/decline/quit): accept</span><br><span class="line">You are attempting to install on an unsupported configuration. Do you wish to <span class="built_in">continue</span>? ((y)es/(n)o) [ default is no ]: yes</span><br><span class="line">Install NVIDIA Accelerated Graphics Driver <span class="keyword">for</span> Linux-x86_64 352.39? ((y)es/(n)o/(q)uit): no</span><br><span class="line">Install the CUDA 8.0 Toolkit? ((y)es/(n)o/(q)uit): yes</span><br><span class="line">Enter Toolkit Location [ default is /usr/<span class="built_in">local</span>/cuda-8.0 ]:</span><br><span class="line">Do you want to install a symbolic link at /usr/<span class="built_in">local</span>/cuda? ((y)es/(n)o/(q)uit): yes</span><br><span class="line">Install the CUDA 8.0 Samples? ((y)es/(n)o/(q)uit): no</span><br><span class="line">Installing the CUDA Toolkit <span class="keyword">in</span> /usr/<span class="built_in">local</span>/cuda-8.0 ...</span><br><span class="line"></span><br><span class="line">===========</span><br><span class="line">= Summary =8.0</span><br><span class="line">===========</span><br><span class="line"></span><br><span class="line">Driver:   Not Selected</span><br><span class="line">Toolkit:  Installed <span class="keyword">in</span> /usr/<span class="built_in">local</span>/cuda-8.0</span><br><span class="line">Samples:  Not Selected</span><br><span class="line"></span><br><span class="line">Please make sure that</span><br><span class="line"> -   PATH includes /usr/<span class="built_in">local</span>/cuda-8.0/bin</span><br><span class="line"> -   LD_LIBRARY_PATH includes /usr/<span class="built_in">local</span>/cuda-8.0/lib64, or, add /usr/<span class="built_in">local</span>/cuda-8.0/lib64 to /etc/ld.so.conf and run ldconfig as root</span><br><span class="line"></span><br><span class="line">To uninstall the CUDA Toolkit, run the uninstall script <span class="keyword">in</span> /usr/<span class="built_in">local</span>/cuda-8.0/bin</span><br><span class="line">To uninstall the NVIDIA Driver, run nvidia-uninstall</span><br><span class="line"></span><br><span class="line">Please see CUDA_Installation_Guide_Linux.pdf <span class="keyword">in</span> /usr/<span class="built_in">local</span>/cuda-8.0/doc/pdf <span class="keyword">for</span> detailed information on setting up CUDA.</span><br><span class="line"></span><br><span class="line">***WARNING: Incomplete installation! This installation did not install the CUDA Driver. A driver of version at least 352.00 is required <span class="keyword">for</span> CUDA 8.0 functionality to work.</span><br><span class="line">To install the driver using this installer, run the following <span class="built_in">command</span>, replacing &lt;CudaInstaller&gt; with the name of this run file:</span><br><span class="line">    sudo &lt;CudaInstaller&gt;.run -silent -driver</span><br><span class="line"></span><br><span class="line">Logfile is /tmp/cuda_install_14557.log</span><br></pre></td></tr></table></figure>
+<p>记得上面这里也有个询问你是否安装Nvidia驱动的地方，因为我们前面已经安装了最新的版本，这里当然选择no。</p>
+<p>添加环境变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;export PATH=/usr/local/cuda/bin:$PATH&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line">$ <span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>查看CUDA compiler</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvcc -V</span><br></pre></td></tr></table></figure>
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nvcc: NVIDIA (R) Cuda compiler driver</span><br><span class="line">Copyright (c) 2005-2016 NVIDIA Corporation</span><br><span class="line">Built on Tue_Jan_10_13:22:03_CST_2017</span><br><span class="line">Cuda compilation tools, release 8.0, V8.0.61</span><br></pre></td></tr></table></figure>
+<h2 id="安装CUDA-Deep-Neural-Network-library-：CUDNN"><a href="#安装CUDA-Deep-Neural-Network-library-：CUDNN" class="headerlink" title="安装CUDA Deep Neural Network library ：CUDNN"></a>安装CUDA Deep Neural Network library ：CUDNN</h2><p>在此处下载<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">cuDNN Download | NVIDIA Developer</a>，可能需要我们注册账号登录。<br>选择适配CUDA的版本，以及cuDNN v7.0 Library for Linux，这个就是个targz文件。<br><img src="/images/Screen%20Shot%202017-11-13%20at%2018.42.51.png" alt="Screen Shot 2017-11-13 at 18.42.51"></p>
+<p>接下来操作就是把cudnn的几个库放到cuda里面：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ tar xvf cudnn-8.0-linux-x64-v7.tgz</span><br><span class="line">$ sudo cp cuda/include/cudnn.h /usr/<span class="built_in">local</span>/cuda/include/</span><br><span class="line">$ sudo cp cuda/lib64/libcudnn* /usr/<span class="built_in">local</span>/cuda/lib64/</span><br><span class="line">$ sudo chmod a+r /usr/<span class="built_in">local</span>/cuda/lib64/libcudnn*</span><br></pre></td></tr></table></figure>
+<h2 id="TensorFlow安装"><a href="#TensorFlow安装" class="headerlink" title="TensorFlow安装"></a>TensorFlow安装</h2><p><code>pip  install --upgrade tfBinaryURL </code>即可，这里的<code>tfBinaryURL</code>可在<a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/install_linux#the_url_of_the_tensorflow_python_package">Installing TensorFlow on Ubuntu  |  TensorFlow</a>选取，例如我这里选取Python3.6的GPU Support：</p>
+<p><img src="/images/Screen%20Shot%202017-11-13%20at%2018.47.45.png" alt="Screen Shot 2017-11-13 at 18.47.45"></p>
+<h2 id="验证TensorFlow安装"><a href="#验证TensorFlow安装" class="headerlink" title="验证TensorFlow安装"></a>验证TensorFlow安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">In [1]: import tensorflow as tf</span><br><span class="line"></span><br><span class="line">In [2]: sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))</span><br><span class="line">2017-11-13 18:54:59.081831: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA</span><br><span class="line">2017-11-13 18:54:59.186280: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node <span class="built_in">read</span> from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero</span><br><span class="line">2017-11-13 18:54:59.186604: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties:</span><br><span class="line">name: GeForce GTX 1080 major: 6 minor: 1 memoryClockRate(GHz): 1.86</span><br><span class="line">pciBusID: 0000:01:00.0</span><br><span class="line">totalMemory: 7.92GiB freeMemory: 7.46GiB</span><br><span class="line">2017-11-13 18:54:59.186617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -&gt; (device: 0, name: GeForce GTX 1080, pci bus id: 0000:01:00.0, compute capability: 6.1)</span><br><span class="line">Device mapping:</span><br><span class="line">/job:localhost/replica:0/task:0/device:GPU:0 -&gt; device: 0, name: GeForce GTX 1080, pci bus id: 0000:01:00.0, compute capability: 6.1</span><br><span class="line">2017-11-13 18:54:59.216573: I tensorflow/core/common_runtime/direct_session.cc:299] Device mapping:</span><br><span class="line">/job:localhost/replica:0/task:0/device:GPU:0 -&gt; device: 0, name: GeForce GTX 1080, pci bus id: 0000:01:00.0, compute capability: 6.1</span><br></pre></td></tr></table></figure>
+<p>如上，打印出这些信息就证明安装成功啦！</p>
+<h2 id="CUDA-ToolKit-8-0-升级到9-0指南"><a href="#CUDA-ToolKit-8-0-升级到9-0指南" class="headerlink" title="CUDA ToolKit 8.0 升级到9.0指南"></a>CUDA ToolKit 8.0 升级到9.0指南</h2><p>主要就是需要下载CUDA ToolKit 9.0 的安装包，和8.0一样安装，注意下面的四步骤我们只需要第二步（ToolKit）和第四步（创建软链接，原有的是指向8.0的）</p>
+<p><img src="/images/15210144246547.jpg"></p>
+<p>因为CUDNN被放在CUDA ToolKit 8.0内，所有这里我们需要重新下载CUDNN并解压到CUDA ToolKit 9.0文件夹内，</p>
+<p>再在<a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/install_linux#InstallingAnaconda">Installing TensorFlow on Ubuntu  |  TensorFlow</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install --ignore-installed --upgrade \</span><br><span class="line">&lt;url&gt;</span><br></pre></td></tr></table></figure>
+<p><code>url</code>选取如下的你需要的python版本的GPU网址即可。<br><img src="/images/15210146789201.jpg"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://frankchen.xyz/2017/11/13/TensorFlow-on-a-GTX-1080/" data-id="cktiql5dn002v6e8z5wkx6jpo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TensorFlow/" rel="tag">TensorFlow</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/29/Data-Normalization-and-Standardization/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          数据的标准化与归一化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/12/ftp-using/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">frp的内网穿透及外网访问内网jupyter-notebook的实现</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS-Store/" rel="tag">.DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNN/" rel="tag">CNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coursera/" rel="tag">Coursera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/" rel="tag">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/" rel="tag">Data Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Funny/" rel="tag">Funny</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hbase/" rel="tag">Hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter-Notebook/" rel="tag">Jupyter Notebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/" rel="tag">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSTM/" rel="tag">LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/" rel="tag">Life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/" rel="tag">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Numpy/" rel="tag">Numpy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/" rel="tag">Old Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/" rel="tag">Pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt5/" rel="tag">PyQt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm/" rel="tag">Pycharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recommendation-System/" rel="tag">Recommendation System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/" rel="tag">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tex/" rel="tag">Tex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Management/" rel="tag">Time Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/" rel="tag">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/" rel="tag">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chicken-soup/" rel="tag">chicken-soup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/re/" rel="tag">re</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scala/" rel="tag">scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/" rel="tag">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time-series/" rel="tag">time series</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/" rel="tag">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
 
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DS-Store/" style="font-size: 10px;">.DS_Store</a> <a href="/tags/Algorithm/" style="font-size: 15.71px;">Algorithm</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CNN/" style="font-size: 10px;">CNN</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/DNN/" style="font-size: 10px;">DNN</a> <a href="/tags/Data-Science/" style="font-size: 17.14px;">Data Science</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/Deep-Learning/" style="font-size: 17.14px;">Deep Learning</a> <a href="/tags/Docker/" style="font-size: 11.43px;">Docker</a> <a href="/tags/Funny/" style="font-size: 14.29px;">Funny</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hadoop/" style="font-size: 11.43px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 11.43px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/Jupyter-Notebook/" style="font-size: 10px;">Jupyter Notebook</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Keras/" style="font-size: 11.43px;">Keras</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/LSTM/" style="font-size: 10px;">LSTM</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/Mac/" style="font-size: 14.29px;">Mac</a> <a href="/tags/Machine-Learning/" style="font-size: 12.86px;">Machine Learning</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Numpy/" style="font-size: 11.43px;">Numpy</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Old-Driver/" style="font-size: 11.43px;">Old Driver</a> <a href="/tags/Pandas/" style="font-size: 12.86px;">Pandas</a> <a href="/tags/PyQt5/" style="font-size: 10px;">PyQt5</a> <a href="/tags/Pycharm/" style="font-size: 10px;">Pycharm</a> <a href="/tags/Python/" style="font-size: 11.43px;">Python</a> <a href="/tags/RNN/" style="font-size: 14.29px;">RNN</a> <a href="/tags/Recommendation-System/" style="font-size: 10px;">Recommendation System</a> <a href="/tags/SQL/" style="font-size: 11.43px;">SQL</a> <a href="/tags/Spark/" style="font-size: 10px;">Spark</a> <a href="/tags/TensorFlow/" style="font-size: 12.86px;">TensorFlow</a> <a href="/tags/Tex/" style="font-size: 10px;">Tex</a> <a href="/tags/Time-Management/" style="font-size: 10px;">Time Management</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/amazon/" style="font-size: 10px;">amazon</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/chicken-soup/" style="font-size: 11.43px;">chicken-soup</a> <a href="/tags/git/" style="font-size: 11.43px;">git</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/re/" style="font-size: 10px;">re</a> <a href="/tags/scala/" style="font-size: 10px;">scala</a> <a href="/tags/spark/" style="font-size: 11.43px;">spark</a> <a href="/tags/time-series/" style="font-size: 10px;">time series</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tutorial/" style="font-size: 12.86px;">tutorial</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 11.43px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/24/amazon-vat-cal/">用python 自动计算亚马逊vat税款</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/20/attachments/">python 发送带各种附件的邮件示例</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/11/Pyqt5-GUI-package-on-Windows/">PyQt5 编写并在Windows上用Cx_Freeze打包GUI程序</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/22/learning-from-donald-trump/">向特朗普同志学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/20/numpy-mask/">Numpy中的mask</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 江南消夏<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>

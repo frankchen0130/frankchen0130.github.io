@@ -1,38 +1,312 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ubuntu 16.04 搭建 Spark &amp; Hadoop集群的详细步骤及报错填坑 | 不正经数据科学家</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在Ubuntu 16.04 安装 Spark &amp; Hadoop分布式集群的记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 16.04 搭建 Spark &amp; Hadoop集群的详细步骤及报错填坑">
+<meta property="og:url" content="http://frankchen.xyz/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/index.html">
+<meta property="og:site_name" content="不正经数据科学家">
+<meta property="og:description" content="在Ubuntu 16.04 安装 Spark &amp; Hadoop分布式集群的记录">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-05-27T08:13:04.000Z">
+<meta property="article:modified_time" content="2017-08-02T06:06:53.000Z">
+<meta property="article:author" content="江南消夏">
+<meta property="article:tag" content="Hadoop">
+<meta property="article:tag" content="Spark">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="不正经数据科学家" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
+  
 
-{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-{% block page_class %}page-post-detail{% endblock %}
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">不正经数据科学家</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://frankchen.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Ubuntu-16-04-install-Spark-Hadoop" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/" class="article-date">
+  <time datetime="2017-05-27T08:13:04.000Z" itemprop="datePublished">2017-05-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ubuntu 16.04 搭建 Spark &amp; Hadoop集群的详细步骤及报错填坑
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Ubuntu 16.04 安装 Spark &amp; Hadoop分布式集群的记录</p>
+<span id="more"></span>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>如下设置默认都在每一台机器上都要进行。</p>
+<h3 id="配置hadoop用户"><a href="#配置hadoop用户" class="headerlink" title="配置hadoop用户"></a>配置hadoop用户</h3><p>首先是在每个机器上创建hadoop用户，设置密码（方便起见建议都设置一样的），并赋予其root权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -m hadoop -s /bin/bash</span><br><span class="line">sudo passwd hadoop</span><br><span class="line">sudo adduser hadoop sudo</span><br></pre></td></tr></table></figure>
+<h3 id="固定IP"><a href="#固定IP" class="headerlink" title="固定IP"></a>固定IP</h3><p>为防止重启导致IP变化，需要固定Ip方法参考<a href="http://frankchen.xyz/2017/06/20/Ubuntu-16-04-static-IP/">Ubuntu16.04 固定IP与设置DNS | 不正经数据科学家</a></p>
+<h3 id="配置hosts"><a href="#配置hosts" class="headerlink" title="配置hosts"></a>配置hosts</h3><p>为方便部署，可配置hosts名，方便输入地址，如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line">192.168.1.113      czn.shise.com</span><br><span class="line">192.168.1.102      czm.shise.com</span><br><span class="line">192.168.1.120      wwj.shise.com</span><br><span class="line">192.168.1.123      bas.shise.com</span><br></pre></td></tr></table></figure>
+<p>测试能否ping通<br><code>ping czn.shise.com -c 3</code></p>
+<h3 id="配置-ssh-无密码访问集群机器"><a href="#配置-ssh-无密码访问集群机器" class="headerlink" title="配置 ssh 无密码访问集群机器"></a>配置 ssh 无密码访问集群机器</h3><p>每台机器之间以及每台机器与自己的localhost都需配置ssh免密码登录。<br>如未安装ssh需 <code>sudo apt install openssh-server</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh localhost</span><br><span class="line"><span class="built_in">exit</span>                           <span class="comment"># 退出刚才的 ssh localhost</span></span><br><span class="line"><span class="built_in">cd</span> ~/.ssh/                     <span class="comment"># 若没有该目录，请先执行一次ssh localhost</span></span><br><span class="line">ssh-keygen -t rsa              <span class="comment"># 会有提示，都按回车就可以</span></span><br></pre></td></tr></table></figure>
+<p>再用<code>ssh-copy-id</code>来设置免密码登录，如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id localhost</span><br><span class="line">ssh-copy-id czn.shise.com</span><br><span class="line">ssh-copy-id czm.shise.com</span><br><span class="line">ssh-copy-id bas.shise.com</span><br></pre></td></tr></table></figure>
+<p>在每个机器上都如此设置与其它机器的免密码登录。<br>这里默认都是<code>hadoop</code>用户，所以不需带用户名，如果不是则需要带用户名如<br><code>ssh-copy-id hadoop@czn.shise.com</code></p>
+<h3 id="Java环境"><a href="#Java环境" class="headerlink" title="Java环境"></a>Java环境</h3><p>统一使用openjdk-8，<code>sudo apt-get install openjdk-8-jre openjdk-8-jdk</code><br>会默认安装在<code>/usr/lib/jvm/java-8-openjdk-amd64</code></p>
+<h2 id="Hadoop集群配置"><a href="#Hadoop集群配置" class="headerlink" title="Hadoop集群配置"></a>Hadoop集群配置</h2><p>我们先登录至作为master的机器，配置好之后再将hadoop环境复制至各slave即可，非常方便。<br>首先是Hadoop集群的配置，下载<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/">Index of /apache/hadoop/common</a>，我们选择2.7.3版本。<br>放置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxf ~/Downloads/hadoop-2.7.3.tar.gz -C /usr/<span class="built_in">local</span>    <span class="comment"># 解压到/usr/local中</span></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">sudo mv ./hadoop-2.7.3/ ./hadoop            <span class="comment"># 将文件夹名改为hadoop</span></span><br><span class="line">sudo chown -R hadoop:hadoop ./hadoop       <span class="comment"># 修改文件权限</span></span><br></pre></td></tr></table></figure>
+<h3 id="各文件配置"><a href="#各文件配置" class="headerlink" title="各文件配置"></a>各文件配置</h3><p>配置<code>hadoop/etc/hadoop</code>文件夹下的各文件，</p>
+<p>在<code>hadoop-env.sh</code>里添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64</span><br><span class="line"><span class="built_in">export</span> HADOOP_PREFIX=/usr/<span class="built_in">local</span>/hadoop</span><br></pre></td></tr></table></figure>
+<p>在<code>core-site.xml</code>里添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;hdfs://wwj.shise.com:9000&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;file:/usr/local/hadoop/tmp&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<p>在<code>yarn-site.xml</code>里添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;wwj.shise.com&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<p>改写<code>slaves</code>为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">czn.shise.com</span><br><span class="line">czm.shise.com</span><br><span class="line">wwj.shise.com</span><br><span class="line">bas.shise.com</span><br></pre></td></tr></table></figure>
+<p>改写<code>mapred-site.xml</code>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;wwj.shise.com:10020&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;mapreduce.jobhistory.webapp.address&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;wwj.shise.com:19888&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<p><code>hdfs-site.xml</code>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;wwj.shise.com:50090&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;3&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;file:/usr/local/hadoop/tmp/dfs/name&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;file:/usr/local/hadoop/tmp/dfs/data&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="复制配置好的hadoop至各机器"><a href="#复制配置好的hadoop至各机器" class="headerlink" title="复制配置好的hadoop至各机器"></a>复制配置好的hadoop至各机器</h3><p>在master上压缩文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span></span><br><span class="line">sudo rm -r ./hadoop/tmp     <span class="comment"># 删除 Hadoop 临时文件</span></span><br><span class="line">sudo rm -r ./hadoop/logs/*   <span class="comment"># 删除日志文件</span></span><br><span class="line">tar -zcf ~/hadoop.master.tar.gz ./hadoop   <span class="comment"># 先压缩再复制</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">scp ./hadoop.master.tar.gz czn.shise.com:/home/hadoop <span class="comment"># 复制至各机器</span></span><br><span class="line">scp ./hadoop.master.tar.gz czm.shise.com:/home/hadoop</span><br><span class="line">scp ./hadoop.master.tar.gz bas.shise.com:/home/hadoop</span><br></pre></td></tr></table></figure>
+<p>再登录至复制过去的每个slave</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -r /usr/<span class="built_in">local</span>/hadoop    <span class="comment"># 删掉旧的（如果存在）</span></span><br><span class="line">sudo tar -zxf ~/hadoop.master.tar.gz -C /usr/<span class="built_in">local</span></span><br><span class="line">sudo chown -R hadoop /usr/<span class="built_in">local</span>/hadoop</span><br></pre></td></tr></table></figure>
+<h3 id="各机器环境变量"><a href="#各机器环境变量" class="headerlink" title="各机器环境变量"></a>各机器环境变量</h3><p><code>sudo vim ~/.profile</code><br>我的环境变量设置如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Java Env</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$JAVA_HOME</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/lib/tools.jar:<span class="variable">$JAVA_HOME</span>/lib/dt.jar:<span class="variable">$JRE_HOME</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$JRE_HOME</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="comment"># Hadoop Env</span></span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=/usr/<span class="built_in">local</span>/hadoop</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HADOOP_HOME</span>/bin:<span class="variable">$HADOOP_HOME</span>/sbin</span><br></pre></td></tr></table></figure>
+<p><code>source ~/.profile</code></p>
+<h3 id="启动检查"><a href="#启动检查" class="headerlink" title="启动检查"></a>启动检查</h3><p>登录master机器，执行 NameNode 的格式化：<code>hdfs namenode -format </code><br>先dfs、再yarn</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">start-dfs.sh</span><br><span class="line">start-yarn.sh</span><br><span class="line">mr-jobhistory-daemon.sh start historyserver</span><br></pre></td></tr></table></figure>
+<h3 id="验证hadoop安装"><a href="#验证hadoop安装" class="headerlink" title="验证hadoop安装"></a>验证hadoop安装</h3><p>可以通过jps命令查看各个节点启动的进程是否正常。在 master 上应该有以下几个进程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ jps  <span class="comment">#run on master</span></span><br><span class="line">3407 SecondaryNameNode</span><br><span class="line">3218 NameNode</span><br><span class="line">3552 ResourceManager</span><br><span class="line">3910 Jps</span><br></pre></td></tr></table></figure>
+<p>在每个slave上应该有以下几个进程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ jps   <span class="comment">#run on slaves</span></span><br><span class="line">2072 NodeManager</span><br><span class="line">2213 Jps</span><br><span class="line">1962 DataNode</span><br></pre></td></tr></table></figure>
 
-{% block content %}
+<h2 id="Spark分布式配置"><a href="#Spark分布式配置" class="headerlink" title="Spark分布式配置"></a>Spark分布式配置</h2><h3 id="下载及安置"><a href="#下载及安置" class="headerlink" title="下载及安置"></a>下载及安置</h3><p>官网下载，<a target="_blank" rel="noopener" href="http://spark.apache.org/downloads.html">Downloads | Apache Spark</a> ，这里我们选择2.2.1版本， 及Pre-build with user-provided Apache Hadoop，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxf ~/Downloads/spark-2.1.1-bin-without-hadoop.tgz -C /usr/<span class="built_in">local</span>/</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span></span><br><span class="line">sudo mv ./spark-2.1.1-bin-without-hadoop/ ./spark</span><br><span class="line">sudo chown -R hadoop:hadoop ./spark          <span class="comment"># 此处的 hadoop 为你的用户名</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置Spark"><a href="#配置Spark" class="headerlink" title="配置Spark"></a>配置Spark</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/spark/conf    <span class="comment">#进入spark配置目录</span></span><br><span class="line">cp spark-env.sh.template spark-env.sh   <span class="comment">#从配置模板复制</span></span><br><span class="line">vim spark-env.sh     <span class="comment">#添加配置内容</span></span><br></pre></td></tr></table></figure>
+<p>在<code>spark-env.sh</code>末尾添加以下内容（这是我的配置，你可以自行修改）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#export SCALA_HOME=/home/spark/workspace/scala-2.10.4</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64</span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=/usr/<span class="built_in">local</span>/hadoop</span><br><span class="line"><span class="built_in">export</span> HADOOP_CONF_DIR=<span class="variable">$HADOOP_HOME</span>/etc/hadoop</span><br><span class="line">SPARK_MASTER_IP=wwj.shise.com</span><br><span class="line">SPARK_LOCAL_DIRS=/usr/<span class="built_in">local</span>/spark</span><br><span class="line">SPARK_DRIVER_MEMORY=1G</span><br></pre></td></tr></table></figure>
+<p>参考<a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/hadoop-provided.html">Using Spark’s “Hadoop Free” Build - Spark 2.2.0 Documentation</a>，<code>spark-env.sh</code>还需加上<br><code>export SPARK_DIST_CLASSPATH=$(/usr/local/hadoop/bin/hadoop classpath)</code>。</p>
+<p><code>vim slaves</code>在slaves文件下填上slave主机名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">czn.shise.com</span><br><span class="line">czm.shise.com</span><br><span class="line">wwj.shise.com</span><br><span class="line">bas.shise.com</span><br></pre></td></tr></table></figure>
+<h3 id="复制配置好的Spark至各机器"><a href="#复制配置好的Spark至各机器" class="headerlink" title="复制配置好的Spark至各机器"></a>复制配置好的Spark至各机器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -zcf ~/spark.master.tar.gz ./spark   <span class="comment"># 先压缩再复制</span></span><br><span class="line"><span class="built_in">cd</span> ~/</span><br><span class="line">scp ./spark.master.tar.gz czn.shise.com:/home/hadoop  <span class="comment">#传输数据</span></span><br><span class="line">scp ./spark.master.tar.gz czm.shise.com:/home/hadoop  <span class="comment">#传输数据</span></span><br><span class="line">scp ./spark.master.tar.gz bas.shise.com:/home/hadoop  <span class="comment">#传输数据</span></span><br></pre></td></tr></table></figure>
+<h3 id="启动Spark"><a href="#启动Spark" class="headerlink" title="启动Spark"></a>启动Spark</h3><p><code>sbin/start-all.sh</code><br>用jps检查，在 master 上应该有以下几个进程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ jps</span><br><span class="line">7949 Jps</span><br><span class="line">7328 SecondaryNameNode</span><br><span class="line">7805 Master</span><br><span class="line">7137 NameNode</span><br><span class="line">7475 ResourceManager</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+<p>在 slave 上应该有以下几个进程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$jps</span></span><br><span class="line">3132 DataNode</span><br><span class="line">3759 Worker</span><br><span class="line">3858 Jps</span><br><span class="line">3231 NodeManager</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="报错及解决"><a href="#报错及解决" class="headerlink" title="报错及解决"></a>报错及解决</h2><blockquote>
+<p>Python in worker has different version 2.7 than that in driver 3.6, PySpark cannot run with different minor versions.Please check environment variables PYSPARK_PYTHON and PYSPARK_DRIVER_PYTHON are correctly set.<br>出现这个错误的原因是为worker与driver设置了不同的Python版本，解决方法是（以anaconda3.6为例）：</p>
+</blockquote>
+<p><code>vim /usr/local/spark/conf/spark-env.sh</code>，<br>添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ANACONDA_ROOT=/home/hadoop/anaconda3</span><br><span class="line"><span class="built_in">export</span> PYSPARK_DRIVER_PYTHON=<span class="variable">$ANACONDA_ROOT</span>/bin/python</span><br><span class="line"><span class="built_in">export</span> PYSPARK_PYTHON=<span class="variable">$ANACONDA_ROOT</span>/bin/pythonexport PYSPARK_PYTHON=<span class="variable">$ANACONDA_ROOT</span>/bin/python</span><br></pre></td></tr></table></figure>
+<p>值得注意的是，很多教程会让你在<code>.bashrc</code>里设置，这不是推荐的方法。参考自<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30518362/how-do-i-set-the-drivers-python-version-in-spark">pyspark - How do I set the driver’s python version in spark? - Stack Overflow</a>。</p>
+<h2 id="参考自"><a href="#参考自" class="headerlink" title="参考自"></a>参考自</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://wuchong.me/blog/2015/04/04/spark-on-yarn-cluster-deploy/">Spark On YARN 集群安装部署 | Jark’s Blog</a></li>
+<li><a target="_blank" rel="noopener" href="http://dblab.xmu.edu.cn/blog/install-hadoop-cluster/">Hadoop集群安装配置教程_Hadoop2.6.0_Ubuntu/CentOS_厦大数据库实验室博客</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/zhshulin/article/details/50413240">Hadoop集群完全分布式搭建教程-CentOS - 在路上 - 博客频道 - CSDN.NET</a></li>
+<li><a target="_blank" rel="noopener" href="https://my.oschina.net/jackieyeah/blog/657750">Hadoop 2.6.4分布式集群环境搭建 - JackieYeah的个人空间</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.jianshu.com/p/2f6a85fe7b92">Spark On YARN 集群安装部署 - 简书</a></li>
+</ul>
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://frankchen.xyz/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/" data-id="cktiql5do002z6e8zfkybeh85" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/27/programmer-humor-week-3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          programmer humor week 3
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/12/examples-for-processing-excel-and-time-series/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">解决Excel长数字被转为科学计数法的问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS-Store/" rel="tag">.DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNN/" rel="tag">CNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coursera/" rel="tag">Coursera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/" rel="tag">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/" rel="tag">Data Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Funny/" rel="tag">Funny</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hbase/" rel="tag">Hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter-Notebook/" rel="tag">Jupyter Notebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/" rel="tag">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSTM/" rel="tag">LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/" rel="tag">Life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/" rel="tag">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Numpy/" rel="tag">Numpy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/" rel="tag">Old Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/" rel="tag">Pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt5/" rel="tag">PyQt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm/" rel="tag">Pycharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recommendation-System/" rel="tag">Recommendation System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/" rel="tag">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tex/" rel="tag">Tex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Management/" rel="tag">Time Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/" rel="tag">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/" rel="tag">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chicken-soup/" rel="tag">chicken-soup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/re/" rel="tag">re</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scala/" rel="tag">scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/" rel="tag">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time-series/" rel="tag">time series</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/" rel="tag">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
 
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DS-Store/" style="font-size: 10px;">.DS_Store</a> <a href="/tags/Algorithm/" style="font-size: 15.71px;">Algorithm</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CNN/" style="font-size: 10px;">CNN</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/DNN/" style="font-size: 10px;">DNN</a> <a href="/tags/Data-Science/" style="font-size: 17.14px;">Data Science</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/Deep-Learning/" style="font-size: 17.14px;">Deep Learning</a> <a href="/tags/Docker/" style="font-size: 11.43px;">Docker</a> <a href="/tags/Funny/" style="font-size: 14.29px;">Funny</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hadoop/" style="font-size: 11.43px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 11.43px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/Jupyter-Notebook/" style="font-size: 10px;">Jupyter Notebook</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Keras/" style="font-size: 11.43px;">Keras</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/LSTM/" style="font-size: 10px;">LSTM</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/Mac/" style="font-size: 14.29px;">Mac</a> <a href="/tags/Machine-Learning/" style="font-size: 12.86px;">Machine Learning</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Numpy/" style="font-size: 11.43px;">Numpy</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Old-Driver/" style="font-size: 11.43px;">Old Driver</a> <a href="/tags/Pandas/" style="font-size: 12.86px;">Pandas</a> <a href="/tags/PyQt5/" style="font-size: 10px;">PyQt5</a> <a href="/tags/Pycharm/" style="font-size: 10px;">Pycharm</a> <a href="/tags/Python/" style="font-size: 11.43px;">Python</a> <a href="/tags/RNN/" style="font-size: 14.29px;">RNN</a> <a href="/tags/Recommendation-System/" style="font-size: 10px;">Recommendation System</a> <a href="/tags/SQL/" style="font-size: 11.43px;">SQL</a> <a href="/tags/Spark/" style="font-size: 10px;">Spark</a> <a href="/tags/TensorFlow/" style="font-size: 12.86px;">TensorFlow</a> <a href="/tags/Tex/" style="font-size: 10px;">Tex</a> <a href="/tags/Time-Management/" style="font-size: 10px;">Time Management</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/amazon/" style="font-size: 10px;">amazon</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/chicken-soup/" style="font-size: 11.43px;">chicken-soup</a> <a href="/tags/git/" style="font-size: 11.43px;">git</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/re/" style="font-size: 10px;">re</a> <a href="/tags/scala/" style="font-size: 10px;">scala</a> <a href="/tags/spark/" style="font-size: 11.43px;">spark</a> <a href="/tags/time-series/" style="font-size: 10px;">time series</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tutorial/" style="font-size: 12.86px;">tutorial</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 11.43px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/24/amazon-vat-cal/">用python 自动计算亚马逊vat税款</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/20/attachments/">python 发送带各种附件的邮件示例</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/11/Pyqt5-GUI-package-on-Windows/">PyQt5 编写并在Windows上用Cx_Freeze打包GUI程序</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/22/learning-from-donald-trump/">向特朗普同志学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/20/numpy-mask/">Numpy中的mask</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 江南消夏<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>

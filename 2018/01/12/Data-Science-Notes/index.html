@@ -1,38 +1,465 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Data Science Pipelines |  特征工程中的管道 | 不正经数据科学家</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关，通常来说，项目基本步骤可以分为EDA、特征工程以及调参。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Science Pipelines |  特征工程中的管道">
+<meta property="og:url" content="http://frankchen.xyz/2018/01/12/Data-Science-Notes/index.html">
+<meta property="og:site_name" content="不正经数据科学家">
+<meta property="og:description" content="暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关，通常来说，项目基本步骤可以分为EDA、特征工程以及调参。">
+<meta property="og:locale">
+<meta property="og:image" content="http://frankchen.xyz/images/15161698020879.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-12%20at%2015.27.58.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-02-05%20at%2014.51.01.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-02-05%20at%2014.50.29.png">
+<meta property="og:image" content="http://frankchen.xyz/images/myplot.png">
+<meta property="og:image" content="http://frankchen.xyz/images/15161679439549.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15157398435931.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15157402388676.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-12%20at%2015.19.32.png">
+<meta property="og:image" content="http://frankchen.xyz/images/15157416530029.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15157543822442.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15159953413652.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15159954686370.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15159955616741.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15159941639903.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15159945932245.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15159947979455.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15159948678550.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15159949427978.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15159950249702.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15159951024672.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15159971204332.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15163355887784.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15163465540386.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15167635233971.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15167894435840.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-24%20at%2019.02.32.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-12%20at%2016.16.30.png">
+<meta property="og:image" content="http://frankchen.xyz/images/15161696298310.jpg">
+<meta property="article:published_time" content="2018-01-12T06:22:50.000Z">
+<meta property="article:modified_time" content="2018-04-08T08:13:01.000Z">
+<meta property="article:author" content="江南消夏">
+<meta property="article:tag" content="Data Science">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://frankchen.xyz/images/15161698020879.png">
+  
+    <link rel="alternate" href="/atom.xml" title="不正经数据科学家" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">不正经数据科学家</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://frankchen.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Data-Science-Notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/12/Data-Science-Notes/" class="article-date">
+  <time datetime="2018-01-12T06:22:50.000Z" itemprop="datePublished">2018-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Data Science Pipelines |  特征工程中的管道
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/15161698020879.png"></p>
+<p>暂定为记录各式数据科学项目、Kaggle竞赛里面常用、有用的代码片段、API、神操作等，通常是Numpy、Pandas、Matplotlib、Seaborn等相关，通常来说，项目基本步骤可以分为EDA、特征工程以及调参。</p>
+<span id="more"></span>
+<h2 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h2><ol>
+<li><p>以一个Kaggle上的House Price为案例，机器学习流程分成两个大步骤 ：即<br>EDA与特征工程（只使用Pandas, StatsModel，scipy,numpy, seaborn等库）</p>
+<ul>
+<li><p>输入： 原始Train, Test 数据集，将原始Train和Test 合并成一个数据集combined</p>
+</li>
+<li><p>处理： Pandas Pipe</p>
+<p>  根据各种可能和各种特征工程方法定义各种函数（输入combined, 输入pre_combined)<br>  用PandasPipe 将这个函数像搭积木一样连在一起。用列表按序存放这些函数）<br>  这个列表就是，1. 基本的填充空值, 2. 转换数据类型， 3. 空白函数（为了对齐美观而以，啥事不做），4. log 转换，类别数据哑元处理， 5. 导出到hdf5文件， 6.检查R2值<br>  利用各种排列组合，或者各种参数组合，可以产生丰富的pipes，每一个pipes都可以产生一个预处理过的文件。</p>
+</li>
+<li><p>输出：某文件夹下 的N个预处理过的hdf5文件。 针对各种特征工程的排列组合，或者是Kaggle上面的各种新奇的特征工程方法。</p>
+</li>
+</ul>
+</li>
+<li><p>机器学习阶段（训练和产生模型，目标是尽可能获得尽可能低的RMSE值（针对训练数据），同时要具有范化的能力（针对测试数据））</p>
+<ul>
+<li>第一步，建立基准，筛选出最好的一个（几个）预处理文件（随机数设成固定值）</li>
+<li>第二步，针对筛选出来的预处理文件，进行调参。找到最合适的几个算法（通常是RMSE值最低，且不同Kernel）（随机数设成固定值）    </li>
+<li>第三步，用调好的参数来预处理文件中的Traing数据的做average 和stacking</li>
+<li>第四部，生成csv文件，提交到Kaggle 看看得分如何。</li>
+</ul>
+</li>
+</ol>
+<h2 id="准备阶段-与-NoteBook-Head"><a href="#准备阶段-与-NoteBook-Head" class="headerlink" title="准备阶段 与 NoteBook Head"></a>准备阶段 与 NoteBook Head</h2><p>过滤warning：有句话说的好，在计算机科学里，我们只在意错误不在意warning</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">&quot;ignore&quot;</span>) </span><br></pre></td></tr></table></figure>
+<hr>
+<p>工作目录切换到当前python文件所在目录</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.chdir(os.path.dirname(os.path.abspath(__file__)))</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Notebook交互输出所有结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> IPython.core.interactiveshell <span class="keyword">import</span> InteractiveShell</span><br><span class="line">InteractiveShell.ast_node_interactivity=<span class="string">&#x27;all&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>结果如下<br><img src="/images/Screen%20Shot%202018-01-12%20at%2015.27.58.png" alt="Screen Shot 2018-01-12 at 15.27.58"></p>
+<p>以上可以通过设置固定下来，方法如下：</p>
+<p><img src="/images/Screen%20Shot%202018-02-05%20at%2014.51.01.png" alt="Screen Shot 2018-02-05 at 14.51.01"></p>
+<p><img src="/images/Screen%20Shot%202018-02-05%20at%2014.50.29.png" alt="Screen Shot 2018-02-05 at 14.50.29"></p>
+<hr>
+<p>一般对train以及test做一个concat，并记录train的条数ntrain</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">train = pd.read_csv(<span class="string">&quot;train.csv.gz&quot;</span>)</span><br><span class="line">test = pd.read_csv(<span class="string">&quot;test.csv.gz&quot;</span>)</span><br><span class="line"></span><br><span class="line">combined = pd.concat([train,test],axis =<span class="number">0</span>, ignore_index =<span class="literal">True</span>)</span><br><span class="line">ntrain = train.shape[<span class="number">0</span>]</span><br><span class="line">Y_train = train[<span class="string">&quot;SalePrice&quot;</span>]</span><br><span class="line">X_train = train.drop([<span class="string">&quot;Id&quot;</span>,<span class="string">&quot;SalePrice&quot;</span>],axis=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;train data shape:\t &quot;</span>,train.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;test data shape:\t &quot;</span>,test.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;combined data shape:\t&quot;</span>,combined.shape)</span><br></pre></td></tr></table></figure>
 
 
-{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<h2 id="EDA相关"><a href="#EDA相关" class="headerlink" title="EDA相关"></a>EDA相关</h2><p>1D Scatter</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nca = NCA(num_dims=<span class="number">1</span>)</span><br><span class="line">nca.fit(xx_t, yy)</span><br><span class="line">xxxxx = nca.transform(xx)</span><br><span class="line">zeros=np.zeros_like(xxxxx)</span><br><span class="line">plt.scatter(xxxxx, zeros+<span class="number">1</span>,c=yy[:,np.newaxis])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/myplot.png" alt="myplot"></p>
+<hr>
+<p>缺失值分析</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cols_missing_value = combined.isnull().<span class="built_in">sum</span>()/combined.shape[<span class="number">0</span>]</span><br><span class="line">cols_missing_value = cols_missing_value[cols_missing_value&gt;<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;How many features is bad/missing value? The answer is:&quot;</span>,cols_missing_value.shape[<span class="number">0</span>])</span><br><span class="line">cols_missing_value.sort_values(ascending=<span class="literal">False</span>).head(<span class="number">10</span>).plot.barh()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15161679439549.jpg"></p>
+<p>有缺失 - 需要填充或者删除，通常用均值或者中指，或者用人工分析（人工分析是提分关键）</p>
+<hr>
+<p>将若干个Dataframe画在同一个图里面相同坐标</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line"><span class="comment"># desc, group 是一个Dataframe groupby desc 出的结果</span></span><br><span class="line"><span class="keyword">for</span> desc, group <span class="keyword">in</span> Energy_sources:</span><br><span class="line">    group.plot(x = group.index, y=<span class="string">&#x27;Value&#x27;</span>, label=desc,ax = ax, title=<span class="string">&#x27;Carbon Emissions per Energy Source&#x27;</span>, fontsize = <span class="number">20</span>)</span><br><span class="line">    ax.set_xlabel(<span class="string">&#x27;Time(Monthly)&#x27;</span>)</span><br><span class="line">    ax.set_ylabel(<span class="string">&#x27;Carbon Emissions in MMT&#x27;</span>)</span><br><span class="line">    ax.xaxis.label.set_size(<span class="number">20</span>)</span><br><span class="line">    ax.yaxis.label.set_size(<span class="number">20</span>)</span><br><span class="line">    ax.legend(fontsize = <span class="number">16</span>)</span><br></pre></td></tr></table></figure>
+<p>结果如下图，<br><img src="/images/15157398435931.jpg"></p>
+<hr>
+<p>画a*b的子图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fig, axes = plt.subplots(<span class="number">3</span>,<span class="number">3</span>, figsize = (<span class="number">30</span>, <span class="number">20</span>))</span><br><span class="line"><span class="comment"># desc, group 是一个Dataframe groupby desc 出的结果 也就是下面的Energy_sources</span></span><br><span class="line"><span class="keyword">for</span> (desc, group), ax <span class="keyword">in</span> <span class="built_in">zip</span>(Energy_sources, axes.flatten()):</span><br><span class="line">    group.plot(x = group.index, y=<span class="string">&#x27;Value&#x27;</span>,ax = ax, title=desc, fontsize = <span class="number">18</span>)</span><br><span class="line">    ax.set_xlabel(<span class="string">&#x27;Time(Monthly)&#x27;</span>)</span><br><span class="line">    ax.set_ylabel(<span class="string">&#x27;Carbon Emissions in MMT&#x27;</span>)</span><br><span class="line">    ax.xaxis.label.set_size(<span class="number">18</span>)</span><br><span class="line">    ax.yaxis.label.set_size(<span class="number">18</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15157402388676.jpg"></p>
+<hr>
+<p>画柱状图</p>
+<p><img src="/images/Screen%20Shot%202018-01-12%20at%2015.19.32.png" alt="Screen Shot 2018-01-12 at 15.19.32"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize = (<span class="number">16</span>,<span class="number">9</span>))</span><br><span class="line"><span class="comment"># CO2_per_source的来源与结构如上图</span></span><br><span class="line">x_label = <span class="built_in">map</span>(<span class="keyword">lambda</span> x: x[:<span class="number">20</span>],CO2_per_source.index)</span><br><span class="line">x_tick = np.arange(<span class="built_in">len</span>(cols))</span><br><span class="line">plt.bar(x_tick, CO2_per_source, align = <span class="string">&#x27;center&#x27;</span>, alpha = <span class="number">0.5</span>)</span><br><span class="line">fig.suptitle(<span class="string">&quot;CO2 Emissions by Electric Power Sector&quot;</span>, fontsize= <span class="number">25</span>)</span><br><span class="line">plt.xticks(x_tick, x_label, rotation = <span class="number">70</span>, fontsize = <span class="number">15</span>)</span><br><span class="line">plt.yticks(fontsize = <span class="number">20</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Carbon Emissions in MMT&#x27;</span>, fontsize = <span class="number">20</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15157416530029.jpg"></p>
+<hr>
+<p>重叠图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.tsa.seasonal <span class="keyword">import</span> seasonal_decompose</span><br><span class="line">decomposition = seasonal_decompose(mte)</span><br><span class="line"></span><br><span class="line">trend = decomposition.trend</span><br><span class="line">seasonal = decomposition.seasonal</span><br><span class="line">residual = decomposition.resid</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">411</span>)</span><br><span class="line">plt.plot(mte, label=<span class="string">&#x27;Original&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">412</span>)</span><br><span class="line">plt.plot(trend, label=<span class="string">&#x27;Trend&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">413</span>)</span><br><span class="line">plt.plot(seasonal,label=<span class="string">&#x27;Seasonality&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">414</span>)</span><br><span class="line">plt.plot(residual, label=<span class="string">&#x27;Residuals&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line">plt.tight_layout()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15157543822442.jpg"></p>
+<hr>
+<p>环形图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">plt.subplots(figsize=(<span class="number">15</span>,<span class="number">15</span>))</span><br><span class="line">data=response[<span class="string">&#x27;PublicDatasetsSelect&#x27;</span>].<span class="built_in">str</span>.split(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">dataset=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> data.dropna():</span><br><span class="line">    dataset.extend(i)</span><br><span class="line">pd.Series(dataset).value_counts().plot.pie(autopct=<span class="string">&#x27;%1.1f%%&#x27;</span>,colors=sns.color_palette(<span class="string">&#x27;Paired&#x27;</span>,<span class="number">10</span>),startangle=<span class="number">90</span>,wedgeprops = &#123; <span class="string">&#x27;linewidth&#x27;</span> : <span class="number">2</span>, <span class="string">&#x27;edgecolor&#x27;</span> : <span class="string">&#x27;white&#x27;</span> &#125;)</span><br><span class="line">plt.title(<span class="string">&#x27;Dataset Source&#x27;</span>)</span><br><span class="line">my_circle=plt.Circle( (<span class="number">0</span>,<span class="number">0</span>), <span class="number">0.7</span>, color=<span class="string">&#x27;white&#x27;</span>)</span><br><span class="line">p=plt.gcf()</span><br><span class="line">p.gca().add_artist(my_circle)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15159953413652.jpg"></p>
+<hr>
+<p>饼状图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f,ax=plt.subplots(<span class="number">1</span>,<span class="number">2</span>,figsize=(<span class="number">18</span>,<span class="number">8</span>))</span><br><span class="line">response[<span class="string">&#x27;JobSkillImportancePython&#x27;</span>].value_counts().plot.pie(ax=ax[<span class="number">0</span>],autopct=<span class="string">&#x27;%1.1f%%&#x27;</span>,explode=[<span class="number">0.1</span>,<span class="number">0</span>,<span class="number">0</span>],shadow=<span class="literal">True</span>,colors=[<span class="string">&#x27;g&#x27;</span>,<span class="string">&#x27;lightblue&#x27;</span>,<span class="string">&#x27;r&#x27;</span>])</span><br><span class="line">ax[<span class="number">0</span>].set_title(<span class="string">&#x27;Python Necessity&#x27;</span>)</span><br><span class="line">ax[<span class="number">0</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">response[<span class="string">&#x27;JobSkillImportanceR&#x27;</span>].value_counts().plot.pie(ax=ax[<span class="number">1</span>],autopct=<span class="string">&#x27;%1.1f%%&#x27;</span>,explode=[<span class="number">0</span>,<span class="number">0.1</span>,<span class="number">0</span>],shadow=<span class="literal">True</span>,colors=[<span class="string">&#x27;lightblue&#x27;</span>,<span class="string">&#x27;g&#x27;</span>,<span class="string">&#x27;r&#x27;</span>])</span><br><span class="line">ax[<span class="number">1</span>].set_title(<span class="string">&#x27;R Necessity&#x27;</span>)</span><br><span class="line">ax[<span class="number">1</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15159954686370.jpg"></p>
+<hr>
+<p>维恩图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">f,ax=plt.subplots(<span class="number">1</span>,<span class="number">2</span>,figsize=(<span class="number">18</span>,<span class="number">8</span>))</span><br><span class="line">pd.Series([python.shape[<span class="number">0</span>],R.shape[<span class="number">0</span>],both.shape[<span class="number">0</span>]],index=[<span class="string">&#x27;Python&#x27;</span>,<span class="string">&#x27;R&#x27;</span>,<span class="string">&#x27;Both&#x27;</span>]).plot.bar(ax=ax[<span class="number">0</span>])</span><br><span class="line">ax[<span class="number">0</span>].set_title(<span class="string">&#x27;Number of Users&#x27;</span>)</span><br><span class="line">venn2(subsets = (python.shape[<span class="number">0</span>],R.shape[<span class="number">0</span>],both.shape[<span class="number">0</span>]), set_labels = (<span class="string">&#x27;Python Users&#x27;</span>, <span class="string">&#x27;R Users&#x27;</span>))</span><br><span class="line">plt.title(<span class="string">&#x27;Venn Diagram for Users&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/images/15159955616741.jpg"></p>
+<h2 id="Seaborn"><a href="#Seaborn" class="headerlink" title="Seaborn"></a>Seaborn</h2><p>count plot</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.subplots(figsize=(<span class="number">22</span>,<span class="number">12</span>))</span><br><span class="line">sns.countplot(y=response[<span class="string">&#x27;GenderSelect&#x27;</span>],order=response[<span class="string">&#x27;GenderSelect&#x27;</span>].value_counts().index)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15159941639903.jpg"></p>
+<hr>
+<p>利用squarify画树形图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> squarify</span><br><span class="line">tree=response[<span class="string">&#x27;Country&#x27;</span>].value_counts().to_frame()</span><br><span class="line">squarify.plot(sizes=tree[<span class="string">&#x27;Country&#x27;</span>].values,label=tree.index,color=sns.color_palette(<span class="string">&#x27;RdYlGn_r&#x27;</span>,<span class="number">52</span>))</span><br><span class="line">plt.rcParams.update(&#123;<span class="string">&#x27;font.size&#x27;</span>:<span class="number">20</span>&#125;)</span><br><span class="line">fig=plt.gcf()</span><br><span class="line">fig.set_size_inches(<span class="number">40</span>,<span class="number">15</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15159945932245.jpg"></p>
+<hr>
+<p>sns画分布图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.subplots(figsize=(<span class="number">15</span>,<span class="number">8</span>))</span><br><span class="line">salary=salary[salary[<span class="string">&#x27;Salary&#x27;</span>]&lt;<span class="number">1000000</span>]</span><br><span class="line">sns.distplot(salary[<span class="string">&#x27;Salary&#x27;</span>])</span><br><span class="line">plt.title(<span class="string">&#x27;Salary Distribution&#x27;</span>,size=<span class="number">15</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15159947979455.jpg"></p>
+<hr>
+<p>sns子图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">f,ax=plt.subplots(<span class="number">1</span>,<span class="number">2</span>,figsize=(<span class="number">18</span>,<span class="number">8</span>))</span><br><span class="line">sal_coun=salary.groupby(<span class="string">&#x27;Country&#x27;</span>)[<span class="string">&#x27;Salary&#x27;</span>].median().sort_values(ascending=<span class="literal">False</span>)[:<span class="number">15</span>].to_frame()</span><br><span class="line">sns.barplot(<span class="string">&#x27;Salary&#x27;</span>,sal_coun.index,data=sal_coun,palette=<span class="string">&#x27;RdYlGn&#x27;</span>,ax=ax[<span class="number">0</span>])</span><br><span class="line">ax[<span class="number">0</span>].axvline(salary[<span class="string">&#x27;Salary&#x27;</span>].median(),linestyle=<span class="string">&#x27;dashed&#x27;</span>)</span><br><span class="line">ax[<span class="number">0</span>].set_title(<span class="string">&#x27;Highest Salary Paying Countries&#x27;</span>)</span><br><span class="line">ax[<span class="number">0</span>].set_xlabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">max_coun=salary.groupby(<span class="string">&#x27;Country&#x27;</span>)[<span class="string">&#x27;Salary&#x27;</span>].median().to_frame()</span><br><span class="line">max_coun=max_coun[max_coun.index.isin(resp_coun.index)]</span><br><span class="line">max_coun.sort_values(by=<span class="string">&#x27;Salary&#x27;</span>,ascending=<span class="literal">True</span>).plot.barh(width=<span class="number">0.8</span>,ax=ax[<span class="number">1</span>],color=sns.color_palette(<span class="string">&#x27;RdYlGn&#x27;</span>))</span><br><span class="line">ax[<span class="number">1</span>].axvline(salary[<span class="string">&#x27;Salary&#x27;</span>].median(),linestyle=<span class="string">&#x27;dashed&#x27;</span>)</span><br><span class="line">ax[<span class="number">1</span>].set_title(<span class="string">&#x27;Compensation of Top 15 Respondent Countries&#x27;</span>)</span><br><span class="line">ax[<span class="number">1</span>].set_xlabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">ax[<span class="number">1</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">plt.subplots_adjust(wspace=<span class="number">0.8</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15159948678550.jpg"></p>
+<hr>
+<p>seaborn箱型图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.subplots(figsize=(<span class="number">10</span>,<span class="number">8</span>))</span><br><span class="line">sns.boxplot(y=<span class="string">&#x27;GenderSelect&#x27;</span>,x=<span class="string">&#x27;Salary&#x27;</span>,data=salary)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15159949427978.jpg"></p>
+<hr>
+<p>seaborn count_plot</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">f,ax=plt.subplots(<span class="number">1</span>,<span class="number">2</span>,figsize=(<span class="number">25</span>,<span class="number">15</span>))</span><br><span class="line">sns.countplot(y=response[<span class="string">&#x27;MajorSelect&#x27;</span>],ax=ax[<span class="number">0</span>],order=response[<span class="string">&#x27;MajorSelect&#x27;</span>].value_counts().index)</span><br><span class="line">ax[<span class="number">0</span>].set_title(<span class="string">&#x27;Major&#x27;</span>)</span><br><span class="line">ax[<span class="number">0</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">sns.countplot(y=response[<span class="string">&#x27;CurrentJobTitleSelect&#x27;</span>],ax=ax[<span class="number">1</span>],order=response[<span class="string">&#x27;CurrentJobTitleSelect&#x27;</span>].value_counts().index)</span><br><span class="line">ax[<span class="number">1</span>].set_title(<span class="string">&#x27;Current Job&#x27;</span>)</span><br><span class="line">ax[<span class="number">1</span>].set_ylabel(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">plt.subplots_adjust(wspace=<span class="number">0.8</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15159950249702.jpg"></p>
+<hr>
+<p>seaborn 图中添加文字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sal_job=salary.groupby(<span class="string">&#x27;CurrentJobTitleSelect&#x27;</span>)[<span class="string">&#x27;Salary&#x27;</span>].median().to_frame().sort_values(by=<span class="string">&#x27;Salary&#x27;</span>,ascending=<span class="literal">False</span>)</span><br><span class="line">ax=sns.barplot(sal_job.Salary,sal_job.index,palette=sns.color_palette(<span class="string">&#x27;inferno&#x27;</span>,<span class="number">20</span>))</span><br><span class="line">plt.title(<span class="string">&#x27;Compensation By Job Title&#x27;</span>,size=<span class="number">15</span>)</span><br><span class="line"><span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="built_in">enumerate</span>(sal_job.Salary): </span><br><span class="line">    ax.text(<span class="number">.5</span>, i, v,fontsize=<span class="number">10</span>,color=<span class="string">&#x27;white&#x27;</span>,weight=<span class="string">&#x27;bold&#x27;</span>)</span><br><span class="line">fig=plt.gcf()</span><br><span class="line">fig.set_size_inches(<span class="number">8</span>,<span class="number">8</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15159951024672.jpg"></p>
+<hr>
+<p>词云</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud, STOPWORDS</span><br><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> stopwords</span><br><span class="line">free=pd.read_csv(<span class="string">&#x27;../input/freeformResponses.csv&#x27;</span>)</span><br><span class="line">stop_words=<span class="built_in">set</span>(stopwords.words(<span class="string">&#x27;english&#x27;</span>))</span><br><span class="line">stop_words.update(<span class="string">&#x27;,&#x27;</span>,<span class="string">&#x27;;&#x27;</span>,<span class="string">&#x27;!&#x27;</span>,<span class="string">&#x27;?&#x27;</span>,<span class="string">&#x27;.&#x27;</span>,<span class="string">&#x27;(&#x27;</span>,<span class="string">&#x27;)&#x27;</span>,<span class="string">&#x27;$&#x27;</span>,<span class="string">&#x27;#&#x27;</span>,<span class="string">&#x27;+&#x27;</span>,<span class="string">&#x27;:&#x27;</span>,<span class="string">&#x27;...&#x27;</span>)</span><br><span class="line">motivation=free[<span class="string">&#x27;KaggleMotivationFreeForm&#x27;</span>].dropna().apply(nltk.word_tokenize)</span><br><span class="line">motivate=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> motivation:</span><br><span class="line">    motivate.extend(i)</span><br><span class="line">motivate=pd.Series(motivate)</span><br><span class="line">motivate=([i <span class="keyword">for</span> i <span class="keyword">in</span> motivate.<span class="built_in">str</span>.lower() <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> stop_words])</span><br><span class="line">f1=<span class="built_in">open</span>(<span class="string">&quot;kaggle.png&quot;</span>, <span class="string">&quot;wb&quot;</span>)</span><br><span class="line">f1.write(codecs.decode(kaggle,<span class="string">&#x27;base64&#x27;</span>))</span><br><span class="line">f1.close()</span><br><span class="line">img1 = imread(<span class="string">&quot;kaggle.png&quot;</span>)</span><br><span class="line">hcmask1 = img1</span><br><span class="line">wc = WordCloud(background_color=<span class="string">&quot;black&quot;</span>, max_words=<span class="number">4000</span>, mask=hcmask1, </span><br><span class="line">               stopwords=STOPWORDS, max_font_size= <span class="number">60</span>,width=<span class="number">1000</span>,height=<span class="number">1000</span>)</span><br><span class="line">wc.generate(<span class="string">&quot; &quot;</span>.join(motivate))</span><br><span class="line">plt.imshow(wc)</span><br><span class="line">plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">fig=plt.gcf()</span><br><span class="line">fig.set_size_inches(<span class="number">10</span>,<span class="number">10</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15159971204332.jpg"></p>
+<hr>
+<p>简单情况下的分类展示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> IPython <span class="keyword">import</span> display</span><br><span class="line"></span><br><span class="line">h = <span class="number">0.01</span></span><br><span class="line">x_min, x_max = X[:, <span class="number">0</span>].<span class="built_in">min</span>() - <span class="number">1</span>, X[:, <span class="number">0</span>].<span class="built_in">max</span>() + <span class="number">1</span></span><br><span class="line">y_min, y_max = X[:, <span class="number">1</span>].<span class="built_in">min</span>() - <span class="number">1</span>, X[:, <span class="number">1</span>].<span class="built_in">max</span>() + <span class="number">1</span></span><br><span class="line">xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">visualize</span>(<span class="params">X, y, w, history</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;draws classifier prediction with matplotlib magic&quot;&quot;&quot;</span></span><br><span class="line">    Z = probability(expand(np.c_[xx.ravel(), yy.ravel()]), w)</span><br><span class="line">    Z = Z.reshape(xx.shape)</span><br><span class="line">    plt.subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">    plt.contourf(xx, yy, Z, alpha=<span class="number">0.8</span>)</span><br><span class="line">    plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y, cmap=plt.cm.Paired)</span><br><span class="line">    plt.xlim(xx.<span class="built_in">min</span>(), xx.<span class="built_in">max</span>())</span><br><span class="line">    plt.ylim(yy.<span class="built_in">min</span>(), yy.<span class="built_in">max</span>())</span><br><span class="line">    </span><br><span class="line">    plt.subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">    plt.plot(history)</span><br><span class="line">    plt.grid()</span><br><span class="line">    ymin, ymax = plt.ylim()</span><br><span class="line">    plt.ylim(<span class="number">0</span>, ymax)</span><br><span class="line">    display.clear_output(wait=<span class="literal">True</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15163355887784.jpg"></p>
+<hr>
+<p>图中插入LaTeX公式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line">x = np.linspace(-<span class="number">3</span>, <span class="number">3</span>)</span><br><span class="line">x_squared, x_squared_der = s.run([scalar_squared, derivative[<span class="number">0</span>]],</span><br><span class="line">                                 &#123;my_scalar:x&#125;)</span><br><span class="line"></span><br><span class="line">plt.plot(x, x_squared,label=<span class="string">&quot;$x^2$&quot;</span>)</span><br><span class="line">plt.plot(x, x_squared_der, label=<span class="string">r&quot;$\frac&#123;dx^2&#125;&#123;dx&#125;$&quot;</span>)</span><br><span class="line">plt.legend();</span><br></pre></td></tr></table></figure>
 
+<p><img src="/images/15163465540386.jpg"></p>
+<hr>
+<p>画多张子图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># show random images from train</span></span><br><span class="line">cols = <span class="number">8</span></span><br><span class="line">rows = <span class="number">2</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">2</span> * cols - <span class="number">1</span>, <span class="number">2.5</span> * rows - <span class="number">1</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(cols):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(rows):</span><br><span class="line">        random_index = np.random.randint(<span class="number">0</span>, <span class="built_in">len</span>(y_train))</span><br><span class="line">        ax = fig.add_subplot(rows, cols, i * rows + j + <span class="number">1</span>)</span><br><span class="line">        ax.grid(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">        ax.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">        ax.imshow(x_train[random_index, :])</span><br><span class="line">        ax.set_title(cifar10_classes[y_train[random_index, <span class="number">0</span>]])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15167635233971.jpg"></p>
+<h2 id="特征工程阶段"><a href="#特征工程阶段" class="headerlink" title="特征工程阶段"></a>特征工程阶段</h2><p>Numpy区间百分比切分异常值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cut off long distance trips</span></span><br><span class="line">lat_low, lat_hgh = np.percentile(latlong[:,<span class="number">0</span>], [<span class="number">2</span>, <span class="number">98</span>])</span><br><span class="line">lon_low, lon_hgh = np.percentile(latlong[:,<span class="number">1</span>], [<span class="number">2</span>, <span class="number">98</span>])</span><br></pre></td></tr></table></figure>
 
-{% block content %}
+<hr>
+<p>初始化同shape向量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">g2 = np.zeros_like(w)</span><br><span class="line">``</span><br><span class="line"></span><br><span class="line">-------</span><br><span class="line"></span><br><span class="line">累积<span class="built_in">sum</span></span><br><span class="line">``` python</span><br><span class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.cumsum(a,axis=<span class="number">1</span>)      <span class="comment"># sum over columns for each of the 2 rows</span></span><br><span class="line">array([[ <span class="number">1</span>,  <span class="number">3</span>,  <span class="number">6</span>],</span><br><span class="line">       [ <span class="number">4</span>,  <span class="number">9</span>, <span class="number">15</span>]])</span><br></pre></td></tr></table></figure>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+<hr>
+<p>numpy array 扩展维度，很简单地将Numpy向量扩展为二维矩阵<br><img src="/images/15167894435840.png"><br><img src="/images/Screen%20Shot%202018-01-24%20at%2019.02.32.png" alt="Screen Shot 2018-01-24 at 19.02.32"></p>
+<hr>
+<p>Numpy 竖着叠放向量<br><code>np.column_stack</code></p>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用于查看Dataframe各列数据类型</span></span><br><span class="line">ts.dtypes</span><br></pre></td></tr></table></figure>
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#skew是单变量工具，用来监测数据是否有长尾，左偏或者右偏</span></span><br><span class="line"><span class="built_in">print</span>(Y_train.skew())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#np.abs 是绝对值函数，用来取整个向量绝对值</span></span><br><span class="line"><span class="comment"># 这里对所有train里的特征求偏度并排序</span></span><br><span class="line">np.<span class="built_in">abs</span>(combined[:ntrain].skew()).sort_values(ascending = <span class="literal">False</span> ).head(<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<p>有偏度 - 需要处理。通常是用log1p </p>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用于将Dataframe中被读取为object的数据转换为数值型，errors=&#x27;coerce&#x27;代表错误将被置为NaN</span></span><br><span class="line">ts[<span class="string">&#x27;Value&#x27;</span>] = pd.to_numeric(ts[<span class="string">&#x27;Value&#x27;</span>] , errors=<span class="string">&#x27;coerce&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<p>过滤index 里面的NaN值，推广也可以过滤其他列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts = df.loc[pd.Series(pd.to_datetime(df.index, errors=<span class="string">&#x27;coerce&#x27;</span>)).notnull().values]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>按月groupby，以及unstack解构</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Emissions.groupby([<span class="string">&#x27;Description&#x27;</span>, pd.TimeGrouper(<span class="string">&#x27;M&#x27;</span>)])[<span class="string">&#x27;Value&#x27;</span>].<span class="built_in">sum</span>().unstack(level = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/Screen%20Shot%202018-01-12%20at%2016.16.30.png" alt="Screen Shot 2018-01-12 at 16.16.30"></p>
+<hr>
+<p>将value_counts、groupby等Series转换为Dataframe</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree=response[<span class="string">&#x27;Country&#x27;</span>].value_counts().to_frame()</span><br></pre></td></tr></table></figure>
+<hr>
+<p>特征工程大杀器，<a target="_blank" rel="noopener" href="http://pandas.pydata.org/pandas-docs/stable/basics.html?highlight=pipe#tablewise-function-application">Pandas Pipe</a><br>这里有个简单的例子，,每个pipes里面都有若干个特征处理函数和一个快速测试的函数，其中为了对齐美观，用bypass函数来填充空白的地方（无用但是为了强行让pipes长度相同）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pipe_basic = [pipe_basic_fillna,pipe_bypass,\</span><br><span class="line">              pipe_bypass,pipe_bypass,\</span><br><span class="line">              pipe_bypass,pipe_bypass,\</span><br><span class="line">              pipe_log_getdummies,pipe_bypass, \</span><br><span class="line">              pipe_export,pipe_r2test]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pipe_ascat = [pipe_fillna_ascat,pipe_drop_cols,\</span><br><span class="line">              pipe_drop4cols,pipe_outliersdrop,\</span><br><span class="line">              pipe_extract,pipe_bypass,\</span><br><span class="line">              pipe_log_getdummies,pipe_drop_dummycols, \</span><br><span class="line">              pipe_export,pipe_r2test]</span><br><span class="line"></span><br><span class="line">pipe_ascat_unitprice = [pipe_fillna_ascat,pipe_drop_cols,\</span><br><span class="line">              pipe_drop4cols,pipe_outliersdrop,\</span><br><span class="line">              pipe_extract,pipe_unitprice,\</span><br><span class="line">              pipe_log_getdummies,pipe_drop_dummycols, \</span><br><span class="line">              pipe_export,pipe_r2test]</span><br><span class="line"></span><br><span class="line">pipes = [pipe_basic,pipe_ascat,pipe_ascat_unitprice ]</span><br></pre></td></tr></table></figure>
+
+<p>跑的代码为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(pipes)):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;*&quot;</span>*<span class="number">10</span>,<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    pipe_output=pipes[i]</span><br><span class="line">    output_name =<span class="string">&quot;_&quot;</span>.join([x.__name__[<span class="number">5</span>:] <span class="keyword">for</span> x <span class="keyword">in</span> pipe_output <span class="keyword">if</span> x.__name__ <span class="keyword">is</span> <span class="keyword">not</span> <span class="string">&quot;pipe_bypass&quot;</span>])</span><br><span class="line">    output_name = <span class="string">&quot;PIPE_&quot;</span> +output_name</span><br><span class="line">    <span class="built_in">print</span>(output_name)</span><br><span class="line">    (combined.pipe(pipe_output[<span class="number">0</span>])</span><br><span class="line">             .pipe(pipe_output[<span class="number">1</span>])</span><br><span class="line">             .pipe(pipe_output[<span class="number">2</span>])</span><br><span class="line">             .pipe(pipe_output[<span class="number">3</span>])</span><br><span class="line">             .pipe(pipe_output[<span class="number">4</span>])</span><br><span class="line">             .pipe(pipe_output[<span class="number">5</span>])          </span><br><span class="line">             .pipe(pipe_output[<span class="number">6</span>])</span><br><span class="line">             .pipe(pipe_output[<span class="number">7</span>])</span><br><span class="line">             .pipe(pipe_output[<span class="number">8</span>],name=output_name)</span><br><span class="line">             .pipe(pipe_output[<span class="number">9</span>])</span><br><span class="line">             ）</span><br></pre></td></tr></table></figure>
+<p>在这一步，我们可以初步看到三个特征工程的性能。并且文件已经输出到hd5格式文件。后期在训练和预测时，直接取出预处理的文件就可以。各个pipe代码可见<a target="_blank" rel="noopener" href="https://gist.github.com/frankchen0130/5950eaa4d98ea4f93deed707b027b517">此处</a>。</p>
+<h2 id="调参阶段"><a href="#调参阶段" class="headerlink" title="调参阶段"></a>调参阶段</h2><p>在数据准备好后训练时，最基本的就是要调整超参（Hyperparameter）耗时耗力，并且和发生错误和遗漏情况。<br>Stackoverflow上常见的算法训练错误有：</p>
+<ul>
+<li>算法预测的结果差异非常大。 其中一个可能就是训练时的标准化步骤，在预测时遗漏了。</li>
+<li>算法的调参结果差异非常大。（有的是0.01,有的就是10）。其中的一个可能就是不同的训练步骤中采用的标准化算法不同（例如,一次用了StandardScaler, 另一次用了RobustScaler)</li>
+<li>此外，繁多的超参数调整起来异常繁琐。比较容易错误或者写错。</li>
+</ul>
+<p><strong>解决方法：Pipeline + Gridsearch + 参数字典 + 容器。</strong><br>使用Pipeline的例子</p>
+<p>针对线形回归问题，Sklearn提供了超过15种回归算法。利用Pipeline 大法可以综合测试所有算法，找到最合适的算法。 具体步骤如下：</p>
+<ol>
+<li><p>初始化所有希望调测线形回归。</p>
+</li>
+<li><p>建立一个字典容器。{“算法名称”:[初始算法对象，参数字典，训练好的Pipeline模型对象，CV的成绩}</p>
+</li>
+<li><p>在调参步骤，将初始算法用Pipeline包装起来，利用Gridsearch进行调参。调参完成后可以得到针对相应的CV而获得的最后模型对象。 例如： lasso 算法的步骤如下：</p>
+</li>
+</ol>
+<ul>
+<li><pre><code>包装 pipe=Pipeline([(&quot;scaler&quot;:None),(&quot;selector&quot;:None),(&quot;clf&quot;:Lasso())    * Pipe就是刚刚包装好的算法。可以直接用于 训练(fit)和预测(predict)    * 使用Pipe来处理训练集和测试集可以避免错误和遗漏，提高效率。    * 但是Pipe中算法是默认的参数，直接训练出的模型RMSE不太理想。（例如：local CV, 0.12~0.14左右）。这时可以考虑调参。
+</code></pre>
+</li>
+<li>调参第一步：准备参数字典：<br>  Params_lasso ={<br>  “Scaler”:[RobustScaler(),StandardScaler()], #两个标准化算法供调模型<br>  “selector__threshold”:np.logspace(-5,-4,3), #3个选择门限供选特征<br>  “clf__alpha”:np.logspace(-5,-1,10) }， #10个alpha指供调参</li>
+<li>调参第二步：暴力调参和生成模型 rsearch = GridSearchCV(pipe, param_grid=Params_lasso,scoring =’neg_mean_squared_error’,verbose=verbose,cv=10,refit =True)<ul>
+<li>GridSearch 是暴力调参。遍历所有参数组合，另外有一个RandomedSearch 可以随机选择参数组合，缩短调参时间，并且获得近似的调参性能</li>
+<li>Pipe就是刚刚包装好的算法。GridSearch把可选的参数和算法（放入，或者更好的组合。</li>
+<li>调参的训练标准是“’neg_mean_squared_error”, RMSE的负数。 这种处理方法，让最大值称为最小的MSE指。只需要对结果做一次np.sqrt( 结果负数）就能获得RMSE值。</li>
+<li>cv=10. Cross Validate 数据集为9：1。数据集小的情况，例如House Price. 3折和10折结果甚至比调参差异还大。</li>
+<li>refit =True. 在调参完成后，再需要做一次所有数据集的fit. 生成完整的训练模型</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Sklearn 流程图<br><img src="/images/15161696298310.jpg"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://frankchen.xyz/2018/01/12/Data-Science-Notes/" data-id="cktiql5fj00ad6e8z79xxhgo3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/" rel="tag">Data Science</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/30/Understanding-TSNE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          理解TSNE算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/25/Remote-jupyter-notebook/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DIY远程Jupyter Notebook服务器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS-Store/" rel="tag">.DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNN/" rel="tag">CNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coursera/" rel="tag">Coursera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/" rel="tag">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/" rel="tag">Data Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Funny/" rel="tag">Funny</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hbase/" rel="tag">Hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter-Notebook/" rel="tag">Jupyter Notebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/" rel="tag">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSTM/" rel="tag">LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/" rel="tag">Life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/" rel="tag">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Numpy/" rel="tag">Numpy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/" rel="tag">Old Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/" rel="tag">Pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt5/" rel="tag">PyQt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm/" rel="tag">Pycharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recommendation-System/" rel="tag">Recommendation System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/" rel="tag">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tex/" rel="tag">Tex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Management/" rel="tag">Time Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/" rel="tag">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/" rel="tag">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chicken-soup/" rel="tag">chicken-soup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/re/" rel="tag">re</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scala/" rel="tag">scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/" rel="tag">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time-series/" rel="tag">time series</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/" rel="tag">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
 
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DS-Store/" style="font-size: 10px;">.DS_Store</a> <a href="/tags/Algorithm/" style="font-size: 15.71px;">Algorithm</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CNN/" style="font-size: 10px;">CNN</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/DNN/" style="font-size: 10px;">DNN</a> <a href="/tags/Data-Science/" style="font-size: 17.14px;">Data Science</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/Deep-Learning/" style="font-size: 17.14px;">Deep Learning</a> <a href="/tags/Docker/" style="font-size: 11.43px;">Docker</a> <a href="/tags/Funny/" style="font-size: 14.29px;">Funny</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hadoop/" style="font-size: 11.43px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 11.43px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/Jupyter-Notebook/" style="font-size: 10px;">Jupyter Notebook</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Keras/" style="font-size: 11.43px;">Keras</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/LSTM/" style="font-size: 10px;">LSTM</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/Mac/" style="font-size: 14.29px;">Mac</a> <a href="/tags/Machine-Learning/" style="font-size: 12.86px;">Machine Learning</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Numpy/" style="font-size: 11.43px;">Numpy</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Old-Driver/" style="font-size: 11.43px;">Old Driver</a> <a href="/tags/Pandas/" style="font-size: 12.86px;">Pandas</a> <a href="/tags/PyQt5/" style="font-size: 10px;">PyQt5</a> <a href="/tags/Pycharm/" style="font-size: 10px;">Pycharm</a> <a href="/tags/Python/" style="font-size: 11.43px;">Python</a> <a href="/tags/RNN/" style="font-size: 14.29px;">RNN</a> <a href="/tags/Recommendation-System/" style="font-size: 10px;">Recommendation System</a> <a href="/tags/SQL/" style="font-size: 11.43px;">SQL</a> <a href="/tags/Spark/" style="font-size: 10px;">Spark</a> <a href="/tags/TensorFlow/" style="font-size: 12.86px;">TensorFlow</a> <a href="/tags/Tex/" style="font-size: 10px;">Tex</a> <a href="/tags/Time-Management/" style="font-size: 10px;">Time Management</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/amazon/" style="font-size: 10px;">amazon</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/chicken-soup/" style="font-size: 11.43px;">chicken-soup</a> <a href="/tags/git/" style="font-size: 11.43px;">git</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/re/" style="font-size: 10px;">re</a> <a href="/tags/scala/" style="font-size: 10px;">scala</a> <a href="/tags/spark/" style="font-size: 11.43px;">spark</a> <a href="/tags/time-series/" style="font-size: 10px;">time series</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tutorial/" style="font-size: 12.86px;">tutorial</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 11.43px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/24/amazon-vat-cal/">用python 自动计算亚马逊vat税款</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/20/attachments/">python 发送带各种附件的邮件示例</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/11/Pyqt5-GUI-package-on-Windows/">PyQt5 编写并在Windows上用Cx_Freeze打包GUI程序</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/22/learning-from-donald-trump/">向特朗普同志学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/20/numpy-mask/">Numpy中的mask</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 江南消夏<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>

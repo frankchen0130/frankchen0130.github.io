@@ -1,38 +1,304 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Personal Tips on Mac &amp; Linux &amp; Iphone | 不正经数据科学家</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="随手记录自己在用Mac开发上随时发现的各种Tips。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Personal Tips on Mac &amp; Linux &amp; Iphone">
+<meta property="og:url" content="http://frankchen.xyz/2017/07/18/All_kinds_of_TIPS/index.html">
+<meta property="og:site_name" content="不正经数据科学家">
+<meta property="og:description" content="随手记录自己在用Mac开发上随时发现的各种Tips。">
+<meta property="og:locale">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-07-19%20at%2023.44.06.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-07-19%20at%2023.42.56.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-07-19%20at%2023.47.58.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-07-19%20at%2023.52.08.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-07-19%20at%2023.58.33.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-07-20%20at%2000.00.06.png">
+<meta property="og:image" content="http://frankchen.xyz/images/IMG_1750.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-08-10%20at%2012.49.06.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-08-21%20at%2011.29.29.png">
+<meta property="og:image" content="http://frankchen.xyz/images/15023408306576.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15023407365562.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/15004806123652.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-07-21%20at%2011.24.53.png">
+<meta property="article:published_time" content="2017-07-18T02:43:17.000Z">
+<meta property="article:modified_time" content="2017-09-05T09:38:57.000Z">
+<meta property="article:author" content="江南消夏">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="Mac">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://frankchen.xyz/images/Screen%20Shot%202017-07-19%20at%2023.44.06.png">
+  
+    <link rel="alternate" href="/atom.xml" title="不正经数据科学家" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
+  
 
-{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-{% block page_class %}page-post-detail{% endblock %}
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">不正经数据科学家</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://frankchen.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-All_kinds_of_TIPS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/18/All_kinds_of_TIPS/" class="article-date">
+  <time datetime="2017-07-18T02:43:17.000Z" itemprop="datePublished">2017-07-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Personal Tips on Mac &amp; Linux &amp; Iphone
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>随手记录自己在用Mac开发上随时发现的各种Tips。</p>
+<span id="more"></span>
 
-{% block content %}
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="别用Bash啦用zsh！🈲"><a href="#别用Bash啦用zsh！🈲" class="headerlink" title="别用Bash啦用zsh！🈲"></a>别用Bash啦用zsh！🈲</h3><p>zsh的自动补全功能各种神奇，可以补齐路径，补齐命令，补齐参数等，再也不用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh/RTFM">RTFM</a>了。按下连按Tap还有二级菜单。<br><img src="/images/Screen%20Shot%202017-07-19%20at%2023.44.06.png" alt="Screen Shot 2017-07-19 at 23.44.06"><br><img src="/images/Screen%20Shot%202017-07-19%20at%2023.42.56.png" alt="Screen Shot 2017-07-19 at 23.42.56"></p>
+<p>kill命令不需<code>ps aux | grep xxx</code>，只需<code>kill xxx</code>然后tap即可，如，这里我需要kill jupyter notebook只需要<code>kill python</code>再tap，非常方便。</p>
+<p><img src="/images/Screen%20Shot%202017-07-19%20at%2023.47.58.png" alt="Screen Shot 2017-07-19 at 23.47.58"></p>
+<p>跳转时，只需<code>..</code>即可不需<code>cd</code>，而<code>...</code>等于<code>../../</code>。</p>
+<p>输入d，将列出当前 session 访问过的所有目录，再按提示的数字即可进入相应目录。</p>
+<p><img src="/images/Screen%20Shot%202017-07-19%20at%2023.52.08.png" alt="Screen Shot 2017-07-19 at 23.52.08"></p>
+<p>查找：zsh 的历史记录跨 session，可以共享。历史记录支持受限查找。比如，输入git，再按向上箭头，会搜索用过的所有 git 命令。搭配<a target="_blank" rel="noopener" href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>更佳哦😎</p>
+<h2 id="工具篇"><a href="#工具篇" class="headerlink" title="工具篇"></a>工具篇</h2><h3 id="MWeb-目前体验最好的markdown编辑器"><a href="#MWeb-目前体验最好的markdown编辑器" class="headerlink" title="MWeb 目前体验最好的markdown编辑器"></a>MWeb 目前体验最好的markdown编辑器</h3><p><a target="_blank" rel="noopener" href="http://zh.mweb.im/">MWeb - 专业的Markdown写作、记笔记、静态博客生成软件 - MWeb</a>，各种markdown编辑器都用过，什么Mou、Macdown等等，都是远不如这个MWeb的。个人最喜欢图片拖入功能，在此处设置好后<br><img src="/images/Screen%20Shot%202017-07-19%20at%2023.58.33.png" alt="Screen Shot 2017-07-19 at 23.58.33"></p>
+<p>之间拖入图片，即可自动写入路径并实时预览（我用的hexo搭的博客）😘<strong>杀手级功能，效率神器！</strong>，除此之外其他的功能也是各种方便，这只需要￥98，还在等什么，赶快行动吧！<br><img src="/images/Screen%20Shot%202017-07-20%20at%2000.00.06.png" alt="Screen Shot 2017-07-20 at 00.00.06"></p>
+<h3 id="Transserra"><a href="#Transserra" class="headerlink" title="Transserra"></a>Transserra</h3><p>iOS App，可以离线下载Coursera课程，杀手功能：<strong>翻译字幕！！！</strong>，看公开课实在是太方便啦！不过需要注意，不要在还有下载任务的时候开启cellular（蜂窝网络）下使用，本人就是这样在月初被烧完了整个月的流量！！！👻， 翻译功能需要付费，不过不贵。<br><img src="/images/IMG_1750.png" alt="IMG_1750"></p>
+<h3 id="Iterm2"><a href="#Iterm2" class="headerlink" title="Iterm2"></a>Iterm2</h3><p><a target="_blank" rel="noopener" href="https://www.iterm2.com/">iTerm2 - macOS Terminal Replacement</a>是一款Mac上体验极佳的终端软件，拥有许多出色特性，如拖动字符串、多Tap广播输入等等<img src="/images/Screen%20Shot%202017-08-10%20at%2012.49.06.png" alt="Screen Shot 2017-08-10 at 12.49.06"><br>按住⌘键:</p>
+<ul>
+<li>可以拖拽选中的字符串；</li>
+<li>点击 url：调用默认浏览器访问该网址；</li>
+<li>点击文件：调用默认程序打开文件；</li>
+<li>如果文件名是filename:42，且默认文本编辑器是 Macvim、Textmate或BBEdit，将会直接打开到这一行；</li>
+<li>点击文件夹：在 finder 中打开该文件夹；</li>
+<li>同时按住option键，可以以矩形选中，类似于vim中的ctrl v操作。</li>
+</ul>
+<p>常用快捷键</p>
+<ul>
+<li>切换 tab：⌘+←, ⌘+→, ⌘+{, ⌘+}。⌘+数字直接定位到该 tab；</li>
+<li>新建 tab：⌘+t；</li>
+<li>顺序切换 pane：⌘+[, ⌘+]；</li>
+<li>按方向切换 pane：⌘+Option+方向键；</li>
+<li>切分屏幕：⌘+d 水平切分，⌘+Shift+d 垂直切分；</li>
+<li>智能查找，支持正则查找：⌘+f。</li>
+</ul>
+<p>iTerm2 可以自动补齐命令，输入若干字符，按⌘+;弹出自动补齐窗口，列出曾经使用过的命令。iTerm2 也可以使用历史记录，按⌘+Shift+h弹出历史粘贴记录窗口，<br><img src="/images/Screen%20Shot%202017-08-21%20at%2011.29.29.png" alt="Screen Shot 2017-08-21 at 11.29.29"></p>
+<p>⌘+Shift+;弹出历史命令记录窗口。⌘+Option+e全屏展示所有的 tab，可以搜索。<br>一个标签页中开的窗口太多，有时候会找不到当前的鼠标，⌘+/找到它。</p>
+<p><a target="_blank" rel="noopener" href="http://iterm2colorschemes.com/">这里</a>收集了大量 iTerm2 的主题，你可以选择使用。我用的是Zenburn。在其 github repo 里下载对应的xxx.itermcolors文件，双击安装使用。<br><img src="/images/15023408306576.jpg"></p>
+<p>更新：</p>
+<ul>
+<li>取消鼠标滚轮浏览历史记录的设置：<a target="_blank" rel="noopener" href="https://gxnotes.com/article/48116.html">如何关闭iTerm2中的“scrolling the history” - 共享笔记</a></li>
+</ul>
+<h3 id="Mosh"><a href="#Mosh" class="headerlink" title="Mosh"></a>Mosh</h3><p> 替代SSH的<a target="_blank" rel="noopener" href="https://mosh.org/">Mosh: the mobile shell</a>，极大降低ssh延迟，并且持续时间极佳。<br> <img src="/images/15023407365562.jpg"></p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="表情符号"><a href="#表情符号" class="headerlink" title="表情符号"></a>表情符号</h3><p>按 Control-Command-空格键。此时会显示“字符显示程序”弹出窗口：<br><img src="/images/15004806123652.jpg"></p>
+<h3 id="Linux-终端快速清行"><a href="#Linux-终端快速清行" class="headerlink" title="Linux 终端快速清行"></a>Linux 终端快速清行</h3><p>有时候我们在终端里打出了一个很长很长的命令，这时候我们需要清空重新输入，有个快捷键就是ctr+p，即可快速清除当前输入。</p>
+<h3 id="Linux-切到上一个目录"><a href="#Linux-切到上一个目录" class="headerlink" title="Linux 切到上一个目录"></a>Linux 切到上一个目录</h3><p><code>cd -</code>即可：<br><img src="/images/Screen%20Shot%202017-07-21%20at%2011.24.53.png" alt="Screen Shot 2017-07-21 at 11.24.53"></p>
+<h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><ul>
+<li>Command(⌘)-Shift-3 对整个屏幕拍摄屏幕快照</li>
+<li>Command(⌘)-Shift-4 对屏幕的某个部分拍摄屏幕快照，可以选择截图区域</li>
+<li>Command(⌘)-Shift-4-空格键 对某个窗口拍摄屏幕快照</li>
+<li>Command(⌘)-Ctrl-Shift-4 对选定区域进行截屏，屏幕截图，文件保存在剪贴板</li>
+</ul>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://frankchen.xyz/2017/07/18/All_kinds_of_TIPS/" data-id="cktiql5d1001j6e8zcwm4ehhi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/04/nginx-reverse-proxy-for-rest-API/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          nginx 反向代理 REST API
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/07/Hive-install-on-Ubuntu/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hive install on Ubuntu，并以Mysql作为Metastore</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS-Store/" rel="tag">.DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNN/" rel="tag">CNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coursera/" rel="tag">Coursera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/" rel="tag">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/" rel="tag">Data Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Funny/" rel="tag">Funny</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hbase/" rel="tag">Hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter-Notebook/" rel="tag">Jupyter Notebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/" rel="tag">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSTM/" rel="tag">LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/" rel="tag">Life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/" rel="tag">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Numpy/" rel="tag">Numpy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/" rel="tag">Old Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/" rel="tag">Pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt5/" rel="tag">PyQt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm/" rel="tag">Pycharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recommendation-System/" rel="tag">Recommendation System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/" rel="tag">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tex/" rel="tag">Tex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Management/" rel="tag">Time Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/" rel="tag">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/" rel="tag">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chicken-soup/" rel="tag">chicken-soup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/re/" rel="tag">re</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scala/" rel="tag">scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/" rel="tag">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time-series/" rel="tag">time series</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/" rel="tag">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
 
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DS-Store/" style="font-size: 10px;">.DS_Store</a> <a href="/tags/Algorithm/" style="font-size: 15.71px;">Algorithm</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CNN/" style="font-size: 10px;">CNN</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/DNN/" style="font-size: 10px;">DNN</a> <a href="/tags/Data-Science/" style="font-size: 17.14px;">Data Science</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/Deep-Learning/" style="font-size: 17.14px;">Deep Learning</a> <a href="/tags/Docker/" style="font-size: 11.43px;">Docker</a> <a href="/tags/Funny/" style="font-size: 14.29px;">Funny</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hadoop/" style="font-size: 11.43px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 11.43px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/Jupyter-Notebook/" style="font-size: 10px;">Jupyter Notebook</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Keras/" style="font-size: 11.43px;">Keras</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/LSTM/" style="font-size: 10px;">LSTM</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/Mac/" style="font-size: 14.29px;">Mac</a> <a href="/tags/Machine-Learning/" style="font-size: 12.86px;">Machine Learning</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Numpy/" style="font-size: 11.43px;">Numpy</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Old-Driver/" style="font-size: 11.43px;">Old Driver</a> <a href="/tags/Pandas/" style="font-size: 12.86px;">Pandas</a> <a href="/tags/PyQt5/" style="font-size: 10px;">PyQt5</a> <a href="/tags/Pycharm/" style="font-size: 10px;">Pycharm</a> <a href="/tags/Python/" style="font-size: 11.43px;">Python</a> <a href="/tags/RNN/" style="font-size: 14.29px;">RNN</a> <a href="/tags/Recommendation-System/" style="font-size: 10px;">Recommendation System</a> <a href="/tags/SQL/" style="font-size: 11.43px;">SQL</a> <a href="/tags/Spark/" style="font-size: 10px;">Spark</a> <a href="/tags/TensorFlow/" style="font-size: 12.86px;">TensorFlow</a> <a href="/tags/Tex/" style="font-size: 10px;">Tex</a> <a href="/tags/Time-Management/" style="font-size: 10px;">Time Management</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/amazon/" style="font-size: 10px;">amazon</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/chicken-soup/" style="font-size: 11.43px;">chicken-soup</a> <a href="/tags/git/" style="font-size: 11.43px;">git</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/re/" style="font-size: 10px;">re</a> <a href="/tags/scala/" style="font-size: 10px;">scala</a> <a href="/tags/spark/" style="font-size: 11.43px;">spark</a> <a href="/tags/time-series/" style="font-size: 10px;">time series</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tutorial/" style="font-size: 12.86px;">tutorial</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 11.43px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/24/amazon-vat-cal/">用python 自动计算亚马逊vat税款</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/20/attachments/">python 发送带各种附件的邮件示例</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/11/Pyqt5-GUI-package-on-Windows/">PyQt5 编写并在Windows上用Cx_Freeze打包GUI程序</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/22/learning-from-donald-trump/">向特朗普同志学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/20/numpy-mask/">Numpy中的mask</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 江南消夏<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>

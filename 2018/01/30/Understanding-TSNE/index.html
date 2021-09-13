@@ -1,38 +1,277 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>理解TSNE算法 | 不正经数据科学家</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="结合论文公式与几个python实现理解t-SNE算法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解TSNE算法">
+<meta property="og:url" content="http://frankchen.xyz/2018/01/30/Understanding-TSNE/index.html">
+<meta property="og:site_name" content="不正经数据科学家">
+<meta property="og:description" content="结合论文公式与几个python实现理解t-SNE算法。">
+<meta property="og:locale">
+<meta property="og:image" content="http://frankchen.xyz/images/15172836269060.jpg">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-30%20at%2015.18.45.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-30%20at%2015.28.56.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-30%20at%2015.33.19.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-30%20at%2015.41.32.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-30%20at%2015.41.43.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-30%20at%2015.48.47.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-30%20at%2015.59.02.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-30%20at%2016.01.17.png">
+<meta property="og:image" content="http://frankchen.xyz/images/Screen%20Shot%202018-01-30%20at%2016.01.38.png">
+<meta property="article:published_time" content="2018-01-30T03:39:39.000Z">
+<meta property="article:modified_time" content="2018-01-30T08:17:42.000Z">
+<meta property="article:author" content="江南消夏">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://frankchen.xyz/images/15172836269060.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="不正经数据科学家" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">不正经数据科学家</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://frankchen.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Understanding-TSNE" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/30/Understanding-TSNE/" class="article-date">
+  <time datetime="2018-01-30T03:39:39.000Z" itemprop="datePublished">2018-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      理解TSNE算法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/15172836269060.jpg"></p>
+<p>结合<a target="_blank" rel="noopener" href="http://lvdmaaten.github.io/publications/papers/JMLR_2008.pdf">论文</a>公式与几个python实现理解t-SNE算法。</p>
+<span id="more"></span>
+
+<p>t-SNE 是一种数据可视化工具，它可以将高维数据降维到2-3维以用于画图，局部相似性被这种embedding所保留。</p>
+<p>t-SNE把原空间的数据点之间的距离转换为高斯分布概率，如果两点在高维空间距离越近，那么这个概率值越大。注意到高斯分布的这个标准差$\sigma_i$ 对每个点都是不同的，这也是算法的创新点之一，因为理论上空间不同位置的点的密度是不同的，条件概率如此计算，</p>
+<p>$$p_{j|i} = \frac{\exp{(-d(\boldsymbol{x}_i, \boldsymbol{x}<em>j) / (2 \sigma_i^2)})}{\sum</em>{i \neq k} \exp{(-d(\boldsymbol{x}_i, \boldsymbol{x}<em>k) / (2 \sigma_i^2)})}, \quad p</em>{i|i} = 0,$$<br><img src="/images/Screen%20Shot%202018-01-30%20at%2015.18.45.png" alt="Screen Shot 2018-01-30 at 15.18.45"></p>
+<p>图中公式是理论方式，实际是先计算条件概率再用下面公式来产生联合分布，</p>
+<p>$$p_{ij} = \frac{p_{j|i} + p_{i|j}}{2N}.$$</p>
+<p>其中 $\sigma_i$ 将自动确定。这个过程可以通过设置算法的困惑性来影响。</p>
+<p>用一个长尾分布(Student-t Distribution，简称为t分布)来表示 embed空间的相似性<br>$$q_{ij} = \frac{(1 + ||\boldsymbol{y}_i - \boldsymbol{y}<em>j)||^2)^{-1}}{\sum</em>{k \neq l} (1 + ||\boldsymbol{y}_k - \boldsymbol{y}_l)||^2)^{-1}},$$<br><img src="/images/Screen%20Shot%202018-01-30%20at%2015.28.56.png" alt="Screen Shot 2018-01-30 at 15.28.56"></p>
+<p>损失函数是两个分布之间的 Kullback-Leibler divergence（KL散度）</p>
+<p>$$KL(P|Q) = \sum_{i \neq j} p_{ij} \log \frac{p_{ij}}{q_{ij}}$$</p>
+<p>而为什么说tsne保留的是局部相似性呢？我们从KL散度的公式出发来解释，<br><img src="/images/Screen%20Shot%202018-01-30%20at%2015.33.19.png" alt="Screen Shot 2018-01-30 at 15.33.19"><br>可以看到，当$p_{ij}$很大而$q_{ij}$很小（高维空间距离近，低维空间距离远）惩罚很大，反之惩罚小（高维空间距离远，低维空间距离近）。</p>
+<p>而为什么高维空间用高斯分布，低维空间用Student-t Distribution呢？</p>
+<p><img src="/images/Screen%20Shot%202018-01-30%20at%2015.41.32.png" alt="Screen Shot 2018-01-30 at 15.41.32"><img src="/images/Screen%20Shot%202018-01-30%20at%2015.41.43.png" alt="Screen Shot 2018-01-30 at 15.41.43"><br>原因就是因为降维是必然要带来信息损失，我们要保存局部信息那么必然要损失全局信息，比如我们要把上面的这个2维空间的三个成直角边的点降维到1维，那么把它们放平就保存了局部信息（左中和中右之间的距离保持不变），但是牺牲了全局信息（左右之间的距离变大了）。而Student-t Distribution就能放大这种密度，如下图（tsne默认t分布自由度为1），t分布相比高斯分布更加长尾。<br><img src="/images/Screen%20Shot%202018-01-30%20at%2015.48.47.png" alt="Screen Shot 2018-01-30 at 15.48.47"><br>梯度计算时有优化技巧，如果按下图中的原公式计算，复杂度为$O(N^2)$ Barnes-Hut 树方法就可以优化到$ O(NlogN)$<br><img src="/images/Screen%20Shot%202018-01-30%20at%2015.59.02.png" alt="Screen Shot 2018-01-30 at 15.59.02"><br><img src="/images/Screen%20Shot%202018-01-30%20at%2016.01.17.png" alt="Screen Shot 2018-01-30 at 16.01.17"><br>原理类似于用上图中ABC三点中心的距离乘以三来代替计算三者各自的距离。<br>那么把用barnes树结构来进行深度优先搜索，分别判断其距离是否大于阈值，分块计算距离，这样复杂度就降低了。<br><img src="/images/Screen%20Shot%202018-01-30%20at%2016.01.38.png" alt="Screen Shot 2018-01-30 at 16.01.38"></p>
+<p>以下是计算损失KL散度的公式，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_kl_divergence</span>(<span class="params">params, P, degrees_of_freedom, n_samples, n_components,</span></span></span><br><span class="line"><span class="params"><span class="function">                   skip_num_points=<span class="number">0</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;t-SNE objective function: gradient of the KL divergence</span></span><br><span class="line"><span class="string">    of p_ijs and q_ijs and the absolute error.&quot;&quot;&quot;</span></span><br><span class="line">    X_embedded = params.reshape(n_samples, n_components)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Q is a heavy-tailed distribution: Student&#x27;s t-distribution</span></span><br><span class="line">    n = pdist(X_embedded, <span class="string">&quot;sqeuclidean&quot;</span>)</span><br><span class="line">    n += <span class="number">1.</span></span><br><span class="line">    n /= degrees_of_freedom</span><br><span class="line">    n **= (degrees_of_freedom + <span class="number">1.0</span>) / -<span class="number">2.0</span></span><br><span class="line">    Q = np.maximum(n / (<span class="number">2.0</span> * np.<span class="built_in">sum</span>(n)), MACHINE_EPSILON)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Optimization trick below: np.dot(x, y) is faster than</span></span><br><span class="line">    <span class="comment"># np.sum(x * y) because it calls BLAS</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Objective: C (Kullback-Leibler divergence of P and Q)</span></span><br><span class="line">    kl_divergence = <span class="number">2.0</span> * np.dot(P, np.log(P / Q))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Gradient: dC/dY</span></span><br><span class="line">    grad = np.ndarray((n_samples, n_components))</span><br><span class="line">    PQd = squareform((P - Q) * n)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(skip_num_points, n_samples):</span><br><span class="line">        np.dot(_ravel(PQd[i]), X_embedded[i] - X_embedded, out=grad[i])</span><br><span class="line">    grad = grad.ravel()</span><br><span class="line">    c = <span class="number">2.0</span> * (degrees_of_freedom + <span class="number">1.0</span>) / degrees_of_freedom</span><br><span class="line">    grad *= c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>用梯度下降（和一些tricks）优化，值得注意的是损失函数非对称，并且不同的训练会导致结果的不同。</p>
+<p>sklearn里对于binary search计算 联合分布下面的(<a target="_blank" rel="noopener" href="https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/manifold/_utils.pyx">_utils._binary_search_perplexity</a>)和Barnes-Hut 树计算梯度(<a target="_blank" rel="noopener" href="https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/manifold/_barnes_hut_tsne.pyx">_barnes_hut_tsne.gradient</a>)都是C实现，有空再来研究。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_joint_probabilities</span>(<span class="params">distances, desired_perplexity, verbose</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Compute joint probabilities p_ij from distances.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># Compute conditional probabilities such that they approximately match</span></span><br><span class="line">    <span class="comment"># the desired perplexity</span></span><br><span class="line">    distances = astype(distances, np.float32, copy=<span class="literal">False</span>)</span><br><span class="line">    </span><br><span class="line">    conditional_P = _utils._binary_search_perplexity(</span><br><span class="line">        distances, <span class="literal">None</span>, desired_perplexity, verbose)</span><br><span class="line">    P = conditional_P + conditional_P.T</span><br><span class="line">    sum_P = np.maximum(np.<span class="built_in">sum</span>(P), MACHINE_EPSILON)</span><br><span class="line">    P = np.maximum(squareform(P) / sum_P, MACHINE_EPSILON)</span><br><span class="line">    <span class="keyword">return</span> P</span><br></pre></td></tr></table></figure>
 
 
-{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_kl_divergence_bh</span>(<span class="params">params, P, neighbors, degrees_of_freedom, n_samples,</span></span></span><br><span class="line"><span class="params"><span class="function">                      n_components, angle=<span class="number">0.5</span>, skip_num_points=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                      verbose=<span class="literal">False</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;t-SNE objective function: KL divergence of p_ijs and q_ijs.&quot;&quot;&quot;</span></span><br><span class="line">    params = astype(params, np.float32, copy=<span class="literal">False</span>)</span><br><span class="line">    X_embedded = params.reshape(n_samples, n_components)</span><br><span class="line">    neighbors = astype(neighbors, np.int64, copy=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(P.shape) == <span class="number">1</span>:</span><br><span class="line">        sP = squareform(P).astype(np.float32)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        sP = P.astype(np.float32)</span><br><span class="line"></span><br><span class="line">    grad = np.zeros(X_embedded.shape, dtype=np.float32)</span><br><span class="line">    error = _barnes_hut_tsne.gradient(sP, X_embedded, neighbors,</span><br><span class="line">                                      grad, angle, n_components, verbose,</span><br><span class="line">                                      dof=degrees_of_freedom)</span><br><span class="line">    c = <span class="number">2.0</span> * (degrees_of_freedom + <span class="number">1.0</span>) / degrees_of_freedom</span><br><span class="line">    grad = grad.ravel()</span><br><span class="line">    grad *= c</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> error, grad</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://lvdmaaten.github.io/tsne/">t-SNE – Laurens van der Maaten</a>这个链接是作者收集的各种tsne变种及相关实现。</p>
 
-{% block page_class %}page-post-detail{% endblock %}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://frankchen.xyz/2018/01/30/Understanding-TSNE/" data-id="cktiql5dw003e6e8zfgj16p9u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
 
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/08/Writing-Graduation-Thesis-in-Tex/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Tex 写（中文）毕业论文全攻略
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/12/Data-Science-Notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Data Science Pipelines |  特征工程中的管道</div>
+    </a>
+  
+</nav>
 
-{% block content %}
+  
+</article>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
-
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS-Store/" rel="tag">.DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNN/" rel="tag">CNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coursera/" rel="tag">Coursera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/" rel="tag">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/" rel="tag">Data Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Funny/" rel="tag">Funny</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hbase/" rel="tag">Hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter-Notebook/" rel="tag">Jupyter Notebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/" rel="tag">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSTM/" rel="tag">LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/" rel="tag">Life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/" rel="tag">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Numpy/" rel="tag">Numpy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/" rel="tag">Old Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/" rel="tag">Pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt5/" rel="tag">PyQt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm/" rel="tag">Pycharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recommendation-System/" rel="tag">Recommendation System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/" rel="tag">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tex/" rel="tag">Tex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Management/" rel="tag">Time Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/" rel="tag">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/" rel="tag">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chicken-soup/" rel="tag">chicken-soup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/re/" rel="tag">re</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scala/" rel="tag">scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/" rel="tag">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time-series/" rel="tag">time series</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/" rel="tag">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
 
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DS-Store/" style="font-size: 10px;">.DS_Store</a> <a href="/tags/Algorithm/" style="font-size: 15.71px;">Algorithm</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CNN/" style="font-size: 10px;">CNN</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/DNN/" style="font-size: 10px;">DNN</a> <a href="/tags/Data-Science/" style="font-size: 17.14px;">Data Science</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/Deep-Learning/" style="font-size: 17.14px;">Deep Learning</a> <a href="/tags/Docker/" style="font-size: 11.43px;">Docker</a> <a href="/tags/Funny/" style="font-size: 14.29px;">Funny</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hadoop/" style="font-size: 11.43px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 11.43px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/Jupyter-Notebook/" style="font-size: 10px;">Jupyter Notebook</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Keras/" style="font-size: 11.43px;">Keras</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/LSTM/" style="font-size: 10px;">LSTM</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/Mac/" style="font-size: 14.29px;">Mac</a> <a href="/tags/Machine-Learning/" style="font-size: 12.86px;">Machine Learning</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Numpy/" style="font-size: 11.43px;">Numpy</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Old-Driver/" style="font-size: 11.43px;">Old Driver</a> <a href="/tags/Pandas/" style="font-size: 12.86px;">Pandas</a> <a href="/tags/PyQt5/" style="font-size: 10px;">PyQt5</a> <a href="/tags/Pycharm/" style="font-size: 10px;">Pycharm</a> <a href="/tags/Python/" style="font-size: 11.43px;">Python</a> <a href="/tags/RNN/" style="font-size: 14.29px;">RNN</a> <a href="/tags/Recommendation-System/" style="font-size: 10px;">Recommendation System</a> <a href="/tags/SQL/" style="font-size: 11.43px;">SQL</a> <a href="/tags/Spark/" style="font-size: 10px;">Spark</a> <a href="/tags/TensorFlow/" style="font-size: 12.86px;">TensorFlow</a> <a href="/tags/Tex/" style="font-size: 10px;">Tex</a> <a href="/tags/Time-Management/" style="font-size: 10px;">Time Management</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/amazon/" style="font-size: 10px;">amazon</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/chicken-soup/" style="font-size: 11.43px;">chicken-soup</a> <a href="/tags/git/" style="font-size: 11.43px;">git</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/re/" style="font-size: 10px;">re</a> <a href="/tags/scala/" style="font-size: 10px;">scala</a> <a href="/tags/spark/" style="font-size: 11.43px;">spark</a> <a href="/tags/time-series/" style="font-size: 10px;">time series</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tutorial/" style="font-size: 12.86px;">tutorial</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 11.43px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/24/amazon-vat-cal/">用python 自动计算亚马逊vat税款</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/20/attachments/">python 发送带各种附件的邮件示例</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/11/Pyqt5-GUI-package-on-Windows/">PyQt5 编写并在Windows上用Cx_Freeze打包GUI程序</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/22/learning-from-donald-trump/">向特朗普同志学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/20/numpy-mask/">Numpy中的mask</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 江南消夏<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
