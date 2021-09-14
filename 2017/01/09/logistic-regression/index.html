@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="不正经数据科学家">
 <meta property="og:description" content="本文有关logistic regression的公式相关的手推，包括假说函数、极大似然估计以及梯度下降算法。">
 <meta property="og:locale">
-<meta property="og:image" content="https://frankchen.xyz/2017/01/09/logistic-regression/%5Cimages%5C2017%5C01%5Coctave-workspace.png">
-<meta property="og:image" content="https://frankchen.xyz/2017/01/09/logistic-regression/%5Cimages%5C2017%5C01%5CUt7vvXnxEead-BJkoDOYOw_f719f2858d78dd66d80c5ec0d8e6b3fa_Logistic_regression_cost_function_negative_class.png">
+<meta property="og:image" content="https://frankchen.xyz/%5Cimages%5C2017%5C01%5Coctave-workspace.png">
+<meta property="og:image" content="https://frankchen.xyz/%5Cimages%5C2017%5C01%5CUt7vvXnxEead-BJkoDOYOw_f719f2858d78dd66d80c5ec0d8e6b3fa_Logistic_regression_cost_function_negative_class.png">
 <meta property="article:published_time" content="2017-01-09T07:56:59.000Z">
 <meta property="article:modified_time" content="2017-01-09T13:25:11.000Z">
 <meta property="article:author" content="frankchen0130">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://frankchen.xyz/2017/01/09/logistic-regression/%5Cimages%5C2017%5C01%5Coctave-workspace.png">
+<meta name="twitter:image" content="https://frankchen.xyz/%5Cimages%5C2017%5C01%5Coctave-workspace.png">
 
 <link rel="canonical" href="https://frankchen.xyz/2017/01/09/logistic-regression/">
 
@@ -236,8 +236,8 @@
 <p>可简写成：</p>
 <p>$$<br>Cost(h_{\theta}(x), y) = -  y \log(h_{\theta}(x)) - (1-y) \log(1 - h_{\theta}(x))<br>$$</p>
 <p>函数图像如下</p>
-<p><img src="%5Cimages%5C2017%5C01%5Coctave-workspace.png"></p>
-<p><img src="%5Cimages%5C2017%5C01%5CUt7vvXnxEead-BJkoDOYOw_f719f2858d78dd66d80c5ec0d8e6b3fa_Logistic_regression_cost_function_negative_class.png"></p>
+<p><img src="/%5Cimages%5C2017%5C01%5Coctave-workspace.png"></p>
+<p><img src="/%5Cimages%5C2017%5C01%5CUt7vvXnxEead-BJkoDOYOw_f719f2858d78dd66d80c5ec0d8e6b3fa_Logistic_regression_cost_function_negative_class.png"></p>
 <p>可以直观的看到，就是概率预测的和标签越接近惩罚越小，反之越大。当然，这里讲的只是二元分类，标签不是0就是1.</p>
 <p>最后，逻辑回归的损失函数为</p>
 <p>$$<br>J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} (y^i \log(h_{\theta}(x^i)) + (1-y^i) \log (1-h_{\theta}(x^i))<br>$$</p>
