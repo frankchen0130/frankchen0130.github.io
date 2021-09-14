@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   
+  
   <title>RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO | 不正经数据科学家</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="本文将用Python实现完整的RNN，并且用Theano来优化。 语言模型我们的目标是使用RNN建立一个语言模型。以下我们举例说明什么是语言模型。例如，你说了一句包括$$m$$个词语的句子，语言模型可以为这句话出现的概率打分： $$P(w_1,\cdots,w_m) &#x3D; \prod_{i&#x3D;1}^m P(w_i \mid w_1,\cdots,w_{i-1})$$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO">
@@ -24,16 +25,21 @@
     <link rel="alternate" href="/atom.xml" title="不正经数据科学家" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
   
   
 <link rel="stylesheet" href="/css/style.css">
 
   
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
+  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -46,6 +52,10 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">不正经数据科学家</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Marketing/Python/Clojure/Game</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -69,11 +79,12 @@
     </div>
   </div>
 </header>
+
       <div class="outer">
-        <section id="main"><article id="post-2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/" class="article-date">
-  <time datetime="2016-06-15T09:54:18.000Z" itemprop="datePublished">2016-06-15</time>
+  <time class="dt-published" datetime="2016-06-15T09:54:18.000Z" itemprop="datePublished">2016-06-15</time>
 </a>
     
   <div class="article-category">
@@ -87,14 +98,14 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
+    <h1 class="p-name article-title" itemprop="headline name">
       RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO
     </h1>
   
 
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="e-content article-entry" itemprop="articleBody">
       
         <p>本文将用Python实现完整的RNN，并且用Theano来优化。</p>
 <h2 id="语言模型"><a href="#语言模型" class="headerlink" title="语言模型"></a>语言模型</h2><p>我们的目标是使用RNN建立一个语言模型。以下我们举例说明什么是语言模型。例如，你说了一句包括$$m$$个词语的句子，语言模型可以为这句话出现的概率打分：</p>
@@ -197,7 +208,8 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://frankchen.xyz/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/" data-id="cktiql5fj00ab6e8z1nqm1hlc" class="article-share-link">Share</a>
+      <a data-url="https://frankchen.xyz/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/" data-id="cktiql5fj00ab6e8z1nqm1hlc" data-title="RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO" class="article-share-link">Share</a>
+      
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RNN/" rel="tag">RNN</a></li></ul>
@@ -227,6 +239,7 @@
 
   
 </article>
+
 
 </section>
         
@@ -309,11 +322,13 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
+      
       &copy; 2021 frankchen0130<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
+
     </div>
     <nav id="mobile-nav">
   
@@ -324,19 +339,21 @@
 </nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
 
 
   
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
 <script src="/js/script.js"></script>
+
+
+
 
 
   </div>

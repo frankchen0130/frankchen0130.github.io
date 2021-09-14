@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   
+  
   <title>避免 spark 提交 上传自带 jar包解决办法 | 不正经数据科学家</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="1217&#x2F;09&#x2F;01 15:38:59 INFO yarn.Client: Uploading resource file:&#x2F;usr&#x2F;local&#x2F;spark-2.1.1-bin-without-hadoop&#x2F;spark-46d1bd70-b346-4027-bce4-9540f4b6035a&#x2F;__spark_libs__4051900056689219834.zip -&gt; hdfs:&#x2F;&#x2F;ww">
 <meta property="og:type" content="article">
 <meta property="og:title" content="避免 spark 提交 上传自带 jar包解决办法">
@@ -24,16 +25,21 @@
     <link rel="alternate" href="/atom.xml" title="不正经数据科学家" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
   
   
 <link rel="stylesheet" href="/css/style.css">
 
   
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
+  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -46,6 +52,10 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">不正经数据科学家</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Marketing/Python/Clojure/Game</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -69,11 +79,12 @@
     </div>
   </div>
 </header>
+
       <div class="outer">
-        <section id="main"><article id="post-spark-submit-avoid-upload-jars" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-spark-submit-avoid-upload-jars" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2017/09/01/spark-submit-avoid-upload-jars/" class="article-date">
-  <time datetime="2017-09-01T08:15:04.000Z" itemprop="datePublished">2017-09-01</time>
+  <time class="dt-published" datetime="2017-09-01T08:15:04.000Z" itemprop="datePublished">2017-09-01</time>
 </a>
     
   </div>
@@ -83,14 +94,14 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
+    <h1 class="p-name article-title" itemprop="headline name">
       避免 spark 提交 上传自带 jar包解决办法
     </h1>
   
 
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="e-content article-entry" itemprop="articleBody">
       
         <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">17/09/01 15:38:59 INFO yarn.Client: Uploading resource file:/usr/<span class="built_in">local</span>/spark-2.1.1-bin-without-hadoop/spark-46d1bd70-b346-4027-bce4-9540f4b6035a/__spark_libs__4051900056689219834.zip -&gt; hdfs://wwj.shise.com:9000/user/hadoop/.sparkStaging/application_1504148698505_0021/__spark_libs__4051900056689219834.zip</span><br><span class="line">17/09/01 15:41:45 INFO yarn.Client: Uploading resource file:/Users/frank/IdeaProjects/simpleApp/target/scala-2.11/simpleApp-assembly-1.0.jar -&gt; hdfs://wwj.shise.com:9000/user/hadoop/.sparkStaging/application_1504148698505_0021/simpleApp-assembly-1.0.jar</span><br></pre></td></tr></table></figure>
 <p>可以看到，上传花费约3分钟，这段时间是为了将$SPARK_HOME/jar下的所有jar包上传到yarn，实际上可以完全避免。<br><img src="/images/Screen%20Shot%202017-09-01%20at%2016.16.35.png" alt="Screen Shot 2017-09-01 at 16.16.35"></p>
@@ -103,7 +114,8 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://frankchen.xyz/2017/09/01/spark-submit-avoid-upload-jars/" data-id="cktiql5ey00676e8zbc9hhi97" class="article-share-link">Share</a>
+      <a data-url="https://frankchen.xyz/2017/09/01/spark-submit-avoid-upload-jars/" data-id="cktiql5ey00676e8zbc9hhi97" data-title="避免 spark 提交 上传自带 jar包解决办法" class="article-share-link">Share</a>
+      
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spark/" rel="tag">spark</a></li></ul>
@@ -133,6 +145,7 @@
 
   
 </article>
+
 
 </section>
         
@@ -215,11 +228,13 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
+      
       &copy; 2021 frankchen0130<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
+
     </div>
     <nav id="mobile-nav">
   
@@ -230,19 +245,21 @@
 </nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
 
 
   
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
 <script src="/js/script.js"></script>
+
+
+
 
 
   </div>

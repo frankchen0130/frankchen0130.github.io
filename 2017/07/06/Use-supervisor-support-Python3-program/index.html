@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   
+  
   <title>使用supervisor支持Python3程序 | 不正经数据科学家</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Supervisor是python2写就的一款强大的运维工具，众所周知，目前Supervisor还不支持python3，那么怎么利用Supervisor监控python3程序呢？本文主要讲述Supervisor在Ubuntu下的安装部署以及上述问题的解决。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用supervisor支持Python3程序">
@@ -22,16 +23,21 @@
     <link rel="alternate" href="/atom.xml" title="不正经数据科学家" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
   
   
 <link rel="stylesheet" href="/css/style.css">
 
   
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
+  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -44,6 +50,10 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">不正经数据科学家</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Marketing/Python/Clojure/Game</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -67,11 +77,12 @@
     </div>
   </div>
 </header>
+
       <div class="outer">
-        <section id="main"><article id="post-Use-supervisor-support-Python3-program" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Use-supervisor-support-Python3-program" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2017/07/06/Use-supervisor-support-Python3-program/" class="article-date">
-  <time datetime="2017-07-06T03:23:07.000Z" itemprop="datePublished">2017-07-06</time>
+  <time class="dt-published" datetime="2017-07-06T03:23:07.000Z" itemprop="datePublished">2017-07-06</time>
 </a>
     
   </div>
@@ -81,14 +92,14 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
+    <h1 class="p-name article-title" itemprop="headline name">
       使用supervisor支持Python3程序
     </h1>
   
 
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="e-content article-entry" itemprop="articleBody">
       
         <p><a target="_blank" rel="noopener" href="http://supervisord.org/index.html">Supervisor</a>是python2写就的一款强大的运维工具，众所周知，<br>目前Supervisor还不支持python3，那么怎么利用Supervisor监控python3程序呢？本文主要讲述Supervisor在<br>Ubuntu下的安装部署以及上述问题的解决。</p>
 <span id="more"></span>
@@ -120,7 +131,8 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://frankchen.xyz/2017/07/06/Use-supervisor-support-Python3-program/" data-id="cktiql5du00356e8z1cd54iv0" class="article-share-link">Share</a>
+      <a data-url="https://frankchen.xyz/2017/07/06/Use-supervisor-support-Python3-program/" data-id="cktiql5du00356e8z1cd54iv0" data-title="使用supervisor支持Python3程序" class="article-share-link">Share</a>
+      
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
@@ -150,6 +162,7 @@
 
   
 </article>
+
 
 </section>
         
@@ -232,11 +245,13 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
+      
       &copy; 2021 frankchen0130<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
+
     </div>
     <nav id="mobile-nav">
   
@@ -247,19 +262,21 @@
 </nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
 
 
   
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
 <script src="/js/script.js"></script>
+
+
+
 
 
   </div>
