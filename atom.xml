@@ -3,11 +3,11 @@
   <title>不正经数据科学家</title>
   
   <subtitle>Marketing/Python/Clojure/Game</subtitle>
-  <link href="http://frankchen.xyz/atom.xml" rel="self"/>
+  <link href="https://frankchen.xyz/atom.xml" rel="self"/>
   
-  <link href="http://frankchen.xyz/"/>
-  <updated>2019-10-24T09:43:35.920Z</updated>
-  <id>http://frankchen.xyz/</id>
+  <link href="https://frankchen.xyz/"/>
+  <updated>2021-09-13T23:57:50.397Z</updated>
+  <id>https://frankchen.xyz/</id>
   
   <author>
     <name>frankchen0130</name>
@@ -17,9 +17,28 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>近两年经历，有感</title>
+    <link href="https://frankchen.xyz/2021/09/14/recent-two-years/"/>
+    <id>https://frankchen.xyz/2021/09/14/recent-two-years/</id>
+    <published>2021-09-13T23:57:41.000Z</published>
+    <updated>2021-09-13T23:57:50.397Z</updated>
+    
+    <content type="html"><![CDATA[<p> 近两年的一些经历和感悟。</p><span id="more"></span><p><img src="../images/15349380614206.jpg"></p><h2 id="特朗普著作"><a href="#特朗普著作" class="headerlink" title="特朗普著作"></a>特朗普著作</h2><p>做生意的艺术（Trump: The Art of the Deal）正在看<br>永不放弃：特朗普自述（Never Give Up: How I Turned My Biggest Challenges into Success）看完</p><h2 id="特朗普综艺（飞黄腾达）"><a href="#特朗普综艺（飞黄腾达）" class="headerlink" title="特朗普综艺（飞黄腾达）"></a>特朗普综艺（飞黄腾达）</h2><p>未完待续</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt; 近两年的一些经历和感悟。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="chicken-soup" scheme="https://frankchen.xyz/tags/chicken-soup/"/>
+    
+  </entry>
+  
+  <entry>
     <title>用python 自动计算亚马逊vat税款</title>
-    <link href="http://frankchen.xyz/2019/10/24/amazon-vat-cal/"/>
-    <id>http://frankchen.xyz/2019/10/24/amazon-vat-cal/</id>
+    <link href="https://frankchen.xyz/2019/10/24/amazon-vat-cal/"/>
+    <id>https://frankchen.xyz/2019/10/24/amazon-vat-cal/</id>
     <published>2019-10-24T09:17:01.000Z</published>
     <updated>2019-10-24T09:43:35.920Z</updated>
     
@@ -31,20 +50,20 @@
     
     
     
-    <category term="Deep Learning" scheme="http://frankchen.xyz/tags/Deep-Learning/"/>
+    <category term="Deep Learning" scheme="https://frankchen.xyz/tags/Deep-Learning/"/>
     
-    <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    <category term="python" scheme="https://frankchen.xyz/tags/python/"/>
     
-    <category term="amazon" scheme="http://frankchen.xyz/tags/amazon/"/>
+    <category term="amazon" scheme="https://frankchen.xyz/tags/amazon/"/>
     
-    <category term="pandas" scheme="http://frankchen.xyz/tags/pandas/"/>
+    <category term="pandas" scheme="https://frankchen.xyz/tags/pandas/"/>
     
   </entry>
   
   <entry>
     <title>python 发送带各种附件的邮件示例</title>
-    <link href="http://frankchen.xyz/2018/12/20/attachments/"/>
-    <id>http://frankchen.xyz/2018/12/20/attachments/</id>
+    <link href="https://frankchen.xyz/2018/12/20/attachments/"/>
+    <id>https://frankchen.xyz/2018/12/20/attachments/</id>
     <published>2018-12-20T12:47:39.000Z</published>
     <updated>2018-12-20T13:04:56.555Z</updated>
     
@@ -56,14 +75,14 @@
     
     
     
-    <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    <category term="python" scheme="https://frankchen.xyz/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>PyQt5 编写并在Windows上用Cx_Freeze打包GUI程序</title>
-    <link href="http://frankchen.xyz/2018/09/11/Pyqt5-GUI-package-on-Windows/"/>
-    <id>http://frankchen.xyz/2018/09/11/Pyqt5-GUI-package-on-Windows/</id>
+    <link href="https://frankchen.xyz/2018/09/11/Pyqt5-GUI-package-on-Windows/"/>
+    <id>https://frankchen.xyz/2018/09/11/Pyqt5-GUI-package-on-Windows/</id>
     <published>2018-09-11T14:51:05.000Z</published>
     <updated>2018-09-11T15:08:59.888Z</updated>
     
@@ -75,14 +94,14 @@
     
     
     
-    <category term="PyQt5" scheme="http://frankchen.xyz/tags/PyQt5/"/>
+    <category term="PyQt5" scheme="https://frankchen.xyz/tags/PyQt5/"/>
     
   </entry>
   
   <entry>
     <title>向特朗普同志学习</title>
-    <link href="http://frankchen.xyz/2018/08/22/learning-from-donald-trump/"/>
-    <id>http://frankchen.xyz/2018/08/22/learning-from-donald-trump/</id>
+    <link href="https://frankchen.xyz/2018/08/22/learning-from-donald-trump/"/>
+    <id>https://frankchen.xyz/2018/08/22/learning-from-donald-trump/</id>
     <published>2018-08-22T07:13:41.000Z</published>
     <updated>2021-09-13T15:17:07.768Z</updated>
     
@@ -94,14 +113,14 @@
     
     
     
-    <category term="chicken-soup" scheme="http://frankchen.xyz/tags/chicken-soup/"/>
+    <category term="chicken-soup" scheme="https://frankchen.xyz/tags/chicken-soup/"/>
     
   </entry>
   
   <entry>
     <title>Numpy中的mask</title>
-    <link href="http://frankchen.xyz/2018/07/20/numpy-mask/"/>
-    <id>http://frankchen.xyz/2018/07/20/numpy-mask/</id>
+    <link href="https://frankchen.xyz/2018/07/20/numpy-mask/"/>
+    <id>https://frankchen.xyz/2018/07/20/numpy-mask/</id>
     <published>2018-07-20T08:48:48.000Z</published>
     <updated>2018-07-20T09:03:43.000Z</updated>
     
@@ -113,14 +132,14 @@
     
     
     
-    <category term="Numpy" scheme="http://frankchen.xyz/tags/Numpy/"/>
+    <category term="Numpy" scheme="https://frankchen.xyz/tags/Numpy/"/>
     
   </entry>
   
   <entry>
     <title>为什么我每天早上5:30起床</title>
-    <link href="http://frankchen.xyz/2018/07/19/Why-I-Wake-Up-at-5-30-am-Every-Morning-And-What-You-Will-Gain-From-Doing-It-Too/"/>
-    <id>http://frankchen.xyz/2018/07/19/Why-I-Wake-Up-at-5-30-am-Every-Morning-And-What-You-Will-Gain-From-Doing-It-Too/</id>
+    <link href="https://frankchen.xyz/2018/07/19/Why-I-Wake-Up-at-5-30-am-Every-Morning-And-What-You-Will-Gain-From-Doing-It-Too/"/>
+    <id>https://frankchen.xyz/2018/07/19/Why-I-Wake-Up-at-5-30-am-Every-Morning-And-What-You-Will-Gain-From-Doing-It-Too/</id>
     <published>2018-07-19T00:52:23.000Z</published>
     <updated>2018-07-19T01:31:24.000Z</updated>
     
@@ -134,14 +153,14 @@
     
     
     
-    <category term="chicken-soup" scheme="http://frankchen.xyz/tags/chicken-soup/"/>
+    <category term="chicken-soup" scheme="https://frankchen.xyz/tags/chicken-soup/"/>
     
   </entry>
   
   <entry>
     <title>Datacamp Git 笔记</title>
-    <link href="http://frankchen.xyz/2018/07/13/Datacamp-Git-Nones/"/>
-    <id>http://frankchen.xyz/2018/07/13/Datacamp-Git-Nones/</id>
+    <link href="https://frankchen.xyz/2018/07/13/Datacamp-Git-Nones/"/>
+    <id>https://frankchen.xyz/2018/07/13/Datacamp-Git-Nones/</id>
     <published>2018-07-13T09:14:07.000Z</published>
     <updated>2018-07-19T03:35:59.000Z</updated>
     
@@ -153,14 +172,14 @@
     
     
     
-    <category term="git" scheme="http://frankchen.xyz/tags/git/"/>
+    <category term="git" scheme="https://frankchen.xyz/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>在Linux上重新映射Win，Ctrl和Alt键</title>
-    <link href="http://frankchen.xyz/2018/07/12/remap-win-ctrl-and-alt-keys-on-linux/"/>
-    <id>http://frankchen.xyz/2018/07/12/remap-win-ctrl-and-alt-keys-on-linux/</id>
+    <link href="https://frankchen.xyz/2018/07/12/remap-win-ctrl-and-alt-keys-on-linux/"/>
+    <id>https://frankchen.xyz/2018/07/12/remap-win-ctrl-and-alt-keys-on-linux/</id>
     <published>2018-07-12T08:43:42.000Z</published>
     <updated>2018-07-12T08:54:35.000Z</updated>
     
@@ -172,14 +191,14 @@
     
     
     
-    <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    <category term="Linux" scheme="https://frankchen.xyz/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>Mac 双开 ss 方法</title>
-    <link href="http://frankchen.xyz/2018/05/31/dual-ss-on-mac/"/>
-    <id>http://frankchen.xyz/2018/05/31/dual-ss-on-mac/</id>
+    <link href="https://frankchen.xyz/2018/05/31/dual-ss-on-mac/"/>
+    <id>https://frankchen.xyz/2018/05/31/dual-ss-on-mac/</id>
     <published>2018-05-31T11:24:17.000Z</published>
     <updated>2018-07-12T09:25:56.000Z</updated>
     
@@ -191,14 +210,14 @@
     
     
     
-    <category term="Mac" scheme="http://frankchen.xyz/tags/Mac/"/>
+    <category term="Mac" scheme="https://frankchen.xyz/tags/Mac/"/>
     
   </entry>
   
   <entry>
     <title>从 Hive 获取数据到本地的方法 🦄</title>
-    <link href="http://frankchen.xyz/2018/05/03/get-table-from-spark/"/>
-    <id>http://frankchen.xyz/2018/05/03/get-table-from-spark/</id>
+    <link href="https://frankchen.xyz/2018/05/03/get-table-from-spark/"/>
+    <id>https://frankchen.xyz/2018/05/03/get-table-from-spark/</id>
     <published>2018-05-03T12:51:14.000Z</published>
     <updated>2018-08-21T09:34:02.661Z</updated>
     
@@ -210,14 +229,14 @@
     
     
     
-    <category term="spark" scheme="http://frankchen.xyz/tags/spark/"/>
+    <category term="spark" scheme="https://frankchen.xyz/tags/spark/"/>
     
   </entry>
   
   <entry>
     <title>Mac 通过 socks5 代理 连接 ssh 的方法🏆</title>
-    <link href="http://frankchen.xyz/2018/05/03/mac-ssh-through-socks5-proxy/"/>
-    <id>http://frankchen.xyz/2018/05/03/mac-ssh-through-socks5-proxy/</id>
+    <link href="https://frankchen.xyz/2018/05/03/mac-ssh-through-socks5-proxy/"/>
+    <id>https://frankchen.xyz/2018/05/03/mac-ssh-through-socks5-proxy/</id>
     <published>2018-05-03T09:08:10.000Z</published>
     <updated>2018-05-03T09:15:18.000Z</updated>
     
@@ -232,14 +251,14 @@
     
     
     
-    <category term="Mac" scheme="http://frankchen.xyz/tags/Mac/"/>
+    <category term="Mac" scheme="https://frankchen.xyz/tags/Mac/"/>
     
   </entry>
   
   <entry>
     <title>moving averge 滑动平均</title>
-    <link href="http://frankchen.xyz/2018/04/25/moving-averge/"/>
-    <id>http://frankchen.xyz/2018/04/25/moving-averge/</id>
+    <link href="https://frankchen.xyz/2018/04/25/moving-averge/"/>
+    <id>https://frankchen.xyz/2018/04/25/moving-averge/</id>
     <published>2018-04-25T14:58:46.000Z</published>
     <updated>2018-04-26T03:49:59.000Z</updated>
     
@@ -251,14 +270,14 @@
     
     
     
-    <category term="time series" scheme="http://frankchen.xyz/tags/time-series/"/>
+    <category term="time series" scheme="https://frankchen.xyz/tags/time-series/"/>
     
   </entry>
   
   <entry>
     <title>keras 中模型的保存及重用</title>
-    <link href="http://frankchen.xyz/2018/04/19/keras-reuse-model/"/>
-    <id>http://frankchen.xyz/2018/04/19/keras-reuse-model/</id>
+    <link href="https://frankchen.xyz/2018/04/19/keras-reuse-model/"/>
+    <id>https://frankchen.xyz/2018/04/19/keras-reuse-model/</id>
     <published>2018-04-19T08:50:00.000Z</published>
     <updated>2018-04-25T11:57:18.000Z</updated>
     
@@ -270,14 +289,14 @@
     
     
     
-    <category term="Keras" scheme="http://frankchen.xyz/tags/Keras/"/>
+    <category term="Keras" scheme="https://frankchen.xyz/tags/Keras/"/>
     
   </entry>
   
   <entry>
     <title>理解一维卷积</title>
-    <link href="http://frankchen.xyz/2018/04/17/conv1d-in-keras/"/>
-    <id>http://frankchen.xyz/2018/04/17/conv1d-in-keras/</id>
+    <link href="https://frankchen.xyz/2018/04/17/conv1d-in-keras/"/>
+    <id>https://frankchen.xyz/2018/04/17/conv1d-in-keras/</id>
     <published>2018-04-17T07:46:36.000Z</published>
     <updated>2018-04-19T08:50:30.000Z</updated>
     
@@ -289,14 +308,14 @@
     
     
     
-    <category term="Deep Learning" scheme="http://frankchen.xyz/tags/Deep-Learning/"/>
+    <category term="Deep Learning" scheme="https://frankchen.xyz/tags/Deep-Learning/"/>
     
   </entry>
   
   <entry>
     <title>处理大数据集的建议</title>
-    <link href="http://frankchen.xyz/2018/04/10/handle-big-datasets/"/>
-    <id>http://frankchen.xyz/2018/04/10/handle-big-datasets/</id>
+    <link href="https://frankchen.xyz/2018/04/10/handle-big-datasets/"/>
+    <id>https://frankchen.xyz/2018/04/10/handle-big-datasets/</id>
     <published>2018-04-10T07:07:34.000Z</published>
     <updated>2018-04-10T08:15:51.000Z</updated>
     
@@ -308,18 +327,18 @@
     
     
     
-    <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    <category term="python" scheme="https://frankchen.xyz/tags/python/"/>
     
-    <category term="Data Science" scheme="http://frankchen.xyz/tags/Data-Science/"/>
+    <category term="Data Science" scheme="https://frankchen.xyz/tags/Data-Science/"/>
     
-    <category term="Kaggle" scheme="http://frankchen.xyz/tags/Kaggle/"/>
+    <category term="Kaggle" scheme="https://frankchen.xyz/tags/Kaggle/"/>
     
   </entry>
   
   <entry>
     <title>机器学习之 sklearn中的pipeline</title>
-    <link href="http://frankchen.xyz/2018/04/08/pipeline-in-machine-learning/"/>
-    <id>http://frankchen.xyz/2018/04/08/pipeline-in-machine-learning/</id>
+    <link href="https://frankchen.xyz/2018/04/08/pipeline-in-machine-learning/"/>
+    <id>https://frankchen.xyz/2018/04/08/pipeline-in-machine-learning/</id>
     <published>2018-04-08T08:13:42.000Z</published>
     <updated>2018-04-11T07:25:07.000Z</updated>
     
@@ -331,14 +350,14 @@
     
     
     
-    <category term="Data Science" scheme="http://frankchen.xyz/tags/Data-Science/"/>
+    <category term="Data Science" scheme="https://frankchen.xyz/tags/Data-Science/"/>
     
   </entry>
   
   <entry>
     <title>VPS搭建私人BT离线服务器</title>
-    <link href="http://frankchen.xyz/2018/04/08/private-BT-server/"/>
-    <id>http://frankchen.xyz/2018/04/08/private-BT-server/</id>
+    <link href="https://frankchen.xyz/2018/04/08/private-BT-server/"/>
+    <id>https://frankchen.xyz/2018/04/08/private-BT-server/</id>
     <published>2018-04-08T03:13:51.000Z</published>
     <updated>2018-04-08T03:47:02.000Z</updated>
     
@@ -350,16 +369,16 @@
     
     
     
-    <category term="Linux" scheme="http://frankchen.xyz/tags/Linux/"/>
+    <category term="Linux" scheme="https://frankchen.xyz/tags/Linux/"/>
     
-    <category term="Old Driver" scheme="http://frankchen.xyz/tags/Old-Driver/"/>
+    <category term="Old Driver" scheme="https://frankchen.xyz/tags/Old-Driver/"/>
     
   </entry>
   
   <entry>
     <title>numpy 中增加channel的方法</title>
-    <link href="http://frankchen.xyz/2018/03/29/numpy-add-channel/"/>
-    <id>http://frankchen.xyz/2018/03/29/numpy-add-channel/</id>
+    <link href="https://frankchen.xyz/2018/03/29/numpy-add-channel/"/>
+    <id>https://frankchen.xyz/2018/03/29/numpy-add-channel/</id>
     <published>2018-03-29T12:15:30.000Z</published>
     <updated>2018-03-29T12:48:49.000Z</updated>
     
@@ -371,14 +390,14 @@
     
     
     
-    <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    <category term="python" scheme="https://frankchen.xyz/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>python 正则实用例子</title>
-    <link href="http://frankchen.xyz/2018/02/24/re-basic-of-python/"/>
-    <id>http://frankchen.xyz/2018/02/24/re-basic-of-python/</id>
+    <link href="https://frankchen.xyz/2018/02/24/re-basic-of-python/"/>
+    <id>https://frankchen.xyz/2018/02/24/re-basic-of-python/</id>
     <published>2018-02-24T10:52:00.000Z</published>
     <updated>2018-02-24T11:09:45.000Z</updated>
     
@@ -391,29 +410,9 @@
     
     
     
-    <category term="python" scheme="http://frankchen.xyz/tags/python/"/>
+    <category term="python" scheme="https://frankchen.xyz/tags/python/"/>
     
-    <category term="re" scheme="http://frankchen.xyz/tags/re/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tex 写（中文）毕业论文全攻略</title>
-    <link href="http://frankchen.xyz/2018/02/08/Writing-Graduation-Thesis-in-Tex/"/>
-    <id>http://frankchen.xyz/2018/02/08/Writing-Graduation-Thesis-in-Tex/</id>
-    <published>2018-02-07T17:36:41.000Z</published>
-    <updated>2018-02-07T18:11:41.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/images/15180252634406.png"></p><p>用 Tex 写（中文）毕业论文全攻略，高效、便捷、优雅！</p><span id="more"></span><p>这里我们并不存在鄙视链，说什么Tex 优于 Word之类的，其实Word作为极其复杂的文本处理软件，我相信Tex能做到的，Word一定有其实现方式，只不过大部分人都只会用到Word的一小部分功能，相比Word，Tex解决方案更加便捷优雅，比如自动排号（章节、表格、参考文献的编号），全局设置的字体、间距格式等等。相比Word事无巨细的维护修改成本，Tex 的解决方案更加programmer，即软件开发，后期主要工作是迭代维护，若能在前期即考虑这点，后期能省下极多的脑细胞和精力。好了不说多，发车吧~</p><h2 id="总论"><a href="#总论" class="headerlink" title="总论"></a>总论</h2><p> 总体来说，是用上交Tex模板结合Atom编辑器在本地编辑<a href="https://atom.io/">Atom</a>（这个用什么编辑器随意）以及Dropbox同步到云端<a href="https://www.dropbox.com/h">Dropbox</a>以及云端上在sharelatex服务器上即时编译所见即所得。</p><h2 id="工具使用方法"><a href="#工具使用方法" class="headerlink" title="工具使用方法"></a>工具使用方法</h2><p>首先我们在sharelatex官网<a href="https://www.sharelatex.com/project">Your Projects - ShareLaTeX, Online LaTeX Editor</a>注册账号，免费账号即可，如果需要多人协作可以用邀请小号的方式让自己增加权限（sharelatex新建账号不验证邮箱。。所以你懂的），接下来在上交模板<a href="https://github.com/sjtug/SJTUThesis">sjtug/SJTUThesis: 上海交通大学 XeLaTeX 学位论文模板 A XeLaTeX template for Shanghai Jiao Tong University (SJTU) thesis.</a>处点击此处添加最新版模板到我们的sharelatex项目，<br><img src="/images/Screen%20Shot%202018-02-08%20at%2001.58.25.png" alt="Screen Shot 2018-02-08 at 01.58.25"></p><p><img src="/images/Screen%20Shot%202018-02-08%20at%2001.58.56.png" alt="Screen Shot 2018-02-08 at 01.58.56"></p><p>如图，再点进去，先别急着修改，我们先设置个网盘同步，Dropbox需要梯子，在sharelatex的账号设置处链接到Dropbox，<br><img src="/images/Screen%20Shot%202018-02-08%20at%2002.00.57.png" alt="Screen Shot 2018-02-08 at 02.00.57"></p><p>同时Dropbox安装一个桌面版，需要设置代理，<br><img src="/images/Screen%20Shot%202018-02-08%20at%2002.02.29.png" alt="Screen Shot 2018-02-08 at 02.02.29"><br>如图，我们使用ss作为代理。</p><p>接下来安装Atom编辑器，在插件里装一个如下插件，这里我们需要它只是为了注释这一个功能，因为我们不需要本地编译。<br><img src="/images/Screen%20Shot%202018-02-08%20at%2002.03.38.png" alt="Screen Shot 2018-02-08 at 02.03.38"></p><p>接下来我们就可以在本地用Atom编辑Dropbox网盘在本地的Tex项目，只要我们保存，Dropbox就会同步到sharelatex，如果开启自动编译云端就会展示当下编译的PDF效果，如图<br><img src="/images/Screen%20Shot%202018-02-08%20at%2002.07.11.png" alt="Screen Shot 2018-02-08 at 02.07.11"></p><h2 id="Tex模板使用说明"><a href="#Tex模板使用说明" class="headerlink" title="Tex模板使用说明"></a>Tex模板使用说明</h2><p>详见此处<a href="http://sjtug.org/SJTUThesis/README.pdf">README.pdf</a>，主要思路就是把各章、摘要、参考文献等分为不同的tex文件，图表等资源放在一处文件夹内，逐个引用，有全局的的设置文件，编译时将这些零件拼接为pdf，后续会添加更多心得。</p><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ol><li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">MathJax basic tutorial and quick reference - Mathematics Meta Stack Exchange</a>：一个常用Latex公式符号的全集</li><li>如果上面没找到，可以试试这里，手写识别latex字符<a href="http://detexify.kirelabs.org/classify.html">Detexify LaTeX handwritten symbol recognition</a></li></ol>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/15180252634406.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;用 Tex 写（中文）毕业论文全攻略，高效、便捷、优雅！&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Tex" scheme="http://frankchen.xyz/tags/Tex/"/>
+    <category term="re" scheme="https://frankchen.xyz/tags/re/"/>
     
   </entry>
   
