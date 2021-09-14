@@ -737,13 +737,6 @@
   </url>
   
   <url>
-    <loc>https://frankchen.xyz/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/</loc>
-    
-    <lastmod>2016-11-11</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://frankchen.xyz/2016/09/07/2016-09-07-pdf-click-return/</loc>
     
     <lastmod>2016-11-11</lastmod>
@@ -752,6 +745,13 @@
   
   <url>
     <loc>https://frankchen.xyz/2016/06/22/2016-06-22-vim-lian-ji-gong-er/</loc>
+    
+    <lastmod>2016-11-11</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://frankchen.xyz/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/</loc>
     
     <lastmod>2016-11-11</lastmod>
     
@@ -788,42 +788,7 @@
   </url>
   
   <url>
-    <loc>https://frankchen.xyz/tags/LDA/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://frankchen.xyz/tags/tutorial/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://frankchen.xyz/tags/Linux/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://frankchen.xyz/tags/RNN/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://frankchen.xyz/tags/Deep-Learning/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://frankchen.xyz/tags/LSTM/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -837,7 +802,35 @@
   </url>
   
   <url>
-    <loc>https://frankchen.xyz/tags/python/</loc>
+    <loc>https://frankchen.xyz/tags/Deep-Learning/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://frankchen.xyz/tags/LDA/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://frankchen.xyz/tags/RNN/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://frankchen.xyz/tags/LSTM/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://frankchen.xyz/tags/Linux/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -845,6 +838,13 @@
   
   <url>
     <loc>https://frankchen.xyz/tags/tips/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://frankchen.xyz/tags/python/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -893,13 +893,6 @@
   </url>
   
   <url>
-    <loc>https://frankchen.xyz/tags/VPN/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://frankchen.xyz/tags/Hive/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
@@ -921,6 +914,13 @@
   </url>
   
   <url>
+    <loc>https://frankchen.xyz/tags/VPN/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://frankchen.xyz/tags/Java/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
@@ -935,7 +935,7 @@
   </url>
   
   <url>
-    <loc>https://frankchen.xyz/tags/PyQt5/</loc>
+    <loc>https://frankchen.xyz/tags/Python/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -963,7 +963,14 @@
   </url>
   
   <url>
-    <loc>https://frankchen.xyz/tags/Python/</loc>
+    <loc>https://frankchen.xyz/tags/PyQt5/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://frankchen.xyz/tags/Jupyter-Notebook/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -978,20 +985,6 @@
   
   <url>
     <loc>https://frankchen.xyz/tags/Spark/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://frankchen.xyz/tags/Jupyter-Notebook/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://frankchen.xyz/tags/%E8%BF%90%E7%BB%B4/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1019,6 +1012,13 @@
   </url>
   
   <url>
+    <loc>https://frankchen.xyz/tags/%E8%BF%90%E7%BB%B4/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://frankchen.xyz/tags/Old-Driver/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
@@ -1026,21 +1026,14 @@
   </url>
   
   <url>
+    <loc>https://frankchen.xyz/tags/DS-Store/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://frankchen.xyz/tags/chicken-soup/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://frankchen.xyz/tags/amazon/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://frankchen.xyz/tags/pandas/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1061,7 +1054,14 @@
   </url>
   
   <url>
-    <loc>https://frankchen.xyz/tags/DS-Store/</loc>
+    <loc>https://frankchen.xyz/tags/amazon/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://frankchen.xyz/tags/pandas/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1069,6 +1069,20 @@
   
   <url>
     <loc>https://frankchen.xyz/tags/spark/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://frankchen.xyz/tags/Go/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://frankchen.xyz/tags/Hbase/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1083,20 +1097,6 @@
   
   <url>
     <loc>https://frankchen.xyz/tags/Kaggle/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://frankchen.xyz/tags/Hbase/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://frankchen.xyz/tags/Go/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1131,13 +1131,6 @@
   </url>
   
   <url>
-    <loc>https://frankchen.xyz/tags/Funny/</loc>
-    <lastmod>2021-09-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://frankchen.xyz/tags/nginx/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
@@ -1152,7 +1145,7 @@
   </url>
   
   <url>
-    <loc>https://frankchen.xyz/tags/re/</loc>
+    <loc>https://frankchen.xyz/tags/Funny/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1160,6 +1153,13 @@
   
   <url>
     <loc>https://frankchen.xyz/tags/Pycharm/</loc>
+    <lastmod>2021-09-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://frankchen.xyz/tags/re/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1189,14 +1189,14 @@
 
   
   <url>
-    <loc>https://frankchen.xyz/categories/note/</loc>
+    <loc>https://frankchen.xyz/categories/tutorial/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://frankchen.xyz/categories/tutorial/</loc>
+    <loc>https://frankchen.xyz/categories/note/</loc>
     <lastmod>2021-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
