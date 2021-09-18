@@ -164,6 +164,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://frankchen.xyz/2017/11/08/pycharm-pro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="frankchen0130">
+      <meta itemprop="description" content="Marketing/Python/Clojure/Game">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不正经数据科学家">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/11/08/pycharm-pro/" class="post-title-link" itemprop="url">Pycharm Pro</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-11-08 18:44:13" itemprop="dateCreated datePublished" datetime="2017-11-08T18:44:13+08:00">2017-11-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-04-18 16:06:08" itemprop="dateModified" datetime="2018-04-18T16:06:08+08:00">2018-04-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/images/15101362178541.jpg"><br>Pycharm，只为提高python开发者的生产力！</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/11/08/pycharm-pro/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://frankchen.xyz/2017/11/08/go-hbase/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -788,68 +860,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://frankchen.xyz/2017/08/15/server-certificate-verification-failed-solution/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="frankchen0130">
-      <meta itemprop="description" content="Marketing/Python/Clojure/Game">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不正经数据科学家">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/08/15/server-certificate-verification-failed-solution/" class="post-title-link" itemprop="url">server certificate verification failed solution</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2017-08-15 18:23:03 / Modified: 18:26:14" itemprop="dateCreated datePublished" datetime="2017-08-15T18:23:03+08:00">2017-08-15</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none 的正确解决方法。</p>
-<p>出现此错误时，问题出在证书的缺失，不可用如<code>export GIT_SSL_NO_VERIFY=1</code>方法去解除安全限制，正确方法是下载证书，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hostname=XXX</span><br><span class="line">port=443</span><br><span class="line">trust_cert_file_location=`curl-config --ca`</span><br><span class="line">sudo bash -c <span class="string">&quot;echo -n | openssl s_client -showcerts -connect <span class="variable">$hostname</span>:<span class="variable">$port</span> 2&gt;/dev/null  | sed -ne &#x27;/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p&#x27; &gt;&gt; <span class="variable">$trust_cert_file_location</span>&quot;</span></span><br></pre></td></tr></table></figure>
-<p>若不起作用，可用IP代替真实hostname。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -919,7 +929,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-count">105</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -930,7 +940,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

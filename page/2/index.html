@@ -164,6 +164,67 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://frankchen.xyz/2018/05/03/mac-ssh-through-socks5-proxy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="frankchen0130">
+      <meta itemprop="description" content="Marketing/Python/Clojure/Game">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不正经数据科学家">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/03/mac-ssh-through-socks5-proxy/" class="post-title-link" itemprop="url">Mac 通过 socks5 代理 连接 ssh 的方法🏆</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2018-05-03 17:08:10 / Modified: 17:15:18" itemprop="dateCreated datePublished" datetime="2018-05-03T17:08:10+08:00">2018-05-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>经过一番痛苦的折腾，我才发现**socks,http代理等使用的是TCP或UDP协议, 而ping命令则是ICMP协议, 所以proxychains4对ping命令无效.**，最终又折腾过tsocks等和proxychains一样德行的以后，最终在万能的Stack Overflow找到<a target="_blank" rel="noopener" href="https://serverfault.com/questions/315605/ssh-through-a-socks-proxy-client-openssh-os-x">答案</a>：即通过NetCat (nc)连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.ssh/config</span><br><span class="line"><span class="comment"># 添加以下内容</span></span><br><span class="line">Host 52.* <span class="comment"># 这里可以通配也可以指定IP</span></span><br><span class="line">    ProxyCommand nc -X 5 -x 127.0.0.1:1079 %h %p</span><br><span class="line">    <span class="comment"># &quot;5&quot; 是 SOCKS 5, &quot;1079&quot; 是本地socks端口</span></span><br></pre></td></tr></table></figure>
+<p>之后直接使用<code>ssh</code>命令连接即可😎😂</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://frankchen.xyz/2018/04/25/moving-averge/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -780,73 +841,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://frankchen.xyz/2018/01/30/Understanding-TSNE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="frankchen0130">
-      <meta itemprop="description" content="Marketing/Python/Clojure/Game">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不正经数据科学家">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/01/30/Understanding-TSNE/" class="post-title-link" itemprop="url">理解TSNE算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2018-01-30 11:39:39 / Modified: 16:17:42" itemprop="dateCreated datePublished" datetime="2018-01-30T11:39:39+08:00">2018-01-30</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/images/15172836269060.jpg"></p>
-<p>结合<a target="_blank" rel="noopener" href="http://lvdmaaten.github.io/publications/papers/JMLR_2008.pdf">论文</a>公式与几个python实现理解t-SNE算法。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/01/30/Understanding-TSNE/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -916,7 +910,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-count">105</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -927,7 +921,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
