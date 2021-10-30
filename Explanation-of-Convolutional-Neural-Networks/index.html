@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Explanation of Convolutional Neural Networks | 不正经的社长</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="卷积神经网络(Convolutional Neural Network)，简称CNN，是机器视觉领域的主要神经网络模型。本文主要对CNN做一个简明全面的介绍。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Explanation of Convolutional Neural Networks">
+<meta property="og:url" content="https://frankchen0130.github.io/Explanation-of-Convolutional-Neural-Networks/index.html">
+<meta property="og:site_name" content="不正经的社长">
+<meta property="og:description" content="卷积神经网络(Convolutional Neural Network)，简称CNN，是机器视觉领域的主要神经网络模型。本文主要对CNN做一个简明全面的介绍。">
+<meta property="og:locale">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/screen-shot-2016-08-07-at-4-59-29-pm.png">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/8-gif.gif">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/screen-shot-2016-07-24-at-11-25-13-pm.png">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/screen-shot-2016-07-24-at-11-25-24-pm.png">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/convolution_schematic.gif">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/111.png">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/screen-shot-2016-08-05-at-11-03-00-pm.png">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/giphy.gif">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/screen-shot-2016-08-07-at-6-18-19-pm.png">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/screen-shot-2016-08-10-at-3-38-39-am.png">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/screen-shot-2016-08-07-at-6-19-37-pm.png">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/screen-shot-2016-08-07-at-6-11-53-pm.png">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/screen-shot-2016-08-06-at-12-34-02-am.png">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/screen-shot-2016-08-07-at-9-15-21-pm.png">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/screen-shot-2016-08-10-at-12-58-30-pm.png">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2017/02/conv_all.png">
+<meta property="article:published_time" content="2017-02-16T06:56:16.000Z">
+<meta property="article:modified_time" content="2017-02-17T12:16:54.000Z">
+<meta property="article:author" content="frankchen0130">
+<meta property="article:tag" content="Deep Learning">
+<meta property="article:tag" content="CNN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://frankchen0130.github.io/images/2017/02/screen-shot-2016-08-07-at-4-59-29-pm.png">
+  
+    <link rel="alternate" href="/rss2.xml" title="不正经的社长" type="application/rss+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">不正经的社长</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Affiliate Marketing/Python/Clojure/Game/Resource</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://frankchen0130.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Explanation-of-Convolutional-Neural-Networks" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Explanation-of-Convolutional-Neural-Networks/" class="article-date">
+  <time class="dt-published" datetime="2017-02-16T06:56:16.000Z" itemprop="datePublished">2017-02-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Explanation of Convolutional Neural Networks
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>卷积神经网络(Convolutional Neural Network)，简称CNN，是机器视觉领域的主要神经网络模型。本文主要对CNN做一个简明全面的介绍。</p>
+<span id="more"></span>
+
+<p><img src="/images/2017/02/screen-shot-2016-08-07-at-4-59-29-pm.png"></p>
+<p>上图是90年代的LeNet的结构，当时主要用于字符的识别，当前有许多的新的CNN结构，但是大体上都是采用了与LeNet类似的主要思想。本文主要以LeNet为例来做讲解。</p>
+<p>LeNet的主要组成部分：</p>
+<ul>
+<li>卷积层</li>
+<li>非线性变换(ReLU)</li>
+<li>池化层或者下采样</li>
+<li>分类(全连接)</li>
+</ul>
+<h2 id="图片就是矩阵"><a href="#图片就是矩阵" class="headerlink" title="图片就是矩阵"></a>图片就是矩阵</h2><p>在讲卷积与卷积层之前，我们首先介绍一下图片的相关的概念。本质上，每张图片都是像素值的矩阵。</p>
+<p><img src="/images/2017/02/8-gif.gif"></p>
+<p>彩色图片具有三个<strong>通道</strong>，所谓的RGB图片，也就是在红色、绿色和蓝色三个颜色的矩阵，每个像素值都是[0,255]的值。灰度图片只有一个通道，所以只有一个矩阵。</p>
+<h2 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h2><p>CNN由卷积而得名，那么什么是卷积呢？先来看图片</p>
+<p>首先我们有如下的5*5的矩阵，它的每个像素值都由0或者1组成</p>
+<p><img src="/images/2017/02/screen-shot-2016-07-24-at-11-25-13-pm.png"></p>
+<p>再来一张如下的3*3的矩阵</p>
+<p><img src="/images/2017/02/screen-shot-2016-07-24-at-11-25-24-pm.png"></p>
+<p>用这个3<em>3的矩阵对以上5</em>5的矩阵进行卷积，可以表示为如下的过程，</p>
+<p><img src="/images/2017/02/convolution_schematic.gif"></p>
+<p>上述过程可以描述成，3<em>3的矩阵首先定位到5</em>5的矩阵的左上角，两者覆盖重叠到的部位进行点乘再求和，得到的值是新的矩阵的左上角第一个元素，接着3<em>3矩阵向右移动一个像素，也叫一个stride，进行下一次卷积操作，知道遍历完毕，得到一个新的矩阵。在CNN中，这个3</em>3的矩阵叫做<em>滤波器</em>或者<em>卷积核</em>，得到的新的矩阵叫做<em>特征映射</em>。可以说，卷积核的作用就是从原图片中发现特征。所以对于同一张图片，我们可以用不同的卷积核去操作，得到完全不同的特征映射。考虑如下的图片，</p>
+<p><img src="/images/2017/02/111.png"></p>
+<p>我们用不同的卷积核进行操作，得到的结果如下，</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-05-at-11-03-00-pm.png"></p>
+<p>另一个例子如下，</p>
+<p><img src="/images/2017/02/giphy.gif"></p>
+<p>如图，两个非常相似但是方向不同的卷积核对同一张图片进行卷积，得到的不同的结果。在训练过程中，CNN会自动学习到这些卷积核的参数，但是我们还有一些超参数需要手动确定，如卷积核个数、大小以及网络的结构等等。而特征映射的大小由三个参数来确定，</p>
+<ul>
+<li><em>Depth</em>：也就是卷积核的个数，我们用几个卷积核进行操作，那么就可以得到多少个重叠着的特征映射，也就是特征映射的深度。</li>
+<li><em>Stride</em>：卷积时每步移动的大小，容易得知，步子越大，那么卷积的次数也就越小，那么特征映射矩阵也就越小。</li>
+<li><em>Zero-Padding</em>：指的是是否在原图像周围补上零再进行卷积，，这样也是控制特征映射大小的方法，带有Padding和不带有Padding的卷积分别叫做宽卷积和窄卷积。</li>
+</ul>
+<h2 id="非线性映射-ReLU"><a href="#非线性映射-ReLU" class="headerlink" title="非线性映射(ReLU)"></a>非线性映射(ReLU)</h2><p>ReLU函数是什么？初一看它的全称Rectified Linear Unit好像特别高大上，其实它的函数形式非常简单，就是</p>
+<p>$$output = max(0, input)$$</p>
+<p>也就是将原输入的负值全部替换为0。顺便一说，深度学习业界充斥着这种现象，如多层感知机与神经网络、甚至是Deep Learning这个称号本身都是这样改过来的“好名字”，不得不说，起个好名字对于成功也是非常主要的啊！</p>
+<p>话说回来，用ReLU处理过的图片的效果如下：</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-07-at-6-18-19-pm.png"></p>
+<p>除ReLU之外，还有sigmoid函数和tanh双曲函数等非线性变换，但是ReLU被证明表现更加，所以也就更常用。</p>
+<h2 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h2><p>池化(pooling)也就是信号处理领域的下采样Downsampling，其作用是对特征映射保留主要信息的同时进行降维。根据计算方式的不同可以有Max、Average、Sum等多种pooling方式。</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-10-at-3-38-39-am.png"></p>
+<p>以上展示了使用2*2的窗口对经过卷积和非线性映射的矩阵的Max pooling操作。这里的stride是2个像素，对每个区域采用最大值。在网络中，pooling是对每个特征映射单独操作的，于是我们会得到相同数目的输出。</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-07-at-6-19-37-pm.png"></p>
+<p>下图展示了pooling操作，</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-07-at-6-11-53-pm.png"></p>
+<p>pooling操作显著地减小了输入的空间大小，除此之外，</p>
+<ul>
+<li>使得输入更加小，更加容易计算</li>
+<li>减小网络的复杂程度，有利于对抗过拟合</li>
+<li>使得网络对于扰动等噪音更加鲁棒，因为微小的扰动对于pooling结果没有影响</li>
+<li>有益于物体探测的准确性</li>
+</ul>
+<h2 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h2><p>经过两轮的卷积-ReLU-pooling操作，接下来就是标准的全连接神经网络结构了，所谓全连接，也就是上一层的每个神经元都与下一层的每个神经元有连接，倒数第二层的输出是每个类的概率，再经过一个softmax层进行归一化处理，我们得到了最终的输出：和为1的每个分类的概率。</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-06-at-12-34-02-am.png"></p>
+<h2 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h2><p>上面把CNN拆开了讲，接下来我们把各个组件合起来看一下CNN的训练过程。比如我们的输入是一张船的图片，而输出则是属于船的概率是1，如[0,0,1,0]。</p>
+<p><img src="/images/2017/02/screen-shot-2016-08-07-at-9-15-21-pm.png"></p>
+<p>那么训练过程如下</p>
+<ul>
+<li>步骤1：以随机值初始化卷积核和权重参数</li>
+<li>步骤2：网络得到输入，进行前向的计算（卷积、ReLU和pooling）得到最终各分类的概率，假设是[0.1, 0.3, 0.2, 0.4]，因为参数都是随机的，那么结果肯定也是随机的</li>
+<li>步骤3：利用平方误差计算错误的损失函数大小</li>
+<li>步骤4：反向传播计算error对于各个参数的梯度，对参数进行更新，以减小错误程度<ul>
+<li>注意到我们只更新卷积核的参数以及全连接的权重，其余的参数已经在训练之前指定</li>
+<li>在训练过程中，网络逐渐“学习”到如何正确分类图片，这是通过逐渐修改更新参数得到的</li>
+</ul>
+</li>
+<li>步骤5：对于所有训练集内的图片重复步骤2-4</li>
+</ul>
+<h2 id="CNN的可视化"><a href="#CNN的可视化" class="headerlink" title="CNN的可视化"></a>CNN的可视化</h2><p><img src="/images/2017/02/screen-shot-2016-08-10-at-12-58-30-pm.png"></p>
+<p>CNN在人脸识别内的应用，如上图所示。对于CNN的原理，结合上图我们可以进行如下的解释：CNN的卷积核由下到上是逐渐探测复杂的特征的，比如第一层卷积核的特征映射是简单的明暗线段纹理，第二层就可以得到曲线等复杂一些的特征，到了第三层探测的特征已经是人脸的形状轮廓了，后面的层对于前面层的特征进行组合变化而得到更加复杂的组合。这就类似单层感知机连异或函数都无法表示，多层感知机组合起来也就是神经网络却可以拟合任意复杂的函数的原理一样。</p>
+<p><a target="_blank" rel="noopener" href="http://scs.ryerson.ca/~aharley/vis/conv/flat.html">这里</a>有一个很棒的关于CNN原理的展示demo，如图</p>
+<p><img src="/images/2017/02/conv_all.png"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/">An Intuitive Explanation of Convolutional Neural Networks</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://frankchen0130.github.io/Explanation-of-Convolutional-Neural-Networks/" data-id="ckve8ga2m0022q98z6p7j1vs2" data-title="Explanation of Convolutional Neural Networks" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/" rel="tag">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Docker-Windows-Speed-up/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在Windows上安装并加速拉取Docker镜像的方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Install-Kaggle-Docker-on-Mac/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mac上安装Kaggle Docker 镜像的方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS-Store/" rel="tag">.DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNN/" rel="tag">CNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coursera/" rel="tag">Coursera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/" rel="tag">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/" rel="tag">Data Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Funny/" rel="tag">Funny</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hbase/" rel="tag">Hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter-Notebook/" rel="tag">Jupyter Notebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/" rel="tag">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSTM/" rel="tag">LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/" rel="tag">Life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/" rel="tag">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Numpy/" rel="tag">Numpy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/" rel="tag">Old Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/" rel="tag">Pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt5/" rel="tag">PyQt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm/" rel="tag">Pycharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recommendation-System/" rel="tag">Recommendation System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/" rel="tag">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tex/" rel="tag">Tex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Management/" rel="tag">Time Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/" rel="tag">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/" rel="tag">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chicken-soup/" rel="tag">chicken-soup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pt/" rel="tag">pt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/re/" rel="tag">re</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resources-Telegram/" rel="tag">resources Telegram</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scala/" rel="tag">scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/" rel="tag">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time-series/" rel="tag">time series</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/" rel="tag">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DS-Store/" style="font-size: 10px;">.DS_Store</a> <a href="/tags/Algorithm/" style="font-size: 15.71px;">Algorithm</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CNN/" style="font-size: 10px;">CNN</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/DNN/" style="font-size: 10px;">DNN</a> <a href="/tags/Data-Science/" style="font-size: 17.14px;">Data Science</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/Deep-Learning/" style="font-size: 17.14px;">Deep Learning</a> <a href="/tags/Docker/" style="font-size: 11.43px;">Docker</a> <a href="/tags/Funny/" style="font-size: 14.29px;">Funny</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hadoop/" style="font-size: 11.43px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 11.43px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/Jupyter-Notebook/" style="font-size: 10px;">Jupyter Notebook</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Keras/" style="font-size: 11.43px;">Keras</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/LSTM/" style="font-size: 10px;">LSTM</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/Mac/" style="font-size: 14.29px;">Mac</a> <a href="/tags/Machine-Learning/" style="font-size: 12.86px;">Machine Learning</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Numpy/" style="font-size: 11.43px;">Numpy</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Old-Driver/" style="font-size: 11.43px;">Old Driver</a> <a href="/tags/Pandas/" style="font-size: 12.86px;">Pandas</a> <a href="/tags/PyQt5/" style="font-size: 10px;">PyQt5</a> <a href="/tags/Pycharm/" style="font-size: 10px;">Pycharm</a> <a href="/tags/Python/" style="font-size: 11.43px;">Python</a> <a href="/tags/RNN/" style="font-size: 14.29px;">RNN</a> <a href="/tags/Recommendation-System/" style="font-size: 10px;">Recommendation System</a> <a href="/tags/SQL/" style="font-size: 11.43px;">SQL</a> <a href="/tags/Spark/" style="font-size: 10px;">Spark</a> <a href="/tags/TensorFlow/" style="font-size: 12.86px;">TensorFlow</a> <a href="/tags/Tex/" style="font-size: 10px;">Tex</a> <a href="/tags/Time-Management/" style="font-size: 10px;">Time Management</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/amazon/" style="font-size: 10px;">amazon</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/chicken-soup/" style="font-size: 10px;">chicken-soup</a> <a href="/tags/git/" style="font-size: 11.43px;">git</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/pt/" style="font-size: 10px;">pt</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/re/" style="font-size: 10px;">re</a> <a href="/tags/resources-Telegram/" style="font-size: 10px;">resources Telegram</a> <a href="/tags/scala/" style="font-size: 10px;">scala</a> <a href="/tags/spark/" style="font-size: 11.43px;">spark</a> <a href="/tags/time-series/" style="font-size: 10px;">time series</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tutorial/" style="font-size: 12.86px;">tutorial</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 11.43px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Recommend-some-useful-telegram-channels/">Recommend some useful telegram channels 推荐一些有用的 telegram 频道</a>
+          </li>
+        
+          <li>
+            <a href="/2021-09-18-pt-invite/">发放4个pt站的邀请码：海胆之家、HDcity</a>
+          </li>
+        
+          <li>
+            <a href="/amazon-vat-cal/">用python 自动计算亚马逊vat税款</a>
+          </li>
+        
+          <li>
+            <a href="/attachments/">python 发送带各种附件的邮件示例</a>
+          </li>
+        
+          <li>
+            <a href="/Pyqt5-GUI-package-on-Windows/">PyQt5 编写并在Windows上用Cx_Freeze打包GUI程序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 frankchen0130<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

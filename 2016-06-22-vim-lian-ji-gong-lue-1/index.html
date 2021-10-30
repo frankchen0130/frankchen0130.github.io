@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Vim 练级攻略一 | 不正经的社长</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="你想以最快的速度学习人类史上最好的文本编辑器VIM吗？你先得懂得如何在VIM幸存下来，然后一点一点地学习各种戏法。 Vim: the Six Billion Dollar editor  Better, Stronger, Faster.  学习Vim并且其会成为你最后一个使用的文本编辑器。没有比这个更好的文本编辑器了，非常地难学，但是却不可思议地好用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim 练级攻略一">
+<meta property="og:url" content="https://frankchen0130.github.io/2016-06-22-vim-lian-ji-gong-lue-1/index.html">
+<meta property="og:site_name" content="不正经的社长">
+<meta property="og:description" content="你想以最快的速度学习人类史上最好的文本编辑器VIM吗？你先得懂得如何在VIM幸存下来，然后一点一点地学习各种戏法。 Vim: the Six Billion Dollar editor  Better, Stronger, Faster.  学习Vim并且其会成为你最后一个使用的文本编辑器。没有比这个更好的文本编辑器了，非常地难学，但是却不可思议地好用。">
+<meta property="og:locale">
+<meta property="og:image" content="https://frankchen0130.github.io/images/2016/06/uber_leet_use_vim.jpg">
+<meta property="article:published_time" content="2016-06-22T02:50:35.000Z">
+<meta property="article:modified_time" content="2016-11-11T13:50:33.000Z">
+<meta property="article:author" content="frankchen0130">
+<meta property="article:tag" content="tutorial">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://frankchen0130.github.io/images/2016/06/uber_leet_use_vim.jpg">
+  
+    <link rel="alternate" href="/rss2.xml" title="不正经的社长" type="application/rss+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">不正经的社长</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Affiliate Marketing/Python/Clojure/Game/Resource</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://frankchen0130.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2016-06-22-vim-lian-ji-gong-lue-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016-06-22-vim-lian-ji-gong-lue-1/" class="article-date">
+  <time class="dt-published" datetime="2016-06-22T02:50:35.000Z" itemprop="datePublished">2016-06-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Vim/">Vim</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Vim 练级攻略一
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/2016/06/uber_leet_use_vim.jpg"></p>
+<p>你想以最快的速度学习人类史上最好的文本编辑器VIM吗？你先得懂得如何在VIM幸存下来，然后一点一点地学习各种戏法。</p>
+<p><a target="_blank" rel="noopener" href="http://www.vim.org/">Vim</a>: the Six Billion Dollar editor</p>
+<blockquote>
+<p>Better, Stronger, Faster.</p>
+</blockquote>
+<p>学习<a target="_blank" rel="noopener" href="http://www.vim.org/">Vim</a>并且其会成为你最后一个使用的文本编辑器。没有比这个更好的文本编辑器了，非常地难学，但是却不可思议地好用。</p>
+<span id="more"></span>
+<p>我建议下面这四个步骤：</p>
+<ol>
+<li>存活</li>
+<li>感觉良好</li>
+<li>觉得更好，更强，更快</li>
+<li>使用VIM的超能力</li>
+</ol>
+<p>当你走完这篇文章，你会成为一个vim的 superstar。</p>
+<p>在开始学习以前，我需要给你一些警告：</p>
+<ol>
+<li>学习vim在开始时是痛苦的。</li>
+<li>需要时间</li>
+<li>需要不断地练习，就像你学习一个乐器一样。</li>
+<li>不要期望你能在3天内把vim练得比别的编辑器更有效率。</li>
+</ol>
+<p>事实上，你需要2周时间的苦练，而不是3天。</p>
+<p>##第一级 – 存活</p>
+<ol>
+<li>安装<a target="_blank" rel="noopener" href="http://www.vim.org/">Vim</a></li>
+<li>启动Vim</li>
+<li>什么也不干！请先阅读</li>
+</ol>
+<p>当你安装好一个编辑器后，你一定会想在其中输入点什么东西，然后看看这个编辑器是什么样子。但vim不是这样的，请按照下面的命令操作：</p>
+<ul>
+<li>启动Vim后，vim在 Normal 模式下。</li>
+<li>让我们进入 Insert 模式，请按下键 i 。(你会看到vim左下角有一个–insert–字样，表示，你可以以插入的方式输入了）</li>
+<li>此时，你可以输入文本了，就像你用“记事本”一样。</li>
+<li>如果你想返回 Normal 模式，请按 ESC 键。</li>
+</ul>
+<p>现在，你知道如何在 Insert 和 Normal 模式下切换了。下面是一些命令，可以让你在 Normal 模式下幸存下来（箭头不代表按键）：</p>
+<blockquote>
+<ul>
+<li>i → Insert 模式，按 ESC 回到 Normal 模式.</li>
+</ul>
+</blockquote>
+<ul>
+<li>x → 删当前光标所在的一个字符。</li>
+<li>:wq → 存盘 + 退出 (:w 存盘, :q 退出)   （陈皓注：:w 后可以跟文件名）</li>
+<li>dd → 删除当前行，并把删除的行存到剪贴板里</li>
+<li>p → 粘贴剪贴板</li>
+</ul>
+<p>推荐:</p>
+<blockquote>
+<ul>
+<li>hjkl (强例推荐使用其移动光标，但不必需) →你也可以使用光标键 (←↓↑→). 注: j 就像下箭头。</li>
+</ul>
+</blockquote>
+<ul>
+<li>:help <command> → 显示相关命令的帮助。你也可以就输入 :help 而不跟命令。（注：退出帮助需要输入:q）</li>
+</ul>
+<p>你能在vim幸存下来只需要上述的那5个命令，你就可以编辑文本了，你一定要把这些命令练成一种下意识的状态。于是你就可以开始进阶到第二级了。</p>
+<p>当是，在你进入第二级时，需要再说一下 Normal 模式。在一般的编辑器下，当你需要copy一段文字的时候，你需要使用 Ctrl 键，比如：Ctrl-C。也就是说，Ctrl键就好像功能键一样，当你按下了功能键Ctrl后，C就不在是C了，而且就是一个命令或是一个快键键了，在VIM的Normal模式下，所有的键就是功能键了。这个你需要知道。</p>
+<p>标记:</p>
+<ul>
+<li>下面的文字中，如果是 Ctrl-λ我会写成 &lt;C-λ&gt;.</li>
+<li>以 : 开始的命令你需要输入 <enter>回车，例如 — 如果我写成 :q 也就是说你要输入 :q<enter>.</li>
+</ul>
+<p>##第二级 – 感觉良好</p>
+<p>上面的那些命令只能让你存活下来，现在是时候学习一些更多的命令了，下面是我的建议：（注：所有的命令都需要在Normal模式下使用，如果你不知道现在在什么样的模式，你就狂按几次ESC键）</p>
+<ol>
+<li><p>各种插入模式</p>
+<blockquote>
+<ul>
+<li>a → 在光标后插入</li>
+</ul>
+</blockquote>
+<ul>
+<li>o → 在当前行后插入一个新行</li>
+<li>O → 在当前行前插入一个新行</li>
+<li>cw → 替换从光标所在位置后到一个单词结尾的字符</li>
+</ul>
+</li>
+<li><p>简单的移动光标</p>
+<blockquote>
+<ul>
+<li>0 → 数字零，到行头</li>
+</ul>
+</blockquote>
+<ul>
+<li>^ → 到本行第一个不是blank字符的位置（所谓blank字符就是空格，tab，换行，回车等）</li>
+<li>$ → 到本行行尾</li>
+<li>g_ → 到本行最后一个不是blank字符的位置。</li>
+<li>/pattern → 搜索 pattern 的字符串（注：如果搜索出多个匹配，可按n键到下一个）</li>
+</ul>
+</li>
+<li><p>拷贝/粘贴 （注：p/P都可以，p是表示在当前位置之后，P表示在当前位置之前）</p>
+<blockquote>
+<ul>
+<li>P → 粘贴</li>
+</ul>
+</blockquote>
+<ul>
+<li>yy → 拷贝当前行当行于 ddP</li>
+</ul>
+</li>
+<li><p>Undo/Redo</p>
+<blockquote>
+<ul>
+<li>u → undo</li>
+</ul>
+</blockquote>
+<ul>
+<li><code>&lt;C-r&gt;</code> → redo</li>
+</ul>
+</li>
+<li><p>打开/保存/退出/改变文件(Buffer)</p>
+<blockquote>
+<ul>
+<li>:e &lt;path/to/file&gt; → 打开一个文件</li>
+</ul>
+</blockquote>
+<ul>
+<li>:w → 存盘</li>
+<li>:saveas &lt;path/to/file&gt; → 另存为 &lt;path/to/file&gt;</li>
+<li>:x， ZZ 或 :wq → 保存并退出 (:x 表示仅在需要时保存，ZZ不需要输入冒号并回车)</li>
+<li>:q! → 退出不保存 :qa! 强行退出所有的正在编辑的文件，就算别的文件有更改。</li>
+<li>:bn 和 :bp → 你可以同时打开很多文件，使用这两个命令来切换下一个或上一个文件。（注：我喜欢使用:n到下一个文件）</li>
+</ul>
+</li>
+</ol>
+<p>花点时间熟悉一下上面的命令，一旦你掌握他们了，你就几乎可以干其它编辑器都能干的事了。但是到现在为止，你还是觉得使用vim还是有点笨拙，不过没关系，你可以进阶到第三级了。<a href="http://frankchen0130.github.io/2016/06/22/vim-lian-ji-gong-er/">下一篇</a>我们将介绍第三个和第四个阶段。</p>
+<p>(注：图片中的U83R 1337指的是德语中的uber leet，合起来就是Super Cool的意思，所以图片中文字指的是Super cool use Vim!)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://frankchen0130.github.io/2016-06-22-vim-lian-ji-gong-lue-1/" data-id="ckve8ga27000qq98z3plzfnrv" data-title="Vim 练级攻略一" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016-06-22-vim-lian-ji-gong-er/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Vim 练级攻略二
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DS-Store/" rel="tag">.DS_Store</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CNN/" rel="tag">CNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coursera/" rel="tag">Coursera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNN/" rel="tag">DNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Science/" rel="tag">Data Science</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Funny/" rel="tag">Funny</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hbase/" rel="tag">Hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter-Notebook/" rel="tag">Jupyter Notebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/" rel="tag">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSTM/" rel="tag">LSTM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/" rel="tag">Life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Note/" rel="tag">Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Numpy/" rel="tag">Numpy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Old-Driver/" rel="tag">Old Driver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/" rel="tag">Pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt5/" rel="tag">PyQt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm/" rel="tag">Pycharm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RNN/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recommendation-System/" rel="tag">Recommendation System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/" rel="tag">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tex/" rel="tag">Tex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Management/" rel="tag">Time Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/" rel="tag">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/" rel="tag">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chicken-soup/" rel="tag">chicken-soup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pt/" rel="tag">pt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/re/" rel="tag">re</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resources-Telegram/" rel="tag">resources Telegram</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scala/" rel="tag">scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/" rel="tag">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time-series/" rel="tag">time series</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/" rel="tag">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/" rel="tag">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DS-Store/" style="font-size: 10px;">.DS_Store</a> <a href="/tags/Algorithm/" style="font-size: 15.71px;">Algorithm</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CNN/" style="font-size: 10px;">CNN</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/DNN/" style="font-size: 10px;">DNN</a> <a href="/tags/Data-Science/" style="font-size: 17.14px;">Data Science</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/Deep-Learning/" style="font-size: 17.14px;">Deep Learning</a> <a href="/tags/Docker/" style="font-size: 11.43px;">Docker</a> <a href="/tags/Funny/" style="font-size: 14.29px;">Funny</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hadoop/" style="font-size: 11.43px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 11.43px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Java/" style="font-size: 12.86px;">Java</a> <a href="/tags/Jupyter-Notebook/" style="font-size: 10px;">Jupyter Notebook</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Keras/" style="font-size: 11.43px;">Keras</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/LSTM/" style="font-size: 10px;">LSTM</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 18.57px;">Linux</a> <a href="/tags/Mac/" style="font-size: 14.29px;">Mac</a> <a href="/tags/Machine-Learning/" style="font-size: 12.86px;">Machine Learning</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Note/" style="font-size: 10px;">Note</a> <a href="/tags/Numpy/" style="font-size: 11.43px;">Numpy</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Old-Driver/" style="font-size: 11.43px;">Old Driver</a> <a href="/tags/Pandas/" style="font-size: 12.86px;">Pandas</a> <a href="/tags/PyQt5/" style="font-size: 10px;">PyQt5</a> <a href="/tags/Pycharm/" style="font-size: 10px;">Pycharm</a> <a href="/tags/Python/" style="font-size: 11.43px;">Python</a> <a href="/tags/RNN/" style="font-size: 14.29px;">RNN</a> <a href="/tags/Recommendation-System/" style="font-size: 10px;">Recommendation System</a> <a href="/tags/SQL/" style="font-size: 11.43px;">SQL</a> <a href="/tags/Spark/" style="font-size: 10px;">Spark</a> <a href="/tags/TensorFlow/" style="font-size: 12.86px;">TensorFlow</a> <a href="/tags/Tex/" style="font-size: 10px;">Tex</a> <a href="/tags/Time-Management/" style="font-size: 10px;">Time Management</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/amazon/" style="font-size: 10px;">amazon</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/chicken-soup/" style="font-size: 10px;">chicken-soup</a> <a href="/tags/git/" style="font-size: 11.43px;">git</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/pt/" style="font-size: 10px;">pt</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/re/" style="font-size: 10px;">re</a> <a href="/tags/resources-Telegram/" style="font-size: 10px;">resources Telegram</a> <a href="/tags/scala/" style="font-size: 10px;">scala</a> <a href="/tags/spark/" style="font-size: 11.43px;">spark</a> <a href="/tags/time-series/" style="font-size: 10px;">time series</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tutorial/" style="font-size: 12.86px;">tutorial</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 11.43px;">运维</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Recommend-some-useful-telegram-channels/">Recommend some useful telegram channels 推荐一些有用的 telegram 频道</a>
+          </li>
+        
+          <li>
+            <a href="/2021-09-18-pt-invite/">发放4个pt站的邀请码：海胆之家、HDcity</a>
+          </li>
+        
+          <li>
+            <a href="/amazon-vat-cal/">用python 自动计算亚马逊vat税款</a>
+          </li>
+        
+          <li>
+            <a href="/attachments/">python 发送带各种附件的邮件示例</a>
+          </li>
+        
+          <li>
+            <a href="/Pyqt5-GUI-package-on-Windows/">PyQt5 编写并在Windows上用Cx_Freeze打包GUI程序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 frankchen0130<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

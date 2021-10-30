@@ -14,8 +14,8 @@
     
     <item>
       <title>Recommend some useful telegram channels 推荐一些有用的 telegram 频道</title>
-      <link>https://frankchen0130.github.io/2021/10/30/Recommend-some-useful-telegram-channels/</link>
-      <guid>https://frankchen0130.github.io/2021/10/30/Recommend-some-useful-telegram-channels/</guid>
+      <link>https://frankchen0130.github.io/Recommend-some-useful-telegram-channels/</link>
+      <guid>https://frankchen0130.github.io/Recommend-some-useful-telegram-channels/</guid>
       <pubDate>Sat, 30 Oct 2021 10:09:40 GMT</pubDate>
       
       <description>&lt;p&gt;推荐一些个人经常使用的免费电报资源频道,包括免费电子书\免费杂志\免费 udemy 课程等等.&lt;/p&gt;</description>
@@ -29,14 +29,14 @@
       <category domain="https://frankchen0130.github.io/tags/resources-Telegram/">resources Telegram</category>
       
       
-      <comments>https://frankchen0130.github.io/2021/10/30/Recommend-some-useful-telegram-channels/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Recommend-some-useful-telegram-channels/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>发放4个pt站的邀请码：海胆之家、HDcity</title>
-      <link>https://frankchen0130.github.io/2021/09/18/2021-09-18-pt-invite/</link>
-      <guid>https://frankchen0130.github.io/2021/09/18/2021-09-18-pt-invite/</guid>
+      <link>https://frankchen0130.github.io/2021-09-18-pt-invite/</link>
+      <guid>https://frankchen0130.github.io/2021-09-18-pt-invite/</guid>
       <pubDate>Sat, 18 Sep 2021 02:49:42 GMT</pubDate>
       
       <description>&lt;p&gt;玩 pt 站有一段时间了，赠送4个pt站的邀请码：海胆之家、HDcity给感兴趣的朋友。&lt;/p&gt;</description>
@@ -50,14 +50,14 @@
       <category domain="https://frankchen0130.github.io/tags/pt/">pt</category>
       
       
-      <comments>https://frankchen0130.github.io/2021/09/18/2021-09-18-pt-invite/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2021-09-18-pt-invite/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>用python 自动计算亚马逊vat税款</title>
-      <link>https://frankchen0130.github.io/2019/10/24/amazon-vat-cal/</link>
-      <guid>https://frankchen0130.github.io/2019/10/24/amazon-vat-cal/</guid>
+      <link>https://frankchen0130.github.io/amazon-vat-cal/</link>
+      <guid>https://frankchen0130.github.io/amazon-vat-cal/</guid>
       <pubDate>Thu, 24 Oct 2019 09:17:01 GMT</pubDate>
       
       <description>&lt;p&gt;简述下如何使用pandas计算亚马逊英国vat税款，纯粹是pandas的业务代码。&lt;/p&gt;</description>
@@ -77,14 +77,14 @@
       <category domain="https://frankchen0130.github.io/tags/pandas/">pandas</category>
       
       
-      <comments>https://frankchen0130.github.io/2019/10/24/amazon-vat-cal/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/amazon-vat-cal/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>python 发送带各种附件的邮件示例</title>
-      <link>https://frankchen0130.github.io/2018/12/20/attachments/</link>
-      <guid>https://frankchen0130.github.io/2018/12/20/attachments/</guid>
+      <link>https://frankchen0130.github.io/attachments/</link>
+      <guid>https://frankchen0130.github.io/attachments/</guid>
       <pubDate>Thu, 20 Dec 2018 12:47:39 GMT</pubDate>
       
       <description>&lt;p&gt;简述下如何使用python发送各种附件的邮件，比如word、excel、pdf、txt，以及在正文插入图片等等&lt;/p&gt;</description>
@@ -98,14 +98,14 @@
       <category domain="https://frankchen0130.github.io/tags/python/">python</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/12/20/attachments/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/attachments/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>PyQt5 编写并在Windows上用Cx_Freeze打包GUI程序</title>
-      <link>https://frankchen0130.github.io/2018/09/11/Pyqt5-GUI-package-on-Windows/</link>
-      <guid>https://frankchen0130.github.io/2018/09/11/Pyqt5-GUI-package-on-Windows/</guid>
+      <link>https://frankchen0130.github.io/Pyqt5-GUI-package-on-Windows/</link>
+      <guid>https://frankchen0130.github.io/Pyqt5-GUI-package-on-Windows/</guid>
       <pubDate>Tue, 11 Sep 2018 14:51:05 GMT</pubDate>
       
       <description>&lt;p&gt;简述下如何在Windows上用Cx_Freeze正确打包GUI程序&lt;/p&gt;</description>
@@ -119,14 +119,14 @@
       <category domain="https://frankchen0130.github.io/tags/PyQt5/">PyQt5</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/09/11/Pyqt5-GUI-package-on-Windows/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Pyqt5-GUI-package-on-Windows/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Numpy中的mask</title>
-      <link>https://frankchen0130.github.io/2018/07/20/numpy-mask/</link>
-      <guid>https://frankchen0130.github.io/2018/07/20/numpy-mask/</guid>
+      <link>https://frankchen0130.github.io/numpy-mask/</link>
+      <guid>https://frankchen0130.github.io/numpy-mask/</guid>
       <pubDate>Fri, 20 Jul 2018 08:48:48 GMT</pubDate>
       
       <description>&lt;p&gt;numpy中矩阵选取子集或者以条件替换，用mask是一种很好的方法&lt;/p&gt;</description>
@@ -140,14 +140,14 @@
       <category domain="https://frankchen0130.github.io/tags/Numpy/">Numpy</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/07/20/numpy-mask/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/numpy-mask/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>为什么我每天早上5:30起床</title>
-      <link>https://frankchen0130.github.io/2018/07/19/Why-I-Wake-Up-at-5-30-am-Every-Morning-And-What-You-Will-Gain-From-Doing-It-Too/</link>
-      <guid>https://frankchen0130.github.io/2018/07/19/Why-I-Wake-Up-at-5-30-am-Every-Morning-And-What-You-Will-Gain-From-Doing-It-Too/</guid>
+      <link>https://frankchen0130.github.io/Why-I-Wake-Up-at-5-30-am-Every-Morning-And-What-You-Will-Gain-From-Doing-It-Too/</link>
+      <guid>https://frankchen0130.github.io/Why-I-Wake-Up-at-5-30-am-Every-Morning-And-What-You-Will-Gain-From-Doing-It-Too/</guid>
       <pubDate>Thu, 19 Jul 2018 00:52:23 GMT</pubDate>
       
       <description>&lt;p&gt;几个月前，我做出一个对我来说完全不合时宜，几个月内会产生日常影响的决定。&lt;/p&gt;
@@ -163,14 +163,14 @@
       <category domain="https://frankchen0130.github.io/tags/chicken-soup/">chicken-soup</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/07/19/Why-I-Wake-Up-at-5-30-am-Every-Morning-And-What-You-Will-Gain-From-Doing-It-Too/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Why-I-Wake-Up-at-5-30-am-Every-Morning-And-What-You-Will-Gain-From-Doing-It-Too/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Datacamp Git 笔记</title>
-      <link>https://frankchen0130.github.io/2018/07/13/Datacamp-Git-Nones/</link>
-      <guid>https://frankchen0130.github.io/2018/07/13/Datacamp-Git-Nones/</guid>
+      <link>https://frankchen0130.github.io/Datacamp-Git-Nones/</link>
+      <guid>https://frankchen0130.github.io/Datacamp-Git-Nones/</guid>
       <pubDate>Fri, 13 Jul 2018 09:14:07 GMT</pubDate>
       
       <description>&lt;p&gt;最近入了&lt;a href=&quot;https://item.taobao.com/item.htm?spm=a1z09.2.0.0.11752e8diqYgI7&amp;id=565426495436&amp;_u=dn2i5bf6736&quot;&gt;elecomI Pad贴膜&lt;/a&gt;后用iPad写字感觉超棒！🐱&lt;br&gt;这里是一段DataCamp上的Git课程的笔记，当然这是免费课程，其实我领取&lt;a href=&quot;http://www.10tiao.com/html/407/201801/2650545581/1.html&quot;&gt;微软送的的两月DataCamp会员&lt;/a&gt;过期了。。。😡&lt;/p&gt;</description>
@@ -184,14 +184,14 @@
       <category domain="https://frankchen0130.github.io/tags/git/">git</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/07/13/Datacamp-Git-Nones/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Datacamp-Git-Nones/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>在Linux上重新映射Win，Ctrl和Alt键</title>
-      <link>https://frankchen0130.github.io/2018/07/12/remap-win-ctrl-and-alt-keys-on-linux/</link>
-      <guid>https://frankchen0130.github.io/2018/07/12/remap-win-ctrl-and-alt-keys-on-linux/</guid>
+      <link>https://frankchen0130.github.io/remap-win-ctrl-and-alt-keys-on-linux/</link>
+      <guid>https://frankchen0130.github.io/remap-win-ctrl-and-alt-keys-on-linux/</guid>
       <pubDate>Thu, 12 Jul 2018 08:43:42 GMT</pubDate>
       
       <description>&lt;p&gt;用惯了Mac上的CMD + * 等操作，就习惯了左手大拇指这个组合键操作了，切换到Linux上必须要Ctrl各种小指不舒服。。。值得一提的是Mac上左侧按键顺序是control、alt/option、command，Ubuntu则是control、super、alt，Windows则是control、Win、alt。这里我们方便Mac用户起见，就把Ubuntu的control、super、alt映射为super、alt、control&lt;/p&gt;</description>
@@ -205,14 +205,14 @@
       <category domain="https://frankchen0130.github.io/tags/Linux/">Linux</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/07/12/remap-win-ctrl-and-alt-keys-on-linux/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/remap-win-ctrl-and-alt-keys-on-linux/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Mac 双开 ss 方法</title>
-      <link>https://frankchen0130.github.io/2018/05/31/dual-ss-on-mac/</link>
-      <guid>https://frankchen0130.github.io/2018/05/31/dual-ss-on-mac/</guid>
+      <link>https://frankchen0130.github.io/dual-ss-on-mac/</link>
+      <guid>https://frankchen0130.github.io/dual-ss-on-mac/</guid>
       <pubDate>Thu, 31 May 2018 11:24:17 GMT</pubDate>
       
       <description>&lt;p&gt;有时候我们需要两个代理，譬如一个用来连需要经过跳板机代理的集群服务，一个则用来科学上网，不停切换麻烦且代价比较高，那我们除了ShadowsocksX-NG客户端之外，我们可以用命令行的方式再开启一个，&lt;/p&gt;</description>
@@ -226,14 +226,14 @@
       <category domain="https://frankchen0130.github.io/tags/Mac/">Mac</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/05/31/dual-ss-on-mac/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/dual-ss-on-mac/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>从 Hive 获取数据到本地的方法 🦄</title>
-      <link>https://frankchen0130.github.io/2018/05/03/get-table-from-spark/</link>
-      <guid>https://frankchen0130.github.io/2018/05/03/get-table-from-spark/</guid>
+      <link>https://frankchen0130.github.io/get-table-from-spark/</link>
+      <guid>https://frankchen0130.github.io/get-table-from-spark/</guid>
       <pubDate>Thu, 03 May 2018 12:51:14 GMT</pubDate>
       
       <description>&lt;p&gt;我们使用pyspark 读取Hive里的表格，存储到HDFS，再get到跳板机，再rsync到本地，再用dask读取为Dataframe。&lt;/p&gt;</description>
@@ -247,14 +247,14 @@
       <category domain="https://frankchen0130.github.io/tags/spark/">spark</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/05/03/get-table-from-spark/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/get-table-from-spark/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Mac 通过 socks5 代理 连接 ssh 的方法🏆</title>
-      <link>https://frankchen0130.github.io/2018/05/03/mac-ssh-through-socks5-proxy/</link>
-      <guid>https://frankchen0130.github.io/2018/05/03/mac-ssh-through-socks5-proxy/</guid>
+      <link>https://frankchen0130.github.io/mac-ssh-through-socks5-proxy/</link>
+      <guid>https://frankchen0130.github.io/mac-ssh-through-socks5-proxy/</guid>
       <pubDate>Thu, 03 May 2018 09:08:10 GMT</pubDate>
       
         
@@ -271,14 +271,14 @@
       <category domain="https://frankchen0130.github.io/tags/Mac/">Mac</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/05/03/mac-ssh-through-socks5-proxy/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/mac-ssh-through-socks5-proxy/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>moving averge 滑动平均</title>
-      <link>https://frankchen0130.github.io/2018/04/25/moving-averge/</link>
-      <guid>https://frankchen0130.github.io/2018/04/25/moving-averge/</guid>
+      <link>https://frankchen0130.github.io/moving-averge/</link>
+      <guid>https://frankchen0130.github.io/moving-averge/</guid>
       <pubDate>Wed, 25 Apr 2018 14:58:46 GMT</pubDate>
       
       <description>&lt;p&gt;moving averge 即滑动平均，时间序列处理中常见的方法，简单来说，就是对于一个给定数列，设定一个窗口值N，依次取第1项&lt;del&gt;第N项，第2项&lt;/del&gt;第N+1项，第3项~第N+2项的平均值，以此类推。&lt;/p&gt;</description>
@@ -292,14 +292,14 @@
       <category domain="https://frankchen0130.github.io/tags/time-series/">time series</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/04/25/moving-averge/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/moving-averge/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>keras 中模型的保存及重用</title>
-      <link>https://frankchen0130.github.io/2018/04/19/keras-reuse-model/</link>
-      <guid>https://frankchen0130.github.io/2018/04/19/keras-reuse-model/</guid>
+      <link>https://frankchen0130.github.io/keras-reuse-model/</link>
+      <guid>https://frankchen0130.github.io/keras-reuse-model/</guid>
       <pubDate>Thu, 19 Apr 2018 08:50:00 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15135840798621.jpg&quot;&gt;&lt;br&gt;深度学习中如何保存最佳模型，如何重用已经保存的模型？本文主要介绍Keras 保存及重用模型的方法&lt;/p&gt;</description>
@@ -313,14 +313,14 @@
       <category domain="https://frankchen0130.github.io/tags/Keras/">Keras</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/04/19/keras-reuse-model/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/keras-reuse-model/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>理解一维卷积</title>
-      <link>https://frankchen0130.github.io/2018/04/17/conv1d-in-keras/</link>
-      <guid>https://frankchen0130.github.io/2018/04/17/conv1d-in-keras/</guid>
+      <link>https://frankchen0130.github.io/conv1d-in-keras/</link>
+      <guid>https://frankchen0130.github.io/conv1d-in-keras/</guid>
       <pubDate>Tue, 17 Apr 2018 07:46:36 GMT</pubDate>
       
       <description>&lt;p&gt;理解一维卷积&lt;/p&gt;</description>
@@ -334,14 +334,14 @@
       <category domain="https://frankchen0130.github.io/tags/Deep-Learning/">Deep Learning</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/04/17/conv1d-in-keras/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/conv1d-in-keras/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>处理大数据集的建议</title>
-      <link>https://frankchen0130.github.io/2018/04/10/handle-big-datasets/</link>
-      <guid>https://frankchen0130.github.io/2018/04/10/handle-big-datasets/</guid>
+      <link>https://frankchen0130.github.io/handle-big-datasets/</link>
+      <guid>https://frankchen0130.github.io/handle-big-datasets/</guid>
       <pubDate>Tue, 10 Apr 2018 07:07:34 GMT</pubDate>
       
       <description>&lt;p&gt;最近的一些比赛如&lt;a href=&quot;https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection&quot;&gt;TalkingData AdTracking Fraud Detection Challenge | Kaggle&lt;/a&gt;提供了很大的数据集，一般来说，只有16G的内存的“小”电脑都无法直接处理这种数据集了，本文收集了一些关于处理这种数据的建议，供大家参考。&lt;/p&gt;</description>
@@ -359,14 +359,14 @@
       <category domain="https://frankchen0130.github.io/tags/Kaggle/">Kaggle</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/04/10/handle-big-datasets/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/handle-big-datasets/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>机器学习之 sklearn中的pipeline</title>
-      <link>https://frankchen0130.github.io/2018/04/08/pipeline-in-machine-learning/</link>
-      <guid>https://frankchen0130.github.io/2018/04/08/pipeline-in-machine-learning/</guid>
+      <link>https://frankchen0130.github.io/pipeline-in-machine-learning/</link>
+      <guid>https://frankchen0130.github.io/pipeline-in-machine-learning/</guid>
       <pubDate>Sun, 08 Apr 2018 08:13:42 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15231874915799.jpg&quot;&gt;&lt;/p&gt;</description>
@@ -380,14 +380,14 @@
       <category domain="https://frankchen0130.github.io/tags/Data-Science/">Data Science</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/04/08/pipeline-in-machine-learning/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/pipeline-in-machine-learning/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>VPS搭建私人BT离线服务器</title>
-      <link>https://frankchen0130.github.io/2018/04/08/private-BT-server/</link>
-      <guid>https://frankchen0130.github.io/2018/04/08/private-BT-server/</guid>
+      <link>https://frankchen0130.github.io/private-BT-server/</link>
+      <guid>https://frankchen0130.github.io/private-BT-server/</guid>
       <pubDate>Sun, 08 Apr 2018 03:13:51 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15231584798585.jpg&quot;&gt;&lt;br&gt;使用闲置的VPS搭建私人BT离线服务器的方法，亦或者推广至树莓派或者家用路由器亦可。&lt;/p&gt;</description>
@@ -403,14 +403,14 @@
       <category domain="https://frankchen0130.github.io/tags/Old-Driver/">Old Driver</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/04/08/private-BT-server/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/private-BT-server/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>numpy 中增加channel的方法</title>
-      <link>https://frankchen0130.github.io/2018/03/29/numpy-add-channel/</link>
-      <guid>https://frankchen0130.github.io/2018/03/29/numpy-add-channel/</guid>
+      <link>https://frankchen0130.github.io/numpy-add-channel/</link>
+      <guid>https://frankchen0130.github.io/numpy-add-channel/</guid>
       <pubDate>Thu, 29 Mar 2018 12:15:30 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15223277046847.jpg&quot;&gt;&lt;br&gt;numpy 数组中一维怎么转二维和多维？简述 numpy 中增加channel的方法。&lt;/p&gt;</description>
@@ -424,14 +424,14 @@
       <category domain="https://frankchen0130.github.io/tags/python/">python</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/03/29/numpy-add-channel/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/numpy-add-channel/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>python 正则实用例子</title>
-      <link>https://frankchen0130.github.io/2018/02/24/re-basic-of-python/</link>
-      <guid>https://frankchen0130.github.io/2018/02/24/re-basic-of-python/</guid>
+      <link>https://frankchen0130.github.io/re-basic-of-python/</link>
+      <guid>https://frankchen0130.github.io/re-basic-of-python/</guid>
       <pubDate>Sat, 24 Feb 2018 10:52:00 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15194705842254.png&quot;&gt;&lt;/p&gt;
@@ -448,14 +448,14 @@
       <category domain="https://frankchen0130.github.io/tags/re/">re</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/02/24/re-basic-of-python/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/re-basic-of-python/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Tex 写（中文）毕业论文全攻略</title>
-      <link>https://frankchen0130.github.io/2018/02/08/Writing-Graduation-Thesis-in-Tex/</link>
-      <guid>https://frankchen0130.github.io/2018/02/08/Writing-Graduation-Thesis-in-Tex/</guid>
+      <link>https://frankchen0130.github.io/Writing-Graduation-Thesis-in-Tex/</link>
+      <guid>https://frankchen0130.github.io/Writing-Graduation-Thesis-in-Tex/</guid>
       <pubDate>Wed, 07 Feb 2018 17:36:41 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15180252634406.png&quot;&gt;&lt;/p&gt;
@@ -470,14 +470,14 @@
       <category domain="https://frankchen0130.github.io/tags/Tex/">Tex</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/02/08/Writing-Graduation-Thesis-in-Tex/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Writing-Graduation-Thesis-in-Tex/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>理解TSNE算法</title>
-      <link>https://frankchen0130.github.io/2018/01/30/Understanding-TSNE/</link>
-      <guid>https://frankchen0130.github.io/2018/01/30/Understanding-TSNE/</guid>
+      <link>https://frankchen0130.github.io/Understanding-TSNE/</link>
+      <guid>https://frankchen0130.github.io/Understanding-TSNE/</guid>
       <pubDate>Tue, 30 Jan 2018 03:39:39 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15172836269060.jpg&quot;&gt;&lt;/p&gt;
@@ -494,14 +494,14 @@
       <category domain="https://frankchen0130.github.io/tags/Algorithm/">Algorithm</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/01/30/Understanding-TSNE/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Understanding-TSNE/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Data Science Pipelines |  特征工程中的管道</title>
-      <link>https://frankchen0130.github.io/2018/01/12/Data-Science-Notes/</link>
-      <guid>https://frankchen0130.github.io/2018/01/12/Data-Science-Notes/</guid>
+      <link>https://frankchen0130.github.io/Data-Science-Notes/</link>
+      <guid>https://frankchen0130.github.io/Data-Science-Notes/</guid>
       <pubDate>Fri, 12 Jan 2018 06:22:50 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15161698020879.png&quot;&gt;&lt;/p&gt;
@@ -518,14 +518,14 @@
       <category domain="https://frankchen0130.github.io/tags/Python/">Python</category>
       
       
-      <comments>https://frankchen0130.github.io/2018/01/12/Data-Science-Notes/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Data-Science-Notes/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>DIY远程Jupyter Notebook服务器</title>
-      <link>https://frankchen0130.github.io/2017/12/25/Remote-jupyter-notebook/</link>
-      <guid>https://frankchen0130.github.io/2017/12/25/Remote-jupyter-notebook/</guid>
+      <link>https://frankchen0130.github.io/Remote-jupyter-notebook/</link>
+      <guid>https://frankchen0130.github.io/Remote-jupyter-notebook/</guid>
       <pubDate>Mon, 25 Dec 2017 11:43:17 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15142020075328.jpg&quot; alt=&quot;Screen Shot 2017-07-18 at 14.16.18&quot;&gt;&lt;br&gt;构建自己的远程Jupyter Notebook服务器，添加system开机自启，让Jupyter Notebook支持跨网络访问的方法。&lt;/p&gt;</description>
@@ -543,14 +543,14 @@
       <category domain="https://frankchen0130.github.io/tags/Jupyter-Notebook/">Jupyter Notebook</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/12/25/Remote-jupyter-notebook/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Remote-jupyter-notebook/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>深度学习中Keras中的Embedding层的理解与使用</title>
-      <link>https://frankchen0130.github.io/2017/12/18/How-to-Use-Word-Embedding-Layers-for-Deep-Learning-with-Keras/</link>
-      <guid>https://frankchen0130.github.io/2017/12/18/How-to-Use-Word-Embedding-Layers-for-Deep-Learning-with-Keras/</guid>
+      <link>https://frankchen0130.github.io/How-to-Use-Word-Embedding-Layers-for-Deep-Learning-with-Keras/</link>
+      <guid>https://frankchen0130.github.io/How-to-Use-Word-Embedding-Layers-for-Deep-Learning-with-Keras/</guid>
       <pubDate>Mon, 18 Dec 2017 07:59:41 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15135840798621.jpg&quot;&gt;&lt;br&gt;单词嵌入提供了单词的密集表示及其相对含义，它们是对简单包模型表示中使用的稀疏表示的改进，可以从文本数据中学习字嵌入，并在项目之间重复使用。它们也可以作为拟合文本数据的神经网络的一部分来学习。&lt;/p&gt;</description>
@@ -566,14 +566,14 @@
       <category domain="https://frankchen0130.github.io/tags/Keras/">Keras</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/12/18/How-to-Use-Word-Embedding-Layers-for-Deep-Learning-with-Keras/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/How-to-Use-Word-Embedding-Layers-for-Deep-Learning-with-Keras/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>神经网络术语大百科：优化函数、激活函数、损失函数、正则方法的简介</title>
-      <link>https://frankchen0130.github.io/2017/12/15/Neural-Network-Terms-Introduction-to-Optimization-Functions-Activation-Functions-Loss-Functions-and-Regular-Functions/</link>
-      <guid>https://frankchen0130.github.io/2017/12/15/Neural-Network-Terms-Introduction-to-Optimization-Functions-Activation-Functions-Loss-Functions-and-Regular-Functions/</guid>
+      <link>https://frankchen0130.github.io/Neural-Network-Terms-Introduction-to-Optimization-Functions-Activation-Functions-Loss-Functions-and-Regular-Functions/</link>
+      <guid>https://frankchen0130.github.io/Neural-Network-Terms-Introduction-to-Optimization-Functions-Activation-Functions-Loss-Functions-and-Regular-Functions/</guid>
       <pubDate>Fri, 15 Dec 2017 04:45:44 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/neuralnetworks.png&quot; alt=&quot;neuralnetworks&quot;&gt;&lt;/p&gt;
@@ -594,14 +594,14 @@
       <category domain="https://frankchen0130.github.io/tags/Python/">Python</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/12/15/Neural-Network-Terms-Introduction-to-Optimization-Functions-Activation-Functions-Loss-Functions-and-Regular-Functions/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Neural-Network-Terms-Introduction-to-Optimization-Functions-Activation-Functions-Loss-Functions-and-Regular-Functions/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>如何理解Pandas 和 Numpy里的axis</title>
-      <link>https://frankchen0130.github.io/2017/12/12/Understanding-the-axis-parameter-in-Pandas-and-Numpy/</link>
-      <guid>https://frankchen0130.github.io/2017/12/12/Understanding-the-axis-parameter-in-Pandas-and-Numpy/</guid>
+      <link>https://frankchen0130.github.io/Understanding-the-axis-parameter-in-Pandas-and-Numpy/</link>
+      <guid>https://frankchen0130.github.io/Understanding-the-axis-parameter-in-Pandas-and-Numpy/</guid>
       <pubDate>Tue, 12 Dec 2017 10:36:04 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15130766716183.jpg&quot;&gt;&lt;/p&gt;
@@ -622,14 +622,14 @@
       <category domain="https://frankchen0130.github.io/tags/Pandas/">Pandas</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/12/12/Understanding-the-axis-parameter-in-Pandas-and-Numpy/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Understanding-the-axis-parameter-in-Pandas-and-Numpy/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>理解triplet loss</title>
-      <link>https://frankchen0130.github.io/2017/12/01/understanding-triplet-loss-and-example-code/</link>
-      <guid>https://frankchen0130.github.io/2017/12/01/understanding-triplet-loss-and-example-code/</guid>
+      <link>https://frankchen0130.github.io/understanding-triplet-loss-and-example-code/</link>
+      <guid>https://frankchen0130.github.io/understanding-triplet-loss-and-example-code/</guid>
       <pubDate>Fri, 01 Dec 2017 09:19:05 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15121200710041.jpg&quot;&gt;&lt;br&gt;理解triplet loss，与给出TensorFlow和numpy两种形式的example code。 &lt;/p&gt;</description>
@@ -647,14 +647,14 @@
       <category domain="https://frankchen0130.github.io/tags/TensorFlow/">TensorFlow</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/12/01/understanding-triplet-loss-and-example-code/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/understanding-triplet-loss-and-example-code/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>数据的标准化与归一化</title>
-      <link>https://frankchen0130.github.io/2017/11/29/Data-Normalization-and-Standardization/</link>
-      <guid>https://frankchen0130.github.io/2017/11/29/Data-Normalization-and-Standardization/</guid>
+      <link>https://frankchen0130.github.io/Data-Normalization-and-Standardization/</link>
+      <guid>https://frankchen0130.github.io/Data-Normalization-and-Standardization/</guid>
       <pubDate>Wed, 29 Nov 2017 03:53:57 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15119359203487.png&quot;&gt;&lt;br&gt;聊一聊Normalization and Standardization&lt;/p&gt;</description>
@@ -670,14 +670,14 @@
       <category domain="https://frankchen0130.github.io/tags/Data-Science/">Data Science</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/11/29/Data-Normalization-and-Standardization/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Data-Normalization-and-Standardization/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>TensorFlow on a GTX 1080</title>
-      <link>https://frankchen0130.github.io/2017/11/13/TensorFlow-on-a-GTX-1080/</link>
-      <guid>https://frankchen0130.github.io/2017/11/13/TensorFlow-on-a-GTX-1080/</guid>
+      <link>https://frankchen0130.github.io/TensorFlow-on-a-GTX-1080/</link>
+      <guid>https://frankchen0130.github.io/TensorFlow-on-a-GTX-1080/</guid>
       <pubDate>Mon, 13 Nov 2017 10:23:28 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15105686803158.jpg&quot;&gt;&lt;br&gt;&lt;img src=&quot;/images/15105687114770.jpg&quot;&gt;&lt;/p&gt;
@@ -694,14 +694,14 @@
       <category domain="https://frankchen0130.github.io/tags/TensorFlow/">TensorFlow</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/11/13/TensorFlow-on-a-GTX-1080/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/TensorFlow-on-a-GTX-1080/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>frp的内网穿透及外网访问内网jupyter-notebook的实现</title>
-      <link>https://frankchen0130.github.io/2017/11/12/ftp-using/</link>
-      <guid>https://frankchen0130.github.io/2017/11/12/ftp-using/</guid>
+      <link>https://frankchen0130.github.io/ftp-using/</link>
+      <guid>https://frankchen0130.github.io/ftp-using/</guid>
       <pubDate>Sat, 11 Nov 2017 18:20:38 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15104246654723.png&quot;&gt;&lt;/p&gt;</description>
@@ -715,14 +715,14 @@
       <category domain="https://frankchen0130.github.io/tags/Linux/">Linux</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/11/12/ftp-using/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/ftp-using/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Pycharm Pro</title>
-      <link>https://frankchen0130.github.io/2017/11/08/pycharm-pro/</link>
-      <guid>https://frankchen0130.github.io/2017/11/08/pycharm-pro/</guid>
+      <link>https://frankchen0130.github.io/pycharm-pro/</link>
+      <guid>https://frankchen0130.github.io/pycharm-pro/</guid>
       <pubDate>Wed, 08 Nov 2017 10:44:13 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15101362178541.jpg&quot;&gt;&lt;br&gt;Pycharm，只为提高python开发者的生产力！&lt;/p&gt;</description>
@@ -738,14 +738,14 @@
       <category domain="https://frankchen0130.github.io/tags/Pycharm/">Pycharm</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/11/08/pycharm-pro/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/pycharm-pro/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Go 语言操作与扫描 Hbase 实例</title>
-      <link>https://frankchen0130.github.io/2017/11/08/go-hbase/</link>
-      <guid>https://frankchen0130.github.io/2017/11/08/go-hbase/</guid>
+      <link>https://frankchen0130.github.io/go-hbase/</link>
+      <guid>https://frankchen0130.github.io/go-hbase/</guid>
       <pubDate>Wed, 08 Nov 2017 03:10:21 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15101107329028.jpg&quot;&gt;&lt;br&gt;&lt;img src=&quot;/images/15101107462857.jpg&quot;&gt;&lt;br&gt;记录纯go语言的gohbase客户端的扫描操作。&lt;/p&gt;</description>
@@ -761,14 +761,14 @@
       <category domain="https://frankchen0130.github.io/tags/Hbase/">Hbase</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/11/08/go-hbase/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/go-hbase/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Ubuntu16.04 安装IKEV2 VPN 并在Mac上使用以解决Google Drive 同步问题</title>
-      <link>https://frankchen0130.github.io/2017/11/01/Google-Drive-Sync/</link>
-      <guid>https://frankchen0130.github.io/2017/11/01/Google-Drive-Sync/</guid>
+      <link>https://frankchen0130.github.io/Google-Drive-Sync/</link>
+      <guid>https://frankchen0130.github.io/Google-Drive-Sync/</guid>
       <pubDate>Wed, 01 Nov 2017 01:56:43 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15095018008987.jpg&quot;&gt;&lt;br&gt;&lt;img src=&quot;/images/15095018930547.jpg&quot;&gt;&lt;/p&gt;</description>
@@ -782,14 +782,14 @@
       <category domain="https://frankchen0130.github.io/tags/VPN/">VPN</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/11/01/Google-Drive-Sync/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Google-Drive-Sync/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Install Opencv3.2 on Ununtu 16.04</title>
-      <link>https://frankchen0130.github.io/2017/10/25/Install-Opencv3-2-on-Ununtu-16-04/</link>
-      <guid>https://frankchen0130.github.io/2017/10/25/Install-Opencv3-2-on-Ununtu-16-04/</guid>
+      <link>https://frankchen0130.github.io/Install-Opencv3-2-on-Ununtu-16-04/</link>
+      <guid>https://frankchen0130.github.io/Install-Opencv3-2-on-Ununtu-16-04/</guid>
       <pubDate>Wed, 25 Oct 2017 04:34:28 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15101928106001.jpg&quot;&gt;&lt;/p&gt;
@@ -804,14 +804,14 @@
       <category domain="https://frankchen0130.github.io/tags/Linux/">Linux</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/10/25/Install-Opencv3-2-on-Ununtu-16-04/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Install-Opencv3-2-on-Ununtu-16-04/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>git notes in action | 生产环境各场景下git常用命令</title>
-      <link>https://frankchen0130.github.io/2017/10/21/git-notes-in-action/</link>
-      <guid>https://frankchen0130.github.io/2017/10/21/git-notes-in-action/</guid>
+      <link>https://frankchen0130.github.io/git-notes-in-action/</link>
+      <guid>https://frankchen0130.github.io/git-notes-in-action/</guid>
       <pubDate>Sat, 21 Oct 2017 06:03:47 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15085663573989.jpg&quot;&gt;&lt;/p&gt;</description>
@@ -825,14 +825,14 @@
       <category domain="https://frankchen0130.github.io/tags/git/">git</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/10/21/git-notes-in-action/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/git-notes-in-action/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>服务器负载GUI 神器sargraph 的安装</title>
-      <link>https://frankchen0130.github.io/2017/10/11/sargraph-install/</link>
-      <guid>https://frankchen0130.github.io/2017/10/11/sargraph-install/</guid>
+      <link>https://frankchen0130.github.io/sargraph-install/</link>
+      <guid>https://frankchen0130.github.io/sargraph-install/</guid>
       <pubDate>Wed, 11 Oct 2017 03:40:21 GMT</pubDate>
       
       <description>&lt;p&gt;通过Linux 的&lt;code&gt;sar&lt;/code&gt;命令可以很容易知道服务器的负载，那么如何通过网页等更好地可视化呢？本文介绍实现此功能的神器&lt;a href=&quot;http://www.sargraph.com/sargraph/chart.php?id=dbserv&quot;&gt;SARGRAPH-Graphical front-end for sar&lt;/a&gt;的使用及安装。&lt;/p&gt;
@@ -855,14 +855,14 @@
       <category domain="https://frankchen0130.github.io/tags/Linux/">Linux</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/10/11/sargraph-install/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/sargraph-install/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>避免 spark 提交 上传自带 jar包解决办法</title>
-      <link>https://frankchen0130.github.io/2017/09/01/spark-submit-avoid-upload-jars/</link>
-      <guid>https://frankchen0130.github.io/2017/09/01/spark-submit-avoid-upload-jars/</guid>
+      <link>https://frankchen0130.github.io/spark-submit-avoid-upload-jars/</link>
+      <guid>https://frankchen0130.github.io/spark-submit-avoid-upload-jars/</guid>
       <pubDate>Fri, 01 Sep 2017 08:15:04 GMT</pubDate>
       
         
@@ -879,14 +879,14 @@
       <category domain="https://frankchen0130.github.io/tags/spark/">spark</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/09/01/spark-submit-avoid-upload-jars/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/spark-submit-avoid-upload-jars/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>hbase rest 绑定到内网localhost</title>
-      <link>https://frankchen0130.github.io/2017/08/29/hbase-rest-bindAddress-to-localhost/</link>
-      <guid>https://frankchen0130.github.io/2017/08/29/hbase-rest-bindAddress-to-localhost/</guid>
+      <link>https://frankchen0130.github.io/hbase-rest-bindAddress-to-localhost/</link>
+      <guid>https://frankchen0130.github.io/hbase-rest-bindAddress-to-localhost/</guid>
       <pubDate>Tue, 29 Aug 2017 08:34:08 GMT</pubDate>
       
         
@@ -904,14 +904,14 @@
       <category domain="https://frankchen0130.github.io/tags/Hbase/">Hbase</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/08/29/hbase-rest-bindAddress-to-localhost/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/hbase-rest-bindAddress-to-localhost/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>scala-notes</title>
-      <link>https://frankchen0130.github.io/2017/08/22/scala-note/</link>
-      <guid>https://frankchen0130.github.io/2017/08/22/scala-note/</guid>
+      <link>https://frankchen0130.github.io/scala-note/</link>
+      <guid>https://frankchen0130.github.io/scala-note/</guid>
       <pubDate>Tue, 22 Aug 2017 03:06:48 GMT</pubDate>
       
         
@@ -928,14 +928,14 @@
       <category domain="https://frankchen0130.github.io/tags/scala/">scala</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/08/22/scala-note/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/scala-note/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>详解Coursera 奖学金申请步骤</title>
-      <link>https://frankchen0130.github.io/2017/08/21/coursera-scholarship/</link>
-      <guid>https://frankchen0130.github.io/2017/08/21/coursera-scholarship/</guid>
+      <link>https://frankchen0130.github.io/coursera-scholarship/</link>
+      <guid>https://frankchen0130.github.io/coursera-scholarship/</guid>
       <pubDate>Mon, 21 Aug 2017 04:06:29 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/15046037829976.jpg&quot;&gt;&lt;br&gt;最新Coursera 奖学金申请步骤！成功率100%🏆&lt;/p&gt;</description>
@@ -949,14 +949,14 @@
       <category domain="https://frankchen0130.github.io/tags/Coursera/">Coursera</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/08/21/coursera-scholarship/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/coursera-scholarship/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>server certificate verification failed solution</title>
-      <link>https://frankchen0130.github.io/2017/08/15/server-certificate-verification-failed-solution/</link>
-      <guid>https://frankchen0130.github.io/2017/08/15/server-certificate-verification-failed-solution/</guid>
+      <link>https://frankchen0130.github.io/server-certificate-verification-failed-solution/</link>
+      <guid>https://frankchen0130.github.io/server-certificate-verification-failed-solution/</guid>
       <pubDate>Tue, 15 Aug 2017 10:23:03 GMT</pubDate>
       
         
@@ -974,14 +974,14 @@
       <category domain="https://frankchen0130.github.io/tags/Linux/">Linux</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/08/15/server-certificate-verification-failed-solution/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/server-certificate-verification-failed-solution/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>nginx 反向代理 REST API</title>
-      <link>https://frankchen0130.github.io/2017/08/04/nginx-reverse-proxy-for-rest-API/</link>
-      <guid>https://frankchen0130.github.io/2017/08/04/nginx-reverse-proxy-for-rest-API/</guid>
+      <link>https://frankchen0130.github.io/nginx-reverse-proxy-for-rest-API/</link>
+      <guid>https://frankchen0130.github.io/nginx-reverse-proxy-for-rest-API/</guid>
       <pubDate>Fri, 04 Aug 2017 08:31:16 GMT</pubDate>
       
       <description>&lt;p&gt;利用nginx 为REST API提供负载均衡。利用nginx的负载均衡可以极大提升API服务的稳定性，本文简述此过程配置方法。&lt;/p&gt;</description>
@@ -997,14 +997,14 @@
       <category domain="https://frankchen0130.github.io/tags/nginx/">nginx</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/08/04/nginx-reverse-proxy-for-rest-API/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/nginx-reverse-proxy-for-rest-API/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Personal Tips on Mac &amp; Linux &amp; Iphone</title>
-      <link>https://frankchen0130.github.io/2017/07/18/All_kinds_of_TIPS/</link>
-      <guid>https://frankchen0130.github.io/2017/07/18/All_kinds_of_TIPS/</guid>
+      <link>https://frankchen0130.github.io/All_kinds_of_TIPS/</link>
+      <guid>https://frankchen0130.github.io/All_kinds_of_TIPS/</guid>
       <pubDate>Tue, 18 Jul 2017 02:43:17 GMT</pubDate>
       
       <description>&lt;p&gt;随手记录自己在用Mac开发上随时发现的各种Tips。&lt;/p&gt;</description>
@@ -1022,14 +1022,14 @@
       <category domain="https://frankchen0130.github.io/tags/Mac/">Mac</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/07/18/All_kinds_of_TIPS/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/All_kinds_of_TIPS/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Hive install on Ubuntu，并以Mysql作为Metastore</title>
-      <link>https://frankchen0130.github.io/2017/07/07/Hive-install-on-Ubuntu/</link>
-      <guid>https://frankchen0130.github.io/2017/07/07/Hive-install-on-Ubuntu/</guid>
+      <link>https://frankchen0130.github.io/Hive-install-on-Ubuntu/</link>
+      <guid>https://frankchen0130.github.io/Hive-install-on-Ubuntu/</guid>
       <pubDate>Fri, 07 Jul 2017 02:43:17 GMT</pubDate>
       
       <description>&lt;p&gt;安装配置Hive虽然比较简单，但是网上的资料各种坑，总结下来写下本文作为成功后的记录。&lt;/p&gt;</description>
@@ -1047,14 +1047,14 @@
       <category domain="https://frankchen0130.github.io/tags/Hadoop/">Hadoop</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/07/07/Hive-install-on-Ubuntu/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Hive-install-on-Ubuntu/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>ssh 建立本地localhost与远程服务器localhost的连接</title>
-      <link>https://frankchen0130.github.io/2017/07/06/ssh-web-tunnel/</link>
-      <guid>https://frankchen0130.github.io/2017/07/06/ssh-web-tunnel/</guid>
+      <link>https://frankchen0130.github.io/ssh-web-tunnel/</link>
+      <guid>https://frankchen0130.github.io/ssh-web-tunnel/</guid>
       <pubDate>Thu, 06 Jul 2017 06:23:29 GMT</pubDate>
       
         
@@ -1071,14 +1071,14 @@
       <category domain="https://frankchen0130.github.io/tags/Linux/">Linux</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/07/06/ssh-web-tunnel/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/ssh-web-tunnel/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>使用supervisor支持Python3程序</title>
-      <link>https://frankchen0130.github.io/2017/07/06/Use-supervisor-support-Python3-program/</link>
-      <guid>https://frankchen0130.github.io/2017/07/06/Use-supervisor-support-Python3-program/</guid>
+      <link>https://frankchen0130.github.io/Use-supervisor-support-Python3-program/</link>
+      <guid>https://frankchen0130.github.io/Use-supervisor-support-Python3-program/</guid>
       <pubDate>Thu, 06 Jul 2017 03:23:07 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;a href=&quot;http://supervisord.org/index.html&quot;&gt;Supervisor&lt;/a&gt;是python2写就的一款强大的运维工具，众所周知，&lt;br&gt;目前Supervisor还不支持python3，那么怎么利用Supervisor监控python3程序呢？本文主要讲述Supervisor在&lt;br&gt;Ubuntu下的安装部署以及上述问题的解决。&lt;/p&gt;</description>
@@ -1094,14 +1094,14 @@
       <category domain="https://frankchen0130.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/07/06/Use-supervisor-support-Python3-program/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Use-supervisor-support-Python3-program/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Ubuntu16.04 固定IP与设置DNS</title>
-      <link>https://frankchen0130.github.io/2017/06/20/Ubuntu-16-04-static-IP/</link>
-      <guid>https://frankchen0130.github.io/2017/06/20/Ubuntu-16-04-static-IP/</guid>
+      <link>https://frankchen0130.github.io/Ubuntu-16-04-static-IP/</link>
+      <guid>https://frankchen0130.github.io/Ubuntu-16-04-static-IP/</guid>
       <pubDate>Tue, 20 Jun 2017 07:13:31 GMT</pubDate>
       
       <description>&lt;p&gt;设置Hadoop集群的第一步很可能就是设置固定IP于DNS，而网上这一做法由于Ubuntu版本及桌面版服务器版的不同导致残差不齐，本文记录一下Ubuntu16.04在非图形界面固定IP与设置DNS的过程。&lt;/p&gt;</description>
@@ -1115,14 +1115,14 @@
       <category domain="https://frankchen0130.github.io/tags/Linux/">Linux</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/06/20/Ubuntu-16-04-static-IP/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Ubuntu-16-04-static-IP/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Learning Something from Fluent Python</title>
-      <link>https://frankchen0130.github.io/2017/06/18/Learning-Something-from-Fluent-Python/</link>
-      <guid>https://frankchen0130.github.io/2017/06/18/Learning-Something-from-Fluent-Python/</guid>
+      <link>https://frankchen0130.github.io/Learning-Something-from-Fluent-Python/</link>
+      <guid>https://frankchen0130.github.io/Learning-Something-from-Fluent-Python/</guid>
       <pubDate>Sun, 18 Jun 2017 11:42:32 GMT</pubDate>
       
       <description>&lt;p&gt;“Fluent Python” 真是一本不可多得的进阶Python神书！读时感觉就像一个老司机讲他的经历，而你情不自禁的喊“666~”。本文记录一些从书里看到的精彩片段与心得。&lt;/p&gt;</description>
@@ -1136,14 +1136,14 @@
       <category domain="https://frankchen0130.github.io/tags/python/">python</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/06/18/Learning-Something-from-Fluent-Python/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Learning-Something-from-Fluent-Python/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>programmer humor week 4</title>
-      <link>https://frankchen0130.github.io/2017/06/18/programmer-humor-week-4/</link>
-      <guid>https://frankchen0130.github.io/2017/06/18/programmer-humor-week-4/</guid>
+      <link>https://frankchen0130.github.io/programmer-humor-week-4/</link>
+      <guid>https://frankchen0130.github.io/programmer-humor-week-4/</guid>
       <pubDate>Sun, 18 Jun 2017 11:28:36 GMT</pubDate>
       
       <description>&lt;p&gt;programmer humor from reddit 🤣😂😜&lt;/p&gt;</description>
@@ -1157,14 +1157,14 @@
       <category domain="https://frankchen0130.github.io/tags/Funny/">Funny</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/06/18/programmer-humor-week-4/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/programmer-humor-week-4/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Python PATH是怎么一回事？从“import pyspark”报错说起</title>
-      <link>https://frankchen0130.github.io/2017/06/15/About-Python-PATH/</link>
-      <guid>https://frankchen0130.github.io/2017/06/15/About-Python-PATH/</guid>
+      <link>https://frankchen0130.github.io/About-Python-PATH/</link>
+      <guid>https://frankchen0130.github.io/About-Python-PATH/</guid>
       <pubDate>Wed, 14 Jun 2017 18:57:57 GMT</pubDate>
       
       <description>&lt;p&gt;为何import pyspark报错？让我们从捋一捋Python的环境变量PATH开始！&lt;/p&gt;</description>
@@ -1178,14 +1178,14 @@
       <category domain="https://frankchen0130.github.io/tags/python/">python</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/06/15/About-Python-PATH/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/About-Python-PATH/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>programmer humor week 3</title>
-      <link>https://frankchen0130.github.io/2017/05/27/programmer-humor-week-3/</link>
-      <guid>https://frankchen0130.github.io/2017/05/27/programmer-humor-week-3/</guid>
+      <link>https://frankchen0130.github.io/programmer-humor-week-3/</link>
+      <guid>https://frankchen0130.github.io/programmer-humor-week-3/</guid>
       <pubDate>Sat, 27 May 2017 09:58:39 GMT</pubDate>
       
       <description>&lt;p&gt;programmer humor from reddit 🤣😂😜&lt;/p&gt;</description>
@@ -1199,14 +1199,14 @@
       <category domain="https://frankchen0130.github.io/tags/Funny/">Funny</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/05/27/programmer-humor-week-3/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/programmer-humor-week-3/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Ubuntu 16.04 搭建 Spark &amp; Hadoop集群的详细步骤及报错填坑</title>
-      <link>https://frankchen0130.github.io/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/</link>
-      <guid>https://frankchen0130.github.io/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/</guid>
+      <link>https://frankchen0130.github.io/Ubuntu-16-04-install-Spark-Hadoop/</link>
+      <guid>https://frankchen0130.github.io/Ubuntu-16-04-install-Spark-Hadoop/</guid>
       <pubDate>Sat, 27 May 2017 08:13:04 GMT</pubDate>
       
       <description>&lt;p&gt;在Ubuntu 16.04 安装 Spark &amp;amp; Hadoop分布式集群的记录&lt;/p&gt;</description>
@@ -1222,14 +1222,14 @@
       <category domain="https://frankchen0130.github.io/tags/Spark/">Spark</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Ubuntu-16-04-install-Spark-Hadoop/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>解决Excel长数字被转为科学计数法的问题</title>
-      <link>https://frankchen0130.github.io/2017/05/12/examples-for-processing-excel-and-time-series/</link>
-      <guid>https://frankchen0130.github.io/2017/05/12/examples-for-processing-excel-and-time-series/</guid>
+      <link>https://frankchen0130.github.io/examples-for-processing-excel-and-time-series/</link>
+      <guid>https://frankchen0130.github.io/examples-for-processing-excel-and-time-series/</guid>
       <pubDate>Fri, 12 May 2017 03:43:34 GMT</pubDate>
       
       <description>&lt;p&gt;记录一些利用Pandas处理Excel和时间戳的例子。&lt;/p&gt;</description>
@@ -1245,14 +1245,14 @@
       <category domain="https://frankchen0130.github.io/tags/Pandas/">Pandas</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/05/12/examples-for-processing-excel-and-time-series/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/examples-for-processing-excel-and-time-series/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>面试常见基础算法:排序/查找/树的遍历等（python版）</title>
-      <link>https://frankchen0130.github.io/2017/05/04/Basic-Algorithms-in-Python/</link>
-      <guid>https://frankchen0130.github.io/2017/05/04/Basic-Algorithms-in-Python/</guid>
+      <link>https://frankchen0130.github.io/Basic-Algorithms-in-Python/</link>
+      <guid>https://frankchen0130.github.io/Basic-Algorithms-in-Python/</guid>
       <pubDate>Thu, 04 May 2017 06:08:10 GMT</pubDate>
       
       <description>&lt;p&gt;总结一下基本算法，以备忘，以复习。&lt;br&gt;当然，你别指望考官会直接考你这些，太基础，但是，当他知道你这些都写不出来的时候，你面试绝对没希望了。&lt;/p&gt;
@@ -1269,14 +1269,14 @@
       <category domain="https://frankchen0130.github.io/tags/Algorithm/">Algorithm</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/05/04/Basic-Algorithms-in-Python/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Basic-Algorithms-in-Python/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>个人面经（百度、腾讯、鹏元数据、行云智能数据岗）</title>
-      <link>https://frankchen0130.github.io/2017/04/22/%E4%B8%AA%E4%BA%BA%E9%9D%A2%E7%BB%8F/</link>
-      <guid>https://frankchen0130.github.io/2017/04/22/%E4%B8%AA%E4%BA%BA%E9%9D%A2%E7%BB%8F/</guid>
+      <link>https://frankchen0130.github.io/%E4%B8%AA%E4%BA%BA%E9%9D%A2%E7%BB%8F/</link>
+      <guid>https://frankchen0130.github.io/%E4%B8%AA%E4%BA%BA%E9%9D%A2%E7%BB%8F/</guid>
       <pubDate>Sat, 22 Apr 2017 06:51:17 GMT</pubDate>
       
       <description>&lt;p&gt;记录自找工作以来个人的面试经历与一些思考。&lt;/p&gt;</description>
@@ -1290,14 +1290,14 @@
       <category domain="https://frankchen0130.github.io/tags/Interview/">Interview</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/04/22/%E4%B8%AA%E4%BA%BA%E9%9D%A2%E7%BB%8F/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/%E4%B8%AA%E4%BA%BA%E9%9D%A2%E7%BB%8F/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Ubuntu 16.04下为TITAN 1080 显卡安装驱动(Cuda&amp;CudNN)及Gpu版TensorFlow</title>
-      <link>https://frankchen0130.github.io/2017/04/20/Ubuntu-16-04%E4%B8%8B%E4%B8%BATITAN-1080-%E6%98%BE%E5%8D%A1%E5%AE%89%E8%A3%85%E9%A9%B1%E5%8A%A8-Cuda-CudNN-%E5%8F%8AGpu%E7%89%88TensorFlow/</link>
-      <guid>https://frankchen0130.github.io/2017/04/20/Ubuntu-16-04%E4%B8%8B%E4%B8%BATITAN-1080-%E6%98%BE%E5%8D%A1%E5%AE%89%E8%A3%85%E9%A9%B1%E5%8A%A8-Cuda-CudNN-%E5%8F%8AGpu%E7%89%88TensorFlow/</guid>
+      <link>https://frankchen0130.github.io/Ubuntu-16-04%E4%B8%8B%E4%B8%BATITAN-1080-%E6%98%BE%E5%8D%A1%E5%AE%89%E8%A3%85%E9%A9%B1%E5%8A%A8-Cuda-CudNN-%E5%8F%8AGpu%E7%89%88TensorFlow/</link>
+      <guid>https://frankchen0130.github.io/Ubuntu-16-04%E4%B8%8B%E4%B8%BATITAN-1080-%E6%98%BE%E5%8D%A1%E5%AE%89%E8%A3%85%E9%A9%B1%E5%8A%A8-Cuda-CudNN-%E5%8F%8AGpu%E7%89%88TensorFlow/</guid>
       <pubDate>Thu, 20 Apr 2017 01:29:22 GMT</pubDate>
       
       <description>&lt;p&gt;近来入坑了TITAN 1080显卡，在Ubuntu 16.04下为装好驱动以使用Gpu版TensorFlow可不简单，踩了许多坑之后写下此篇为记录。&lt;/p&gt;</description>
@@ -1313,14 +1313,14 @@
       <category domain="https://frankchen0130.github.io/tags/TensorFlow/">TensorFlow</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/04/20/Ubuntu-16-04%E4%B8%8B%E4%B8%BATITAN-1080-%E6%98%BE%E5%8D%A1%E5%AE%89%E8%A3%85%E9%A9%B1%E5%8A%A8-Cuda-CudNN-%E5%8F%8AGpu%E7%89%88TensorFlow/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Ubuntu-16-04%E4%B8%8B%E4%B8%BATITAN-1080-%E6%98%BE%E5%8D%A1%E5%AE%89%E8%A3%85%E9%A9%B1%E5%8A%A8-Cuda-CudNN-%E5%8F%8AGpu%E7%89%88TensorFlow/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>创建双击可执行的sh脚本</title>
-      <link>https://frankchen0130.github.io/2017/04/19/%E5%88%9B%E5%BB%BA%E5%8F%8C%E5%87%BB%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84sh%E8%84%9A%E6%9C%AC/</link>
-      <guid>https://frankchen0130.github.io/2017/04/19/%E5%88%9B%E5%BB%BA%E5%8F%8C%E5%87%BB%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84sh%E8%84%9A%E6%9C%AC/</guid>
+      <link>https://frankchen0130.github.io/%E5%88%9B%E5%BB%BA%E5%8F%8C%E5%87%BB%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84sh%E8%84%9A%E6%9C%AC/</link>
+      <guid>https://frankchen0130.github.io/%E5%88%9B%E5%BB%BA%E5%8F%8C%E5%87%BB%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84sh%E8%84%9A%E6%9C%AC/</guid>
       <pubDate>Wed, 19 Apr 2017 01:36:49 GMT</pubDate>
       
       <description>&lt;p&gt;在Mac&amp;amp;Linux上创建双击可执行的sh脚本的方法。&lt;/p&gt;</description>
@@ -1338,14 +1338,14 @@
       <category domain="https://frankchen0130.github.io/tags/bash/">bash</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/04/19/%E5%88%9B%E5%BB%BA%E5%8F%8C%E5%87%BB%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84sh%E8%84%9A%E6%9C%AC/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/%E5%88%9B%E5%BB%BA%E5%8F%8C%E5%87%BB%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84sh%E8%84%9A%E6%9C%AC/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Python2 Python3的各种冲突及解决方法</title>
-      <link>https://frankchen0130.github.io/2017/04/18/Python3-%E5%AE%89%E8%A3%85opencv%E7%9A%84%E7%AE%80%E6%98%93%E6%96%B9%E6%B3%95/</link>
-      <guid>https://frankchen0130.github.io/2017/04/18/Python3-%E5%AE%89%E8%A3%85opencv%E7%9A%84%E7%AE%80%E6%98%93%E6%96%B9%E6%B3%95/</guid>
+      <link>https://frankchen0130.github.io/Python3-%E5%AE%89%E8%A3%85opencv%E7%9A%84%E7%AE%80%E6%98%93%E6%96%B9%E6%B3%95/</link>
+      <guid>https://frankchen0130.github.io/Python3-%E5%AE%89%E8%A3%85opencv%E7%9A%84%E7%AE%80%E6%98%93%E6%96%B9%E6%B3%95/</guid>
       <pubDate>Tue, 18 Apr 2017 09:52:06 GMT</pubDate>
       
       <description>&lt;p&gt;本文主要记录Python2 Python3的各种冲突及解决方法。&lt;/p&gt;</description>
@@ -1359,14 +1359,14 @@
       <category domain="https://frankchen0130.github.io/tags/python/">python</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/04/18/Python3-%E5%AE%89%E8%A3%85opencv%E7%9A%84%E7%AE%80%E6%98%93%E6%96%B9%E6%B3%95/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Python3-%E5%AE%89%E8%A3%85opencv%E7%9A%84%E7%AE%80%E6%98%93%E6%96%B9%E6%B3%95/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>programmer humor week 2</title>
-      <link>https://frankchen0130.github.io/2017/04/17/programmer-humor-week-2/</link>
-      <guid>https://frankchen0130.github.io/2017/04/17/programmer-humor-week-2/</guid>
+      <link>https://frankchen0130.github.io/programmer-humor-week-2/</link>
+      <guid>https://frankchen0130.github.io/programmer-humor-week-2/</guid>
       <pubDate>Mon, 17 Apr 2017 09:58:39 GMT</pubDate>
       
       <description>&lt;p&gt;programmer humor from reddit 🤣😂😜&lt;/p&gt;</description>
@@ -1380,14 +1380,14 @@
       <category domain="https://frankchen0130.github.io/tags/Funny/">Funny</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/04/17/programmer-humor-week-2/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/programmer-humor-week-2/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>利用git 同步本地与服务器代码</title>
-      <link>https://frankchen0130.github.io/2017/04/13/%E5%88%A9%E7%94%A8git-%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A3%E7%A0%81/</link>
-      <guid>https://frankchen0130.github.io/2017/04/13/%E5%88%A9%E7%94%A8git-%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A3%E7%A0%81/</guid>
+      <link>https://frankchen0130.github.io/%E5%88%A9%E7%94%A8git-%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A3%E7%A0%81/</link>
+      <guid>https://frankchen0130.github.io/%E5%88%A9%E7%94%A8git-%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A3%E7%A0%81/</guid>
       <pubDate>Wed, 12 Apr 2017 16:53:49 GMT</pubDate>
       
       <description>&lt;p&gt;在服务器端直接用vim写代码固然不是个好体验，本文介绍用git在两者之间同步的方法。&lt;/p&gt;</description>
@@ -1401,14 +1401,14 @@
       <category domain="https://frankchen0130.github.io/tags/Linux/">Linux</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/04/13/%E5%88%A9%E7%94%A8git-%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A3%E7%A0%81/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/%E5%88%A9%E7%94%A8git-%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A3%E7%A0%81/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>利用Pandas读取远程mysql数据库</title>
-      <link>https://frankchen0130.github.io/2017/04/11/%E5%88%A9%E7%94%A8Pandas%E8%AF%BB%E5%8F%96%E8%BF%9C%E7%A8%8Bmysql%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
-      <guid>https://frankchen0130.github.io/2017/04/11/%E5%88%A9%E7%94%A8Pandas%E8%AF%BB%E5%8F%96%E8%BF%9C%E7%A8%8Bmysql%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <link>https://frankchen0130.github.io/%E5%88%A9%E7%94%A8Pandas%E8%AF%BB%E5%8F%96%E8%BF%9C%E7%A8%8Bmysql%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <guid>https://frankchen0130.github.io/%E5%88%A9%E7%94%A8Pandas%E8%AF%BB%E5%8F%96%E8%BF%9C%E7%A8%8Bmysql%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
       <pubDate>Tue, 11 Apr 2017 09:31:49 GMT</pubDate>
       
       <description>&lt;p&gt;利用pymysql与Pandas读取远程数据库上的表格，并存储为本地csv文件。&lt;/p&gt;</description>
@@ -1426,14 +1426,14 @@
       <category domain="https://frankchen0130.github.io/tags/Pandas/">Pandas</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/04/11/%E5%88%A9%E7%94%A8Pandas%E8%AF%BB%E5%8F%96%E8%BF%9C%E7%A8%8Bmysql%E6%95%B0%E6%8D%AE%E5%BA%93/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/%E5%88%A9%E7%94%A8Pandas%E8%AF%BB%E5%8F%96%E8%BF%9C%E7%A8%8Bmysql%E6%95%B0%E6%8D%AE%E5%BA%93/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Data Science cheatsheet</title>
-      <link>https://frankchen0130.github.io/2017/04/05/machine-learning-cheat-sheet/</link>
-      <guid>https://frankchen0130.github.io/2017/04/05/machine-learning-cheat-sheet/</guid>
+      <link>https://frankchen0130.github.io/machine-learning-cheat-sheet/</link>
+      <guid>https://frankchen0130.github.io/machine-learning-cheat-sheet/</guid>
       <pubDate>Wed, 05 Apr 2017 08:45:56 GMT</pubDate>
       
       <description>&lt;p&gt;记录若干关于数据科学的cheatsheet&lt;/p&gt;</description>
@@ -1449,14 +1449,14 @@
       <category domain="https://frankchen0130.github.io/tags/Machine-Learning/">Machine Learning</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/04/05/machine-learning-cheat-sheet/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/machine-learning-cheat-sheet/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>programmer humor week 1</title>
-      <link>https://frankchen0130.github.io/2017/04/01/programmer-humor-week-1/</link>
-      <guid>https://frankchen0130.github.io/2017/04/01/programmer-humor-week-1/</guid>
+      <link>https://frankchen0130.github.io/programmer-humor-week-1/</link>
+      <guid>https://frankchen0130.github.io/programmer-humor-week-1/</guid>
       <pubDate>Sat, 01 Apr 2017 09:58:39 GMT</pubDate>
       
       <description>&lt;p&gt;programmer humor from reddit 🤣😂😜&lt;/p&gt;</description>
@@ -1470,14 +1470,14 @@
       <category domain="https://frankchen0130.github.io/tags/Funny/">Funny</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/04/01/programmer-humor-week-1/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/programmer-humor-week-1/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Learn More,Study Less</title>
-      <link>https://frankchen0130.github.io/2017/03/26/learn%20more%20study%20less/</link>
-      <guid>https://frankchen0130.github.io/2017/03/26/learn%20more%20study%20less/</guid>
+      <link>https://frankchen0130.github.io/learn%20more%20study%20less/</link>
+      <guid>https://frankchen0130.github.io/learn%20more%20study%20less/</guid>
       <pubDate>Sun, 26 Mar 2017 07:11:56 GMT</pubDate>
       
       <description>&lt;p&gt;关于learn more study less 的思维导图  &lt;/p&gt;</description>
@@ -1493,14 +1493,14 @@
       <category domain="https://frankchen0130.github.io/tags/Life/">Life</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/03/26/learn%20more%20study%20less/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/learn%20more%20study%20less/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Basic Linux/Unix command Interview Questions</title>
-      <link>https://frankchen0130.github.io/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/</link>
-      <guid>https://frankchen0130.github.io/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/</guid>
+      <link>https://frankchen0130.github.io/Basic-Linux-Unix-command-Interview-Questions/</link>
+      <guid>https://frankchen0130.github.io/Basic-Linux-Unix-command-Interview-Questions/</guid>
       <pubDate>Sat, 18 Mar 2017 16:53:08 GMT</pubDate>
       
       <description>&lt;p&gt;Overview of Basic Linux/Unix command Interview Questions: 常见Linux命令的概述记录&lt;/p&gt;</description>
@@ -1514,14 +1514,14 @@
       <category domain="https://frankchen0130.github.io/tags/Linux/">Linux</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/03/19/Basic-Linux-Unix-command-Interview-Questions/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Basic-Linux-Unix-command-Interview-Questions/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>python源码解析0：趣事</title>
-      <link>https://frankchen0130.github.io/2017/03/18/python-source-code-reading-0/</link>
-      <guid>https://frankchen0130.github.io/2017/03/18/python-source-code-reading-0/</guid>
+      <link>https://frankchen0130.github.io/python-source-code-reading-0/</link>
+      <guid>https://frankchen0130.github.io/python-source-code-reading-0/</guid>
       <pubDate>Fri, 17 Mar 2017 19:56:23 GMT</pubDate>
       
       <description>&lt;p&gt;About 两处python源码的趣味解读。&lt;/p&gt;</description>
@@ -1535,14 +1535,14 @@
       <category domain="https://frankchen0130.github.io/tags/python/">python</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/03/18/python-source-code-reading-0/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/python-source-code-reading-0/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>programmer humor week 0</title>
-      <link>https://frankchen0130.github.io/2017/03/15/programmer-humor-week-0/</link>
-      <guid>https://frankchen0130.github.io/2017/03/15/programmer-humor-week-0/</guid>
+      <link>https://frankchen0130.github.io/programmer-humor-week-0/</link>
+      <guid>https://frankchen0130.github.io/programmer-humor-week-0/</guid>
       <pubDate>Wed, 15 Mar 2017 10:33:39 GMT</pubDate>
       
       <description>&lt;p&gt;programmer humor from reddit 🤣😂😜&lt;/p&gt;</description>
@@ -1556,14 +1556,14 @@
       <category domain="https://frankchen0130.github.io/tags/Funny/">Funny</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/03/15/programmer-humor-week-0/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/programmer-humor-week-0/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>数据挖掘流程：数据可视化与预处理</title>
-      <link>https://frankchen0130.github.io/2017/03/15/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%B5%81%E7%A8%8B%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/</link>
-      <guid>https://frankchen0130.github.io/2017/03/15/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%B5%81%E7%A8%8B%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/</guid>
+      <link>https://frankchen0130.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%B5%81%E7%A8%8B%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/</link>
+      <guid>https://frankchen0130.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%B5%81%E7%A8%8B%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/</guid>
       <pubDate>Wed, 15 Mar 2017 03:14:11 GMT</pubDate>
       
       <description>&lt;p&gt;数据挖掘的第一步，当我们手中拿到一份数据，当然是对数据进行观察与预处理了。本文主要对这两个方面做一个个人的总结。&lt;/p&gt;</description>
@@ -1577,14 +1577,14 @@
       <category domain="https://frankchen0130.github.io/tags/Data-Science/">Data Science</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/03/15/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%B5%81%E7%A8%8B%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%B5%81%E7%A8%8B%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Amdahl&#39;s law</title>
-      <link>https://frankchen0130.github.io/2017/02/22/Amdahl-s-law/</link>
-      <guid>https://frankchen0130.github.io/2017/02/22/Amdahl-s-law/</guid>
+      <link>https://frankchen0130.github.io/Amdahl-s-law/</link>
+      <guid>https://frankchen0130.github.io/Amdahl-s-law/</guid>
       <pubDate>Wed, 22 Feb 2017 10:03:29 GMT</pubDate>
       
       <description>&lt;p&gt;关于Amdahl’s law。&lt;/p&gt;</description>
@@ -1598,14 +1598,14 @@
       <category domain="https://frankchen0130.github.io/tags/Data-Science/">Data Science</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/02/22/Amdahl-s-law/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Amdahl-s-law/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Deep Learning Interview</title>
-      <link>https://frankchen0130.github.io/2017/02/18/Deep-Learning-Interview/</link>
-      <guid>https://frankchen0130.github.io/2017/02/18/Deep-Learning-Interview/</guid>
+      <link>https://frankchen0130.github.io/Deep-Learning-Interview/</link>
+      <guid>https://frankchen0130.github.io/Deep-Learning-Interview/</guid>
       <pubDate>Sat, 18 Feb 2017 02:25:31 GMT</pubDate>
       
       <description>&lt;p&gt;整理一些关于Deep Learning的面试问题。&lt;/p&gt;</description>
@@ -1619,14 +1619,14 @@
       <category domain="https://frankchen0130.github.io/tags/Deep-Learning/">Deep Learning</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/02/18/Deep-Learning-Interview/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Deep-Learning-Interview/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>在Windows上安装并加速拉取Docker镜像的方法</title>
-      <link>https://frankchen0130.github.io/2017/02/17/Docker-Windows-Speed-up/</link>
-      <guid>https://frankchen0130.github.io/2017/02/17/Docker-Windows-Speed-up/</guid>
+      <link>https://frankchen0130.github.io/Docker-Windows-Speed-up/</link>
+      <guid>https://frankchen0130.github.io/Docker-Windows-Speed-up/</guid>
       <pubDate>Fri, 17 Feb 2017 06:38:44 GMT</pubDate>
       
       <description>&lt;p&gt;Docker容器服务近来可谓是一日千里爆炸式的发展，但是在国内安装Docker或者拉取庞大的Docker镜像都不可避免的遇到蜗牛式速度的问题，本文主要关于加速下载DockerWindows客户端和镜像的方法。&lt;/p&gt;</description>
@@ -1640,14 +1640,14 @@
       <category domain="https://frankchen0130.github.io/tags/Docker/">Docker</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/02/17/Docker-Windows-Speed-up/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Docker-Windows-Speed-up/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Explanation of Convolutional Neural Networks</title>
-      <link>https://frankchen0130.github.io/2017/02/16/Explanation-of-Convolutional-Neural-Networks/</link>
-      <guid>https://frankchen0130.github.io/2017/02/16/Explanation-of-Convolutional-Neural-Networks/</guid>
+      <link>https://frankchen0130.github.io/Explanation-of-Convolutional-Neural-Networks/</link>
+      <guid>https://frankchen0130.github.io/Explanation-of-Convolutional-Neural-Networks/</guid>
       <pubDate>Thu, 16 Feb 2017 06:56:16 GMT</pubDate>
       
       <description>&lt;p&gt;卷积神经网络(Convolutional Neural Network)，简称CNN，是机器视觉领域的主要神经网络模型。本文主要对CNN做一个简明全面的介绍。&lt;/p&gt;</description>
@@ -1663,14 +1663,14 @@
       <category domain="https://frankchen0130.github.io/tags/CNN/">CNN</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/02/16/Explanation-of-Convolutional-Neural-Networks/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Explanation-of-Convolutional-Neural-Networks/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Mac上安装Kaggle Docker 镜像的方法</title>
-      <link>https://frankchen0130.github.io/2017/02/13/Install-Kaggle-Docker-on-Mac/</link>
-      <guid>https://frankchen0130.github.io/2017/02/13/Install-Kaggle-Docker-on-Mac/</guid>
+      <link>https://frankchen0130.github.io/Install-Kaggle-Docker-on-Mac/</link>
+      <guid>https://frankchen0130.github.io/Install-Kaggle-Docker-on-Mac/</guid>
       <pubDate>Sun, 12 Feb 2017 18:31:56 GMT</pubDate>
       
       <description>&lt;p&gt;作为数据科学业界独占鳌头的竞赛网站Kaggle为我们提供了简便的一键安装的Docker镜像，使得我们可以方便的在本地&lt;br&gt;使用与Kaggle网站在线完全一致的环境，那么在Mac上如何安装和使用Kaggle的Docker镜像呢？&lt;/p&gt;</description>
@@ -1686,14 +1686,14 @@
       <category domain="https://frankchen0130.github.io/tags/Docker/">Docker</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/02/13/Install-Kaggle-Docker-on-Mac/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Install-Kaggle-Docker-on-Mac/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Note for SoloLearn SQL</title>
-      <link>https://frankchen0130.github.io/2017/01/17/Note-for-SoloLearn-SQL/</link>
-      <guid>https://frankchen0130.github.io/2017/01/17/Note-for-SoloLearn-SQL/</guid>
+      <link>https://frankchen0130.github.io/Note-for-SoloLearn-SQL/</link>
+      <guid>https://frankchen0130.github.io/Note-for-SoloLearn-SQL/</guid>
       <pubDate>Tue, 17 Jan 2017 08:11:48 GMT</pubDate>
       
       <description>&lt;p&gt;本文主要关于SQL的基本语法的笔记，来自SoloLearn。&lt;/p&gt;</description>
@@ -1709,14 +1709,14 @@
       <category domain="https://frankchen0130.github.io/tags/Note/">Note</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/01/17/Note-for-SoloLearn-SQL/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Note-for-SoloLearn-SQL/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Note of Recommendation System in Action</title>
-      <link>https://frankchen0130.github.io/2017/01/16/Action/</link>
-      <guid>https://frankchen0130.github.io/2017/01/16/Action/</guid>
+      <link>https://frankchen0130.github.io/Action/</link>
+      <guid>https://frankchen0130.github.io/Action/</guid>
       <pubDate>Sun, 15 Jan 2017 16:19:00 GMT</pubDate>
       
       <description>&lt;p&gt;本文主要关于项亮的《推荐系统实践》的笔记。&lt;/p&gt;</description>
@@ -1730,14 +1730,14 @@
       <category domain="https://frankchen0130.github.io/tags/Recommendation-System/">Recommendation System</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/01/16/Action/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Action/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Sort Algorithms of Linear Time Complexity</title>
-      <link>https://frankchen0130.github.io/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/</link>
-      <guid>https://frankchen0130.github.io/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/</guid>
+      <link>https://frankchen0130.github.io/Sort-Algorithms-of-Linear-Time-Complexity/</link>
+      <guid>https://frankchen0130.github.io/Sort-Algorithms-of-Linear-Time-Complexity/</guid>
       <pubDate>Fri, 13 Jan 2017 12:05:31 GMT</pubDate>
       
       <description>&lt;p&gt;常用排序算法如归并、快排、堆排序等基于比较的排序方法都是不能突破$O(n \log n)$时间复杂度的，本文着重介绍几种线性时间复杂度的排序方法。&lt;/p&gt;</description>
@@ -1753,14 +1753,14 @@
       <category domain="https://frankchen0130.github.io/tags/Java/">Java</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/01/13/Sort-Algorithms-of-Linear-Time-Complexity/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Sort-Algorithms-of-Linear-Time-Complexity/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Polymorphism of Java</title>
-      <link>https://frankchen0130.github.io/2017/01/13/Polymorphism-of-Java/</link>
-      <guid>https://frankchen0130.github.io/2017/01/13/Polymorphism-of-Java/</guid>
+      <link>https://frankchen0130.github.io/Polymorphism-of-Java/</link>
+      <guid>https://frankchen0130.github.io/Polymorphism-of-Java/</guid>
       <pubDate>Fri, 13 Jan 2017 10:15:27 GMT</pubDate>
       
       <description>&lt;p&gt;最近面试被问到Java的多态怎么理解，自己含含糊糊的感觉自己知道点含义可是就是具体怎么说打不出来，尴尬死。接下来打算把三大特性：封装、继承、多态都好好的写下来，以参考。本文先写关于Java的多态吧。&lt;/p&gt;</description>
@@ -1776,14 +1776,14 @@
       <category domain="https://frankchen0130.github.io/tags/OOP/">OOP</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/01/13/Polymorphism-of-Java/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Polymorphism-of-Java/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Map 0f Java</title>
-      <link>https://frankchen0130.github.io/2017/01/13/Map-0f-Java/</link>
-      <guid>https://frankchen0130.github.io/2017/01/13/Map-0f-Java/</guid>
+      <link>https://frankchen0130.github.io/Map-0f-Java/</link>
+      <guid>https://frankchen0130.github.io/Map-0f-Java/</guid>
       <pubDate>Fri, 13 Jan 2017 05:53:14 GMT</pubDate>
       
       <description>&lt;p&gt;整理关于Java的Map相关的知识，最近面试有被问到关于此类数据结构的知识，故写下来总结一番。&lt;/p&gt;</description>
@@ -1799,14 +1799,14 @@
       <category domain="https://frankchen0130.github.io/tags/Data-Structure/">Data Structure</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/01/13/Map-0f-Java/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Map-0f-Java/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>To be a great commander</title>
-      <link>https://frankchen0130.github.io/2017/01/11/good%20commander/</link>
-      <guid>https://frankchen0130.github.io/2017/01/11/good%20commander/</guid>
+      <link>https://frankchen0130.github.io/good%20commander/</link>
+      <guid>https://frankchen0130.github.io/good%20commander/</guid>
       <pubDate>Wed, 11 Jan 2017 07:19:05 GMT</pubDate>
       
       <description>&lt;p&gt;近来偶然读到林彪元帅关于如何进行军事工作写的工作总结，不光是军事，应用到日常工作、做事也是很好的指导，这是林彪不到30岁时候写下的文字，顿时明白为何人家23岁就可以当军长的原因。&lt;/p&gt;</description>
@@ -1820,14 +1820,14 @@
       <category domain="https://frankchen0130.github.io/tags/life/">life</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/01/11/good%20commander/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/good%20commander/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>logistic regression的公式手推相关</title>
-      <link>https://frankchen0130.github.io/2017/01/09/logistic-regression/</link>
-      <guid>https://frankchen0130.github.io/2017/01/09/logistic-regression/</guid>
+      <link>https://frankchen0130.github.io/logistic-regression/</link>
+      <guid>https://frankchen0130.github.io/logistic-regression/</guid>
       <pubDate>Mon, 09 Jan 2017 07:56:59 GMT</pubDate>
       
       <description>&lt;p&gt;本文有关logistic regression的公式相关的手推，包括假说函数、极大似然估计以及梯度下降算法。&lt;/p&gt;</description>
@@ -1841,14 +1841,14 @@
       <category domain="https://frankchen0130.github.io/tags/Algorithm/">Algorithm</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/01/09/logistic-regression/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/logistic-regression/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>linear regression 的公式手推相关</title>
-      <link>https://frankchen0130.github.io/2017/01/06/linear-regression/</link>
-      <guid>https://frankchen0130.github.io/2017/01/06/linear-regression/</guid>
+      <link>https://frankchen0130.github.io/linear-regression/</link>
+      <guid>https://frankchen0130.github.io/linear-regression/</guid>
       <pubDate>Fri, 06 Jan 2017 13:55:30 GMT</pubDate>
       
       <description>&lt;p&gt;本文有关多元linear Regression的损失函数从极大似然估计的角度的推导以及梯度下降算法。纯手打，^^&lt;/p&gt;</description>
@@ -1862,14 +1862,14 @@
       <category domain="https://frankchen0130.github.io/tags/Algorithm/">Algorithm</category>
       
       
-      <comments>https://frankchen0130.github.io/2017/01/06/linear-regression/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/linear-regression/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>AliPay RedEnvelope Hacker</title>
-      <link>https://frankchen0130.github.io/2016/12/25/AliPay-RedEnvelope-Hacker/</link>
-      <guid>https://frankchen0130.github.io/2016/12/25/AliPay-RedEnvelope-Hacker/</guid>
+      <link>https://frankchen0130.github.io/AliPay-RedEnvelope-Hacker/</link>
+      <guid>https://frankchen0130.github.io/AliPay-RedEnvelope-Hacker/</guid>
       <pubDate>Sun, 25 Dec 2016 15:16:53 GMT</pubDate>
       
       <description>&lt;p&gt; 最近支付宝继续其逆天改命的追赶超越微信的社交梦之路，上线了狂拽酷炫吊炸天的AR红包玩法，顿时刷爆了一波朋友圈，但是这热闹后面也隐藏着一些问题甚至是致命Bug或者危机。&lt;/p&gt;</description>
@@ -1883,14 +1883,14 @@
       <category domain="https://frankchen0130.github.io/tags/Algorithm/">Algorithm</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/12/25/AliPay-RedEnvelope-Hacker/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/AliPay-RedEnvelope-Hacker/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>pointer and ++--</title>
-      <link>https://frankchen0130.github.io/2016/12/11/pointer-and/</link>
-      <guid>https://frankchen0130.github.io/2016/12/11/pointer-and/</guid>
+      <link>https://frankchen0130.github.io/pointer-and/</link>
+      <guid>https://frankchen0130.github.io/pointer-and/</guid>
       <pubDate>Sun, 11 Dec 2016 08:50:45 GMT</pubDate>
       
       <description>&lt;p&gt;本文主要关于演示指针与自增自减运算符结合的时候的运算顺序。&lt;/p&gt;</description>
@@ -1904,14 +1904,14 @@
       <category domain="https://frankchen0130.github.io/tags/C/">C++</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/12/11/pointer-and/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/pointer-and/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>QuickSort in C &amp; Python</title>
-      <link>https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/</link>
-      <guid>https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/</guid>
+      <link>https://frankchen0130.github.io/QuickSort-in-C/</link>
+      <guid>https://frankchen0130.github.io/QuickSort-in-C/</guid>
       <pubDate>Fri, 02 Dec 2016 11:55:35 GMT</pubDate>
       
       <description>&lt;p&gt;本文主要关于演示C语言中的快排算法。&lt;/p&gt;</description>
@@ -1925,14 +1925,14 @@
       <category domain="https://frankchen0130.github.io/tags/Algorithm/">Algorithm</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/12/02/QuickSort-in-C/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/QuickSort-in-C/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Workflow for automatic extract and jump to the true URL of 91porn.com</title>
-      <link>https://frankchen0130.github.io/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/</link>
-      <guid>https://frankchen0130.github.io/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/</guid>
+      <link>https://frankchen0130.github.io/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/</link>
+      <guid>https://frankchen0130.github.io/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/</guid>
       <pubDate>Sun, 27 Nov 2016 16:41:22 GMT</pubDate>
       
       <description>&lt;p&gt;主要讲述自己开发的Alfred Workflow 91url：自动获取某网站的真实视频地址并跳转的应用。&lt;/p&gt;</description>
@@ -1946,14 +1946,14 @@
       <category domain="https://frankchen0130.github.io/tags/Old-Driver/">Old Driver</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/11/28/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Workflow-for-automatic-extract-and-jump-to-the-true-URL-of-91porn-com/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Devide and Conquer Counting Inversions with Python</title>
-      <link>https://frankchen0130.github.io/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/</link>
-      <guid>https://frankchen0130.github.io/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/</guid>
+      <link>https://frankchen0130.github.io/Devide-and-Conquer-Counting-Inversions-with-Python/</link>
+      <guid>https://frankchen0130.github.io/Devide-and-Conquer-Counting-Inversions-with-Python/</guid>
       <pubDate>Fri, 25 Nov 2016 08:55:15 GMT</pubDate>
       
       <description>&lt;p&gt;本文主要内容关于python归并排序求逆序数的算法。&lt;/p&gt;</description>
@@ -1969,14 +1969,14 @@
       <category domain="https://frankchen0130.github.io/tags/Algorithm/">Algorithm</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/11/25/Devide-and-Conquer-Counting-Inversions-with-Python/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Devide-and-Conquer-Counting-Inversions-with-Python/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Understanding EM algorithm</title>
-      <link>https://frankchen0130.github.io/2016/11/18/Understanding-EM-algorithm/</link>
-      <guid>https://frankchen0130.github.io/2016/11/18/Understanding-EM-algorithm/</guid>
+      <link>https://frankchen0130.github.io/Understanding-EM-algorithm/</link>
+      <guid>https://frankchen0130.github.io/Understanding-EM-algorithm/</guid>
       <pubDate>Fri, 18 Nov 2016 13:54:19 GMT</pubDate>
       
       <description>&lt;p&gt;本文主要内容为用一个简短的例子解释EM算法。&lt;/p&gt;</description>
@@ -1990,14 +1990,14 @@
       <category domain="https://frankchen0130.github.io/tags/Machine-Learning/">Machine Learning</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/11/18/Understanding-EM-algorithm/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Understanding-EM-algorithm/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Way to solving the .DS_Store problem of Mac</title>
-      <link>https://frankchen0130.github.io/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/</link>
-      <guid>https://frankchen0130.github.io/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/</guid>
+      <link>https://frankchen0130.github.io/Way-to-solving-the-DS-Store-problem-of-Mac/</link>
+      <guid>https://frankchen0130.github.io/Way-to-solving-the-DS-Store-problem-of-Mac/</guid>
       <pubDate>Thu, 17 Nov 2016 07:25:30 GMT</pubDate>
       
       <description>&lt;p&gt;本文主要讲述如何解决Mac OS下面的.DS_Store文件的问题。&lt;/p&gt;</description>
@@ -2015,14 +2015,14 @@
       <category domain="https://frankchen0130.github.io/tags/DS-Store/">.DS_Store</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/11/17/Way-to-solving-the-DS-Store-problem-of-Mac/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Way-to-solving-the-DS-Store-problem-of-Mac/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>A efficiency comparison between while for generator comprehension - Python while、for、生成器、列表推导等语句的执行效率对比</title>
-      <link>https://frankchen0130.github.io/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/</link>
-      <guid>https://frankchen0130.github.io/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/</guid>
+      <link>https://frankchen0130.github.io/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/</link>
+      <guid>https://frankchen0130.github.io/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/</guid>
       <pubDate>Fri, 11 Nov 2016 14:43:17 GMT</pubDate>
       
       <description>&lt;p&gt;python中，同一个功能的实现，可以用多种语句来实现，比如说:while语句、for语句、生成器、列表推导、内置函数等实现，然而他们的效率并不一样。这里有一个小程序来测试它们执行的效率。&lt;/p&gt;</description>
@@ -2038,14 +2038,14 @@
       <category domain="https://frankchen0130.github.io/tags/python/">python</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/11/11/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-11-11-a-efficiency-comparison-between-while-slash-for-slash-generator-slash-comprehension/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>精确率、召回率、F1 值、ROC/AUC 、PRC各自的优缺点是什么？</title>
-      <link>https://frankchen0130.github.io/2016/09/21/metric/</link>
-      <guid>https://frankchen0130.github.io/2016/09/21/metric/</guid>
+      <link>https://frankchen0130.github.io/metric/</link>
+      <guid>https://frankchen0130.github.io/metric/</guid>
       <pubDate>Wed, 21 Sep 2016 14:15:48 GMT</pubDate>
       
       <description>&lt;p&gt;精确率、召回率、F1 值、ROC、AUC、PRC都是机器学习模型的常用评价标准，那么它们的区别和联系以及各自应用场景是什么呢？&lt;/p&gt;
@@ -2067,14 +2067,14 @@
       <category domain="https://frankchen0130.github.io/tags/Machine-Learning/">Machine Learning</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/09/21/metric/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/metric/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>PDF click return</title>
-      <link>https://frankchen0130.github.io/2016/09/07/2016-09-07-pdf-click-return/</link>
-      <guid>https://frankchen0130.github.io/2016/09/07/2016-09-07-pdf-click-return/</guid>
+      <link>https://frankchen0130.github.io/2016-09-07-pdf-click-return/</link>
+      <guid>https://frankchen0130.github.io/2016-09-07-pdf-click-return/</guid>
       <pubDate>Wed, 07 Sep 2016 02:57:05 GMT</pubDate>
       
         
@@ -2092,14 +2092,14 @@
       <category domain="https://frankchen0130.github.io/tags/tips/">tips</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/09/07/2016-09-07-pdf-click-return/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-09-07-pdf-click-return/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>如何解决Linux 下 zip 文件解压乱码</title>
-      <link>https://frankchen0130.github.io/2016/07/16/Linux%20zip%20encoding/</link>
-      <guid>https://frankchen0130.github.io/2016/07/16/Linux%20zip%20encoding/</guid>
+      <link>https://frankchen0130.github.io/Linux%20zip%20encoding/</link>
+      <guid>https://frankchen0130.github.io/Linux%20zip%20encoding/</guid>
       <pubDate>Sat, 16 Jul 2016 04:11:14 GMT</pubDate>
       
       <description>&lt;p&gt;由于zip格式中并没有指定编码格式，Windows下生成的zip文件中的编码是GBK/GB2312等，因此，导致这些zip文件在Linux下解压时出现乱码问题，因为Linux下的默认编码是UTF8。&lt;br&gt;目前网上流传一种unzip -O cp936的方法，但一些unzip是没有-O这个选项的。&lt;/p&gt;</description>
@@ -2115,14 +2115,14 @@
       <category domain="https://frankchen0130.github.io/tags/Linux/">Linux</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/07/16/Linux%20zip%20encoding/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/Linux%20zip%20encoding/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>RECURRENT NEURAL NETWORK TUTORIAL, PART 4 – IMPLEMENTING A GRU/LSTM RNN WITH PYTHON AND THEANO</title>
-      <link>https://frankchen0130.github.io/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/</link>
-      <guid>https://frankchen0130.github.io/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/</guid>
+      <link>https://frankchen0130.github.io/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/</link>
+      <guid>https://frankchen0130.github.io/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/</guid>
       <pubDate>Wed, 22 Jun 2016 13:42:51 GMT</pubDate>
       
       <description>&lt;p&gt;本文中，我们将学习关于LSTM (Long Short Term Memory)网络和 GRUs (Gated Recurrent Units)的知识。LSTM最初由&lt;a href=&quot;http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf&quot;&gt;Sepp Hochreiter and Jürgen Schmidhuber于1997年提出&lt;/a&gt;，如今是深度学习自然语言处理领域最流行的模型。GRU，&lt;a href=&quot;http://arxiv.org/pdf/1406.1078v3.pdf&quot;&gt;出现于2014年&lt;/a&gt;，是LSTM的简化版，与LSTM有许多相似的特性。&lt;/p&gt;</description>
@@ -2140,14 +2140,14 @@
       <category domain="https://frankchen0130.github.io/tags/RNN/">RNN</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/06/22/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-06-22-recurrent-neural-network-tutorial-part-4-implementing-a-gru-slash-lstm-rnn-with-python-and-theano/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>RECURRENT NEURAL NETWORKS TUTORIAL, PART 3 – BACKPROPAGATION THROUGH TIME AND VANISHING GRADIENTS</title>
-      <link>https://frankchen0130.github.io/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/</link>
-      <guid>https://frankchen0130.github.io/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/</guid>
+      <link>https://frankchen0130.github.io/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/</link>
+      <guid>https://frankchen0130.github.io/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/</guid>
       <pubDate>Wed, 22 Jun 2016 07:42:14 GMT</pubDate>
       
       <description>&lt;p&gt;在之前的部分我们实现了RNN，但是并未深入探究时间反向传播算法，本文将对这一点作详细说明。我们将了解关于梯度消失问题的知识，它促使了LSTM和GRU的出现，而这两者都是NLP领域非常常见的模型。&lt;/p&gt;
@@ -2168,14 +2168,14 @@
       <category domain="https://frankchen0130.github.io/tags/RNN/">RNN</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/06/22/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-06-22-recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Vim 练级攻略二</title>
-      <link>https://frankchen0130.github.io/2016/06/22/2016-06-22-vim-lian-ji-gong-er/</link>
-      <guid>https://frankchen0130.github.io/2016/06/22/2016-06-22-vim-lian-ji-gong-er/</guid>
+      <link>https://frankchen0130.github.io/2016-06-22-vim-lian-ji-gong-er/</link>
+      <guid>https://frankchen0130.github.io/2016-06-22-vim-lian-ji-gong-er/</guid>
       <pubDate>Wed, 22 Jun 2016 02:50:35 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;第三级-–-更好，更强，更快&quot;&gt;&lt;a href=&quot;#第三级-–-更好，更强，更快&quot; class=&quot;headerlink&quot; title=&quot;第三级 – 更好，更强，更快&quot;&gt;&lt;/a&gt;第三级 – 更好，更强，更快&lt;/h2&gt;&lt;p&gt;先恭喜你！你干的很不错。我们可以开始一些更为有趣的事了。在第三级，我们只谈那些和vi可以兼容的命令。&lt;/p&gt;
@@ -2196,14 +2196,14 @@
       <category domain="https://frankchen0130.github.io/tags/tutorial/">tutorial</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/06/22/2016-06-22-vim-lian-ji-gong-er/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-06-22-vim-lian-ji-gong-er/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Vim 练级攻略一</title>
-      <link>https://frankchen0130.github.io/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/</link>
-      <guid>https://frankchen0130.github.io/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/</guid>
+      <link>https://frankchen0130.github.io/2016-06-22-vim-lian-ji-gong-lue-1/</link>
+      <guid>https://frankchen0130.github.io/2016-06-22-vim-lian-ji-gong-lue-1/</guid>
       <pubDate>Wed, 22 Jun 2016 02:50:35 GMT</pubDate>
       
       <description>&lt;p&gt;&lt;img src=&quot;/images/2016/06/uber_leet_use_vim.jpg&quot;&gt;&lt;/p&gt;
@@ -2225,14 +2225,14 @@
       <category domain="https://frankchen0130.github.io/tags/tutorial/">tutorial</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/06/22/2016-06-22-vim-lian-ji-gong-lue-1/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-06-22-vim-lian-ji-gong-lue-1/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>RECURRENT NEURAL NETWORKS TUTORIAL, PART 2 – IMPLEMENTING A RNN WITH PYTHON, NUMPY AND THEANO</title>
-      <link>https://frankchen0130.github.io/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/</link>
-      <guid>https://frankchen0130.github.io/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/</guid>
+      <link>https://frankchen0130.github.io/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/</link>
+      <guid>https://frankchen0130.github.io/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/</guid>
       <pubDate>Wed, 15 Jun 2016 09:54:18 GMT</pubDate>
       
       <description>&lt;p&gt;本文将用Python实现完整的RNN，并且用Theano来优化。&lt;/p&gt;
@@ -2252,14 +2252,14 @@
       <category domain="https://frankchen0130.github.io/tags/RNN/">RNN</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/06/15/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-06-15-recurrent-neural-networks-tutorial-part-2-implementing-a-rnn-with-python-numpy-and-theano/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>ubuntu下修改DNS并且避免重启失效的方法</title>
-      <link>https://frankchen0130.github.io/2016/06/07/2016-06-07-edit-dns-of-ubuntu/</link>
-      <guid>https://frankchen0130.github.io/2016/06/07/2016-06-07-edit-dns-of-ubuntu/</guid>
+      <link>https://frankchen0130.github.io/2016-06-07-edit-dns-of-ubuntu/</link>
+      <guid>https://frankchen0130.github.io/2016-06-07-edit-dns-of-ubuntu/</guid>
       <pubDate>Tue, 07 Jun 2016 10:19:51 GMT</pubDate>
       
         
@@ -2279,14 +2279,14 @@
       <category domain="https://frankchen0130.github.io/tags/Linux/">Linux</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/06/07/2016-06-07-edit-dns-of-ubuntu/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-06-07-edit-dns-of-ubuntu/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>RECURRENT NEURAL NETWORKS TUTORIAL, PART 1 – INTRODUCTION TO RNNS</title>
-      <link>https://frankchen0130.github.io/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/</link>
-      <guid>https://frankchen0130.github.io/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/</guid>
+      <link>https://frankchen0130.github.io/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/</link>
+      <guid>https://frankchen0130.github.io/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/</guid>
       <pubDate>Mon, 06 Jun 2016 11:18:44 GMT</pubDate>
       
       <description>&lt;p&gt;RNN，也即是递归神经网络，是许多NLP任务的流行处理模型。本部分中将简介RNN。&lt;/p&gt;
@@ -2309,14 +2309,14 @@
       <category domain="https://frankchen0130.github.io/tags/RNN/">RNN</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/06/06/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-06-06-recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>理解LSTM网络</title>
-      <link>https://frankchen0130.github.io/2016/06/04/2016-06-04-understanding-lstm-networks/</link>
-      <guid>https://frankchen0130.github.io/2016/06/04/2016-06-04-understanding-lstm-networks/</guid>
+      <link>https://frankchen0130.github.io/2016-06-04-understanding-lstm-networks/</link>
+      <guid>https://frankchen0130.github.io/2016-06-04-understanding-lstm-networks/</guid>
       <pubDate>Sat, 04 Jun 2016 09:16:15 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;Recurrent-Neural-Networks-RNN&quot;&gt;&lt;a href=&quot;#Recurrent-Neural-Networks-RNN&quot; class=&quot;headerlink&quot; title=&quot;Recurrent Neural Networks(RNN)&quot;&gt;&lt;/a&gt;Recurrent Neural Networks(RNN)&lt;/h2&gt;&lt;p&gt;人类是依靠自己过往的经验来学习，如同我们在读文章时，每一时刻，我们对于当前的概念的理解总要添加上对于之前获取的知识经验，总之，我们的思维是有持续性的。&lt;/p&gt;
@@ -2337,14 +2337,14 @@
       <category domain="https://frankchen0130.github.io/tags/LSTM/">LSTM</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/06/04/2016-06-04-understanding-lstm-networks/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-06-04-understanding-lstm-networks/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Rephil和MapReduce： 描述长尾数据的数学模型</title>
-      <link>https://frankchen0130.github.io/2016/06/04/2016-06-04-rephil-and-mapreduce/</link>
-      <guid>https://frankchen0130.github.io/2016/06/04/2016-06-04-rephil-and-mapreduce/</guid>
+      <link>https://frankchen0130.github.io/2016-06-04-rephil-and-mapreduce/</link>
+      <guid>https://frankchen0130.github.io/2016-06-04-rephil-and-mapreduce/</guid>
       <pubDate>Sat, 04 Jun 2016 07:02:32 GMT</pubDate>
       
       <description>&lt;p&gt;Google Rephil是Google AdSense背后广告相关性计算的头号秘密武器。但是这个系统没有发表过论文。只是其作者（博士Uri Lerner和工程师Mike Yar）在2002年在湾区举办的几次小规模交流中简要介绍过。所以Kevin Murphy把这些内容写进了他的书《Machine Learning: a Probabilitic Perspecitve》里。在吴军博士的《数学之美》里也提到了Rephil。&lt;/p&gt;
@@ -2363,14 +2363,14 @@
       <category domain="https://frankchen0130.github.io/tags/LDA/">LDA</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/06/04/2016-06-04-rephil-and-mapreduce/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-06-04-rephil-and-mapreduce/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>note for CS224d:1</title>
-      <link>https://frankchen0130.github.io/2016/06/04/2016-06-04-note-for-cs224d-1/</link>
-      <guid>https://frankchen0130.github.io/2016/06/04/2016-06-04-note-for-cs224d-1/</guid>
+      <link>https://frankchen0130.github.io/2016-06-04-note-for-cs224d-1/</link>
+      <guid>https://frankchen0130.github.io/2016-06-04-note-for-cs224d-1/</guid>
       <pubDate>Sat, 04 Jun 2016 06:51:38 GMT</pubDate>
       
       <description>&lt;p&gt;最近学习了斯坦福的&lt;a href=&quot;http://cs224d.stanford.edu/syllabus.html&quot;&gt;CS224d&lt;/a&gt;课程，该课 程的主要内容是神经网络在自然语言处理领域的应用。 这里记录相关的学习笔记，大概分 成以下几个部分：word2vec，窗口分类，神经网络，循环神经网络，递归神经网络，卷积 神经网络。&lt;/p&gt;
@@ -2390,14 +2390,14 @@
       <category domain="https://frankchen0130.github.io/tags/Deep-Learning/">Deep Learning</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/06/04/2016-06-04-note-for-cs224d-1/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-06-04-note-for-cs224d-1/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>char-rnn-chinese</title>
-      <link>https://frankchen0130.github.io/2016/05/26/2016-05-26-char-rnn-chinese/</link>
-      <guid>https://frankchen0130.github.io/2016/05/26/2016-05-26-char-rnn-chinese/</guid>
+      <link>https://frankchen0130.github.io/2016-05-26-char-rnn-chinese/</link>
+      <guid>https://frankchen0130.github.io/2016-05-26-char-rnn-chinese/</guid>
       <pubDate>Thu, 26 May 2016 07:37:32 GMT</pubDate>
       
       <description>&lt;p&gt;本文主要根据&lt;a href=&quot;https://github.com/zhangzibin/char-rnn-chinese&quot;&gt;Multi-layer Recurrent Neural Networks (LSTM, GRU, RNN) for character-level language models in Torch&lt;/a&gt;的内容来进行试验。&lt;/p&gt;
@@ -2415,14 +2415,14 @@
       <category domain="https://frankchen0130.github.io/tags/DNN/">DNN</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/05/26/2016-05-26-char-rnn-chinese/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-05-26-char-rnn-chinese/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Python OOP（Object Oriented Programming）</title>
-      <link>https://frankchen0130.github.io/2016/05/25/2016-05-25-pythonoop/</link>
-      <guid>https://frankchen0130.github.io/2016/05/25/2016-05-25-pythonoop/</guid>
+      <link>https://frankchen0130.github.io/2016-05-25-pythonoop/</link>
+      <guid>https://frankchen0130.github.io/2016-05-25-pythonoop/</guid>
       <pubDate>Wed, 25 May 2016 13:35:32 GMT</pubDate>
       
       <description>&lt;p&gt;面向对象编程——Object Oriented Programming，简称OOP，是一种程序设计思想。OOP把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。&lt;/p&gt;
@@ -2441,14 +2441,14 @@
       <category domain="https://frankchen0130.github.io/tags/python/">python</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/05/25/2016-05-25-pythonoop/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-05-25-pythonoop/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>使用文本处理命令获取链接批量下载</title>
-      <link>https://frankchen0130.github.io/2016/05/24/2016-05-24-di-pian-bo-ke/</link>
-      <guid>https://frankchen0130.github.io/2016/05/24/2016-05-24-di-pian-bo-ke/</guid>
+      <link>https://frankchen0130.github.io/2016-05-24-di-pian-bo-ke/</link>
+      <guid>https://frankchen0130.github.io/2016-05-24-di-pian-bo-ke/</guid>
       <pubDate>Tue, 24 May 2016 11:48:48 GMT</pubDate>
       
       <description>&lt;hr&gt;
@@ -2468,7 +2468,7 @@
       <category domain="https://frankchen0130.github.io/tags/tutorial/">tutorial</category>
       
       
-      <comments>https://frankchen0130.github.io/2016/05/24/2016-05-24-di-pian-bo-ke/#disqus_thread</comments>
+      <comments>https://frankchen0130.github.io/2016-05-24-di-pian-bo-ke/#disqus_thread</comments>
       
     </item>
     
