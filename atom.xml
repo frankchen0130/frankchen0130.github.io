@@ -6,7 +6,7 @@
   <link href="https://frankchen.xyz/atom.xml" rel="self"/>
   
   <link href="https://frankchen.xyz/"/>
-  <updated>2021-09-18T03:42:25.578Z</updated>
+  <updated>2021-10-30T10:28:02.503Z</updated>
   <id>https://frankchen.xyz/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Recommend some useful telegram channels</title>
+    <link href="https://frankchen.xyz/2021/10/30/Recommend-some-useful-telegram-channels/"/>
+    <id>https://frankchen.xyz/2021/10/30/Recommend-some-useful-telegram-channels/</id>
+    <published>2021-10-30T10:09:40.000Z</published>
+    <updated>2021-10-30T10:28:02.503Z</updated>
+    
+    <content type="html"><![CDATA[<p>推荐一些个人经常使用的免费电报资源频道,包括免费电子书\免费杂志\免费 udemy 课程等等.</p><span id="more"></span><h3 id="免费-udemy-课程"><a href="#免费-udemy-课程" class="headerlink" title="免费 udemy 课程"></a>免费 udemy 课程</h3><p><a href="https://t.me/Ebooksenglish">https://t.me/Ebooksenglish</a></p><p>这个群可以免费领取 udemy 课程,点击其中的 link 一步步跳转即可,会把你带到最终结算,里面做了一些短链强制 Google 搜索而不是直接跳转到最终页面,应该是 seo 的小技巧,有 free 的优惠码,所以结算后是免费的,课程永久拥有.唯一要注意的是链接内的优惠码这些都是有有效期的.</p><p><img src="/images/1635589099722.jpg"></p><h3 id="免费电子书"><a href="#免费电子书" class="headerlink" title="免费电子书"></a>免费电子书</h3><p><a href="https://t.me/ebooksenglish2">https://t.me/ebooksenglish2</a></p><p><img src="/images/1635588979060.jpg"></p><h3 id="免费杂志"><a href="#免费杂志" class="headerlink" title="免费杂志"></a>免费杂志</h3><p><a href="https://t.me/inPDF">https://t.me/inPDF</a></p><p>可以看到,基本主流的杂志都有免费经济学人/免费Playboy/哈佛商业评论等等,直接下载即可,比若干下载后转卖的良心多了.</p><p><img src="/images/1635589361599.jpg"></p><h3 id="免费-Google-Drive-资源-免费阿里云资源"><a href="#免费-Google-Drive-资源-免费阿里云资源" class="headerlink" title="免费 Google Drive 资源/免费阿里云资源"></a>免费 Google Drive 资源/免费阿里云资源</h3><p><a href="https://t.me/gdsharing">https://t.me/gdsharing</a></p><p><img src="/images/1635589599683.jpg"></p><p>正经和不正经的资源都有,猎奇用.流量大的资源容易被限流.</p><h2 id="资讯类"><a href="#资讯类" class="headerlink" title="资讯类"></a>资讯类</h2><p>主要使用竹新社<br><a href="https://t.me/tnews365">https://t.me/tnews365</a><br>7×24不定时编译国内外媒体的即时新闻报道。</p><p>和风向旗<br><a href="https://t.me/xhqcankao">https://t.me/xhqcankao</a></p><p>风闻奏事，遍查访知。即时发布VPS、网盘等有价值虚拟资产的新闻和交易信息，提供互联网科技新闻快讯。为VPS信号旗播报筛选供稿。🚩</p><p>先列出这么多,后续再补充.</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;推荐一些个人经常使用的免费电报资源频道,包括免费电子书\免费杂志\免费 udemy 课程等等.&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="resources Telegram" scheme="https://frankchen.xyz/tags/resources-Telegram/"/>
+    
+  </entry>
   
   <entry>
     <title>发放4个pt站的邀请码：海胆之家、HDcity</title>
@@ -394,26 +413,6 @@
     <category term="python" scheme="https://frankchen.xyz/tags/python/"/>
     
     <category term="re" scheme="https://frankchen.xyz/tags/re/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tex 写（中文）毕业论文全攻略</title>
-    <link href="https://frankchen.xyz/2018/02/08/Writing-Graduation-Thesis-in-Tex/"/>
-    <id>https://frankchen.xyz/2018/02/08/Writing-Graduation-Thesis-in-Tex/</id>
-    <published>2018-02-07T17:36:41.000Z</published>
-    <updated>2018-02-07T18:11:41.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/images/15180252634406.png"></p><p>用 Tex 写（中文）毕业论文全攻略，高效、便捷、优雅！</p><span id="more"></span><p>这里我们并不存在鄙视链，说什么Tex 优于 Word之类的，其实Word作为极其复杂的文本处理软件，我相信Tex能做到的，Word一定有其实现方式，只不过大部分人都只会用到Word的一小部分功能，相比Word，Tex解决方案更加便捷优雅，比如自动排号（章节、表格、参考文献的编号），全局设置的字体、间距格式等等。相比Word事无巨细的维护修改成本，Tex 的解决方案更加programmer，即软件开发，后期主要工作是迭代维护，若能在前期即考虑这点，后期能省下极多的脑细胞和精力。好了不说多，发车吧~</p><h2 id="总论"><a href="#总论" class="headerlink" title="总论"></a>总论</h2><p> 总体来说，是用上交Tex模板结合Atom编辑器在本地编辑<a href="https://atom.io/">Atom</a>（这个用什么编辑器随意）以及Dropbox同步到云端<a href="https://www.dropbox.com/h">Dropbox</a>以及云端上在sharelatex服务器上即时编译所见即所得。</p><h2 id="工具使用方法"><a href="#工具使用方法" class="headerlink" title="工具使用方法"></a>工具使用方法</h2><p>首先我们在sharelatex官网<a href="https://www.sharelatex.com/project">Your Projects - ShareLaTeX, Online LaTeX Editor</a>注册账号，免费账号即可，如果需要多人协作可以用邀请小号的方式让自己增加权限（sharelatex新建账号不验证邮箱。。所以你懂的），接下来在上交模板<a href="https://github.com/sjtug/SJTUThesis">sjtug/SJTUThesis: 上海交通大学 XeLaTeX 学位论文模板 A XeLaTeX template for Shanghai Jiao Tong University (SJTU) thesis.</a>处点击此处添加最新版模板到我们的sharelatex项目，<br><img src="/images/Screen%20Shot%202018-02-08%20at%2001.58.25.png" alt="Screen Shot 2018-02-08 at 01.58.25"></p><p><img src="/images/Screen%20Shot%202018-02-08%20at%2001.58.56.png" alt="Screen Shot 2018-02-08 at 01.58.56"></p><p>如图，再点进去，先别急着修改，我们先设置个网盘同步，Dropbox需要梯子，在sharelatex的账号设置处链接到Dropbox，<br><img src="/images/Screen%20Shot%202018-02-08%20at%2002.00.57.png" alt="Screen Shot 2018-02-08 at 02.00.57"></p><p>同时Dropbox安装一个桌面版，需要设置代理，<br><img src="/images/Screen%20Shot%202018-02-08%20at%2002.02.29.png" alt="Screen Shot 2018-02-08 at 02.02.29"><br>如图，我们使用ss作为代理。</p><p>接下来安装Atom编辑器，在插件里装一个如下插件，这里我们需要它只是为了注释这一个功能，因为我们不需要本地编译。<br><img src="/images/Screen%20Shot%202018-02-08%20at%2002.03.38.png" alt="Screen Shot 2018-02-08 at 02.03.38"></p><p>接下来我们就可以在本地用Atom编辑Dropbox网盘在本地的Tex项目，只要我们保存，Dropbox就会同步到sharelatex，如果开启自动编译云端就会展示当下编译的PDF效果，如图<br><img src="/images/Screen%20Shot%202018-02-08%20at%2002.07.11.png" alt="Screen Shot 2018-02-08 at 02.07.11"></p><h2 id="Tex模板使用说明"><a href="#Tex模板使用说明" class="headerlink" title="Tex模板使用说明"></a>Tex模板使用说明</h2><p>详见此处<a href="http://sjtug.org/SJTUThesis/README.pdf">README.pdf</a>，主要思路就是把各章、摘要、参考文献等分为不同的tex文件，图表等资源放在一处文件夹内，逐个引用，有全局的的设置文件，编译时将这些零件拼接为pdf，后续会添加更多心得。</p><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ol><li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">MathJax basic tutorial and quick reference - Mathematics Meta Stack Exchange</a>：一个常用Latex公式符号的全集</li><li>如果上面没找到，可以试试这里，手写识别latex字符<a href="http://detexify.kirelabs.org/classify.html">Detexify LaTeX handwritten symbol recognition</a></li></ol>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/15180252634406.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;用 Tex 写（中文）毕业论文全攻略，高效、便捷、优雅！&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Tex" scheme="https://frankchen.xyz/tags/Tex/"/>
     
   </entry>
   
