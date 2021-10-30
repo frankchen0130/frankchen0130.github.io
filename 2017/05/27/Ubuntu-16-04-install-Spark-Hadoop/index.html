@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"frankchen.xyz","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="在Ubuntu 16.04 安装 Spark &amp; Hadoop分布式集群的记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu 16.04 搭建 Spark &amp; Hadoop集群的详细步骤及报错填坑">
-<meta property="og:url" content="http://example.com/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/index.html">
+<meta property="og:url" content="https://frankchen.xyz/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/index.html">
 <meta property="og:site_name" content="不正经的社长">
 <meta property="og:description" content="在Ubuntu 16.04 安装 Spark &amp; Hadoop分布式集群的记录">
 <meta property="og:locale">
@@ -34,7 +34,7 @@
 <meta property="article:tag" content="Spark">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/">
+<link rel="canonical" href="https://frankchen.xyz/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/">
 
 
 <script id="page-configurations">
@@ -169,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/">
+    <link itemprop="mainEntityOfPage" href="https://frankchen.xyz/2017/05/27/Ubuntu-16-04-install-Spark-Hadoop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -218,7 +218,7 @@
 <h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>如下设置默认都在每一台机器上都要进行。</p>
 <h3 id="配置hadoop用户"><a href="#配置hadoop用户" class="headerlink" title="配置hadoop用户"></a>配置hadoop用户</h3><p>首先是在每个机器上创建hadoop用户，设置密码（方便起见建议都设置一样的），并赋予其root权限</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -m hadoop -s /bin/bash</span><br><span class="line">sudo passwd hadoop</span><br><span class="line">sudo adduser hadoop sudo</span><br></pre></td></tr></table></figure>
-<h3 id="固定IP"><a href="#固定IP" class="headerlink" title="固定IP"></a>固定IP</h3><p>为防止重启导致IP变化，需要固定Ip方法参考<a target="_blank" rel="noopener" href="http://frankchen.xyz/2017/06/20/Ubuntu-16-04-static-IP/">Ubuntu16.04 固定IP与设置DNS | 不正经数据科学家</a></p>
+<h3 id="固定IP"><a href="#固定IP" class="headerlink" title="固定IP"></a>固定IP</h3><p>为防止重启导致IP变化，需要固定Ip方法参考<a href="http://frankchen.xyz/2017/06/20/Ubuntu-16-04-static-IP/">Ubuntu16.04 固定IP与设置DNS | 不正经数据科学家</a></p>
 <h3 id="配置hosts"><a href="#配置hosts" class="headerlink" title="配置hosts"></a>配置hosts</h3><p>为方便部署，可配置hosts名，方便输入地址，如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line">192.168.1.113      czn.shise.com</span><br><span class="line">192.168.1.102      czm.shise.com</span><br><span class="line">192.168.1.120      wwj.shise.com</span><br><span class="line">192.168.1.123      bas.shise.com</span><br></pre></td></tr></table></figure>
 <p>测试能否ping通<br><code>ping czn.shise.com -c 3</code></p>
