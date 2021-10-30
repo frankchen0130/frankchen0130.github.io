@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>不正经数据科学家</title>
+  <title>不正经的站长</title>
   
-  <subtitle>Marketing/Python/Clojure/Game</subtitle>
+  <subtitle>Affiliate Marketing/Python/Clojure/Game/Resource</subtitle>
   <link href="https://frankchen.xyz/atom.xml" rel="self"/>
   
   <link href="https://frankchen.xyz/"/>
